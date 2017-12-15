@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Device\src\Device.cpp" />
+    <ClCompile Include="..\..\Device\src\Display\Display.cpp" />
+    <ClCompile Include="..\..\Device\src\Display\Grid.cpp" />
+    <ClCompile Include="..\..\Device\src\Display\Painter.cpp" />
+    <ClCompile Include="..\..\Device\src\Display\PainterData.cpp" />
+    <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp" />
+    <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp" />
+    <ClCompile Include="..\..\Device\src\FPGA\Storage.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\Decoder.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\FLASH.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\GPIO.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\Hardware.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\Timer.cpp" />
+    <ClCompile Include="..\..\Device\src\libs\stm32f4xx_hal_msp.c" />
+    <ClCompile Include="..\..\Device\src\libs\stm32f4xx_it.c" />
+    <ClCompile Include="..\..\Device\src\libs\system_stm32f4xx.c" />
+    <ClCompile Include="..\..\Device\src\Log.cpp" />
+    <ClCompile Include="..\..\Device\src\main.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Menu.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\MenuControls.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannel.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageDisplay.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageService.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTester.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTrig.cpp" />
+    <ClCompile Include="..\..\Device\src\Multimeter\Multimeter.cpp" />
+    <ClCompile Include="..\..\Device\src\Osci\Osci.cpp" />
+    <ClCompile Include="..\..\Device\src\Settings\Settings.cpp" />
+    <ClCompile Include="..\..\Device\src\Tester\Tester.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\Math.cpp" />
+    <ClCompile Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c" />
+    <ClCompile Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac_ex.c" />
+    <ClCompile Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c" />
+    <ClCompile Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c" />
+    <ClCompile Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c" />
+    <ClCompile Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Device\src\defines.h" />
+    <ClInclude Include="..\..\Device\src\Device.h" />
+    <ClInclude Include="..\..\Device\src\Display\Display.h" />
+    <ClInclude Include="..\..\Device\src\Display\Grid.h" />
+    <ClInclude Include="..\..\Device\src\Display\Painter.h" />
+    <ClInclude Include="..\..\Device\src\Display\PainterData.h" />
+    <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h" />
+    <ClInclude Include="..\..\Device\src\dox\Page01.h" />
+    <ClInclude Include="..\..\Device\src\FPGA\AD9286.h" />
+    <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
+    <ClInclude Include="..\..\Device\src\FPGA\FPGA_Types.h" />
+    <ClInclude Include="..\..\Device\src\FPGA\Storage.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\Decoder.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\FLASH.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\FSMC.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\GPIO.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\Hardware.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\Timer.h" />
+    <ClInclude Include="..\..\Device\src\Keyboard\Buttons.h" />
+    <ClInclude Include="..\..\Device\src\libs\stm32f4xx_hal_conf.h" />
+    <ClInclude Include="..\..\Device\src\libs\stm32f4xx_it.h" />
+    <ClInclude Include="..\..\Device\src\Log.h" />
+    <ClInclude Include="..\..\Device\src\main.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Menu.h" />
+    <ClInclude Include="..\..\Device\src\Menu\MenuControls.h" />
+    <ClInclude Include="..\..\Device\src\Multimeter\Multimeter.h" />
+    <ClInclude Include="..\..\Device\src\Osci\Osci.h" />
+    <ClInclude Include="..\..\Device\src\Settings\Settings.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsTypes.h" />
+    <ClInclude Include="..\..\Device\src\Tester\Tester.h" />
+    <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h" />
+    <ClInclude Include="..\..\Device\src\Utils\Debug.h" />
+    <ClInclude Include="..\..\Device\src\Utils\Math.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc_ex.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac_ex.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nor.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sram.h" />
+    <ClInclude Include="..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Device\src\libs\startup_stm32f437xx.s" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{C23F96B0-1550-4A0F-8E49-0DC211BCED2C}</ProjectGuid>
+    <RootNamespace>FPGA</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <ProjectName>Device</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\Device\src\libs;..\..\STM32Cube_FW_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\Device\src;$(IncludePath)</IncludePath>
+    <OutDir>.\Debug</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>.\x64\Debug</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>.\x64\Release</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,32 +1,32 @@
-# Prerequisites
-*.d
+*.bak
+*.bin
+*.cof
+*.err
+*.hex
+*.sta
+*.suo
+*.sym
+*.tmp
+*.tre
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
 
-# Precompiled Headers
-*.gch
-*.pch
+doc/doxygen/Panel/*
+doc/doxygen/Device/*
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+sources/.vs/*
 
-# Fortran module files
-*.mod
-*.smod
+sources/Device/DebugConfig/*
+sources/Device/Listings/*
+sources/Device/Objects/*
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+sources/Panel/DebugConfig/*
+sources/Panel/Listings/*
+sources/Panel/Objects/*
 
-# Executables
-*.exe
-*.out
-*.app
+sources/VS/PanelOSC/Debug/*
+sources/VS/PanelOSC/Release/*
+sources/VS/PanelOSC/x64/*
+sources/VS/FPGA/Debug/*
+sources/VS/FPGA/Release/*
+sources/VS/FPGA/x64/*
+
