@@ -167,8 +167,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\Device\src\libs;..\..\STM32Cube_FW_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\Device\src;$(IncludePath)</IncludePath>
-    <OutDir>.\Debug</OutDir>
+    <IncludePath>..\..\libs\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\libs\STM32Cube_FW_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\Device\src\libs;..\..\Device\src;C:\My\Work\stm32\KornetOSC\sources\libs\STM32Cube_F4\Drivers\CMSIS\Include;C:\My\Work\stm32\KornetOSC\sources\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include</IncludePath>
+    <OutDir>.\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>.\x64\Debug</OutDir>
