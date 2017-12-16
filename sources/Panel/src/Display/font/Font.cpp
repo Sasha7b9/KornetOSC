@@ -21,13 +21,13 @@ int Font_GetLengthText(const char *text)
     int retValue = 0;
     while (*text)
     {
-        retValue += Font_GetLengthSymbol(*text);
+        retValue += Font_GetLengthSymbol((uchar)*text);
         text++;
     }
     return retValue;
 }
 
-int Font_GetHeightSymbol(char symbol)
+int Font_GetHeightSymbol(char)
 {
     return 9;
 }
@@ -53,6 +53,9 @@ void Font_SetFont(TypeFont typeFont)
             break;
         case TypeFont_UGO2:
             font = &fontUGO2;
+            break;
+        case TypeFont_None:
+        case TypeFont_Number:
             break;
     }
 }

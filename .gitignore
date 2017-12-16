@@ -8,6 +8,8 @@
 *.sym
 *.tmp
 *.tre
+*.lib
+*.*pdb
 
 
 doc/doxygen/Panel/*

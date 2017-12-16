@@ -337,7 +337,7 @@
               <MiscControls>--cpp</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F429xx,__cplusplus</Define>
               <Undefine></Undefine>
-              <IncludePath>.\src;..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\libs\STM32Cube_F4\Drivers\CMSIS\Include;.\src\libs</IncludePath>
+              <IncludePath>.\src;..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\libs\STM32Cube_F4\Drivers\CMSIS\Include;.\src\libs;..\libs\common</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -572,11 +572,6 @@
           <GroupName>Display/font</GroupName>
           <Files>
             <File>
-              <FileName>Font.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\Display\font\Font.c</FilePath>
-            </File>
-            <File>
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\font\Font.h</FilePath>
@@ -600,6 +595,11 @@
               <FileName>fontUGO2.inc</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\font\fontUGO2.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\font\Font.cpp</FilePath>
             </File>
           </Files>
         </Group>

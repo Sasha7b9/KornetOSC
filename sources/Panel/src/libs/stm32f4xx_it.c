@@ -1,6 +1,4 @@
 #include "defines.h"
-#include "Hardware/FSMC.h"
-#include "Keyboard/Keyboard.h"
 #include "stm32f4xx_it.h"
 #include <stm32f4xx_hal.h>
 
