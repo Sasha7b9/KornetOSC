@@ -6,7 +6,7 @@
 #include "Settings/Settings.h"
 #include "Keyboard/Buttons.h"
 #include "Utils/CommonFunctions.h"
-#include "Utils/Math.h"
+#include "Utils/MathOSC.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,9 +95,9 @@ char *Choice::NameItem() const
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Choice::PressKey(Key key) const
+void Choice::PressKey(Key) const
 {
-    math.CircleIncrease<uint8>(*(cells[numAlternate]), 0, max[numAlternate]);
+    mathOSC.CircleIncrease<uint8>(*(cells[numAlternate]), 0, max[numAlternate]);
     funcOnChanged();
 }
 
@@ -110,7 +110,7 @@ void Choice::SetAlternateMode(int numAlternate_)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Button::PressKey(Key key) const
+void Button::PressKey(Key) const
 {
     funcOnPress(true);
 }

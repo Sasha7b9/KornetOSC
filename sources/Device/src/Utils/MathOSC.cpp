@@ -1,13 +1,15 @@
-#include "Math.h"
+#include "MathOSC.h"
 #include "FPGA/FPGA.h"
 #include "Settings/Settings.h"
+#include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Math math;
+MathOSC math;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +32,7 @@ const float absStepRShift[] =
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *Math::Voltage2String(float voltage, bool alwaysSign, char buffer[20])
+char *MathOSC::Voltage2String(float voltage, bool alwaysSign, char buffer[20])
 {
     buffer[0] = 0;
     char *suffix;
@@ -68,7 +70,7 @@ char *Math::Voltage2String(float voltage, bool alwaysSign, char buffer[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Math::Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
+char *MathOSC::Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char *pBuffer = bufferOut;
@@ -97,9 +99,9 @@ char *Math::Float2String(float value, bool alwaysSign, int numDigits, char buffe
 
     format[1] = (char)numDigits + 0x30;
 
-    int numDigitsInInt = Math::NumDigitsInIntPart(value);
+    int numDigitsInInt = NumDigitsInIntPart(value);
 
-    format[3] = (numDigits - numDigitsInInt) + 0x30;
+    format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
     if (numDigits == numDigitsInInt)
     {
         format[5] = '.';
@@ -112,7 +114,7 @@ char *Math::Float2String(float value, bool alwaysSign, int numDigits, char buffe
     if (NumDigitsInIntPart(val) != numDigitsInInt)
     {
         numDigitsInInt = NumDigitsInIntPart(val);
-        format[3] = (numDigits - numDigitsInInt) + 0x30;
+        format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
         if (numDigits == numDigitsInInt)
         {
             format[5] = '.';
@@ -130,7 +132,7 @@ char *Math::Float2String(float value, bool alwaysSign, int numDigits, char buffe
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Math::NumDigitsInIntPart(float value)
+int MathOSC::NumDigitsInIntPart(float value)
 {
     float fabsValue = fabsf(value);
 
@@ -160,7 +162,7 @@ int Math::NumDigitsInIntPart(float value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Math::LowSignedBit(uint value)
+int MathOSC::LowSignedBit(uint value)
 {
     int verValue = 1;
 
@@ -178,17 +180,17 @@ int Math::LowSignedBit(uint value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Math::Bin2String16(uint16 value, char valBuffer[19])
+char *MathOSC::Bin2String16(uint16 value, char valBuffer[19])
 {
     char buffer[9];
-    strcpy(valBuffer, Bin2String(value >> 8, buffer));
+    strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));
     strcpy((valBuffer[8] = ' ', valBuffer + 9), Bin2String((uint8)value, buffer));
     valBuffer[18] = '\0';
     return valBuffer;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Math::Bin2String(uint8 value, char buffer[9])
+char *MathOSC::Bin2String(uint8 value, char buffer[9])
 {
     for (int bit = 0; bit < 8; bit++)
     {
@@ -199,7 +201,7 @@ char *Math::Bin2String(uint8 value, char buffer[9])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
+void MathOSC::Smoothing(uint8 *data, int numPoints, int numSmooth)
 {
     if (numSmooth == 0 || numSmooth == 1)
     {
@@ -228,6 +230,6 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
     
     for (int i = 1; i < numPoints; i++)
     {
-        data[i] = (int)(buffer[i] / num[i] + 0.5f);
+        data[i] = (uint8)(buffer[i] / num[i] + 0.5f);
     }
 }

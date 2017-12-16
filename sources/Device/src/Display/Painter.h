@@ -50,7 +50,9 @@ public:
     void DrawFormatText(int x, int y, uint8 color, char *format, ...);
     void DrawChar(int x, int y, char symbol, uint8 color = 255);
     void DrawHLine(int y, int x0, int x1, uint8 color = 255);
+    void DrawHLine(float y, int x0, int x1, uint8 color = 255);
     void DrawVLine(int x, int y0, int y1, uint8 color = 255);
+    void DrawVLine(int x, float y0, float y1, uint8 color = 255);
     void DrawLine(int x0, int y0, int x1, int y1, uint8 color = 255);
     void SetFont(TypeFont typeFont);
     void SetPoint(int x, int y, uint8 color = 255);

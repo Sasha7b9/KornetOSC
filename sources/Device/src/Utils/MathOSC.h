@@ -12,7 +12,7 @@ extern const float absStepRShift[];
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class Math
+class MathOSC
 {
 public:
 
@@ -26,7 +26,7 @@ public:
         }
         else
         {
-            value = min;
+            value = (uint8)min;
         }
     }
 
@@ -110,4 +110,4 @@ private:
 };
 
 
-extern Math math;
+extern MathOSC mathOSC;

@@ -8,7 +8,7 @@
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
 #include "Utils/Debug.h"
-#include "Utils/Math.h"
+#include "Utils/MathOSC.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -43,19 +43,16 @@ void Display::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::Update()
 {
-    uint timeStart = gTimeUS;
-//    debug.ClearTimeCounter();
+    typedef void (Display::*pFuncDisplayVV)();
 
-    typedef void (Display::*pFuncVV)();
-
-    static const pFuncVV funcs[NumDeviceModes] =
+    static const pFuncDisplayVV funcs[NumDeviceModes] =
     {
         &Display::UpdateOsci,
         &Display::UpdateTester,
         &Display::UpdateMultimeter
     };
 
-    pFuncVV func = funcs[device.CurrentMode()];
+    pFuncDisplayVV func = funcs[device.CurrentMode()];
 
     (this->*func)();
 
@@ -114,8 +111,8 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
 
     painter.SetColor(colors[numStep]);
     
-    math.Smoothing(dataX, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
-    math.Smoothing(dataY, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
+    mathOSC.Smoothing(dataX, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
+    mathOSC.Smoothing(dataY, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
 
     if (VIEW_MODE_IS_LINES)
     {
@@ -205,11 +202,11 @@ int Display::WriteChannel(Channel ch, int x, int y)
 
     x += 22;
 
-    CHAR_BUF(buffer, 20);
+    CHAR_BUF(buf, 20);
 
-    math.Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buffer);
+    mathOSC.Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buf);
 
-    painter.DrawText(x, y, buffer);
+    painter.DrawText(x, y, buf);
 
     return x + 47;
 }
@@ -236,7 +233,7 @@ void Display::DrawRShift(Channel ch)
 
     int y = (grid.Bottom() - grid.Top()) / 2 + grid.Top() - delta;
 
-    painter.DrawChar(grid.Left() - 8, y - 4, SYMBOL_RSHIFT_MARKER);
+    painter.DrawChar(grid.Left() - 8, y - 4, (char)SYMBOL_RSHIFT_MARKER);
 
     painter.SetFont(TypeFont_5);
 

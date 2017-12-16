@@ -6,6 +6,7 @@
 #include "FPGA/Storage.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
+#include "Utils/MathOSC.h"
 #include "Utils/Math.h"
 
 
@@ -65,7 +66,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
         {
             float value = bottom - data[i] * scale;
             float valuePrev = bottom - data[i - 1] * scale;
-            value += math.Sign(valuePrev - value);          // Это сделано чтобы не ухудшать вывод двумя точками на горизонтали в месте соприкоснове-
+            value += mathOSC.Sign(valuePrev - value);          // Это сделано чтобы не ухудшать вывод двумя точками на горизонтали в месте соприкоснове-
                                                             // ния двух вертикальных линий
             painter.DrawVLine(x++, valuePrev, value);
         }
@@ -89,7 +90,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
         for (int i = 0; i < 280; i++)
         {
             float value = bottom - data[i] * scale;
-            painter.SetPoint(left + i, value);
+            painter.SetPoint(left + i, (uint8)ROUND(value));
         }
     }
 }

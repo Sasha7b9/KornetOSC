@@ -23,7 +23,7 @@
     <ProjectGuid>{69B40DED-EDDE-4D55-B919-DB2780BAAD68}</ProjectGuid>
     <RootNamespace>PanelOSC</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>Panel</ProjectName>
+    <ProjectName>PanelOSC</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

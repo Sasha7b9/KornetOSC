@@ -17,8 +17,6 @@ void Log::Message(char *format, ...)
 {
     static char buffer[SIZE_BUFFER];
     buffer[0] = 0;
-    char *pointer = buffer;
-
     va_list args;
 
     va_start(args, format);

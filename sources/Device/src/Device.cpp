@@ -8,7 +8,7 @@
 #include "Hardware/FSMC.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/MathOSC.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -20,7 +20,7 @@ Device device;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Device::Init()
 {
-    uint64 temp = rand() % 4;
+    uint64 temp = (uint64)(rand() % 4);
     temp++;
     
     hardware.Init();
@@ -61,7 +61,7 @@ DeviceMode Device::CurrentMode()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Device::ChangeMode()
 {
-    math.CircleIncrease<uint8>((uint8 &)currentMode, 0, NumDeviceModes - 1);
+    mathOSC.CircleIncrease<uint8>((uint8 &)currentMode, 0, NumDeviceModes - 1);
 
     if (currentMode == Mode_Tester)
     {

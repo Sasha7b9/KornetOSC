@@ -35,7 +35,9 @@
     <ClCompile Include="..\..\Device\src\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\Device\src\libs\stm32f4xx_hal_msp.c" />
     <ClCompile Include="..\..\Device\src\libs\stm32f4xx_it.c" />
-    <ClCompile Include="..\..\Device\src\libs\system_stm32f4xx.c" />
+    <ClCompile Include="..\..\Device\src\libs\system_stm32f4xx.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\Device\src\Log.cpp" />
     <ClCompile Include="..\..\Device\src\main.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Menu.cpp" />
@@ -51,7 +53,7 @@
     <ClCompile Include="..\..\Device\src\Tester\Tester.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
-    <ClCompile Include="..\..\Device\src\Utils\Math.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\MathOSC.cpp" />
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -104,7 +106,8 @@
     <ClInclude Include="..\..\Device\src\Tester\Tester.h" />
     <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\Device\src\Utils\Debug.h" />
-    <ClInclude Include="..\..\Device\src\Utils\Math.h" />
+    <ClInclude Include="..\..\Device\src\Utils\MathOSC.h" />
+    <ClInclude Include="..\..\libs\common\Utils\Math.h" />
     <ClInclude Include="..\..\libs\common\_VS\algorithm" />
     <ClInclude Include="..\..\libs\common\_VS\ctype.h" />
     <ClInclude Include="..\..\libs\common\_VS\integer.h" />
@@ -178,7 +181,7 @@
     <ProjectGuid>{C23F96B0-1550-4A0F-8E49-0DC211BCED2C}</ProjectGuid>
     <RootNamespace>FPGA</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
-    <ProjectName>Device</ProjectName>
+    <ProjectName>DeviceOSC</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -226,7 +229,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\Device\src\libs;..\..\Device\src;C:\My\Work\stm32\KornetOSC\sources\libs\STM32Cube_F4\Drivers\CMSIS\Include;C:\My\Work\stm32\KornetOSC\sources\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;C:\My\Work\stm32\KornetOSC\sources\libs\common\_VS;C:\My\Work\stm32\KornetOSC\sources\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc</IncludePath>
+    <IncludePath>C:\My\Work\stm32\KornetOSC\sources\libs\common\_VS;..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\Device\src\libs;..\..\Device\src;C:\My\Work\stm32\KornetOSC\sources\libs\STM32Cube_F4\Drivers\CMSIS\Include;C:\My\Work\stm32\KornetOSC\sources\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;C:\My\Work\stm32\KornetOSC\sources\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;C:\My\Work\stm32\KornetOSC\sources\libs\common</IncludePath>
     <OutDir>.\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -240,12 +243,13 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
+      <DisableSpecificWarnings>4201;4514;4626;4774;4820;5027</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
