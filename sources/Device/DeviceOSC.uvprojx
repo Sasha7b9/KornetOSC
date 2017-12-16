@@ -337,7 +337,7 @@
               <MiscControls>--cpp</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F437xx,__cplusplus</Define>
               <Undefine></Undefine>
-              <IncludePath>..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;.\src;.\src\libs;..\libs\STM32Cube_F4\Drivers\CMSIS\Include</IncludePath>
+              <IncludePath>..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;.\src;.\src\libs;..\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\libs\common</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -912,16 +912,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Math.h</FilePath>
-            </File>
-            <File>
               <FileName>CommonFunctions.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Utils\CommonFunctions.cpp</FilePath>
@@ -940,6 +930,21 @@
               <FileName>Debug.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Debug.h</FilePath>
+            </File>
+            <File>
+              <FileName>MathOSC.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\MathOSC.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MathOSC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\MathOSC.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\libs\common\Utils\Math.h</FilePath>
             </File>
           </Files>
         </Group>

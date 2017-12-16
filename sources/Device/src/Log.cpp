@@ -17,10 +17,11 @@ void Log::Message(char *format, ...)
 {
     static char buffer[SIZE_BUFFER];
     buffer[0] = 0;
+    
     va_list args;
 
     va_start(args, format);
-    vsprintf(pointer, format, args);
+    vsprintf(buffer, format, args);
     va_end(args);
 
     display.logEntity.AddToConsole(buffer);
