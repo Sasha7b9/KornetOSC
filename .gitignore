@@ -30,3 +30,5 @@ sources/VS/FPGA/Debug/*
 sources/VS/FPGA/Release/*
 sources/VS/FPGA/x64/*
 
+sources/_VS/DeviceOSC/Debug/*
+sources/_VS/PanelOSC/Debug/*

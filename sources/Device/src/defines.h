@@ -18,7 +18,10 @@ typedef void(*pFuncVB)(bool);
 inline void EmptyFuncVV(){};
 inline void EmptyFuncVB(bool){};
     
+
+#ifndef _WIN32
 #pragma anon_unions
+#endif
 
 typedef union
 {

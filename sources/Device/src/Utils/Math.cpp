@@ -13,19 +13,19 @@ Math math;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const float absStepRShift[] =
 {
-    2e-3 / 20 / STEP_RSHIFT,
-    5e-3 / 20 / STEP_RSHIFT,
-    10e-3 / 20 / STEP_RSHIFT,
-    20e-3 / 20 / STEP_RSHIFT,
-    50e-3 / 20 / STEP_RSHIFT,
-    100e-3 / 20 / STEP_RSHIFT,
-    200e-3 / 20 / STEP_RSHIFT,
-    500e-3 / 20 / STEP_RSHIFT,
-    1.0 / 20 / STEP_RSHIFT,
-    2.0 / 20 / STEP_RSHIFT,
-    5.0 / 20 / STEP_RSHIFT,
-    10.0 / 20 / STEP_RSHIFT,
-    20.0 / 20 / STEP_RSHIFT
+    2e-3f   / 20 / STEP_RSHIFT,
+    5e-3f   / 20 / STEP_RSHIFT,
+    10e-3f  / 20 / STEP_RSHIFT,
+    20e-3f  / 20 / STEP_RSHIFT,
+    50e-3f  / 20 / STEP_RSHIFT,
+    100e-3f / 20 / STEP_RSHIFT,
+    200e-3f / 20 / STEP_RSHIFT,
+    500e-3f / 20 / STEP_RSHIFT,
+    1.0f    / 20 / STEP_RSHIFT,
+    2.0f    / 20 / STEP_RSHIFT,
+    5.0f    / 20 / STEP_RSHIFT,
+    10.0f   / 20 / STEP_RSHIFT,
+    20.0f   / 20 / STEP_RSHIFT
 };
 
 
@@ -105,7 +105,7 @@ char *Math::Float2String(float value, bool alwaysSign, int numDigits, char buffe
         format[5] = '.';
     }
 
-    snprintf(pBuffer, 19, format, fabs(value));
+    snprintf(pBuffer, 19, format, fabsf(value));
 
     float val = atof(pBuffer);
 
@@ -132,7 +132,7 @@ char *Math::Float2String(float value, bool alwaysSign, int numDigits, char buffe
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Math::NumDigitsInIntPart(float value)
 {
-    float fabsValue = fabs(value);
+    float fabsValue = fabsf(value);
 
     int numDigitsInInt = 0;
     if (fabsValue >= 10000)
