@@ -8,3 +8,4 @@ int   strcmp(char *, char *);
 char  toupper(char);
 char  tolower(char);
 float atof(char *);
+void memcpy(void *, const void *, int);
