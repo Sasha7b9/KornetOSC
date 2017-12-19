@@ -10,7 +10,7 @@
 *.tre
 *.lib
 *.*pdb
-
+JLink*
 
 doc/doxygen/Panel/*
 doc/doxygen/Device/*
