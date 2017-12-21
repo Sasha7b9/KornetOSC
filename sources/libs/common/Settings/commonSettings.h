@@ -15,3 +15,19 @@
 #ifndef LANG_RU
 #define LANG_RU (LANG == Russian)
 #endif
+
+#ifndef FUNC_MODE_DRAW_IS_ENABLED
+#define FUNC_MODE_DRAW_IS_ENABLED true
+#endif
+
+#ifndef COLOR_SCHEME_IS_WHITE_LETTERS
+#define COLOR_SCHEME_IS_WHITE_LETTERS true
+#endif
+
+#ifndef SHOW_STRING_NAVI_TEMP
+#define SHOW_STRING_NAVI_TEMP   false
+#endif
+
+#ifndef SOUND_VOLUME
+#define SOUND_VOLUME 100
+#endif
