@@ -11,17 +11,17 @@
     <View>
       <WinId>38003</WinId>
       <ViewName>Registers</ViewName>
-      <TableColWidths>115 218</TableColWidths>
+      <TableColWidths>115 77</TableColWidths>
     </View>
     <View>
       <WinId>346</WinId>
       <ViewName>Code Coverage</ViewName>
-      <TableColWidths>568 160</TableColWidths>
+      <TableColWidths>868 160</TableColWidths>
     </View>
     <View>
       <WinId>204</WinId>
       <ViewName>Performance Analyzer</ViewName>
-      <TableColWidths>728</TableColWidths>
+      <TableColWidths>1028</TableColWidths>
     </View>
   </SECTreeCtrl>
 
@@ -91,10 +91,10 @@
         <yPos>-1</yPos>
       </MaxPosition>
       <NormalPosition>
-        <Top>73</Top>
-        <Left>-1307</Left>
-        <Right>330</Right>
-        <Bottom>1088</Bottom>
+        <Top>485</Top>
+        <Left>273</Left>
+        <Right>1910</Right>
+        <Bottom>1042</Bottom>
       </NormalPosition>
     </WindowPosition>
     <MDIClientArea>
