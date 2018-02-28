@@ -9,7 +9,7 @@ typedef void (Tester::*pFuncTester)();
 class FSMC
 {
 public:
-    FSMC() : mode(ModeNone), interchangeWithPanel(false), funcAfterInteractionWithPanel(0) {};
+    FSMC() : mode(ModeNone), interchangeWithPanel(false), funcAfterInteractionWithPanel(0) {}
 
     void Init();
 

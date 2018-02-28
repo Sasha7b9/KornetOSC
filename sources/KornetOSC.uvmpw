@@ -8,13 +8,14 @@
   <WorkspaceName>WorkSpace</WorkspaceName>
 
   <project>
-    <PathAndName>.\Panel\PanelOSC.uvprojx</PathAndName>
+    <PathAndName>.\Device\DeviceOSC.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
     <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
-    <PathAndName>.\Device\DeviceOSC.uvprojx</PathAndName>
+    <PathAndName>.\Panel\PanelOSC.uvprojx</PathAndName>
+    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
 </ProjectWorkspace>

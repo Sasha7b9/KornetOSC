@@ -8,9 +8,9 @@
 class Control
 {
 public:
-    virtual void Draw(int, int) const {};
+    virtual void Draw(int, int) const {}
 
-    virtual void PressKey(Key) const {};
+    virtual void PressKey(Key) const {}
 
     static const int CONTROLS_ON_SUBPAGE = 5;
 
@@ -23,7 +23,9 @@ protected:
     {
         title_[0] = titleRu;
         title_[1] = titleEn;
-    };
+    }
+    
+    virtual ~Control() {}
 
     char *title_[2];
 
@@ -35,7 +37,7 @@ protected:
 class EmptyControl : public Control
 {
 public:
-    EmptyControl() : Control("", "") {};
+    EmptyControl() : Control("", "") {}
 };
 
 
@@ -44,7 +46,7 @@ class Page : public Control
 {
 public:
     Page(char *titleRu = 0, char *titleEn = 0, const Control **controls_ = 0, int numControls_ = 0) : 
-        Control(titleRu, titleEn), controls(controls_), numControls(numControls_), firstControl(0)  {};
+        Control(titleRu, titleEn), controls(controls_), numControls(numControls_), firstControl(0)  {}
 
     virtual void Draw(int x, int y) const;
 
@@ -80,7 +82,7 @@ public:
             max[1] = (uint8)(num2_ - 1);
 
             numAlternate = 0;
-        };
+        }
 
     void SetAlternateMode(int numAlternate);
 
@@ -91,7 +93,7 @@ private:
 
     char *NameItem() const;
     
-    char *title[2];
+//    char *title[2];
 
     const char **items0;
 
@@ -111,7 +113,7 @@ private:
 class Button : public Control
 {
 public:
-    Button(char *titleRu, char *titleEn, pFuncVB funcOnPress_) : Control(titleRu, titleEn), funcOnPress(funcOnPress_) {};
+    Button(char *titleRu, char *titleEn, pFuncVB funcOnPress_) : Control(titleRu, titleEn), funcOnPress(funcOnPress_) {}
 
 private:
     virtual void PressKey(Key key) const;

@@ -1,5 +1,6 @@
 #include "Menu/MenuControls.h"
 #include "Settings/Settings.h"
+#include "PageDisplay.h"
 
 
 //------------------------------------------------------------------------------------------------------------------------------- ÄÈÑÏËÅÉ - Îòîáğàæ --
@@ -16,6 +17,6 @@ const Choice cThickness("Òîëùèíà", "Thickness", itemsThickness, &THICKNESS_SIGNA
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÄÈÑÏËÅÉ ///
-const Control *controlsDisplay[] = {&cModeView, &cThickness};
+static const Control *controlsDisplay[] = {&cModeView, &cThickness};
 
 Page pageDisplay("ÄÈÑÏËÅÉ", "DISPLAY", controlsDisplay, 2);

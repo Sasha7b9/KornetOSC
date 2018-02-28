@@ -1,9 +1,10 @@
 #include "Menu/MenuControls.h"
 #include "Settings/Settings.h"
+#include "PageService.h"
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnPress_ResetSettings(bool active)
+static void OnPress_ResetSettings(bool active)
 {
     if (active)
     {

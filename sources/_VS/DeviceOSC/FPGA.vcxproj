@@ -99,6 +99,11 @@
     <ClInclude Include="..\..\Device\src\main.h" />
     <ClInclude Include="..\..\Device\src\Menu\Menu.h" />
     <ClInclude Include="..\..\Device\src\Menu\MenuControls.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageChannels.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageDisplay.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageService.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTester.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTrig.h" />
     <ClInclude Include="..\..\Device\src\Multimeter\Multimeter.h" />
     <ClInclude Include="..\..\Device\src\Osci\Osci.h" />
     <ClInclude Include="..\..\Device\src\Settings\Settings.h" />

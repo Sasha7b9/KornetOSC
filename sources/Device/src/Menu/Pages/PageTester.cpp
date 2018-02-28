@@ -1,6 +1,7 @@
 #include "Menu/MenuControls.h"
 #include "Settings/Settings.h"
 #include "Tester/Tester.h"
+#include "PageTester.h"
 
 
 //------------------------------------------------------------------------------------------------------------------- ÒÅÑÒÅĞ-ÊÎÌÏÎÍÅÍÒ - Ïîëÿğíîñòü --

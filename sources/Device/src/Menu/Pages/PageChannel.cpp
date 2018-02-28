@@ -2,6 +2,7 @@
 #include "Menu/MenuControls.h"
 #include "Settings/Settings.h"
 #include "Log.h"
+#include "PageChannels.h"
 
 
 //----------------------------------------------------------------------------------------------------------------------------------  ¿Õ¿À 1 - ¬ıÓ‰ --
@@ -29,7 +30,7 @@ static const Choice cCoupleA("—‚ˇÁ¸", "Couple", itemsCoupleA, &SET_COUPLE_A, 3, 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  ¿Õ¿À 1 //
-const Control* controlsA[] = {&cEnableA, &cCoupleA};
+static const Control* controlsA[] = {&cEnableA, &cCoupleA};
 
 Page pageChannelA(" ¿Õ¿À 1", "CHANNEL 1", controlsA, 2);
 

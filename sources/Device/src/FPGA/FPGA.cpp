@@ -25,7 +25,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 FPGA fpga;
-ADC_HandleTypeDef hADC;
+static ADC_HandleTypeDef hADC;
 
 static uint16 adcValueFPGA = 0;
 
@@ -53,7 +53,7 @@ static PinStruct pins[Num_Pins] =
 };
 
 
-bool isRunning = false;
+//static bool isRunning = false;
 
 volatile static int numberMeasuresForGates = 1000;
 
@@ -62,6 +62,8 @@ static uint8 dataRand[NumChannels][FPGA_MAX_NUM_POINTS];    ///< «десь будут дан
 const int Kr[] = {50, 20, 10,  5,   2};
 /// «десь хранитс€ адрес, начина€ с которого будем читать данные по каналам. ≈сли addrRead == 0xffff, то адрес вначале нужно считать
 static uint16 addrRead = 0xffff;
+
+static uint8 ValueForRange(Channel ch);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -430,7 +432,7 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
         minGate = 0.8f * minGate + min * 0.2f;
         maxGate = 0.8f * maxGate + max * 0.2f;
 
-        LOG_MESSAGE("%.1f %.1f", minGate, maxGate);
+        LOG_MESSAGE("%.1f %.1f", (double)minGate, (double)maxGate);
 
         numElements = 0;
         min = 0xffff;
@@ -565,7 +567,7 @@ GPIO_TypeDef *FPGA::GetPort(Pin pin)
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 ValueForRange(Channel ch)
+static uint8 ValueForRange(Channel ch)
 {
     static const uint8 datas[CoupleSize] =
     {
@@ -822,6 +824,8 @@ void FPGA::LoadTrigSourceInput()
 extern "C" {
 #endif
 
+void ADC_IRQHandler();
+    
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ADC_IRQHandler(void)
 {

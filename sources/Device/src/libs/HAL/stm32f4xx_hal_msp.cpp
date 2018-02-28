@@ -1,4 +1,4 @@
-#include "stm32f4xx_hal.h"
+#include "defines.h"
 
 extern void _Error_Handler(char *, int);
 /* USER CODE BEGIN 0 */
@@ -361,10 +361,10 @@ static void HAL_FMC_MspInit(void)
 {
 }
 
-void HAL_SRAM_MspInit(SRAM_HandleTypeDef *hsram){
+void HAL_SRAM_MspInit(SRAM_HandleTypeDef *){
   /* USER CODE BEGIN SRAM_MspInit 0 */
-    hsram = hsram;
-  /* USER CODE END SRAM_MspInit 0 */
+
+    /* USER CODE END SRAM_MspInit 0 */
   HAL_FMC_MspInit();
   /* USER CODE BEGIN SRAM_MspInit 1 */
 
@@ -376,9 +376,8 @@ static void HAL_FMC_MspDeInit(void)\
 
 }
 
-void HAL_SRAM_MspDeInit(SRAM_HandleTypeDef* hsram)
+void HAL_SRAM_MspDeInit(SRAM_HandleTypeDef *)
 {
-    hsram = hsram;
   HAL_FMC_MspDeInit();
 }
 

@@ -331,10 +331,10 @@ void FSMC::SetOutData(uint8 data)
     }
 
     //                                          биты 0,1                            биты 2, 3
-    GPIOD->ODR = (GPIOD->ODR & 0x3ffc) + (((uint16)(data & 0x03)) << 14) + (((uint16)(data & 0x0c)) >> 2);
+    GPIOD->ODR = (GPIOD->ODR & 0x3ffc) + (uint16)(((int16)data & 0x03) << 14) + (((uint16)(data & 0x0c)) >> 2);
     
     // Ѕиты 4,5,6,7
-    GPIOE->ODR = (GPIOE->ODR & 0xf87f) + (((uint16)(data & 0xf0)) << 3);
+    GPIOE->ODR = (GPIOE->ODR & 0xf87f) + (uint16)(((int16)data & 0xf0) << 3);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

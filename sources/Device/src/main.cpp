@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "main.h"
 #include "Log.h"
 #include "Device.h"

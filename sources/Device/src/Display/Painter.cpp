@@ -69,7 +69,7 @@ void Painter::DrawText(int x, int y, const char *text, uint8 color)
 
     uint8 *pointer = &buffer[5];
 
-    for (int i = 0; i < strlen(text); i++)
+    for (uint i = 0; i < strlen(text); i++)
     {
         *pointer++ = (uint8)text[i];
     }

@@ -5,7 +5,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Math.h"
+#include "Utils/Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,8 +35,8 @@ const float absStepRShift[] =
 char *MathOSC::Voltage2String(float voltage, bool alwaysSign, char buffer[20])
 {
     buffer[0] = 0;
-    char *suffix;
-    if (voltage == ERROR_VALUE_FLOAT)
+    const char *suffix;
+    if (IsEquals(voltage, ERROR_VALUE_FLOAT))
     {
         strcat(buffer, ERROR_STRING_VALUE);
         return buffer;
@@ -75,7 +75,7 @@ char *MathOSC::Float2String(float value, bool alwaysSign, int numDigits, char bu
     bufferOut[0] = 0;
     char *pBuffer = bufferOut;
 
-    if (value == ERROR_VALUE_FLOAT)
+    if (IsEquals(value, ERROR_VALUE_FLOAT))
     {
         strcat(bufferOut, ERROR_STRING_VALUE);
         return bufferOut;
@@ -107,9 +107,9 @@ char *MathOSC::Float2String(float value, bool alwaysSign, int numDigits, char bu
         format[5] = '.';
     }
 
-    snprintf(pBuffer, 19, format, fabsf(value));
+    snprintf(pBuffer, 19, format, (double)fabsf(value));
 
-    float val = atof(pBuffer);
+    float val = (float)atof(pBuffer);
 
     if (NumDigitsInIntPart(val) != numDigitsInInt)
     {
@@ -119,11 +119,11 @@ char *MathOSC::Float2String(float value, bool alwaysSign, int numDigits, char bu
         {
             format[5] = '.';
         }
-        sprintf(pBuffer, format, value);
+        sprintf(pBuffer, format, (double)value);
     }
 
     bool signExist = alwaysSign || value < 0;
-    while (strlen(bufferOut) < numDigits + (signExist ? 2 : 1))
+    while ((int)strlen(bufferOut) < numDigits + (signExist ? 2 : 1))
     {
         strcat(bufferOut, "0");
     }
@@ -168,7 +168,7 @@ int MathOSC::LowSignedBit(uint value)
 
     for (int i = 0; i < 32; i++)
     {
-        if (verValue & value)
+        if ((uint)verValue & value)
         {
             return i;
         }
@@ -184,7 +184,8 @@ char *MathOSC::Bin2String16(uint16 value, char valBuffer[19])
 {
     char buffer[9];
     strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));
-    strcpy((valBuffer[8] = ' ', valBuffer + 9), Bin2String((uint8)value, buffer));
+    valBuffer[8] = ' ';
+    strcpy(valBuffer + 9, Bin2String((uint8)value, buffer));
     valBuffer[18] = '\0';
     return valBuffer;
 }

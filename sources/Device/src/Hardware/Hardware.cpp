@@ -6,18 +6,18 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-ADC_HandleTypeDef hadc3;
+static ADC_HandleTypeDef hadc3;
 
-DAC_HandleTypeDef hdac;
+static DAC_HandleTypeDef hdac;
 
-SPI_HandleTypeDef hspi4;
+static SPI_HandleTypeDef hspi4;
 
-UART_HandleTypeDef huart3;
+static UART_HandleTypeDef huart3;
 
-PCD_HandleTypeDef hpcd_USB_OTG_FS;
-PCD_HandleTypeDef hpcd_USB_OTG_HS;
+static PCD_HandleTypeDef hpcd_USB_OTG_FS;
+static PCD_HandleTypeDef hpcd_USB_OTG_HS;
 
-SRAM_HandleTypeDef hsram1;
+//static SRAM_HandleTypeDef hsram1;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -351,7 +351,7 @@ void Hardware::MX_GPIO_Init(void)
 }
 
 
-void _Error_Handler(char *, int)
+__attribute((noreturn)) void _Error_Handler(char *, int)
 {
     while (1)
     {

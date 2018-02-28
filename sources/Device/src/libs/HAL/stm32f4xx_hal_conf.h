@@ -39,6 +39,9 @@
 #ifdef __cplusplus
  extern "C" {
 #endif
+     
+#define __weak __attribute((weak))
+#define __packed __attribute((packed))
 
 #include "main.h"
 /* Exported types ------------------------------------------------------------*/

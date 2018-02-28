@@ -9,7 +9,7 @@ AD9286 ad9286;
 #define SPI4_DAT GPIO_PIN_14
 #define SPI4_CS GPIO_PIN_11
 
-GPIO_InitTypeDef isGPIO =
+static GPIO_InitTypeDef isGPIO =
 {
     SPI4_SCK | SPI4_DAT | SPI4_CS,
     GPIO_MODE_OUTPUT_PP,

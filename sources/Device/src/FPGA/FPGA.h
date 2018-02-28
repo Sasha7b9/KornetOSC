@@ -133,7 +133,7 @@ private:
 
     int CalculateShift();
 
-    HardwareFPGA hardware;
+//    HardwareFPGA hardware;
 
     bool isRunning;
     /// True, если дан запуск

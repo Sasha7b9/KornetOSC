@@ -116,7 +116,7 @@ void Tester::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tester::Update()
 {
-    if (!device.CurrentMode() != Mode_Tester)
+    if (device.CurrentMode() != Mode_Tester)
     {
         return;
     }

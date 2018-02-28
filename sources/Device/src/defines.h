@@ -1,4 +1,18 @@
 #pragma once
+
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
+#pragma clang diagnostic ignored "-Wformat-nonliteral"
+#pragma clang diagnostic ignored "-Wwritable-strings"
+#pragma clang diagnostic ignored "-Wold-style-cast"
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#pragma clang diagnostic ignored "-Winvalid-source-encoding"
+#pragma clang diagnostic ignored "-Wmissing-field-initializers"
+#pragma clang diagnostic ignored "-Wglobal-constructors"
+#pragma clang diagnostic ignored "-Wexit-time-destructors"
+
+
 #include <stm32f4xx.h>
 #include <stm32f4xx_hal.h>
 
@@ -15,12 +29,14 @@ typedef uint64_t            uint64;
 typedef void(*pFuncVV)();
 typedef void(*pFuncVB)(bool);
 
-inline void EmptyFuncVV(){};
+inline void EmptyFuncVV(){}
 inline void EmptyFuncVB(bool){};
     
 
 #ifndef _WIN32
+#if __ARMCLIB_VERSION < 6070001
 #pragma anon_unions
+#endif
 #endif
 
 typedef union
@@ -79,6 +95,7 @@ typedef union
 
 #define ERROR_VALUE_FLOAT   1.111e29f
 #define ERROR_STRING_VALUE  "--.--"
+#define ERROR_VALUE_UINT8   255
 
 #define MAX_UINT 0xffffffff
 

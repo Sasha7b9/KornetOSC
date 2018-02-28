@@ -1,4 +1,9 @@
 #include "Menu.h"
+#include "Menu/Pages/PageChannels.h"
+#include "Menu/Pages/PageDisplay.h"
+#include "Menu/Pages/PageService.h"
+#include "Menu/Pages/PageTester.h"
+#include "Menu/Pages/PageTrig.h"
 #include "Display/Display.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/Timer.h"
@@ -12,13 +17,6 @@
 Menu menu;
 
 static const Page pageEmpty;
-
-extern Page pageChannelA;
-extern Page pageChannelB;
-extern Page pageDisplay;
-extern Page pageService;
-extern Page pageTrig;
-extern Page pageTester;
 
 #define ENABLE_DISABLE_PAGE(page)                                   \
     if (typePress == Press && device.CurrentMode() == Mode_Osci)    \

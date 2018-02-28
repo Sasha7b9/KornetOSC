@@ -18,7 +18,7 @@ enum DeviceMode
 class Device
 {
 public:
-    Device() : currentMode(Mode_Osci) { };
+    Device() : currentMode(Mode_Osci) { }
 
     void Init();
 
@@ -28,8 +28,8 @@ public:
     /// Функция вызывается при нажатии на кнопку "Функция". Переключает устройство в следующий режим
     void ChangeMode();
 private:
-    Multimeter multimeter;
-    Osci osci;
+    //Multimeter multimeter;
+//    Osci osci;
     Hardware hardware;
     DeviceMode currentMode;
 };

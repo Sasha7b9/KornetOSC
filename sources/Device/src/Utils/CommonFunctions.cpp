@@ -12,7 +12,7 @@ CommonFunctions cf;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CommonFunctions::LogBufferU8(uint8 *buffer, int num)
 {
-    char *message = (char *)malloc(num * 3);
+    char *message = (char *)malloc((uint)(num * 3));
 
     message[0] = 0;
 

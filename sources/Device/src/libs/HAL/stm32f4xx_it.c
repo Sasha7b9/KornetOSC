@@ -14,7 +14,7 @@ void NMI_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HardFault_Handler(void)
+__attribute((noreturn)) void HardFault_Handler(void)
 {
     while (1)
     {
@@ -22,7 +22,7 @@ void HardFault_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MemManage_Handler(void)
+__attribute((noreturn)) void MemManage_Handler(void)
 {
   while (1)
   {
@@ -30,7 +30,7 @@ void MemManage_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void BusFault_Handler(void)
+__attribute((noreturn)) void BusFault_Handler(void)
 {
   while (1)
   {
@@ -38,7 +38,7 @@ void BusFault_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void UsageFault_Handler(void)
+__attribute((noreturn)) void UsageFault_Handler(void)
 {
   while (1)
   {
