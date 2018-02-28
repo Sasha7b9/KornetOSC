@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceOSC", "_VS\DeviceOSC\FPGA.vcxproj", "{C23F96B0-1550-4A0F-8E49-0DC211BCED2C}"
 EndProject
@@ -13,7 +13,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C23F96B0-1550-4A0F-8E49-0DC211BCED2C}.Debug|x86.ActiveCfg = Debug|Win32
-		{C23F96B0-1550-4A0F-8E49-0DC211BCED2C}.Debug|x86.Build.0 = Debug|Win32
 		{69B40DED-EDDE-4D55-B919-DB2780BAAD68}.Debug|x86.ActiveCfg = Debug|Win32
 		{69B40DED-EDDE-4D55-B919-DB2780BAAD68}.Debug|x86.Build.0 = Debug|Win32
 	EndGlobalSection
