@@ -3,6 +3,7 @@
 *.cof
 *.err
 *.hex
+*.out
 *.sta
 *.suo
 *.sym
