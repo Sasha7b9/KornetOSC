@@ -3,6 +3,11 @@
 #include "stm32f4xx_it.h"
 
 
+#ifdef MSVC
+#define __attribute(x)
+#endif
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif

@@ -350,6 +350,9 @@ void Hardware::MX_GPIO_Init(void)
     HAL_GPIO_Init(FL_DISP_GPIO_Port, &GPIO_InitStruct);
 }
 
+#ifdef MSVC
+#define __attribute(x)
+#endif
 
 __attribute((noreturn)) void _Error_Handler(char *, int)
 {

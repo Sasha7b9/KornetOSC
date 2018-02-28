@@ -7,9 +7,6 @@
     <Filter Include="Hardware">
       <UniqueIdentifier>{320672b0-3445-42ec-aa33-dd7d9aa10ba4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="HAL">
-      <UniqueIdentifier>{9fef03a3-6337-4573-bb8a-cfa63db5a95c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="libs">
       <UniqueIdentifier>{94bed016-ddb1-4962-aac1-fc7b9b2f2ee9}</UniqueIdentifier>
     </Filter>
@@ -49,19 +46,25 @@
     <Filter Include="_VS">
       <UniqueIdentifier>{491635cb-5130-4d2c-b8e1-cbc67d24c29d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="libs\HAL">
+      <UniqueIdentifier>{9fef03a3-6337-4573-bb8a-cfa63db5a95c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\CMSIS">
+      <UniqueIdentifier>{8b6b429f-bbec-4fdc-bcac-456447a83c19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Display.cpp">
       <Filter>Display</Filter>
@@ -98,15 +101,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\Timer.cpp">
       <Filter>Hardware</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\libs\stm32f4xx_hal_msp.c">
-      <Filter>libs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\libs\stm32f4xx_it.c">
-      <Filter>libs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\libs\system_stm32f4xx.c">
-      <Filter>libs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\Menu.cpp">
       <Filter>Menu</Filter>
@@ -151,10 +145,10 @@
       <Filter>Menu\Pages</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac_ex.c">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp">
       <Filter>FPGA</Filter>
@@ -168,58 +162,67 @@
     <ClCompile Include="..\..\Device\src\Utils\MathOSC.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\libs\CMSIS\system_stm32f4xx.c">
+      <Filter>libs\CMSIS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_msp.cpp">
+      <Filter>libs\HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_it.c">
+      <Filter>libs\HAL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc_ex.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac_ex.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sram.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nor.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h">
-      <Filter>HAL</Filter>
+      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\Display.h">
       <Filter>Display</Filter>
@@ -266,12 +269,6 @@
     <ClInclude Include="..\..\Device\src\Keyboard\Buttons.h">
       <Filter>Keyboard</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\libs\stm32f4xx_hal_conf.h">
-      <Filter>libs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\libs\stm32f4xx_it.h">
-      <Filter>libs</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Menu.h">
       <Filter>Menu</Filter>
     </ClInclude>
@@ -317,6 +314,51 @@
     <ClInclude Include="..\..\Device\src\Utils\Debug.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Device\src\Utils\MathOSC.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\Utils\Math.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageChannels.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTrig.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageDisplay.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageService.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTester.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_conf.h">
+      <Filter>libs\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_it.h">
+      <Filter>libs\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc.h">
+      <Filter>_VS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc_V6.h">
+      <Filter>_VS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\_VS\core_cm4.h">
+      <Filter>_VS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\_VS\core_cmFunc.h">
+      <Filter>_VS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\_VS\core_cmInstr.h">
+      <Filter>_VS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\_VS\core_cmSimd.h">
+      <Filter>_VS</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\libs\common\_VS\ctype.h">
       <Filter>_VS</Filter>
     </ClInclude>
@@ -353,34 +395,22 @@
     <ClInclude Include="..\..\libs\common\_VS\windows.h">
       <Filter>_VS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\common\_VS\algorithm">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Utils\MathOSC.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\libs\common\Utils\Math.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageChannels.h">
-      <Filter>Menu\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTrig.h">
-      <Filter>Menu\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageDisplay.h">
-      <Filter>Menu\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageService.h">
-      <Filter>Menu\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTester.h">
-      <Filter>Menu\Pages</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Device\src\libs\startup_stm32f437xx.s">
-      <Filter>libs</Filter>
+    <None Include="..\..\Device\src\libs\CMSIS\startup_stm32f437xx.s">
+      <Filter>libs\CMSIS</Filter>
+    </None>
+    <None Include="..\..\libs\common\_VS\algorithm">
+      <Filter>_VS</Filter>
+    </None>
+    <None Include="..\..\libs\common\_VS\cstdlib">
+      <Filter>_VS</Filter>
+    </None>
+    <None Include="..\..\libs\common\_VS\cstring">
+      <Filter>_VS</Filter>
+    </None>
+    <None Include="..\..\libs\common\_VS\limits">
+      <Filter>_VS</Filter>
     </None>
   </ItemGroup>
 </Project>

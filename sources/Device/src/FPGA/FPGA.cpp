@@ -357,7 +357,7 @@ void FPGA::ReadDataChanenlRand(Channel ch, uint8 *address, uint8 *data)
         dataRead += step;
     }
 
-    memcpy(data, &dataRand[ch][0], NUM_POINTS);
+    memcpy(data, &dataRand[ch][0], (uint)NUM_POINTS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -448,8 +448,8 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::ReadData()
 {
-    uint8 *dataA = (uint8 *)malloc(NUM_POINTS);
-    uint8 *dataB = (uint8 *)malloc(NUM_POINTS);
+    uint8 *dataA = (uint8 *)malloc((uint)NUM_POINTS);
+    uint8 *dataB = (uint8 *)malloc((uint)NUM_POINTS);
 
     ReadDataChanenl(A, dataA);
     ReadDataChanenl(B, dataB);
