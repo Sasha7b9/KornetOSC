@@ -1,4 +1,13 @@
 #pragma once
+
+#pragma clang diagnostic ignored "-Wglobal-constructors"
+#pragma clang diagnostic ignored "-Wpadded"
+#pragma clang diagnostic ignored "-Wold-style-cast"
+#pragma clang diagnostic ignored "-Wwritable-strings"
+#pragma clang diagnostic ignored "-Wchar-subscripts"
+#pragma clang diagnostic ignored "-Wmissing-field-initializers"
+#pragma clang diagnostic ignored "-Winvalid-source-encoding"
+
 #include <stm32f4xx.h>
 #include <stm32f4xx_hal.h>
 

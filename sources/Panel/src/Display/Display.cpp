@@ -8,7 +8,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Display display;
 
-LTDC_LayerCfgTypeDef pLayerCfg;
+static LTDC_LayerCfgTypeDef pLayerCfg;
 LTDC_HandleTypeDef hltdc;
 static uint8 frontBuffer[320 * 240];       // Это экран
 static uint8 backBuffer[320 * 240];        // Зто задний буфер. В нём происходит отрисовка, и затем изображение копируется во frontBuffer

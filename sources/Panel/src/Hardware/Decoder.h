@@ -40,7 +40,7 @@ private:
     /// Текущий байт выполняемой функции
     int step;
 
-    bool EmptyFunc(uint8) { return true; };
+    bool EmptyFunc(uint8) { return true; }
 
     bool InButtonPress(uint8);
 

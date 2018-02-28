@@ -5,12 +5,13 @@
 #include "Hardware/Hardware.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
+#include "stm32f4xx_it.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Keyboard keyboard;
 
-TIM_HandleTypeDef timHandle;
+static TIM_HandleTypeDef timHandle;
 
 #define SL0 GPIO_PIN_12
 #define SL1 GPIO_PIN_13

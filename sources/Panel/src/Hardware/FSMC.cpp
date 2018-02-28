@@ -117,7 +117,7 @@ void FSMC::WriteBuffer(uint8 *data, int length)
     {
         if (data)
         {
-            memcpy(buffer + pointer, data, length); // то сохраняем информацию для передачи в будущем
+            memcpy(buffer + pointer, data, (uint)length); // то сохраняем информацию для передачи в будущем
             pointer += length;
         }
         return;                                     // и выходим
@@ -125,7 +125,7 @@ void FSMC::WriteBuffer(uint8 *data, int length)
     
     if (data)                                       // Если есть данные для передачи
     {
-        memcpy(buffer + pointer, data, length);     // то переписываем их в буфер
+        memcpy(buffer + pointer, data, (uint)length);     // то переписываем их в буфер
         pointer += length;
     }
 

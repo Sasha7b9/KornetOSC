@@ -94,6 +94,8 @@ void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef* htim_pwm)
     }
 }
 
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim);
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
 {

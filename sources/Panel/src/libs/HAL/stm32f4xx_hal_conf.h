@@ -1,4 +1,7 @@
 #pragma once
+
+#define __weak __attribute((weak))
+
 #include "defines.h"
 
 #define HAL_MODULE_ENABLED

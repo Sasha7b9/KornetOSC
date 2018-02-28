@@ -1,6 +1,6 @@
 #include "Painter.h"
 #include "Display.h"
-#include "font/Font.h"
+#include "Font/Font.h"
 #include "Keyboard/Controls.h"
 #include "Keyboard/Keyboard.h"
 #include <string.h>
@@ -13,7 +13,7 @@ Painter painter;
 
 static Color color;
 
-uint clut[256] =
+static uint clut[256] =
 {
     0x00000000,
     0x00ffffff,
@@ -25,7 +25,7 @@ uint clut[256] =
     0x00ff0000
 };
 
-uint timeStart = 0;
+static uint timeStart = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Painter::BeginScene(Color col)
@@ -63,7 +63,7 @@ void Painter::DrawHLine(int y, int x0, int x1)
 {
     uint8 *address = display.GetBuffer() + y * Display::WIDTH + x0;
 
-    memset(address, (uint8)color, x1 - x0 + 1);
+    memset(address, (uint8)color, (uint)(x1 - x0 + 1));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -132,8 +132,8 @@ void Painter::DrawRectangle(int x, int y, int width, int height)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Painter::DrawText(int x, int y, const char *text)
 {
-    int numSymbols = strlen(text);
-    for (int i = 0; i < numSymbols; ++i)
+    uint numSymbols = strlen(text);
+    for (uint i = 0; i < numSymbols; ++i)
     {
         x = DrawChar(x, y, text[i]);
         ++x;

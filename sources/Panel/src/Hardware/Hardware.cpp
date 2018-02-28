@@ -8,6 +8,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Hardware hardware;
 
+static void ConfigSystemClock1(void);
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Hardware::Init()
@@ -93,8 +95,10 @@ void Hardware::ConfigSystemClock()
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
+#pragma clang diagnostic ignored "-Wunused-function"
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ConfigSystemClock1(void)
+static void ConfigSystemClock1(void)
 {
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
@@ -166,7 +170,7 @@ void ConfigSystemClock1(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void _Error_Handler(char *, int)
+__attribute((noreturn)) void _Error_Handler(char *, int)
 {
     /* USER CODE BEGIN Error_Handler_Debug */
     /* User can add his own implementation to report the HAL error return state */

@@ -5,7 +5,7 @@
 class FSMC
 {
 public:
-    FSMC() : inReadState(false) { };
+    FSMC() : inReadState(false) { }
 
     void Init();
 
