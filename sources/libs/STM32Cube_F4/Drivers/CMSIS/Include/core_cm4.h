@@ -115,11 +115,7 @@
   #define __STATIC_INLINE  static inline
 
 #else
-    #define __ASM
-    #define __INLINE         __inline
-    #define __STATIC_INLINE  static __inline
-    #define __DSB()
-    #define __NOP()
+  #error Unknown compiler
 #endif
 
 /** __FPU_USED indicates whether an FPU is used or not.
