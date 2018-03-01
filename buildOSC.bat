@@ -1,6 +1,6 @@
 @echo off
 
-@echo Build KornetOSC
+@echo Build OSC
 
 echo Compile PanelOSC  ... %TIME%
 
