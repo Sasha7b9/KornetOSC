@@ -5,23 +5,17 @@
 class FSMC
 {
 public:
-    FSMC() : inReadState(false) { }
+    static void Init();
 
-    void Init();
-
-    uint8 ReadByte();
+    static uint8 ReadByte();
     /// Передать буфер по шине. Если параметры равны нулю, передаётся ранеее не переданный из-за того, что шёл процесс приём
-    void WriteBuffer(uint8 *data = 0, int length = 0);
+    static void WriteBuffer(uint8 *data = 0, int length = 0);
 
 private:
-
     /// Шина переходит в режим чтения данных
-    void ConfigToRead();
+    static void ConfigToRead();
     /// Шина переходит в режим передачи данных
-    void ConfigToWrite();
+    static void ConfigToWrite();
     /// Возвращает true, если сигнал RD FPGA находится в высоком состоянии
-    bool inReadState;
+    static bool inReadState;
 };
-
-
-extern FSMC fsmc;

@@ -7,13 +7,11 @@ class Timer
 {
 public:
 
-    void Init();
+    static void Init();
 
 private:
 };
 
-
-extern Timer timer;
 
 /// Запускает счётчик для измерения малых отрезков времени (тиков и микросекунд). Счётчика хватает где-то на 30 секунд.
 #define START_MULTI_MEASUREMENT()   { TIM2->CR1 &= (uint)~TIM_CR1_CEN; TIM2->CNT = 0; TIM2->CR1 |= TIM_CR1_CEN; }

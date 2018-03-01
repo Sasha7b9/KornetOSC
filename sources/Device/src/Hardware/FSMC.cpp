@@ -9,8 +9,6 @@
 #include <string.h>
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-FSMC fsmc;
-
 #define ADDR_ALTERA1    ((uint8 *)NOR_MEMORY_ADRESS1)
 #define ADDR_ALTERA2    ((uint8 *)NOR_MEMORY_ADRESS2)
 #define ADDR_ALTERA3    ((uint8 *)NOR_MEMORY_ADRESS3)
@@ -33,6 +31,9 @@ FSMC fsmc;
 #define PAN_READY_RECEIVE               (ReadPAN() == 2)
 #define PAN_RECIEVE_TRANSMIT_CONFIRM    (ReadPAN() == 3)
 
+FSMC::ModeFSMC FSMC::mode = ModeNone;
+bool           FSMC::interchangeWithPanel = false;
+pFuncTester    FSMC::funcAfterInteractionWithPanel = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define CONFIGURE_TO_READ_PANEL                                             \

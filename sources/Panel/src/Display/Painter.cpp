@@ -34,7 +34,7 @@ void Painter::BeginScene(Color col)
 
     color = col;
 
-    memset(display.GetBuffer(), (uint8)color, 320 * 240);
+    memset(Display::GetBuffer(), (uint8)color, 320 * 240);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -48,20 +48,20 @@ void Painter::SetPoint(int x, int y)
 {
     if (x >= 0 && x < Display::WIDTH && y >= 0 && y < Display::HEIGHT)
     {
-        *(display.GetBuffer() + y * Display::WIDTH + x) = (uint8)color;
+        *(Display::GetBuffer() + y * Display::WIDTH + x) = (uint8)color;
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::EndScene()
 {
-    display.ToggleBuffers();
+    Display::ToggleBuffers();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawHLine(int y, int x0, int x1)
 {
-    uint8 *address = display.GetBuffer() + y * Display::WIDTH + x0;
+    uint8 *address = Display::GetBuffer() + y * Display::WIDTH + x0;
 
     memset(address, (uint8)color, (uint)(x1 - x0 + 1));
 }
@@ -76,7 +76,7 @@ void Painter::DrawVLine(int x, int y0, int y1)
         y1 = temp;
     };
 
-    uint8 *address = display.GetBuffer() + x + y0 * Display::WIDTH;
+    uint8 *address = Display::GetBuffer() + x + y0 * Display::WIDTH;
 
     for (int i = 0; i <= y1 - y0; i++)
     {

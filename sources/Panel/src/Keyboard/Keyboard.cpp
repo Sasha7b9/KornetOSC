@@ -9,9 +9,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Keyboard keyboard;
-
-static TIM_HandleTypeDef timHandle;
+static TIM_HandleTypeDef handleTIM4;
 
 #define SL0 GPIO_PIN_12
 #define SL1 GPIO_PIN_13
@@ -58,14 +56,12 @@ static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOA, GPIOA, GPIOA, GPIOD, G
 static uint prevRepeat = 0;
 static uint prevPause = 0;
 
+int           Keyboard::pointer = 0;
+bool          Keyboard::init = false;
+StructControl Keyboard::commands[10];
+uint          Keyboard::timePress[NUM_RL][NUM_SL];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Keyboard::Keyboard() : pointer(0), init(false)
-{
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Keyboard::Init()
 {
     for (int i = 0; i < NUM_RL; ++i)
@@ -105,22 +101,22 @@ void Keyboard::Init()
     HAL_GPIO_Init(GPIOD, &isGPIO);
 
     // Инициализируем таймер, по прерываниям которого будем опрашивать клавиатуру
-    HAL_NVIC_SetPriority(TIM3_IRQn, PRIORITY_KEYBOARD);
+    HAL_NVIC_SetPriority(TIM4_IRQn, PRIORITY_KEYBOARD);
 
-    HAL_NVIC_EnableIRQ(TIM3_IRQn);
+    HAL_NVIC_EnableIRQ(TIM4_IRQn);
 
-    timHandle.Instance = TIM3;
-    timHandle.Init.Period = TIME_UPDATE_KEYBOARD * 10 - 1;
-    timHandle.Init.Prescaler = (uint)((SystemCoreClock / 2) / 10000) - 1;
-    timHandle.Init.ClockDivision = 0;
-    timHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
+    handleTIM4.Instance = TIM4;
+    handleTIM4.Init.Period = TIME_UPDATE_KEYBOARD * 10 - 1;
+    handleTIM4.Init.Prescaler = (uint)((SystemCoreClock / 2) / 10000) - 1;
+    handleTIM4.Init.ClockDivision = 0;
+    handleTIM4.Init.CounterMode = TIM_COUNTERMODE_UP;
 
-    if (HAL_TIM_Base_Init(&timHandle) != HAL_OK)
+    if (HAL_TIM_Base_Init(&handleTIM4) != HAL_OK)
     {
         ERROR_HANDLER();
     }
 
-    if (HAL_TIM_Base_Start_IT(&timHandle) != HAL_OK)
+    if (HAL_TIM_Base_Start_IT(&handleTIM4) != HAL_OK)
     {
         ERROR_HANDLER();
     }
@@ -201,8 +197,8 @@ void Keyboard::FillCommand(Control control, TypePress typePress)
     commands[pointer].control = control;
     commands[pointer++].typePress = typePress;
     uint8 data[3] = {IN_BUTTON_PRESS, (uint8)control, (uint8)typePress};
-    fsmc.WriteBuffer(data, 3);  // Прерывание от клавиатуры имеет более низкий приоритет, чем чтения по шине, поэтому запись не запустится до тех
-                                // пор, пока не закончится чтение
+    FSMC::WriteBuffer(data, 3);  // Прерывание от клавиатуры имеет более низкий приоритет, чем чтения по шине, поэтому запись не запустится до тех
+                                 // пор, пока не закончится чтение
 }   
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -280,10 +276,14 @@ uint Keyboard::TimeBetweenRepeats(uint prev)
 #ifdef __cplusplus
 extern "C" {
 #endif
-void TIM3_IRQHandler(void)
-{
-    HAL_TIM_IRQHandler(&timHandle);
-}
+
+    void TIM4_IRQHandler();
+        
+    void TIM4_IRQHandler()
+    {
+        HAL_TIM_IRQHandler(&handleTIM4);
+    }
+
 #ifdef __cplusplus
 }
 #endif
@@ -291,8 +291,8 @@ void TIM3_IRQHandler(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-    if (htim == &timHandle)
+    if (htim == &handleTIM4)
     {
-        keyboard.Update();
+        Keyboard::Update();
     }
 }

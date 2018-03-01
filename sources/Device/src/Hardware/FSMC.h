@@ -9,21 +9,19 @@ typedef void (Tester::*pFuncTester)();
 class FSMC
 {
 public:
-    FSMC() : mode(ModeNone), interchangeWithPanel(false), funcAfterInteractionWithPanel(0) {}
+    static void Init();
 
-    void Init();
+    static void WriteToPanel(uint8 *data, int length);
 
-    void WriteToPanel(uint8 *data, int length);
+    static void WriteToFPGA8(uint8 *address, uint8 value);
 
-    void WriteToFPGA8(uint8 *address, uint8 value);
+    static void WriteToFPGA16(uint8 *address, uint16 value);
 
-    void WriteToFPGA16(uint8 *address, uint16 value);
-
-    uint8 ReadFromFPGA(uint8 *address);
+    static uint8 ReadFromFPGA(uint8 *address);
     /// Возвращает true, если идёт обмен с панелью
-    bool InterchangeWithPanel();
+    static bool InterchangeWithPanel();
     /// Установить функцию, которую нужно выполнить единоразово после завершения обмена с панелью
-    void RunFunctionAfterInteractionWitchPanel(pFuncTester func);
+    static void RunFunctionAfterInteractionWitchPanel(pFuncTester func);
 
 private:
 
@@ -35,22 +33,19 @@ private:
         ModeFPGA
     };
    
-    void ReadByte();
+    static void ReadByte();
 
-    void ConfigureForFPGA();
+    static void ConfigureForFPGA();
     /// Расставляет биты значенния data по ножкам D0...D7
-    void SetOutData(uint8 data);
+    static void SetOutData(uint8 data);
     /// Возвращает значение с ножек D0...D7
-    uint8 GetOutData();
+    static uint8 GetOutData();
     /// Возвращает состояние PAN_0, PAN_1
-    uint8 ReadPAN();
+    static uint8 ReadPAN();
 
-    ModeFSMC mode;
+    static ModeFSMC mode;
 
-    bool interchangeWithPanel;
+    static bool interchangeWithPanel;
     /// Если не равно нулю, нужно выполнить эту функцию после завершения обмена с панелью
-    pFuncTester funcAfterInteractionWithPanel;
+    static pFuncTester funcAfterInteractionWithPanel;
 };
-
-
-extern FSMC fsmc;

@@ -15,8 +15,8 @@ int main()
 
     while(1)
     {
-        uint8 data = fsmc.ReadByte();
+        uint8 data = FSMC::ReadByte();
         decoder.AddData(data);
-        fsmc.WriteBuffer();
+        FSMC::WriteBuffer();
     }
 }

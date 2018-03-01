@@ -36,8 +36,8 @@ void Hardware::Init()
     HAL_Init();
     SystemClock_Config();
     MX_GPIO_Init();
-    timer.Init();
-    fsmc.Init();
+    Timer::Init();
+    FSMC::Init();
 
     //MX_ADC3_Init();
     //MX_DAC_Init();

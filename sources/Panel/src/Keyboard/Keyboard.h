@@ -8,36 +8,31 @@ class Keyboard
 {
 public:
 
-    Keyboard();
+    static void Init();
 
-    void Init();
+    static bool BufferIsEmpty();
 
-    bool BufferIsEmpty();
+    static StructControl GetNextControl();
 
-    StructControl GetNextControl();
-
-    void Update();
+    static void Update();
     /// Количество выводов RL для опроса клавиатуры
     static const int NUM_RL = 6;
     /// Количество выводов SL для опроса клавиатуры
     static const int NUM_SL = 8;
     /// Возращает имя органа управления
-    const char *ControlName(Control control);
+    static const char *ControlName(Control control);
 
 private:
 
-    void FillCommand(Control control, TypePress typePress);
+    static void FillCommand(Control control, TypePress typePress);
 
-    uint TimeBetweenRepeats(uint time);
+    static uint TimeBetweenRepeats(uint time);
 
-    StructControl commands[10];
+    static StructControl commands[10];
 
-    int pointer;
+    static int pointer;
     /// При обнаружении нажатия кнопки сюда записывается время нажатия
-    uint timePress[NUM_RL][NUM_SL];
+    static uint timePress[NUM_RL][NUM_SL];
 
-    bool init;
+    static bool init;
 };
-
-
-extern Keyboard keyboard;
