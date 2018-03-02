@@ -76,7 +76,7 @@ void Keyboard::Init()
     __HAL_RCC_GPIOB_CLK_ENABLE();
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
-    __TIM3_CLK_ENABLE();
+    __TIM4_CLK_ENABLE();
 
     GPIO_InitTypeDef isGPIO;
 
