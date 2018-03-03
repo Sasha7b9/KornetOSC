@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Decoder.h"
 #include "FSMC.h"
-#include "Hardware.h"
 #include "Timer.h"
 #include "Display/Display.h"
 #include <string.h>
@@ -39,9 +38,6 @@ bool FSMC::inReadState = false;
 void FSMC::Init()
 {
     /// \todo Надо бы разобраться, как аппаратно параллельную шину наладить. Ну а пока будем делать ручками
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-    __HAL_RCC_GPIOD_CLK_ENABLE();
-    __HAL_RCC_GPIOE_CLK_ENABLE();
 
     GPIO_InitTypeDef isGPIO =           //  PAN_0, PAN_1
     {

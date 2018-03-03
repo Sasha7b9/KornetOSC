@@ -8,14 +8,6 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* hltdc)
 {
     if(hltdc->Instance == LTDC)
     {
-        __HAL_RCC_LTDC_CLK_ENABLE();
-        __HAL_RCC_DMA2D_CLK_ENABLE();
-        __HAL_RCC_GPIOA_CLK_ENABLE();
-        __HAL_RCC_GPIOB_CLK_ENABLE();
-        __HAL_RCC_GPIOC_CLK_ENABLE();
-        __HAL_RCC_GPIOD_CLK_ENABLE();
-        __HAL_RCC_GPIOE_CLK_ENABLE();
-
         GPIO_InitTypeDef isGPIO = 
         {
             //  R3         R6

@@ -1,9 +1,9 @@
 #include "defines.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
+#include "Hardware/CPU.h"
 #include "Hardware/Decoder.h"
 #include "Hardware/FSMC.h"
-#include "Hardware/Hardware.h"
 #include "Hardware/Timer.h"
 #include "Keyboard/Keyboard.h"
 
@@ -11,7 +11,13 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-    hardware.Init();
+    CPU::Init();
+
+    Display::Init();
+
+    Keyboard::Init();
+
+    FSMC::Init();
 
     while(1)
     {

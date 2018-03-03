@@ -9,6 +9,16 @@ void CPU::Init()
     SystemClockConfig();
 
     STM429::Init();
+
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
+
+    __HAL_RCC_DMA2D_CLK_ENABLE();
+    __HAL_RCC_LTDC_CLK_ENABLE();
+    __HAL_RCC_TIM4_CLK_ENABLE();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

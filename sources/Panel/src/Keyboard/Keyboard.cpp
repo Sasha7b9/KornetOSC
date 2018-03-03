@@ -3,7 +3,6 @@
 #include "Hardware/CPU.h"
 #include "Hardware/Decoder.h"
 #include "Hardware/FSMC.h"
-#include "Hardware/Hardware.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
 #include "stm32f4xx_it.h"
@@ -73,12 +72,6 @@ void Keyboard::Init()
         }
     }
 
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-    __HAL_RCC_GPIOD_CLK_ENABLE();
-    __TIM4_CLK_ENABLE();
-
     GPIO_InitTypeDef isGPIO;
 
     // порты ввода
@@ -102,7 +95,7 @@ void Keyboard::Init()
     HAL_GPIO_Init(GPIOD, &isGPIO);
 
     // Инициализируем таймер, по прерываниям которого будем опрашивать клавиатуру
-    HAL_NVIC_SetPriority(TIM4_IRQn, PRIORITY_KEYBOARD);
+    HAL_NVIC_SetPriority(TIM4_IRQn, 0, 1);
 
     HAL_NVIC_EnableIRQ(TIM4_IRQn);
 
