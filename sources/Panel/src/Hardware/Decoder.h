@@ -27,49 +27,39 @@ enum COMMAND
 class Decoder
 {
 public:
-    Decoder();
-
-    void AddData(uint8 data);
+    static void AddData(uint8 data);
 
 private:
-
-    typedef bool(Decoder::*pFuncBU8)(uint8);
-
-    /// Выполняемая функция
-    pFuncBU8 curFunc;
     /// Текущий байт выполняемой функции
-    int step;
+    static int step;
 
-    bool EmptyFunc(uint8) { return true; }
+    static bool EmptyFunc(uint8) { return true; }
 
-    bool InButtonPress(uint8);
+    static bool InButtonPress(uint8);
 
-    bool BeginScene(uint8);
+    static bool BeginScene(uint8);
 
-    bool EndScene(uint8);
+    static bool EndScene(uint8);
 
-    bool SetColor(uint8);
+    static bool SetColor(uint8);
 
-    bool FillRegion(uint8);
+    static bool FillRegion(uint8);
 
-    bool DrawText(uint8);
+    static bool DrawText(uint8);
 
-    bool SetPalette(uint8);
+    static bool SetPalette(uint8);
 
-    bool DrawRectangle(uint8);
+    static bool DrawRectangle(uint8);
 
-    bool DrawVLine(uint8);
+    static bool DrawVLine(uint8);
 
-    bool SetFont(uint8);
+    static bool SetFont(uint8);
 
-    bool SetPoint(uint8);
+    static bool SetPoint(uint8);
 
-    bool DrawLine(uint8);
+    static bool DrawLine(uint8);
 
-    bool DrawHLine(uint8);
+    static bool DrawHLine(uint8);
     /// Эту функцию надо вызывать после выполнения последнего шага
-    void FinishCommand();
+    static void FinishCommand();
 };
-
-
-extern Decoder decoder;
