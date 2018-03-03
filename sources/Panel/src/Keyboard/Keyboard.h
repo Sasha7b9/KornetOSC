@@ -10,10 +10,6 @@ public:
 
     static void Init();
 
-    static bool BufferIsEmpty();
-
-    static StructControl GetNextControl();
-
     static void Update();
     ///  оличество выводов RL дл€ опроса клавиатуры
     static const int NUM_RL = 6;

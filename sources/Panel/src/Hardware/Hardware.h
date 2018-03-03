@@ -14,10 +14,6 @@ public:
     void Init();
 
     void ResetPin(GPIO_TypeDef *port, uint16 numPin);
-
-private:
-
-    void ConfigSystemClock();
 };
 
 
