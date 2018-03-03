@@ -1,0 +1,22 @@
+#pragma once
+#include "Hardware/stm32/4XX/stm429.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#ifdef __cplusplus
+extern "C" {
+#endif
+    
+    void SysTick_Handler();
+    void MemManage_Handler();
+    void UsageFault_Handler();
+    void PendSV_Handler();
+    void NMI_Handler();
+    void HardFault_Handler();
+    void BusFault_Handler();
+    void SVC_Handler();
+    void DebugMon_Handler();
+
+#ifdef __cplusplus
+}
+#endif

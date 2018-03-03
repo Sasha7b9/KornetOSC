@@ -2,6 +2,7 @@
 #include "Display.h"
 #include "Painter.h"
 #include "Keyboard/Controls.h"
+#include "Hardware/CPU.h"
 #include <stdlib.h>
 
 

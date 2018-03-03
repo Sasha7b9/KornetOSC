@@ -129,6 +129,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\stm429.h" />
+    <ClInclude Include="..\..\libs\common\Hardware\stm32\stm32.h" />
     <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc.h" />
     <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc_V6.h" />
     <ClInclude Include="..\..\libs\common\_VS\core_cm4.h" />
@@ -147,6 +149,8 @@
     <ClInclude Include="..\..\libs\common\_VS\string.h" />
     <ClInclude Include="..\..\libs\common\_VS\tchar.h" />
     <ClInclude Include="..\..\libs\common\_VS\windows.h" />
+    <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h" />
+    <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h" />
     <ClInclude Include="..\..\Panel\src\defines.h" />
     <ClInclude Include="..\..\Panel\src\Display\Display.h" />
     <ClInclude Include="..\..\Panel\src\Display\DisplayTypes.h" />
@@ -154,6 +158,7 @@
     <ClInclude Include="..\..\Panel\src\Display\Painter.h" />
     <ClInclude Include="..\..\Panel\src\dox\Page01.h" />
     <ClInclude Include="..\..\Panel\src\dox\Page02.h" />
+    <ClInclude Include="..\..\Panel\src\Hardware\CPU.h" />
     <ClInclude Include="..\..\Panel\src\Hardware\Decoder.h" />
     <ClInclude Include="..\..\Panel\src\Hardware\FSMC.h" />
     <ClInclude Include="..\..\Panel\src\Hardware\Hardware.h" />
@@ -200,9 +205,14 @@
     <ClInclude Include="..\..\Panel\src\libs\HAL\stm32f4xx_it.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\stm429.cpp" />
+    <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32.cpp" />
+    <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32_it.cpp" />
     <ClCompile Include="..\..\Panel\src\Display\Display.cpp" />
     <ClCompile Include="..\..\Panel\src\Display\font\Font.cpp" />
     <ClCompile Include="..\..\Panel\src\Display\Painter.cpp" />
+    <ClCompile Include="..\..\Panel\src\Hardware\CPU.cpp" />
+    <ClCompile Include="..\..\Panel\src\Hardware\CPU_IT.cpp" />
     <ClCompile Include="..\..\Panel\src\Hardware\Decoder.cpp" />
     <ClCompile Include="..\..\Panel\src\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\Panel\src\Hardware\Hardware.cpp" />

@@ -1,5 +1,6 @@
 #include "Keyboard.h"
 #include "Display/Display.h"
+#include "Hardware/CPU.h"
 #include "Hardware/Decoder.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/Hardware.h"

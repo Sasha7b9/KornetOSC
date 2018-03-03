@@ -1,6 +1,7 @@
 #include "Painter.h"
 #include "Display.h"
 #include "Font/Font.h"
+#include "Hardware/CPU.h"
 #include "Keyboard/Controls.h"
 #include "Keyboard/Keyboard.h"
 #include <string.h>
