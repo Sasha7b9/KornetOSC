@@ -1,5 +1,5 @@
 #include "Decoder.h"
-#include "FSMC.h"
+#include "Hardware/FSMC.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
 #include "Hardware/Keyboard.h"

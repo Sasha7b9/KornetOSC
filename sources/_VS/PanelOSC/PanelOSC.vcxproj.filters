@@ -31,6 +31,9 @@
     <Filter Include="Hardware\stm32">
       <UniqueIdentifier>{26f921c6-a605-4f84-923f-7bd0789302c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{d5ea1d8d-e843-4555-b6dd-9afea2d5a02a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -82,9 +85,6 @@
       <Filter>Hardware</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Panel\src\Hardware\FSMC.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Panel\src\Hardware\Decoder.h">
       <Filter>Hardware</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma2d.h">
@@ -180,6 +180,9 @@
     <ClInclude Include="..\..\Panel\src\Hardware\Keyboard.h">
       <Filter>Hardware</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Panel\src\Utils\Decoder.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -227,9 +230,6 @@
     <ClCompile Include="..\..\Panel\src\Hardware\FSMC.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Panel\src\Hardware\Decoder.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma2d.c">
       <Filter>libs\HAL</Filter>
     </ClCompile>
@@ -265,6 +265,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Panel\src\Hardware\Keyboard.cpp">
       <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Utils\Decoder.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

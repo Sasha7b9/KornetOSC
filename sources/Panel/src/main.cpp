@@ -2,7 +2,7 @@
 #include "Display/Display.h"
 #include "Display/Painter.h"
 #include "Hardware/CPU.h"
-#include "Hardware/Decoder.h"
+#include "Utils/Decoder.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Keyboard.h"
