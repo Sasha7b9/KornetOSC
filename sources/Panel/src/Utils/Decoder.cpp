@@ -82,7 +82,7 @@ bool Decoder::BeginScene(uint8 data)
     }
     if (step == 1)
     {
-        painter.BeginScene((Color)data);
+        Painter::BeginScene((Color)data);
     }
     return true;
 }
@@ -90,7 +90,7 @@ bool Decoder::BeginScene(uint8 data)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Decoder::EndScene(uint8)
 {
-    painter.EndScene();
+    Painter::EndScene();
     return true;
 }
 
@@ -103,7 +103,7 @@ bool Decoder::SetColor(uint8 data)
     }
     if (step == 1)
     {
-        painter.SetColor((Color)data);
+        Painter::SetColor((Color)data);
     }
     return true;
 }
@@ -125,7 +125,7 @@ bool Decoder::FillRegion(uint8 data)
         case 4:     width = data;                   break;
         case 5:     width += (((int)data) << 8);    break;
         case 6:     height = (int)data;
-            painter.FillRegion(x, y, width, height);
+            Painter::FillRegion(x, y, width, height);
             return true;
         default:
             return true;
@@ -150,7 +150,7 @@ bool Decoder::DrawRectangle(uint8 data)
         case 4:     width = data;                   break;
         case 5:     width += (((int)data) << 8);    break;
         case 6:     height = (int)data;
-            painter.DrawRectangle(x, y, width, height);
+            Painter::DrawRectangle(x, y, width, height);
             return true;
         default:
             return true;
@@ -172,7 +172,7 @@ bool Decoder::DrawVLine(uint8 data)
         case 2: x += (((int)data) << 8);    break;
         case 3: y0 = data;                  break;
         case 4: y1 = data;
-            painter.DrawVLine(x, y0, y1);
+            Painter::DrawVLine(x, y0, y1);
             return true;
         default:
             return true;
@@ -195,7 +195,7 @@ bool Decoder::DrawHLine(uint8 data)
         case 3:     x0 += (int)data << 8;   break;
         case 4:     x1 = data;              break;
         case 5:     x1 += (int)data << 8;
-            painter.DrawHLine(y, x0, x1);
+            Painter::DrawHLine(y, x0, x1);
             return true;
         default:
             return true;
@@ -218,7 +218,7 @@ bool Decoder::DrawLine(uint8 data)
         case 3: y0 = data;              break;
         case 4: x1 = data;              break;
         case 5: x1 += ((int)data << 8); break;
-        case 6: painter.DrawLine(x0, y0, x1, data);
+        case 6: Painter::DrawLine(x0, y0, x1, data);
             return true;
         default:
             return true;
@@ -237,7 +237,7 @@ bool Decoder::SetPoint(uint8 data)
         case 0:                         break;
         case 1: x = data;               break;
         case 2: x += ((int)data << 8);  break;
-        case 3: painter.SetPoint(x, data);
+        case 3: Painter::SetPoint(x, data);
             return true;
         default:
             return true;
@@ -271,7 +271,7 @@ bool Decoder::DrawText(uint8 data)
             if (readingSymbols == numSymbols)
             {
                 buffer[readingSymbols] = 0;
-                painter.DrawText(x, y, buffer);
+                Painter::DrawText(x, y, buffer);
                 delete [] buffer;
                 return true;
             }
@@ -294,7 +294,7 @@ bool Decoder::SetPalette(uint8 data)
         case 3: valueColor |= (uint)data << 8;  break;
         case 4: valueColor |= (uint)data << 16; break;
         case 5: valueColor |= (uint)data << 24;
-            painter.SetPalette(numColor, valueColor);
+            Painter::SetColorValue(Color(numColor), valueColor);
             return true;
         default:
             return true;
@@ -309,7 +309,7 @@ bool Decoder::SetFont(uint8 data)
     {
         return false;
     }
-    painter.SetFont((TypeFont)data);
+    Painter::SetFont((TypeFont)data);
 
     return true;
 }

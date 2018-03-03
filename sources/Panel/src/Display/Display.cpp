@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "Display.h"
-#include "Painter.h"
+#include "Display/Painter.h"
 #include "Hardware/Controls.h"
 #include "Hardware/CPU.h"
 #include <stdlib.h>
@@ -57,15 +57,15 @@ void Display::Init()
         ERROR_HANDLER();
     }
 
-    painter.SetPalette(0, 0);
+    Painter::LoadPalette();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::Update()
 {
-    painter.BeginScene(COLOR_BACK);
-    painter.SetColor(COLOR_FILL);
-    painter.EndScene();
+    Painter::BeginScene(Color::BACK);
+    Painter::SetColor(Color::FILL);
+    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

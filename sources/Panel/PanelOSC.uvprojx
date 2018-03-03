@@ -1237,19 +1237,44 @@
               <FilePath>.\src\Display\Display.h</FilePath>
             </File>
             <File>
+              <FileName>DisplayTypes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\DisplayTypes.h</FilePath>
+            </File>
+            <File>
               <FileName>Painter.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Painter.cpp</FilePath>
+              <FilePath>..\libs\common\Display\Painter.cpp</FilePath>
             </File>
             <File>
               <FileName>Painter.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Painter.h</FilePath>
+              <FilePath>..\libs\common\Display\Painter.h</FilePath>
             </File>
             <File>
-              <FileName>DisplayTypes.h</FileName>
+              <FileName>PainterSTM429.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\libs\common\Display\PainterSTM429.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterText.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\libs\common\Display\PainterText.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterTextSTM429.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\libs\common\Display\PainterTextSTM429.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Colors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\libs\common\Display\Colors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Colors.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\DisplayTypes.h</FilePath>
+              <FilePath>..\libs\common\Display\Colors.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1351,6 +1376,11 @@
               <FileType>5</FileType>
               <FilePath>..\libs\common\Hardware\VCP.h</FilePath>
             </File>
+            <File>
+              <FileName>CPU_LTDC.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\CPU_LTDC.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1405,6 +1435,31 @@
               <FileName>Decoder.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Decoder.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\libs\common\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\libs\common\Utils\Math.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Settings</GroupName>
+          <Files>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\Settings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsTypes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsTypes.h</FilePath>
             </File>
           </Files>
         </Group>
