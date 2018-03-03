@@ -10,9 +10,6 @@
     <Filter Include="Hardware">
       <UniqueIdentifier>{d56e4a7b-d745-4088-ac9a-bb9aed8f5280}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Keyboard">
-      <UniqueIdentifier>{ad31ecad-b918-466e-8f57-1306473b2bdd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Display">
       <UniqueIdentifier>{327b6c79-bb9a-4377-bd51-b3c7d47da90d}</UniqueIdentifier>
     </Filter>
@@ -54,9 +51,6 @@
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h">
       <Filter>libs\HAL</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Panel\src\Keyboard\Keyboard.h">
-      <Filter>Keyboard</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Panel\src\defines.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -77,9 +71,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Panel\src\Display\Painter.h">
       <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Panel\src\Keyboard\Controls.h">
-      <Filter>Keyboard</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Panel\src\Display\font\Font.h">
       <Filter>Display\font</Filter>
@@ -183,6 +174,12 @@
     <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\stm429.h">
       <Filter>Hardware\stm32</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Panel\src\Hardware\Controls.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Panel\src\Hardware\Keyboard.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -202,9 +199,6 @@
     </ClCompile>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c">
       <Filter>libs\HAL</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Panel\src\Keyboard\Keyboard.cpp">
-      <Filter>Keyboard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Panel\src\main.cpp">
       <Filter>src</Filter>
@@ -268,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\stm429.cpp">
       <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Hardware\Keyboard.cpp">
+      <Filter>Hardware</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

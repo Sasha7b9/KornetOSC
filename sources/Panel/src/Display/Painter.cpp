@@ -2,8 +2,8 @@
 #include "Display.h"
 #include "Font/Font.h"
 #include "Hardware/CPU.h"
-#include "Keyboard/Controls.h"
-#include "Keyboard/Keyboard.h"
+#include "Hardware/Controls.h"
+#include "Hardware/Keyboard.h"
 #include <string.h>
 #include <stdarg.h>
 #include <math.h>

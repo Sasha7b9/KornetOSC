@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Display.h"
 #include "Painter.h"
-#include "Keyboard/Controls.h"
+#include "Hardware/Controls.h"
 #include "Hardware/CPU.h"
 #include <stdlib.h>
 
