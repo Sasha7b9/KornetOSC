@@ -20,6 +20,9 @@ private:
 extern "C" {
 #endif
     
+    /// Timer.cpp
+    void TIM3_IRQHandler();
+    
     void SysTick_Handler();
     void MemManage_Handler();
     void UsageFault_Handler();
