@@ -1182,11 +1182,6 @@
               <FilePath>.\src\libs\HAL\stm32f4xx_hal_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_hal_msp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\libs\HAL\stm32f4xx_hal_msp.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\libs\HAL\stm32f4xx_it.c</FilePath>
@@ -1377,9 +1372,14 @@
               <FilePath>..\libs\common\Hardware\VCP.h</FilePath>
             </File>
             <File>
-              <FileName>CPU_LTDC.cpp</FileName>
+              <FileName>LTDC.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\CPU_LTDC.cpp</FilePath>
+              <FilePath>.\src\Hardware\LTDC.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LTDC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\LTDC.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -3,11 +3,11 @@
 #include "Display/Painter.h"
 #include "Hardware/Controls.h"
 #include "Hardware/CPU.h"
+#include "Hardware/LTDC.h"
 #include <stdlib.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static LTDC_LayerCfgTypeDef pLayerCfg;
 LTDC_HandleTypeDef hltdc;
 static uint8 frontBuffer[320 * 240];       // Это экран
 static uint8 backBuffer[320 * 240];        // Зто задний буфер. В нём происходит отрисовка, и затем изображение копируется во frontBuffer
@@ -16,6 +16,8 @@ static uint8 backBuffer[320 * 240];        // Зто задний буфер. В нём происходит
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display::Init()
 {
+    LTDC_::Init();
+    
     hltdc.Instance = LTDC;
     hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
     hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
@@ -33,26 +35,6 @@ void Display::Init()
     hltdc.Init.Backcolor.Green = 255;
     hltdc.Init.Backcolor.Red = 255;
     if (HAL_LTDC_Init(&hltdc) != HAL_OK)
-    {
-        ERROR_HANDLER();
-    }
-
-    pLayerCfg.WindowX0 = 0;
-    pLayerCfg.WindowX1 = 320;
-    pLayerCfg.WindowY0 = 0;
-    pLayerCfg.WindowY1 = 240;
-    pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_L8;
-    pLayerCfg.Alpha = 255;
-    pLayerCfg.Alpha0 = 255;
-    pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
-    pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-    pLayerCfg.FBStartAdress = (uint32_t)frontBuffer;
-    pLayerCfg.ImageWidth = 320;
-    pLayerCfg.ImageHeight = 240;
-    pLayerCfg.Backcolor.Blue = 255;
-    pLayerCfg.Backcolor.Green = 0;
-    pLayerCfg.Backcolor.Red = 0;
-    if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg, 0) != HAL_OK)
     {
         ERROR_HANDLER();
     }

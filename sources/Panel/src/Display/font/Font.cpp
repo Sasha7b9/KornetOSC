@@ -24,7 +24,7 @@ int Font::GetLengthText(const char *text)
     int retValue = 0;
     while (*text)
     {
-        retValue += GetLengthSymbol((uchar)*text);
+        retValue += GetLengthSymbol((char)*text);
         text++;
     }
     return retValue;
@@ -37,7 +37,7 @@ int Font::GetHeightSymbol(char)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Font::GetLengthSymbol(uchar symbol)
+int Font::GetLengthSymbol(char symbol)
 {
     return font->symbol[symbol].width + 1;
 }

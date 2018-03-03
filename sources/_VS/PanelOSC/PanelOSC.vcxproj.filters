@@ -195,6 +195,9 @@
     <ClInclude Include="..\..\libs\common\Display\Painter.h">
       <Filter>Display</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Panel\src\Hardware\LTDC.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -245,9 +248,6 @@
     <ClCompile Include="..\..\Panel\src\Display\font\Font.cpp">
       <Filter>Display\Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Panel\src\libs\HAL\stm32f4xx_hal_msp.c">
-      <Filter>libs\HAL</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Panel\src\libs\HAL\stm32f4xx_it.c">
       <Filter>libs\HAL</Filter>
     </ClCompile>
@@ -278,9 +278,6 @@
     <ClCompile Include="..\..\libs\common\Hardware\Timer.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Panel\src\Hardware\CPU_LTDC.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Panel\src\Settings\Settings.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
@@ -298,6 +295,9 @@
     </ClCompile>
     <ClCompile Include="..\..\libs\common\Display\PainterTextSTM429.cpp">
       <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Hardware\LTDC.cpp">
+      <Filter>Hardware</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
