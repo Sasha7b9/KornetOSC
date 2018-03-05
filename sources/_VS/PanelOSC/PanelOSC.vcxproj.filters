@@ -257,9 +257,6 @@
     <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32.cpp">
       <Filter>Hardware\stm32</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32_it.cpp">
-      <Filter>Hardware\stm32</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Panel\src\Hardware\CPU.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
