@@ -23,7 +23,7 @@ static const char *itemsCoupleA[] = { "AC",  "AC",
 
 static void OnChanged_CoupleA()
 {
-    fpga.LoadRanges();
+    FPGA::LoadRanges();
 }
 
 static const Choice cCoupleA("Ñâÿçü", "Couple", itemsCoupleA, &SET_COUPLE_A, 3, OnChanged_CoupleA);
@@ -53,7 +53,7 @@ static const char *itemsCoupleB[] = { "AC",  "AC",
 
 static void OnChanged_CoupleB()
 {
-    fpga.LoadRanges();
+    FPGA::LoadRanges();
 }
 
 static const Choice cCoupleB("Ñâÿçü", "Couple", itemsCoupleB, &SET_COUPLE_B, 3, OnChanged_CoupleB);

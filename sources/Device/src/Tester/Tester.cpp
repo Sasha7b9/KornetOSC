@@ -130,15 +130,13 @@ void Tester::Enable()
 
     SET_COUPLE_A = SET_COUPLE_B = Couple_GND;
 
-    fpga.LoadRanges();
+    FPGA::LoadRanges();
 
     HAL_GPIO_WritePin(Port_TEST_ON, Pin_TEST_ON, GPIO_PIN_RESET);  // Включаем тестер-компонент
 
     LoadFPGA();
 
-    //fpga.Start();
-
-    fpga.Stop();
+    FPGA::Stop();
 
     step = 0;                               // Первый пришедший импульс будет означать нулевой шаг
 
@@ -164,9 +162,9 @@ void Tester::Disable()
     set = oldSet;
     set.Save();
 
-    fpga.LoadSettings();
+    FPGA::LoadSettings();
 
-    fpga.OnPressStart();
+    FPGA::OnPressStart();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -222,13 +220,13 @@ void Tester::ProcessStep()
 void Tester::StartFPGA()
 {
     // Запускаем ПЛИС для записи необходимого количества точек. Набор будет производиться в течение 2.5 мс (длительсность одного такта)
-    fpga.StartForTester(TESTER_NUM_POINTS);
+    FPGA::StartForTester(TESTER_NUM_POINTS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tester::ReadData()
 {
-    fpga.ReadForTester(&dataTester[A][step / 2][0], &dataTester[B][step / 2][0]);
+    FPGA::ReadForTester(&dataTester[A][step / 2][0], &dataTester[B][step / 2][0]);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

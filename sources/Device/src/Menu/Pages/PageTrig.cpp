@@ -11,7 +11,7 @@ static const char *itemsMode[] = { "Авто",      "Auto",
 
 static void OnChanged_Mode()
 {
-    fpga.LoadTrigMode();
+    FPGA::LoadTrigMode();
 }
 
 static const Choice cMode("Режим", "Mode", itemsMode, &TRIG_MODE, 3, OnChanged_Mode);
@@ -22,7 +22,7 @@ static const char *itemsSource[] = { "Канал 1", "Channel 1",
 
 static void OnChanged_Source()
 {
-    fpga.LoadTrigSource();
+    FPGA::LoadTrigSource();
 }
 
 static const Choice cSource("Источник", "Source", itemsSource, &TRIG_SOURCE, 2, OnChanged_Source);
@@ -33,7 +33,7 @@ static const char *itemsPolarity[] = { "Фронт", "Rising",
 
 static void OnChanged_Polarity()
 {
-    fpga.LoadTrigPolarity();
+    FPGA::LoadTrigPolarity();
 }
 
 static const Choice cPolarity("Полярность", "Polarity", itemsPolarity, &TRIG_POLARITY, 2, OnChanged_Polarity);
@@ -45,7 +45,7 @@ static const char *itemsInput[] = { "ПС", "Full",
 
 static void OnChanged_Input()
 {
-    fpga.LoadTrigInput();
+    FPGA::LoadTrigInput();
 }
 
 static const Choice cInput("Вход", "Input", itemsInput, &TRIG_INPUT, 3, OnChanged_Input);

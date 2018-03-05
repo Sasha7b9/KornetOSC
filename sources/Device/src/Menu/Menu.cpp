@@ -194,7 +194,7 @@ void Menu::OnPressRangeLessA()
 {
     if (typePress == Press)
     {
-        fpga.DecreaseRange(A);
+        FPGA::DecreaseRange(A);
     }
 }
 
@@ -203,7 +203,7 @@ void Menu::OnPressRangeMoreA()
 {
     if (typePress == Press)
     {
-        fpga.IncreaseRange(A);
+        FPGA::IncreaseRange(A);
     }
 }
 
@@ -212,7 +212,7 @@ void Menu::OnPressRangeLessB()
 {
     if (typePress == Press)
     {
-        fpga.DecreaseRange(B);
+        FPGA::DecreaseRange(B);
     }
 }
 
@@ -221,7 +221,7 @@ void Menu::OnPressRangeMoreB()
 {
     if (typePress == Press)
     {
-        fpga.IncreaseRange(B);
+        FPGA::IncreaseRange(B);
     }
 }
 
@@ -230,7 +230,7 @@ void Menu::OnPressTBaseLess()
 {
     if (typePress == Press)
     {
-        fpga.DecreaseTBase();
+        FPGA::DecreaseTBase();
     }
 }
 
@@ -239,7 +239,7 @@ void Menu::OnPressTBaseMore()
 {
     if (typePress == Press)
     {
-        fpga.IncreaseTBase();
+        FPGA::IncreaseTBase();
     }
 }
 
@@ -248,7 +248,7 @@ void Menu::OnPressRShiftLessA()
 {
     if(isPressed[K_RShiftMoreA])
     { 
-        fpga.SetRShift(A, RShiftZero);
+        FPGA::SetRShift(A, RShiftZero);
     }
     else
     {
@@ -261,7 +261,7 @@ void Menu::OnPressRShiftMoreA()
 {
     if (isPressed[K_RShiftLessA])
     {
-        fpga.SetRShift(A, RShiftZero);
+        FPGA::SetRShift(A, RShiftZero);
     }
     else
     {
@@ -274,7 +274,7 @@ void Menu::OnPressRShiftLessB()
 {
     if (isPressed[K_RShiftMoreB])
     {
-        fpga.SetRShift(B, RShiftZero);
+        FPGA::SetRShift(B, RShiftZero);
     }
     else
     {
@@ -287,7 +287,7 @@ void Menu::OnPressRShiftMoreB()
 {
     if (isPressed[K_RShiftLessB])
     {
-        fpga.SetRShift(B, RShiftZero);
+        FPGA::SetRShift(B, RShiftZero);
     }
     else
     {
@@ -336,9 +336,9 @@ void Menu::VerifyOnDoubleClick(int src, int dir)
         value = time - timePrevPress[src][dir] < timeDoubleClick ? 19 * delta : delta;
     }
 
-    if (src < 2)        { fpga.RShiftChange((Channel)src, value); }
-    else if (src == 2)  { fpga.TrigLevChange(value); }
-    else if(src == 3)   { fpga.TShiftChange(value); }
+    if (src < 2)        { FPGA::RShiftChange((Channel)src, value); }
+    else if (src == 2)  { FPGA::TrigLevChange(value); }
+    else if(src == 3)   { FPGA::TShiftChange(value); }
     timePrevPress[src][dir] = time;
 }
 
@@ -386,7 +386,7 @@ void Menu::OnPressStartStop()
 {
     if (typePress == Press)
     {
-        fpga.OnPressStart();
+        FPGA::OnPressStart();
     }
 }
 

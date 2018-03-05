@@ -49,96 +49,91 @@ class FPGA
 {
 public:
 
-    void Init();
+    static void Init();
 
-    void Update();
+    static void Update();
 
-    void Start();
+    static void Start();
 
-    void OnPressStart();
+    static void OnPressStart();
 
-    void GiveStart();
+    static void GiveStart();
 
-    void LoadSettings();
+    static void LoadSettings();
 
-    void IncreaseRange(Channel ch);
+    static void IncreaseRange(Channel ch);
 
-    void DecreaseRange(Channel ch);
+    static void DecreaseRange(Channel ch);
 
-    void IncreaseTBase();
+    static void IncreaseTBase();
 
-    void DecreaseTBase();
+    static void DecreaseTBase();
 
-    void RShiftChange(Channel ch, int delta);
+    static void RShiftChange(Channel ch, int delta);
 
-    void TrigLevChange(int delta);
+    static void TrigLevChange(int delta);
 
-    void TShiftChange(int delta);
+    static void TShiftChange(int delta);
 
-    void SetRShift(Channel ch, uint16 rShift);
+    static void SetRShift(Channel ch, uint16 rShift);
 
-    void LoadTrigPolarity();
+    static void LoadTrigPolarity();
 
-    void LoadTrigMode();
+    static void LoadTrigMode();
 
-    void LoadTrigSource();
+    static void LoadTrigSource();
 
-    void LoadTrigInput();
+    static void LoadTrigInput();
 
-    void Stop();
+    static void Stop();
 
-    void LoadRanges();
+    static void LoadRanges();
     /// Запустить цикл чтения для тестер-компонента. В течение time секунд должно быть считано numPoints точек
-    void StartForTester(int numPoints);
+    static void StartForTester(int numPoints);
 
-    void ReadForTester(uint8 *dataA, uint8 *dataB);
+    static void ReadForTester(uint8 *dataA, uint8 *dataB);
 
 private:
 
-    void GPIO_Init();
+    static void GPIO_Init();
 
-    void LoadTBase();
+    static void LoadTBase();
 
-    void LoadTrigLev();
+    static void LoadTrigLev();
 
-    void LoadRShift(Channel ch);
+    static void LoadRShift(Channel ch);
 
-    void LoadTShift();
+    static void LoadTShift();
 
-    void WritePin(Pin pin, int enable);
+    static void WritePin(Pin pin, int enable);
 
-    void SetPin(Pin pin);
+    static void SetPin(Pin pin);
 
-    void ResetPin(Pin pin);
+    static void ResetPin(Pin pin);
 
-    uint GetPin(Pin pin);
+    static uint GetPin(Pin pin);
 
-    GPIO_TypeDef *GetPort(Pin pin);
+    static GPIO_TypeDef *GetPort(Pin pin);
 
-    void WriteRegisters(Pin cs, uint16 value);
+    static void WriteRegisters(Pin cs, uint16 value);
 
-    void ReadData();
+    static void ReadData();
 
-    uint8 ReadFlag();
+    static uint8 ReadFlag();
 
-    uint16 ReadLastRecord();
+    static uint16 ReadLastRecord();
 
-    void ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS]);
+    static void ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS]);
     /// Установить в соотвествующие положения выводы, отвечающие за источник и вход синхронизации
-    void LoadTrigSourceInput();
+    static void LoadTrigSourceInput();
     /// Читать канал в рандомизаторе с адреса address
-    void ReadDataChanenlRand(Channel ch, uint8 *address, uint8 *data);
+    static void ReadDataChanenlRand(Channel ch, uint8 *address, uint8 *data);
 
-    bool CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax);
+    static bool CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax);
 
-    int CalculateShift();
+    static int CalculateShift();
 
-//    HardwareFPGA hardware;
-
-    bool isRunning;
+    static bool isRunning;
     /// True, если дан запуск
-    bool givingStart;
+    static bool givingStart;
 };
-
-
-extern FPGA fpga;

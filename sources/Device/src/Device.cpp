@@ -29,15 +29,15 @@ void Device::Init()
 
     Display::Init();
 
-    fpga.Init();
+    FPGA::Init();
 
     set.Load();
 
-    fpga.LoadSettings();
+    FPGA::LoadSettings();
 
     menu.Init();
 
-    fpga.OnPressStart();
+    FPGA::OnPressStart();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ void Device::Update()
     menu.Update();
     Display::Update();
     Decoder::Update();
-    fpga.Update();
+    FPGA::Update();
     menu.SaveSettings();
     Tester::Update();
 }
