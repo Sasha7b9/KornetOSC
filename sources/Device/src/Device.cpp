@@ -27,7 +27,7 @@ void Device::Init()
 
     Tester::Init();
 
-    display.Init();
+    Display::Init();
 
     fpga.Init();
 
@@ -45,7 +45,7 @@ void Device::Update()
 {
     START_MULTI_MEASUREMENT();
     menu.Update();
-    display.Update();
+    Display::Update();
     Decoder::Update();
     fpga.Update();
     menu.SaveSettings();

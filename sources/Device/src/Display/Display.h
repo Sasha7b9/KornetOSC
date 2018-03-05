@@ -8,7 +8,7 @@
 class LogEntity
 {
     friend class Log;
-    void AddToConsole(char *string);
+    static void AddToConsole(char *string);
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,40 +21,33 @@ public:
 
     static const int WIDTH = 320;
 
-    void Init();
+    static void Init();
 
-    void Update();
+    static void Update();
 
 private:
 
-    void DrawGrid();
+    static void DrawGrid();
     /// Нарисовать информацию в нижней части экрана.
-    void WriteLowPart();
+    static void WriteLowPart();
 
-    int WriteChannel(Channel ch, int x, int y);
+    static int WriteChannel(Channel ch, int x, int y);
 
-    void WriteTBase(int x, int y);
+    static void WriteTBase(int x, int y);
 
-    void DrawRShift();
+    static void DrawRShift();
 
-    void DrawRShift(Channel ch);
+    static void DrawRShift(Channel ch);
 
-    void DrawConsole();
+    static void DrawConsole();
 
-    void UpdateOsci();
+    static void UpdateOsci();
 
-    void UpdateTester();
+    static void UpdateTester();
 
-    void DrawDataTester(int numStep, int x, int y);
+    static void DrawDataTester(int numStep, int x, int y);
 
-    void UpdateMultimeter();
+    static void UpdateMultimeter();
     /// true означает, что идёт процесс вывода консоли и добавлять в неё новые строки нельзя (это происходит, когда добавление идёт из прерывания)
-    bool inProcessDrawConsole;
-
-public:
-    LogEntity logEntity;
-
+    static bool inProcessDrawConsole;
 };
-
-
-extern Display display;

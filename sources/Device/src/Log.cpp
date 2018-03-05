@@ -24,5 +24,5 @@ void Log::Message(char *format, ...)
     vsprintf(buffer, format, args);
     va_end(args);
 
-    display.logEntity.AddToConsole(buffer);
+    LogEntity::AddToConsole(buffer);
 }

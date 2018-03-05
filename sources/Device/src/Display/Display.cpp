@@ -14,13 +14,11 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Display display;
-
-//static uint8 color = 0;
-
 #define SIZE_CONSOLE    20
 static CHAR_BUF2(buffer, SIZE_CONSOLE, 100);
 static int stringInConsole = 0;
+
+bool Display::inProcessDrawConsole = false;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,25 +34,23 @@ void Display::Init()
     painter.SetPalette(Color::BLUE,        0x000000ff);
     painter.SetPalette(Color::GREEN,       0x0000ff00);
     painter.SetPalette(Color::RED,         0x00ff0000);
-
-    inProcessDrawConsole = false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::Update()
 {
-    typedef void (Display::*pFuncDisplayVV)();
+    typedef void (*pFuncDisplayVV)();
 
     static const pFuncDisplayVV funcs[NumDeviceModes] =
     {
-        &Display::UpdateOsci,
-        &Display::UpdateTester,
-        &Display::UpdateMultimeter
+        Display::UpdateOsci,
+        Display::UpdateTester,
+        Display::UpdateMultimeter
     };
 
     pFuncDisplayVV func = funcs[Device::CurrentMode()];
 
-    (this->*func)();
+    func();
 
     //LOG_MESSAGE("время : полное - %d, ожидание - %d", gTimeUS - timeStart, debug.GetTimeCounterUS());
 }
@@ -246,7 +242,7 @@ void Display::DrawRShift(Channel ch)
 void LogEntity::AddToConsole(char *string)
 {
     /// \todo Мы пропускаем некоторые строки. Сделать отложенное добавление
-    if (!display.inProcessDrawConsole)      // Страхуемся на предмет того, что сейчас не происходит вывод консоли в другом потоке
+    if (!Display::inProcessDrawConsole)      // Страхуемся на предмет того, что сейчас не происходит вывод консоли в другом потоке
     {
         static int count = 0;
         if (stringInConsole == SIZE_CONSOLE)
