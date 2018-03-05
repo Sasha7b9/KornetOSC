@@ -1826,16 +1826,6 @@
               <FilePath>.\src\Hardware\Hardware.h</FilePath>
             </File>
             <File>
-              <FileName>Decoder.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Decoder.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Decoder.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Decoder.h</FilePath>
-            </File>
-            <File>
               <FileName>Timer.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\Timer.cpp</FilePath>
@@ -2039,6 +2029,16 @@
               <FileName>Math.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\libs\common\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Decoder.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Decoder.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Decoder.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Decoder.h</FilePath>
             </File>
           </Files>
         </Group>
