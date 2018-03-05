@@ -14,8 +14,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Menu menu;
-
 static const Page pageEmpty;
 
 #define ENABLE_DISABLE_PAGE(page)                                   \
@@ -33,18 +31,13 @@ static const Page pageEmpty;
         }                                                           \
     }
 
+uint      Menu::timeLastPressedButton = MAX_UINT;
+uint      Menu::timePrevPress[4][2] = {};
+Key       Menu::button;
+bool      Menu::isPressed[NumButtons] = {};
+TypePress Menu::typePress;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Menu::Menu() : timeDoubleClick(250), timeLastPressedButton(MAX_UINT)
-{
-    memset(timePrevPress, 0, 4 * 4);
-
-    for (int i = 0; i < NumButtons; i++)
-    {
-        isPressed[i] = false;
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::Update()
 {
 
@@ -53,13 +46,13 @@ void Menu::Update()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ButtonPress(Key btn, TypePress tPress)
 {
-    this->typePress = tPress;
+    typePress = tPress;
 
-    this->button = btn;
+    button = btn;
 
     isPressed[btn] = tPress != Release;
 
-    typedef void(Menu::*pFuncMenuVV)();
+    typedef void(*pFuncMenuVV)();
 
     static const pFuncMenuVV funcs[NumButtons] =
     {
@@ -104,7 +97,7 @@ void Menu::ButtonPress(Key btn, TypePress tPress)
 
     if (func)
     {
-        (this->*func)();
+        func();
         timeLastPressedButton = gTimeMS;
     }
 }
@@ -365,6 +358,13 @@ void Menu::Init()
     //if(CURRENT_PAGE == 0)
     {
         CURRENT_PAGE = &pageEmpty;
+    }
+
+    memset(timePrevPress, 0, 4 * 4);
+
+    for (int i = 0; i < NumButtons; i++)
+    {
+        isPressed[i] = false;
     }
 }
 

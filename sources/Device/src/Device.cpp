@@ -31,11 +31,11 @@ void Device::Init()
 
     FPGA::Init();
 
-    set.Load();
+    Settings::Load();
 
     FPGA::LoadSettings();
 
-    menu.Init();
+    Menu::Init();
 
     FPGA::OnPressStart();
 }
@@ -44,11 +44,11 @@ void Device::Init()
 void Device::Update()
 {
     START_MULTI_MEASUREMENT();
-    menu.Update();
+    Menu::Update();
     Display::Update();
     Decoder::Update();
     FPGA::Update();
-    menu.SaveSettings();
+    Menu::SaveSettings();
     Tester::Update();
 }
 

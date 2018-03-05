@@ -57,9 +57,9 @@
 class Settings
 {
 public:
-    void Load();
-    void Save();
-    void Reset();
+    static void Load();
+    static void Save();
+    static void Reset();
 
     uint            size;                       ///< Размер данной структуры в байтах
     uint            crc32;                      ///< \brief Контрольная сумма данной структуры с хранящимися в ней настройками. Контрольная сумма 
@@ -97,6 +97,5 @@ public:
 };
 
 #pragma pack(pop)
-
 
 extern Settings set;

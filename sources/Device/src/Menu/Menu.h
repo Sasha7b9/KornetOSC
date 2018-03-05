@@ -8,61 +8,57 @@
 class Menu
 {
 public:
-    Menu();
-    void Init();
-    void Update();
-    void ButtonPress(Key button, TypePress typePress);
-    void Draw();
-    void SaveSettings();
+    static void Init();
+    static void Update();
+    static void ButtonPress(Key button, TypePress typePress);
+    static void Draw();
+    static void SaveSettings();
 
 private:
-    void OnPressNone();
-    void OnPressRangeLessA();
-    void OnPressRangeMoreA();
-    void OnPressRangeLessB();
-    void OnPressRangeMoreB();
-    void OnPressTBaseMore();
-    void OnPressTBaseLess();
-    void OnPressRShiftLessA();
-    void OnPressRShiftMoreA();
-    void OnPressRShiftLessB();
-    void OnPressRShiftMoreB();
-    void OnPressTShiftLess();
-    void OnPressTShiftMore();
-    void OnPressTrigLevLess();
-    void OnPressTrigLevMore();
-    void OnPressChannelA();
-    void OnPressChannelB();
-    void OnPressF1();
-    void OnPressF2();
-    void OnPressF3();
-    void OnPressF4();
-    void OnPressF5();
-    void OnPressService();
-    void OnPressStartStop();
-    void OnPressTrig();
-    void OnPressMenu();
-    void OnPressFunction();
-    void OnPressEnter();
+    static void OnPressNone();
+    static void OnPressRangeLessA();
+    static void OnPressRangeMoreA();
+    static void OnPressRangeLessB();
+    static void OnPressRangeMoreB();
+    static void OnPressTBaseMore();
+    static void OnPressTBaseLess();
+    static void OnPressRShiftLessA();
+    static void OnPressRShiftMoreA();
+    static void OnPressRShiftLessB();
+    static void OnPressRShiftMoreB();
+    static void OnPressTShiftLess();
+    static void OnPressTShiftMore();
+    static void OnPressTrigLevLess();
+    static void OnPressTrigLevMore();
+    static void OnPressChannelA();
+    static void OnPressChannelB();
+    static void OnPressF1();
+    static void OnPressF2();
+    static void OnPressF3();
+    static void OnPressF4();
+    static void OnPressF5();
+    static void OnPressService();
+    static void OnPressStartStop();
+    static void OnPressTrig();
+    static void OnPressMenu();
+    static void OnPressFunction();
+    static void OnPressEnter();
 
-    void VerifyOnDoubleClick(int src, int dir);
+    static void VerifyOnDoubleClick(int src, int dir);
 
     /// \tode Здесь хранится время предыдущего нажатия кнопки для отлова двойного нажатия.
     /// 1 индекс 1канал/2канал/синхронизация/время, 2 индекс - вниз/вверх
-    uint timePrevPress[4][2];
+    static uint timePrevPress[4][2];
     /// Время двойного нажатия
-    const uint timeDoubleClick;
+    static const uint timeDoubleClick = 250;
     /// Здесь хранится тип нажатий нопки для функции ButtonPress
-    TypePress typePress;
+    static TypePress typePress;
     /// Текущая обрабатываемая кнопка
-    Key button;
+    static Key button;
     /// Если true, то кнопка нажата
-    bool isPressed[NumButtons];
+    static bool isPressed[NumButtons];
     /// Время последнего нажатия кнопки. Нужно для того, чтобы периодически сохранять настройки
-    uint timeLastPressedButton;
+    static uint timeLastPressedButton;
     /// Установить меню в соответствие с текущим режимом
-    void TuneOnDevice();
+    static void TuneOnDevice();
 };
-
-
-extern Menu menu;

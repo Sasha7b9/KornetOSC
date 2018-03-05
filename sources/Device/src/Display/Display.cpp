@@ -70,7 +70,7 @@ void Display::UpdateOsci()
    
     DrawConsole();
 
-    menu.Draw();
+    Menu::Draw();
 
     painter.EndScene();
 }
@@ -90,7 +90,7 @@ void Display::UpdateTester()
         DrawDataTester(i, 0, 0);
     }
 
-    menu.Draw();
+    Menu::Draw();
 
     DrawConsole();
 
