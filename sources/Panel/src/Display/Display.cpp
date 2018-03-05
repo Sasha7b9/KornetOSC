@@ -15,31 +15,8 @@ static uint8 backBuffer[320 * 240];        // Зто задний буфер. В нём происходит
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display::Init()
-{
-    LTDC_::Init();
-    
-    hltdc.Instance = LTDC;
-    hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
-    hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
-    hltdc.Init.DEPolarity = LTDC_DEPOLARITY_AL;
-    hltdc.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
-    hltdc.Init.HorizontalSync = 0;          //
-    hltdc.Init.VerticalSync = 0;            //
-    hltdc.Init.AccumulatedHBP = 70;         //
-    hltdc.Init.AccumulatedVBP = 13;         //
-    hltdc.Init.AccumulatedActiveW = 390;
-    hltdc.Init.AccumulatedActiveH = 253;
-    hltdc.Init.TotalWidth = 408;            //
-    hltdc.Init.TotalHeigh = 263;            //
-    hltdc.Init.Backcolor.Blue = 255;
-    hltdc.Init.Backcolor.Green = 255;
-    hltdc.Init.Backcolor.Red = 255;
-    if (HAL_LTDC_Init(&hltdc) != HAL_OK)
-    {
-        ERROR_HANDLER();
-    }
-
-    Painter::LoadPalette();
+{   
+    LTDC_::Init((uint)frontBuffer, (uint)backBuffer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

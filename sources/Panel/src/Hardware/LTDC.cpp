@@ -1,6 +1,8 @@
 #include "defines.h"
 #include "CPU.h"
 #include "LTDC.h"
+#include "Display/Painter.h"
+#include "Settings/SettingsTypes.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -10,7 +12,7 @@ static uint backBuffer = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void LTDC_::Init()
+void LTDC_::Init(uint front, uint back)
 {
     GPIO_InitTypeDef isGPIO =
     {
@@ -62,8 +64,8 @@ void LTDC_::Init()
     handleLTDC.Instance = LTDC;
     handleLTDC.Init.HSPolarity = LTDC_HSPOLARITY_AL;
     handleLTDC.Init.VSPolarity = LTDC_VSPOLARITY_AL;
-    handleLTDC.Init.DEPolarity = LTDC_DEPOLARITY_AH;
-    handleLTDC.Init.PCPolarity = LTDC_PCPOLARITY_IIPC;
+    handleLTDC.Init.DEPolarity = LTDC_DEPOLARITY_AL;
+    handleLTDC.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
     handleLTDC.Init.HorizontalSync = 0;
     handleLTDC.Init.VerticalSync = 0;
     handleLTDC.Init.AccumulatedHBP = 70;
@@ -72,25 +74,22 @@ void LTDC_::Init()
     handleLTDC.Init.AccumulatedActiveH = 253;
     handleLTDC.Init.TotalWidth = 408;
     handleLTDC.Init.TotalHeigh = 263;
-    handleLTDC.Init.Backcolor.Blue = 0;
-    handleLTDC.Init.Backcolor.Green = 0;
-    handleLTDC.Init.Backcolor.Red = 0;
+    handleLTDC.Init.Backcolor.Blue = 255;
+    handleLTDC.Init.Backcolor.Green = 255;
+    handleLTDC.Init.Backcolor.Red = 255;
     if (HAL_LTDC_Init(&handleLTDC) != HAL_OK)
     {
         ERROR_HANDLER();
     }
 
-    uint clut[10] =
-    {
-        0x00000000,
-        0x00ffffff,
-        0x00a0a0a0,
-        0x000000ff
-    };
+    SetBuffers(front, back);
 
-    HAL_LTDC_ConfigCLUT(&handleLTDC, clut, 10, 0);
+    COLOR(0) = 0;
+    COLOR(1) = 0x00ffffff;
+    COLOR(2) = 0x00a0a0a0;
+    COLOR(3) = 0x000000ff;
 
-    HAL_LTDC_EnableCLUT(&handleLTDC, 0);
+    Painter::LoadPalette();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -126,6 +125,8 @@ void LTDC_::SetBuffers(uint front, uint back)
 void LTDC_::SetColors(uint clut[], uint numColors)
 {
     HAL_LTDC_ConfigCLUT(&handleLTDC, clut, numColors, 0);
+
+    HAL_LTDC_EnableCLUT(&handleLTDC, 0);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

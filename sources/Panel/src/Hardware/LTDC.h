@@ -8,13 +8,15 @@ friend class Display;
 
 private:
 
-    static void Init();
+    static void Init(uint front, uint back);
 
 public:
 
     static void SetColors(uint clut[], uint numColors);
 
-    static void SetBuffers(uint frontBuffer, uint backBuffer);
-
     static void ToggleBuffers();
+
+private:
+
+    static void SetBuffers(uint frontBuffer, uint backBuffer);
 };
