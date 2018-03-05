@@ -10,7 +10,7 @@ static const char *iPolarity[] = { "+", "+",
 
 static void OnChanged_Polarity()
 {
-    tester.LoadPolarity();
+    Tester::LoadPolarity();
 }
 
 static const Choice cPolarity("Полярность", "Polarity", iPolarity, &TESTER_POLARITY, 2, OnChanged_Polarity);
@@ -25,7 +25,7 @@ static const char *iStepI[] = { "4мА",  "4mA",
 
 static void OnChanged_Step()
 {
-    tester.LoadStep();
+    Tester::LoadStep();
 }
 
 static Choice cStep("Шаг", "Step", iStepU, &TESTER_STEP_U, 2, OnChanged_Step, iStepI, &TESTER_STEP_I, 2);

@@ -8,35 +8,32 @@
 class Tester
 {
 public:
-    void Init();
+    static void Init();
 
-    void Enable();
+    static void Enable();
 
-    void Disable();
+    static void Disable();
 
-    void Update();
+    static void Update();
 
-    void ProcessStep();
+    static void ProcessStep();
     /// Загружает полярность из Settings
-    void LoadPolarity();
+    static void LoadPolarity();
     /// Устанавливает шаг изменения напряжения в соотвествии с настройками Settings
-    void LoadStep();
+    static void LoadStep();
 
 private:
     /// Загрузить FPGA в соответствии с установленными настройками
-    void LoadFPGA();
+    static void LoadFPGA();
     /// Считать данные очередной ступеньки
-    void ReadData();
+    static void ReadData();
     /// Запустить процесс чтения очередной ступеньки
-    void StartFPGA();
+    static void StartFPGA();
     /// Текущий шаг
-    int step;
+    static int step;
     /// Шаг изменения напряжения
-    float stepU;
+    static float stepU;
 };
-
-
-extern Tester tester;
 
 #define NUM_STEPS       5
 

@@ -12,7 +12,6 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static DAC_HandleTypeDef hDAC = {DAC};
-Tester tester;
 
 #define Port_TEST_ON    GPIOF
 #define Pin_TEST_ON     GPIO_PIN_13
@@ -34,6 +33,8 @@ uint8 dataTester[NumChannels][NUM_STEPS][TESTER_NUM_POINTS];
 
 static Settings oldSet;
 
+int   Tester::step = 0;
+float Tester::stepU = 0.0f;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Tester::Init()
@@ -235,7 +236,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t pin)
 {
     if (pin == GPIO_PIN_9)
     {
-        tester.ProcessStep();
+        Tester::ProcessStep();
     }
 }
 

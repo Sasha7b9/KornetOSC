@@ -254,7 +254,7 @@ void FSMC::WriteToPanel(uint8 *data, int length)
 
     if (funcAfterInteractionWithPanel)
     {
-        (&tester->*funcAfterInteractionWithPanel)();
+        funcAfterInteractionWithPanel();
         funcAfterInteractionWithPanel = 0;
     }
 }

@@ -14,7 +14,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Hardware   Device::hardware;
 DeviceMode Device::currentMode = Mode_Osci;
 
 
@@ -24,9 +23,9 @@ void Device::Init()
     uint64 temp = (uint64)(rand() % 4);
     temp++;
     
-    hardware.Init();
+    Hardware::Init();
 
-    tester.Init();
+    Tester::Init();
 
     display.Init();
 
@@ -50,7 +49,7 @@ void Device::Update()
     Decoder::Update();
     fpga.Update();
     menu.SaveSettings();
-    tester.Update();
+    Tester::Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -66,10 +65,10 @@ void Device::ChangeMode()
 
     if (currentMode == Mode_Tester)
     {
-        tester.Enable();
+        Tester::Enable();
     }
     else
     {
-        tester.Disable();
+        Tester::Disable();
     }
 }

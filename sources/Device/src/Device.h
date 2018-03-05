@@ -27,6 +27,5 @@ public:
     /// Функция вызывается при нажатии на кнопку "Функция". Переключает устройство в следующий режим
     static void ChangeMode();
 private:
-    static Hardware hardware;
     static DeviceMode currentMode;
 };
