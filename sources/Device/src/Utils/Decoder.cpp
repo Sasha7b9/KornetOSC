@@ -10,14 +10,11 @@ Decoder decoder;
 static uint8 buffer[SIZE_BUFFER];
 static int pointer = 0;
 
+pFuncBU8 Decoder::curFunc = 0;
+int      Decoder::step = 0;
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Decoder::Decoder() : curFunc(0), step(0)
-{
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Decoder::AddData(uint8 data)
 {
     if (pointer < SIZE_BUFFER)
@@ -68,7 +65,7 @@ void Decoder::RunStep(uint8 data)
 
     if (curFunc)
     {
-        if ((this->*curFunc)(data))
+        if (curFunc(data))
         {
             FinishCommand();
         }

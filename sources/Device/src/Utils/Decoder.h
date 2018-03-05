@@ -23,32 +23,28 @@ enum COMMAND
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef bool(*pFuncBU8)(uint8);
+
 class Decoder
 {
 public:
 
-    Decoder();
+    static void AddData(uint8 data);
 
-    void AddData(uint8 data);
-
-    void Update();
+    static void Update();
 private:
 
-    void RunStep(uint8 data);
-
-    typedef bool(Decoder::*pFuncBU8)(uint8);
+    static void RunStep(uint8 data);
 
     /// Выполняемая функция
-    pFuncBU8 curFunc;
+    static pFuncBU8 curFunc;
     /// Текущий байт выполняемой функции
-    int step;
+    static int step;
 
-    bool EmptyFunc(uint8) { return true; }
+    static bool EmptyFunc(uint8) { return true; }
 
-    bool ButtonPress(uint8);
+    static bool ButtonPress(uint8);
     /// Эту функцию надо вызывать после выполнения последнего шага
-    void FinishCommand();
+    static void FinishCommand();
 };
-
-
-extern Decoder decoder;

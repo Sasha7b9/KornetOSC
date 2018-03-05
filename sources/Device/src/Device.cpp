@@ -47,7 +47,7 @@ void Device::Update()
     START_MULTI_MEASUREMENT();
     menu.Update();
     display.Update();
-    decoder.Update();
+    Decoder::Update();
     fpga.Update();
     menu.SaveSettings();
     tester.Update();

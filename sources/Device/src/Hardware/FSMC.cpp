@@ -268,7 +268,7 @@ LabelReadByte:
     while (PAN_READY_TRANSMIT) { };
     if (PAN_RECIEVE_TRANSMIT_CONFIRM)
     {
-        decoder.AddData(GetOutData());
+        Decoder::AddData(GetOutData());
         NE4_SET;
         while (PAN_RECIEVE_TRANSMIT_CONFIRM) { };
     }
