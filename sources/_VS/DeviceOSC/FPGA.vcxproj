@@ -27,7 +27,7 @@
     <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\Storage.cpp" />
-    <ClCompile Include="..\..\Device\src\Hardware\Decoder.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\FLASH.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\GPIO.cpp" />
@@ -53,7 +53,13 @@
     <ClCompile Include="..\..\Device\src\Tester\Tester.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\Decoder.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\MathOSC.cpp" />
+    <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\stm437.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\Timer4XX.cpp" />
+    <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32.cpp" />
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -86,7 +92,7 @@
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA_Types.h" />
     <ClInclude Include="..\..\Device\src\FPGA\Storage.h" />
-    <ClInclude Include="..\..\Device\src\Hardware\Decoder.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />
     <ClInclude Include="..\..\Device\src\Hardware\FLASH.h" />
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h" />
     <ClInclude Include="..\..\Device\src\Hardware\GPIO.h" />
@@ -111,7 +117,11 @@
     <ClInclude Include="..\..\Device\src\Tester\Tester.h" />
     <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\Device\src\Utils\Debug.h" />
+    <ClInclude Include="..\..\Device\src\Utils\Decoder.h" />
     <ClInclude Include="..\..\Device\src\Utils\MathOSC.h" />
+    <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\stm437.h" />
+    <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\Timer4XX.h" />
+    <ClInclude Include="..\..\libs\common\Hardware\stm32\stm32.h" />
     <ClInclude Include="..\..\libs\common\Utils\Math.h" />
     <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc.h" />
     <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc_V6.h" />

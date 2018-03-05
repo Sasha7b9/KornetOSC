@@ -18,20 +18,15 @@ enum DeviceMode
 class Device
 {
 public:
-    Device() : currentMode(Mode_Osci) { }
 
-    void Init();
+    static void Init();
 
-    void Update();
+    static void Update();
 
-    DeviceMode CurrentMode();
+    static DeviceMode CurrentMode();
     /// Функция вызывается при нажатии на кнопку "Функция". Переключает устройство в следующий режим
-    void ChangeMode();
+    static void ChangeMode();
 private:
-    //Multimeter multimeter;
-//    Osci osci;
-    Hardware hardware;
-    DeviceMode currentMode;
+    static Hardware hardware;
+    static DeviceMode currentMode;
 };
-
-extern Device device;

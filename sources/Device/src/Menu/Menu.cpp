@@ -19,7 +19,7 @@ Menu menu;
 static const Page pageEmpty;
 
 #define ENABLE_DISABLE_PAGE(page)                                   \
-    if (typePress == Press && device.CurrentMode() == Mode_Osci)    \
+    if (typePress == Press && Device::CurrentMode() == Mode_Osci)   \
     {                                                               \
         if (CURRENT_PAGE == &page)                                  \
         {                                                           \
@@ -347,11 +347,11 @@ void Menu::Draw()
 {
     if (CURRENT_PAGE && MENU_IS_SHOWN)
     {
-        if (device.CurrentMode() == Mode_Osci)
+        if (Device::CurrentMode() == Mode_Osci)
         {
             CURRENT_PAGE->Draw(grid.Left(), grid.Bottom() - Control::HEIGHT);
         }
-        else if (device.CurrentMode() == Mode_Tester)
+        else if (Device::CurrentMode() == Mode_Tester)
         {
             CURRENT_PAGE->Draw(0, Display::HEIGHT - Control::HEIGHT - 1);
         }
@@ -374,7 +374,7 @@ void Menu::SaveSettings()
     if ((timeLastPressedButton != MAX_UINT) && (gTimeMS - timeLastPressedButton > 5000))
     {
         timeLastPressedButton = MAX_UINT;
-        if (device.CurrentMode() != Mode_Tester)
+        if (Device::CurrentMode() != Mode_Tester)
         {
             set.Save();
         }
@@ -395,7 +395,7 @@ void Menu::OnPressFunction()
 {
     if (typePress == Press)
     {
-        device.ChangeMode();
+        Device::ChangeMode();
         TuneOnDevice();
     }
 }
@@ -414,7 +414,7 @@ void Menu::TuneOnDevice()
 {
     static const Page *pageOsci = &pageEmpty;
 
-    DeviceMode mode = device.CurrentMode();
+    DeviceMode mode = Device::CurrentMode();
 
     if (mode == Mode_Tester)
     {

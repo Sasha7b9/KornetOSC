@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef MSVC
+#define __attribute(x)
+#endif
+
 #pragma clang diagnostic ignored "-Wpadded"
 #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 #pragma clang diagnostic ignored "-Wgnu-anonymous-struct"

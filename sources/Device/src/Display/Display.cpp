@@ -52,7 +52,7 @@ void Display::Update()
         &Display::UpdateMultimeter
     };
 
-    pFuncDisplayVV func = funcs[device.CurrentMode()];
+    pFuncDisplayVV func = funcs[Device::CurrentMode()];
 
     (this->*func)();
 

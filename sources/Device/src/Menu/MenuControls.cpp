@@ -42,7 +42,7 @@ void Page::Draw(int x, int y) const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Control::Width()
 {
-    return (device.CurrentMode() == Mode_Osci) ? (Grid::WIDTH / CONTROLS_ON_SUBPAGE) : (Display::WIDTH / CONTROLS_ON_SUBPAGE);
+    return (Device::CurrentMode() == Mode_Osci) ? (Grid::WIDTH / CONTROLS_ON_SUBPAGE) : (Display::WIDTH / CONTROLS_ON_SUBPAGE);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

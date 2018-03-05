@@ -52,6 +52,9 @@
     <Filter Include="libs\CMSIS">
       <UniqueIdentifier>{8b6b429f-bbec-4fdc-bcac-456447a83c19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hardware\stm32">
+      <UniqueIdentifier>{2042bb41-b91b-49ff-bc67-12809517e707}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
@@ -83,9 +86,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\FPGA\Storage.cpp">
       <Filter>FPGA</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Hardware\Decoder.cpp">
-      <Filter>Hardware</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\FLASH.cpp">
       <Filter>Hardware</Filter>
@@ -171,6 +171,21 @@
     <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_it.c">
       <Filter>libs\HAL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Utils\Decoder.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\stm437.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\Timer4XX.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -247,9 +262,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\FPGA\Storage.h">
       <Filter>FPGA</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Hardware\Decoder.h">
-      <Filter>Hardware</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Hardware\FLASH.h">
       <Filter>Hardware</Filter>
@@ -394,6 +406,21 @@
     </ClInclude>
     <ClInclude Include="..\..\libs\common\_VS\windows.h">
       <Filter>_VS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Utils\Decoder.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\Hardware\stm32\stm32.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\stm437.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\Timer4XX.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Hardware\CPU.h">
+      <Filter>Hardware</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
