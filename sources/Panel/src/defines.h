@@ -25,6 +25,7 @@ typedef signed short int    int16;
 typedef unsigned char       uint8;
 typedef unsigned char       uchar;
 typedef signed char         int8;
+typedef uint                col_val;
 
 typedef void(*pFuncVV)(void);
 
