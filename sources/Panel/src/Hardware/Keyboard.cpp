@@ -28,14 +28,14 @@ static TIM_HandleTypeDef handleTIM4;
 #define RL5 GPIO_PIN_11
 
 static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
-{ // SL0          SL1        SL2            SL3            SL4             SL5           SL6           SL7
-    {B_Menu,      B_4,       B_Down,        B_None,        B_TrigLevLess,     B_TrigLevMore,   B_RangeLessB, B_RShiftMoreB},  // RL0
-    {B_1,         B_3,       B_Right,       B_Enter,       B_Start,        B_Trig,       B_RangeMoreB, B_RShiftLessB},  // RL1
-    {B_2,         B_5,       B_Up,          B_Left,        B_None,         B_None,       B_None,       B_ChannelB},     // RL2
-    {B_Function , B_Service, B_RangeLessA,  B_RangeMoreA,  B_None,         B_TShiftLess, B_None,       B_None},         // RL3
-    {B_Measures , B_None,    B_ChannelA,    B_None,        B_TBaseMore,    B_TShiftMore, B_None,       B_None},         // RL4
-    {B_Memory,    B_None,    B_RShiftMoreA, B_RShiftLessA, B_Time,         B_TBaseLess,  B_None,       B_None}          // RL5
-};
+{ // SL0            SL1        SL2            SL3            SL4            SL5            SL6           SL7
+    {B_Menu,        B_4,       B_1,        B_None,        B_TrigLevLess, B_TrigLevMore, B_Trig,       B_RShiftLessB},  // RL0
+    {B_Left,           B_5,       B_Right,       B_Enter,       B_Start,       B_RangeLessB,  B_RangeMoreB, B_ChannelB},     // RL1
+    {B_2,           B_Service, B_Up,          B_ChannelA,        B_None,        B_None,        B_None,       B_RShiftMoreB},  // RL2
+    {B_RShiftMoreA, B_3,         B_RShiftLessA,  B_Down ,  B_None,        B_TShiftLess,  B_None,       B_None},         // RL3
+    {B_Measures,    B_None,    B_Memory,      B_None,        B_Time,        B_TShiftMore,  B_None,       B_None},         // RL4
+    {B_RangeMoreA,    B_None,    B_Function,  B_RangeLessA, B_TBaseMore,   B_TBaseLess,   B_None,       B_None}          // RL5
+};               
 
 static uint16 sls[Keyboard::NUM_SL]             = {SL0,   SL1,   SL2,   SL3,   SL4,   SL5,   SL6,   SL7};
 static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOB, GPIOB, GPIOB, GPIOB, GPIOD, GPIOD, GPIOC, GPIOC};

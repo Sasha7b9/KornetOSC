@@ -109,23 +109,23 @@ void FSMC::WriteBuffer(uint8 *data, int length)
     static uint8 buffer[SIZE_BUFFER];
     static int pointer = 0;
 
-    if (inReadState)                                // Если идёт процесс приёма
+    if (inReadState)                                        // Если идёт процесс приёма
     {
         if (data)
         {
-            memcpy(buffer + pointer, data, (uint)length); // то сохраняем информацию для передачи в будущем
+            memcpy(buffer + pointer, data, (uint)length);   // то сохраняем информацию для передачи в будущем
             pointer += length;
         }
-        return;                                     // и выходим
+        return;                                             // и выходим
     }
     
-    if (data)                                       // Если есть данные для передачи
+    if (data)                                               // Если есть данные для передачи
     {
-        memcpy(buffer + pointer, data, (uint)length);     // то переписываем их в буфер
+        memcpy(buffer + pointer, data, (uint)length);       // то переписываем их в буфер
         pointer += length;
     }
 
-    if (pointer)                                    // Если буфер передачи не пуст
+    if (pointer)                            // Если буфер передачи не пуст
     {
         ConfigToWrite();    /// \todo Здесь всё-таки не совсем правлиьно. Во время этой функции RD устанавливается в 1, что будет подсаживать
                             /// этот сигнал от основного процессора, что будет вызывать сбои чтения.
