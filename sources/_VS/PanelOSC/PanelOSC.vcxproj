@@ -91,7 +91,7 @@
       <PreprocessorDefinitions>WIN32;USE_HAL_DRIVER;STM32F429xx;MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
-      <DisableSpecificWarnings>4068;4514;4820</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4068;4514;4820;5045</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
