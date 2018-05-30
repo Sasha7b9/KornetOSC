@@ -6,10 +6,7 @@
 class Storage
 {
 public:
-    void AddData(uint8 *dataA, uint8 *dataB);
-    void GetData(uint8 **dataA, uint8 **dataB);
+    static void AddData(uint8 *dataA, uint8 *dataB);
+    static void GetData(uint8 **dataA, uint8 **dataB);
 public:
 };
-
-
-extern Storage storage;
