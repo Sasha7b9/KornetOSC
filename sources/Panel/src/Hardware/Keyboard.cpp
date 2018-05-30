@@ -30,10 +30,10 @@ static TIM_HandleTypeDef handleTIM4;
 static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
   
 { // SL0         SL1        SL2            SL3            SL4            SL5            SL6            SL7
+    {B_None,     B_3,       B_Down,        B_None,        B_TrigLevLess, B_TrigLevMore, B_RangeLessB,  B_RShiftMoreB},  // RL0
     {B_1,        B_4,       B_Right,       B_Enter,       B_Start,       B_Trig,        B_RangeMoreB,  B_RShiftLessB},  // RL1
     {B_2,        B_5,       B_Up,          B_Left,        B_None,        B_None,        B_None,        B_ChannelB},     // RL2
     {B_Measures, B_None,    B_ChannelA,    B_None,        B_TBaseMore,   B_TShiftMore,  B_None,        B_None},         // RL4
-    {B_None,     B_3,       B_Down,        B_None,        B_TrigLevLess, B_TrigLevMore, B_RangeLessB,  B_RShiftMoreB},  // RL0
     {B_Memory,   B_Display, B_RShiftMoreA, B_RShiftLessA, B_Time,        B_TBaseLess,   B_None,        B_None},         // RL5
     {B_Function, B_Service, B_RangeLessA,  B_RangeMoreA,  B_None,        B_TShiftLess,  B_None,        B_None}          // RL3
 };               
@@ -43,8 +43,8 @@ static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
 static uint16 sls[Keyboard::NUM_SL]             = {SL2,   SL1,   SL3,   SL0,   SL4,   SL6,   SL5,   SL7};
 static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOB, GPIOB, GPIOB, GPIOB, GPIOD, GPIOC, GPIOD, GPIOC};
 
-static uint16 rls[Keyboard::NUM_RL]             = {RL0,   RL1,   RL2,   RL3,   RL4,   RL5};
-static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOA, GPIOA, GPIOA, GPIOD, GPIOD, GPIOD};
+static uint16 rls[Keyboard::NUM_RL]             = {RL3,   RL0,   RL1,   RL2,   RL4,   RL5};
+static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOD, GPIOA, GPIOA, GPIOA, GPIOD, GPIOD};
 
 #define SET_SL(n)   HAL_GPIO_WritePin(slsPorts[n], sls[n], GPIO_PIN_SET);
 #define SET_ALL_SL  HAL_GPIO_WritePin(GPIOB, SL0 | SL1 | SL2 | SL3, GPIO_PIN_SET);  \
