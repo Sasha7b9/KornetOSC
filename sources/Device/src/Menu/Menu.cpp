@@ -46,6 +46,8 @@ void Menu::Update()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ButtonPress(Key btn, TypePress tPress)
 {
+    Display::SetKey(btn);
+
     typePress = tPress;
 
     button = btn;

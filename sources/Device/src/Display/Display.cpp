@@ -19,7 +19,57 @@ static CHAR_BUF2(buffer, SIZE_CONSOLE, 100);
 static int stringInConsole = 0;
 
 bool Display::inProcessDrawConsole = false;
+Key Display::key = K_None;
 
+
+const char *ControlName(Key control)
+{
+    static const char *names[NumButtons] =
+    {
+        "None",
+        "Функция",
+        "Измер",
+        "Память",
+        "Сервис",
+        "Канал 1",
+        "Канал 2",
+        "Развертка",
+        "Пуск/стоп",
+        "Синхр",
+        "Дисплей",
+        "Range 1 больше",
+        "Range 1 меньше",
+        "RShift 1 больше",
+        "RShift 1 меньше",
+        "Range 2 больше",
+        "Range 2 меньше",
+        "RShift 2 больше",
+        "RShift 2 меньше",
+        "TBase больше",
+        "TBase меньше",
+        "TShift больше",
+        "TShift меньше",
+        "Синхр больше",
+        "Синхр меньше",
+        "Влево",
+        "Вправо",
+        "Вверх",
+        "Вниз",
+        "Ввод",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+    };
+
+    return names[control];
+}
+
+void Display::SetKey(Key key_)
+{
+    key = key_;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display::Init()
@@ -71,6 +121,8 @@ void Display::UpdateOsci()
     DrawConsole();
 
     Menu::Draw();
+
+    painter.DrawText(10, 10, ControlName(key), Color::FILL);
 
     painter.EndScene();
 }

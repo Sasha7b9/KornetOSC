@@ -12,7 +12,7 @@ enum Control
     B_Time,         //
     B_Start,
     B_Trig,         //
-    B_Menu,
+    B_Display,
     B_RangeMoreA,
     B_RangeLessA,
     B_RShiftMoreA,
