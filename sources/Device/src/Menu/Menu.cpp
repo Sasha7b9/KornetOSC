@@ -344,7 +344,7 @@ void Menu::Draw()
     {
         if (Device::CurrentMode() == Mode_Osci)
         {
-            CURRENT_PAGE->Draw(grid.Left(), grid.Bottom() - Control::HEIGHT);
+            CURRENT_PAGE->Draw(Grid::Left(), Grid::Bottom() - Control::HEIGHT);
         }
         else if (Device::CurrentMode() == Mode_Tester)
         {
