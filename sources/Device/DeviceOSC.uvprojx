@@ -1847,14 +1847,14 @@
               <FilePath>.\src\Hardware\GPIO.h</FilePath>
             </File>
             <File>
-              <FileName>FLASH.cpp</FileName>
+              <FileName>EPROM.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\FLASH.cpp</FilePath>
+              <FilePath>.\src\Hardware\EPROM.cpp</FilePath>
             </File>
             <File>
-              <FileName>FLASH.h</FileName>
+              <FileName>EPROM.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\FLASH.h</FilePath>
+              <FilePath>.\src\Hardware\EPROM.h</FilePath>
             </File>
           </Files>
         </Group>

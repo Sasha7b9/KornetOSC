@@ -87,9 +87,6 @@
     <ClCompile Include="..\..\Device\src\FPGA\Storage.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Hardware\FLASH.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -186,6 +183,9 @@
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Hardware\EPROM.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -262,9 +262,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\FPGA\Storage.h">
       <Filter>FPGA</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Hardware\FLASH.h">
-      <Filter>Hardware</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h">
       <Filter>Hardware</Filter>
@@ -420,6 +417,9 @@
       <Filter>Hardware\stm32</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Hardware\EPROM.h">
       <Filter>Hardware</Filter>
     </ClInclude>
   </ItemGroup>
