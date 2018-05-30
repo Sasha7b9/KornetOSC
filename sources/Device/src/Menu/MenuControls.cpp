@@ -20,9 +20,9 @@ void Page::Draw(int x, int y) const
     {
         if (Title())
         {
-            painter.DrawBoundedRegion(x, y - 12, Control::Width(), 12, Color::BACK, Color::FILL);
+            Painter::DrawBoundedRegion(x, y - 12, Control::Width(), 12, Color::BACK, Color::FILL);
 
-            painter.DrawText(x + 3, y - 10, Title(), Color::FILL);
+            Painter::DrawText(x + 3, y - 10, Title(), Color::FILL);
         }
 
         for (int control = firstControl; control < numControls + CONTROLS_ON_SUBPAGE; ++control)
@@ -74,13 +74,13 @@ char *Control::Title() const
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Choice::Draw(int x, int y) const
 {
-    painter.DrawBoundedRegion(x, y, Control::Width(), Control::HEIGHT, Color::BACK, Color::FILL);
+    Painter::DrawBoundedRegion(x, y, Control::Width(), Control::HEIGHT, Color::BACK, Color::FILL);
 
-    painter.FillRegion(x + 1, y + 1, Control::Width() - 2, 10, Color::GRID);
+    Painter::FillRegion(x + 1, y + 1, Control::Width() - 2, 10, Color::GRID);
 
-    painter.DrawText(x + 3, y + 2, Title(), Color::BACK);
+    Painter::DrawText(x + 3, y + 2, Title(), Color::BACK);
 
-    painter.DrawText(x + 3, y + 13, NameItem(), Color::FILL);
+    Painter::DrawText(x + 3, y + 13, NameItem(), Color::FILL);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -118,16 +118,16 @@ void Button::PressKey(Key) const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Button::Draw(int x, int y) const
 {
-    painter.DrawBoundedRegion(x, y, Control::Width(), Control::HEIGHT, Color::BACK, Color::FILL);
+    Painter::DrawBoundedRegion(x, y, Control::Width(), Control::HEIGHT, Color::BACK, Color::FILL);
 
     if (cf.NumWords(Title()) == 1)
     {
-        painter.DrawText(x + 3, y + 5, Title(), Color::FILL);
+        Painter::DrawText(x + 3, y + 5, Title(), Color::FILL);
     }
     else
     {
         char buffer[20];
-        painter.DrawText(x + 3, y + 3, cf.GetWord(Title(), 0, buffer, 20), Color::FILL);
-        painter.DrawText(x + 3, y + 12, cf.GetWord(Title(), 1, buffer, 20), Color::FILL);
+        Painter::DrawText(x + 3, y + 3, cf.GetWord(Title(), 0, buffer, 20), Color::FILL);
+        Painter::DrawText(x + 3, y + 12, cf.GetWord(Title(), 1, buffer, 20), Color::FILL);
     }
 }

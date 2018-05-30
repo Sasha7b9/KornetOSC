@@ -74,16 +74,16 @@ void Display::SetKey(Key key_)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display::Init()
 {
-    painter.SetPalette(Color::BACK,        0x00000000);
-    painter.SetPalette(Color::FILL,        0x00ffffff);
-    painter.SetPalette(Color::CHAN_A,      0x000000ff);
-    painter.SetPalette(Color::CHAN_A_HALF, 0x00000080);
-    painter.SetPalette(Color::CHAN_B,      0x0000ff00);
-    painter.SetPalette(Color::CHAN_B_HALF, 0x00008000);
-    painter.SetPalette(Color::GRID,        0x00afafaf);
-    painter.SetPalette(Color::BLUE,        0x000000ff);
-    painter.SetPalette(Color::GREEN,       0x0000ff00);
-    painter.SetPalette(Color::RED,         0x00ff0000);
+    Painter::SetPalette(Color::BACK,        0x00000000);
+    Painter::SetPalette(Color::FILL,        0x00ffffff);
+    Painter::SetPalette(Color::CHAN_A,      0x000000ff);
+    Painter::SetPalette(Color::CHAN_A_HALF, 0x00000080);
+    Painter::SetPalette(Color::CHAN_B,      0x0000ff00);
+    Painter::SetPalette(Color::CHAN_B_HALF, 0x00008000);
+    Painter::SetPalette(Color::GRID,        0x00afafaf);
+    Painter::SetPalette(Color::BLUE,        0x000000ff);
+    Painter::SetPalette(Color::GREEN,       0x0000ff00);
+    Painter::SetPalette(Color::RED,         0x00ff0000);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ void Display::Update()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::UpdateOsci()
 {
-    painter.BeginScene(Color::BACK);
+    Painter::BeginScene(Color::BACK);
 
     DrawGrid();
 
@@ -122,20 +122,20 @@ void Display::UpdateOsci()
 
     Menu::Draw();
 
-    painter.DrawText(10, 10, ControlName(key), Color::FILL);
+    Painter::DrawText(10, 10, ControlName(key), Color::FILL);
 
-    painter.EndScene();
+    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::UpdateTester()
 {
-    painter.BeginScene(Color::BACK);
+    Painter::BeginScene(Color::BACK);
 
     int size = 239;
 
-    painter.DrawRectangle(0, 0, size, size, Color::FILL);
-    painter.DrawRectangle(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
+    Painter::DrawRectangle(0, 0, size, size, Color::FILL);
+    Painter::DrawRectangle(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
 
     for (int i = 0; i < NUM_STEPS; i++)
     {
@@ -146,7 +146,7 @@ void Display::UpdateTester()
 
     DrawConsole();
 
-    painter.EndScene();
+    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -157,7 +157,7 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
     uint8 *dataX = &dataTester[A][numStep][0];
     uint8 *dataY = &dataTester[B][numStep][0];
 
-    painter.SetColor(colors[numStep]);
+    Painter::SetColor(colors[numStep]);
     
     mathOSC.Smoothing(dataX, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
     mathOSC.Smoothing(dataY, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
@@ -170,7 +170,7 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
         {
             int x2 = x0 + TESTER_NUM_POINTS - (dataX[i] - MIN_VALUE);
             int y2 = y0 + dataY[i] - MIN_VALUE;
-            painter.DrawLine(x1, y1, x2, y2);
+            Painter::DrawLine(x1, y1, x2, y2);
             x1 = x2;
             y1 = y2;
         }
@@ -184,7 +184,7 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
 
             if (x > x0 && x < x0 + TESTER_NUM_POINTS && y > y0 && y < y0 + TESTER_NUM_POINTS)
             {
-                painter.SetPoint(x, y);
+                Painter::SetPoint(x, y);
             }
         }
     }
@@ -193,11 +193,11 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::UpdateMultimeter()
 {
-    painter.BeginScene(Color::BACK);
+    Painter::BeginScene(Color::BACK);
 
-    painter.DrawText(10, 10, "Ìףכüעטלוענ", Color::RED);
+    Painter::DrawText(10, 10, "Ìףכüעטלוענ", Color::RED);
 
-    painter.EndScene();
+    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -206,21 +206,21 @@ void Display::DrawGrid()
     int x0 = grid.Left();
     int y0 = grid.Top();
 
-    painter.DrawVLine(x0 + Grid::WIDTH / 2, y0, y0 + Grid::HEIGHT, Color::GRID);
+    Painter::DrawVLine(x0 + Grid::WIDTH / 2, y0, y0 + Grid::HEIGHT, Color::GRID);
 
-    painter.DrawHLine(y0 + Grid::HEIGHT / 2, x0, x0 + Grid::WIDTH);
+    Painter::DrawHLine(y0 + Grid::HEIGHT / 2, x0, x0 + Grid::WIDTH);
 
     for (int x = x0; x < x0 + grid.Width(); x += Grid::SIZE_CELL)
     {
-        painter.DrawVLine(x, y0, y0 + Grid::HEIGHT);
+        Painter::DrawVLine(x, y0, y0 + Grid::HEIGHT);
     }
 
     for (int y = y0; y < y0 + Grid::HEIGHT; y += Grid::SIZE_CELL)
     {
-        painter.DrawHLine(y, x0, x0 + Grid::WIDTH);
+        Painter::DrawHLine(y, x0, x0 + Grid::WIDTH);
     }
 
-    painter.DrawRectangle(x0, y0, Grid::WIDTH, Grid::HEIGHT, Color::FILL);
+    Painter::DrawRectangle(x0, y0, Grid::WIDTH, Grid::HEIGHT, Color::FILL);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -234,7 +234,7 @@ void Display::WriteLowPart()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Display::WriteChannel(Channel ch, int x, int y)
 {
-    painter.DrawText(x, y, ch == A ? "1:" : "2:", Color::Chan(ch));
+    Painter::DrawText(x, y, ch == A ? "1:" : "2:", Color::Chan(ch));
     
     x += 7;
 
@@ -242,11 +242,11 @@ int Display::WriteChannel(Channel ch, int x, int y)
 
     char string[2] = {symbols[SET_COUPLE(ch)], 0};
 
-    painter.DrawText(x, y, string);
+    Painter::DrawText(x, y, string);
 
     x += 8;
 
-    painter.DrawText(x, y, NameRange(SET_RANGE(ch)));
+    Painter::DrawText(x, y, NameRange(SET_RANGE(ch)));
 
     x += 22;
 
@@ -254,7 +254,7 @@ int Display::WriteChannel(Channel ch, int x, int y)
 
     mathOSC.Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buf);
 
-    painter.DrawText(x, y, buf);
+    Painter::DrawText(x, y, buf);
 
     return x + 47;
 }
@@ -262,7 +262,7 @@ int Display::WriteChannel(Channel ch, int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::WriteTBase(int x, int y)
 {
-    painter.DrawText(x, y, NameTBase(SET_TBASE), Color::FILL);
+    Painter::DrawText(x, y, NameTBase(SET_TBASE), Color::FILL);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -275,19 +275,19 @@ void Display::DrawRShift()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawRShift(Channel ch)
 {
-    painter.SetColor(Color::Chan(ch));
+    Painter::SetColor(Color::Chan(ch));
 
     int delta = (SET_RSHIFT(ch) - RShiftZero) / STEP_RSHIFT;
 
     int y = (grid.Bottom() - grid.Top()) / 2 + grid.Top() - delta;
 
-    painter.DrawChar(grid.Left() - 8, y - 4, (char)SYMBOL_RSHIFT_MARKER);
+    Painter::DrawChar(grid.Left() - 8, y - 4, (char)SYMBOL_RSHIFT_MARKER);
 
-    painter.SetFont(TypeFont_5);
+    Painter::SetFont(TypeFont_5);
 
-    painter.DrawChar(grid.Left() - 7, y - 6, ch == A ? '1' : '2', Color::BACK);
+    Painter::DrawChar(grid.Left() - 7, y - 6, ch == A ? '1' : '2', Color::BACK);
 
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_8);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -315,17 +315,17 @@ void Display::DrawConsole()
 {
     inProcessDrawConsole = true;
 
-    painter.SetFont(TypeFont_5);
+    Painter::SetFont(TypeFont_5);
 
     int y = 0;
 
     for (int i = 0; i < stringInConsole; i++)
     {
-        painter.DrawText(1, y, buffer[i], Color::FILL);
+        Painter::DrawText(1, y, buffer[i], Color::FILL);
         y += 6;
     }
 
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_8);
 
     inProcessDrawConsole = false;
 }

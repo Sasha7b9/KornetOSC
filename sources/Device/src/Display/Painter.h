@@ -39,26 +39,39 @@ typedef enum
 class Painter
 {
 public:
-    void BeginScene(uint8 color);
-    void EndScene();
+    static void BeginScene(uint8 color);
+
+    static void EndScene();
     /// Елси не передавать значение цвета, то цвет останется прежним
-    void SetColor(uint8 color = 255);
-    void FillRegion(int x, int y, int width, int height, uint8 color = 255);
-    void DrawText(int x, int y, const char *text, uint8 color = 255);
-    void SetPalette(uint8 numColor, uint valueColor);
-    void DrawRectangle(int x, int y, int width, int height, uint8 color = 255);
-    void DrawFormatText(int x, int y, uint8 color, char *format, ...);
-    void DrawChar(int x, int y, char symbol, uint8 color = 255);
-    void DrawHLine(int y, int x0, int x1, uint8 color = 255);
-    void DrawHLine(float y, int x0, int x1, uint8 color = 255);
-    void DrawVLine(int x, int y0, int y1, uint8 color = 255);
-    void DrawVLine(int x, float y0, float y1, uint8 color = 255);
-    void DrawLine(int x0, int y0, int x1, int y1, uint8 color = 255);
-    void SetFont(TypeFont typeFont);
-    void SetPoint(int x, int y, uint8 color = 255);
-    void DrawBoundedRegion(int x, int y, int width, int height, uint8 colorFill, uint8 colorBound);
+    static void SetColor(uint8 color = 255);
+
+    static void FillRegion(int x, int y, int width, int height, uint8 color = 255);
+
+    static void DrawText(int x, int y, const char *text, uint8 color = 255);
+
+    static void SetPalette(uint8 numColor, uint valueColor);
+
+    static void DrawRectangle(int x, int y, int width, int height, uint8 color = 255);
+
+    static void DrawFormatText(int x, int y, uint8 color, char *format, ...);
+
+    static void DrawChar(int x, int y, char symbol, uint8 color = 255);
+
+    static void DrawHLine(int y, int x0, int x1, uint8 color = 255);
+
+    static void DrawHLine(float y, int x0, int x1, uint8 color = 255);
+
+    static void DrawVLine(int x, int y0, int y1, uint8 color = 255);
+
+    static void DrawVLine(int x, float y0, float y1, uint8 color = 255);
+
+    static void DrawLine(int x0, int y0, int x1, int y1, uint8 color = 255);
+
+    static void SetFont(TypeFont typeFont);
+
+    static void SetPoint(int x, int y, uint8 color = 255);
+
+    static void DrawBoundedRegion(int x, int y, int width, int height, uint8 colorFill, uint8 colorBound);
+
 private:
 };
-
-
-extern Painter painter;

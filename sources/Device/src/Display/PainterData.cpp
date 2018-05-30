@@ -43,7 +43,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
     {
         if (THICKNESS_SIGNAL_IS_3)
         {
-            painter.SetColor(Color::ChanHalf(ch));
+            Painter::SetColor(Color::ChanHalf(ch));
 
             float valuePrev = bottom - data[0] * scale;
 
@@ -51,14 +51,14 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
             {
                 float value = bottom - data[i] * scale;
 
-                painter.DrawVLine(left + i - 2, valuePrev, value);
-                painter.DrawVLine(left + i, valuePrev, value);
+                Painter::DrawVLine(left + i - 2, valuePrev, value);
+                Painter::DrawVLine(left + i, valuePrev, value);
 
                 valuePrev = value;
             }
         }
 
-        painter.SetColor(Color::Chan(ch));
+        Painter::SetColor(Color::Chan(ch));
 
         int x = left;
 
@@ -68,29 +68,29 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
             float valuePrev = bottom - data[i - 1] * scale;
             value += mathOSC.Sign(valuePrev - value);          // Это сделано чтобы не ухудшать вывод двумя точками на горизонтали в месте соприкоснове-
                                                             // ния двух вертикальных линий
-            painter.DrawVLine(x++, valuePrev, value);
+            Painter::DrawVLine(x++, valuePrev, value);
         }
     }
     else
     {
         if (THICKNESS_SIGNAL_IS_3)
         {
-            painter.SetColor(Color::ChanHalf(ch));
+            Painter::SetColor(Color::ChanHalf(ch));
 
             for (int i = 0; i < 280; i++)
             {
                 float value = bottom - data[i] * scale;
-                painter.DrawHLine(value, left + i - 1, left + i + 1);
-                painter.DrawVLine(left + i, value - 1, value + 1);
+                Painter::DrawHLine(value, left + i - 1, left + i + 1);
+                Painter::DrawVLine(left + i, value - 1, value + 1);
             }
         }
 
-        painter.SetColor(Color::Chan(ch));
+        Painter::SetColor(Color::Chan(ch));
 
         for (int i = 0; i < 280; i++)
         {
             float value = bottom - data[i] * scale;
-            painter.SetPoint(left + i, (uint8)ROUND(value));
+            Painter::SetPoint(left + i, (uint8)ROUND(value));
         }
     }
 }
