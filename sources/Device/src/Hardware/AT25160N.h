@@ -22,4 +22,8 @@ private:
     };
     static void WriteReg(Reg reg, uint8 data = 0);
     static uint8 ReadReg(Reg reg);
+    static void SetPin(GPIO_TypeDef *gpio, uint16 pin);
+    static void ResetPin(GPIO_TypeDef *gpio, uint16 pin);
+    static void WriteData(const uint8 *buffer, int size);
+    static uint8 ReadByte();
 };
