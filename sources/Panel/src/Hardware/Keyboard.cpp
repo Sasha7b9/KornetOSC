@@ -20,15 +20,15 @@ static TIM_HandleTypeDef handleTIM4;
 #define SL6 GPIO_PIN_9
 #define SL7 GPIO_PIN_9
 
-#define RL0 GPIO_PIN_8
-#define RL1 GPIO_PIN_9
-#define RL2 GPIO_PIN_10
-#define RL3 GPIO_PIN_13
-#define RL4 GPIO_PIN_12
-#define RL5 GPIO_PIN_11
+#define RL0 GPIO_PIN_13
+#define RL1 GPIO_PIN_8
+#define RL2 GPIO_PIN_9
+#define RL3 GPIO_PIN_11
+#define RL4 GPIO_PIN_10
+#define RL5 GPIO_PIN_12
+
 
 static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
-  
 { // SL0         SL1        SL2            SL3            SL4            SL5            SL6            SL7
     {B_None,     B_3,       B_Down,        B_None,        B_TrigLevLess, B_TrigLevMore, B_RangeLessB,  B_RShiftMoreB},  // RL0
     {B_1,        B_4,       B_Right,       B_Enter,       B_Start,       B_Trig,        B_RangeMoreB,  B_RShiftLessB},  // RL1
@@ -38,19 +38,11 @@ static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
     {B_Memory,   B_Display, B_RShiftMoreA, B_RShiftLessA, B_Time,        B_TBaseLess,   B_None,        B_None}          // RL5
 };               
 
-/*
-    RL3 -> RL0
-    RL0 -> RL1
-    RL1 -> RL2
-    RL5 -> RL3
-    RL2 -> RL4
-    RL4 -> RL5
-*/
 
 static uint16 sls[Keyboard::NUM_SL]             = {SL0,   SL1,   SL2,   SL3,   SL4,   SL5,   SL6,   SL7};
 static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOB, GPIOB, GPIOB, GPIOB, GPIOD, GPIOC, GPIOD, GPIOC};
 
-static uint16 rls[Keyboard::NUM_RL]             = {RL3,   RL0,   RL1,   RL5,   RL2,   RL4};
+static uint16 rls[Keyboard::NUM_RL]             = {RL0,   RL1,   RL2,   RL3,   RL4,   RL5};
 static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOD, GPIOA, GPIOA, GPIOD, GPIOA, GPIOD};
 
 #define SET_SL(n)   HAL_GPIO_WritePin(slsPorts[n], sls[n], GPIO_PIN_SET);
@@ -85,12 +77,12 @@ void Keyboard::Init()
     GPIO_InitTypeDef isGPIO;
 
     // порты ввода
-    isGPIO.Pin = RL0 | RL1 | RL2;
+    isGPIO.Pin = RL1 | RL2 | RL4;
     isGPIO.Mode = GPIO_MODE_INPUT;
     isGPIO.Pull = GPIO_PULLUP;
     HAL_GPIO_Init(GPIOA, &isGPIO);
 
-    isGPIO.Pin = RL3 | RL4 | RL5;
+    isGPIO.Pin = RL0 | RL5 | RL3;
     HAL_GPIO_Init(GPIOD, &isGPIO);
 
     // порты вывода
