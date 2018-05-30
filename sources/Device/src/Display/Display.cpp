@@ -159,8 +159,8 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
 
     Painter::SetColor(colors[numStep]);
     
-    mathOSC.Smoothing(dataX, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
-    mathOSC.Smoothing(dataY, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
+    MathOSC::Smoothing(dataX, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
+    MathOSC::Smoothing(dataY, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
 
     if (VIEW_MODE_IS_LINES)
     {
@@ -252,7 +252,7 @@ int Display::WriteChannel(Channel ch, int x, int y)
 
     CHAR_BUF(buf, 20);
 
-    mathOSC.Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buf);
+    MathOSC::Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buf);
 
     Painter::DrawText(x, y, buf);
 

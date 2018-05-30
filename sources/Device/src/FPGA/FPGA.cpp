@@ -479,7 +479,7 @@ void FPGA::GPIO_Init()
 
     for (int i = 0; i < Num_Pins; i++)
     {
-        gpio.SetOutputPP_PullDown(GetPort((Pin)i), (uint)mathOSC.LowSignedBit(GetPin((Pin)i)));
+        gpio.SetOutputPP_PullDown(GetPort((Pin)i), (uint)MathOSC::LowSignedBit(GetPin((Pin)i)));
     }
 }
 

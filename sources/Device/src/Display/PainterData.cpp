@@ -62,7 +62,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
         {
             float value = bottom - data[i] * scale;
             float valuePrev = bottom - data[i - 1] * scale;
-            value += mathOSC.Sign(valuePrev - value);          // Это сделано чтобы не ухудшать вывод двумя точками на горизонтали в месте соприкоснове-
+            value += MathOSC::Sign(valuePrev - value);          // Это сделано чтобы не ухудшать вывод двумя точками на горизонтали в месте соприкоснове-
                                                             // ния двух вертикальных линий
             Painter::DrawVLine(x++, valuePrev, value);
         }

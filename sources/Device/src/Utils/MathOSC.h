@@ -16,9 +16,8 @@ class MathOSC
 {
 public:
 
-
     template<class T>
-    void CircleIncrease(T &value, int min, int max)
+    static void CircleIncrease(T &value, int min, int max)
     {
         if (value < max)
         {
@@ -72,9 +71,9 @@ public:
     }
 
     /// Переводит значение voltage в тествоый вид в готовом для вывода на экран виде
-    char *Voltage2String(float voltage, bool alwaysSign, char buffer[20]);
+    static char *Voltage2String(float voltage, bool alwaysSign, char buffer[20]);
     /// Переводит число с плавающей точкой в текстовый вид. numDigits - число цифровых знакомест
-    char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20]);
+    static char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20]);
 
     template<class T>
     static void Limitation(T *value, T min, T max)
@@ -89,25 +88,22 @@ public:
         }
     }
 
-    int LowSignedBit(uint value);
+    static int LowSignedBit(uint value);
 
     char *Bin2String16(uint16 value, char valBuffer[19]);
 
     template<class T>
-    int Sign(T x)
+    static int Sign(T x)
     {
         if (x > (T)(0)) { return 1; }
         if (x < (T)(0)) { return -1; }
         return 0;
     }
 
-    void Smoothing(uint8 *data, int numPoints, int numSmooth);
+    static void Smoothing(uint8 *data, int numPoints, int numSmooth);
 
 private:
     static int NumDigitsInIntPart(float value);
 
     char *Bin2String(uint8 value, char buffer[9]);
 };
-
-
-extern MathOSC mathOSC;
