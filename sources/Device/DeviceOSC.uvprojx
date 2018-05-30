@@ -1856,6 +1856,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\EEPROM.h</FilePath>
             </File>
+            <File>
+              <FileName>AT25160N.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\AT25160N.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>AT25160N.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\AT25160N.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -122,7 +122,7 @@ void Display::UpdateOsci()
 
     Menu::Draw();
 
-    Painter::DrawText(10, 10, ControlName(key), Color::FILL);
+    //Painter::DrawText(10, 10, ControlName(key), Color::FILL);
 
     Painter::EndScene();
 }
