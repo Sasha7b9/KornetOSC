@@ -5,8 +5,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-FlashMemory flash;
-
 /// ѕервый сектор дл€ сохранени€ настроек. ѕри его заполнении начинает использоватьс€ сектор 2.
 #define ADDR_SECTOR_SETTINGS_1  ((uint)0x080C0000)
 /// ¬торой сектор дл€ сохранени€ настроек. ѕри его заполнении начинает использоватьс€ сектор 1.
@@ -28,7 +26,7 @@ FlashMemory flash;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FlashMemory::SaveSettings()
+void EPROM::SaveSettings()
 {
     /*
         јлгоритм нахождени€ первого свободного слова
@@ -65,7 +63,7 @@ void FlashMemory::SaveSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashMemory::LoadSettings()
+void EPROM::LoadSettings()
 {
     uint address = AddressSavedSettings(0);
 
@@ -76,7 +74,7 @@ void FlashMemory::LoadSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint FlashMemory::FirstFreeAddressForSettings()
+uint EPROM::FirstFreeAddressForSettings()
 {
     uint address = ADDR_SECTOR_SETTINGS_1;
 
@@ -98,7 +96,7 @@ uint FlashMemory::FirstFreeAddressForSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint FlashMemory::AddressSavedSettings(int)
+uint EPROM::AddressSavedSettings(int)
 {
     uint addrPrev = 0;
 
@@ -114,14 +112,14 @@ uint FlashMemory::AddressSavedSettings(int)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint FlashMemory::AddressFirstEmptyByte()
+uint EPROM::AddressFirstEmptyByte()
 {
     uint address = AddressSavedSettings(0);
     return address + READ_DOUBLEWORD(address);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint FlashMemory::GetSector(uint address)
+uint EPROM::GetSector(uint address)
 {
     if (address == ADDR_SECTOR_SETTINGS_1)
     {
@@ -138,7 +136,7 @@ uint FlashMemory::GetSector(uint address)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashMemory::EraseSector(uint address)
+void EPROM::EraseSector(uint address)
 {
     CLEAR_FLASH_FLAGS;
 
@@ -164,7 +162,7 @@ void FlashMemory::EraseSector(uint address)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashMemory::WriteBytes(uint address, uint8 *data, int size)
+void EPROM::WriteBytes(uint address, uint8 *data, int size)
 {
     CLEAR_FLASH_FLAGS;
 
@@ -183,7 +181,7 @@ void FlashMemory::WriteBytes(uint address, uint8 *data, int size)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashMemory::ReadBytes(uint address, void *data, uint size)
+void EPROM::ReadBytes(uint address, void *data, uint size)
 {
     uint8 *buffer = (uint8 *)data;
 
