@@ -6,18 +6,15 @@
 class Debug
 {
 public:
-    void StartProfiling();
-    void PointProfiling(char *name);
+    static void StartProfiling();
+    static void PointProfiling(char *name);
 
-    void ClearTimeCounter();
-    void StartIncreaseCounter();
-    void StopIncreaseCounter();
-    uint GetTimeCounterUS();
+    static void ClearTimeCounter();
+    static void StartIncreaseCounter();
+    static void StopIncreaseCounter();
+    static uint GetTimeCounterUS();
 private:
-    uint timeStart;
-    uint timeCounter;
-    uint timeStartCounter;
+    static uint timeStart;
+    static uint timeCounter;
+    static uint timeStartCounter;
 };
-
-
-extern Debug debug;
