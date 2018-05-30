@@ -80,11 +80,11 @@ void FPGA::Init()
     ResetPin(SPI3_SCK);
     ResetPin(SPI3_DAT);
 
-    ad9286.Init();
+    AD9286::Init();
 
-    ad9286.WriteByte(0x09, 0x09);
+    AD9286::WriteByte(0x09, 0x09);
     /// \todo Это должно быть в функции записи
-    ad9286.WriteByte(0xff, 0x01);   // Пишем бит подтверждения.
+    AD9286::WriteByte(0xff, 0x01);   // Пишем бит подтверждения.
 
     // Теперь настроим вход АЦП от рандомизатора
     // PF10 - ADC3 IN8
