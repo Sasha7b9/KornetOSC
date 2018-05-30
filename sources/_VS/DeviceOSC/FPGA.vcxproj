@@ -28,7 +28,7 @@
     <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\Storage.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp" />
-    <ClCompile Include="..\..\Device\src\Hardware\EPROM.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\EEPROM.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\GPIO.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\Hardware.cpp" />
@@ -93,7 +93,7 @@
     <ClInclude Include="..\..\Device\src\FPGA\FPGA_Types.h" />
     <ClInclude Include="..\..\Device\src\FPGA\Storage.h" />
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />
-    <ClInclude Include="..\..\Device\src\Hardware\EPROM.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\EEPROM.h" />
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h" />
     <ClInclude Include="..\..\Device\src\Hardware\GPIO.h" />
     <ClInclude Include="..\..\Device\src\Hardware\Hardware.h" />

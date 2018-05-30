@@ -183,7 +183,7 @@
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Hardware\EPROM.cpp">
+    <ClCompile Include="..\..\Device\src\Hardware\EEPROM.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
   </ItemGroup>
@@ -419,7 +419,7 @@
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h">
       <Filter>Hardware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Hardware\EPROM.h">
+    <ClInclude Include="..\..\Device\src\Hardware\EEPROM.h">
       <Filter>Hardware</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1847,14 +1847,14 @@
               <FilePath>.\src\Hardware\GPIO.h</FilePath>
             </File>
             <File>
-              <FileName>EPROM.cpp</FileName>
+              <FileName>EEPROM.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\EPROM.cpp</FilePath>
+              <FilePath>.\src\Hardware\EEPROM.cpp</FilePath>
             </File>
             <File>
-              <FileName>EPROM.h</FileName>
+              <FileName>EEPROM.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\EPROM.h</FilePath>
+              <FilePath>.\src\Hardware\EEPROM.h</FilePath>
             </File>
           </Files>
         </Group>
