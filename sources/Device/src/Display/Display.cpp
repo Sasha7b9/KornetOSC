@@ -116,7 +116,7 @@ void Display::UpdateOsci()
 
     DrawRShift();
 
-    painterData.DrawData();
+    PainterData::DrawData();
    
     DrawConsole();
 
