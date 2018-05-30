@@ -3,15 +3,15 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class CommonFunctions
+class CF
 {
 public:
     /// Выводит в консоль num первых значений из buffer
-    void LogBufferU8(uint8 *buffer, int num);
+    static void LogBufferU8(uint8 *buffer, int num);
     /// Возвращает число слов в строке string
-    int NumWords(char *string);
+    static int NumWords(char *string);
     /// Возвращает указатель на n слово в строке. Если char == 0 - слова нет, если ret value == 0xffffffff - выходной буфер слишком мал
-    char *GetWord(char *string, int n, char *out, int size);
+    static char *GetWord(char *string, int n, char *out, int size);
 };
 
 
@@ -27,6 +27,3 @@ private:
     uint16 buffer[5];
     int numElements;
 };
-
-
-extern CommonFunctions cf;

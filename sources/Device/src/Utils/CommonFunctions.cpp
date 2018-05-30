@@ -6,11 +6,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-CommonFunctions cf;
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void CommonFunctions::LogBufferU8(uint8 *buffer, int num)
+void CF::LogBufferU8(uint8 *buffer, int num)
 {
     char *message = (char *)malloc((uint)(num * 3));
 
@@ -32,7 +28,7 @@ void CommonFunctions::LogBufferU8(uint8 *buffer, int num)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int CommonFunctions::NumWords(char *string)
+int CF::NumWords(char *string)
 {
     int num = 0;
 
@@ -56,7 +52,7 @@ int CommonFunctions::NumWords(char *string)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *CommonFunctions::GetWord(char *string, int n, char *out, int size)
+char *CF::GetWord(char *string, int n, char *out, int size)
 {
     if (n >= NumWords(string))
     {
