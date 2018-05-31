@@ -377,7 +377,7 @@ int FPGA::CalculateShift()
         float tin = (float)(adcValueFPGA - min) / (max - min);
         int retValue = (int)(tin * Kr[SET_TBASE] + 0.5f);
 
-//        LOG_MESSAGE("%d - %d", adcValueFPGA, retValue);
+//        LOG_WRITE("%d - %d", adcValueFPGA, retValue);
 
         return retValue;
     }
@@ -390,7 +390,7 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
 {
     if (rand < 500 || rand > 4000)
     {
-        LOG_MESSAGE("Œÿ»¡ ¿!!! Ò˜ËÚ‡ÌÓ %d", rand);
+        LOG_WRITE("Œÿ»¡ ¿!!! Ò˜ËÚ‡ÌÓ %d", rand);
         return false;
     }
 
@@ -433,7 +433,7 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
         minGate = 0.8f * minGate + min * 0.2f;
         maxGate = 0.8f * maxGate + max * 0.2f;
 
-        LOG_MESSAGE("%.1f %.1f", (double)minGate, (double)maxGate);
+        LOG_WRITE("%.1f %.1f", (double)minGate, (double)maxGate);
 
         numElements = 0;
         min = 0xffff;
@@ -837,7 +837,7 @@ void ADC_IRQHandler(void)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
     adcValueFPGA = (uint16)HAL_ADC_GetValue(hadc);
-//    LOG_MESSAGE("%d", adcValueFPGA);
+//    LOG_WRITE("%d", adcValueFPGA);
 }
 
 #ifdef __cplusplus

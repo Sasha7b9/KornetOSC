@@ -212,7 +212,7 @@ void FSMC::ConfigureForFPGA()
 
     /*
     uint time = gTimeTicks;
-    LOG_MESSAGE("время переключения %d тиков", time - startTime);
+    LOG_WRITE("время переключения %d тиков", time - startTime);
     */
 }
 

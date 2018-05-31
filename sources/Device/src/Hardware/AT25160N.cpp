@@ -92,28 +92,20 @@ void AT25160N::Test()
 
     SetWriteLatch();
 
-    uint8 status = (uint8)(ReadStatusRegister() & 0x73); /// Обнуляем биты 7, 3, 2 для разрешения записи везде
-
-    SetWriteLatch();
-
-    WriteStatusRegister(status);
-
-    WaitFinishWrite();
-
     uint time1 = gTimeMS;
 
     WriteData(0, data, size);
 
     uint time2 = gTimeMS;
 
-    WaitFinishWrite();
+    //WaitFinishWrite();
 
     ReadData(0, out, size);
     ResetWriteLatch();
 
     uint time3 = gTimeMS;
 
-    LOG_MESSAGE("1 = %d, 2 = %d, 3 = %d, %d", time1 - timeStart, time2 - time1, time3 - time2, time3 - timeStart);
+    LOG_WRITE("1 = %d, 2 = %d, 3 = %d, %d", time1 - timeStart, time2 - time1, time3 - time2, time3 - timeStart);
 
     bool testIsOk = true;
 
@@ -122,18 +114,18 @@ void AT25160N::Test()
         if(data[i] != out[i])
         {
             testIsOk = false;
-            LOG_MESSAGE("ошибка на %d-м элементе", i);
+            LOG_WRITE("ошибка на %d-м элементе", i);
             break;
         }
     }
 
     if(testIsOk)
     {
-        LOG_MESSAGE("Test is OK!!!");
+        LOG_WRITE("Test is OK!!!");
     }
     else
     {
-        LOG_MESSAGE("WARNING!!! Test is failed!!!");
+        LOG_WRITE("WARNING!!! Test is failed!!!");
     }
 }
 
@@ -318,13 +310,15 @@ void AT25160N::ReadData(uint address, uint8 *data, uint size)
 
         for (int j = 0; j < 8; j++)
         {
-            SetPin(PIN_CLK);
+            GPIOB->BSRR = GPIO_PIN_10;
+
             data[i] <<= 1;
             if (HAL_GPIO_ReadPin(PIN_IN) == GPIO_PIN_SET)
             {
                 data[i] |= 0x01;
             }
-            ResetPin(PIN_CLK);
+
+            GPIOB->BSRR = GPIO_PIN_10 << 16U;
         }
     }
 

@@ -22,7 +22,7 @@ void CF::LogBufferU8(uint8 *buffer, int num)
 
     message[num * 3 - 1] = 0;
 
-    LOG_MESSAGE(message);
+    LOG_WRITE(message);
 
     free(message);
 }
