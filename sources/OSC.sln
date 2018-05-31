@@ -7,6 +7,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DeviceOSC", "_VS\DeviceOSC\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PanelOSC", "_VS\PanelOSC\PanelOSC.vcxproj", "{69B40DED-EDDE-4D55-B919-DB2780BAAD68}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{5872F067-A3F3-45AF-B64A-17FC770A9068}"
+	ProjectSection(SolutionItems) = preProject
+		doc\Page01.h = doc\Page01.h
+		doc\Page02.h = doc\Page02.h
+		doc\Page03.h = doc\Page03.h
+		doc\Page04.h = doc\Page04.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86

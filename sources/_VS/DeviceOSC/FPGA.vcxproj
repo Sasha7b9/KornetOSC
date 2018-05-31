@@ -89,7 +89,6 @@
     <ClInclude Include="..\..\Device\src\Display\Painter.h" />
     <ClInclude Include="..\..\Device\src\Display\PainterData.h" />
     <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h" />
-    <ClInclude Include="..\..\Device\src\dox\Page01.h" />
     <ClInclude Include="..\..\Device\src\FPGA\AD9286.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA_Types.h" />

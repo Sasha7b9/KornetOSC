@@ -22,9 +22,6 @@
     <Filter Include="libs\CMSIS">
       <UniqueIdentifier>{8318a613-6276-434d-91bc-389f375ad9f7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="_dox">
-      <UniqueIdentifier>{b74a9146-57b2-429c-92d6-f6110fe9d815}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Hardware\stm32">
       <UniqueIdentifier>{26f921c6-a605-4f84-923f-7bd0789302c2}</UniqueIdentifier>
     </Filter>
@@ -89,12 +86,6 @@
     </ClInclude>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc.h">
       <Filter>libs\HAL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Panel\src\dox\Page01.h">
-      <Filter>_dox</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Panel\src\dox\Page02.h">
-      <Filter>_dox</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc.h">
       <Filter>_VS</Filter>

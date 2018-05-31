@@ -14,8 +14,7 @@
 *.uvgui*
 JLink*
 
-doc/doxygen/Panel/*
-doc/doxygen/Device/*
+doc/doxygen/OSC/*
 
 sources/.vs/*
 

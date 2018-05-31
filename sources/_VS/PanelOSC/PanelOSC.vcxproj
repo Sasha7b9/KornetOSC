@@ -158,8 +158,6 @@
     <ClInclude Include="..\..\Panel\src\Display\Display.h" />
     <ClInclude Include="..\..\Panel\src\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\Panel\src\Display\font\Font.h" />
-    <ClInclude Include="..\..\Panel\src\dox\Page01.h" />
-    <ClInclude Include="..\..\Panel\src\dox\Page02.h" />
     <ClInclude Include="..\..\Panel\src\Hardware\Controls.h" />
     <ClInclude Include="..\..\Panel\src\Hardware\CPU.h" />
     <ClInclude Include="..\..\Panel\src\Hardware\FSMC.h" />

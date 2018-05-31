@@ -40,9 +40,6 @@
     <Filter Include="Multimeter">
       <UniqueIdentifier>{e6cbf531-ff47-440b-a332-e976b7ad0fe6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="dox">
-      <UniqueIdentifier>{36440153-5096-457b-bd97-4f40f0492ae3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="_VS">
       <UniqueIdentifier>{491635cb-5130-4d2c-b8e1-cbc67d24c29d}</UniqueIdentifier>
     </Filter>
@@ -316,9 +313,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Tester\Tester.h">
       <Filter>Tester</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\dox\Page01.h">
-      <Filter>dox</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\FPGA\AD9286.h">
       <Filter>FPGA</Filter>
