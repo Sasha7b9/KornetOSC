@@ -1,6 +1,8 @@
 #include "AT25160N.h"
 #include "Log.h"
 #include "Utils/StringUtils.h"
+#include <stdlib.h>
+#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,7 +82,8 @@ void AT25160N::Init()
 void AT25160N::Test()
 {
     WriteToRegister(WREN);
-    WriteToRegister(WRSR, 0xaa);
+    uint8 value = 0xaa;
+    WriteToRegister(WRSR, &value, 1);
     WaitFinishWrite();
     __IO uint8 state = ReadFromRegister(RDSR);
     LOG_MESSAGE("%s", SU::Bin2String(state));
@@ -119,7 +122,7 @@ uint8 AT25160N::ReadFromRegister(Reg reg)
     {
         ResetPin(PIN_CS);
         Write(&addresses[RDSR], 1);
-        uint8 retValue = Read();
+        uint8 retValue = ReadByte();
         SetPin(PIN_CS);
         return retValue;
     }
@@ -128,7 +131,7 @@ uint8 AT25160N::ReadFromRegister(Reg reg)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AT25160N::WriteToRegister(Reg reg, uint8 data)
+void AT25160N::WriteToRegister(Reg reg, uint8 *data, uint size)
 {
     ResetPin(PIN_CS);
 
@@ -136,10 +139,13 @@ void AT25160N::WriteToRegister(Reg reg, uint8 data)
     {
         Write(&addresses[WREN], 1);
     }
-    else if(reg == WRSR)
+    else if(reg == WRSR || reg == WRITE)
     {
-        uint8 buffer[2] = {addresses[WRSR], data};
+        uint8 *buffer = (uint8 *)malloc(1 + size);
+        buffer[0] = addresses[WRSR];
+        memcpy(buffer + 1, data, size);
         Write(buffer, 2);
+        free(buffer);
     }
 
     SetPin(PIN_CS);
@@ -150,21 +156,27 @@ void AT25160N::Write(const uint8 *buffer, int size)
 {
     for(int byte = 0; byte < size; byte++)
     {
-        for(int bit = 7; bit >= 0; bit--)
-        {
-            if (_GET_BIT(buffer[byte], bit))
-            {
-                SetPin(PIN_OUT);
-            }
-            SetPin(PIN_CLK);
-            ResetPin(PIN_CLK);
-            ResetPin(PIN_OUT);
-        }
+        WriteByte(buffer[byte]);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 AT25160N::Read()
+void AT25160N::WriteByte(uint8 byte)
+{
+    for(int bit = 7; bit >= 0; bit--)
+    {
+        if (_GET_BIT(byte, bit))
+        {
+            SetPin(PIN_OUT);
+        }
+        SetPin(PIN_CLK);
+        ResetPin(PIN_CLK);
+        ResetPin(PIN_OUT);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+uint8 AT25160N::ReadByte()
 {
     uint8 retValue = 0;
 
@@ -195,12 +207,20 @@ void AT25160N::ResetPin(GPIO_TypeDef *gpio, uint16 pin)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AT25160N::ReadMemory(uint address, uint8 *buffer, int size)
+void AT25160N::WriteToAddress(uint address, uint8 *in, uint size)
 {
+    uint8 *buffer = (uint8 *)malloc(2 + size);
+    buffer[0] = (address >> 8) & 0xf;
+    buffer[1] = address & 0xf;
+    memcpy(buffer + 2, in, size);
 
+    WriteToRegister(WRITE, buffer, size + 2);
+
+    free(buffer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AT25160N::WriteMemory(uint address, uint8 *buffer, int size)
+void AT25160N::ReadFromAddress(uint address, uint8 *in, uint size)
 {
+    
 }

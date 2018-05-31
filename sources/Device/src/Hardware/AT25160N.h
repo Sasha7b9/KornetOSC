@@ -23,19 +23,21 @@ private:
     };
 
     /// Записать значение data в регистр reg
-    static void WriteToRegister(Reg reg, uint8 data = 0);
+    static void WriteToRegister(Reg reg, uint8 *data = 0, uint size = 0);
     /// Прочитать значение регистра reg
     static uint8 ReadFromRegister(Reg reg);
     /// Записыет size байт в микросхему
     static void Write(const uint8 *buffer, int size);
+    /// Записывает байт в микросхему
+    static void WriteByte(uint8 byte);
     /// Читает байт из микросхемы
-    static uint8 Read();
+    static uint8 ReadByte();
+    /// Записать size байт по адресу address
+    static void WriteToAddress(uint address, uint8 *buffer, uint size);
+    /// Прочитать size байт с адреса address
+    static void ReadFromAddress(uint address, uint8 *buffer, uint size);
     /// Ожидает, пока не закончится внутреннй цикл записи
     static void WaitFinishWrite();
-    /// Читает size байт по адресу address
-    static void ReadMemory(uint address, uint8 *buffer, int size);
-    /// Записывает size байт по адресу address
-    static void WriteMemory(uint address, uint8 *buffer, int size);
     /// Установить заданный вывод в 1
     static void SetPin(GPIO_TypeDef *gpio, uint16 pin);
     /// Установить заданный вывод в 0
