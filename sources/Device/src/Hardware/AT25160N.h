@@ -12,35 +12,24 @@ public:
     static void Load(Settings &set);
     static void Test();
 private:
-    enum Reg
-    {
-        WREN,   ///< Set Write Enable Latch
-        WRDI,   ///< Reset Write Enable Latch
-        RDSR,   ///< Read Status Register
-        WRSR,   ///< Write Status Register
-        READ,   ///< Read Data from Memory Array
-        WRITE   ///< Write Data to Memory Array
-    };
-
     /// Разрешить запись
     static void SetWriteLatch();
     /// Запретить запись
     static void ResetWriteLatch();
+    /// Читать регистр статуса
+    static uint8 ReadStatusRegister();
+    /// Записать регистр статуса
+    static void WriteStatusRegister(uint8 data);
+    /// Записывает size байт, начиная с адреса address
+    static void WriteData(uint address, uint8 *data, uint size);
+    /// Читает size байт, начиная с адреса address
+    static void ReadData(uint address, uint8 *data, uint size);
 
-    /// Записать значение data в регистр reg
-    static void WriteToRegister(Reg reg, uint8 *data = 0, uint size = 0);
-    /// Прочитать значение регистра reg
-    static uint8 ReadFromRegister(Reg reg);
-    /// Записыет size байт в микросхему
-    static void WriteBuffer(const uint8 *buffer, int size);
     /// Записывает байт в микросхему
     static void WriteByte(uint8 byte);
     /// Читает байт из микросхемы
     static uint8 ReadByte();
-    /// Записать size байт по адресу address
-    static void WriteToAddress(uint address, uint8 *buffer, uint size);
-    /// Прочитать size байт с адреса address
-    static void ReadFromAddress(uint address, uint8 *buffer, uint size);
+
     /// Ожидает, пока не закончится внутреннй цикл записи
     static void WaitFinishWrite();
     /// Установить заданный вывод в 1
