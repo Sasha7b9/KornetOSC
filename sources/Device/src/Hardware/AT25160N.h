@@ -22,12 +22,17 @@ private:
         WRITE   ///< Write Data to Memory Array
     };
 
+    /// Разрешить запись
+    static void SetWriteLatch();
+    /// Запретить запись
+    static void ResetWriteLatch();
+
     /// Записать значение data в регистр reg
     static void WriteToRegister(Reg reg, uint8 *data = 0, uint size = 0);
     /// Прочитать значение регистра reg
     static uint8 ReadFromRegister(Reg reg);
     /// Записыет size байт в микросхему
-    static void Write(const uint8 *buffer, int size);
+    static void WriteBuffer(const uint8 *buffer, int size);
     /// Записывает байт в микросхему
     static void WriteByte(uint8 byte);
     /// Читает байт из микросхемы

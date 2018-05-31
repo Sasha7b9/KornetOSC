@@ -81,12 +81,28 @@ void AT25160N::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::Test()
 {
-    WriteToRegister(WREN);
+    SetWriteLatch();
     uint8 value = 0xaa;
     WriteToRegister(WRSR, &value, 1);
     WaitFinishWrite();
     __IO uint8 state = ReadFromRegister(RDSR);
     LOG_MESSAGE("%s", SU::Bin2String(state));
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void AT25160N::SetWriteLatch()
+{
+    ResetPin(PIN_CS);
+    WriteByte(addresses[WREN]);
+    SetPin(PIN_CS);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void AT25160N::ResetWriteLatch()
+{
+    ResetPin(PIN_CS);
+    WriteByte(addresses[WRDI]);
+    SetPin(PIN_CS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -121,7 +137,7 @@ uint8 AT25160N::ReadFromRegister(Reg reg)
     if (reg == RDSR)
     {
         ResetPin(PIN_CS);
-        Write(&addresses[RDSR], 1);
+        WriteByte(addresses[RDSR]);
         uint8 retValue = ReadByte();
         SetPin(PIN_CS);
         return retValue;
@@ -135,16 +151,12 @@ void AT25160N::WriteToRegister(Reg reg, uint8 *data, uint size)
 {
     ResetPin(PIN_CS);
 
-    if(reg == WREN)
-    {
-        Write(&addresses[WREN], 1);
-    }
-    else if(reg == WRSR || reg == WRITE)
+    if(reg == WRSR || reg == WRITE)
     {
         uint8 *buffer = (uint8 *)malloc(1 + size);
         buffer[0] = addresses[WRSR];
         memcpy(buffer + 1, data, size);
-        Write(buffer, 2);
+        WriteBuffer(buffer, 2);
         free(buffer);
     }
 
@@ -152,7 +164,7 @@ void AT25160N::WriteToRegister(Reg reg, uint8 *data, uint size)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AT25160N::Write(const uint8 *buffer, int size)
+void AT25160N::WriteBuffer(const uint8 *buffer, int size)
 {
     for(int byte = 0; byte < size; byte++)
     {
