@@ -1,6 +1,6 @@
 #include "AT25160N.h"
 #include "Log.h"
-//#include "Hardware/Timer.h"
+#include "Hardware/Timer.h"
 #include "Utils/StringUtils.h"
 #include <stdlib.h>
 #include <string.h>
@@ -88,6 +88,8 @@ void AT25160N::Test()
         data[i] = (uint8)rand();
     }
 
+    uint timeStart = gTimeMS;
+
     SetWriteLatch();
 
     uint8 status = (uint8)(ReadStatusRegister() & 0x73); /// Обнуляем биты 7, 3, 2 для разрешения записи везде
@@ -102,6 +104,10 @@ void AT25160N::Test()
     WaitFinishWrite();
     ReadData(0, out, size);
     ResetWriteLatch();
+
+    uint time = gTimeMS;
+
+    LOG_MESSAGE("%d", time - timeStart);
 
     bool testIsOk = true;
 
@@ -138,14 +144,15 @@ void AT25160N::WriteData(uint address, uint8 *data, uint size)
         Write32BytesOrLess(address, data, 32);
         address += 32;
         data += 32;
-        size -= 32;
-        WaitFinishWrite();
+        size -= 32;    
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::Write32BytesOrLess(uint address, uint8 *data, uint size)
 {
+    WaitFinishWrite();
+
     SetWriteLatch();
 
     ResetPin(PIN_CS);
