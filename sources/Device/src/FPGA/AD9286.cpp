@@ -9,9 +9,9 @@
 
 static GPIO_InitTypeDef isGPIO =
 {
-    SPI4_SCK | SPI4_DAT | SPI4_CS,
-    GPIO_MODE_OUTPUT_PP,
-    GPIO_PULLDOWN
+    SPI4_SCK | SPI4_DAT,
+    GPIO_MODE_INPUT,
+    GPIO_PULLUP
 };
 
 
@@ -19,6 +19,15 @@ static GPIO_InitTypeDef isGPIO =
 void AD9286::Init()
 {
     HAL_GPIO_Init(GPIOE, &isGPIO);
+
+    isGPIO.Pin = SPI4_CS;
+    isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
+
+    HAL_GPIO_Init(GPIOE, &isGPIO);
+
+    SetPin(SPI4_CS);
+
+    return;
 
     isGPIO.Pin = SPI4_DAT;
 
@@ -44,6 +53,8 @@ void AD9286::ConfigToWrite()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AD9286::WriteByte(uint8 address, uint8 byte)
 {
+    return;
+
     ResetPin(SPI4_CS);
 
     uint value = (uint)((address << 8) + byte);
@@ -72,6 +83,8 @@ void AD9286::WriteByte(uint8 address, uint8 byte)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 AD9286::ReadByte(uint8 address)
 {
+    return 0;
+
     uint16 value = (uint16)(0x8000 + address);
 
     ResetPin(SPI4_CS);

@@ -1,5 +1,6 @@
 #include "AT25160N.h"
 #include "Log.h"
+#include "Hardware/Timer.h"
 #include "Utils/StringUtils.h"
 
 
@@ -80,22 +81,18 @@ void AT25160N::Init()
 void AT25160N::Test()
 {
     WriteReg(WREN);
-    WriteReg(WRSR, 0xff);
+    WriteReg(WRSR, 0xaa);
+    WaitFinishWrite();
     __IO uint8 state = ReadReg(RDSR);
     LOG_MESSAGE("%s", SU::Bin2String(state));
+}
 
-    /*
-    SetPin(PIN_CS);
-    SetPin(PIN_OUT);
-    SetPin(PIN_CLK);
-
-    ResetPin(PIN_CS);
-    ResetPin(PIN_OUT);
-    ResetPin(PIN_CLK);
-
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
-    */
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void AT25160N::WaitFinishWrite()
+{
+    while(_GET_BIT(ReadReg(RDSR), 0))
+    {
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,9 +107,12 @@ uint8 AT25160N::ReadReg(Reg reg)
     if (reg == RDSR)
     {
         ResetPin(PIN_CS);
+        PAUSE_ON_TICKS(25);
         WriteData(&addresses[RDSR], 1);
         uint8 retValue = ReadByte();
+        PAUSE_ON_TICKS(25);
         SetPin(PIN_CS);
+        PAUSE_ON_TICKS(25);
         return retValue;
     }
 
@@ -144,11 +144,11 @@ void AT25160N::WriteData(const uint8 *buffer, int size)
     {
         for(int bit = 7; bit >= 0; bit--)
         {
-            SetPin(PIN_CLK);
-            if(_GET_BIT(buffer[byte], bit))
+            if (_GET_BIT(buffer[byte], bit))
             {
                 SetPin(PIN_OUT);
             }
+            SetPin(PIN_CLK);
             ResetPin(PIN_CLK);
             ResetPin(PIN_OUT);
         }
@@ -163,12 +163,12 @@ uint8 AT25160N::ReadByte()
     for(int i = 0; i < 8; i++)
     {
         SetPin(PIN_CLK);
-        ResetPin(PIN_CLK);
         retValue <<= 1;
         if(HAL_GPIO_ReadPin(PIN_IN) == GPIO_PIN_SET)
         {
             retValue |= 0x01;
         }
+        ResetPin(PIN_CLK);
     }
 
     return retValue;

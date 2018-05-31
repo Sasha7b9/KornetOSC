@@ -26,4 +26,6 @@ private:
     static void ResetPin(GPIO_TypeDef *gpio, uint16 pin);
     static void WriteData(const uint8 *buffer, int size);
     static uint8 ReadByte();
+    /// Ожидает, пока не закончится внутреннй цикл записи
+    static void WaitFinishWrite();
 };
