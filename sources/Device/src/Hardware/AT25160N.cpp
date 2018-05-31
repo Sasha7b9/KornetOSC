@@ -1,6 +1,5 @@
 #include "AT25160N.h"
 #include "Log.h"
-#include "Hardware/Timer.h"
 #include "Utils/StringUtils.h"
 
 
@@ -80,17 +79,17 @@ void AT25160N::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::Test()
 {
-    WriteReg(WREN);
-    WriteReg(WRSR, 0xaa);
+    WriteToRegister(WREN);
+    WriteToRegister(WRSR, 0xaa);
     WaitFinishWrite();
-    __IO uint8 state = ReadReg(RDSR);
+    __IO uint8 state = ReadFromRegister(RDSR);
     LOG_MESSAGE("%s", SU::Bin2String(state));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::WaitFinishWrite()
 {
-    while(_GET_BIT(ReadReg(RDSR), 0))
+    while(_GET_BIT(ReadFromRegister(RDSR), 0))
     {
     }
 }
@@ -98,21 +97,30 @@ void AT25160N::WaitFinishWrite()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::Save(Settings &)
 {
-
+    /*
+    Алгоритм сохранения настроек
+    1. Настройки могут храниться в первом или втором килобайте памяти.
+    2. 
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 AT25160N::ReadReg(Reg reg)
+void AT25160N::Load(Settings &)
+{
+    /*
+    Алгоритм загрузки настроек
+    */
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+uint8 AT25160N::ReadFromRegister(Reg reg)
 {
     if (reg == RDSR)
     {
         ResetPin(PIN_CS);
-        PAUSE_ON_TICKS(25);
-        WriteData(&addresses[RDSR], 1);
-        uint8 retValue = ReadByte();
-        PAUSE_ON_TICKS(25);
+        Write(&addresses[RDSR], 1);
+        uint8 retValue = Read();
         SetPin(PIN_CS);
-        PAUSE_ON_TICKS(25);
         return retValue;
     }
 
@@ -120,25 +128,25 @@ uint8 AT25160N::ReadReg(Reg reg)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AT25160N::WriteReg(Reg reg, uint8 data)
+void AT25160N::WriteToRegister(Reg reg, uint8 data)
 {
     ResetPin(PIN_CS);
 
     if(reg == WREN)
     {
-        WriteData(&addresses[WREN], 1);
+        Write(&addresses[WREN], 1);
     }
     else if(reg == WRSR)
     {
         uint8 buffer[2] = {addresses[WRSR], data};
-        WriteData(buffer, 2);
+        Write(buffer, 2);
     }
 
     SetPin(PIN_CS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AT25160N::WriteData(const uint8 *buffer, int size)
+void AT25160N::Write(const uint8 *buffer, int size)
 {
     for(int byte = 0; byte < size; byte++)
     {
@@ -156,7 +164,7 @@ void AT25160N::WriteData(const uint8 *buffer, int size)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 AT25160N::ReadByte()
+uint8 AT25160N::Read()
 {
     uint8 retValue = 0;
 
@@ -184,4 +192,15 @@ void AT25160N::SetPin(GPIO_TypeDef *gpio, uint16 pin)
 void AT25160N::ResetPin(GPIO_TypeDef *gpio, uint16 pin)
 {
     HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void AT25160N::ReadMemory(uint address, uint8 *buffer, int size)
+{
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void AT25160N::WriteMemory(uint address, uint8 *buffer, int size)
+{
 }

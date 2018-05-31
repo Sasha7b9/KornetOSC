@@ -8,8 +8,9 @@ class AT25160N
 {
 public:
     static void Init();
-    static void Test();
     static void Save(Settings &set);
+    static void Load(Settings &set);
+    static void Test();
 private:
     enum Reg
     {
@@ -20,12 +21,23 @@ private:
         READ,   ///< Read Data from Memory Array
         WRITE   ///< Write Data to Memory Array
     };
-    static void WriteReg(Reg reg, uint8 data = 0);
-    static uint8 ReadReg(Reg reg);
-    static void SetPin(GPIO_TypeDef *gpio, uint16 pin);
-    static void ResetPin(GPIO_TypeDef *gpio, uint16 pin);
-    static void WriteData(const uint8 *buffer, int size);
-    static uint8 ReadByte();
+
+    /// Записать значение data в регистр reg
+    static void WriteToRegister(Reg reg, uint8 data = 0);
+    /// Прочитать значение регистра reg
+    static uint8 ReadFromRegister(Reg reg);
+    /// Записыет size байт в микросхему
+    static void Write(const uint8 *buffer, int size);
+    /// Читает байт из микросхемы
+    static uint8 Read();
     /// Ожидает, пока не закончится внутреннй цикл записи
     static void WaitFinishWrite();
+    /// Читает size байт по адресу address
+    static void ReadMemory(uint address, uint8 *buffer, int size);
+    /// Записывает size байт по адресу address
+    static void WriteMemory(uint address, uint8 *buffer, int size);
+    /// Установить заданный вывод в 1
+    static void SetPin(GPIO_TypeDef *gpio, uint16 pin);
+    /// Установить заданный вывод в 0
+    static void ResetPin(GPIO_TypeDef *gpio, uint16 pin);
 };
