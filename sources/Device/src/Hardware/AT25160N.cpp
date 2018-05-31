@@ -80,7 +80,7 @@ void AT25160N::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::Test()
 {
-    const uint size = 32;
+    const uint size = 1000;
     uint8 data[size];
     uint8 out[size];
     for(uint i = 0; i < size; i++)
@@ -97,10 +97,6 @@ void AT25160N::Test()
     WriteStatusRegister(status);
 
     WaitFinishWrite();
-
-    SetWriteLatch();
-
-    LOG_MESSAGE(SU::Bin2String(ReadStatusRegister()));
 
     WriteData(0, data, size);
     WaitFinishWrite();
@@ -127,6 +123,56 @@ void AT25160N::Test()
     {
         LOG_MESSAGE("WARNING!!! Test is failed!!!");
     }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void AT25160N::WriteData(uint address, uint8 *data, uint size)
+{
+    while(1)
+    {
+        if(size <= 32)
+        {
+            Write32BytesOrLess(address, data, size);
+            break;
+        }
+        Write32BytesOrLess(address, data, 32);
+        address += 32;
+        data += 32;
+        size -= 32;
+        WaitFinishWrite();
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void AT25160N::Write32BytesOrLess(uint address, uint8 *data, uint size)
+{
+    SetWriteLatch();
+
+    ResetPin(PIN_CS);
+
+    WriteByte(WRITE);
+
+    WriteByte((address >> 8) & 0xff);
+
+    WriteByte(address & 0xff);
+
+    for (uint i = 0; i < size; i++)
+    {
+        uint8 byte = data[i];
+
+        for (int bit = 7; bit >= 0; bit--)
+        {
+            if (_GET_BIT(byte, bit))
+            {
+                SetPin(PIN_OUT);
+            }
+            SetPin(PIN_CLK);
+            ResetPin(PIN_CLK);
+            ResetPin(PIN_OUT);
+        }
+    }
+
+    SetPin(PIN_CS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -248,43 +294,6 @@ void AT25160N::SetPin(GPIO_TypeDef *gpio, uint16 pin)
 void AT25160N::ResetPin(GPIO_TypeDef *gpio, uint16 pin)
 {
     HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void AT25160N::WriteData(uint address, uint8 *data, uint size)
-{
-    if(address & 0x38)
-    {
-        LOG_MESSAGE("ERROR!!! Адрес болжен быть кратен 32");
-    }
-
-    WaitFinishWrite();
-
-    ResetPin(PIN_CS);
-
-    WriteByte(WRITE);
-
-    WriteByte((address >> 8) & 0xff);
-
-    WriteByte(address & 0xff);
-
-    for(uint i = 0; i < size; i++)
-    {
-        uint8 byte = data[i];
-
-        for (int bit = 7; bit >= 0; bit--)
-        {
-            if (_GET_BIT(byte, bit))
-            {
-                SetPin(PIN_OUT);
-            }
-            SetPin(PIN_CLK);
-            ResetPin(PIN_CLK);
-            ResetPin(PIN_OUT);
-        }
-    }
-
-    SetPin(PIN_CS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
