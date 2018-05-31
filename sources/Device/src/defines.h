@@ -77,6 +77,8 @@ typedef union
 
 #define _SET_BIT_VALUE(value, numBit, bitValue) (value |= (bitValue << numBit))
 #define _GET_BIT(value, numBit) ((value >> numBit) & 1)
+#define _CLEAR_BIT(value, bit) ((value) &= (~(1 << bit)))
+#define _SET_BIT(value, bit) ((value) |= (1 << (bit)))
 
 
 #define _bitset(bits)                               \

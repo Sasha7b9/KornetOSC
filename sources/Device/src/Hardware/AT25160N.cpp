@@ -1,6 +1,6 @@
 #include "AT25160N.h"
 #include "Log.h"
-#include "Hardware/Timer.h"
+//#include "Hardware/Timer.h"
 #include "Utils/StringUtils.h"
 #include <stdlib.h>
 #include <string.h>
@@ -80,7 +80,7 @@ void AT25160N::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::Test()
 {
-    const uint size = 10;
+    const uint size = 32;
     uint8 data[size];
     uint8 out[size];
     for(uint i = 0; i < size; i++)
@@ -89,7 +89,21 @@ void AT25160N::Test()
     }
 
     SetWriteLatch();
+
+    uint8 status = (uint8)(ReadStatusRegister() & 0x73); /// Обнуляем биты 7, 3, 2 для разрешения записи везде
+
+    SetWriteLatch();
+
+    WriteStatusRegister(status);
+
+    WaitFinishWrite();
+
+    SetWriteLatch();
+
+    LOG_MESSAGE(SU::Bin2String(ReadStatusRegister()));
+
     WriteData(0, data, size);
+    WaitFinishWrite();
     ReadData(0, out, size);
     ResetWriteLatch();
 
@@ -100,6 +114,8 @@ void AT25160N::Test()
         if(data[i] != out[i])
         {
             testIsOk = false;
+            LOG_MESSAGE("ошибка на %d-м элементе", i);
+            break;
         }
     }
 
@@ -146,6 +162,8 @@ uint8 AT25160N::ReadStatusRegister()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::WriteStatusRegister(uint8 data)
 {
+    WaitFinishWrite();
+
     ResetPin(PIN_CS);
     WriteByte(WRSR);
     WriteByte(data);
@@ -235,12 +253,19 @@ void AT25160N::ResetPin(GPIO_TypeDef *gpio, uint16 pin)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::WriteData(uint address, uint8 *data, uint size)
 {
+    if(address & 0x38)
+    {
+        LOG_MESSAGE("ERROR!!! Адрес болжен быть кратен 32");
+    }
+
     WaitFinishWrite();
 
     ResetPin(PIN_CS);
 
     WriteByte(WRITE);
+
     WriteByte((address >> 8) & 0xff);
+
     WriteByte(address & 0xff);
 
     for(uint i = 0; i < size; i++)
@@ -258,7 +283,7 @@ void AT25160N::WriteData(uint address, uint8 *data, uint size)
             ResetPin(PIN_OUT);
         }
     }
-    
+
     SetPin(PIN_CS);
 }
 
