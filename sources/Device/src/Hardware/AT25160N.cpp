@@ -100,14 +100,20 @@ void AT25160N::Test()
 
     WaitFinishWrite();
 
+    uint time1 = gTimeMS;
+
     WriteData(0, data, size);
+
+    uint time2 = gTimeMS;
+
     WaitFinishWrite();
+
     ReadData(0, out, size);
     ResetWriteLatch();
 
-    uint time = gTimeMS;
+    uint time3 = gTimeMS;
 
-    LOG_MESSAGE("%d", time - timeStart);
+    LOG_MESSAGE("1 = %d, 2 = %d, 3 = %d, %d", time1 - timeStart, time2 - time1, time3 - time2, time3 - timeStart);
 
     bool testIsOk = true;
 
@@ -171,15 +177,15 @@ void AT25160N::Write32BytesOrLess(uint address, uint8 *data, uint size)
         {
             if (_GET_BIT(byte, bit))
             {
-                SetPin(PIN_OUT);
+                GPIOC->BSRR = GPIO_PIN_3;
             }
-            SetPin(PIN_CLK);
-            ResetPin(PIN_CLK);
-            ResetPin(PIN_OUT);
+            GPIOB->BSRR = GPIO_PIN_10;
+            GPIOC->BSRR = GPIO_PIN_3 << 16U;
+            GPIOB->BSRR = GPIO_PIN_10 << 16U;
         }
     }
 
-    SetPin(PIN_CS);
+    HAL_GPIO_WritePin(PIN_CS, GPIO_PIN_SET);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -226,17 +232,9 @@ void AT25160N::WriteStatusRegister(uint8 data)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AT25160N::WaitFinishWrite()
 {
-    ResetPin(PIN_CS);
-
-    int isBusy = 1;
-    do
+    while (_GET_BIT(ReadStatusRegister(), 0))
     {
-        WriteByte(RDSR);
-        uint8 status = ReadStatusRegister();
-        isBusy = _GET_BIT(status, 0);
-    } while (isBusy);
-
-    SetPin(PIN_CS);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -316,7 +314,18 @@ void AT25160N::ReadData(uint address, uint8 *data, uint size)
 
     for(uint i = 0; i < size; i++)
     {
-        data[i] = ReadByte();
+        data[i] = 0;
+
+        for (int j = 0; j < 8; j++)
+        {
+            SetPin(PIN_CLK);
+            data[i] <<= 1;
+            if (HAL_GPIO_ReadPin(PIN_IN) == GPIO_PIN_SET)
+            {
+                data[i] |= 0x01;
+            }
+            ResetPin(PIN_CLK);
+        }
     }
 
     SetPin(PIN_CS);
