@@ -58,6 +58,7 @@
     <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Decoder.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\Math.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\MathOSC.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c">
@@ -121,9 +122,9 @@
     <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\Device\src\Utils\Debug.h" />
     <ClInclude Include="..\..\Device\src\Utils\Decoder.h" />
+    <ClInclude Include="..\..\Device\src\Utils\Math.h" />
     <ClInclude Include="..\..\Device\src\Utils\MathOSC.h" />
     <ClInclude Include="..\..\Device\src\Utils\StringUtils.h" />
-    <ClInclude Include="..\..\libs\common\Utils\Math.h" />
     <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc.h" />
     <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc_V6.h" />
     <ClInclude Include="..\..\libs\common\_VS\core_cm4.h" />

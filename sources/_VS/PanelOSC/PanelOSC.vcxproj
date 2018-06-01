@@ -205,6 +205,7 @@
     <ClInclude Include="..\..\Panel\src\Settings\SettingsDisplay.h" />
     <ClInclude Include="..\..\Panel\src\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\Panel\src\Utils\Decoder.h" />
+    <ClInclude Include="..\..\Panel\src\Utils\Math.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Panel\src\Display\Colors.cpp" />
@@ -265,6 +266,7 @@
     </ClCompile>
     <ClCompile Include="..\..\Panel\src\Settings\Settings.cpp" />
     <ClCompile Include="..\..\Panel\src\Utils\Decoder.cpp" />
+    <ClCompile Include="..\..\Panel\src\Utils\Math.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\libs\common\_VS\algorithm" />

@@ -189,6 +189,9 @@
     <ClCompile Include="..\..\Device\src\Hardware\stm32\Timer4XX.cpp">
       <Filter>Hardware\stm32</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Utils\Math.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -326,9 +329,6 @@
     <ClInclude Include="..\..\Device\src\Utils\MathOSC.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\common\Utils\Math.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageChannels.h">
       <Filter>Menu\Pages</Filter>
     </ClInclude>
@@ -427,6 +427,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Hardware\stm32\Timer4XX.h">
       <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Utils\Math.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
