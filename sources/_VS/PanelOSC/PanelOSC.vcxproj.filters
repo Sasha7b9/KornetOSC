@@ -180,14 +180,14 @@
     <ClInclude Include="..\..\Panel\src\Settings\SettingsDisplay.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\common\Display\Colors.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\libs\common\Display\Painter.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Panel\src\Hardware\LTDC.h">
       <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Panel\src\Display\Colors.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Panel\src\Display\Painter.h">
+      <Filter>Display</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -269,23 +269,23 @@
     <ClCompile Include="..\..\Panel\src\Settings\Settings.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\common\Display\Colors.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\common\Display\Painter.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\common\Display\PainterSTM429.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\common\Display\PainterText.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\common\Display\PainterTextSTM429.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Panel\src\Hardware\LTDC.cpp">
       <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Display\Colors.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Display\Painter.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Display\PainterSTM429.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Display\PainterText.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Display\PainterTextSTM429.cpp">
+      <Filter>Display</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

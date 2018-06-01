@@ -2,8 +2,6 @@
 #include "Log.h"
 #include "Painter.h"
 #include "Display/Colors.h"
-#include "Ethernet/Ethernet.h"
-#include "Ethernet/TcpSocket.h"
 #include "FlashDrive/FileManager.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Hardware/CPU.h"

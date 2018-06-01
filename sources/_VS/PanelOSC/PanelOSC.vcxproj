@@ -129,8 +129,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\common\Display\Colors.h" />
-    <ClInclude Include="..\..\libs\common\Display\Painter.h" />
     <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\stm429.h" />
     <ClInclude Include="..\..\libs\common\Hardware\stm32\stm32.h" />
     <ClInclude Include="..\..\libs\common\Hardware\Timer.h" />
@@ -155,9 +153,11 @@
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h" />
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h" />
     <ClInclude Include="..\..\Panel\src\defines.h" />
+    <ClInclude Include="..\..\Panel\src\Display\Colors.h" />
     <ClInclude Include="..\..\Panel\src\Display\Display.h" />
     <ClInclude Include="..\..\Panel\src\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\Panel\src\Display\font\Font.h" />
+    <ClInclude Include="..\..\Panel\src\Display\Painter.h" />
     <ClInclude Include="..\..\Panel\src\Hardware\Controls.h" />
     <ClInclude Include="..\..\Panel\src\Hardware\CPU.h" />
     <ClInclude Include="..\..\Panel\src\Hardware\FSMC.h" />
@@ -206,16 +206,16 @@
     <ClInclude Include="..\..\Panel\src\Utils\Decoder.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libs\common\Display\Colors.cpp" />
-    <ClCompile Include="..\..\libs\common\Display\Painter.cpp" />
-    <ClCompile Include="..\..\libs\common\Display\PainterSTM429.cpp" />
-    <ClCompile Include="..\..\libs\common\Display\PainterText.cpp" />
-    <ClCompile Include="..\..\libs\common\Display\PainterTextSTM429.cpp" />
     <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\stm429.cpp" />
     <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32.cpp" />
     <ClCompile Include="..\..\libs\common\Hardware\Timer.cpp" />
+    <ClCompile Include="..\..\Panel\src\Display\Colors.cpp" />
     <ClCompile Include="..\..\Panel\src\Display\Display.cpp" />
     <ClCompile Include="..\..\Panel\src\Display\font\Font.cpp" />
+    <ClCompile Include="..\..\Panel\src\Display\Painter.cpp" />
+    <ClCompile Include="..\..\Panel\src\Display\PainterSTM429.cpp" />
+    <ClCompile Include="..\..\Panel\src\Display\PainterText.cpp" />
+    <ClCompile Include="..\..\Panel\src\Display\PainterTextSTM429.cpp" />
     <ClCompile Include="..\..\Panel\src\Hardware\CPU.cpp" />
     <ClCompile Include="..\..\Panel\src\Hardware\CPU_IT.cpp" />
     <ClCompile Include="..\..\Panel\src\Hardware\FSMC.cpp" />

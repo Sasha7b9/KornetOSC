@@ -1239,37 +1239,37 @@
             <File>
               <FileName>Painter.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\libs\common\Display\Painter.cpp</FilePath>
+              <FilePath>.\src\Display\Painter.cpp</FilePath>
             </File>
             <File>
               <FileName>Painter.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\libs\common\Display\Painter.h</FilePath>
-            </File>
-            <File>
-              <FileName>PainterSTM429.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\libs\common\Display\PainterSTM429.cpp</FilePath>
+              <FilePath>.\src\Display\Painter.h</FilePath>
             </File>
             <File>
               <FileName>PainterText.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\libs\common\Display\PainterText.cpp</FilePath>
+              <FilePath>.\src\Display\PainterText.cpp</FilePath>
             </File>
             <File>
-              <FileName>PainterTextSTM429.cpp</FileName>
+              <FileName>PainterSTM429.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\libs\common\Display\PainterTextSTM429.cpp</FilePath>
+              <FilePath>.\src\Display\PainterSTM429.cpp</FilePath>
             </File>
             <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\libs\common\Display\Colors.cpp</FilePath>
+              <FilePath>.\src\Display\Colors.cpp</FilePath>
             </File>
             <File>
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\libs\common\Display\Colors.h</FilePath>
+              <FilePath>.\src\Display\Colors.h</FilePath>
+            </File>
+            <File>
+              <FileName>PainterTextSTM429.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\PainterTextSTM429.cpp</FilePath>
             </File>
           </Files>
         </Group>

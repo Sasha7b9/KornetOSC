@@ -29,11 +29,13 @@ void AD9286::Init()
 
     return;
 
+    /*
     isGPIO.Pin = SPI4_DAT;
 
     SetPin(SPI4_CS);
     ResetPin(SPI4_DAT);
     ResetPin(SPI4_SCK);
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -51,10 +53,11 @@ void AD9286::ConfigToWrite()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AD9286::WriteByte(uint8 address, uint8 byte)
+void AD9286::WriteByte(uint8, uint8)
 {
     return;
 
+    /*
     ResetPin(SPI4_CS);
 
     uint value = (uint)((address << 8) + byte);
@@ -78,13 +81,15 @@ void AD9286::WriteByte(uint8 address, uint8 byte)
     }
 
     SetPin(SPI4_CS);
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 AD9286::ReadByte(uint8 address)
+uint8 AD9286::ReadByte(uint8)
 {
     return 0;
 
+    /*
     uint16 value = (uint16)(0x8000 + address);
 
     ResetPin(SPI4_CS);
@@ -132,6 +137,7 @@ uint8 AD9286::ReadByte(uint8 address)
     ConfigToWrite();
     
     return retValue;
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
