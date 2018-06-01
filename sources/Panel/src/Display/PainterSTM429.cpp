@@ -3,7 +3,6 @@
 #include "Hardware/LTDC.h"
 #include "Utils/Math.h"
 #include "Colors.h"
-#include "Settings/Settings.h"
 #include "Display/Display.h"
 #include <math.h>
 

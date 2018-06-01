@@ -2,7 +2,6 @@
 #include "Log.h"
 #include <Display/Display.h>
 #include <Hardware/CPU.h>
-#include "Settings/Settings.h"
 #include <stdarg.h>
 #include <string.h>
 #include <stdio.h>

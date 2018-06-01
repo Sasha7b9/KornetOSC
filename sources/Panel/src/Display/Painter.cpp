@@ -4,7 +4,6 @@
 #include "Display/Colors.h"
 #include "Hardware/CPU.h"
 #include "Hardware/Timer.h"
-#include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "stub.h"
 

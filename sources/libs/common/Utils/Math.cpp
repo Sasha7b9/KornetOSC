@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "Math.h"
-#include "Settings/Settings.h"
 #include "FPGA/FPGATypes.h"
 #include <math.h>
 #if __ARMCLIB_VERSION < 6070001

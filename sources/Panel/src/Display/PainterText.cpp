@@ -1,6 +1,5 @@
 #include "Painter.h"
 #include "Display/Font/Font.h"
-#include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include <stdarg.h>
 #include <stdio.h>

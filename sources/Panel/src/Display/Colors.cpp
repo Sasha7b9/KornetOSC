@@ -2,8 +2,6 @@
 #include "Log.h"
 #include "Display/Colors.h"
 #include "Display/Painter.h"
-#include "Settings/Settings.h"
-#include "Settings/SettingsDisplay.h"
 #include "Utils/Math.h"
 #include "stub.h"
 
