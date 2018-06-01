@@ -26,12 +26,5 @@ sources/Panel/DebugConfig/*
 sources/Panel/Listings/*
 sources/Panel/Objects/*
 
-sources/VS/PanelOSC/Debug/*
-sources/VS/PanelOSC/Release/*
-sources/VS/PanelOSC/x64/*
-sources/VS/FPGA/Debug/*
-sources/VS/FPGA/Release/*
-sources/VS/FPGA/x64/*
-
-sources/_VS/DeviceOSC/Debug/*
-sources/_VS/PanelOSC/Debug/*
+sources/OSC-VS/Device/Debug/*
+sources/OSC-VS/Panel/Debug/*
