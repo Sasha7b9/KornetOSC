@@ -1,4 +1,5 @@
 #include "Device.h"
+#include "Colors.h"
 #include "Display.h"
 #include "Grid.h"
 #include "Painter.h"
@@ -74,16 +75,10 @@ void Display::SetKey(Key key_)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display::Init()
 {
-    Painter::SetPalette(Color::BACK,        0x00000000);
-    Painter::SetPalette(Color::FILL,        0x00ffffff);
-    Painter::SetPalette(Color::CHAN_A,      0x000000ff);
-    Painter::SetPalette(Color::CHAN_A_HALF, 0x00000080);
-    Painter::SetPalette(Color::CHAN_B,      0x0000ff00);
-    Painter::SetPalette(Color::CHAN_B_HALF, 0x00008000);
-    Painter::SetPalette(Color::GRID,        0x00afafaf);
-    Painter::SetPalette(Color::BLUE,        0x000000ff);
-    Painter::SetPalette(Color::GREEN,       0x0000ff00);
-    Painter::SetPalette(Color::RED,         0x00ff0000);
+    for(uint8 i = 0; i < Color::NUMBER.value; i++)
+    {
+        Painter::SetColorValue(Color(i), COLOR(i));
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -152,7 +147,7 @@ void Display::UpdateTester()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawDataTester(int numStep, int x0, int y0)
 {
-    static const uint8 colors[5] = {Color::FILL, Color::GRID, Color::RED, Color::GREEN, Color::BLUE};
+    static const Color colors[5] = {Color::FILL, Color::GRID, Color::RED, Color::GREEN, Color::BLUE};
 
     uint8 *dataX = &dataTester[A][numStep][0];
     uint8 *dataY = &dataTester[B][numStep][0];

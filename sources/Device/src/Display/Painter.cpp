@@ -6,21 +6,9 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-uint8 Color::Chan(Channel ch)
+void Painter::BeginScene(Color color)
 {
-    return ch == A ? CHAN_A : CHAN_B;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 Color::ChanHalf(Channel ch)
-{
-    return (ch == A) ? CHAN_A_HALF : CHAN_B_HALF;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::BeginScene(uint8 color)
-{
-    uint8 buffer[2] = {PAINT_BEGIN_SCENE, color};
+    uint8 buffer[2] = {PAINT_BEGIN_SCENE, color.value};
     FSMC::WriteToPanel(buffer, 2);
 }
 
@@ -32,17 +20,17 @@ void Painter::EndScene()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetColor(uint8 color)
+void Painter::SetColor(Color color)
 {
-    if (color != 255)
+    if (color != Color::NUMBER)
     {
-        uint8 buffer[2] = {PAINT_SET_COLOR, color};
+        uint8 buffer[2] = {PAINT_SET_COLOR, color.value};
         FSMC::WriteToPanel(buffer, 2);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::FillRegion(int x, int y, int width, int height, uint8 color)
+void Painter::FillRegion(int x, int y, int width, int height, Color color)
 {
     SetColor(color);
     uint8 buffer[7] = {PAINT_FILL_REGION, (uint8)x, (uint8)(x >> 8), (uint8)y, (uint8)width, (uint8)(width >> 8), (uint8)height};
@@ -50,7 +38,7 @@ void Painter::FillRegion(int x, int y, int width, int height, uint8 color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawText(int x, int y, const char *text, uint8 color)
+void Painter::DrawText(int x, int y, const char *text, Color color)
 {
     #define MAX_SIZE_BUFFER 100
     
@@ -74,15 +62,15 @@ void Painter::DrawText(int x, int y, const char *text, uint8 color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetPalette(uint8 numColor, uint valueColor)
+void Painter::SetColorValue(Color color, col_val value)
 {
-    uint8 buffer[6] = {PAINT_SET_PALETTE, numColor, (uint8)valueColor, (uint8)(valueColor >> 8), (uint8)(valueColor >> 16), (uint8)(valueColor >> 24)};
+    uint8 buffer[6] = {PAINT_SET_PALETTE, color.value, (uint8)value, (uint8)(value >> 8), (uint8)(value >> 16), (uint8)(value >> 24)};
 
     FSMC::WriteToPanel(buffer, 6);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawRectangle(int x, int y, int width, int height, uint8 color)
+void Painter::DrawRectangle(int x, int y, int width, int height, Color color)
 {
     SetColor(color);
     uint8 buffer[7] = {PAINT_DRAW_RECTANGLE, (uint8)x, (uint8)(x >> 8), (uint8)y, (uint8)width, (uint8)(width >> 8), (uint8)height};
@@ -90,7 +78,7 @@ void Painter::DrawRectangle(int x, int y, int width, int height, uint8 color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawFormatText(int x, int y, uint8 color, char *text, ...)
+void Painter::DrawFormatText(int x, int y, Color color, char *text, ...)
 {
     SetColor(color);
 #define SIZE_BUFFER_DRAW_FORM_TEXT 200
@@ -103,13 +91,13 @@ void Painter::DrawFormatText(int x, int y, uint8 color, char *text, ...)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawChar(int x, int y, char symbol, uint8 color)
+void Painter::DrawChar(int x, int y, char symbol, Color color)
 {
     DrawFormatText(x, y, color, "%c", symbol);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawHLine(int y, int x0, int x1, uint8 color)
+void Painter::DrawHLine(int y, int x0, int x1, Color color)
 {
     SetColor(color);
     uint8 buffer[6] = {PAINT_DRAW_HLINE, (uint8)y, (uint8)x0, (uint8)(x0 >> 8), (uint8)x1, (uint8)(x1 >> 8)};
@@ -117,13 +105,13 @@ void Painter::DrawHLine(int y, int x0, int x1, uint8 color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawHLine(float y, int x0, int x1, uint8 color /* = 255 */)
+void Painter::DrawHLine(float y, int x0, int x1, Color color)
 {
     DrawHLine((int)y, x0, x1, color);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawVLine(int x, int y0, int y1, uint8 color)
+void Painter::DrawVLine(int x, int y0, int y1, Color color)
 {
     SetColor(color);
     uint8 buffer[5] = {PAINT_DRAW_VLINE, (uint8)x, (uint8)(x >> 8), (uint8)y0, (uint8)y1};
@@ -131,13 +119,13 @@ void Painter::DrawVLine(int x, int y0, int y1, uint8 color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawVLine(int x, float y0, float y1, uint8 color /* = 255 */)
+void Painter::DrawVLine(int x, float y0, float y1, Color color)
 {
     DrawVLine((int)x, (int)y0, (int)y1, color);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawLine(int x0, int y0, int x1, int y1, uint8 color)
+void Painter::DrawLine(int x0, int y0, int x1, int y1, Color color)
 {
     SetColor(color);
     uint8 buffer[7] = {PAINT_DRAW_LINE, (uint8)x0, (uint8)(x0 >> 8), (uint8)y0, (uint8)x1, (uint8)(x1 >> 8), (uint8)y1};
@@ -145,7 +133,7 @@ void Painter::DrawLine(int x0, int y0, int x1, int y1, uint8 color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetPoint(int x, int y, uint8 color)
+void Painter::SetPoint(int x, int y, Color color)
 {
     SetColor(color);
     uint8 buffer[4] = {PAINT_SET_POINT, (uint8)x, (uint8)(x >> 8), (uint8)y};
@@ -160,7 +148,7 @@ void Painter::SetFont(TypeFont typeFont)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawBoundedRegion(int x, int y, int width, int height, uint8 colorFill, uint8 colorBound)
+void Painter::DrawBoundedRegion(int x, int y, int width, int height, Color colorFill, Color colorBound)
 {
     DrawRectangle(x, y, width, height, colorBound);
     FillRegion(x + 1, y + 1, width - 2, height - 2, colorFill);
