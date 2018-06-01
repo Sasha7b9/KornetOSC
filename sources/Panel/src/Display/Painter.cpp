@@ -5,7 +5,6 @@
 #include "Hardware/CPU.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
-#include "stub.h"
 
 
 /** @addtogroup Display

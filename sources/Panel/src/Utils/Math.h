@@ -63,8 +63,6 @@ public:
     /// \brief Возвращает координату x пересечения линии, проходящей через (x0, y0), (x1, y1), с горизонтальной линией, проходящей через точку с 
     /// ординатой yHorLine.
     static float GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);
-    
-    static void CalculateMathFunction(float *dataAandResult, float *dataB, int numPoints);
 
     static uint8 CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);
 

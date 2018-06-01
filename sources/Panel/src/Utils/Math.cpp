@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits>
-#include "stub.h"
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int LowSignedBit(uint value)
@@ -193,31 +193,6 @@ float Math::GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, in
     }
 
     return (yHorLine - y0) / ((float)(y1 - y0) / (float)(x1 - x0)) + x0;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Math::CalculateMathFunction(float *dataAandResult, float *dataB, int numPoints)
-{
-    if (MATH_FUNC_IS_SUM)
-    {
-        int delta = dataB - dataAandResult;
-        float *end = &dataAandResult[numPoints];
-        while (dataAandResult < end)
-        {
-            *dataAandResult += *(dataAandResult + delta);
-            dataAandResult++;
-        }
-    }
-    else if (MATH_FUNC_IS_MUL)
-    {
-        int delta = dataB - dataAandResult;
-        float *end = &dataAandResult[numPoints];
-        while (dataAandResult < end)
-        {
-            *dataAandResult *= *(dataAandResult + delta);
-            dataAandResult++;
-        }
-    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

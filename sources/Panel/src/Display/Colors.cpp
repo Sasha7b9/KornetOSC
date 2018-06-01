@@ -3,7 +3,7 @@
 #include "Display/Colors.h"
 #include "Display/Painter.h"
 #include "Utils/Math.h"
-#include "stub.h"
+#include "Settings/Settings.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const uint8 Color::COLOR_BLACK              = 0;
@@ -51,16 +51,6 @@ Color Color::GRID(COLOR_GRID);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Color::InitGlobalColors()
 {
-#ifndef S8_53
-
-    Color::BACK.value = BACKGROUND_BLACK ? Color::BLACK.value : Color::WHITE.value;
-    Color::FILL.value = BACKGROUND_BLACK ? Color::WHITE.value : Color::BLACK.value;
-    Color::GRID.value = BACKGROUND_BLACK ? Color(COLOR_GRID).value : Color(COLOR_GRID_WHITE).value;
-    Color::CHAN[A].value = BACKGROUND_BLACK ? Color::CHAN[A].value : Color::DATA_WHITE_ACCUM_A.value;
-    Color::CHAN[B].value = BACKGROUND_BLACK ? Color::CHAN[B].value : Color::DATA_WHITE_ACCUM_B.value;
-    Color::CHAN[A_B].value = Color::CHAN[MathCh].value = BACKGROUND_BLACK ? Color::WHITE.value : Color::BLACK.value;
-
-#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

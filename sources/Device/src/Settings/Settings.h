@@ -9,6 +9,9 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define MATH_FUNC_IS_SUM                false
+#define MATH_FUNC_IS_MUL                false
+
 #define SET_COUPLE(ch)                  (set.chan_couple[ch])
 #define SET_COUPLE_A                    (SET_COUPLE(A))
 #define SET_COUPLE_B                    (SET_COUPLE(B))

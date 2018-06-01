@@ -1209,12 +1209,12 @@
             <File>
               <FileName>Log.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\libs\common\Log.cpp</FilePath>
+              <FilePath>.\src\Log.cpp</FilePath>
             </File>
             <File>
               <FileName>Log.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\libs\common\Log.h</FilePath>
+              <FilePath>.\src\Log.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1435,6 +1435,11 @@
               <FileName>SettingsTypes.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Settings\SettingsTypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\Settings.h</FilePath>
             </File>
           </Files>
         </Group>

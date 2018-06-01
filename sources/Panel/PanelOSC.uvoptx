@@ -650,7 +650,7 @@
 
   <Group>
     <GroupName>src</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -685,7 +685,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\libs\common\Log.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Log.cpp</PathWithFileName>
       <FilenameWithoutPath>Log.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -697,7 +697,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\libs\common\Log.h</PathWithFileName>
+      <PathWithFileName>.\src\Log.h</PathWithFileName>
       <FilenameWithoutPath>Log.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1203,6 +1203,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\Settings\SettingsTypes.h</PathWithFileName>
       <FilenameWithoutPath>SettingsTypes.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>9</GroupNumber>
+      <FileNumber>74</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Settings\Settings.h</PathWithFileName>
+      <FilenameWithoutPath>Settings.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
