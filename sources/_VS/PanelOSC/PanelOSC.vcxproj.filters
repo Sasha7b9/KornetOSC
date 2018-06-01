@@ -153,14 +153,8 @@
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h">
       <Filter>libs\CMSIS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\common\Hardware\stm32\stm32.h">
-      <Filter>Hardware\stm32</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Panel\src\Hardware\CPU.h">
       <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\stm429.h">
-      <Filter>Hardware\stm32</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Panel\src\Hardware\Controls.h">
       <Filter>Hardware</Filter>
@@ -170,9 +164,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Panel\src\Utils\Decoder.h">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\libs\common\Hardware\Timer.h">
-      <Filter>Hardware</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Panel\src\Settings\SettingsTypes.h">
       <Filter>Settings</Filter>
@@ -188,6 +179,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Panel\src\Display\Painter.h">
       <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Panel\src\Hardware\stm32\stm32.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Panel\src\Hardware\stm32\stm429.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Panel\src\Hardware\stm32\Timer4XX.h">
+      <Filter>Hardware\stm32</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -245,26 +245,17 @@
     <ClCompile Include="..\..\Panel\src\libs\CMSIS\system_stm32f4xx.c">
       <Filter>libs\CMSIS</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32.cpp">
-      <Filter>Hardware\stm32</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Panel\src\Hardware\CPU.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Panel\src\Hardware\CPU_IT.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\stm429.cpp">
-      <Filter>Hardware\stm32</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Panel\src\Hardware\Keyboard.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Panel\src\Utils\Decoder.cpp">
       <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\common\Hardware\Timer.cpp">
-      <Filter>Hardware</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Panel\src\Settings\Settings.cpp">
       <Filter>Settings</Filter>
@@ -286,6 +277,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Panel\src\Display\PainterTextSTM429.cpp">
       <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Hardware\stm32\stm32.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Hardware\stm32\stm429.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Panel\src\Hardware\stm32\Timer4XX.cpp">
+      <Filter>Hardware\stm32</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

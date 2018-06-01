@@ -1,8 +1,9 @@
-#include "Timer2XX.h"
+#include <stm32f4xx.h>
+#include "Timer4XX.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Timer2XX::Init(TIM_TypeDef *instance, uint prescaler, uint counterMode, uint period, uint clcDiv)
+void Timer4XX::Init(TIM_TypeDef *instance, uint prescaler, uint counterMode, uint period, uint clcDiv)
 {
     if (instance == TIM2)
     {
@@ -23,13 +24,7 @@ void Timer2XX::Init(TIM_TypeDef *instance, uint prescaler, uint counterMode, uin
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer2XX::DisableIRQ()
-{
-    HAL_NVIC_DisableIRQ(GetIRQn_Type());
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer2XX::EnabledIRQ(uint mainPriority, uint subPriority)
+void Timer4XX::EnabledIRQ(uint mainPriority, uint subPriority)
 {
     IRQn_Type type = GetIRQn_Type();
 
@@ -39,19 +34,35 @@ void Timer2XX::EnabledIRQ(uint mainPriority, uint subPriority)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer2XX::Start()
+IRQn_Type Timer4XX::GetIRQn_Type()
+{
+    if (handler.Instance == TIM3)
+    {
+        return TIM3_IRQn;
+    }
+    return SysTick_IRQn;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Timer4XX::DisableIRQ()
+{
+    HAL_NVIC_DisableIRQ(GetIRQn_Type());
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Timer4XX::Start()
 {
     HAL_TIM_Base_Start(&handler);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer2XX::Stop()
+void Timer4XX::Stop()
 {
     HAL_TIM_Base_Stop(&handler);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer2XX::StartIT(uint period)
+void Timer4XX::StartIT(uint period)
 {
     handler.Init.Period = period;
     HAL_TIM_Base_Init(&handler);
@@ -59,13 +70,13 @@ void Timer2XX::StartIT(uint period)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer2XX::StopIT()
+void Timer4XX::StopIT()
 {
     HAL_TIM_Base_Stop_IT(&handler);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer2XX::DeInit()
+void Timer4XX::DeInit()
 {
     HAL_TIM_Base_DeInit(&handler);
 
@@ -77,15 +88,4 @@ void Timer2XX::DeInit()
     {
         __HAL_RCC_TIM3_CLK_DISABLE();
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-IRQn_Type Timer2XX::GetIRQn_Type()
-{
-    if (handler.Instance == TIM3)
-    {
-        return TIM3_IRQn;
-    }
-
-    return SysTick_IRQn;
 }

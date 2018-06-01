@@ -1352,26 +1352,6 @@
               <FilePath>.\src\Hardware\Keyboard.h</FilePath>
             </File>
             <File>
-              <FileName>Timer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\libs\common\Hardware\Timer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\libs\common\Hardware\Timer.h</FilePath>
-            </File>
-            <File>
-              <FileName>VCP.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\libs\common\Hardware\VCP.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>VCP.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\libs\common\Hardware\VCP.h</FilePath>
-            </File>
-            <File>
               <FileName>LTDC.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\LTDC.cpp</FilePath>
@@ -1389,32 +1369,32 @@
             <File>
               <FileName>stm32.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\libs\common\Hardware\stm32\stm32.cpp</FilePath>
+              <FilePath>.\src\Hardware\stm32\stm32.cpp</FilePath>
             </File>
             <File>
               <FileName>stm32.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\libs\common\Hardware\stm32\stm32.h</FilePath>
+              <FilePath>.\src\Hardware\stm32\stm32.h</FilePath>
             </File>
             <File>
               <FileName>stm429.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\libs\common\Hardware\stm32\4XX\stm429.cpp</FilePath>
+              <FilePath>.\src\Hardware\stm32\stm429.cpp</FilePath>
             </File>
             <File>
               <FileName>stm429.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\libs\common\Hardware\stm32\4XX\stm429.h</FilePath>
+              <FilePath>.\src\Hardware\stm32\stm429.h</FilePath>
             </File>
             <File>
               <FileName>Timer4XX.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\libs\common\Hardware\stm32\4XX\Timer4XX.cpp</FilePath>
+              <FilePath>.\src\Hardware\stm32\Timer4XX.cpp</FilePath>
             </File>
             <File>
               <FileName>Timer4XX.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\libs\common\Hardware\stm32\4XX\Timer4XX.h</FilePath>
+              <FilePath>.\src\Hardware\stm32\Timer4XX.h</FilePath>
             </File>
           </Files>
         </Group>

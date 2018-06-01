@@ -1,9 +1,9 @@
 #pragma once
 #include "defines.h"
-#include <stm32f2xx.h>
 
 
-class Timer2XX
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Timer4XX
 {
 public:
     void Init(TIM_TypeDef *instance, uint prescaler, uint counterMode, uint period, uint clcDiv);
@@ -20,7 +20,7 @@ public:
 
     void StopIT();
 
-    void DeInit();
+    void DeInit();  
 
     TIM_HandleTypeDef handler;
 

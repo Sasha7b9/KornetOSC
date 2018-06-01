@@ -168,15 +168,6 @@
     <ClCompile Include="..\..\Device\src\Utils\Decoder.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32.cpp">
-      <Filter>Hardware\stm32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\stm437.cpp">
-      <Filter>Hardware\stm32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\Timer4XX.cpp">
-      <Filter>Hardware\stm32</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -188,6 +179,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Utils\StringUtils.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Hardware\stm32\stm32.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Hardware\stm32\stm437.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Hardware\stm32\Timer4XX.cpp">
+      <Filter>Hardware\stm32</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -407,15 +407,6 @@
     <ClInclude Include="..\..\Device\src\Utils\Decoder.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libs\common\Hardware\stm32\stm32.h">
-      <Filter>Hardware\stm32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\stm437.h">
-      <Filter>Hardware\stm32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\Timer4XX.h">
-      <Filter>Hardware\stm32</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h">
       <Filter>Hardware</Filter>
     </ClInclude>
@@ -427,6 +418,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Utils\StringUtils.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Hardware\stm32\stm32.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Hardware\stm32\stm437.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Hardware\stm32\Timer4XX.h">
+      <Filter>Hardware\stm32</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

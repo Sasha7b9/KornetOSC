@@ -130,9 +130,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\common\Hardware\stm32\4XX\stm429.h" />
-    <ClInclude Include="..\..\libs\common\Hardware\stm32\stm32.h" />
-    <ClInclude Include="..\..\libs\common\Hardware\Timer.h" />
     <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc.h" />
     <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc_V6.h" />
     <ClInclude Include="..\..\libs\common\_VS\core_cm4.h" />
@@ -200,6 +197,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="..\..\Panel\src\Hardware\LTDC.h" />
+    <ClInclude Include="..\..\Panel\src\Hardware\stm32\stm32.h" />
+    <ClInclude Include="..\..\Panel\src\Hardware\stm32\stm429.h" />
+    <ClInclude Include="..\..\Panel\src\Hardware\stm32\Timer4XX.h" />
     <ClInclude Include="..\..\Panel\src\libs\HAL\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\Panel\src\libs\HAL\stm32f4xx_it.h" />
     <ClInclude Include="..\..\Panel\src\Settings\SettingsDisplay.h" />
@@ -207,9 +207,6 @@
     <ClInclude Include="..\..\Panel\src\Utils\Decoder.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libs\common\Hardware\stm32\4XX\stm429.cpp" />
-    <ClCompile Include="..\..\libs\common\Hardware\stm32\stm32.cpp" />
-    <ClCompile Include="..\..\libs\common\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\Panel\src\Display\Colors.cpp" />
     <ClCompile Include="..\..\Panel\src\Display\Display.cpp" />
     <ClCompile Include="..\..\Panel\src\Display\font\Font.cpp" />
@@ -222,6 +219,9 @@
     <ClCompile Include="..\..\Panel\src\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\Panel\src\Hardware\Keyboard.cpp" />
     <ClCompile Include="..\..\Panel\src\Hardware\LTDC.cpp" />
+    <ClCompile Include="..\..\Panel\src\Hardware\stm32\stm32.cpp" />
+    <ClCompile Include="..\..\Panel\src\Hardware\stm32\stm429.cpp" />
+    <ClCompile Include="..\..\Panel\src\Hardware\stm32\Timer4XX.cpp" />
     <ClCompile Include="..\..\Panel\src\libs\CMSIS\system_stm32f4xx.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

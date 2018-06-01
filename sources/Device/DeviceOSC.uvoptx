@@ -1255,7 +1255,7 @@
 
   <Group>
     <GroupName>Hardware/stm32</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1266,7 +1266,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\libs\common\Hardware\stm32\stm32.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Hardware\stm32\stm32.cpp</PathWithFileName>
       <FilenameWithoutPath>stm32.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1278,7 +1278,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\libs\common\Hardware\stm32\stm32.h</PathWithFileName>
+      <PathWithFileName>.\src\Hardware\stm32\stm32.h</PathWithFileName>
       <FilenameWithoutPath>stm32.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1290,7 +1290,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\libs\common\Hardware\stm32\4XX\stm437.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Hardware\stm32\stm437.cpp</PathWithFileName>
       <FilenameWithoutPath>stm437.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1302,7 +1302,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\libs\common\Hardware\stm32\4XX\stm437.h</PathWithFileName>
+      <PathWithFileName>.\src\Hardware\stm32\stm437.h</PathWithFileName>
       <FilenameWithoutPath>stm437.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1314,7 +1314,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\libs\common\Hardware\stm32\4XX\Timer4XX.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Hardware\stm32\Timer4XX.cpp</PathWithFileName>
       <FilenameWithoutPath>Timer4XX.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1326,7 +1326,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\libs\common\Hardware\stm32\4XX\Timer4XX.h</PathWithFileName>
+      <PathWithFileName>.\src\Hardware\stm32\Timer4XX.h</PathWithFileName>
       <FilenameWithoutPath>Timer4XX.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
