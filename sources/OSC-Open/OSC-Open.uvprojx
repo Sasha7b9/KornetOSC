@@ -1147,11 +1147,6 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>main.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Panel\src\main.cpp</FilePath>
-            </File>
-            <File>
               <FileName>defines.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Panel\src\defines.h</FilePath>
@@ -1165,6 +1160,21 @@
               <FileName>Log.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Panel\src\Log.h</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\main.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Panel.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Panel.h</FilePath>
+            </File>
+            <File>
+              <FileName>Panel.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Panel.cpp</FilePath>
             </File>
           </Files>
         </Group>

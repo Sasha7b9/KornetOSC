@@ -32,3 +32,5 @@ sources/OSC-VS/Panel/Debug/*
 sources/OSC-Open/Objects/*
 sources/OSC-Open/DebugConfig/*
 sources/OSC-Open/Listings/*
+
+sources/OSC-Open-VS/Debug/*
