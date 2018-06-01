@@ -8,11 +8,7 @@
   <WorkspaceName>WorkSpace</WorkspaceName>
 
   <project>
-    <PathAndName>.\Device\DeviceOSC.uvprojx</PathAndName>
-  </project>
-
-  <project>
-    <PathAndName>.\Panel\PanelOSC.uvprojx</PathAndName>
+    <PathAndName>.\OSC-Open\OSC-Open.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
     <NodeIsExpanded>1</NodeIsExpanded>
   </project>
