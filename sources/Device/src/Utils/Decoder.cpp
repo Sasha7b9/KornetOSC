@@ -83,14 +83,14 @@ void Decoder::RunStep(uint8 data)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Decoder::ButtonPress(uint8 data)
 {
-    static Key button;
+    static Control button;
     if (step == 0)
     {
         return false;
     }
     else if (step == 1)
     {
-        button = (Key)data;
+        button = (Control)data;
         return false;
     }
     else

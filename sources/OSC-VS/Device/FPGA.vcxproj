@@ -25,6 +25,7 @@
     <ClCompile Include="..\..\Device\src\Display\Grid.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp" />
     <ClCompile Include="..\..\Device\src\Display\PainterData.cpp" />
+    <ClCompile Include="..\..\Device\src\Display\Text.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\Storage.cpp" />
@@ -45,8 +46,12 @@
     <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_it.c" />
     <ClCompile Include="..\..\Device\src\Log.cpp" />
     <ClCompile Include="..\..\Device\src\main.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Hint.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Menu.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\MenuControls.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\MenuDrawing.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\MenuItems.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsGraphics.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsLogic.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannel.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageDisplay.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageService.cpp" />
@@ -104,15 +109,18 @@
     <ClInclude Include="..\..\Device\src\Device.h" />
     <ClInclude Include="..\..\Device\src\Display\Colors.h" />
     <ClInclude Include="..\..\Device\src\Display\Display.h" />
+    <ClInclude Include="..\..\Device\src\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\Device\src\Display\Grid.h" />
     <ClInclude Include="..\..\Device\src\Display\Painter.h" />
     <ClInclude Include="..\..\Device\src\Display\PainterData.h" />
+    <ClInclude Include="..\..\Device\src\Display\Text.h" />
     <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h" />
     <ClInclude Include="..\..\Device\src\FPGA\AD9286.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA_Types.h" />
     <ClInclude Include="..\..\Device\src\FPGA\Storage.h" />
     <ClInclude Include="..\..\Device\src\Hardware\AT25160N.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\Controls.h" />
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />
     <ClInclude Include="..\..\Device\src\Hardware\EEPROM.h" />
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h" />
@@ -122,13 +130,15 @@
     <ClInclude Include="..\..\Device\src\Hardware\stm32\stm437.h" />
     <ClInclude Include="..\..\Device\src\Hardware\stm32\Timer4XX.h" />
     <ClInclude Include="..\..\Device\src\Hardware\Timer.h" />
-    <ClInclude Include="..\..\Device\src\Keyboard\Buttons.h" />
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_it.h" />
     <ClInclude Include="..\..\Device\src\Log.h" />
     <ClInclude Include="..\..\Device\src\main.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Hint.h" />
     <ClInclude Include="..\..\Device\src\Menu\Menu.h" />
-    <ClInclude Include="..\..\Device\src\Menu\MenuControls.h" />
+    <ClInclude Include="..\..\Device\src\Menu\MenuItems.h" />
+    <ClInclude Include="..\..\Device\src\Menu\MenuItemsDefs.h" />
+    <ClInclude Include="..\..\Device\src\Menu\MenuPagesNames.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageChannels.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageDisplay.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageService.h" />
@@ -279,7 +289,7 @@
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
-      <DisableSpecificWarnings>4068;4201;4514;4626;4774;4820;5027;5045</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4068;4201;4514;4623;4626;4774;4820;5027;5045</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

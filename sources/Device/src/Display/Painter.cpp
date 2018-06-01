@@ -141,13 +141,6 @@ void Painter::SetPoint(int x, int y, Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetFont(TypeFont typeFont)
-{
-    uint8 buffer[2] = {PAINT_SET_FONT, (uint8)typeFont};
-    FSMC::WriteToPanel(buffer, 2);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawBoundedRegion(int x, int y, int width, int height, Color colorFill, Color colorBound)
 {
     DrawRectangle(x, y, width, height, colorBound);

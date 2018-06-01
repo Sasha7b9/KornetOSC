@@ -20,10 +20,10 @@ static CHAR_BUF2(buffer, SIZE_CONSOLE, 100);
 static int stringInConsole = 0;
 
 bool Display::inProcessDrawConsole = false;
-Key Display::key = K_None;
+Control Display::key = B_None;
 
 
-const char *ControlName(Key control)
+const char *ControlName(Control control)
 {
     static const char *names[NumButtons] =
     {
@@ -67,7 +67,7 @@ const char *ControlName(Key control)
     return names[control];
 }
 
-void Display::SetKey(Key key_)
+void Display::SetKey(Control key_)
 {
     key = key_;
 }
@@ -130,7 +130,7 @@ void Display::UpdateTester()
     int size = 239;
 
     Painter::DrawRectangle(0, 0, size, size, Color::FILL);
-    Painter::DrawRectangle(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
+    Painter::DrawRectangle(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
 
     for (int i = 0; i < NUM_STEPS; i++)
     {

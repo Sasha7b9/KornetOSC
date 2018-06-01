@@ -3,16 +3,7 @@
 #include "Colors.h"
 #include "Settings/SettingsTypes.h"
 #include "TypeSymbols.h"
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-typedef enum
-{
-    TypeFont_5,
-    TypeFont_8,
-    TypeFont_UGO,
-    TypeFont_UGO2
-} TypeFont;
+#include "DisplayTypes.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +38,7 @@ public:
 
     static void DrawLine(int x0, int y0, int x1, int y1, Color color = Color::NUMBER);
 
-    static void SetFont(TypeFont typeFont);
+    //static void SetFont(TypeFont typeFont);
 
     static void SetPoint(int x, int y, Color color = Color::NUMBER);
 

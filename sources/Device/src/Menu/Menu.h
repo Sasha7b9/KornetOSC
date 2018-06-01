@@ -1,6 +1,6 @@
 #pragma once
-#include "MenuControls.h"
-#include "Keyboard/Buttons.h"
+#include "MenuItems.h"
+#include "Hardware/Controls.h"
 #include "Settings/SettingsTypes.h"
 
 
@@ -8,11 +8,18 @@
 class Menu
 {
 public:
+
     static void Init();
+
     static void Update();
-    static void ButtonPress(Key button, TypePress typePress);
+
+    static void ButtonPress(Control button, TypePress typePress);
+
     static void Draw();
+
     static void SaveSettings();
+    /// Возвращает адрес текущую страницу
+    static Page* CurrentPage();
 
 private:
     static void OnPressNone();
@@ -46,6 +53,8 @@ private:
 
     static void VerifyOnDoubleClick(int src, int dir);
 
+    static void DrawTitle();
+
     /// \tode Здесь хранится время предыдущего нажатия кнопки для отлова двойного нажатия.
     /// 1 индекс 1канал/2канал/синхронизация/время, 2 индекс - вниз/вверх
     static uint timePrevPress[4][2];
@@ -54,7 +63,7 @@ private:
     /// Здесь хранится тип нажатий нопки для функции ButtonPress
     static TypePress typePress;
     /// Текущая обрабатываемая кнопка
-    static Key button;
+    static Control button;
     /// Если true, то кнопка нажата
     static bool isPressed[NumButtons];
     /// Время последнего нажатия кнопки. Нужно для того, чтобы периодически сохранять настройки

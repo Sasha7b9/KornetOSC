@@ -36,15 +36,15 @@ enum TypeItem
 
 
 /// Общая часть для всех типов элементов меню
-#define COMMON_PART_MENU_ITEM                                                                                                                   \
-    TypeItem     type;           /* Тип итема */                                                                                             \
-    int8            num;            /* Число вариантов для Choice или число контролов для Page*/                                                \
-    bool            isPageSB;       /* Если true, то это страница малых кнопок, когда type == Item_Page */                                   \
-                                    /* Если type == Item_Choice, то единица означает двоичный Choice - выбор строго из двух вариантов */     \
-    NamePage        nameOrNumBit;   /* Имя из перечисления NamePage, если type == Item_Page */                                               \
-                                    /* В случае, если type == Item_Choice,  определяет номер бита */                                         \
-    const PageBase  *keeper;        /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */                                                \
-    pFuncBV         funcOfActive;   /* Активен ли данный элемент */                                                                             \
+#define COMMON_PART_MENU_ITEM                                                                                                               \
+    TypeItem        type;           /* Тип итема */                                                                                         \
+    int8            num;            /* Число вариантов для Choice или число контролов для Page*/                                            \
+    bool            isPageSB;       /* Если true, то это страница малых кнопок, когда type == Item_Page */                                  \
+                                    /* Если type == Item_Choice, то единица означает двоичный Choice - выбор строго из двух вариантов */    \
+    NamePage        nameOrNumBit;   /* Имя из перечисления NamePage, если type == Item_Page */                                              \
+                                    /* В случае, если type == Item_Choice,  определяет номер бита */                                        \
+    const PageBase  *keeper;        /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */                                            \
+    pFuncBV         funcOfActive;   /* Активен ли данный элемент */                                                                         \
     const char      *titleHint[4]   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
 
 class PageBase;

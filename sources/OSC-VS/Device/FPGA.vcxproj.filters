@@ -22,9 +22,6 @@
     <Filter Include="FPGA">
       <UniqueIdentifier>{544ae82b-e645-4b73-8e16-a07e5ac979d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Keyboard">
-      <UniqueIdentifier>{1c305baf-5d78-4599-a9fd-f77907b42eb3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utils">
       <UniqueIdentifier>{c51aca0a-07f4-41dc-adb7-bcc03f55dd79}</UniqueIdentifier>
     </Filter>
@@ -97,9 +94,6 @@
       <Filter>Hardware</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\Menu.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\MenuControls.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannel.cpp">
@@ -195,6 +189,24 @@
     <ClCompile Include="..\..\Device\src\Display\Colors.cpp">
       <Filter>Display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Hint.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuDrawing.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuItems.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsGraphics.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsLogic.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Display\Text.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -284,13 +296,7 @@
     <ClInclude Include="..\..\Device\src\Hardware\Timer.h">
       <Filter>Hardware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Keyboard\Buttons.h">
-      <Filter>Keyboard</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Menu.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\MenuControls.h">
       <Filter>Menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Multimeter\Multimeter.h">
@@ -435,6 +441,27 @@
       <Filter>_VS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\Colors.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Hint.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\MenuItems.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\MenuItemsDefs.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\MenuPagesNames.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Hardware\Controls.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Display\Text.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Display\DisplayTypes.h">
       <Filter>Display</Filter>
     </ClInclude>
   </ItemGroup>

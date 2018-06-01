@@ -21,6 +21,7 @@
 #include <stm32f4xx_hal.h>
 
 
+typedef const char *const   pString;
 typedef unsigned char       uchar;
 typedef signed char         int8;
 typedef unsigned char       uint8;
@@ -33,6 +34,9 @@ typedef unsigned int        col_val;
 
 typedef void(*pFuncVV)();
 typedef void(*pFuncVB)(bool);
+typedef bool (*pFuncBV)();
+typedef void (*pFuncVI)(int);
+typedef void (*pFuncVII)(int, int);
 
 inline void EmptyFuncVV(){}
 inline void EmptyFuncVB(bool){};
