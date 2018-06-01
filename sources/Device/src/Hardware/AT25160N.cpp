@@ -88,24 +88,24 @@ void AT25160N::Test()
         data[i] = (uint8)rand();
     }
 
-    uint timeStart = gTimeMS;
+//    uint timeStart = gTimeMS;
 
     SetWriteLatch();
 
-    uint time1 = gTimeMS;
+//    uint time1 = gTimeMS;
 
     WriteData(0, data, size);
 
-    uint time2 = gTimeMS;
+//    uint time2 = gTimeMS;
 
     //WaitFinishWrite();
 
     ReadData(0, out, size);
     ResetWriteLatch();
 
-    uint time3 = gTimeMS;
+//    uint time3 = gTimeMS;
 
-    LOG_WRITE("1 = %d, 2 = %d, 3 = %d, %d", time1 - timeStart, time2 - time1, time3 - time2, time3 - timeStart);
+    //LOG_WRITE("1 = %d, 2 = %d, 3 = %d, %d", time1 - timeStart, time2 - time1, time3 - time2, time3 - timeStart);
 
     bool testIsOk = true;
 
@@ -121,11 +121,11 @@ void AT25160N::Test()
 
     if(testIsOk)
     {
-        LOG_WRITE("Test is OK!!!");
+      //  LOG_WRITE("Test is OK!!!");
     }
     else
     {
-        LOG_WRITE("WARNING!!! Test is failed!!!");
+//        LOG_WRITE("WARNING!!! Test is failed!!!");
     }
 }
 

@@ -3,62 +3,77 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define SPI4_SCK GPIO_PIN_12
-#define SPI4_DAT GPIO_PIN_14
-#define SPI4_CS GPIO_PIN_11
+#define PIN_SCK     GPIO_PIN_10
+#define PORT_SCK    GPIOB
 
-static GPIO_InitTypeDef isGPIO =
-{
-    SPI4_SCK | SPI4_DAT,
-    GPIO_MODE_INPUT,
-    GPIO_PULLUP
-};
+#define PIN_DAT     GPIO_PIN_3
+#define PORT_DAT    GPIOC
+
+#define PIN_CS      GPIO_PIN_11
+#define PORT_CS     GPIOB
+
+#define SCK         PORT_SCK, PIN_SCK
+#define DAT         PORT_DAT, PIN_DAT
+#define CS          PORT_CS,  PIN_CS
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void AD9286::Init()
 {
-    HAL_GPIO_Init(GPIOE, &isGPIO);
-
-    isGPIO.Pin = SPI4_CS;
-    isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
-
-    HAL_GPIO_Init(GPIOE, &isGPIO);
-
-    SetPin(SPI4_CS);
-
-    return;
-
     /*
-    isGPIO.Pin = SPI4_DAT;
+        Для чипселекта используется вывод
+        А вот для тактов и данных используются те же, выводы, которые в дальнейшем управляют микросхемой EEPROM AT25160
 
-    SetPin(SPI4_CS);
-    ResetPin(SPI4_DAT);
-    ResetPin(SPI4_SCK);
+        CS  - 64 - PE11
+        DAT - 29 - PC3
+        SCK - 69 - PB10
     */
+
+    GPIO_InitTypeDef isGPI0 =                   // Инициализация CS
+    {
+        PIN_CS,
+        GPIO_MODE_OUTPUT_PP,
+        GPIO_PULLUP
+    };
+    HAL_GPIO_Init(PORT_CS, &isGPI0);
+
+    isGPI0.Pin = PIN_DAT;                       // Инициализация DAT
+    HAL_GPIO_Init(PORT_DAT, &isGPI0);
+    
+    isGPI0.Pin = PIN_SCK;                       // Инициализация SCK
+    HAL_GPIO_Init(PORT_SCK, &isGPI0);
+
+    SetPin(CS);
+    ResetPin(DAT);
+    ResetPin(SCK);
+
+    AD9286::WriteByte(0x09, 0x09);
+    /// \todo Это должно быть в функции записи
+    AD9286::WriteByte(0xff, 0x01);   // Пишем бит подтверждения.
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AD9286::ConfigToRead()
 {
+    /*
     isGPIO.Mode = GPIO_MODE_INPUT;
     HAL_GPIO_Init(GPIOE, &isGPIO);
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AD9286::ConfigToWrite()
 {
+    /*
     isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
     HAL_GPIO_Init(GPIOE, &isGPIO);
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AD9286::WriteByte(uint8, uint8)
+void AD9286::WriteByte(uint8 address, uint8 byte)
 {
-    return;
-
-    /*
-    ResetPin(SPI4_CS);
+    ResetPin(CS);
 
     uint value = (uint)((address << 8) + byte);
 
@@ -66,22 +81,21 @@ void AD9286::WriteByte(uint8, uint8)
     {
         if (_GET_BIT(value, i))
         {
-            SetPin(SPI4_DAT);
+            SetPin(DAT);
         }
         else
         {
-            ResetPin(SPI4_DAT);
+            ResetPin(DAT);
         }
         PAUSE_ON_TICKS(100);
 
-        SetPin(SPI4_SCK);
+        SetPin(SCK);
         PAUSE_ON_TICKS(100);
 
-        ResetPin(SPI4_SCK);
+        ResetPin(SCK);
     }
 
-    SetPin(SPI4_CS);
-    */
+    SetPin(CS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -141,15 +155,15 @@ uint8 AD9286::ReadByte(uint8)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AD9286::SetPin(uint pin)
+void AD9286::SetPin(GPIO_TypeDef *gpio, uint16 pin)
 {
-    HAL_GPIO_WritePin(GPIOE, (uint16)pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_SET);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AD9286::ResetPin(uint pin)
+void AD9286::ResetPin(GPIO_TypeDef *gpio, uint16 pin)
 {
-    HAL_GPIO_WritePin(GPIOE, (uint16)pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
