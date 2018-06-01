@@ -1937,14 +1937,49 @@
               <FilePath>.\src\Menu\Menu.h</FilePath>
             </File>
             <File>
-              <FileName>MenuControls.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuControls.h</FilePath>
+              <FileName>Hint.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Hint.cpp</FilePath>
             </File>
             <File>
-              <FileName>MenuControls.cpp</FileName>
+              <FileName>Hint.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Hint.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuDrawing.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\MenuControls.cpp</FilePath>
+              <FilePath>.\src\Menu\MenuDrawing.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItems.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItems.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\MenuItems.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsDefs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\MenuItemsDefs.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsGraphics.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\MenuItemsGraphics.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsLogic.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\MenuItemsLogic.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuPagesNames.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\MenuPagesNames.h</FilePath>
             </File>
           </Files>
         </Group>
