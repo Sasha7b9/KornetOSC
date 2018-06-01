@@ -11,12 +11,12 @@ int main(void)
 {
     Device::Init();
 
-    AT25160N::Init();
+    //AT25160N::Init();
 
     while (1)
     {
         Device::Update();
 
-        AT25160N::Test();
+//        AT25160N::Test();
     }
 }

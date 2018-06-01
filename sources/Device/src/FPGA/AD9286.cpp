@@ -28,7 +28,7 @@ void AD9286::Init()
         DAT - 29 - PC3
         SCK - 69 - PB10
     */
-
+    
     GPIO_InitTypeDef isGPI0 =                   // Инициализация CS
     {
         PIN_CS,
