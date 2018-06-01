@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\Panel\src;..\..\Panel\src\libs\HAL;..\..\libs\common;..\..\libs\common\_VS;..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\libs\STM32Cube_F4\Drivers\CMSIS\Include</IncludePath>
+    <IncludePath>..\..\Panel\src;..\..\Panel\src\libs\HAL;..\..\libs\common;..\..\common\_VS;..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\libs\STM32Cube_F4\Drivers\CMSIS\Include</IncludePath>
     <OutDir>.\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -130,24 +130,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc.h" />
-    <ClInclude Include="..\..\libs\common\_VS\cmsis_armcc_V6.h" />
-    <ClInclude Include="..\..\libs\common\_VS\core_cm4.h" />
-    <ClInclude Include="..\..\libs\common\_VS\core_cmFunc.h" />
-    <ClInclude Include="..\..\libs\common\_VS\core_cmInstr.h" />
-    <ClInclude Include="..\..\libs\common\_VS\core_cmSimd.h" />
-    <ClInclude Include="..\..\libs\common\_VS\ctype.h" />
-    <ClInclude Include="..\..\libs\common\_VS\integer.h" />
-    <ClInclude Include="..\..\libs\common\_VS\inttypes.h" />
-    <ClInclude Include="..\..\libs\common\_VS\limits.h" />
-    <ClInclude Include="..\..\libs\common\_VS\math.h" />
-    <ClInclude Include="..\..\libs\common\_VS\stdarg.h" />
-    <ClInclude Include="..\..\libs\common\_VS\stdint.h" />
-    <ClInclude Include="..\..\libs\common\_VS\stdio.h" />
-    <ClInclude Include="..\..\libs\common\_VS\stdlib.h" />
-    <ClInclude Include="..\..\libs\common\_VS\string.h" />
-    <ClInclude Include="..\..\libs\common\_VS\tchar.h" />
-    <ClInclude Include="..\..\libs\common\_VS\windows.h" />
+    <ClInclude Include="..\..\common\_VS\cmsis_armcc.h" />
+    <ClInclude Include="..\..\common\_VS\cmsis_armcc_V6.h" />
+    <ClInclude Include="..\..\common\_VS\core_cm4.h" />
+    <ClInclude Include="..\..\common\_VS\core_cmFunc.h" />
+    <ClInclude Include="..\..\common\_VS\core_cmInstr.h" />
+    <ClInclude Include="..\..\common\_VS\core_cmSimd.h" />
+    <ClInclude Include="..\..\common\_VS\ctype.h" />
+    <ClInclude Include="..\..\common\_VS\integer.h" />
+    <ClInclude Include="..\..\common\_VS\inttypes.h" />
+    <ClInclude Include="..\..\common\_VS\limits.h" />
+    <ClInclude Include="..\..\common\_VS\math.h" />
+    <ClInclude Include="..\..\common\_VS\stdarg.h" />
+    <ClInclude Include="..\..\common\_VS\stdint.h" />
+    <ClInclude Include="..\..\common\_VS\stdio.h" />
+    <ClInclude Include="..\..\common\_VS\stdlib.h" />
+    <ClInclude Include="..\..\common\_VS\string.h" />
+    <ClInclude Include="..\..\common\_VS\tchar.h" />
+    <ClInclude Include="..\..\common\_VS\windows.h" />
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h" />
     <ClInclude Include="..\..\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h" />
     <ClInclude Include="..\..\Panel\src\defines.h" />
@@ -269,10 +269,10 @@
     <ClCompile Include="..\..\Panel\src\Utils\Math.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\libs\common\_VS\algorithm" />
-    <None Include="..\..\libs\common\_VS\cstdlib" />
-    <None Include="..\..\libs\common\_VS\cstring" />
-    <None Include="..\..\libs\common\_VS\limits" />
+    <None Include="..\..\common\_VS\algorithm" />
+    <None Include="..\..\common\_VS\cstdlib" />
+    <None Include="..\..\common\_VS\cstring" />
+    <None Include="..\..\common\_VS\limits" />
     <None Include="..\..\Panel\src\Display\font\font5.inc" />
     <None Include="..\..\Panel\src\Display\font\font8.inc" />
     <None Include="..\..\Panel\src\Display\font\fontUGO.inc" />
