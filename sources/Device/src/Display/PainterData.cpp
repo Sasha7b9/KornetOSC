@@ -26,6 +26,17 @@ void PainterData::DrawData()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
 {
+    static uint timePrev = 0;
+
+    if (gTimeMS - timePrev > 1000)
+    {
+        timePrev = gTimeMS;
+
+        uint8 *d = data;
+
+        LOG_WRITE("%d %d %d %d %d %d %d %d %d %d %d %d %d %d", d[0], d[1], d[2], d[3], d[4], d[5], d[6], d[7], d[8], d[9], d[10], d[11], d[12], d[13]);
+    }
+
     int bottom = Grid::Bottom();
     int left = Grid::Left();
 
