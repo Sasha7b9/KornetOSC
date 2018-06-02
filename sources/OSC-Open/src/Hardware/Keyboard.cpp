@@ -30,7 +30,7 @@ static int selY = 0; // здесь её координаты
 
 static StructButton strBtn1[2][5] =
 {
-    {{"F1", B_1},             {"F2", B_2},            {"F3", B_3},           {"F4", B_4},               {"F5", B_5}},
+    {{"F1",      B_1},        {"F2",      B_2},       {"F3",     B_3},       {"F4",        B_4},        {"F5",     B_5}},
     {{"ФУНКЦИЯ", B_Function}, {"ДИСПЛЕЙ", B_Display}, {"СЕРВИС", B_Service}, {"ИЗМЕРЕНИЯ", B_Measures}, {"ПАМЯТЬ", B_Memory}}
 };
 
@@ -38,16 +38,16 @@ static StructButton strBtn1[2][5] =
 
 static StructButton strBtn2[NUM_ROW][3] =
 {
-{{"КАНАЛ 1", B_ChannelA},    {"РАЗВЕРТКА", B_Time},       {"КАНАЛ 2", B_ChannelB}},
-{{"мВ",      B_RangeLessA},  {"нС",        B_TBaseLess},  {"мВ",      B_RangeLessB}},
-{{"В",       B_RangeMoreA},  {"С",         B_TBaseMore},  {"В",       B_RangeMoreB}},
-{{"Вверх",   B_RShiftMoreA}, {"Влево",     B_TShiftLess}, {"Вверх",   B_RShiftMoreB}},
-{{"Вниз",    B_RShiftLessA}, {"Вправо",    B_TShiftMore}, {"Вниз",    B_RShiftLessA}},
-{{"C лево", B_TrigLevLess}, {"Синхр", B_Trig}, {"С вправо", B_TrigLevMore}},
-{{"", }, {"", }, {"ПУСК/СТОП", B_Start}},
-{ { "", },{ "Вверх", B_Up},{ "", } },
-{ {"Влево", B_Left},{ "Ввод", B_Enter, },{ "Вправо", B_Right}},
-{ {"", },{ "Вниз", B_Down},{ "", }}
+{{"КАНАЛ 1", B_ChannelA},     {"РАЗВЕРТКА", B_Time},       {"КАНАЛ 2",   B_ChannelB}},
+{{"мВ",      B_RangeLessA},   {"нС",        B_TBaseLess},  {"мВ",        B_RangeLessB}},
+{{"В",       B_RangeMoreA},   {"С",         B_TBaseMore},  {"В",         B_RangeMoreB}},
+{{"Вверх",   B_RShiftMoreA},  {"Влево",     B_TShiftLess}, {"Вверх",     B_RShiftMoreB}},
+{{"Вниз",    B_RShiftLessA},  {"Вправо",    B_TShiftMore}, {"Вниз",      B_RShiftLessA}},
+{{"C вниз",  B_TrigLevLess},  {"Синхр",     B_Trig},       {"С вверх",   B_TrigLevMore}},
+{{"",        B_None},         {"",          B_None},       {"ПУСК/СТОП", B_Start}},
+{{"",        B_None},         {"Вверх",     B_Up},         {"",          B_None}},
+{{"Влево",   B_Left},         {"Ввод",      B_Enter},      {"Вправо",    B_Right}},
+{{"",        B_None},         {"Вниз",      B_Down},       {"",          B_None}}
 };
 
 

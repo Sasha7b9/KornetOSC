@@ -516,7 +516,7 @@ int Painter::DrawStringInCenterRect(int eX, int eY, int width, int eHeight, cons
     int height = Font::GetHeightSymbol(text[0]);
     int x = eX + (width - lenght) / 2;
     int y = eY + (eHeight - height) / 2;
-    return DrawText(x, y, text);
+    return DrawText(x + 1, y, text);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
