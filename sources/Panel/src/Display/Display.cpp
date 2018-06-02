@@ -9,14 +9,22 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 LTDC_HandleTypeDef hltdc;
-static uint8 frontBuffer[320 * 240];       // Это экран
-static uint8 backBuffer[320 * 240];        // Зто задний буфер. В нём происходит отрисовка, и затем изображение копируется во frontBuffer
+#ifdef STM32F429xx
+uint8       *Display::frontBuffer = (uint8 *)malloc(BUFFER_WIDTH * BUFFER_HEIGHT);
+uint8       *Display::backBuffer = (uint8 *)malloc(BUFFER_WIDTH * BUFFER_HEIGHT);
+#endif
+
+#ifdef STM32F746xx
+uint8       *Display::frontBuffer = (uint8 *)SDRAM_DEVICE_ADDR;
+uint8       *Display::backBuffer = (uint8 *)(SDRAM_DEVICE_ADDR + BUFFER_HEIGHT * BUFFER_WIDTH);
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Display::Init()
 {   
     LTDC_::Init((uint)frontBuffer, (uint)backBuffer);
+    Painter::LoadPalette();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

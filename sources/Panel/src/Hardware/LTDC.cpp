@@ -1,5 +1,5 @@
 #include "defines.h"
-#include "CPU.h"
+#include "Hardware/CPU.h"
 #include "LTDC.h"
 #include "Display/Painter.h"
 #include "Settings/SettingsTypes.h"

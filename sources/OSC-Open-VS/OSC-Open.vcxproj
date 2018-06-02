@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\My\Work\stm32\OSC\sources\Panel\src;..\Panel\src\libs\HAL;C:\My\Work\stm32\OSC\sources\common\libs;..\common\_VS;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include</IncludePath>
+    <IncludePath>..\OSC-Open\src;..\OSC-Open\src\libs\HAL;..\Panel\src;..\Panel\src\libs\HAL;..\common\libs;..\common\_VS;..\common\libs\STM32Cube_F7\Drivers\CMSIS\Device\ST\STM32F7xx\Include;..\common\libs\STM32Cube_F7\Drivers\STM32F7xx_HAL_Driver\Inc;..\common\libs\STM32Cube_F7\Drivers\CMSIS\Include</IncludePath>
     <OutDir>.\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -89,7 +89,7 @@
       <WarningLevel>EnableAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;USE_HAL_DRIVER;STM32F429xx;MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;USE_HAL_DRIVER;STM32F746xx;MSVC;OPEN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
       <DisableSpecificWarnings>4068;4514;4820;5045</DisableSpecificWarnings>
@@ -186,6 +186,14 @@
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="..\OSC-Open\src\Hardware\CPU.h" />
+    <ClInclude Include="..\OSC-Open\src\Hardware\Keyboard.h" />
+    <ClInclude Include="..\OSC-Open\src\Hardware\LTDC.h" />
+    <ClInclude Include="..\OSC-Open\src\Hardware\stm32\stm32.h" />
+    <ClInclude Include="..\OSC-Open\src\Hardware\stm32\stm746.h" />
+    <ClInclude Include="..\OSC-Open\src\Hardware\stm32\Timer7XX.h" />
+    <ClInclude Include="..\OSC-Open\src\libs\HAL\stm32f7xx_hal_conf.h" />
+    <ClInclude Include="..\OSC-Open\src\libs\HAL\stm32f7xx_it.h" />
     <ClInclude Include="..\OSC-Open\src\Panel.h" />
     <ClInclude Include="..\Panel\src\defines.h" />
     <ClInclude Include="..\Panel\src\Display\Colors.h" />
@@ -194,15 +202,7 @@
     <ClInclude Include="..\Panel\src\Display\Font\Font.h" />
     <ClInclude Include="..\Panel\src\Display\Painter.h" />
     <ClInclude Include="..\Panel\src\Hardware\Controls.h" />
-    <ClInclude Include="..\Panel\src\Hardware\CPU.h" />
     <ClInclude Include="..\Panel\src\Hardware\FSMC.h" />
-    <ClInclude Include="..\Panel\src\Hardware\Keyboard.h" />
-    <ClInclude Include="..\Panel\src\Hardware\LTDC.h" />
-    <ClInclude Include="..\Panel\src\Hardware\stm32\stm32.h" />
-    <ClInclude Include="..\Panel\src\Hardware\stm32\stm429.h" />
-    <ClInclude Include="..\Panel\src\Hardware\stm32\Timer4XX.h" />
-    <ClInclude Include="..\Panel\src\libs\HAL\stm32f4xx_hal_conf.h" />
-    <ClInclude Include="..\Panel\src\libs\HAL\stm32f4xx_it.h" />
     <ClInclude Include="..\Panel\src\Settings\Settings.h" />
     <ClInclude Include="..\Panel\src\Settings\SettingsTypes.h" />
     <ClInclude Include="..\Panel\src\Utils\Decoder.h" />
@@ -248,6 +248,13 @@
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\OSC-Open\src\Hardware\CPU.cpp" />
+    <ClCompile Include="..\OSC-Open\src\Hardware\Keyboard.cpp" />
+    <ClCompile Include="..\OSC-Open\src\Hardware\LTDC.cpp" />
+    <ClCompile Include="..\OSC-Open\src\Hardware\stm32\stm32.cpp" />
+    <ClCompile Include="..\OSC-Open\src\Hardware\stm32\stm746.cpp" />
+    <ClCompile Include="..\OSC-Open\src\Hardware\stm32\Timer7XX.cpp" />
+    <ClCompile Include="..\OSC-Open\src\libs\HAL\stm32f7xx_it.c" />
     <ClCompile Include="..\OSC-Open\src\main.cpp" />
     <ClCompile Include="..\OSC-Open\src\Panel.cpp" />
     <ClCompile Include="..\Panel\src\Display\Colors.cpp" />
@@ -257,16 +264,8 @@
     <ClCompile Include="..\Panel\src\Display\PainterSTM429.cpp" />
     <ClCompile Include="..\Panel\src\Display\PainterText.cpp" />
     <ClCompile Include="..\Panel\src\Display\PainterTextSTM429.cpp" />
-    <ClCompile Include="..\Panel\src\Hardware\CPU.cpp" />
     <ClCompile Include="..\Panel\src\Hardware\CPU_IT.cpp" />
     <ClCompile Include="..\Panel\src\Hardware\FSMC.cpp" />
-    <ClCompile Include="..\Panel\src\Hardware\Keyboard.cpp" />
-    <ClCompile Include="..\Panel\src\Hardware\LTDC.cpp" />
-    <ClCompile Include="..\Panel\src\Hardware\stm32\stm32.cpp" />
-    <ClCompile Include="..\Panel\src\Hardware\stm32\stm429.cpp" />
-    <ClCompile Include="..\Panel\src\Hardware\stm32\Timer4XX.cpp" />
-    <ClCompile Include="..\Panel\src\libs\HAL\stm32f4xx_it.c" />
-    <ClCompile Include="..\Panel\src\Settings\Settings.cpp" />
     <ClCompile Include="..\Panel\src\Utils\Decoder.cpp" />
     <ClCompile Include="..\Panel\src\Utils\Math.cpp" />
   </ItemGroup>

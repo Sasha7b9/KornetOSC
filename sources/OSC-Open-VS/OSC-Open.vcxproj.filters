@@ -144,22 +144,13 @@
     <ClInclude Include="..\Panel\src\Display\Colors.h">
       <Filter>Display</Filter>
     </ClInclude>
-    <ClInclude Include="..\Panel\src\Hardware\CPU.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
     <ClInclude Include="..\Panel\src\Display\DisplayTypes.h">
       <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\Panel\src\Hardware\FSMC.h">
       <Filter>Hardware</Filter>
     </ClInclude>
-    <ClInclude Include="..\Panel\src\Hardware\Keyboard.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
     <ClInclude Include="..\Panel\src\Hardware\Controls.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Panel\src\Hardware\LTDC.h">
       <Filter>Hardware</Filter>
     </ClInclude>
     <ClInclude Include="..\OSC-Open\src\Panel.h">
@@ -167,21 +158,6 @@
     </ClInclude>
     <ClInclude Include="..\Panel\src\defines.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Panel\src\Hardware\stm32\stm32.h">
-      <Filter>Hardware\stm32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Panel\src\Hardware\stm32\stm429.h">
-      <Filter>Hardware\stm32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Panel\src\Hardware\stm32\Timer4XX.h">
-      <Filter>Hardware\stm32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Panel\src\libs\HAL\stm32f4xx_hal_conf.h">
-      <Filter>libs\HAL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Panel\src\libs\HAL\stm32f4xx_it.h">
-      <Filter>libs\HAL</Filter>
     </ClInclude>
     <ClInclude Include="..\Panel\src\Settings\Settings.h">
       <Filter>Settings</Filter>
@@ -194,6 +170,30 @@
     </ClInclude>
     <ClInclude Include="..\Panel\src\Utils\Math.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OSC-Open\src\libs\HAL\stm32f7xx_hal_conf.h">
+      <Filter>libs\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OSC-Open\src\libs\HAL\stm32f7xx_it.h">
+      <Filter>libs\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OSC-Open\src\Hardware\CPU.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OSC-Open\src\Hardware\Keyboard.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OSC-Open\src\Hardware\stm32\stm32.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OSC-Open\src\Hardware\stm32\stm746.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OSC-Open\src\Hardware\stm32\Timer7XX.h">
+      <Filter>Hardware\stm32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OSC-Open\src\Hardware\LTDC.h">
+      <Filter>Hardware</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -254,9 +254,6 @@
     <ClCompile Include="..\Panel\src\Display\PainterSTM429.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\Panel\src\Hardware\CPU.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\Panel\src\Hardware\CPU_IT.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -266,38 +263,38 @@
     <ClCompile Include="..\Panel\src\Hardware\FSMC.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\Panel\src\Hardware\Keyboard.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Panel\src\Hardware\LTDC.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
-    <ClCompile Include="..\OSC-Open\src\main.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\OSC-Open\src\Panel.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Panel\src\Hardware\stm32\stm32.cpp">
-      <Filter>Hardware\stm32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Panel\src\Hardware\stm32\stm429.cpp">
-      <Filter>Hardware\stm32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Panel\src\Hardware\stm32\Timer4XX.cpp">
-      <Filter>Hardware\stm32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Panel\src\libs\HAL\stm32f4xx_it.c">
-      <Filter>libs\HAL</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Panel\src\Settings\Settings.cpp">
-      <Filter>Settings</Filter>
     </ClCompile>
     <ClCompile Include="..\Panel\src\Utils\Decoder.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\Panel\src\Utils\Math.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OSC-Open\src\libs\HAL\stm32f7xx_it.c">
+      <Filter>libs\HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OSC-Open\src\Hardware\CPU.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OSC-Open\src\Hardware\Keyboard.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OSC-Open\src\Hardware\stm32\stm32.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OSC-Open\src\Hardware\stm32\stm746.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OSC-Open\src\Hardware\stm32\Timer7XX.cpp">
+      <Filter>Hardware\stm32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OSC-Open\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OSC-Open\src\Hardware\LTDC.cpp">
+      <Filter>Hardware</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

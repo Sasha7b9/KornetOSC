@@ -117,9 +117,6 @@
     <ClInclude Include="..\..\Panel\src\Settings\SettingsDisplay.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Panel\src\Hardware\LTDC.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Panel\src\Display\Colors.h">
       <Filter>Display</Filter>
     </ClInclude>
@@ -192,6 +189,9 @@
     <ClInclude Include="..\..\common\_VS\windows.h">
       <Filter>_VS</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\OSC-Open\src\Hardware\LTDC.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -260,12 +260,6 @@
     <ClCompile Include="..\..\Panel\src\Utils\Decoder.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Panel\src\Settings\Settings.cpp">
-      <Filter>Settings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Panel\src\Hardware\LTDC.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Panel\src\Display\Colors.cpp">
       <Filter>Display</Filter>
     </ClCompile>
@@ -292,6 +286,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Panel\src\Utils\Math.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OSC-Open\src\Hardware\LTDC.cpp">
+      <Filter>Hardware</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -39,7 +39,6 @@ public:
     
     uint8 value;
 
-    static void InitGlobalColors();
     static void Log(Color color);
 
     Color& operator=(const Color &color);
@@ -123,3 +122,7 @@ private:
 #define B_FROM_COLOR(color) ((uint16)(color) & 0x1f)
 
 #endif
+
+extern col_val colors[256];
+
+#define COLOR(x) colors[x]

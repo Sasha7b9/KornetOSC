@@ -10,17 +10,17 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Painter::BeginScene(Color col)
 {   
-    if(col != Color::NUMBER)
-    {
-        SetColor(col);
-    }
+    SetColor(col);
 
-    for (int x = 0; x < 320; ++x)
+    uint *address = (uint *)Display::GetBuffer();
+
+    uint *end = address + (BUFFER_HEIGHT * BUFFER_WIDTH) / 4;
+
+    uint value = (uint)col.value + (uint)(col.value << 8) + (uint)(col.value << 16) + (uint)(col.value << 24);
+
+    while (address != end)
     {
-        for (int y = 0; y < 240; ++y)
-        {
-            SetPoint(x, y);
-        }
+        *address++ = value;
     }
 }
 
@@ -36,8 +36,6 @@ void Painter::SetColorValue(Color color, col_val value)
 void Painter::LoadPalette()
 {
     LTDC_::SetColors(&COLOR(0), Color::NUMBER.value);
-    
-    Color::InitGlobalColors();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -49,14 +47,15 @@ void Painter::EndScene(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawHLine(int y, int x0, int x1, Color col)
 {
-    if (col != Color::NUMBER)
-    {
-        SetColor(col);
-    }
+    SetColor(col);
+
+    uint8 *address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH;
+
+    uint8 value = currentColor.value;
 
     for (int x = x0; x <= x1; ++x)
     {
-        SetPoint(x, y);
+        *address++ = value;
     }
 }
 
@@ -129,9 +128,14 @@ void Painter::DrawVLine(int x, int y0, int y1, Color col)
 {
     SetColor(col);
 
-    for (int y = y0; y <= y1; ++y)
+    uint8 *address = Display::GetBuffer() + x + y0 * BUFFER_WIDTH;
+
+    uint8 value = currentColor.value;
+
+    for (int y = y0; y < y1; ++y)
     {
-        SetPoint(x, y);
+        *address = value;
+        address += BUFFER_WIDTH;
     }
 }
 
@@ -144,12 +148,6 @@ void Painter::FillRegion(int x, int y, int width, int height, Color col)
     {
         DrawHLine(i, x, x + width);
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::RunDisplay(void)
-{
-
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -170,16 +168,10 @@ void Painter::CalculateCurrentColor(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::SetPoint(int x, int y)
 {
-    if (x >= 0 && x < 320 && y >= 0 && y < 240)
+    if (x >= 0 && x < BUFFER_WIDTH && y >= 0 && y < BUFFER_HEIGHT)
     {
-        *(Display::GetBuffer() + y * 320 + x) = currentColor.value;
+        *(Display::GetBuffer() + y * BUFFER_WIDTH + x) = currentColor.value;
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetPalette(Color)
-{
-
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,4 +1,5 @@
 #pragma once
+#include "defines.h"
 #include "Hardware/stm32/stm746.h"
 
 
@@ -8,6 +9,25 @@ class CPU : public STM746
 public:
 
     static void Init();
+
+    //---------------------------------------------------------------------------------------------------------------------------------------- FMC ---
+    class FMC_
+    {
+        friend class CPU;
+    private:
+        static void Init();
+    };
+
+    //-------------------------------------------------------------------------------------------------------------------------------------- SDRAM ---
+    class SDRAM_
+    {
+        friend class CPU;
+    private:
+        static void Init();
+        static void InitializationSequence(uint count);
+        static SDRAM_HandleTypeDef sdramHandle;
+#define SDRAM_DEVICE_ADDR ((uint)0xD0000000)
+    };
 
 private:
 

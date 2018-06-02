@@ -1,5 +1,5 @@
 #include "defines.h"
-#include "CPU.h"
+#include "Hardware/CPU.h"
 
 
 #ifdef __cplusplus

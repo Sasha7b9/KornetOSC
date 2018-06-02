@@ -8,7 +8,3 @@ enum Channel
     B,
     NumChannels
 };
-
-extern col_val colors[256];
-
-#define COLOR(x) colors[x]
