@@ -9,11 +9,12 @@ struct StructButton
 {
     const char *title;
     Control control;
+    Color color;
     int x;
     int y;
 };
 
-static int x0 = 0;
+static int x0 = 1;
 static int y0 = 242;
 static int x1 = 322;
 static int y1 = 0;
@@ -36,18 +37,43 @@ static StructButton strBtn1[2][5] =
 
 #define NUM_ROW 10
 
-static StructButton strBtn2[NUM_ROW][3] =
+static const Color green = Color::GREEN_25;
+static const Color blue = Color::BLUE_25;
+static const Color red = Color::RED_25;
+
+static StructButton bNone       = { "",          B_None };
+static StructButton bTBaseMore  = { "нС",        B_TBaseMore,  green };
+static StructButton bTBaseLess  = { "С",         B_TBaseLess,  green };
+static StructButton bTime       = { "РАЗВЕРТКА", B_Time,       Color::GRAY_25 };
+static StructButton bTShiftLess = { "Вр влево",  B_TShiftLess, green };
+static StructButton bTShiftMore = { "Вр вправо", B_TShiftMore, green };
+static StructButton bStart      = { "ПУСК/СТОП", B_Start,      Color::GRAY_25};
+static StructButton bChannelA = { "КАНАЛ 1",  B_ChannelA,    Color::GRAY_25 };
+static StructButton bRangeLessA = { "мВ",       B_RangeLessA,  red };
+static StructButton bRangeMoreA = { "В",        B_RangeMoreA,  red };
+static StructButton bRShiftMoreA = { "Вверх",    B_RShiftMoreA, red };
+static StructButton bRShiftLessA = { "Вниз",     B_RShiftLessA, red };
+static StructButton bChannelB = { "КАНАЛ 2",  B_ChannelB,    Color::GRAY_25 };
+static StructButton bRangeLessB = { "мВ",       B_RangeLessB,  red };
+static StructButton bRangeMoreB = { "В",        B_RangeMoreB,  red };
+static StructButton bRShiftMoreB = { "Вверх",    B_RShiftMoreB, red };
+static StructButton bRShiftLessB = { "Вниз",     B_RShiftLessB, red };
+static StructButton bTrig = { "Синхр",     B_Trig,        Color::GRAY_25 };
+static StructButton bTrigLevMore = { "С вверх",   B_TrigLevMore, blue };
+static StructButton bTrigLevLess = { "С вниз",    B_TrigLevLess, blue };
+
+static StructButton strBtn2[NUM_ROW][3] = 
 {
-{{"КАНАЛ 1", B_ChannelA},     {"РАЗВЕРТКА", B_Time},       {"КАНАЛ 2",   B_ChannelB}},
-{{"мВ",      B_RangeLessA},   {"нС",        B_TBaseLess},  {"мВ",        B_RangeLessB}},
-{{"В",       B_RangeMoreA},   {"С",         B_TBaseMore},  {"В",         B_RangeMoreB}},
-{{"Вверх",   B_RShiftMoreA},  {"Влево",     B_TShiftLess}, {"Вверх",     B_RShiftMoreB}},
-{{"Вниз",    B_RShiftLessA},  {"Вправо",    B_TShiftMore}, {"Вниз",      B_RShiftLessA}},
-{{"C вниз",  B_TrigLevLess},  {"Синхр",     B_Trig},       {"С вверх",   B_TrigLevMore}},
-{{"",        B_None},         {"",          B_None},       {"ПУСК/СТОП", B_Start}},
-{{"",        B_None},         {"Вверх",     B_Up},         {"",          B_None}},
-{{"Влево",   B_Left},         {"Ввод",      B_Enter},      {"Вправо",    B_Right}},
-{{"",        B_None},         {"Вниз",      B_Down},       {"",          B_None}}
+    { bChannelA,   bTrig,        bChannelB},
+    { bRangeMoreA, bTrigLevMore, bRangeMoreB},
+    { bRangeLessA, bTrigLevLess, bRangeLessB},
+    {bRShiftMoreA, bTime,        bRShiftMoreB},
+    {bRShiftLessA, bTBaseMore,   bRShiftLessB},
+    {bTShiftLess,  bTBaseLess,   bTShiftMore},
+    {bNone,        bNone,        bStart},
+    {{"",         B_None},              {"Вверх",     B_Up,          blue}, {"",          B_None}},
+    {{"Влево",    B_Left,        blue}, {"Ввод",      B_Enter,       blue}, {"Вправо",    B_Right,       blue}},
+    {{"",         B_None},              {"Вниз",      B_Down,        blue}, {"",          B_None}}
 };
 
 
@@ -58,8 +84,10 @@ void Keyboard::Init()
     {
         for (int j = 0; j < 5; j++)
         {
-            strBtn1[i][j].x = x0 + j * (WIDTH_BTN1 + DELTA_BTN);
-            strBtn1[i][j].y = y0 + i * (HEIGHT_BTN1 + DELTA_BTN);
+            StructButton &button = strBtn1[i][j];
+            button.x = x0 + j * (WIDTH_BTN1 + DELTA_BTN);
+            button.y = y0 + i * (HEIGHT_BTN1 + DELTA_BTN);
+            button.color = i == 0 ? Color::GRAY_10 : Color::GRAY_20;
         }
     }
 
@@ -72,6 +100,10 @@ void Keyboard::Init()
             if (i > 6)
             {
                 y += 10;
+            }
+            else if (i > 5)
+            {
+                y += 5;
             }
             strBtn2[i][j].y = y;
         }
@@ -88,7 +120,7 @@ void Keyboard::Draw()
             const char *title = strBtn1[i][j].title;
             if (title[0])
             {
-                DrawButton(strBtn1[i][j].x, strBtn1[i][j].y, WIDTH_BTN1, title);
+                DrawButton(strBtn1[i][j].x, strBtn1[i][j].y, WIDTH_BTN1, strBtn1[i][j].color, title);
             }
         }
     }
@@ -100,14 +132,14 @@ void Keyboard::Draw()
             const char *title = strBtn2[i][j].title;
             if (title[0])
             {
-                DrawButton(strBtn2[i][j].x, strBtn2[i][j].y, WIDTH_BTN2, title);
+                DrawButton(strBtn2[i][j].x, strBtn2[i][j].y, WIDTH_BTN2, strBtn2[i][j].color, title);
             }
         }
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Keyboard::DrawButton(int x, int y, int width, const char *title)
+void Keyboard::DrawButton(int x, int y, int width, Color color, const char *title)
 {
     if (selX == x && selY == y)
     {
@@ -117,9 +149,10 @@ void Keyboard::DrawButton(int x, int y, int width, const char *title)
     else
     {
         Painter::DrawRectangle(x, y, width, HEIGHT_BTN1, Color::FILL);
+        Painter::FillRegion(x + 1, y + 1, width - 2, HEIGHT_BTN1 - 2, color);
         if (title)
         {
-            Painter::DrawStringInCenterRect(x, y, width, HEIGHT_BTN1, title);
+            Painter::DrawStringInCenterRect(x, y, width, HEIGHT_BTN1, title, Color::FILL);
         }
     }
 }

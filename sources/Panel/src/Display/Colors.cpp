@@ -9,31 +9,38 @@
 col_val colors[256] =
 {
     MAKE_COLOR(0x00, 0x00, 0x00),
-    MAKE_COLOR(0xff, 0xff, 0xff)
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0xff, 0xff, 0xff),
+    MAKE_COLOR(0x00, 25,   0x00),
+    MAKE_COLOR(0x00, 0x00, 25),
+    MAKE_COLOR(25,   0x00, 0x00),
+    MAKE_COLOR(0x00, 64,   0x00),
+    MAKE_COLOR(0x00, 0x00, 64),
+    MAKE_COLOR(64,   0x00, 0x00),
+    MAKE_COLOR(0x80, 0x80, 0x80),
+    MAKE_COLOR(0x40, 0x40, 0x40),
+    MAKE_COLOR(25,   25,   25),
+    MAKE_COLOR(51,   51,   51),
+    MAKE_COLOR(0x80, 0x00, 0x00),
+    MAKE_COLOR(0x00, 0x00, 0x80),
+    MAKE_COLOR(0x00, 0x80, 0x00)
 };
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const uint8 Color::COLOR_BLACK              = 0;
-const uint8 Color::COLOR_WHITE              = 1;
-const uint8 Color::COLOR_GRID               = 2;
-const uint8 Color::COLOR_DATA_A             = 3;
-const uint8 Color::COLOR_DATA_B             = 4;
-const uint8 Color::COLOR_MENU_FIELD         = 5;
-const uint8 Color::COLOR_MENU_TITLE         = 6;
-const uint8 Color::COLOR_MENU_TITLE_DARK    = 7;
-const uint8 Color::COLOR_MENU_TITLE_BRIGHT  = 8;
-const uint8 Color::COLOR_MENU_ITEM          = 9;
-const uint8 Color::COLOR_MENU_ITEM_DARK     = 10;
-const uint8 Color::COLOR_MENU_ITEM_BRIGHT   = 11;
-const uint8 Color::COLOR_DATA_WHITE_ACCUM_A = 12;
-const uint8 Color::COLOR_DATA_WHITE_ACCUM_B = 13;
-const uint8 Color::COLOR_GRID_WHITE         = 14;
-const uint8 Color::COLOR_EMPTY              = 15;
-const uint8 Color::COLOR_NUMBER             = 32;
-const uint8 Color::COLOR_FLASH_10           = 17;
-const uint8 Color::COLOR_FLASH_01           = 18;
-const uint8 Color::COLOR_INVERSE            = 19;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,6 +56,19 @@ Color Color::DATA_WHITE_ACCUM_B(COLOR_DATA_WHITE_ACCUM_B);
 Color Color::NUMBER(COLOR_NUMBER);
 Color Color::FLASH_10(COLOR_FLASH_10);
 Color Color::FLASH_01(COLOR_FLASH_01);
+Color Color::BLUE_10(COLOR_BLUE_10);
+Color Color::GREEN_10(COLOR_GREEN_10);
+Color Color::RED_10(COLOR_RED_10);
+Color Color::BLUE_25(COLOR_BLUE_25);
+Color Color::GREEN_25(COLOR_GREEN_25);
+Color Color::RED_25(COLOR_RED_25);
+Color Color::GRAY(COLOR_GRAY);
+Color Color::GRAY_25(COLOR_GRAY_25);
+Color Color::GRAY_10(COLOR_GRAY_10);
+Color Color::GRAY_20(COLOR_GRAY_20);
+Color Color::RED_50(COLOR_RED_50);
+Color Color::BLUE_50(COLOR_BLUE_50);
+Color Color::GREEN_50(COLOR_GREEN_50);
 
 Color Color::CHAN[4] = {Color(COLOR_DATA_A), Color(COLOR_DATA_B), Color(COLOR_WHITE), Color(COLOR_WHITE)};
 Color Color::FILL(COLOR_WHITE);

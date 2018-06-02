@@ -19,13 +19,26 @@ public:
     static Color NUMBER;
     static Color FLASH_10;
     static Color FLASH_01;
+    static Color BLUE_10;
+    static Color GREEN_10;
+    static Color RED_10;
+    static Color BLUE_25;
+    static Color GREEN_25;
+    static Color RED_25;
+    static Color GRAY;
+    static Color GRAY_25;
+    static Color GRAY_10;
+    static Color GRAY_20;
+    static Color RED_50;
+    static Color BLUE_50;
+    static Color GREEN_50;
 
     static Color FILL;
     static Color BACK;
     static Color GRID;
     static Color CHAN[4];
 
-    explicit Color(uint8 val) : value(val) { }
+    explicit Color(uint8 val = COLOR_BLACK) : value(val) { }
     Color(const Color &color) : value(color.value) { }
 
     static Color Cursors(Channel ch);
@@ -43,27 +56,42 @@ public:
 
     Color& operator=(const Color &color);
 
-private:
-    static const uint8 COLOR_BLACK;
-    static const uint8 COLOR_WHITE;
-    static const uint8 COLOR_GRID;
-    static const uint8 COLOR_DATA_A;
-    static const uint8 COLOR_DATA_B;
-    static const uint8 COLOR_MENU_FIELD;
-    static const uint8 COLOR_MENU_TITLE;
-    static const uint8 COLOR_MENU_TITLE_DARK;
-    static const uint8 COLOR_MENU_TITLE_BRIGHT;
-    static const uint8 COLOR_MENU_ITEM;
-    static const uint8 COLOR_MENU_ITEM_DARK;
-    static const uint8 COLOR_MENU_ITEM_BRIGHT;
-    static const uint8 COLOR_DATA_WHITE_ACCUM_A;   ///< Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
-    static const uint8 COLOR_DATA_WHITE_ACCUM_B;
-    static const uint8 COLOR_GRID_WHITE;
-    static const uint8 COLOR_EMPTY;
-    static const uint8 COLOR_NUMBER;
-    static const uint8 COLOR_FLASH_10;
-    static const uint8 COLOR_FLASH_01;
-    static const uint8 COLOR_INVERSE;
+    enum
+    {
+        COLOR_BLACK = 0,
+        COLOR_WHITE = 1,
+        COLOR_GRID = 2,
+        COLOR_DATA_A = 3,
+        COLOR_DATA_B = 4,
+        COLOR_MENU_FIELD = 5,
+        COLOR_MENU_TITLE = 6,
+        COLOR_MENU_TITLE_DARK = 7,
+        COLOR_MENU_TITLE_BRIGHT = 8,
+        COLOR_MENU_ITEM = 9,
+        COLOR_MENU_ITEM_DARK = 10,
+        COLOR_MENU_ITEM_BRIGHT = 11,
+        COLOR_DATA_WHITE_ACCUM_A = 12,   ///< Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
+        COLOR_DATA_WHITE_ACCUM_B = 13,
+        COLOR_GRID_WHITE = 14,
+        COLOR_EMPTY = 15,
+        COLOR_FLASH_10 = 16,
+        COLOR_FLASH_01 = 17,
+        COLOR_INVERSE = 18,
+        COLOR_GREEN_10 = 19,
+        COLOR_BLUE_10 = 20,
+        COLOR_RED_10 = 21,
+        COLOR_GREEN_25 = 22,
+        COLOR_BLUE_25 = 23,
+        COLOR_RED_25 = 24,
+        COLOR_GRAY = 25,
+        COLOR_GRAY_25 = 26,
+        COLOR_GRAY_10 = 27,
+        COLOR_GRAY_20 = 28,
+        COLOR_RED_50 = 29,
+        COLOR_BLUE_50 = 30,
+        COLOR_GREEN_50 = 31,
+        COLOR_NUMBER = 32
+    };
 };
 
 bool operator!=(const Color &left, const Color &right);
@@ -107,21 +135,10 @@ private:
 #pragma warning(pop)
 #endif
 
-#ifdef STM32F429xx
-
 #define MAKE_COLOR(r, g, b) ((col_val)(b + (g << 8) + (r << 16)))
 #define R_FROM_COLOR(color) (((col_val)(color) >> 16) & 0xff)
 #define G_FROM_COLOR(color) (((col_val)(color) >> 8)  & 0xff)
 #define B_FROM_COLOR(color) (((col_val)(color))       & 0xff)
-
-#else
-
-#define MAKE_COLOR(r, g, b) ((uint16)(((b) & 0x1f) + (((g) & 0x3f) << 5) + (((r) & 0x1f) << 11)))
-#define R_FROM_COLOR(color) (((uint16)(color) >> 11) & (uint16)0x1f)
-#define G_FROM_COLOR(color) (((uint16)(color) >> 5) & (uint16)0x3f)
-#define B_FROM_COLOR(color) ((uint16)(color) & 0x1f)
-
-#endif
 
 extern col_val colors[256];
 
