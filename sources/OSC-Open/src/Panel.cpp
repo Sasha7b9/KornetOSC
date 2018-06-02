@@ -10,7 +10,7 @@
 void Panel::Init()
 {
     Display::Init();
-    //Keyboard::Init();
+    Keyboard::Init();
     //FSMC::Init();
 }
 
@@ -25,7 +25,9 @@ void Panel::Update()
 
     Painter::BeginScene(Color::BLACK);
 
-    Painter::FillRegion(10, 10, 200, 200, Color::WHITE);
+    Painter::FillRegion(0, 0, 320, 240, Color::WHITE);
+
+    Keyboard::Draw();
 
     Painter::EndScene();
 }

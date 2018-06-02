@@ -47,6 +47,12 @@ void Painter::EndScene(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawHLine(int y, int x0, int x1, Color col)
 {
+#ifdef OPEN
+    y *= 2;
+    x0 *= 2;
+    x1 = x1 * 2 + 1;
+#endif
+
     SetColor(col);
 
     uint8 *address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH;
@@ -57,6 +63,15 @@ void Painter::DrawHLine(int y, int x0, int x1, Color col)
     {
         *address++ = value;
     }
+
+#ifdef OPEN
+    address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH + BUFFER_WIDTH;
+
+    for (int x = x0; x <= x1; ++x)
+    {
+        *address++ = value;
+    }
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -128,6 +143,12 @@ void Painter::DrawVLine(int x, int y0, int y1, Color col)
 {
     SetColor(col);
 
+#ifdef OPEN
+    x *= 2;
+    y0 *= 2;
+    y1 *= 2;
+#endif
+
     uint8 *address = Display::GetBuffer() + x + y0 * BUFFER_WIDTH;
 
     uint8 value = currentColor.value;
@@ -135,6 +156,9 @@ void Painter::DrawVLine(int x, int y0, int y1, Color col)
     for (int y = y0; y < y1; ++y)
     {
         *address = value;
+#ifdef OPEN
+        *(address + 1) = value;
+#endif
         address += BUFFER_WIDTH;
     }
 }
@@ -170,7 +194,11 @@ void Painter::SetPoint(int x, int y)
 {
     if (x >= 0 && x < BUFFER_WIDTH && y >= 0 && y < BUFFER_HEIGHT)
     {
+#ifdef OPEN
+        FillRegion(x, y, 0, 0);
+#else
         *(Display::GetBuffer() + y * BUFFER_WIDTH + x) = currentColor.value;
+#endif
     }
 }
 
