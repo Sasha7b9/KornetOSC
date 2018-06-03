@@ -6,15 +6,18 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static TIM_HandleTypeDef handleTIM4;
-#define TIME_UPDATE 2
-static void(*callbackKeyboard)() = 0;
 /// Время последнего нажатия кнопки
 static uint timeLastPress = 0;
-TS_StateTypeDef TS_state = { 0 };
-static uint8 TS_flag = 0;
-static StructControl commands[10];
 static int pointer = 0;
+static StructControl commands[10];
+static void(*callbackKeyboard)() = 0;
+static TIM_HandleTypeDef handleTIM4;
+#define TIME_UPDATE 2
+static uint8 TS_flag = 0;
+TS_StateTypeDef TS_state = { 0 };
+
+
+
 
 struct StructButton
 {
@@ -25,8 +28,8 @@ struct StructButton
     int y;
 };
 static int x0 = 1;
-static int y0 = 242;
-static int x1 = 322;
+static int y0 = 243;
+static int x1 = 323;
 static int y1 = 0;
 
 static int selX = 0; // Если кнопка нажата, то
@@ -92,7 +95,6 @@ static StructButton strBtn2[ROWS2][COLS2] =
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Keyboard::Init()
 {
-    /*
     SetCallback(&Update);
 
     HAL_NVIC_SetPriority(TIM4_IRQn, 0, 1);
@@ -110,7 +112,6 @@ void Keyboard::Init()
     HAL_TIM_Base_Start_IT(&handleTIM4);
 
     TOUCH::Init();
-    */
 
     for (int i = 0; i < ROWS1; i++)
     {
@@ -204,8 +205,8 @@ void Keyboard::Update()
         TOUCH::GetState(&TS_state);
         if (TS_state.touchDetected != 0)
         {
-            int x = TS_state.touchX[0];
-            int y = TS_state.touchY[0];
+            int x = TS_state.touchX[0] >> 1;
+            int y = TS_state.touchY[0] >> 1;
 
             for (int i = 0; i < ROWS1; i++)
             {

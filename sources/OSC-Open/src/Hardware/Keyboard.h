@@ -50,11 +50,6 @@ public:
     {
         friend class Keyboard;
     public:
-        /// Завести таймер, который остановится в timeStop мс
-        static void Start(uint timeStopMS);
-
-        static void Stop();
-
         static void ElapsedCallback(void *htim);
     };
 

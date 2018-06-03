@@ -42,6 +42,7 @@ extern "C" {
     
     /// Timer.cpp
     void TIM3_IRQHandler();
+    void TIM4_IRQHAndler();
     
     void SysTick_Handler();
     void MemManage_Handler();
