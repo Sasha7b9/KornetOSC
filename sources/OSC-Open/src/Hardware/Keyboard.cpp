@@ -41,39 +41,39 @@ static const Color green = Color::GREEN_25;
 static const Color blue = Color::BLUE_25;
 static const Color red = Color::RED_25;
 
-static StructButton bNone       = { "",          B_None };
-static StructButton bTBaseMore  = { "нС",        B_TBaseMore,  green };
-static StructButton bTBaseLess  = { "С",         B_TBaseLess,  green };
-static StructButton bTime       = { "РАЗВЕРТКА", B_Time,       Color::GRAY_25 };
-static StructButton bTShiftLess = { "Вр влево",  B_TShiftLess, green };
-static StructButton bTShiftMore = { "Вр вправо", B_TShiftMore, green };
-static StructButton bStart      = { "ПУСК/СТОП", B_Start,      Color::GRAY_25};
-static StructButton bChannelA = { "КАНАЛ 1",  B_ChannelA,    Color::GRAY_25 };
-static StructButton bRangeLessA = { "мВ",       B_RangeLessA,  red };
-static StructButton bRangeMoreA = { "В",        B_RangeMoreA,  red };
-static StructButton bRShiftMoreA = { "Вверх",    B_RShiftMoreA, red };
-static StructButton bRShiftLessA = { "Вниз",     B_RShiftLessA, red };
-static StructButton bChannelB = { "КАНАЛ 2",  B_ChannelB,    Color::GRAY_25 };
-static StructButton bRangeLessB = { "мВ",       B_RangeLessB,  red };
-static StructButton bRangeMoreB = { "В",        B_RangeMoreB,  red };
-static StructButton bRShiftMoreB = { "Вверх",    B_RShiftMoreB, red };
-static StructButton bRShiftLessB = { "Вниз",     B_RShiftLessB, red };
-static StructButton bTrig = { "Синхр",     B_Trig,        Color::GRAY_25 };
-static StructButton bTrigLevMore = { "С вверх",   B_TrigLevMore, blue };
-static StructButton bTrigLevLess = { "С вниз",    B_TrigLevLess, blue };
+static StructButton bNone        = {"",          B_None };
+static StructButton bTBaseMore   = {"нС",        B_TBaseMore,   green };
+static StructButton bTBaseLess   = {"С",         B_TBaseLess,   green };
+static StructButton bTime        = {"РАЗВЕРТКА", B_Time,        Color::GRAY_25 };
+static StructButton bTShiftLess  = {"Вр влево",  B_TShiftLess,  green };
+static StructButton bTShiftMore  = {"Вр вправо", B_TShiftMore,  green };
+static StructButton bStart       = {"ПУСК/СТОП", B_Start,       Color::GRAY_25};
+static StructButton bChannelA    = {"КАНАЛ 1",   B_ChannelA,    Color::GRAY_25 };
+static StructButton bRangeLessA  = {"мВ",        B_RangeLessA,  red };
+static StructButton bRangeMoreA  = {"В",         B_RangeMoreA,  red };
+static StructButton bRShiftMoreA = {"Вверх",     B_RShiftMoreA, red };
+static StructButton bRShiftLessA = {"Вниз",      B_RShiftLessA, red };
+static StructButton bChannelB    = {"КАНАЛ 2",   B_ChannelB,    Color::GRAY_25 };
+static StructButton bRangeLessB  = {"мВ",        B_RangeLessB,  red };
+static StructButton bRangeMoreB  = {"В",         B_RangeMoreB,  red };
+static StructButton bRShiftMoreB = {"Вверх",     B_RShiftMoreB, red };
+static StructButton bRShiftLessB = {"Вниз",      B_RShiftLessB, red };
+static StructButton bTrig        = {"Синхр",     B_Trig,        Color::GRAY_25 };
+static StructButton bTrigLevMore = {"С вверх",   B_TrigLevMore, blue };
+static StructButton bTrigLevLess = {"С вниз",    B_TrigLevLess, blue };
 
 static StructButton strBtn2[NUM_ROW][3] = 
 {
-    { bChannelA,   bTrig,        bChannelB},
-    { bRangeMoreA, bTrigLevMore, bRangeMoreB},
-    { bRangeLessA, bTrigLevLess, bRangeLessB},
+    {bChannelA,    bTrig,        bChannelB},
+    {bRangeMoreA,  bTrigLevMore, bRangeMoreB},
+    {bRangeLessA,  bTrigLevLess, bRangeLessB},
     {bRShiftMoreA, bTime,        bRShiftMoreB},
     {bRShiftLessA, bTBaseMore,   bRShiftLessB},
     {bTShiftLess,  bTBaseLess,   bTShiftMore},
     {bNone,        bNone,        bStart},
-    {{"",         B_None},              {"Вверх",     B_Up,          blue}, {"",          B_None}},
-    {{"Влево",    B_Left,        blue}, {"Ввод",      B_Enter,       blue}, {"Вправо",    B_Right,       blue}},
-    {{"",         B_None},              {"Вниз",      B_Down,        blue}, {"",          B_None}}
+    {{"",      B_None},        {"Вверх", B_Up,    blue}, {"",       B_None}},
+    {{"Влево", B_Left,  blue}, {"Ввод",  B_Enter, blue}, {"Вправо", B_Right,  blue}},
+    {{"",      B_None},        {"Вниз",  B_Down,  blue}, {"",       B_None}}
 };
 
 
@@ -87,7 +87,7 @@ void Keyboard::Init()
             StructButton &button = strBtn1[i][j];
             button.x = x0 + j * (WIDTH_BTN1 + DELTA_BTN);
             button.y = y0 + i * (HEIGHT_BTN1 + DELTA_BTN);
-            button.color = i == 0 ? Color::GRAY_10 : Color::GRAY_20;
+            button.color = i == 0 ? Color::GRAY_10 : Color::GRAY_25;
         }
     }
 
