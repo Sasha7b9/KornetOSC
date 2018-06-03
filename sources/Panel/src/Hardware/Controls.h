@@ -44,13 +44,13 @@ enum TypePress
 {
     Press,
     Repeat,
-    Release
+    Up
 };
 
 /// Хранит код органа управления и его дейстиве
 struct StructControl
 {
-    Control     control;
+    Control     key;
     TypePress   typePress;
 };
 

@@ -27,3 +27,5 @@ public:
 private:
     IRQn_Type GetIRQn_Type();
 };
+
+#define TIME_MS HAL_GetTick()
