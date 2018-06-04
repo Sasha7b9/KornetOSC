@@ -189,24 +189,6 @@
     <ClCompile Include="..\..\Device\src\Display\Colors.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Hint.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\MenuDrawing.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\MenuItems.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\MenuItemsGraphics.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\MenuItemsLogic.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Display\Text.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -443,23 +425,8 @@
     <ClInclude Include="..\..\Device\src\Display\Colors.h">
       <Filter>Display</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Hint.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\MenuItems.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\MenuItemsDefs.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\MenuPagesNames.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Hardware\Controls.h">
       <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Display\Text.h">
-      <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\DisplayTypes.h">
       <Filter>Display</Filter>
