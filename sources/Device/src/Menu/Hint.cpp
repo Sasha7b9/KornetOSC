@@ -18,9 +18,8 @@ bool        Hint::needCalculate = false;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool Hint::ProcessControl(StructControl)
+bool Hint::ProcessControl(StructControl strCtrl)
 {
-    /*
     Control key = strCtrl.key;
 
     if (key == B_ESC && strCtrl.typePress == Long)
@@ -63,7 +62,6 @@ bool Hint::ProcessControl(StructControl)
 
         return true;
     }
-    */
 
     return false;
 }

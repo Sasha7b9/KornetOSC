@@ -1,7 +1,7 @@
 #pragma once
 #include "defines.h"
 #include "Settings/SettingsTypes.h"
-#include "Hardware/Controls.h"
+#include "Keyboard/Buttons.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,11 +18,15 @@ class Display
     friend class LogEntity;
 public:
     
+    static const int HEIGHT = 240;
+
+    static const int WIDTH = 320;
+
     static void Init();
 
     static void Update();
 
-    static void SetKey(Control key);
+    static void SetKey(Key key);
 
 private:
 
@@ -50,5 +54,5 @@ private:
     /// true означает, что идёт процесс вывода консоли и добавлять в неё новые строки нельзя (это происходит, когда добавление идёт из прерывания)
     static bool inProcessDrawConsole;
 
-    static Control key;
+    static Key key;
 };

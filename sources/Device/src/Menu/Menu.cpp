@@ -33,7 +33,7 @@ static const Page pageEmpty;
 
 uint      Menu::timeLastPressedButton = MAX_UINT;
 uint      Menu::timePrevPress[4][2] = {};
-Control       Menu::button;
+Key       Menu::button;
 bool      Menu::isPressed[NumButtons] = {};
 TypePress Menu::typePress;
 
@@ -44,7 +44,7 @@ void Menu::Update()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::ButtonPress(Control btn, TypePress tPress)
+void Menu::ButtonPress(Key btn, TypePress tPress)
 {
     Display::SetKey(btn);
 
@@ -427,19 +427,4 @@ void Menu::TuneOnDevice()
     {
         CURRENT_PAGE = pageOsci;
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-Page *Menu::CurrentPage(void)
-{
-    volatile int8 num = CURRENT_PAGE;
-
-    if (num == 1)
-    {
-        num = num;
-    }
-
-    Page *page = (Page *)menu[num];
-
-    return (ADDITION_PAGE_IS_NONE ? page : ADDITION_PAGE);
 }

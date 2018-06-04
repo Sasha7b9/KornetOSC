@@ -1,6 +1,6 @@
 #include "FPGA/FPGA.h"
 #include "Settings/Settings.h"
-#include "Menu/MenuItems.h"
+#include "Menu/MenuControls.h"
 #include "PageTrig.h"
 
  
