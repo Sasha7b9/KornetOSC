@@ -9,16 +9,15 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 LTDC_HandleTypeDef hltdc;
-#ifdef STM32F429xx
-uint8 front[BUFFER_WIDTH * BUFFER_HEIGHT];
-uint8 back[BUFFER_WIDTH * BUFFER_HEIGHT];
-uint8       *Display::frontBuffer = front;
-uint8       *Display::backBuffer = back;
-#endif
 
-#ifdef STM32F746xx
-uint8       *Display::frontBuffer = (uint8 *)SDRAM_DEVICE_ADDR;
-uint8       *Display::backBuffer = (uint8 *)(SDRAM_DEVICE_ADDR + BUFFER_HEIGHT * BUFFER_WIDTH);
+#ifdef OPEN
+uint8 *Display::frontBuffer = (uint8 *)SDRAM_DEVICE_ADDR;
+uint8 *Display::backBuffer = (uint8 *)(SDRAM_DEVICE_ADDR + BUFFER_HEIGHT * BUFFER_WIDTH);
+#else
+uint8  front[BUFFER_WIDTH * BUFFER_HEIGHT];
+uint8  back[BUFFER_WIDTH * BUFFER_HEIGHT];
+uint8 *Display::frontBuffer = front;
+uint8 *Display::backBuffer = back;
 #endif
 
 
