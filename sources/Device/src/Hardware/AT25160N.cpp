@@ -88,22 +88,22 @@ void AT25160N::Test()
         data[i] = (uint8)rand();
     }
 
-//    uint timeStart = gTimeMS;
+//    uint timeStart = TIME_MS;
 
     SetWriteLatch();
 
-//    uint time1 = gTimeMS;
+//    uint time1 = TIME_MS;
 
     WriteData(0, data, size);
 
-//    uint time2 = gTimeMS;
+//    uint time2 = TIME_MS;
 
     //WaitFinishWrite();
 
     ReadData(0, out, size);
     ResetWriteLatch();
 
-//    uint time3 = gTimeMS;
+//    uint time3 = TIME_MS;
 
     //LOG_WRITE("1 = %d, 2 = %d, 3 = %d, %d", time1 - timeStart, time2 - time1, time3 - time2, time3 - timeStart);
 

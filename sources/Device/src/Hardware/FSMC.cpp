@@ -181,7 +181,7 @@ void FSMC::ConfigureForFPGA()
 
     HAL_GPIO_Init(GPIOD, (GPIO_InitTypeDef *)&isGPIO);
 
-    //uint startTime = gTimeTicks;
+    //uint startTime = TIME_TICKS;
 
     // Инициализируем GPIOD 0, 1, 4, 5, 7, 14, 15 - D2, D3, NOE, NWE, NE1, D0, D1
 
@@ -211,7 +211,7 @@ void FSMC::ConfigureForFPGA()
     mode = ModeFPGA;
 
     /*
-    uint time = gTimeTicks;
+    uint time = TIME_TICKS;
     LOG_WRITE("время переключения %d тиков", time - startTime);
     */
 }

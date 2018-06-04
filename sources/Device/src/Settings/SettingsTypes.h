@@ -84,8 +84,8 @@ enum TrigPolarity
 
 enum Language
 {
-    Russian,
-    English,
+    RU,
+    EN,
     NumLanguages
 };
 
@@ -144,6 +144,42 @@ enum EnumPoints
     EnumPoints_8196,
     EnumPoints_Num
 };
+
+/// Каким курсором управлять
+typedef enum
+{
+    CursCntrl_1,        ///< первым
+    CursCntrl_2,        ///< вторым
+    CursCntrl_1_2,      ///< обоими
+    CursCntrl_Disable   ///< никаким
+} CursCntrl;
+
+/// Тип усреднений по измерениям
+typedef enum
+{
+    Averaging_Accurately,   ///< Усреднять точно.
+    Averaging_Around        ///< Усреднять приблизительно.
+} ModeAveraging;
+
+/// Выбор цвета фона.
+typedef enum
+{
+    Background_Black,
+    Background_White
+} Background;
+
+/// Число точек сигнала, с которым идёт работа.
+typedef enum
+{
+    FNP_512,
+    FNP_1k,
+    FNP_2k,
+    FNP_4k,
+    FNP_8k,
+    FNP_16k,
+    FNP_32k,                /// \todo В этом режиме только один канал
+    FPGA_ENUM_POINTS_SIZE
+} ENumPointsFPGA;
 
 const char *NameRange(Range range);
 const char *NameTBase(TBase tBase);

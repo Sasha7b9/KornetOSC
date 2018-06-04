@@ -35,7 +35,7 @@ static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
     {B_2,        B_5,       B_Up,          B_Left,        B_None,        B_None,        B_None,        B_ChannelB},     // RL2
     {B_Function, B_Service, B_RangeLessA,  B_RangeMoreA,  B_None,        B_TShiftLess,  B_None,        B_None},         // RL3
     {B_Measures, B_None,    B_ChannelA,    B_None,        B_TBaseMore,   B_TShiftMore,  B_None,        B_None},         // RL4
-    {B_Memory,   B_Display, B_RShiftMoreA, B_RShiftLessA, B_Time,        B_TBaseLess,   B_None,        B_None}          // RL5
+    {K_Memory,   B_Display, B_RShiftMoreA, B_RShiftLessA, B_Time,        B_TBaseLess,   B_None,        B_None}          // RL5
 };               
 
 

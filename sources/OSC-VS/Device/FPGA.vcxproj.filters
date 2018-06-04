@@ -25,9 +25,6 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{c51aca0a-07f4-41dc-adb7-bcc03f55dd79}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Menu\Pages">
-      <UniqueIdentifier>{b29c4b7b-5983-4847-a9cb-2a1c54c5b409}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Tester">
       <UniqueIdentifier>{44bedc7c-4207-4161-9182-c2bc1c820565}</UniqueIdentifier>
     </Filter>
@@ -48,6 +45,9 @@
     </Filter>
     <Filter Include="Hardware\stm32">
       <UniqueIdentifier>{2042bb41-b91b-49ff-bc67-12809517e707}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu\Pages">
+      <UniqueIdentifier>{9908c881-c56b-4cca-9b29-a19b035e96f8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,21 +93,6 @@
     <ClCompile Include="..\..\Device\src\Hardware\Timer.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Menu.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannel.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageDisplay.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageService.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTrig.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Multimeter\Multimeter.cpp">
       <Filter>Multimeter</Filter>
     </ClCompile>
@@ -128,9 +113,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Tester\Tester.cpp">
       <Filter>Tester</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTester.cpp">
-      <Filter>Menu\Pages</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c">
       <Filter>libs\HAL</Filter>
@@ -188,6 +170,66 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Colors.cpp">
       <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Menu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuItems.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsGraphics.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsLogic.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\Definition.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\HelpContent.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannels.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageCursors.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageDebug.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageDisplay.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageHelp.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMemory.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageService.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTime.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTrig.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Globals.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Settings\SettingsDisplay.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Settings\SettingsMemory.cpp">
+      <Filter>Settings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -278,9 +320,6 @@
     <ClInclude Include="..\..\Device\src\Hardware\Timer.h">
       <Filter>Hardware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Menu.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Multimeter\Multimeter.h">
       <Filter>Multimeter</Filter>
     </ClInclude>
@@ -319,21 +358,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Utils\MathOSC.h">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageChannels.h">
-      <Filter>Menu\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTrig.h">
-      <Filter>Menu\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageDisplay.h">
-      <Filter>Menu\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageService.h">
-      <Filter>Menu\Pages</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTester.h">
-      <Filter>Menu\Pages</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_conf.h">
       <Filter>libs\HAL</Filter>
@@ -430,6 +454,69 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\DisplayTypes.h">
       <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Hardware\Sound.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Menu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\MenuItems.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\MenuItemsAdd.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\MenuItemsDefs.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\MenuPagesNames.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\Definition.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\HelpContent.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\HelpContentPages.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageChannels.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageCursors.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageDebug.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageDisplay.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageHelp.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageMemory.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTime.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTrig.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Globals.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Settings\SettingsDisplay.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Settings\SettingsTime.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Settings\SettingsMemory.h">
+      <Filter>Settings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

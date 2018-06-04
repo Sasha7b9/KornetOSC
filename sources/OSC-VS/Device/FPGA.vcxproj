@@ -28,6 +28,7 @@
     <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\Storage.cpp" />
+    <ClCompile Include="..\..\Device\src\Globals.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\AT25160N.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\EEPROM.cpp" />
@@ -46,14 +47,27 @@
     <ClCompile Include="..\..\Device\src\Log.cpp" />
     <ClCompile Include="..\..\Device\src\main.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Menu.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannel.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\MenuItems.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsGraphics.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsLogic.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\Definition.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\HelpContent.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannels.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageCursors.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageDebug.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageDisplay.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageHelp.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMemory.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageService.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTester.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTime.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageTrig.cpp" />
     <ClCompile Include="..\..\Device\src\Multimeter\Multimeter.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\Osci.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\Settings.cpp" />
+    <ClCompile Include="..\..\Device\src\Settings\SettingsDisplay.cpp" />
+    <ClCompile Include="..\..\Device\src\Settings\SettingsMemory.cpp" />
+    <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\Device\src\Tester\Tester.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
@@ -112,6 +126,7 @@
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA_Types.h" />
     <ClInclude Include="..\..\Device\src\FPGA\Storage.h" />
+    <ClInclude Include="..\..\Device\src\Globals.h" />
     <ClInclude Include="..\..\Device\src\Hardware\AT25160N.h" />
     <ClInclude Include="..\..\Device\src\Hardware\Controls.h" />
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />
@@ -119,6 +134,7 @@
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h" />
     <ClInclude Include="..\..\Device\src\Hardware\GPIO.h" />
     <ClInclude Include="..\..\Device\src\Hardware\Hardware.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\Sound.h" />
     <ClInclude Include="..\..\Device\src\Hardware\stm32\stm32.h" />
     <ClInclude Include="..\..\Device\src\Hardware\stm32\stm437.h" />
     <ClInclude Include="..\..\Device\src\Hardware\stm32\Timer4XX.h" />
@@ -128,14 +144,27 @@
     <ClInclude Include="..\..\Device\src\Log.h" />
     <ClInclude Include="..\..\Device\src\main.h" />
     <ClInclude Include="..\..\Device\src\Menu\Menu.h" />
+    <ClInclude Include="..\..\Device\src\Menu\MenuItems.h" />
+    <ClInclude Include="..\..\Device\src\Menu\MenuItemsAdd.h" />
+    <ClInclude Include="..\..\Device\src\Menu\MenuItemsDefs.h" />
+    <ClInclude Include="..\..\Device\src\Menu\MenuPagesNames.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\Definition.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\HelpContent.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\HelpContentPages.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageChannels.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageCursors.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageDebug.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageDisplay.h" />
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageService.h" />
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTester.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageHelp.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageMemory.h" />
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTime.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageTrig.h" />
     <ClInclude Include="..\..\Device\src\Multimeter\Multimeter.h" />
     <ClInclude Include="..\..\Device\src\Osci\Osci.h" />
     <ClInclude Include="..\..\Device\src\Settings\Settings.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsDisplay.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsMemory.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsTime.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\Device\src\Tester\Tester.h" />
     <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h" />
@@ -258,7 +287,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\Device\src;..\..\Device\src\libs\HAL;..\..\libs\common;..\..\common\_VS;..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include</IncludePath>
+    <IncludePath>..\..\Device\src;..\..\Device\src\libs\HAL;..\..\libs\common;..\..\common\_VS;..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\Device\src\libs\FatFS;..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\..\Device\src\libs\USBH;..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc</IncludePath>
     <OutDir>.\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

@@ -1,18 +1,9 @@
 #pragma once
 #include "defines.h"
 #include "Colors.h"
+#include "DisplayTypes.h"
 #include "Settings/SettingsTypes.h"
 #include "TypeSymbols.h"
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-typedef enum
-{
-    TypeFont_5,
-    TypeFont_8,
-    TypeFont_UGO,
-    TypeFont_UGO2
-} TypeFont;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,9 +18,9 @@ public:
 
     static void FillRegion(int x, int y, int width, int height, Color color = Color::NUMBER);
 
-    static void DrawText(int x, int y, const char *text, Color color = Color::NUMBER);
+    static int DrawText(int x, int y, const char *text, Color color = Color::NUMBER);
 
-    static void SetColorValue(Color color, col_val value);
+    static void SetColorValue(Color color, uint value);
 
     static void DrawRectangle(int x, int y, int width, int height, Color color = Color::NUMBER);
 
@@ -52,6 +43,12 @@ public:
     static void SetPoint(int x, int y, Color color = Color::NUMBER);
 
     static void DrawBoundedRegion(int x, int y, int width, int height, Color colorFill, Color colorBound);
+
+    static void DrawVolumeButton(int x, int y, int width, int height, int thickness, Color normal, Color bright, Color dark, bool isPressed, bool isShade);
+
+    static void Draw4SymbolsInRect(int x, int y, char eChar, Color color = Color::NUMBER);
+
+    static int DrawStringInCenterRect(int x, int y, int width, int height, const char *text, Color color = Color::NUMBER);
 
 private:
 };

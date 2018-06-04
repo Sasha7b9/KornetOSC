@@ -12,3 +12,15 @@ char *SU::Bin2String(uint8 value)
     buffer[8] = '\0';
     return buffer;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int SU::NumDigitsInNumber(int value)
+{
+    value = Abs(value);
+    int num = 1;
+    while ((value /= 10) > 0)
+    {
+        num++;
+    }
+    return num;
+}

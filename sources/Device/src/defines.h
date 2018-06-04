@@ -21,6 +21,7 @@
 #include <stm32f4xx_hal.h>
 
 
+typedef const char  *const  pString;
 typedef unsigned char       uchar;
 typedef signed char         int8;
 typedef unsigned char       uint8;
@@ -28,14 +29,19 @@ typedef signed short int    int16;
 typedef unsigned short int  uint16;
 typedef unsigned int        uint;
 typedef uint64_t            uint64;
-typedef unsigned int        col_val;
 
 
 typedef void(*pFuncVV)();
 typedef void(*pFuncVB)(bool);
+typedef bool(*pFuncBV)();
+typedef void(*pFuncVI)(int);
+typedef void(*pFuncVII)(int, int);
 
 inline void EmptyFuncVV(){}
-inline void EmptyFuncVB(bool){};
+inline void EmptyFuncVB(bool){}
+inline bool EmptyFuncBV() { return true; }
+inline void EmptyFuncVI(int) {}
+inline void EmptyFuncVII(int, int) {}
     
 
 #ifndef _WIN32
@@ -43,37 +49,6 @@ inline void EmptyFuncVB(bool){};
 #pragma anon_unions
 #endif
 #endif
-
-typedef union
-{
-    uint64 dword;
-    uint   word[2];
-    uint16 halfWord[4];
-    uint8  byte[8];
-    struct
-    {
-        uint word0;
-        uint word1;
-    };
-    struct  
-    {
-        uint16 halfWord0;
-        uint16 halfWord1;
-        uint16 halfWord2;
-        uint16 halfWord3;
-    };
-    struct
-    {
-        uint8 byte0;
-        uint8 byte1;
-        uint8 byte2;
-        uint8 byte3;
-        uint8 byte4;
-        uint8 byte5;
-        uint8 byte6;
-        uint8 byte7;
-    };
-} BitSet64;
 
 
 #define _SET_BIT_VALUE(value, numBit, bitValue) (value |= (bitValue << numBit))

@@ -5,7 +5,7 @@ enum Control
     B_None,
     B_Function,
     B_Measures,
-    B_Memory,
+    K_Memory,
     B_Service,
     B_ChannelA,
     B_ChannelB,

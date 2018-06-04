@@ -1914,16 +1914,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Keyboard</GroupName>
-          <Files>
-            <File>
-              <FileName>Buttons.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Keyboard\Buttons.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Menu</GroupName>
           <Files>
             <File>
@@ -1935,16 +1925,6 @@
               <FileName>Menu.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Menu.h</FilePath>
-            </File>
-            <File>
-              <FileName>MenuControls.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuControls.h</FilePath>
-            </File>
-            <File>
-              <FileName>MenuControls.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\MenuControls.cpp</FilePath>
             </File>
           </Files>
         </Group>

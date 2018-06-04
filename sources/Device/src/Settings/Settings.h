@@ -1,7 +1,9 @@
 #pragma once
 #include "defines.h"
 #include "SettingsTypes.h"
-#include "Menu/MenuControls.h"
+#include "Menu/MenuItems.h"
+#include "SettingsTime.h"
+#include "SettingsMemory.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -19,11 +21,9 @@
 #define SET_RANGE(ch)                   (set.chan_range[ch])
 #define SET_RANGE_A                     (SET_RANGE(A))
 #define SET_RANGE_B                     (SET_RANGE(B))
-#define LANGUAGE                        (set.serv_lang)
-#define LANG_RU                         (LANGUAGE == Russian)
+#define LANG                            (set.serv_lang)
+#define LANG_RU                         (LANG == RU)
 #define SET_TRIGLEV                     (set.trig_lev)
-#define SET_TSHIFT                      (set.time_shift)
-#define SET_TBASE                       (set.time_base)
 #define IN_RANDOMIZE_MODE               (SET_TBASE < TBase_100ns)
 #define CURRENT_PAGE                    (set.menu_currentPage)
 #define SET_ENABLED(ch)                 (set.chan_enable[ch])
@@ -49,16 +49,18 @@
 
 #define MENU_IS_SHOWN                   (set.menu_show)
 
-#define ENUM_POINTS                     (set.mem_enumPoints)
-#define NUM_POINTS                      (1 << (ENUM_POINTS + 9))
 
+/// Возвращает позицию активного пункта на странице namePage.
+#define MENU_POS_ACT_ITEM(name)     (set.menu_PosActItem[name])
+/// Текущая подстраница
+#define MENU_CURRENT_SUBPAGE(name)  (set.menu_CurrentSubPage[name])
 
 #pragma pack(push, 1)
 
 
 #define COLOR(x) GlobalColors[x]
 
-extern col_val GlobalColors[32];
+extern uint GlobalColors[32];
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -72,36 +74,32 @@ public:
     uint            size;                       ///< Размер данной структуры в байтах
     uint            crc32;                      ///< \brief Контрольная сумма данной структуры с хранящимися в ней настройками. Контрольная сумма 
                                                 ///< вычисляется от первого байта, следующего за этим полем
-    // ДИСПЛЕЙ
     ModeDrawSignal  disp_modeDrawSignal;
     ThicknessSignal disp_thickness;             ///< Толщина линии, которой рисуется сигнал
-    // КАНАЛ 1,2
     uint16          chan_shift[NumChannels];    ///< Сдвиг канала по вертикали
     Range           chan_range[NumChannels];    ///< Масштаб канала по вертикали
     Couple          chan_couple[NumChannels];   ///< Связь по входу
     bool            chan_enable[NumChannels];   ///< Включен/выключен канал
-    // СИНХР
     Channel         trig_source;
     TrigInput       trig_input;
     TrigPolarity    trig_polarity;
     uint16          trig_lev;
     ModeTrig        trig_mode;
-    // СЕРВИС
     Language        serv_lang;
-    // Развертка
     uint16          time_shift;
     TBase           time_base;
-    // Тестер-компонент
     TesterControl   test_control;
     TesterPolarity  test_polarity;
     TesterStepU     test_stepU;
     TesterStepI     test_stepI;
-    uint8           test_smooth;                ///< Количество сглаживаний
-    // Память
-    EnumPoints      mem_enumPoints;             ///< Число точек
-    // Меню
-    const Page     *menu_currentPage;           ///< Указатель на открытую страницу меню
-    bool            menu_show;                  ///< Если true, то нужно показывать текущую страницу
+    uint8           test_smooth;                        ///< Количество сглаживаний
+    EnumPoints      mem_enumPoints;                     ///< Число точек
+    const Page     *menu_currentPage;                   ///< Указатель на открытую страницу меню
+    bool            menu_show;                          ///< Если true, то нужно показывать текущую страницу
+    int8            menu_PosActItem[Page_NumPages];     ///< \brief Позиция активного пункта. bit7 == 1 - item is opened, 0x7f - нет 
+                                                        ///< активного пункта.
+    int8            menu_CurrentSubPage[Page_NumPages]; ///< Номер текущей подстраницы.
+    Background      disp_Background;                    ///< Цвет фона.
 };
 
 #pragma pack(pop)

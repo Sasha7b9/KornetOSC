@@ -1,7 +1,7 @@
 #pragma once
 #include "defines.h"
 #include "Settings/SettingsTypes.h"
-#include "Keyboard/Buttons.h"
+#include "Hardware/Controls.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,6 +27,8 @@ public:
     static void Update();
 
     static void SetKey(Key key);
+
+    static void RemoveAddDrawFunction();
 
 private:
 

@@ -48,7 +48,7 @@ void Device::Update()
     Display::Update();
     Decoder::Update();
     FPGA::Update();
-    Menu::SaveSettings();
+    //Menu::SaveSettings();
     Tester::Update();
 }
 

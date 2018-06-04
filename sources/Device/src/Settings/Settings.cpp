@@ -58,7 +58,7 @@ static const Settings defaultSettings =
     TrigLevZero,                    // trig_lev
     ModeTrig_Auto,                  // trig_mode
 
-    Russian,                        // serv_lang
+    RU,                        // serv_lang
 
     0,                              // time_shift
     TBase_500us,                    // time_base

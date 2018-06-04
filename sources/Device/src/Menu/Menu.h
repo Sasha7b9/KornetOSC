@@ -1,64 +1,140 @@
 #pragma once
-#include "MenuControls.h"
-#include "Keyboard/Buttons.h"
-#include "Settings/SettingsTypes.h"
+#include "Hardware/Controls.h"
+#include "Menu/MenuItems.h"
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/** @defgroup Menu
+ *  @{
+ *  @defgroup Pages
+ *  @{
+ *  @}
+ */
+
+#define PAGE_IS_MAIN                   (name == Page_Main)
+#define MENU_TEMP_ENABLE_STRING_NAVI() Menu::TemporaryEnableStrNavi()
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Menu
 {
 public:
+    /// Инициализация
     static void Init();
+
+    static void ChangeStateFlashDrive();
+    /// Функция должна вызываться в главном цикле.
     static void Update();
-    static void ButtonPress(Key button, TypePress typePress);
+    /// Функция обработки короткого нажатия кнопки (менее 0.5 сек.).
+    static void ShortPressureButton(Key button);
+    /// Функция обработки длинного нажатия кнопки (более 0.5 сек.).
+    static void LongPressureButton(Key button);
+    /// Функция вызывается, когда кнопка переходит из отжатого в нажатое положение.
+    static void PressButton(Key button);
+    /// Функция вызывается, когда кнопка переходит из нажатого в отжатое положение.
+    static void ReleaseButton(Key button);
+    /// Функция обработки поворота ручки УСТАНОВКА вправо.
+    static void RotateRegSetRight();
+    /// Функция обработки поворота ручки УСТАНОВКА влево.
+    static void RotateRegSetLeft();
+    /// Установить время автоматического сокрытия меню в соответствии с установками.
+    static void SetAutoHide(bool active);
+    /// Возвращает путь к текущему пункту меню в текстовом виде, готовом к выводу на экран.
+    static char *StringNavigation(char buffer[100]);
+
+    static void Show(bool show);
+
+    static void OpenItemTime();
+    /// Функция временно включает отображение строки навигации меню, если задано настройками.
+    static void TemporaryEnableStrNavi();
+    /// Ввыполнить эту функцию после Menu_UpdateInput().
+    static void RunAfterUpdate(pFuncVV func);
+    /// Нарисовать меню
     static void Draw();
-    static void SaveSettings();
+    /// Возвращает адрес открытого элемента меню
+    static Control *OpenedItem();
+    /// Если true - меню находится в дополнительном режиме.
+    static bool IsMinimize();
+
+    static NamePage GetNameOpenedPage();
+
+    static Page *PagePointerFromName(NamePage namePage);
+    /// Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
+    static Control *CurrentItem();
+    /// Закрыть открытый элемент меню
+    static void CloseOpenedItem();
+    /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
+    static void ChangeItem(Control *item, int delta);
+
+    static int CalculateX(int layer);
+    /// Вернуть указатель на малую кнопку, соответствующую данной кнопки панели.
+    static const SButton*  GetSmallButton(Key button);
+
+    static void SetItemForHint(void *item);
+    ///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, 
+    /// если ни одна кнопка не нажата.
+    static Control *itemUnderKey;
+
+    static Control *itemUnderButton[NumButtons];
+    /// Строка подсказки, которую надо выводить в случае включённого режима подсказок.
+    static const char *stringForHint;
+    /// Item, подсказку для которого нужно выводить в случае включённого режима подсказок.
+    static Control *itemHint;
 
 private:
-    static void OnPressNone();
-    static void OnPressRangeLessA();
-    static void OnPressRangeMoreA();
-    static void OnPressRangeLessB();
-    static void OnPressRangeMoreB();
-    static void OnPressTBaseMore();
-    static void OnPressTBaseLess();
-    static void OnPressRShiftLessA();
-    static void OnPressRShiftMoreA();
-    static void OnPressRShiftLessB();
-    static void OnPressRShiftMoreB();
-    static void OnPressTShiftLess();
-    static void OnPressTShiftMore();
-    static void OnPressTrigLevLess();
-    static void OnPressTrigLevMore();
-    static void OnPressChannelA();
-    static void OnPressChannelB();
-    static void OnPressF1();
-    static void OnPressF2();
-    static void OnPressF3();
-    static void OnPressF4();
-    static void OnPressF5();
-    static void OnPressService();
-    static void OnPressStartStop();
-    static void OnPressTrig();
-    static void OnPressMenu();
-    static void OnPressFunction();
-    static void OnPressEnter();
-
-    static void VerifyOnDoubleClick(int src, int dir);
-
-    /// \tode Здесь хранится время предыдущего нажатия кнопки для отлова двойного нажатия.
-    /// 1 индекс 1канал/2канал/синхронизация/время, 2 индекс - вниз/вверх
-    static uint timePrevPress[4][2];
-    /// Время двойного нажатия
-    static const uint timeDoubleClick = 250;
-    /// Здесь хранится тип нажатий нопки для функции ButtonPress
-    static TypePress typePress;
-    /// Текущая обрабатываемая кнопка
-    static Key button;
-    /// Если true, то кнопка нажата
-    static bool isPressed[NumButtons];
-    /// Время последнего нажатия кнопки. Нужно для того, чтобы периодически сохранять настройки
-    static uint timeLastPressedButton;
-    /// Установить меню в соответствие с текущим режимом
-    static void TuneOnDevice();
+    static void *RetLastOpened(Page *_page, TypeItem *_type);
+    /// Обработка короткого нажатия кнопки
+    static void ProcessingShortPressureButton();
+    /// Обработка длинного нажатия кнопки
+    static void ProcessingLongPressureButton();
+    /// Обработка опускания кнопки вниз
+    static void ProcessingPressButton();
+    /// Обработка поднятия кнопки вверх
+    static void ProcessingReleaseButton();
+    ///< Обработка поворота ручки УСТАНОВКА
+    static void ProcessingRegulatorSetRotate();
+    /// Обработка нажатия ручки
+    static void ProcessingRegulatorPress();
+    /// Обработка события таймера автоматического сокрытия меню
+    static void OnTimerAutoHide();
+    /// Включить/выключить светодиод ручки УСТАНОВКА, если необходимо
+    static void SwitchSetLED();
+    /// Функция, которая отключит вывод строки навигации меню
+    static void OnTimerStrNaviAutoHide();
+    /// Возвращает true, если лампочка УСТАНОВКА должна гореть
+    static bool NeedForFireSetLED();
+    
+    static void ProcessButtonForHint(Key button);
+    
+    static void ShortPress_ChoiceReg(void *choice);
+    
+    static void ShortPress_IP(void *item);
+    
+    static void ShortPress_MAC(void *item);
+    
+    static void ResetItemsUnderButton();
+    /// Повернуть ручку УСТАНОВКА на текущей странице малых кнопок.
+    static void RotateRegSetSB(int angle);
+          
+    /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
+    static Key shortPressureButton;
+    /// Если произошло длинное нажатие кнопки, то здесь хранится имя этой кнопки до обработки этого нажатия.
+    static Key longPressureButton;
+    /// При нажатии кнопки её имя записывается в эту переменную и хранится там до обратоки события нажатия кнопки.
+    static Key pressButton;
+    /// При отпускании кнопки её имя записывается в эту переменную и хранится там до обработки события отпускания кнопки.
+    static Key releaseButton;
+    /// Угол, на который нужно повернуть ручку УСТАНОВКА - величина означает количество щелчков, знак - направление - "-" - влево, "+" - вправо.
+    static int angleRegSet;
+    /// Эта функция будет вызывана один раз после Menu::Update().
+    static pFuncVV funcAterUpdate;
+  
+    static const int SIZE_BUFFER_FOR_BUTTONS = 10;
+    static Key bufferForButtons[SIZE_BUFFER_FOR_BUTTONS];
+    
+    static const Key sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS];
 };
+
+
+/** @}
+ */

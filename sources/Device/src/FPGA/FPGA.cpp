@@ -240,11 +240,11 @@ void FPGA::StartForTester(int)
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     uint8 flag = 0;
-    uint timeStart = gTimeUS;
+    uint timeStart = TIME_US;
     while (_GET_BIT(flag, BIT_FLAG_PRED) == 0)
     {
         flag = ReadFlag();
-        if(gTimeUS - timeStart > 1000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
+        if(TIME_US - timeStart > 1000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
         {                               /// нажатия кнопок
             return;
         }
@@ -258,11 +258,11 @@ void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 {
     uint8 flag = 0;
 
-    uint timeStart = gTimeUS;
+    uint timeStart = TIME_US;
     while (_GET_BIT(flag, BIT_FLAG_DATA_READY) == 0)    // Ждём флага готовности данных
     {
         flag = ReadFlag();
-        if(gTimeUS - timeStart > 10000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
+        if(TIME_US - timeStart > 10000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
         {                               /// нажатия кнопок
             return;
         }
@@ -321,9 +321,9 @@ void FPGA::ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
 
     static uint timePrev = 0;
 
-    if (gTimeMS - timePrev > 1000)
+    if (TIME_MS - timePrev > 1000)
     {
-        timePrev = gTimeMS;
+        timePrev = TIME_MS;
 
         uint8 *d = data;
 

@@ -97,7 +97,7 @@ void Display::Update()
 
     func();
 
-    //LOG_WRITE("время : полное - %d, ожидание - %d", gTimeUS - timeStart, debug.GetTimeCounterUS());
+    //LOG_WRITE("время : полное - %d, ожидание - %d", TIME_US - timeStart, debug.GetTimeCounterUS());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

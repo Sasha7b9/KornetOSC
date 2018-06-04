@@ -38,13 +38,13 @@ void Painter::FillRegion(int x, int y, int width, int height, Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawText(int x, int y, const char *text, Color color)
+int Painter::DrawText(int x, int y, const char *text, Color color)
 {
     #define MAX_SIZE_BUFFER 100
     
     if(strlen(text) + 1 > MAX_SIZE_BUFFER)
     {
-        return;
+        return x + 10;
     }
        
     SetColor(color);
@@ -59,10 +59,12 @@ void Painter::DrawText(int x, int y, const char *text, Color color)
     }
 
     FSMC::WriteToPanel(buffer, (int)size);
+
+    return x + 10;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetColorValue(Color color, col_val value)
+void Painter::SetColorValue(Color color, uint value)
 {
     uint8 buffer[6] = {PAINT_SET_PALETTE, color.value, (uint8)value, (uint8)(value >> 8), (uint8)(value >> 16), (uint8)(value >> 24)};
 

@@ -7,102 +7,69 @@
 class Color
 {
 public:
-    static Color BLACK;             // Чёрный
-    static Color WHITE;             // Белый
-    static Color GRAY_10;
-    static Color GRAY_25;           // Серый 25%
-    static Color GRAY_50;           // Серый 50%
-    static Color GRAY_75;           // Серый 75%
-    static Color BLUE;
-    static Color BLUE_10;
-    static Color BLUE_25;
-    static Color BLUE_50;
-    static Color BLUE_75;
-    static Color GREEN;
-    static Color GREEN_5;
-    static Color GREEN_10;
-    static Color GREEN_25;
-    static Color GREEN_50;
-    static Color GREEN_75;
+    static Color BLACK;
+    static Color WHITE;
+    static Color MENU_FIELD;
+    static Color MENU_TITLE_DARK;
+    static Color MENU_TITLE_BRIGHT;
+    static Color MENU_ITEM_DARK;
+    static Color MENU_ITEM_BRIGHT;
+    static Color DATA_WHITE_ACCUM_A;
+    static Color DATA_WHITE_ACCUM_B;
     static Color RED;
-    static Color RED_25;
-    static Color RED_50;
-    static Color RED_75;
-    static Color CHAN_A_HALF;
-    static Color CHAN_B_HALF;
-    static Color CHAN_A;
-    static Color CHAN_B;
-    static Color GRID;
-    
+    static Color GREEN;
+    static Color BLUE;
     static Color NUMBER;
-
     static Color FLASH_10;
     static Color FLASH_01;
 
-    static Color MENU_ITEM;
-    static Color MENU_TITLE;
-    static Color MENU_ITEM_DARK;
-
-
     static Color FILL;
     static Color BACK;
-    
-    explicit Color(const uint8 val);
-    Color(const Color &color);
+    static Color GRID;
+    static Color CHAN[4];
 
+    explicit Color(uint8 val) : value(val) { }
+    Color(const Color &color) : value(color.value) { }
+
+    static Color Chan(Channel ch);
+    static Color Cursors(Channel ch);
+    static Color Trig();
+    static Color ChanAccum(Channel ch);     ///< Цвет канала в режиме накопления
     static Color MenuItem(bool shade);      ///< Цвет элемента меню.
     static Color MenuTitle(bool shade);     ///< Цвет заголовка страницы. inShade == true, если страница затенена
     static Color BorderMenu(bool shade);    ///< Цвет окантовки меню
     static Color LightShadingText();        ///< Светлый цвет в тени.
+    static Color Contrast(Color color);     ///< Возвращает цвет, контрастный к color. Может быть белым или чёрным.
     static Color ChanHalf(Channel ch);
-    static Color Chan(Channel ch);
     
     uint8 value;
 
     static void InitGlobalColors();
+    static void Log(Color color);
 
     Color& operator=(const Color &color);
 
 private:
-
-    enum
-    {
-/* 0  */    COLOR_BLACK,
-/* 1  */    COLOR_WHITE,
-/* 2  */    COLOR_GRAY_10,
-/* 3  */    COLOR_GRAY_25,
-/* 4  */    COLOR_GRAY_50,
-/* 5  */    COLOR_GRAY_75,
-/* 6  */    COLOR_BLUE,
-/* 7  */    COLOR_BLUE_10,
-/* 8  */    COLOR_BLUE_25,
-/* 9  */    COLOR_BLUE_50,
-/* 10 */    COLOR_BLUE_75,
-/* 11 */    COLOR_GREEN,
-/* 12 */    COLOR_GREEN_5,
-/* 13 */    COLOR_GREEN_10,
-/* 14 */    COLOR_GREEN_25,
-/* 15 */    COLOR_GREEN_50,
-/* 16 */    COLOR_GREEN_75,
-/* 17 */    COLOR_RED,
-/* 18 */    COLOR_RED_25,
-/* 19 */    COLOR_RED_50,
-/* 20 */    COLOR_RED_75,
-/* 21 */    COLOR_CHAN_A_HALF,
-/* 22 */    COLOR_CHAN_B_HALF,
-/* 23 */    COLOR_CHAN_A,
-/* 24 */    COLOR_CHAN_B,
-/* 25 */    COLOR_GRID,
-
-        COLOR_NUMBER,
-
-        COLOR_FLASH_10,
-        COLOR_FLASH_01,
-        COLOR_MENU_ITEM,
-        COLOR_MENU_TITLE,
-        COLOR_MENU_ITEM_DARK,
-        COLOR_INVERSE
-    };
+    static const uint8 COLOR_BLACK;
+    static const uint8 COLOR_WHITE;
+    static const uint8 COLOR_GRID;
+    static const uint8 COLOR_DATA_A;
+    static const uint8 COLOR_DATA_B;
+    static const uint8 COLOR_MENU_FIELD;
+    static const uint8 COLOR_MENU_TITLE;
+    static const uint8 COLOR_MENU_TITLE_DARK;
+    static const uint8 COLOR_MENU_TITLE_BRIGHT;
+    static const uint8 COLOR_MENU_ITEM;
+    static const uint8 COLOR_MENU_ITEM_DARK;
+    static const uint8 COLOR_MENU_ITEM_BRIGHT;
+    static const uint8 COLOR_DATA_WHITE_ACCUM_A;   ///< Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
+    static const uint8 COLOR_DATA_WHITE_ACCUM_B;
+    static const uint8 COLOR_GRID_WHITE;
+    static const uint8 COLOR_EMPTY;
+    static const uint8 COLOR_NUMBER;
+    static const uint8 COLOR_FLASH_10;
+    static const uint8 COLOR_FLASH_01;
+    static const uint8 COLOR_INVERSE;
 };
 
 bool operator!=(const Color &left, const Color &right);
@@ -146,7 +113,18 @@ private:
 #pragma warning(pop)
 #endif
 
+#ifdef STM32F429xx
+
 #define MAKE_COLOR(r, g, b) ((col_val)(b + (g << 8) + (r << 16)))
 #define R_FROM_COLOR(color) (((col_val)(color) >> 16) & 0xff)
 #define G_FROM_COLOR(color) (((col_val)(color) >> 8)  & 0xff)
 #define B_FROM_COLOR(color) (((col_val)(color))       & 0xff)
+
+#else
+
+#define MAKE_COLOR(r, g, b) ((uint16)(((b) & 0x1f) + (((g) & 0x3f) << 5) + (((r) & 0x1f) << 11)))
+#define R_FROM_COLOR(color) (((uint16)(color) >> 11) & (uint16)0x1f)
+#define G_FROM_COLOR(color) (((uint16)(color) >> 5) & (uint16)0x3f)
+#define B_FROM_COLOR(color) ((uint16)(color) & 0x1f)
+
+#endif

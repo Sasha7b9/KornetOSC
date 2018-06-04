@@ -29,9 +29,9 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
     /*
     static uint timePrev = 0;
 
-    if (gTimeMS - timePrev > 1000)
+    if (TIME_MS - timePrev > 1000)
     {
-        timePrev = gTimeMS;
+        timePrev = TIME_MS;
 
         uint8 *d = data;
 

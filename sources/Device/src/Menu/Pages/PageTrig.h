@@ -1,4 +1,8 @@
 #pragma once
 
 
-extern Page pageTrig;
+class PageTrig
+{
+public:
+    static void OnChanged_TrigMode(bool active);
+};
