@@ -152,7 +152,7 @@ void Keyboard::Update()
                         if (!BUTTON_IS_PRESS(state))        // Если сейчас кнопка находится в отжатом состояини
                         {
                             timePress[rl][sl] = 0;
-                            FillCommand(controls[rl][sl], Release);
+                            FillCommand(controls[rl][sl], Up);
                             prevRepeat = 0;
                         }
                         else if(IsRepeatable(control))      // А здесь она нходится в нажатом положении - отрабатываем автоповтор
@@ -190,7 +190,7 @@ void Keyboard::Update()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Keyboard::FillCommand(Control control, TypePress typePress)
 {
-    commands[pointer].control = control;
+    commands[pointer].key = control;
     commands[pointer++].typePress = typePress;
     uint8 data[3] = {IN_BUTTON_PRESS, (uint8)control, (uint8)typePress};
     FSMC::WriteBuffer(data, 3);  // Прерывание от клавиатуры имеет более низкий приоритет, чем чтения по шине, поэтому запись не запустится до тех
