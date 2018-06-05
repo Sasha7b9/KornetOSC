@@ -14,13 +14,13 @@
 #define FILE_NAME_MASK          (set.mem_FileNameMask)
 #define FILE_NAME               (set.mem_FileName)
 #define INDEX_SYMBOL            (set.mem_IndexCurSymbolNameMask)
-#define FLASH_AUTOCONNECT       (set.mem_FlashAutoConnect)
+#define FLASH_AUTOCONNECT       (set.mem__flashAutoConnect)
 
 #define FILE_NAMING_MODE        (set.mem_FileNamingMode)
 #define FILE_NAMING_MODE_MASK   (FILE_NAMING_MODE == FileNamingMode_Mask)
 #define FILE_NAMING_MODE_MANUAL (FILE_NAMING_MODE == FileNamingMode_Manually)
 
-#define MODE_WORK               (set.mem_ModeWork)
+#define MODE_WORK               (set.mem__modeWork)
 #define MODE_WORK_IS_DIR        (MODE_WORK == ModeWork_Dir)
 #define MODE_WORK_IS_RAM        (MODE_WORK == ModeWork_RAM)
 #define MODE_WORK_IS_ROM        (MODE_WORK == ModeWork_ROM)
@@ -31,14 +31,14 @@
 #define SHOW_IN_INT_DIRECT      (SHOW_IN_INT == ModeShowIntMem_Direct)
 #define SHOW_IN_INT_BOTH        (SHOW_IN_INT == ModeShowIntMem_Both)
 
-#define FPGA_ENUM_POINTS        (set.mem_enumPoints)
-#define FPGA_NUM_POINTS         (1 << (ENUM_POINTS + 9))
+#define FPGA_ENUM_POINTS        (set.mem__enumPoints)
+#define FPGA_NUM_POINTS         (1 << (FPGA_ENUM_POINTS + 9))
 #define FPGA_POINTS_512         (FPGA_ENUM_POINTS == FNP_512)
 #define FPGA_POINTS_8k          (FPGA_ENUM_POINTS == FNP_8k)
 #define FPGA_POINTS_16k         (FPGA_ENUM_POINTS == FNP_16k)
 #define FPGA_POINTS_32k         (FPGA_ENUM_POINTS == FNP_32k)
 
-#define MODE_BTN_MEMORY         (set.mem_ModeBtnMemory)
+#define MODE_BTN_MEMORY         (set.mem__modeBtnMemory)
 #define MODE_BTN_MEMORY_IS_MENU (MODE_BTN_MEMORY == ModeBtnMemory_Menu)
 #define MODE_BTN_MEMORY_IS_SAVE (MODE_BTN_MEMORY == ModeBtnMemory_Save)
 

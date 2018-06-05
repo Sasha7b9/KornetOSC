@@ -21,7 +21,7 @@
 #define LAST_AFFECTED_CH_IS_A       (LAST_AFFECTED_CH == A)
 #define DISPLAY_ORIENTATION         (set.dbg_Orientation)
 
-#define SHOW_STRING_NAVI            (set.disp_ShowStringNavigation)
+#define SHOW_STRING_NAVI            (set.disp_showStringNavigation)
 #define SHOW_STRING_NAVI_TEMP       (SHOW_STRING_NAVI == ShowStrNavi_Temp)
 #define SHOW_STRING_NAVI_ALL        (SHOW_STRING_NAVI == ShowStrNavi_All)
 
@@ -64,7 +64,7 @@
 
 #define LINKING_RSHIFT              (set.disp_LinkingRShift)
 
-#define BACKGROUND                  (set.disp_Background)
+#define BACKGROUND                  (set.disp_background)
 #define BACKGROUND_BLACK            (BACKGROUND == Background_Black)
 
 #define MENU_AUTO_HIDE              (set.disp_MenuAutoHide)

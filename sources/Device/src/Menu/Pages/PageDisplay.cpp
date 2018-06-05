@@ -1,9 +1,11 @@
 #include "defines.h"
+#include "Display/Painter.h"
 #include "PageDisplay.h"
 #include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
 #include "Utils/CommonFunctions.h"
 #include "Utils/Dictionary.h"
+#include "Settings/Settings.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

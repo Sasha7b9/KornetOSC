@@ -50,5 +50,27 @@ public:
 
     static int DrawStringInCenterRect(int x, int y, int width, int height, const char *text, Color color = Color::NUMBER);
 
+    static int DrawTextWithLimitationC(int x, int y, const char *text, Color color, int limitX, int limitY, int limitWidth, int limitHeight);
+
+    static void ResetFlash();
+    /// Пишет текст с переносами
+    static int DrawTextInRectWithTransfers(int x, int y, int width, int height, const char *text);
+
+    static int DrawStringInCenterRectAndBoundItC(int x, int y, int width, int height, const char *text, Color colorBackground, Color colorFill);
+    /// Возвращает нижнюю координату прямоугольника
+    static int DrawTextInBoundedRectWithTransfers(int x, int y, int width, const char *text, Color colorBackground, Color colorFill);
+    /// Пишет строку текста в центре области(x, y, width, height)цветом ColorText на прямоугольнике с шириной бордюра widthBorder цвета colorBackground
+    static void DrawStringInCenterRectOnBackgroundC(int x, int y, int width, int height, const char *text, Color colorText, int widthBorder,
+                                                    Color colorBackground);
+    static int DrawFormatText(int x, int y, char *format, ...);
+    /// Выводит текст на прямоугольнике цвета colorBackgound
+    static int DrawTextOnBackground(int x, int y, const char *text, Color colorBackground);
+    /// Пишет строку в позиции x, y
+    static int DrawFormText(int x, int y, Color color, pString text, ...);
+    /// Установить яркость дисплея.
+    static void SetBrightnessDisplay(int16 brightness);
+
+    static int DrawTextInRectWithTransfersC(int x, int y, int width, int height, const char *text, Color color);
+
 private:
 };

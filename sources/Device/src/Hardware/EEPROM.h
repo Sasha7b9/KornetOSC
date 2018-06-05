@@ -1,15 +1,20 @@
 #pragma once
 #include "defines.h"
 
+struct DataSettings;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class EPROM
+class EEPROM
 {
 public:
 
     static void SaveSettings();
 
     static void LoadSettings();
+
+    static void DeleteAllData();
+
+    static bool GetData(int num, DataSettings *ds, uint8 *dataA, uint8 *dataB);
 private:
     /// ¬озвращает адрес первого свободного байта в секторе настроек
     static uint FirstFreeAddressForSettings();
@@ -26,5 +31,15 @@ private:
     static void WriteBytes(uint address, uint8 *data, int size);
 
     static void ReadBytes(uint address, void *data, uint size);
+};
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class OTPmem
+{
+public:
+    static bool SaveSerialNumber(char *servialNumber);
+    /// ¬озвращает число свободных мест дл€ записи. ≈сли 0, то места в OTP уже не осталось.
+    static int GetSerialNumber(char buffer[17]);
 };
 

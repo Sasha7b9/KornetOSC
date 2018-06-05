@@ -1,10 +1,12 @@
 #include "PageMemory.h"
 #include "Data/Reader.h"
+#include "Data/DataStorage.h"
 #include "Display/Grid.h"
 #include "Display/Symbols.h"
+#include "Display/Painter.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
-#include "Hardware/FLASH.h"
+#include "Hardware/EEPROM.h"
 #include "Hardware/Sound.h"
 #include "FlashDrive/FileManager.h"
 #include "Menu/Menu.h"
@@ -46,13 +48,6 @@ void OnChanged_Points(bool active)
     {
         Display::ShowWarning(WrongModePeackDet);
         return;
-    }
-
-    // Блокируем включение 32к длины записи, если включен второй канал
-    if (FPGA_POINTS_32k && SET_ENABLED_B)
-    {
-        Display::ShowWarning(DisableChannelB);
-        FPGA_ENUM_POINTS = FNP_16k;
     }
 
     int width = Grid::Width();
@@ -118,7 +113,7 @@ DEF_SMALL_BUTTON_EXIT(  bLast_Exit,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Next()
 {
-    CircleIncrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
+    CircleIncrease<int16>((int16 *)&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
 }
 
 static void Draw_Last_Next(int x, int y)
@@ -138,7 +133,7 @@ DEF_SMALL_BUTTON(   bLast_Next,                                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Prev()
 {
-    CircleDecrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
+    CircleDecrease<int16>((int16 *)&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
 }
 
 static void Draw_Last_Prev(int x, int y)
@@ -210,7 +205,7 @@ DEF_SMALL_BUTTON(   bLast_SaveToDrive,                                          
 static void OnPress_Last()
 {
     NUM_RAM_SIGNAL = 0;
-    RUN_FPGA_BEFORE_SB = FPGA_IS_RUNNING ? 1u : 0u;
+    RUN_FPGA_BEFORE_SB = FPGA::IsRunning() ? 1u : 0u;
     FPGA::Stop(false);
     MODE_WORK = ModeWork_RAM;
 }

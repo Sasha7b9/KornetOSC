@@ -24,7 +24,7 @@ static Key GetFuncButtonFromY(int _y)
 {
     int y = Grid::Top() + Grid::Height() / 12;
     int step = Grid::Height() / 6;
-    Key button = K_Menu;
+    Key button = K_Enter;
     for (int i = 0; i < 6; i++)
     {
         if (_y < y)
@@ -98,7 +98,7 @@ void GovernorColor::DrawValue(int x, int y, int delta)
         Color colorDraw = (field == i) ? Color::BLACK : Color::WHITE;
         Painter::FillRegion(x - 1, y + 1, 29, 10, colorBack);
         Painter::DrawText(x, y + 2, texts[i], colorDraw);
-        Painter::DrawText(x + 14, y + 2, SU::SU::Int2String(vals[i], false, 1, buffer));
+        Painter::DrawText(x + 14, y + 2, Int2String(vals[i], false, 1, buffer));
         x -= 30;
     }
 
@@ -151,8 +151,8 @@ void Governor::DrawValue(int x, int y)
     }
     Painter::SetFont(TypeFont_5);
     bool sign = minValue < 0;
-    Painter::DrawText(x + 55, y - 5, SU::Int2String(maxValue, sign, 1, buffer), Color::WHITE);
-    Painter::DrawText(x + 55, y + 2, SU::Int2String(minValue, sign, 1, buffer));
+    Painter::DrawText(x + 55, y - 5, Int2String(maxValue, sign, 1, buffer), Color::WHITE);
+    Painter::DrawText(x + 55, y + 2, Int2String(minValue, sign, 1, buffer));
     Painter::SetFont(TypeFont_8);
 
     DrawValueWithSelectedPosition(startX, y, value, NumDigits(), gCurDigit, true, true);
@@ -183,7 +183,7 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
         int delta = (int)Step();
         if (delta == 0)
         {
-            x = Painter::DrawText(x + 1, y + 21, SU::Int2String(*cell, false, 1, buffer));
+            x = Painter::DrawText(x + 1, y + 21, Int2String(*cell, false, 1, buffer));
         }
         else
         {
@@ -194,23 +194,23 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
             int limHeight = MI_HEIGHT_VALUE - 1;
             if (delta > 0)
             {
-                x = Painter::DrawTextWithLimitationC(drawX, y + 21 - delta, SU::Int2String(*cell, false, 1, buffer),
+                x = Painter::DrawTextWithLimitationC(drawX, y + 21 - delta, Int2String(*cell, false, 1, buffer),
                     Color::BLACK, limX, limY, limWidth, limHeight);
-                Painter::DrawTextWithLimitationC(drawX, y + 21 + 10 - delta, SU::Int2String(NextValue(), false, 1, buffer),
+                Painter::DrawTextWithLimitationC(drawX, y + 21 + 10 - delta, Int2String(NextValue(), false, 1, buffer),
                     Color::BLACK, limX, limY, limWidth, limHeight);
             }
             if (delta < 0)
             {
-                x = Painter::DrawTextWithLimitationC(drawX, y + 21 - delta, SU::Int2String(*cell, false, 1, buffer),
+                x = Painter::DrawTextWithLimitationC(drawX, y + 21 - delta, Int2String(*cell, false, 1, buffer),
                     Color::BLACK, limX, limY, limWidth, limHeight);
-                Painter::DrawTextWithLimitationC(drawX, y + 21 - 10 - delta, SU::Int2String(PrevValue(), false, 1, buffer),
+                Painter::DrawTextWithLimitationC(drawX, y + 21 - 10 - delta, Int2String(PrevValue(), false, 1, buffer),
                     Color::BLACK, limX, limY, limWidth, limHeight);
             }
         }
     }
     else
     {
-        x = Painter::DrawText(x + 1, y + 21, SU::Int2String(*cell, false, 1, buffer), Color::WHITE);
+        x = Painter::DrawText(x + 1, y + 21, Int2String(*cell, false, 1, buffer), Color::WHITE);
     }
     Painter::DrawText(x + 1, y + 21, "\x81", colorTextDown);
 }
@@ -387,73 +387,6 @@ void MACaddress::DrawLowPart(int x, int y, bool, bool shade)
     {
         Painter::DrawText(x + 4, y + 21, buffer, Color::WHITE);
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Formula::Draw(int x, int y, bool opened)
-{
-    if (opened)
-    {
-
-    }
-    else
-    {
-        DrawClosed(x, y);
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Formula::DrawClosed(int x, int y)
-{
-    bool pressed = IsPressed();
-    bool shade = IsShade() || !IS_ACTIVE(this);
-    DrawLowPart(x, y, pressed, shade);
-    DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Formula::DrawLowPart(int x, int y, bool, bool shade)
-{
-    Color colorTextDown = Color::BLACK;
-
-    Painter::DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 2, Color::MENU_FIELD,
-        Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, true, shade);
-    if (shade)
-    {
-        colorTextDown = Color::MenuItem(false);
-    }
-    Painter::SetColor(colorTextDown);
-    WriteText(x + 6, y + 21, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Formula::WriteText(int x, int y, bool)
-{
-    Function func = (Function)(*function);
-
-    if (func != Function_Mul && func != Function_Sum)
-    {
-        return;
-    }
-
-    bool funcIsMul = func == Function_Mul;
-    int8 koeff1 = funcIsMul ? *koeff1mul : *koeff1add;
-    int8 koeff2 = funcIsMul ? *koeff2mul : *koeff2add;
-    if (koeff1 != 0)
-    {
-        Painter::DrawChar(x, y, koeff1 < 0 ? '-' : '+');
-    }
-    Painter::DrawChar(x + 5, y, (char)(koeff1 + 0x30));
-    Painter::DrawChar(x + 10, y, '*');
-    Painter::DrawText(x + 14, y, "K1");
-    Painter::DrawChar(x + 27, y, funcIsMul ? '*' : '+');
-    if (koeff2 != 0)
-    {
-        Painter::DrawChar(x + 30, y, koeff2 < 0 ? '-' : '+');
-    }
-    Painter::DrawChar(x + 39, y, (char)(koeff2 + 0x30));
-    Painter::DrawChar(x + 44, y, '*');
-    Painter::DrawText(x + 48, y, "K2");
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -735,7 +668,6 @@ void Control::Draw(int x, int y, bool opened)
     }
     else if (type == Item_Formula)
     {
-        ((Formula *)this)->Draw(x, y, opened);
     }
     else if (type == Item_MAC)
     {
@@ -777,18 +709,18 @@ void Time::DrawClosed(int x, int y)
     int startX = 3;
     y += 21;
     PackedTime time = CPU::RTC_::GetPackedTime();
-    Painter::DrawText(x + startX, y, SU::Int2String((int)time.hours, false, 2, buffer), shade ? Color::MenuItem(true) : Color::BLACK);
+    Painter::DrawText(x + startX, y, Int2String((int)time.hours, false, 2, buffer), shade ? Color::MenuItem(true) : Color::BLACK);
     Painter::DrawText(x + startX + deltaField, y, ":");
-    Painter::DrawText(x + startX + deltaField + deltaSeparator, y, SU::Int2String((int)time.minutes, false, 2, buffer));
+    Painter::DrawText(x + startX + deltaField + deltaSeparator, y, Int2String((int)time.minutes, false, 2, buffer));
     Painter::DrawText(x + startX + 2 * deltaField + deltaSeparator, y, ":");
-    Painter::DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, SU::Int2String((int)time.seconds, false, 2, buffer));
+    Painter::DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, Int2String((int)time.seconds, false, 2, buffer));
 
     startX = 44;
-    Painter::DrawText(x + startX, y, SU::Int2String((int)time.day, false, 2, buffer));
+    Painter::DrawText(x + startX, y, Int2String((int)time.day, false, 2, buffer));
     Painter::DrawText(x + startX + deltaField, y, ":");
-    Painter::DrawText(x + startX + deltaField + deltaSeparator, y, SU::Int2String((int)time.month, false, 2, buffer));
+    Painter::DrawText(x + startX + deltaField + deltaSeparator, y, Int2String((int)time.month, false, 2, buffer));
     Painter::DrawText(x + startX + 2 * deltaField + deltaSeparator, y, ":");
-    Painter::DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, SU::Int2String((int)time.year, false, 2, buffer));
+    Painter::DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, Int2String((int)time.year, false, 2, buffer));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -836,12 +768,12 @@ void Time::DrawOpened(int x, int y)
 
     char strI[8][20];
     strcpy(strI[iEXIT], "Не сохранять");
-    strcpy(strI[iDAY], SU::Int2String(*day, false, 2, buffer));
-    strcpy(strI[iMONTH], SU::Int2String(*month, false, 2, buffer));
-    strcpy(strI[iYEAR], SU::Int2String(*year, false, 2, buffer));
-    strcpy(strI[iHOURS], SU::Int2String(*hours, false, 2, buffer));
-    strcpy(strI[iMIN], SU::Int2String(*minutes, false, 2, buffer));
-    strcpy(strI[iSEC], SU::Int2String(*seconds, false, 2, buffer));
+    strcpy(strI[iDAY], Int2String(*day, false, 2, buffer));
+    strcpy(strI[iMONTH], Int2String(*month, false, 2, buffer));
+    strcpy(strI[iYEAR], Int2String(*year, false, 2, buffer));
+    strcpy(strI[iHOURS], Int2String(*hours, false, 2, buffer));
+    strcpy(strI[iMIN], Int2String(*minutes, false, 2, buffer));
+    strcpy(strI[iSEC], Int2String(*seconds, false, 2, buffer));
     strcpy(strI[iSET], "Сохранить");
 
     Painter::DrawText(x + 3, y + y0, "д м г - ", Color::WHITE);
@@ -868,7 +800,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(Control *item, int x, int y, bo
         width += MOI_WIDTH_D_IP;
     }
 
-    Color color = shade ? Color::MENU_TITLE_DARK : (COLOR_SCHEME_IS_WHITE_LETTERS ? Color::WHITE : Color::BLACK);
+    Color color = shade ? Color::MENU_TITLE_DARK : Color::WHITE;
     Painter::DrawHLine(y + 1, x, x + width + 3, Color::BorderMenu(false));
 
     Painter::DrawVolumeButton(x + 1, y + 2, width + 2, MI_HEIGHT_VALUE + 3, 1, Color::MenuItem(false), Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK,
@@ -960,9 +892,9 @@ int Page::ItemOpenedPosY(Control *item)
     Page *page = (Page *)KEEPER(item);
     int8 posCurItem = page->PosCurrentItem();
     int y = Grid::Top() + (posCurItem % MENU_ITEMS_ON_DISPLAY) * MI_HEIGHT + MP_TITLE_HEIGHT;
-    if (y + ((Control *)item)->HeightOpened() > GRID_BOTTOM)
+    if (y + ((Control *)item)->HeightOpened() > Grid::Bottom())
     {
-        y = GRID_BOTTOM - ((Control *)item)->HeightOpened() - 2;
+        y = Grid::Bottom() - ((Control *)item)->HeightOpened() - 2;
     }
     return y + 1;
 }

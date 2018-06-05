@@ -1,6 +1,7 @@
 #pragma once
 #include "Settings/SettingsTypes.h"
 #include "FPGA/FPGATypes.h"
+#include "defines.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -12,7 +13,7 @@
  */
 
 
-typedef struct
+struct PackedTime
 {
     uint timeMS     : 32;   /// \brief Время в миллисекундах от старта системы. Т.к. структура заполняется во время сохранения данных в хранилище, то 
                             /// timeMS == 0 означает, что полный сигнал в режиме поточеного вывода ещё не считан
@@ -24,9 +25,9 @@ typedef struct
     uint notUsed0   : 4;
     uint day        : 5;
     uint notUsed1   : 27;
-} PackedTime;
+};
 
-typedef struct
+struct DataSettings
 {
     uint8      *addr;                   ///< Адрес данных во внешнем ОЗУ
     uint16      rShift[2];
@@ -48,7 +49,7 @@ typedef struct
     PackedTime  time;
     int BytesInChannel();
     void Fill();
-} DataSettings;
+};
 
 #define RSHIFT(ds, ch)          ((ds)->rShift[ch])
 #define RSHIFT_A(ds)            (RSHIFT(ds, A))

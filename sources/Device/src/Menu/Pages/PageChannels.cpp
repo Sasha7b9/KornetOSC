@@ -5,7 +5,7 @@
 #include "FPGA/FPGAextensions.h"
 #include "Log.h"
 #include "Menu/MenuItems.h"
-#include "Hardware/Panel.h"
+#include "Hardware/Keyboard.h"
 #include "Settings/Settings.h"
 #include "Settings/SettingsTypes.h"
 #include "Menu/Pages/Definition.h"
@@ -41,7 +41,7 @@ static const char chanDividerEn[] = "Attenuation: \n\"Off\" - the signal is not 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PageChannels::OnChanged_InputA(bool)
 {
-    Panel::EnableLEDChannel(A, SET_ENABLED_A);
+
 }
 
 DEF_CHOICE_2(       cChanA_Input,                                                                                             //---  ¿Õ¿À 1 - ¬ıÓ‰ ---
@@ -157,11 +157,6 @@ DEF_PAGE_7(         pChanA,                                                     
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_ChanB_Input()
-{
-    return !FPGA_POINTS_32k;
-}
-
 void PageChannels::OnChanged_InputB(bool active)
 {
     if (!active)
@@ -169,12 +164,6 @@ void PageChannels::OnChanged_InputB(bool active)
         Display::ShowWarning(TooLongMemory);
         return;
     }
-
-    if (FPGA_POINTS_32k && SET_ENABLED_B)
-    {
-        SET_ENABLED_B = false;
-    }
-    Panel::EnableLEDChannel(B, SET_ENABLED_B);
 }
 
 DEF_CHOICE_2(       cChanB_Input,                                                                                             //---  ¿Õ¿À 2 - ¬ıÓ‰ ---
@@ -183,7 +172,7 @@ DEF_CHOICE_2(       cChanB_Input,                                               
     chanInputEn,
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    SET_ENABLED_B, pChanB, IsActive_ChanB_Input, PageChannels::OnChanged_InputB, FuncDraw
+    SET_ENABLED_B, pChanB, FuncActive, PageChannels::OnChanged_InputB, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -42,27 +42,19 @@ DEF_PAGE_11_GLOBAL(    mainPage,                                                
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const void *PageForButton(Key button)
 {
-    static const void *pages[] =
+    static const void *pages[NumButtons] =
     {  
         0,                  // K_None
-        (void *)&pChanA,    // B_ChannelA
-        (void *)&pService,  // B_Service
-        (void *)&pChanB,    // B_ChannelB
-        (void *)&pDisplay,  // B_Display
-        (void *)&pTime,     // B_Time
+        0,                  // K_Function
+        (void *)&pMeasures, // K_Measures
         (void *)&pMemory,   // K_Memory
-        (void *)&pTrig,     // B_Trig
-        0,                  // B_Start
-        (void *)&pCursors,  // B_Cursors
-        (void *)&pMeasures, // B_Measures
-        0,                  // B_Power
-        (void *)&pHelp,     // B_Help
-        0,                  // K_Menu
-        0,                  // K_1
-        0,                  // K_2
-        0,                  // K_3
-        0,                  // K_4
-        0,                  // K_5
+        (void *)&pService,  // K_Service
+        (void *)&pChanA,    // K_ChannelA
+        (void *)&pChanB,    // K_ChannelB
+        (void *)&pTime,     // K_Time
+        0,                  // K_Start
+        (void *)&pTrig,     // K_Trig
+        (void *)&pDisplay   // K_Display
     };
 
     return pages[button];

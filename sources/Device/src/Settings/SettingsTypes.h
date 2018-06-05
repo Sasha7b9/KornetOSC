@@ -54,14 +54,6 @@ enum TBase
     TBaseSize
 };
 
-enum Couple
-{
-    Couple_AC,
-    Couple_DC,
-    Couple_GND,
-    CoupleSize
-};
-
 enum TrigInput
 {
     TrigInput_Full,
@@ -73,6 +65,8 @@ enum Channel
 {
     A,
     B,
+    Ext,
+    Math,
     NumChannels
 };
 
@@ -100,6 +94,17 @@ enum ThicknessSignal
 {
     Thickness_1,    ///< Сигнал рисуется линией толщиной одна точка
     Thickness_3     ///< Сигнал рисуется линией толщиной три точки
+};
+
+enum Bandwidth
+{
+    Bandwidth_Full,     ///< Если это значение выбрано в меню КАНАЛ, то при этом положение устанавливается полоса из ОТЛАДКА-КАНАЛЫ-Полоса.
+    Bandwidth_20MHz,
+    Bandwidth_100MHz,
+    Bandwidth_200MHz,
+    Bandwidth_350MHz,
+    Bandwidth_650MHz,
+    Bandwidth_750MHz
 };
 
 enum ModeTrig
@@ -135,51 +140,356 @@ enum TesterStepI
     StepI_20mA
 };
 
-enum EnumPoints
-{
-    EnumPoints_512,
-    EnumPoints_1024,
-    EnumPoints_2048,
-    EnumPoints_4096,
-    EnumPoints_8196,
-    EnumPoints_Num
-};
-
 /// Каким курсором управлять
-typedef enum
+enum CursCntrl
 {
     CursCntrl_1,        ///< первым
     CursCntrl_2,        ///< вторым
     CursCntrl_1_2,      ///< обоими
     CursCntrl_Disable   ///< никаким
-} CursCntrl;
+};
 
 /// Тип усреднений по измерениям
-typedef enum
+enum ModeAveraging
 {
     Averaging_Accurately,   ///< Усреднять точно.
     Averaging_Around        ///< Усреднять приблизительно.
-} ModeAveraging;
+};
 
 /// Выбор цвета фона.
-typedef enum
+enum Background
 {
     Background_Black,
     Background_White
-} Background;
+};
+
+/// Положение точки синхронизация на сигнале.
+enum TPos
+{
+    TPos_Left,          ///< Привязка к левому краю.
+    TPos_Center,        ///< Привязка к центру.
+    TPos_Right          ///< Привязка к правому краю.
+};
 
 /// Число точек сигнала, с которым идёт работа.
-typedef enum
+enum ENumPointsFPGA
 {
     FNP_512,
     FNP_1k,
     FNP_2k,
     FNP_4k,
     FNP_8k,
-    FNP_16k,
-    FNP_32k,                /// \todo В этом режиме только один канал
     FPGA_ENUM_POINTS_SIZE
-} ENumPointsFPGA;
+};
+
+/// Что делать при нажатии кнопки ПАМЯТЬ.
+enum ModeBtnMemory
+{
+    ModeBtnMemory_Menu,     ///< Будет открывааться соответствующая страница меню.
+    ModeBtnMemory_Save      ///< Сохранение содержимого экрана на флешку.
+};
+
+/// Делитель.
+enum Divider
+{
+    Divider_1,
+    Divider_10
+};
+
+/// Источник синхронизации
+enum TrigSource
+{
+    TrigSource_A,    /// Канал 1
+    TrigSource_B,    /// Канал 2
+    TrigSource_Ext   /// Внешняя
+};
+
+/// Режим работы.
+enum ModeWork
+{
+    ModeWork_Dir,           ///< Основной режим.
+    ModeWork_RAM,           ///< В этом режиме можно просмотреть последние сохранённые измерения.
+    ModeWork_ROM,           ///< В этом режиме можно сохранять во flash-памяти измерения просматривать ранее сохранённые.
+    ModeWork_None           ///< Используется в модуле Data.c. Нужен, чтобы указать, что мудуль не настроен ни на какой режим.
+};
+
+/// Режим показа строки навигации
+enum ShowStrNavi
+{
+    ShowStrNavi_Temp,   ///< Показывать на несколько секунд
+    ShowStrNavi_All,    ///< Всегда показывать
+    ShowStrNavi_None    ///< Никогда не показывать
+};
+
+enum FFTmaxDB
+{
+    FFTmaxDB_40,
+    FFTmaxDB_60,
+    FFTmaxDB_80
+};
+
+enum FuncModeDraw
+{
+    FuncModeDraw_Disable,
+    FuncModeDraw_Separate,
+    FuncModeDraw_Together
+};
+
+/// \brief Тип балансировки АЦП каналов.
+/// Дело в том, что уровни АЦП не совпадают из-за отличия характеристик ( ? ), поэтому мы вводим дополнительное смещение для одного из АЦП канала.
+enum BalanceADCtype
+{
+    BalanceADC_Disable,     ///< Балансировка выключена.
+    BalanceADC_Settings,    ///< Используются значения балансировки, которые получены автоматически.
+    BalanceADC_Hand         ///< Используются значения балансировки, заданные вручную.
+};
+
+/// Тип растяжки АЦП
+enum StretchADCtype
+{
+    StretchADC_Disable,
+    StretchADC_Real,
+    StretchADC_Hand
+};
+
+enum DisplayOrientation
+{
+    Direct,
+    Back
+};
+
+/// Режим канала по входу.
+enum ModeCouple
+{
+    ModeCouple_DC,      ///< Открытый вход.
+    ModeCouple_AC,      ///< Закрытый вход.
+    ModeCouple_GND,     ///< Вход заземлён.
+    CoupleSize
+};
+
+enum Resistance
+{
+    Resistance_1Mom,
+    Resistance_50Om
+};
+
+/// Время счёта периода.
+enum TimeCounting
+{
+    TimeCounting_100ms,
+    TimeCounting_1s,
+    TimeCounting_10s
+};
+
+/// Частота заполняющих импульсов для счёта частоты.
+enum FreqClc
+{
+    FreqClc_100kHz,
+    FreqClc_1MHz,
+    FreqClc_10MHz,
+    FreqClc_100MHz
+};
+
+/// Количество периодов.
+enum NumberPeriods
+{
+    NumberPeriods_1,
+    NumberPeriods_10,
+    NumberPeriods_100
+};
+
+enum PeakDetMode
+{
+    PeakDet_Disabled,
+    PeakDet_Enabled,
+    PeakDet_Average
+};
+
+/// Количество измерений для расчёта минимального и максимального значений.
+enum ENumMinMax
+{
+    ENumMinMax_1,
+    ENumMinMax_2,
+    ENumMinMax_4,
+    ENumMinMax_8,
+    ENumMinMax_16,
+    ENumMinMax_32,
+    ENumMinMax_64,
+    ENumMinMax_128
+};
+
+enum ColorScheme
+{
+    ColorScheme_WhiteLetters,   ///< В этом случае заголовки элементов меню пишутся белым - не очень хорошо видно снизу
+    ColorScheme_BlackLetters    ///< В этом случае заголовки элементов меню пишутся чёрным - не очень красиво выглядит
+};
+
+/// Количество усреднений по измерениям.
+enum ENumAverage
+{
+    ENumAverage_1,
+    ENumAverage_2,
+    ENumAverage_4,
+    ENumAverage_8,
+    ENumAverage_16,
+    ENumAverage_32,
+    ENumAverage_64,
+    ENumAverage_128,
+    ENumAverage_256,
+    ENumAverage_512
+};
+
+/// Режим запуска.
+enum StartMode
+{
+    StartMode_Auto,     ///< Автоматический.
+    StartMode_Wait,     ///< Ждущий.
+    StartMode_Single    ///< Однократный.
+};
+
+/// Режим слежения курсоров.
+enum CursLookMode
+{
+    CursLookMode_None,      ///< Курсоры не следят.
+    CursLookMode_Voltage,   ///< Курсоры следят за напряжением автоматически.
+    CursLookMode_Time,      ///< Курсоры следят за временем автоматически.
+    CursLookMode_Both       ///< Курсоры следят за временем и напряжением, в зависимости от того, какой курсоры вращали последним.
+};
+
+/// Какие курсоры сейчас активны. Какие активны, те и будут перемещаться по вращению ручки УСТАНОВКА.
+enum CursActive
+{
+    CursActive_U,
+    CursActive_T,
+    CursActive_None
+};
+
+/// Дискретность перемещения курсоров.
+enum CursMovement
+{
+    CursMovement_Pixels,    ///< По пикселям экрана
+    CursMovement_Percents   ///< По процентам
+};
+
+/// Количество накоплений.
+enum ENumAccum
+{
+    ENumAccum_1,
+    ENumAccum_2,
+    ENumAccum_4,
+    ENumAccum_8,
+    ENumAccum_16,
+    ENumAccum_32,
+    ENumAccum_64,
+    ENumAccum_128,
+    ENumAccum_Infinity
+};
+
+enum ModeAccumulation
+{
+    ModeAccumulation_NoReset,   /// В этом режиме показываются строго N последних.
+    ModeAccumulation_Reset      /// В этом режиме набираются N последних и потом сбрасываются.
+};
+
+/// Количество точек для расчёта сглаживания.
+enum ENumSmoothing
+{
+    ENumSmooth_Disable,
+    ENumSmooth_2points,
+    ENumSmooth_3points,
+    ENumSmooth_4points,
+    ENumSmooth_5points,
+    ENumSmooth_6points,
+    ENumSmooth_7points,
+    ENumSmooth_8points,
+    ENumSmooth_9points,
+    ENumSmooth_10points
+};
+
+/// Ограничение FPS.
+enum ENumSignalsInSec
+{
+    ENumSignalsInSec_25,
+    ENumSignalsInSec_10,
+    ENumSignalsInSec_5,
+    ENumSignalsInSec_2,
+    ENumSignalsInSec_1
+};
+
+/// Тип сетки на экране.
+enum TypeGrid
+{
+    TypeGrid_1,
+    TypeGrid_2,
+    TypeGrid_3,
+    TypeGrid_4,
+    TG_Size
+};
+
+/// Тип привязки к смещению по вертикали
+enum LinkingRShift
+{
+    LinkingRShift_Voltage,      ///< Смещение привязано к напряжению
+    LinkingRShift_Position      ///< Смещение привязано к позиции
+};
+
+/// Режим отображения дополнительных боковых маркеров смещения по напряжению.
+enum AltMarkers
+{
+    AM_Hide,        /// Никода не выводить.
+    AM_Show,        /// Всегда выводить.
+    AM_AutoHide     /// Выводить и прятать через timeShowLevels.
+};
+
+/// Через какое время после последнего нажатия кнопки скрывать меню.
+enum MenuAutoHide
+{
+    MenuAutoHide_None = 0,   ///< Никогда.
+    MenuAutoHide_5 = 5,   ///< Через 5 секунд.
+    MenuAutoHide_10 = 10,  ///< Через 10 секунд.
+    MenuAutoHide_15 = 15,  ///< Через 15 секунд.
+    MenuAutoHide_30 = 30,  ///< Через 30 секунд.
+    MenuAutoHide_60 = 60   ///< Через 60 секунд.
+};
+
+enum MeasuresNumber
+{
+    MN_1,                       ///< 1 измерение слева внизу.
+    MN_2,                       ///< 2 измерения слева внизу.
+    MN_1_5,                     ///< 1 строка с 5 измерениями.
+    MN_2_5,                     ///< 2 строки по 5 измерений.
+    MN_3_5,                     ///< 3 строки по 5 измерений.
+    MN_6_1,                     ///< 6 строк по 1 измерению.
+    MN_6_2                      ///< 6 строк по 2 измерения.
+};
+
+/// Сжимать ли сигналы при выводе измерений.
+enum ModeViewSignals
+{
+    ModeViewSignals_AsIs,       ///< Показывать сигналы как есть.
+    ModeViewSignals_Compress    ///< Сжимать сетку с сигналами.
+};
+
+/// Тип выборки для режима рандомизатора.
+enum SampleType
+{
+    SampleType_Real,    ///< реальное время - в построении участвуют только реально считанные точки, ничего не рассчитывается.
+    SampleType_Equal    ///< эквивалентная - сигнал строится по последним точкам, полученным от рандомизатора.
+};
+
+/// Функция ВР/ДЕЛ.
+enum FunctionTime
+{
+    FunctionTime_Time,
+    FunctionTime_ShiftInMemory
+};
+
+/// Тип привязки к смещению по горизонтали
+enum LinkingTShift
+{
+    LinkingTShift_Time,     ///< Смещение привязано к времени
+    LinkingTShift_Position  ///< Смещение привязано к позиции
+};
 
 const char *NameRange(Range range);
 const char *NameTBase(TBase tBase);

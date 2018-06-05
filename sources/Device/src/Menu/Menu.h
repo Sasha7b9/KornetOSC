@@ -1,5 +1,5 @@
 #pragma once
-#include "Hardware/Controls.h"
+#include "Hardware/Keyboard.h"
 #include "Menu/MenuItems.h"
 
 
@@ -33,10 +33,6 @@ public:
     static void PressButton(Key button);
     /// Функция вызывается, когда кнопка переходит из нажатого в отжатое положение.
     static void ReleaseButton(Key button);
-    /// Функция обработки поворота ручки УСТАНОВКА вправо.
-    static void RotateRegSetRight();
-    /// Функция обработки поворота ручки УСТАНОВКА влево.
-    static void RotateRegSetLeft();
     /// Установить время автоматического сокрытия меню в соответствии с установками.
     static void SetAutoHide(bool active);
     /// Возвращает путь к текущему пункту меню в текстовом виде, готовом к выводу на экран.
@@ -91,14 +87,8 @@ private:
     static void ProcessingPressButton();
     /// Обработка поднятия кнопки вверх
     static void ProcessingReleaseButton();
-    ///< Обработка поворота ручки УСТАНОВКА
-    static void ProcessingRegulatorSetRotate();
-    /// Обработка нажатия ручки
-    static void ProcessingRegulatorPress();
     /// Обработка события таймера автоматического сокрытия меню
     static void OnTimerAutoHide();
-    /// Включить/выключить светодиод ручки УСТАНОВКА, если необходимо
-    static void SwitchSetLED();
     /// Функция, которая отключит вывод строки навигации меню
     static void OnTimerStrNaviAutoHide();
     /// Возвращает true, если лампочка УСТАНОВКА должна гореть
@@ -113,9 +103,6 @@ private:
     static void ShortPress_MAC(void *item);
     
     static void ResetItemsUnderButton();
-    /// Повернуть ручку УСТАНОВКА на текущей странице малых кнопок.
-    static void RotateRegSetSB(int angle);
-          
     /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
     static Key shortPressureButton;
     /// Если произошло длинное нажатие кнопки, то здесь хранится имя этой кнопки до обработки этого нажатия.
@@ -124,8 +111,6 @@ private:
     static Key pressButton;
     /// При отпускании кнопки её имя записывается в эту переменную и хранится там до обработки события отпускания кнопки.
     static Key releaseButton;
-    /// Угол, на который нужно повернуть ручку УСТАНОВКА - величина означает количество щелчков, знак - направление - "-" - влево, "+" - вправо.
-    static int angleRegSet;
     /// Эта функция будет вызывана один раз после Menu::Update().
     static pFuncVV funcAterUpdate;
   

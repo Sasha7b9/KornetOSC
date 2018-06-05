@@ -1,6 +1,7 @@
 #pragma once
 #include "defines.h"
-#include "FPGA_Types.h"
+#include "Globals.h"
+#include "FPGATypes.h"
 #include "Settings/SettingsTypes.h"
 
 
@@ -37,6 +38,11 @@ enum Pin
     Num_Pins
 };
 
+extern uint16 gPost;
+extern int16 gPred;
+
+extern StateWorkFPGA fpgaStateWork;
+#define FPGA_IN_STATE_STOP (fpgaStateWork == StateWorkFPGA_Stop)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class HardwareFPGA
@@ -85,13 +91,45 @@ public:
 
     static void LoadTrigInput();
 
-    static void Stop();
+    static void Stop(bool);
 
     static void LoadRanges();
     /// Запустить цикл чтения для тестер-компонента. В течение time секунд должно быть считано numPoints точек
     static void StartForTester(int numPoints);
 
     static void ReadForTester(uint8 *dataA, uint8 *dataB);
+    /// Установить относительное смещение по времени
+    static void SetTShift(int tShift);
+    /// Установить относительный уровень синхронизации
+    static void SetTrigLev(TrigSource ch, uint16 trigLev);
+    /// Запускает цикл сбора информации
+    static void OnPressStartStop();
+    /// Установить количество измерений, по которым будут рассчитываться ворота в режиме рандомизатора
+    static void SetNumberMeasuresForGates(int number);
+    /// Установить добавочное смещение по времени для режима рандомизатора. В каждой развёртке это смещение должно быть разное
+    static void SetDeltaTShift(int16 shift);
+
+    static void LoadTShift();
+
+    static void SetBandwidth(Channel ch);
+    /// Установить режим канала по входу
+    static void SetModeCouple(Channel ch, ModeCouple modeCoupe);
+
+    static void SetResistance(Channel ch, Resistance resistance);
+
+    static bool FreqMeter_Init();
+    /// Провести процедуру балансировки
+    static void BalanceChannel(Channel ch);
+    /// Возвращает true, если прибор находится не в процессе сбора информации
+    static bool IsRunning();
+    /// Установить количество считываемых сигналов в секунду
+    static void SetENumSignalsInSec(int numSigInSec);
+    /// Можно делать при изменении каких-то настроек. Например, при изменении числа точек (ПАМЯТЬ-Точки) если не вызвать, то будут артефакты изображения
+    static void Reset();
+    /// Включить/выключить режим пикового детектора
+    static void SetPeackDetMode(PeakDetMode peackDetMode);
+    /// Установить масштаб по времени
+    static void SetTBase(TBase tBase);
 
 private:
 
@@ -102,8 +140,6 @@ private:
     static void LoadTrigLev();
 
     static void LoadRShift(Channel ch);
-
-    static void LoadTShift();
 
     static void WritePin(Pin pin, int enable);
 
@@ -123,7 +159,7 @@ private:
 
     static uint16 ReadLastRecord();
 
-    static void ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS]);
+    static void ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_POINTS]);
     /// Установить в соотвествующие положения выводы, отвечающие за источник и вход синхронизации
     static void LoadTrigSourceInput();
     /// Читать канал в рандомизаторе с адреса address

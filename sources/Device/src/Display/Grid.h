@@ -21,6 +21,7 @@ public:
     static int Right();
     static int NumRows();
     static int NumCols();
+    static int Delta();
 
 private:
 };

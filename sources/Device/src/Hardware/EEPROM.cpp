@@ -26,7 +26,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void EPROM::SaveSettings()
+void EEPROM::SaveSettings()
 {
     /*
         Алгоритм нахождения первого свободного слова
@@ -63,7 +63,7 @@ void EPROM::SaveSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EPROM::LoadSettings()
+void EEPROM::LoadSettings()
 {
     uint address = AddressSavedSettings(0);
 
@@ -74,7 +74,7 @@ void EPROM::LoadSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint EPROM::FirstFreeAddressForSettings()
+uint EEPROM::FirstFreeAddressForSettings()
 {
     uint address = ADDR_SECTOR_SETTINGS_1;
 
@@ -96,7 +96,7 @@ uint EPROM::FirstFreeAddressForSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint EPROM::AddressSavedSettings(int)
+uint EEPROM::AddressSavedSettings(int)
 {
     uint addrPrev = 0;
 
@@ -112,14 +112,14 @@ uint EPROM::AddressSavedSettings(int)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint EPROM::AddressFirstEmptyByte()
+uint EEPROM::AddressFirstEmptyByte()
 {
     uint address = AddressSavedSettings(0);
     return address + READ_DOUBLEWORD(address);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint EPROM::GetSector(uint address)
+uint EEPROM::GetSector(uint address)
 {
     if (address == ADDR_SECTOR_SETTINGS_1)
     {
@@ -136,7 +136,7 @@ uint EPROM::GetSector(uint address)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EPROM::EraseSector(uint address)
+void EEPROM::EraseSector(uint address)
 {
     CLEAR_FLASH_FLAGS;
 
@@ -162,7 +162,7 @@ void EPROM::EraseSector(uint address)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EPROM::WriteBytes(uint address, uint8 *data, int size)
+void EEPROM::WriteBytes(uint address, uint8 *data, int size)
 {
     CLEAR_FLASH_FLAGS;
 
@@ -181,7 +181,7 @@ void EPROM::WriteBytes(uint address, uint8 *data, int size)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EPROM::ReadBytes(uint address, void *data, uint size)
+void EEPROM::ReadBytes(uint address, void *data, uint size)
 {
     uint8 *buffer = (uint8 *)data;
 

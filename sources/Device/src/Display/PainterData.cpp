@@ -24,7 +24,7 @@ void PainterData::DrawData()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
+void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_POINTS])
 {
     /*
     static uint timePrev = 0;

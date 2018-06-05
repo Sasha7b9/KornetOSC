@@ -31,11 +31,12 @@ typedef unsigned int        uint;
 typedef uint64_t            uint64;
 
 
-typedef void(*pFuncVV)();
-typedef void(*pFuncVB)(bool);
-typedef bool(*pFuncBV)();
-typedef void(*pFuncVI)(int);
-typedef void(*pFuncVII)(int, int);
+typedef void (*pFuncVV)();
+typedef void (*pFuncVB)(bool);
+typedef bool (*pFuncBV)();
+typedef void (*pFuncVI)(int);
+typedef void (*pFuncVII)(int, int);
+typedef void (*pFuncVpIII)(int *, int, int);
 
 inline void EmptyFuncVV(){}
 inline void EmptyFuncVB(bool){}

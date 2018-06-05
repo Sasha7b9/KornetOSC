@@ -3,9 +3,10 @@
 #include "Data/Reader.h"
 #include "Display/Grid.h"
 #include "Display/Symbols.h"
+#include "Display/Painter.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
-#include "Hardware/FLASH.h"
+#include "Hardware/EEPROM.h"
 #include "Hardware/Sound.h"
 #include "Menu/Menu.h"
 #include "Menu/Pages/Definition.h"
@@ -53,7 +54,7 @@ DEF_CHOICE_2(       cConsole_SizeFont,                                          
     "",
     "5", "5",
     "8", "8",
-    set.dbg_SizeFont, ppConsole, FuncActive, FuncChangedChoice, FuncDraw
+    set.dbg__sizeFont, ppConsole, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -98,7 +99,7 @@ DEF_CHOICE_2(       cConsole_Registers_RShiftA,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowRShift[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showRShift[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -108,7 +109,7 @@ DEF_CHOICE_2(       cConsole_Registers_RShiftB,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowRShift[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showRShift[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -118,7 +119,7 @@ DEF_CHOICE_2(       cConsole_Registers_TrigLev,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowTrigLev, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showTrigLev, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -128,7 +129,7 @@ DEF_CHOICE_2(       cConsole_Registers_RangeA,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowRange[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showRange[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -138,7 +139,7 @@ DEF_CHOICE_2(       cConsole_Registers_RangeB,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowRange[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showRange[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -148,7 +149,7 @@ DEF_CHOICE_2(       cConsole_Registers_TrigParam,                               
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowTrigParam, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showTrigParam, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -158,7 +159,7 @@ DEF_CHOICE_2(       cConsole_Registers_ChanParamA,                              
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowChanParam[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showChanParam[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -168,7 +169,7 @@ DEF_CHOICE_2(       cConsole_Registers_ChanParamB,                              
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowChanParam[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showChanParam[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -178,7 +179,7 @@ DEF_CHOICE_2(       cConsole_Registers_TBase,                                   
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowTBase, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showTBase, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -188,7 +189,7 @@ DEF_CHOICE_2(       cConsole_Registers_TShift,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowTShift, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg__showTShift, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -371,6 +372,7 @@ DEF_GOVERNOR(       gADC_Stretch_B,                                             
     stretchB, -10000, 10000, pppADC_Stretch, IsActive_ADC_StretchAB, OnChanged_ADC_Stretch_B, FuncBeforeDraw
 )
 
+/*
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_GOVERNOR(       gADC_Stretch_Ak20mV,                                                               //--- ОТЛАДКА - АЦП - РАСТЯЖКА - 20мВ/1В 1к ---
     "20мВ/1В 1к", "20mV/1V 1k",
@@ -434,18 +436,20 @@ DEF_GOVERNOR(       gADC_Stretch_Bk2V,                                          
     "",
     NRST_ADD_STRETCH_2V_B, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 )
+*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static const ChoiceBase emptyChoice = {Item_Choice, 0, false, Page_NoPage, 0, FuncActive, {}, 0, 0, 0, 0};
 
-DEF_PAGE_15(        pppADC_Stretch,                                                                                    // ОТЛАДКА - АЦП - РАСТЯЖКА ///
-    Page_Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage,
+DEF_PAGE_3(        pppADC_Stretch,                                                                                    // ОТЛАДКА - АЦП - РАСТЯЖКА ///
     "РАСТЯЖКА", "STRETCH",
     "Устанавливает режим и величину растяжки (для ручного режима)",
     "Sets mode and the value of stretching (manual mode)",
     cADC_Stretch_Mode,      // ОТЛАДКА - АЦП - РАСТЯЖКА - Режим
     gADC_Stretch_A,         // ОТЛАДКА - АЦП - РАСТЯЖКА - Растяжка 1к
-    gADC_Stretch_B,         // ОТЛАДКА - АЦП - РАСТЯЖКА - Растяжка 2к
+    gADC_Stretch_B,
+    Page_Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage
+           /*,         // ОТЛАДКА - АЦП - РАСТЯЖКА - Растяжка 2к
     emptyChoice,
     emptyChoice,
     gADC_Stretch_Ak20mV,    // ОТЛАДКА - АЦП - РАСТЯЖКА - 20мВ/1В 1к
@@ -458,6 +462,7 @@ DEF_PAGE_15(        pppADC_Stretch,                                             
     gADC_Stretch_Bk100mV,   // ОТЛАДКА - АЦП - РАСТЯЖКА - 100мВ/5В 2к
     gADC_Stretch_Bk2V,      // ОТЛАДКА - АЦП - РАСТЯЖКА - 2В 2к
     emptyChoice
+    */
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -747,22 +752,6 @@ DEF_CHOICE_2(       cDisplayOrientation,                                        
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_EMS(bool)
-{
-    FPGA::SetBandwidth(A);
-    FPGA::SetBandwidth(B);
-}
-
-DEF_CHOICE_2(       cEMS,                                                                                                //--- ОТЛАДКА - Режим ЭМС ---
-    "Режим ЭМС", "EMS mode",
-    "Принудительно включает фильтр 20МГц, сглаживание по 4-м точкам, усреднение по 8-ми точкам",
-    "",
-    DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN,
-    MODE_EMS, pDebug, FuncActive, OnChanged_EMS, FuncDraw
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 static int16 pred;
 
 static void OnChanged_Pred()
@@ -859,10 +848,12 @@ static void DebugShowSetInfo_Draw()
 
 #define DRAW_STRETCH(name) DRAW_FORMAT2(#name " : %d %d", set.nrst_##name[0], set.nrst_##name[1])
 
+    /*
     DRAW_STRETCH(AddStretch20mV);
     DRAW_STRETCH(AddStretch50mV);
     DRAW_STRETCH(AddStretch100mV);
     DRAW_STRETCH(AddStretch2V);
+    */
 
     DRAW_FORMAT("numSmoothForRand : %d", NRST_NUM_SMOOTH_FOR_RAND);
 
@@ -1090,7 +1081,7 @@ DEF_PAGE_SB(        ppSerialNumber,                                             
 static void OnPress_EraseData()
 {
     Display::FuncOnWaitStart(DICT(DDeleteFromMemory), false);
-    FLASHmem::DeleteAllData();
+    EEPROM::DeleteAllData();
     Display::FuncOnWaitStop();
 }
 
@@ -1102,7 +1093,7 @@ DEF_BUTTON(         bEraseData,                                                 
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_13(        pDebug,                                                                                                             // ОТЛАДКА ///
+DEF_PAGE_12(        pDebug,                                                                                                             // ОТЛАДКА ///
     Page_Debug, &mainPage, FuncActive, EmptyPressPage,
     "ОТЛАДКА", "DEBUG",
     "",
@@ -1113,7 +1104,7 @@ DEF_PAGE_13(        pDebug,                                                     
     ppChannels,		        // ОТЛАДКА - КАНАЛЫ
     cStats,			        // ОТЛАДКА - Статистика
     cDisplayOrientation,    // ОТЛАДКА - Ориентация
-    cEMS,                   // ОТЛАДКА - Режим ЭМС
+    //cEMS,                   // ОТЛАДКА - Режим ЭМС
     mgPred,			        // ОТЛАДКА - Предзапуск
     mgPost,			        // ОТЛАДКА - Послезапуск
     ppSettings,		        // ОТЛАДКА - НАСТРОЙКИ

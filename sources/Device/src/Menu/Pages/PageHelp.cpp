@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "globals.h"
 #include "PageHelp.h"
+#include "Display/Painter.h"
 #include "Menu/MenuItems.h"
 #include "Menu/Pages/Definition.h"
 #include "HelpContent.h"

@@ -2,8 +2,10 @@
 #include "PageMemory.h"
 #include "PageTime.h"
 #include "FPGA/FPGA.h"
+#include "Menu/MenuItems.h"
 #include "Utils/CommonFunctions.h"
 #include "Utils/Dictionary.h"
+#include "Settings/Settings.h"
 
 
 extern const PageBase mainPage;
@@ -30,16 +32,6 @@ DEF_CHOICE_2(       cSample,                                                    
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_PeakDet()
 {
-    if (FPGA_POINTS_32k)                       // ѕри 32к точек на канал мы не можем включать пиковый детектор
-    {
-        return false;
-    }
-
-    if (FPGA_POINTS_16k && SET_ENABLED_B) // ѕри 16к точках на канал мы можем работать только с одним каналом
-    {
-        return false;
-    }
-
     return (SET_TBASE >= MIN_TBASE_PEC_DEAT);
 }
 
@@ -53,18 +45,7 @@ void PageTime::OnChanged_PeakDet(bool active)
     }
     else
     {
-        if (FPGA_POINTS_32k)
-        {
-            Display::ShowWarning(NoPeakDet32k);
-        }
-        else if (FPGA_POINTS_16k && SET_ENABLED_B)
-        {
-            Display::ShowWarning(NoPeakDet16k);
-        }
-        else
-        {
-            Display::ShowWarning(TooSmallSweepForPeakDet);
-        }
+        Display::ShowWarning(TooSmallSweepForPeakDet);
     }
 }
 

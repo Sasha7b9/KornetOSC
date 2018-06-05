@@ -1,4 +1,5 @@
 #pragma once
+#include "Hardware/stm32/stm32.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,8 +21,3 @@ private:
     static void MX_USB_OTG_FS_PCD_Init(void);
     static void MX_USB_OTG_HS_PCD_Init(void);
 };
-
-
-void _Error_Handler(char *, int);
-
-#define ERROR_HANDLER() _Error_Handler((char *)__FILE__, __LINE__)

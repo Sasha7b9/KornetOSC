@@ -104,7 +104,7 @@ class PageBase
 public:
     COMMON_PART_MENU_ITEM;
     const Control * const *items;           ///< Здесь указатели на пункты этой страницы (в обычной странице)
-                                            ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - K_Menu, 1...5 - K_1...K_5
+                                            ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - K_Enter, 1...5 - K_1...K_5
     pFuncVV  funcOnPress;                   ///< Будет вызываться при нажатии на свёрнутую страницу
     pFuncVV  funcOnDraw;                    ///< Будет вызываться после отрисовки кнопок
     pFuncVI  funcRegSetSB;                  ///< В странице малых кнопок вызывается при повороте ручки установка
@@ -120,7 +120,7 @@ public:
     /// Возвращает true, если текущий элемент страницы открыт
     bool CurrentItemIsOpened() const;
     const Control * const *items;   ///< Здесь указатели на пункты этой страницы (в обычной странице)
-                                    ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - K_Menu, 1...5 - K_1...K_5
+                                    ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - K_Enter, 1...5 - K_1...K_5
     pFuncVV  funcOnPress;           ///< Будет вызываться при нажатии на свёрнутую страницу
     pFuncVV  funcOnDraw;            ///< Будет вызываться после отрисовки кнопок
     pFuncVI  funcRegSetSB;          ///< В странице малых кнопок вызывается при повороте ручки установка
@@ -339,47 +339,6 @@ public:
     void DrawClosed(int x, int y);
     void DrawValue(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
-};
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Formula ////
-
-/// Описывает элемент меню для установки коэффициентов и знаков математической формулы
-#define FIELD_SIGN_MEMBER_1_ADD 0
-#define FIELD_SIGN_MEMBER_1_MUL 1
-#define FIELD_SIGN_MEMBER_2_ADD 2
-#define FIELD_SIGN_MEMBER_2_MUL 3
-#define POS_SIGN_MEMBER_1       0
-#define POS_KOEFF_MEMBER_1      1
-#define POS_SIGN_MEMBER_2       2
-#define POS_KOEFF_MEMBER_2      3
-
-class FormulaBase
-{
-public:
-    COMMON_PART_MENU_ITEM;
-    int8   *function;       ///< Адрес ячейки, где хранится Function, из которой берётся знак операции
-    int8   *koeff1add;      ///< Адрес коэффициента при первом члене для сложения
-    int8   *koeff2add;      ///< Адрес коэффициента при втором члене для сложения
-    int8   *koeff1mul;      ///< Адрес коэффициента при первом члене для умножения
-    int8   *koeff2mul;      ///< Адрес коэффициента при втором члене для умножения
-    int8   *curDigit;       ///< Текущий разряд : 0 - знак первого члена, 1 - коэффициент первого члена, 2 - знак второго члена, 3 - коэффициент второго члена
-    pFuncVV funcOfChanged;  ///< Эта функция вызывается после изменения состояния элемента управления.
-};
-
-class Formula : public Control
-{
-public:
-    int8   *function;       ///< Адрес ячейки, где хранится Function, из которой берётся знак операции
-    int8   *koeff1add;      ///< Адрес коэффициента при первом члене для сложения
-    int8   *koeff2add;      ///< Адрес коэффициента при втором члене для сложения
-    int8   *koeff1mul;      ///< Адрес коэффициента при первом члене для умножения
-    int8   *koeff2mul;      ///< Адрес коэффициента при втором члене для умножения
-    int8   *curDigit;       ///< Текущий разряд : 0 - знак первого члена, 1 - коэффициент первого члена, 2 - знак второго члена, 3 - коэффициент второго члена
-    pFuncVV funcOfChanged;  ///< Эта функция вызывается после изменения состояния элемента управления.
-    void Draw(int x, int y, bool opened);
-    void DrawClosed(int x, int y);
-    void DrawLowPart(int x, int y, bool pressed, bool shade);
-    void WriteText(int x, int y, bool opened);
 };
 
 

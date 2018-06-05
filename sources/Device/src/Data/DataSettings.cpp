@@ -1,6 +1,6 @@
 #include "DataSettings.h"
 #include "globals.h"
-#include "Hardware/FLASH.h"
+#include "Hardware/EEPROM.h"
 #include "Settings/SettingsMemory.h"
 
 
@@ -13,9 +13,7 @@ int DataSettings::BytesInChannel()
         {1024,  2048,  2048},
         {2048,  4096,  4096},
         {4096,  8192,  8192},
-        {8192,  16384, 16384},
-        {16384, 32768, 16384},
-        {32768, 32768, 32768}
+        {8192,  16384, 16384}
     };
 
     return numPoints[ENUM_POINTS(this)][PEAKDET(this)];
@@ -33,7 +31,7 @@ void DataSettings::Fill()
     RSHIFT_A(this) = SET_RSHIFT_A;
     RSHIFT_B(this) = SET_RSHIFT_B;
     Lval_TBASE(this) = SET_TBASE;
-    TSHIFT(this) = SET_TSHIFT;
+    TSHIFT(this) = (int16)SET_TSHIFT;
     Lval_COUPLE_A(this) = SET_COUPLE_A;
     Lval_COUPLE_B(this) = SET_COUPLE_B;
     TRIGLEV_A(this) = SET_TRIGLEV_A;

@@ -1,5 +1,6 @@
 #include "main.h"
 #include "Display/Symbols.h"
+#include "Display/Painter.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAMath.h"
 #include "Hardware/CPU.h"
@@ -7,7 +8,7 @@
 #include "Hardware/Sound.h"
 #include "Menu/Menu.h"
 #include "Menu/Pages/Definition.h"
-#include "Hardware/Panel.h"
+#include "Hardware/Keyboard.h"
 #include "Utils/CommonFunctions.h"
 #include "Utils/Dictionary.h"
 #include "Utils/Math.h"
@@ -37,16 +38,16 @@ static void Draw_ResetSettings()
 
 static void OnPress_ResetSettings()
 {
-    Panel::Disable();
+    Keyboard::Disable();
     Display::SetDrawMode(DrawMode_Hand, Draw_ResetSettings);
 
-    if (Panel::WaitPressingButton() == B_Start)
+    if (Keyboard::WaitPressingButton() == K_Start)
     {
         Settings::Load(true);
     }
 
     Display::SetDrawMode(DrawMode_Auto, 0);
-    Panel::Enable();
+    Keyboard::Enable();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

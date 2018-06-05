@@ -69,7 +69,7 @@ static const Settings defaultSettings =
     StepI_4mA,                      // test_stepI
     0,                              // test_smooth
 
-    EnumPoints_512,                 // mem_enumPoints
+    EnumPoints_512,                 // mem__enumPoints
         
     0,                              // menu_currentPage
     false                           // menu_show
@@ -82,13 +82,13 @@ Settings set;
 void Settings::Load()
 {
     Reset();
-    EPROM::LoadSettings();
+    EEPROM::LoadSettings();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Settings::Save()
 {
-    EPROM::SaveSettings();
+    EEPROM::SaveSettings();
 
     AT25160N::Save(set);
 }

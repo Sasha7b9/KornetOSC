@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Device\src\Data\DataSettings.cpp" />
+    <ClCompile Include="..\..\Device\src\Data\DataStorage.cpp" />
+    <ClCompile Include="..\..\Device\src\Data\Reader.cpp" />
     <ClCompile Include="..\..\Device\src\Device.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Colors.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Display.cpp" />
@@ -35,6 +38,7 @@
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\GPIO.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\Hardware.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\Keyboard.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\stm32\stm32.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\stm32\stm437.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\stm32\Timer4XX.cpp" />
@@ -65,6 +69,9 @@
     <ClCompile Include="..\..\Device\src\Multimeter\Multimeter.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\Osci.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\Settings.cpp" />
+    <ClCompile Include="..\..\Device\src\Settings\SettingsChannel.cpp" />
+    <ClCompile Include="..\..\Device\src\Settings\SettingsCursors.cpp" />
+    <ClCompile Include="..\..\Device\src\Settings\SettingsDebug.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsDisplay.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsMemory.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp" />
@@ -72,8 +79,11 @@
     <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Decoder.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Math.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\MathOSC.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\Measures.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\ProcessingSignal.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -113,6 +123,9 @@
     <ClInclude Include="..\..\common\_VS\string.h" />
     <ClInclude Include="..\..\common\_VS\tchar.h" />
     <ClInclude Include="..\..\common\_VS\windows.h" />
+    <ClInclude Include="..\..\Device\src\Data\DataSettings.h" />
+    <ClInclude Include="..\..\Device\src\Data\DataStorage.h" />
+    <ClInclude Include="..\..\Device\src\Data\Reader.h" />
     <ClInclude Include="..\..\Device\src\defines.h" />
     <ClInclude Include="..\..\Device\src\Device.h" />
     <ClInclude Include="..\..\Device\src\Display\Colors.h" />
@@ -124,16 +137,16 @@
     <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h" />
     <ClInclude Include="..\..\Device\src\FPGA\AD9286.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
-    <ClInclude Include="..\..\Device\src\FPGA\FPGA_Types.h" />
+    <ClInclude Include="..\..\Device\src\FPGA\FPGATypes.h" />
     <ClInclude Include="..\..\Device\src\FPGA\Storage.h" />
     <ClInclude Include="..\..\Device\src\Globals.h" />
     <ClInclude Include="..\..\Device\src\Hardware\AT25160N.h" />
-    <ClInclude Include="..\..\Device\src\Hardware\Controls.h" />
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />
     <ClInclude Include="..\..\Device\src\Hardware\EEPROM.h" />
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h" />
     <ClInclude Include="..\..\Device\src\Hardware\GPIO.h" />
     <ClInclude Include="..\..\Device\src\Hardware\Hardware.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\Keyboard.h" />
     <ClInclude Include="..\..\Device\src\Hardware\Sound.h" />
     <ClInclude Include="..\..\Device\src\Hardware\stm32\stm32.h" />
     <ClInclude Include="..\..\Device\src\Hardware\stm32\stm437.h" />
@@ -162,16 +175,27 @@
     <ClInclude Include="..\..\Device\src\Multimeter\Multimeter.h" />
     <ClInclude Include="..\..\Device\src\Osci\Osci.h" />
     <ClInclude Include="..\..\Device\src\Settings\Settings.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsChannel.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsCursors.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsDebug.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsDisplay.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsMath.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsMeasures.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsMemory.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsNRST.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsService.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsTime.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsTrig.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\Device\src\Tester\Tester.h" />
     <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\Device\src\Utils\Debug.h" />
     <ClInclude Include="..\..\Device\src\Utils\Decoder.h" />
+    <ClInclude Include="..\..\Device\src\Utils\Dictionary.h" />
     <ClInclude Include="..\..\Device\src\Utils\Math.h" />
     <ClInclude Include="..\..\Device\src\Utils\MathOSC.h" />
+    <ClInclude Include="..\..\Device\src\Utils\Measures.h" />
+    <ClInclude Include="..\..\Device\src\Utils\ProcessingSignal.h" />
     <ClInclude Include="..\..\Device\src\Utils\StringUtils.h" />
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -304,10 +328,10 @@
       <WarningLevel>EnableAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;MSVC;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
-      <DisableSpecificWarnings>4068;4201;4514;4623;4626;4774;4820;5027;5045</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4068;4201;4333;4514;4623;4626;4774;4820;5027;5045</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

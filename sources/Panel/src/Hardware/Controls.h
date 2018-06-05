@@ -4,15 +4,15 @@ enum Control
 {
     B_None,
     B_Function,
-    B_Measures,
+    K_Measures,
     K_Memory,
-    B_Service,
-    B_ChannelA,
-    B_ChannelB,
-    B_Time,         //
-    B_Start,
-    B_Trig,         //
-    B_Display,
+    K_Service,
+    K_ChannelA,
+    K_ChannelB,
+    K_Time,         //
+    K_Start,
+    K_Trig,         //
+    K_Display,
     B_RangeMoreA,
     B_RangeLessA,
     B_RShiftMoreA,
@@ -37,7 +37,7 @@ enum Control
     B_3,
     B_4,
     B_5,
-    NumControls
+    NumButtons
 };
 
 enum TypePress

@@ -1,6 +1,5 @@
 #include "FPGA.h"
 #include "AD9286.h"
-#include "FPGA_Types.h"
 #include "Log.h"
 #include "FPGA/FPGA.h"
 #include "Utils/MathOSC.h"
@@ -56,7 +55,7 @@ static PinStruct pins[Num_Pins] =
 
 volatile static int numberMeasuresForGates = 1000;
 
-static uint8 dataRand[NumChannels][FPGA_MAX_NUM_POINTS];    ///< «десь будут данные рандомизатора
+static uint8 dataRand[NumChannels][FPGA_MAX_POINTS];    ///< «десь будут данные рандомизатора
               //  2нс 5нс 10нс 20нс 50нс
 const int Kr[] = {50, 20, 10,  5,   2};
 /// «десь хранитс€ адрес, начина€ с которого будем читать данные по каналам. ≈сли addrRead == 0xffff, то адрес вначале нужно считать
@@ -155,7 +154,7 @@ void FPGA::GiveStart()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::Stop()
+void FPGA::Stop(bool)
 {
     isRunning = false;
 }
@@ -213,11 +212,11 @@ void FPGA::Start()
     givingStart = false;
     addrRead = 0xffff;
 
-    uint16 gPost = (uint16)(-NUM_POINTS);
-    uint16 gPred = (uint16)(-3);
+    uint16 post = (uint16)(-FPGA_NUM_POINTS);
+    uint16 pred = (uint16)(-3);
 
-    FSMC::WriteToFPGA16(WR_PRED_LO, gPred);
-    FSMC::WriteToFPGA16(WR_POST_LO, gPost);
+    FSMC::WriteToFPGA16(WR_PRED_LO, pred);
+    FSMC::WriteToFPGA16(WR_POST_LO, post);
     FSMC::WriteToFPGA8(WR_START, 0xff);
 }
 
@@ -232,11 +231,11 @@ void FPGA::StartForTester(int)
 
     LoadTBase();
 
-    uint16 gPost = (uint16)(-TESTER_NUM_POINTS);
-    uint16 gPred = (uint16)(~3);
+    uint16 post = (uint16)(-TESTER_NUM_POINTS);
+    uint16 pred = (uint16)(~3);
 
-    FSMC::WriteToFPGA16(WR_PRED_LO, gPred);
-    FSMC::WriteToFPGA16(WR_POST_LO, gPost);
+    FSMC::WriteToFPGA16(WR_PRED_LO, pred);
+    FSMC::WriteToFPGA16(WR_POST_LO, post);
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     uint8 flag = 0;
@@ -290,11 +289,11 @@ void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
+void FPGA::ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_POINTS])
 {
     if (addrRead == 0xffff)
     {
-        addrRead = (uint16)(ReadLastRecord() - NUM_POINTS);
+        addrRead = (uint16)(ReadLastRecord() - FPGA_NUM_POINTS);
     }
     
     FSMC::WriteToFPGA16(WR_PRED_LO, addrRead);
@@ -310,7 +309,7 @@ void FPGA::ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
     {
         uint8 *p = data;
 
-        for (int i = 0; i < NUM_POINTS / 4; ++i)
+        for (int i = 0; i < FPGA_NUM_POINTS / 4; ++i)
         {
             *p++ = *address;
             *p++ = *address;
@@ -359,7 +358,7 @@ void FPGA::ReadDataChanenlRand(Channel ch, uint8 *address, uint8 *data)
 
     uint8 *dataRead = &dataRand[ch][0] + index;
 
-    uint8 *last = &dataRand[ch][0] + NUM_POINTS;
+    uint8 *last = &dataRand[ch][0] + FPGA_NUM_POINTS;
 
     while (dataRead < last)
     {
@@ -367,7 +366,7 @@ void FPGA::ReadDataChanenlRand(Channel ch, uint8 *address, uint8 *data)
         dataRead += step;
     }
 
-    memcpy(data, &dataRand[ch][0], (uint)NUM_POINTS);
+    memcpy(data, &dataRand[ch][0], (uint)FPGA_NUM_POINTS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -458,8 +457,8 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::ReadData()
 {
-    uint8 *dataA = (uint8 *)malloc((uint)NUM_POINTS);
-    uint8 *dataB = (uint8 *)malloc((uint)NUM_POINTS);
+    uint8 *dataA = (uint8 *)malloc((uint)FPGA_NUM_POINTS);
+    uint8 *dataB = (uint8 *)malloc((uint)FPGA_NUM_POINTS);
 
     ReadDataChanenl(A, dataA);
     ReadDataChanenl(B, dataB);
@@ -546,7 +545,7 @@ void FPGA::RShiftChange(Channel ch, int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TrigLevChange(int delta)
 {
-    AddtionThisLimitation<uint16>(&SET_TRIGLEV, STEP_TRIGLEV * delta, TrigLevMin, TrigLevMax);
+    AddtionThisLimitation<uint16>(&SET_TRIGLEV_SOURCE, STEP_TRIGLEV * delta, TrigLevMin, TrigLevMax);
 
     LoadTrigLev();
 }
@@ -586,9 +585,9 @@ static uint8 ValueForRange(Channel ch)
         BIN_U8(00000010)     // GND
     };
 
-    if (SET_COUPLE(ch) == Couple_GND)
+    if (SET_COUPLE(ch) == ModeCouple_GND)
     {
-        return datas[Couple_GND];
+        return datas[ModeCouple_GND];
     }
 
     static const uint16 values[RangeSize][NumChannels] =
@@ -694,7 +693,7 @@ void FPGA::LoadRShift(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTrigLev()
 {
-    WriteRegisters(SPI3_CS1, (uint16)(0x2000 | (SET_TRIGLEV << 2)));
+    WriteRegisters(SPI3_CS1, (uint16)(0x2000 | (SET_TRIGLEV_SOURCE << 2)));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -782,7 +781,7 @@ void FPGA::LoadTBase()
         BIN_U8(01011110)     // 10s     100M    2Hz
     };
 
-    memset(&dataRand[0][0], 0, FPGA_MAX_NUM_POINTS * 2);
+    memset(&dataRand[0][0], 0, FPGA_MAX_POINTS * 2);
 
     FSMC::WriteToFPGA8(WR_TBASE, values[SET_TBASE]);
 }
