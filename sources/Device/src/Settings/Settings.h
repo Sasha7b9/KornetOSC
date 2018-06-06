@@ -64,7 +64,7 @@ extern uint GlobalColors[32];
 class Settings
 {
 public:
-    static void Load(bool default = false);
+    static void Load(bool _default = false);
     static void Save();
     static void Reset();
     /// —бросить цвета на значени€ по умолчанию

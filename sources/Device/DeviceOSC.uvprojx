@@ -10,7 +10,6 @@
       <TargetName>Device</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pArmCC>5060528::V5.06 update 5 (build 528)::ARMCC</pArmCC>
       <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
@@ -335,9 +334,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--diag_suppress=161</MiscControls>
-              <Define>USE_HAL_DRIVER,STM32F437xx</Define>
+              <Define>USE_HAL_DRIVER,STM32F437xx,OLD_RECORDER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\src;.\src\libs\CMSIS;.\src\libs\HAL;..\libs\common;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include</IncludePath>
+              <IncludePath>.\src;.\src\libs\CMSIS;.\src\libs\HAL;..\libs\common;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;.\src\libs\FatFS;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;.\src\libs\USBH;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1932,14 +1931,59 @@
           <GroupName>Menu/Pages</GroupName>
           <Files>
             <File>
-              <FileName>PageTrig.cpp</FileName>
+              <FileName>Definition.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageTrig.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\Definition.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageChannel.cpp</FileName>
+              <FileName>Definition.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\Definition.h</FilePath>
+            </File>
+            <File>
+              <FileName>HelpContent.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageChannel.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\HelpContent.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HelpContent.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\HelpContent.h</FilePath>
+            </File>
+            <File>
+              <FileName>HelpContentPages.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\HelpContentPages.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageChannels.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageChannels.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageChannels.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageChannels.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageCursors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageCursors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageCursors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageCursors.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageDebug.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageDebug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageDebug.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageDebug.h</FilePath>
             </File>
             <File>
               <FileName>PageDisplay.cpp</FileName>
@@ -1947,14 +1991,59 @@
               <FilePath>.\src\Menu\Pages\PageDisplay.cpp</FilePath>
             </File>
             <File>
+              <FileName>PageDisplay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageDisplay.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageHelp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageHelp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageHelp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageHelp.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageMeasures.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMeasures.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMemory.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMemory.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMemory.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageMemory.h</FilePath>
+            </File>
+            <File>
               <FileName>PageService.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageService.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageTester.cpp</FileName>
+              <FileName>PageTime.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageTester.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageTime.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageTime.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageTime.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageTrig.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageTrig.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageTrig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageTrig.h</FilePath>
             </File>
           </Files>
         </Group>
