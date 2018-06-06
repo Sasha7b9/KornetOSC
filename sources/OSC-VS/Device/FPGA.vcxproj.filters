@@ -52,6 +52,9 @@
     <Filter Include="Data">
       <UniqueIdentifier>{60f695b2-f760-4f8b-941f-6152f989d78c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FlashDrive">
+      <UniqueIdentifier>{515d5df4-2a3c-4624-aaf8-ac449aa40684}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
@@ -275,6 +278,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\Sound.cpp">
       <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\FlashDrive\FileManager.cpp">
+      <Filter>FlashDrive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\FlashDrive\FlashDrive.cpp">
+      <Filter>FlashDrive</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -622,6 +631,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\Symbols.h">
       <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FlashDrive\FileManager.h">
+      <Filter>FlashDrive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FlashDrive\FlashDrive.h">
+      <Filter>FlashDrive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

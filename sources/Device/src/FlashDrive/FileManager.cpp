@@ -1,6 +1,9 @@
 #include "globals.h"
+#include "Display/Painter.h"
 #include "FileManager.h"
+#include "Hardware/FSMC.h"
 #include "Display/Grid.h"
+#include "Display/Colors.h"
 #include "Display/Font/Font.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Hardware/CPU.h"
@@ -145,7 +148,7 @@ void FileManager::Draw()
         return;
     }
 
-    ModeFSMC mode = FSMC::GetMode();
+    //ModeFSMC mode = FSMC::GetMode();
     //FSMC_SetMode(ModeFSMC_Display);
 
     int left = 1;
@@ -158,7 +161,7 @@ void FileManager::Draw()
         Painter::BeginScene(Color::BACK);
         Menu::Draw();
         Painter::DrawRectangle(0, 0, width, 239, Color::FILL);
-        Painter::FillRegion(left, top, Grid::Width() - 2, Grid::FullHeight() - 2, Color::BACK);
+        Painter::FillRegion(left, top, Grid::Width() - 2, Grid::Height() - 2, Color::BACK);
         FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
         DrawNameCurrentDir(left, top + 2);
         Painter::DrawVLine(left2col, top + 16, 239, Color::FILL);
@@ -179,7 +182,7 @@ void FileManager::Draw()
 
     FM_NEED_REDRAW = 0;
 
-    FSMC::SetMode(mode);
+    //FSMC::SetMode(mode);
 }
 
 void FileManager::PressSB_LevelDown()

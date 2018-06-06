@@ -949,6 +949,25 @@ void FPGA::SetCalibratorMode(CalibratorMode)
 {
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetTrigLev(TrigSource ch, uint16 trigLev)
+{
+    Display::ChangedRShiftMarkers(true);
+    if (trigLev < TrigLevMin || trigLev > TrigLevMax)
+    {
+        Display::ShowWarning(LimitSweep_Level);
+    }
+    LIMITATION(trigLev, TrigLevMin, TrigLevMax);
+
+    Display::RotateTrigLev();
+
+    if (SET_TRIGLEV(ch) != trigLev)
+    {
+        SET_TRIGLEV(ch) = trigLev;
+        LoadTrigLev();
+    }
+}
+
 
 
 

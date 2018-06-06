@@ -29,6 +29,8 @@
     <ClCompile Include="..\..\Device\src\Display\Grid.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp" />
     <ClCompile Include="..\..\Device\src\Display\PainterData.cpp" />
+    <ClCompile Include="..\..\Device\src\FlashDrive\FileManager.cpp" />
+    <ClCompile Include="..\..\Device\src\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGAextensions.cpp" />
@@ -141,6 +143,8 @@
     <ClInclude Include="..\..\Device\src\Display\PainterData.h" />
     <ClInclude Include="..\..\Device\src\Display\Symbols.h" />
     <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h" />
+    <ClInclude Include="..\..\Device\src\FlashDrive\FileManager.h" />
+    <ClInclude Include="..\..\Device\src\FlashDrive\FlashDrive.h" />
     <ClInclude Include="..\..\Device\src\FPGA\AD9286.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGAextensions.h" />

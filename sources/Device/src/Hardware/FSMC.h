@@ -6,6 +6,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 typedef void (*pFuncTester)();
 
+
 class FSMC
 {
 public:
@@ -32,7 +33,7 @@ private:
         ModePanelRead,
         ModeFPGA
     };
-   
+
     static void ReadByte();
 
     static void ConfigureForFPGA();

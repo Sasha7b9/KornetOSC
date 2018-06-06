@@ -61,6 +61,8 @@ public:
     static const int HEIGHT = 240;
 
     static const int WIDTH = 320;
+    /// Эту функцию нужно вызывать при вращении ручки уровня синхронизации для временной отрисовки вспомогательных маркеров
+    static void RotateTrigLev();
 
     static void Init();
 

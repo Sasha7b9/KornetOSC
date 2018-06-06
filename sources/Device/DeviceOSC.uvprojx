@@ -2345,6 +2345,11 @@
               <FileType>5</FileType>
               <FilePath>.\src\Data\Storage.h</FilePath>
             </File>
+            <File>
+              <FileName>DataSettings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Data\DataSettings.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2379,6 +2384,31 @@
               <FileName>fontUGO2.inc</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Font\fontUGO2.inc</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FlashDrive</GroupName>
+          <Files>
+            <File>
+              <FileName>FileManager.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FlashDrive\FileManager.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FileManager.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FlashDrive\FileManager.h</FilePath>
+            </File>
+            <File>
+              <FileName>FlashDrive.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FlashDrive\FlashDrive.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FlashDrive.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FlashDrive\FlashDrive.h</FilePath>
             </File>
           </Files>
         </Group>
