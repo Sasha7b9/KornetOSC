@@ -62,7 +62,7 @@ void sChannel_SetRange(Channel ch, Range range);           // Установить масштаб
 int sChannel_MultiplierRel2Abs(Divider divider);
 void sChannel_SetEnabled(Channel ch, bool enabled);
 
-const char *sChannel_Range2String(Range range, Divider divider);
+pString sChannel_Range2String(Range range, Divider divider);
 const char *sChannel_RShift2String(uint16 rShiftRel, Range range, Divider divider, char buffer[20]);
 
 /** @}  @}

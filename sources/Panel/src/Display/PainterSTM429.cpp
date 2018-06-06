@@ -25,7 +25,7 @@ void Painter::BeginScene(Color col)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetColorValue(Color color, col_val value)
+void Painter::SetColorValue(Color color, uint value)
 {
     COLOR(color.value) = value;
 
@@ -203,7 +203,7 @@ void Painter::SetPoint(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-col_val Painter::ReduceBrightness(col_val colorValue, float newBrightness)
+uint Painter::ReduceBrightness(uint colorValue, float newBrightness)
 {
     int red = (int)(R_FROM_COLOR(colorValue) * newBrightness);
     LIMITATION(red, 0, 0xff);

@@ -22,6 +22,7 @@
 #define NUM_RAM_SIGNAL          (gBF.currentNumRAMSignal)
 #define EXIT_FROM_ROM_TO_RAM    (gBF.exitFromROMtoRAM)
 #define FPGA_NEED_AUTO_FIND     (gBF.FPGAneedAutoFind)
+#define ALWAYS_SHOW_ROM_SIGNAL  (gBF.alwaysShowROMSignal)
 
 #define FM_NEED_REDRAW          (gBF.needRedrawFileManager)
 #define FM_REDRAW_FULL          1
@@ -47,6 +48,7 @@ struct BitField
     uint needRedrawFileManager          : 2; ///< @brief Если 1, то файл-менеджер нуждается в полной перерисовке.
                                              ///< Если 2, то перерисовать только каталоги.
                                              ///< Если 3, то перерисовать только файлы.
+    uint alwaysShowROMSignal            : 1; ///< Если 1, то показывать всегда выбранный в режиме "Внутр. ЗУ" сигнал.
 };
 
 extern volatile BitField gBF;   ///< @brief Структура сделана volatile, потому что иначе при вклюённой оптимизации зависает во время выключения. 

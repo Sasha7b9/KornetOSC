@@ -31,6 +31,8 @@ public:
     static void LongPressureButton(Key button);
     /// Функция вызывается, когда кнопка переходит из отжатого в нажатое положение.
     static void PressButton(Key button);
+
+    static void ButtonPress(Key key, TypePress type);
     /// Функция вызывается, когда кнопка переходит из нажатого в отжатое положение.
     static void ReleaseButton(Key button);
     /// Установить время автоматического сокрытия меню в соответствии с установками.

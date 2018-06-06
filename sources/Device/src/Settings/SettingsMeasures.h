@@ -35,7 +35,7 @@
 /// Автоматические измерения производятся по каналу 2
 #define SOURCE_MEASURE_IS_B             (SOURCE_MEASURE == B)
 /// Автоматические измерения производятся по обоим каналам
-#define SOURCE_MEASURE_IS_A_B           (SOURCE_MEASURE == A_B)
+#define SOURCE_MEASURE_IS_A_B           (SOURCE_MEASURE == MeasSource_A_B)
 
 #define POS_MEAS_CUR_U(n)               (set.meas_PosCurU[n])
 #define POS_MEAS_CUR_U_0                (POS_MEAS_CUR_U(0))

@@ -1,6 +1,7 @@
 #include "SettingsMemory.h"
 #include "Data/Reader.h"
 #include "FPGA/FPGATypes.h"
+#include <stdlib.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -12,9 +13,7 @@ int sMemory_NumPointsInChannel_()
         1024,
         2048,
         4096,
-        8192,
-        16384,
-        32768
+        8192
     };
 
     return numPoints[FPGA_ENUM_POINTS];
@@ -31,9 +30,7 @@ int sMemory_NumBytesInChannel_()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 ENumPointsFPGA NumPoints_2_ENumPoints(int numPoints)
 {
-    if (numPoints == 32768)      { return FNP_32k; }
-    else if (numPoints == 16384) { return FNP_16k; }
-    else if (numPoints == 8192)  { return FNP_8k; }
+    if (numPoints == 8192)  { return FNP_8k; }
     else if (numPoints == 4096)  { return FNP_4k; }
     else if (numPoints == 2048)  { return FNP_2k; }
     else if (numPoints == 1024)  { return FNP_1k; }
@@ -50,9 +47,7 @@ int ENumPoints_2_NumPoints(ENumPointsFPGA numPoints)
         1024,
         2048,
         4096,
-        8192,
-        16384,
-        32768
+        8192
     };
     return n[(uint)numPoints];
 }
@@ -69,7 +64,7 @@ void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-int RequestBytesForChannel(Channel ch, DataSettings *ds)
+int RequestBytesForChannel(Channel, DataSettings *ds)
 {
     ENumPointsFPGA numBytes;
     PeakDetMode peakDet;
@@ -83,15 +78,6 @@ int RequestBytesForChannel(Channel ch, DataSettings *ds)
     {
         numBytes = NumPoints_2_ENumPoints(NUM_BYTES(ds));
         peakDet = SET_PEAKDET;
-    }
-
-    if ((numBytes == FNP_32k) || (numBytes == FNP_16k && peakDet == PeakDet_Enabled))
-    {
-        if (ch == A)
-        {
-            return FPGA_MAX_POINTS * 2;
-        }
-        return 0;
     }
 
     return FPGA_MAX_POINTS;

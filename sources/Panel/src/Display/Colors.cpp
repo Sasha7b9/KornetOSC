@@ -6,7 +6,7 @@
 #include "Settings/Settings.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-col_val colors[256] =
+uint colors[256] =
 {
     MAKE_COLOR(0x00, 0x00, 0x00),
     MAKE_COLOR(0xff, 0xff, 0xff),
@@ -116,7 +116,7 @@ Color Color::MenuItem(bool shade)
 
 Color Color::Contrast(Color color)
 {
-    col_val colorValue = COLOR(color.value);
+    uint colorValue = COLOR(color.value);
     if (R_FROM_COLOR(colorValue) > 16 || G_FROM_COLOR(colorValue) > 32 || B_FROM_COLOR(colorValue) > 16)
     {
         return Color(COLOR_BLACK);
@@ -154,7 +154,7 @@ void ColorType::Init(bool forced)
     {
         alreadyUsed = true;                  // Признак того, что начальные установки уже произведены
 
-        col_val colorValue = COLOR(color.value);
+        uint colorValue = COLOR(color.value);
 
         red = (float)R_FROM_COLOR(colorValue);
         green = (float)G_FROM_COLOR(colorValue);

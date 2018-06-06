@@ -1,4 +1,6 @@
 #include "Settings.h"
+#include "Tables.h"
+#include "Display/Painter.h"
 #include "SettingsDisplay.h"
 #include "Utils/Math.h"
 
@@ -20,10 +22,12 @@ void sDisplay_SetNumSignalsInS(int numSignalsInS)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int sDisplay_NumPointSmoothing()
 {
+    /*
     if(MODE_EMS && (ENUM_SMOOTHING < ENumSmooth_4points))
     {
         return 4;
     }
+    */
 
     int retValue = 0;
     if (SMOOTHING_ENABLED)
@@ -50,10 +54,12 @@ int sDisplay_NumPointSmoothing()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 int sDisplay_NumAverage()
 {
+    /*
     if (MODE_EMS && (ENUM_AVE < ENumAverage_8))
     {
         return 8;
     }
+    */
 
     if (!IN_RANDOM_MODE)
     {

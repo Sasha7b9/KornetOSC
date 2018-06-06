@@ -12,14 +12,24 @@ float GetStretchADC(Channel ch)
         {0, 0},  // 2mV
         {0, 0},  // 5mV
         {0, 0},  // 10mV
+        {0, 0},
+        {0, 0},
+        {0, 0},
+        /*
         {&NRST_ADD_STRETCH_20mV_A, &NRST_ADD_STRETCH_20mV_B},   // 20mV
         {&NRST_ADD_STRETCH_50mV_A, &NRST_ADD_STRETCH_50mV_B},   // 50mV
         {&NRST_ADD_STRETCH_100mV_A, &NRST_ADD_STRETCH_100mV_B}, // 100mV
+        */
         {0, 0}, // 200mV
         {0, 0}, // 500mV
+        {0, 0},
+        {0, 0},
+        {0, 0}
+        /*
         {&NRST_ADD_STRETCH_20mV_A, &NRST_ADD_STRETCH_20mV_B},   // 1V
         {&NRST_ADD_STRETCH_2V_A, &NRST_ADD_STRETCH_2V_B},       // 2V
         {&NRST_ADD_STRETCH_100mV_A, &NRST_ADD_STRETCH_100mV_B}  // 5V
+        */
     };
     
     const int16 *address = addStretch[SET_RANGE(ch)][ch];

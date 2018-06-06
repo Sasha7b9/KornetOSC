@@ -26,7 +26,7 @@ public:
 
     static void DrawFormatText(int x, int y, Color color, char *format, ...);
 
-    static void DrawChar(int x, int y, char symbol, Color color = Color::NUMBER);
+    static int DrawChar(int x, int y, char symbol, Color color = Color::NUMBER);
 
     static void DrawHLine(int y, int x0, int x1, Color color = Color::NUMBER);
 
@@ -71,6 +71,10 @@ public:
     static void SetBrightnessDisplay(int16 brightness);
 
     static int DrawTextInRectWithTransfersC(int x, int y, int width, int height, const char *text, Color color);
+
+    static void Draw10SymbolsInRect(int x, int y, char eChar);
+
+    static void DrawTextRelativelyRight(int xRight, int y, const char *text, Color color = Color::NUMBER);
 
 private:
 };

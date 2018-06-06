@@ -24,7 +24,7 @@ public:
     /// Возвращает текущий цвет рисования
     static Color GetColor();
     /// Устанавливает цвету заданное значение. Загружается в дисплей LoadPalette() или SetPalette()
-    static void SetColorValue(Color color, col_val value);
+    static void SetColorValue(Color color, uint value);
     /// Загружает в дисплей все цвета
     static void LoadPalette();
     /// Послать изображение во внешнее устройство через USB или LAN. Если first == true, то посылается шрифт
@@ -64,7 +64,7 @@ public:
     /// Установить яркость дисплея.
     static void SetBrightnessDisplay(int16 brightness);
 
-    static col_val ReduceBrightness(col_val colorValue, float newBrightness);
+    static uint ReduceBrightness(uint colorValue, float newBrightness);
     /// Нарисовать массив вертикальных линий. Линии рисуются одна за другой. y0y1 - массив вертикальных координат.
     static void DrawVLineArray(int x, int numLines, uint8 *y0y1, Color color);
     /// modeLines - true - точками, false - точками.

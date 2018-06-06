@@ -264,6 +264,9 @@
     <ClCompile Include="..\..\Device\src\Settings\SettingsCursors.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Tables.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -592,6 +595,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Settings\SettingsService.h">
       <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\structs.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Tables.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,12 @@
 #pragma once
 #include "defines.h"
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 struct DataSettings;
+
+#define MAX_NUM_SAVED_WAVES 23  ///< \brief Число сохраняемых во внутреннем ППЗУ измерений. Пока ограничено количеством квадратиков, которые можно 
+                                ///< вывести в одну линию внизу сетки.
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class EEPROM
@@ -15,6 +20,13 @@ public:
     static void DeleteAllData();
 
     static bool GetData(int num, DataSettings *ds, uint8 *dataA, uint8 *dataB);
+
+    static void DeleteData(int num);
+
+    static void SaveData(int num, DataSettings *ds, uint8 *dataA, uint8 *dataB);
+    /// Если даннные есть, соответствующий элемент массива равен true.
+    static void GetDataInfo(bool existData[MAX_NUM_SAVED_WAVES]);
+
 private:
     /// Возвращает адрес первого свободного байта в секторе настроек
     static uint FirstFreeAddressForSettings();

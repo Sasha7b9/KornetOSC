@@ -7,6 +7,8 @@
 #include "Utils/Math.h"
 #include <math.h>
 #include <limits.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,11 +158,11 @@ void Processing::CalculateMeasures()
                     markerTime[A][0] = markerTime[A][1] = markerTime[B][0] = markerTime[B][1] = ERROR_VALUE_INT;
                     markerVoltage[A][0] = markerVoltage[A][1] = markerVoltage[B][0] = markerVoltage[B][1] = ERROR_VALUE_INT;
                 }
-                if((SOURCE_MEASURE_IS_A || SOURCE_MEASURE_IS_A_B) && SET_ENABLED_A)
+                if((SOURCE_MEASURE_IS_A) && SET_ENABLED_A)
                 {
                     values[measure].value[A] = func(A);
                 }
-                if((SOURCE_MEASURE_IS_B || SOURCE_MEASURE_IS_A_B) && SET_ENABLED_B)
+                if((SOURCE_MEASURE_IS_B) && SET_ENABLED_B)
                 {
                     values[measure].value[B] = func(B);
                 }
@@ -1322,7 +1324,7 @@ char* Processing::GetStringMeasure(Meas measure, Channel ch, char* buffer, int l
         }
         else
         {
-            LOG_ERROR_TRACE("Буфер слишком мал");
+//            LOG_ERROR_TRACE("Буфер слишком мал");
         }
     }
     else

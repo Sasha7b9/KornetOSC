@@ -91,7 +91,7 @@ public:
 
     static void LoadTrigInput();
 
-    static void Stop(bool);
+    static void Stop(bool = true);
 
     static void LoadRanges();
     /// Запустить цикл чтения для тестер-компонента. В течение time секунд должно быть считано numPoints точек

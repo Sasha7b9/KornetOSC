@@ -11,9 +11,8 @@
 // Структура для описания диапазона масштаба по напряжению.
 typedef struct
 {
-    pString name[2][2];     // Название диапазона в текстовом виде, пригодном для вывода на экран.
+    const char *name[2][2];     // Название диапазона в текстовом виде, пригодном для вывода на экран.
 } RangeStruct;
-
 
 // Массив структур описаний масштабов по напряжению.
 static const RangeStruct ranges[RangeSize] =
@@ -54,11 +53,10 @@ int sChannel_MultiplierRel2Abs(Divider divider)
 void sChannel_SetEnabled(Channel ch, bool enabled)
 {
     SET_ENABLED(ch) = enabled;
-    Keyboard::EnableLEDChannel(ch, enabled);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *sChannel_Range2String(Range range, Divider divider)
+pString sChannel_Range2String(Range range, Divider divider)
 {
     return ranges[range].name[LANG][divider];
 }

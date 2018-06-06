@@ -1,5 +1,6 @@
 #pragma once
 #include "defines.h"
+#include "SettingsTypes.h"
 #include "Utils/Measures.h"
 #include "SettingsTypes.h"
 #include "Menu/MenuItems.h"
@@ -177,7 +178,7 @@ public:
     AltMarkers          disp_AltMarkers;            ///< Режим отображения дополнительных боковых маркеров смещений.
     MenuAutoHide        disp_MenuAutoHide;          ///< Через сколько времени после последнего нажатия клавиши прятать меню.
     MeasuresNumber      meas_Number;                ///< Сколько измерений выводить.
-    Channel             meas_Source;                ///< Для каких каналов выводить измерения.
+    MeasSource          meas_Source;                ///< Для каких каналов выводить измерения.
     ModeViewSignals     meas_ModeViewSignals;       ///< Сжимать ли сигналы при выводе измерений.
     Meas                meas_Measures[15];          ///< Выбранные для индикации измерения.
     TPos            time_TPos;
@@ -225,6 +226,7 @@ public:
     bool                serv_SoundEnable;       ///< Включены ли звуки.
     int16               serv_SoundVolume;       ///< Громкость звука [0...100].
     FileNamingMode  mem_FileNamingMode;             ///< Режим именования файлов.
+#define MAX_SYMBOLS_IN_FILE_NAME 35
     char            mem_FileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; ///< \brief Здесь маска для автоматического именования файлов.
             ///< \details Правила именования.\n
             /// \code
@@ -235,6 +237,12 @@ public:
             /// При этом обратите внимание, что если спецификатор %4N стоИт после временнЫх параметров, то, скорее всего, этот параметр 
             /// будет всегда равен 0001, т.к. для определения номера просматриваются.
             /// \endcode
+    int8            mem_IndexCurSymbolNameMask; ///< Индекс текущего символа в режиме задания маски или выбора имени.
+    ModeSaveSignal  mem_ModeSaveSignal;         ///< В каком виде сохранять сигнал.
+    char            mem_FileName[MAX_SYMBOLS_IN_FILE_NAME]; ///< Имя файла для режима ручного задания.
+    ModeShowIntMem  mem_ModeShowIntMem;         ///< Что показывать в режиме ВНУТР ЗУ - считанный или записанный сигнал.
+    float           curs_PosCurT[NumChannels][2];   ///< Текущие позиции курсоров времени обоих каналов.
+    Meas            meas_Marked;                ///< Измерение, на которое нужно выводить маркеры.
 };
 
 #pragma pack(pop)

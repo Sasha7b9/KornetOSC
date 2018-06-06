@@ -93,9 +93,11 @@ void Painter::DrawFormatText(int x, int y, Color color, char *text, ...)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawChar(int x, int y, char symbol, Color color)
+int Painter::DrawChar(int x, int y, char symbol, Color color)
 {
     DrawFormatText(x, y, color, "%c", symbol);
+
+    return 8;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

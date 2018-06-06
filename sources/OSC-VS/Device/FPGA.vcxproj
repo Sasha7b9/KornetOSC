@@ -75,6 +75,7 @@
     <ClCompile Include="..\..\Device\src\Settings\SettingsDisplay.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsMemory.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp" />
+    <ClCompile Include="..\..\Device\src\Tables.cpp" />
     <ClCompile Include="..\..\Device\src\Tester\Tester.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
@@ -187,6 +188,8 @@
     <ClInclude Include="..\..\Device\src\Settings\SettingsTime.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsTrig.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsTypes.h" />
+    <ClInclude Include="..\..\Device\src\structs.h" />
+    <ClInclude Include="..\..\Device\src\Tables.h" />
     <ClInclude Include="..\..\Device\src\Tester\Tester.h" />
     <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\Device\src\Utils\Debug.h" />

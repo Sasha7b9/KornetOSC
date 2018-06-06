@@ -135,11 +135,11 @@ private:
 #pragma warning(pop)
 #endif
 
-#define MAKE_COLOR(r, g, b) ((col_val)(b + (g << 8) + (r << 16)))
-#define R_FROM_COLOR(color) (((col_val)(color) >> 16) & 0xff)
-#define G_FROM_COLOR(color) (((col_val)(color) >> 8)  & 0xff)
-#define B_FROM_COLOR(color) (((col_val)(color))       & 0xff)
+#define MAKE_COLOR(r, g, b) ((uint)(b + (g << 8) + (r << 16)))
+#define R_FROM_COLOR(color) (((uint)(color) >> 16) & 0xff)
+#define G_FROM_COLOR(color) (((uint)(color) >> 8)  & 0xff)
+#define B_FROM_COLOR(color) (((uint)(color))       & 0xff)
 
-extern col_val colors[256];
+extern uint colors[256];
 
 #define COLOR(x) colors[x]

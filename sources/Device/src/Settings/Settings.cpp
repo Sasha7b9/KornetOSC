@@ -6,7 +6,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern col_val GlobalColors[32] =
+extern uint GlobalColors[32] =
 {
 /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),   // BLACK
 /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),   // WHITE
@@ -49,16 +49,16 @@ static const Settings defaultSettings =
 
     {RShiftZero, RShiftZero},       // chan_shift
     {Range_500mV, Range_500mV},     // chan_range
-    {Couple_DC, Couple_DC},         // chan_couple
+    {ModeCouple_DC, ModeCouple_DC},         // chan_couple
     {true, true},                   // chan_enable
 
-    A,                              // trig_source
+    TrigSource_A,                              // trig_source
     TrigInput_Full,                 // trig_input
     Polarity_Rising,                // trig_polarity
-    TrigLevZero,                    // trig_lev
+    {TrigLevZero, TrigLevZero},     // trig_lev
     ModeTrig_Auto,                  // trig_mode
 
-    RU,                        // serv_lang
+    RU,                             // serv_lang
 
     0,                              // time_shift
     TBase_500us,                    // time_base
@@ -69,7 +69,7 @@ static const Settings defaultSettings =
     StepI_4mA,                      // test_stepI
     0,                              // test_smooth
 
-    EnumPoints_512,                 // mem__enumPoints
+    FNP_512,                        // mem__enumPoints
         
     0,                              // menu_currentPage
     false                           // menu_show
@@ -119,7 +119,7 @@ const char *NameRange(Range range)
         {"20Â",     "20V"}
     };
 
-    return names[range][LANGUAGE];
+    return names[range][LANG];
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -159,5 +159,5 @@ const char *NameTBase(TBase tBase)
         {"10ñ",     "10s"}
     };
 
-    return names[tBase][LANGUAGE];
+    return names[tBase][LANG];
 }

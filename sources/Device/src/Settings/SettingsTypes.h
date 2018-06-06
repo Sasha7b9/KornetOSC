@@ -70,6 +70,13 @@ enum Channel
     NumChannels
 };
 
+enum MeasSource
+{
+    MeasSource_A,
+    MeasSource_B,
+    MeasSource_A_B
+};
+
 enum TrigPolarity
 {
     Polarity_Rising,
@@ -550,6 +557,21 @@ enum FileNamingMode
 {
     FileNamingMode_Mask,        ///< Именовать по маске.
     FileNamingMode_Manually     ///< Именовать вручную.
+};
+
+/// Как сохранять данные на флешку.
+enum ModeSaveSignal
+{
+    ModeSaveSignal_BMP,
+    ModeSaveSignal_TXT
+};
+
+/// Что показывать в режиме Внутр ЗУ - считанный или записанный сигнал.
+enum ModeShowIntMem
+{
+    ModeShowIntMem_Direct,  ///< Показывать данные реального времени.
+    ModeShowIntMem_Saved,   ///< Показывать сохранённые данные.
+    ModeShowIntMem_Both     ///< Показывать оба сигнала.
 };
 
 const char *NameRange(Range range);

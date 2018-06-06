@@ -96,7 +96,7 @@ int Measures::GetDY()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Measures::GetDX()
 {
-    return GRID_WIDTH / 5; 
+    return Grid::Width() / 5; 
 }
 
 
@@ -119,9 +119,9 @@ int Measures::GetTopTable()
 {
     if(NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2)
     {
-        return GRID_BOTTOM - GetDY() * 6;
+        return Grid::Bottom() - GetDY() * 6;
     }
-    return GRID_BOTTOM - NumRows() * GetDY();
+    return Grid::Bottom() - NumRows() * GetDY();
 }
 
 
@@ -202,9 +202,9 @@ void Measures::DrawPageChoice()
     {
         return;
     }
-    int x = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? (Grid::Right() - 3 * GRID_WIDTH / 5) : Grid::Left();
-    int y = GRID_TOP;
-    int dX = GRID_WIDTH / 5;
+    int x = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? (Grid::Right() - 3 * Grid::Width() / 5) : Grid::Left();
+    int y = Grid::Top();
+    int dX = Grid::Width() / 5;
     int dY = 22;
     int maxRow = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 8 : 5;
     int maxCol = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 3 : 5;

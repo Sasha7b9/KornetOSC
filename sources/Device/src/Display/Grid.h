@@ -22,6 +22,7 @@ public:
     static int NumRows();
     static int NumCols();
     static int Delta();
+    static int FullBottom();
 
 private:
 };
