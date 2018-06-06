@@ -61,4 +61,6 @@ public:
     static void Disable();
     /// Ожидание нажатия клавиши
     static Key WaitPressingButton();
+
+    static void Enable();
 };

@@ -491,5 +491,66 @@ enum LinkingTShift
     LinkingTShift_Position  ///< Смещение привязано к позиции
 };
 
+enum TrigModeFind
+{
+    TrigModeFind_Hand,      ///< Уровень синхронизации устанавливается вручную или автоматически - однократным нажажтием кнопки.
+    TrigModeFind_Auto       ///< Подстройки уровня синхронизации производится автоматически после каждого нового считанного сигнала.
+};
+
+enum CalibratorMode
+{
+    Calibrator_Freq,
+    Calibrator_DC,
+    Calibrator_GND
+};
+
+/// Режим калибровки.
+enum CalibrationMode
+{
+    CalibrationMode_x1,
+    CalibrationMode_x10,
+    CalibrationMode_Disable
+};
+
+enum ScaleFFT
+{
+    ScaleFFT_Log,           ///< Это значение означает логарифмическую шкалу вывода спектра.
+    ScaleFFT_Linear         ///< Это значение означает линейную шкалу вывода спектра.
+};
+
+enum SourceFFT
+{
+    SourceFFT_ChannelA,
+    SourceFFT_ChannelB,
+    SourceFFT_Both
+};
+
+enum WindowFFT
+{
+    WindowFFT_Rectangle,
+    WindowFFT_Hamming,
+    WindowFFT_Blackman,
+    WindowFFT_Hann
+};
+
+enum Function
+{
+    Function_Sum,
+    Function_Mul
+};
+
+enum ModeRegSet
+{
+    ModeRegSet_Range,
+    ModeRegSet_RShift
+};
+
+/// Режим наименования файлов.
+enum FileNamingMode
+{
+    FileNamingMode_Mask,        ///< Именовать по маске.
+    FileNamingMode_Manually     ///< Именовать вручную.
+};
+
 const char *NameRange(Range range);
 const char *NameTBase(TBase tBase);

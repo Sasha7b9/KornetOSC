@@ -20,6 +20,10 @@
 #include <stm32f4xx.h>
 #include <stm32f4xx_hal.h>
 
+#define MODEL_RU "Осциллограф-мультиметр"
+#define MODEL_EN "Oscilloscope-multimeter"
+#define NUM_VER "0.0.1"
+
 
 typedef const char  *const  pString;
 typedef unsigned char       uchar;

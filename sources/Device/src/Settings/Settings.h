@@ -21,6 +21,9 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define ETH_ENABLED             (set.eth_enable)
+#define ETH_PORT                (set.eth_port)
+
 #define IN_RANDOMIZE_MODE               (SET_TBASE < TBase_100ns)
 #define CURRENT_PAGE                    (set.menu_currentPage)
 
@@ -60,7 +63,7 @@ extern uint GlobalColors[32];
 class Settings
 {
 public:
-    static void Load();
+    static void Load(bool default = false);
     static void Save();
     static void Reset();
     /// Сбросить цвета на значения по умолчанию
@@ -183,8 +186,83 @@ public:
     SampleType      time_SampleType;
     FunctionTime    time_TimeDivXPos;
     LinkingTShift       time_LinkingTShift;                         ///< Тип привязки смещения по горизонтали
+    SampleType      time_SampleTypeOld;
+    TrigModeFind    trig_ModeFind;                  ///< Поиск синхронизации - вручную или автоматически.
+    CalibratorMode      serv_CalibratorMode;    ///< Режим работы калибратора.
+    CalibrationMode chan_CalibrationMode[2];        ///< Режим калибровки.
+    bool            math_EnableFFT;
+    ScaleFFT        math_ScaleFFT;
+    SourceFFT       math_SourceFFT;
+    WindowFFT       math_WindowFFT;
+    uint8           math_CurrentCursor;         ///< Определяет, каким курсором спектра управляет ручка УСТАНОВКА.
+    uint8           math_PosCur[2];             ///< Позиция курсора спектра. Изменяется 0...256.
+    FFTmaxDB        math_FFTmaxDB;
+    Function        math_Function;
+    ModeRegSet      math_ModeRegSet;            ///< Функция ручки УСТАНОВКА - масштаб по времени или смещение по вертикали.
+    Range           math_Range;
+    Divider         math_Divider;
+    uint16          math_RShift;
+    bool        eth_enable;
+    uint8       eth_ip0;
+    uint8       eth_ip1;
+    uint8       eth_ip2;
+    uint8       eth_ip3;
+    uint16      eth_port;
+    uint8       eth_mask0;
+    uint8       eth_mask1;
+    uint8       eth_mask2;
+    uint8       eth_mask3;
+    uint8       eth_gw0;
+    uint8       eth_gw1;
+    uint8       eth_gw2;
+    uint8       eth_gw3;
+    uint8       eth_mac0;
+    uint8       eth_mac1;
+    uint8       eth_mac2;
+    uint8       eth_mac3;
+    uint8       eth_mac4;
+    uint8       eth_mac5;
+    bool                serv_SoundEnable;       ///< Включены ли звуки.
+    int16               serv_SoundVolume;       ///< Громкость звука [0...100].
+    FileNamingMode  mem_FileNamingMode;             ///< Режим именования файлов.
+    char            mem_FileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; ///< \brief Здесь маска для автоматического именования файлов.
+            ///< \details Правила именования.\n
+            /// \code
+            /// %y('\x42') - год, %m('\x43') - месяц, %d('\x44') - день, %H('\x45') - часы, %M('\x46') - минуты, %S('\x47') - секунды
+            /// %Nn('\x48''n') - порядковый номер, котрый занимает не менее n знакомест, например, 7 в %3N будет преобразовано в 007
+            /// Примеры
+            /// name_%4N_%y_%m_%d_%H_%M_%S будет генерировать файлы вида name_0043_2014_04_25_14_45_32
+            /// При этом обратите внимание, что если спецификатор %4N стоИт после временнЫх параметров, то, скорее всего, этот параметр 
+            /// будет всегда равен 0001, т.к. для определения номера просматриваются.
+            /// \endcode
 };
 
 #pragma pack(pop)
 
 extern Settings set;
+
+/*Static IP ADDRESS: IP_ADDR0.IP_ADDR1.IP_ADDR2.IP_ADDR3 */
+// 192.168.1.92
+#define IP_ADDR0   set.eth_ip0
+#define IP_ADDR1   set.eth_ip1
+#define IP_ADDR2   set.eth_ip2
+#define IP_ADDR3   set.eth_ip3
+
+/*NETMASK*/
+#define NETMASK_ADDR0   set.eth_mask0
+#define NETMASK_ADDR1   set.eth_mask1
+#define NETMASK_ADDR2   set.eth_mask2
+#define NETMASK_ADDR3   set.eth_mask3
+
+/*Gateway Address*/
+#define GW_ADDR0   set.eth_gw0
+#define GW_ADDR1   set.eth_gw1
+#define GW_ADDR2   set.eth_gw2
+#define GW_ADDR3   set.eth_gw3
+
+#define MII_MODE
+
+/* Uncomment the define below to clock the PHY from external 25MHz crystal (only for MII mode) */
+#ifdef 	MII_MODE
+#define PHY_CLOCK_MCO
+#endif

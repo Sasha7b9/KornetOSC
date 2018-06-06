@@ -1,4 +1,5 @@
 #pragma once
+#include "defines.h"
 #include "Hardware/stm32/stm32.h"
 
 
@@ -8,6 +9,8 @@ class Hardware
 public:
 
     static void Init();
+
+    static uint CalculateCRC32();
 
 private:
 

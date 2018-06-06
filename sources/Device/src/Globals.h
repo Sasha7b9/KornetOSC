@@ -21,6 +21,12 @@
 #define RUN_FPGA_BEFORE_SB      (gBF.runningFPGAbeforeSmallButtons)
 #define NUM_RAM_SIGNAL          (gBF.currentNumRAMSignal)
 #define EXIT_FROM_ROM_TO_RAM    (gBF.exitFromROMtoRAM)
+#define FPGA_NEED_AUTO_FIND     (gBF.FPGAneedAutoFind)
+
+#define FM_NEED_REDRAW          (gBF.needRedrawFileManager)
+#define FM_REDRAW_FULL          1
+#define FM_REDRAW_FOLDERS       2
+#define FM_REDRAW_FILES         3
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,12 +42,28 @@ struct BitField
                                              ///< в окно последних, 2 - в окно Внутр ЗУ, 3 - в основно окно в выключенным меню.
     uint temporaryShowStrNavi           : 1; ///< Признак того, что нужно временно показывать строку навигации меню.
     uint runningFPGAbeforeSmallButtons  : 1; ///< Здесь сохраняется информация о том, работала ли ПЛИС перед переходом в режим работы с памятью.
-    uint exitFromROMtoRAM               : 1;    ///< Если 1, то выходить из страницы внутренней памяти нужно не стандартно, а в меню последних.
+    uint exitFromROMtoRAM               : 1; ///< Если 1, то выходить из страницы внутренней памяти нужно не стандартно, а в меню последних.
+    uint FPGAneedAutoFind               : 1; ///< Если 1, то нужно найти сигнал.
+    uint needRedrawFileManager          : 2; ///< @brief Если 1, то файл-менеджер нуждается в полной перерисовке.
+                                             ///< Если 2, то перерисовать только каталоги.
+                                             ///< Если 3, то перерисовать только файлы.
 };
 
 extern volatile BitField gBF;   ///< @brief Структура сделана volatile, потому что иначе при вклюённой оптимизации зависает во время выключения. 
                                 ///< Вероятно, это связано с переменной soundIsBeep (перед стиранием сектора в цикле происходит ожидание, когда эта 
                                 ///< переменная изменит своё состояние (каковое изменение происходит из прерывания, ясен перец)).
+
+enum StateCalibration
+{
+    StateCalibration_None,
+    StateCalibration_ADCinProgress,
+    StateCalibration_RShiftAstart,
+    StateCalibration_RShiftAinProgress,
+    StateCalibration_RShiftBstart,
+    StateCalibration_RShiftBinProgress,
+    StateCalibration_ErrorCalibrationA,
+    StateCalibration_ErrorCalibrationB
+};
 
 enum StateWorkFPGA
 {
@@ -50,3 +72,13 @@ enum StateWorkFPGA
     StateWorkFPGA_Work,     ///< Идёт работа.
     StateWorkFPGA_Pause     ///< Это состояние, когда временно приостановлен прибор, например, для чтения данных или для записи значений регистров.
 };
+
+struct StateFPGA
+{
+    bool needCalibration;                       ///< Установленное в true значение означает, что необходимо произвести калибровку.
+    StateWorkFPGA stateWorkBeforeCalibration;
+    StateCalibration stateCalibration;          ///< Текущее состояние калибровки. Используется в процессе калибровки.
+};
+
+
+extern StateFPGA gStateFPGA; 

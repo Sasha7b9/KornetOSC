@@ -130,6 +130,18 @@ public:
     static void SetPeackDetMode(PeakDetMode peackDetMode);
     /// Установить масштаб по времени
     static void SetTBase(TBase tBase);
+    /// Установить источник синхронизации
+    static void SetTrigSource(TrigSource trigSource);
+    /// Установить полярность синхронизации
+    static void SetTrigPolarity(TrigPolarity polarity);
+    /// Установить режим входа синхронизации
+    static void SetTrigInput(TrigInput trigInput);
+    /// Найти и установить уровень синхронизации по последнему считанному сигналу
+    static void FindAndSetTrigLevel();
+    /// Включить/выключить калибратор.
+    static void SetCalibratorMode(CalibratorMode calibratorMode);
+
+    static void EnableRecorderMode(bool enable);
 
 private:
 
