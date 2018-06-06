@@ -20,17 +20,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Device\src\Data\DataSettings.cpp" />
-    <ClCompile Include="..\..\Device\src\Data\DataStorage.cpp" />
     <ClCompile Include="..\..\Device\src\Data\Reader.cpp" />
+    <ClCompile Include="..\..\Device\src\Data\Storage.cpp" />
     <ClCompile Include="..\..\Device\src\Device.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Colors.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Display.cpp" />
+    <ClCompile Include="..\..\Device\src\Display\DisplayPrimitives.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Grid.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp" />
     <ClCompile Include="..\..\Device\src\Display\PainterData.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp" />
-    <ClCompile Include="..\..\Device\src\FPGA\Storage.cpp" />
+    <ClCompile Include="..\..\Device\src\FPGA\FPGAextensions.cpp" />
+    <ClCompile Include="..\..\Device\src\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\Device\src\Globals.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\AT25160N.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp" />
@@ -39,6 +41,7 @@
     <ClCompile Include="..\..\Device\src\Hardware\GPIO.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\Hardware.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\Keyboard.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\Sound.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\stm32\stm32.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\stm32\stm437.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\stm32\Timer4XX.cpp" />
@@ -125,21 +128,24 @@
     <ClInclude Include="..\..\common\_VS\tchar.h" />
     <ClInclude Include="..\..\common\_VS\windows.h" />
     <ClInclude Include="..\..\Device\src\Data\DataSettings.h" />
-    <ClInclude Include="..\..\Device\src\Data\DataStorage.h" />
     <ClInclude Include="..\..\Device\src\Data\Reader.h" />
+    <ClInclude Include="..\..\Device\src\Data\Storage.h" />
     <ClInclude Include="..\..\Device\src\defines.h" />
     <ClInclude Include="..\..\Device\src\Device.h" />
     <ClInclude Include="..\..\Device\src\Display\Colors.h" />
     <ClInclude Include="..\..\Device\src\Display\Display.h" />
+    <ClInclude Include="..\..\Device\src\Display\DisplayPrimitives.h" />
     <ClInclude Include="..\..\Device\src\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\Device\src\Display\Grid.h" />
     <ClInclude Include="..\..\Device\src\Display\Painter.h" />
     <ClInclude Include="..\..\Device\src\Display\PainterData.h" />
+    <ClInclude Include="..\..\Device\src\Display\Symbols.h" />
     <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h" />
     <ClInclude Include="..\..\Device\src\FPGA\AD9286.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
+    <ClInclude Include="..\..\Device\src\FPGA\FPGAextensions.h" />
+    <ClInclude Include="..\..\Device\src\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGATypes.h" />
-    <ClInclude Include="..\..\Device\src\FPGA\Storage.h" />
     <ClInclude Include="..\..\Device\src\Globals.h" />
     <ClInclude Include="..\..\Device\src\Hardware\AT25160N.h" />
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />
@@ -251,6 +257,7 @@
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="..\..\Device\src\Utils\TablesWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\common\_VS\algorithm" />
@@ -334,7 +341,7 @@
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;MSVC;WIN32;OLD_RECORDER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
-      <DisableSpecificWarnings>4068;4201;4333;4514;4623;4626;4774;4820;5027;5045</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4068;4100;4201;4333;4514;4623;4626;4774;4820;5027;5045</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

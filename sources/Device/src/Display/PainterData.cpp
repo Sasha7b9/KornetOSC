@@ -4,7 +4,7 @@
 #include "Grid.h"
 #include "Log.h"
 #include "Painter.h"
-#include "FPGA/Storage.h"
+#include "Data/Storage.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
 #include "Utils/MathOSC.h"
@@ -17,7 +17,7 @@ void PainterData::DrawData()
     uint8 *dataA = 0;
     uint8 *dataB = 0;
 
-    Storage::GetData(&dataA, &dataB);
+//    Storage::GetData(&dataA, &dataB);
 
     DrawChannel(A, dataA);
     DrawChannel(B, dataB);

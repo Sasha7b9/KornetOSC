@@ -1,7 +1,7 @@
 #pragma once
 #include "Utils/Measures.h"
 #include "defines.h"
-#include "Data/DataStorage.h"
+#include "Data/Storage.h"
 #include "FPGA/FPGATypes.h"
 
 

@@ -23,6 +23,8 @@ public:
     static int NumCols();
     static int Delta();
     static int FullBottom();
+    static int MathBottom();
+    static int MathHeight();
 
 private:
 };

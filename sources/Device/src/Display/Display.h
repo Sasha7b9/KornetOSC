@@ -90,6 +90,10 @@ public:
 
     static void ChangedRShiftMarkers(bool active);
 
+    static void Clear();
+    /// ¬ывести сообщени€ отладочной консоли
+    static void DrawConsole();
+
 private:
 
     static void DrawGrid();
@@ -103,8 +107,6 @@ private:
     static void DrawRShift();
 
     static void DrawRShift(Channel ch);
-
-    static void DrawConsole();
 
     static void UpdateOsci();
 

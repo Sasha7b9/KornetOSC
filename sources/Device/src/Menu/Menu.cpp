@@ -834,3 +834,8 @@ void Menu::SetItemForHint(void *item)
     Menu::stringForHint = 0;
     Menu::itemHint = (Control *)item;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::ButtonPress(Key, TypePress)
+{
+}

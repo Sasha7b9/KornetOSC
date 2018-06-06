@@ -1,4 +1,5 @@
 #include "FPGA.h"
+#include "FPGAMath.h"
 #include "AD9286.h"
 #include "Log.h"
 #include "FPGA/FPGA.h"
@@ -12,7 +13,7 @@
 #include "Utils/MathOSC.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
-#include "Storage.h"
+#include "Data/Storage.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -463,7 +464,7 @@ void FPGA::ReadData()
     ReadDataChanenl(A, dataA);
     ReadDataChanenl(B, dataB);
 
-    Storage::AddData(dataA, dataB);
+    //Storage::AddData(dataA, dataB);
     
     free(dataA);
     free(dataB);
@@ -829,6 +830,140 @@ void FPGA::LoadTrigSourceInput()
     WritePin(LFS, _GET_BIT(datas[TRIG_INPUT][TRIG_SOURCE], 0));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::FindAndSetTrigLevel()
+{
+    if (Storage::NumElementsInStorage() == 0 || TRIGSOURCE_IS_EXT)
+    {
+        return;
+    }
+
+    uint16 *dataA = 0;
+    uint16 *dataB = 0;
+    DataSettings *ds_ = 0;
+
+    Storage::GetDataFromEnd_RAM(0, &ds_, &dataA, &dataB);
+
+    const uint16 *data = TRIGSOURCE_IS_A ? dataA : dataB;
+
+    int lastPoint = NUM_BYTES(ds_) - 1;
+
+    uint8 min = Math::MinFromArray_RAM(data, 0, lastPoint);
+    uint8 max = Math::MaxFromArray_RAM(data, 0, lastPoint);
+
+    uint8 aveValue = (uint8)(((int)min + (int)max) / 2);
+
+    static const float scale = (float)(TrigLevMax - TrigLevZero) / (float)(MAX_VALUE - AVE_VALUE) / 2.4f;
+
+    int trigLev = (int)(TrigLevZero + scale * ((int)aveValue - AVE_VALUE) - (SET_RSHIFT(TRIGSOURCE) - RShiftZero));
+
+    SetTrigLev(TRIGSOURCE, (uint16)trigLev);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetTrigPolarity(TrigPolarity)
+{
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetTrigSource(TrigSource)
+{
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetTrigInput(TrigInput)
+{
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetTBase(TBase tBase)
+{
+    if (!SET_ENABLED_A && !SET_ENABLED_B)
+    {
+        return;
+    }
+    if (tBase < TBaseSize && (int)tBase >= 0)
+    {
+        float tShiftAbsOld = TSHIFT_2_ABS(SET_TSHIFT, SET_TBASE);
+        sTime_SetTBase(tBase);
+        LoadTBase();
+        if (LINKING_TSHIFT == LinkingTShift_Time)
+        {
+            SetTShift((int)TSHIFT_2_REL(tShiftAbsOld, SET_TBASE));
+        }
+        NEED_FINISH_DRAW = 1;
+    }
+    else
+    {
+        Display::ShowWarning(LimitSweep_Time);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetPeackDetMode(PeakDetMode peackDetMode)
+{
+    SET_PEAKDET = peackDetMode;
+    LoadRegUPR();
+    LoadTBase();
+    LoadTShift();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::LoadRegUPR()
+{
+    uint16 data = 0;
+    if (IN_RANDOM_MODE)
+    {
+        _SET_BIT(data, 0);
+    }
+
+    const uint16 mask[3] =
+    {
+        (1 << UPR_BIT_CALIBRATOR_AC_DC),
+        (1 << UPR_BIT_CALIBRATOR_VOLTAGE),
+        (0)
+    };
+
+    data |= mask[CALIBRATOR_MODE];
+
+    if (RECORDER_MODE)
+    {
+        data |= (1 << UPR_BIT_RECORDER);
+    }
+
+    if (SET_PEAKDET_EN)
+    {
+        data |= (1 << UPR_BIT_PEAKDET);
+    }
+
+    Write(RecordFPGA, (uint16 *)WR_UPR, data, false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::EnableRecorderMode(bool)
+{
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetCalibratorMode(CalibratorMode)
+{
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -851,3 +986,5 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 #ifdef __cplusplus
 }
 #endif
+
+

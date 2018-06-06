@@ -1,14 +1,19 @@
 #include "Data/Reader.h"
-#include "Data/DataStorage.h"
+#include "Data/Storage.h"
 #include "Display/DisplayPrimitives.h"
 #include "FPGA/FPGA.h" 
 #include "Hardware/Timer.h"
 #include "Menu/Pages/PageDebug.h"
-#include "Hardware/Panel.h"
+#include "Hardware/Keyboard.h"
 #include "Utils/Dictionary.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
+#include "structs.h"
+#include "Settings/Settings.h"
+#include "Display/Painter.h"
 #include <limits.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 /** @addtogroup FPGA
@@ -27,10 +32,10 @@ static bool IsCalibrateChannel(Channel ch);
 static void CreateCalibrationStruct();
 static void DeleteCalibrationStruct();
 static void LoadSettingsCalcAddRShift(Channel ch);
-static void ReadPeriod();
+//static void ReadPeriod();
 /// \brief Чтение счётчика частоты производится после того, как бит 4 флага RD_FL установится в едицину. После чтения автоматически запускается 
 /// новый цикл счёта.
-static void ReadFreq();
+//static void ReadFreq();
 static float PeriodSetToFreq(const BitSet32 *period);
 static float FreqSetToFreq(const BitSet32 *freq);
 static void RestoreSettingsForCalibration(const Settings *savedSettings);
@@ -42,7 +47,7 @@ static void WriteStretch(Channel ch, int x, int y);
 static void FuncDrawAdditionRShift(int x, int y, const int16 *addRShift);
 static void DrawParametersChannel(Channel ch, int eX, int eY, bool inProgress);
 static void AlignmentADC();
-static bool RunFuncAndWaitFlag(pFuncVV func, uint8 flag);
+//static bool RunFuncAndWaitFlag(pFuncVV func, uint8 flag);
 
 
 /** @addtogroup AutoFind
@@ -97,10 +102,10 @@ typedef struct
 static CalibrationStruct *cal;
 
 static float frequency = 0.0f;              ///< Частота, намеренная альтерой.
-static float prevFreq = 0.0f;
+//static float prevFreq = 0.0f;
 static volatile bool readPeriod = false;    ///< Установленный в true флаг означает, что частоту нужно считать по счётчику периода.
-static BitSet32 freqSet;
-static BitSet32 periodSet;
+//static BitSet32 freqSet;
+//static BitSet32 periodSet;
 
 static BitSet32 freqActual;                 ///< Здесь хранятся последние действительные.
 static BitSet32 periodActual;               ///< значения. Для вывода в режиме честотомера.
@@ -136,14 +141,15 @@ static void LoadSettingsCalcAddRShift(Channel ch)
     FPGA::SetRShift(ch, RShiftZero);
     FPGA::SetTBase(TBase_200us);
     FPGA::SetTrigSource(ch == A ? TrigSource_A : TrigSource_B);
-    FPGA::SetTrigPolarity(TrigPolarity_Front);
+    FPGA::SetTrigPolarity(Polarity_Rising);
     FPGA::SetTrigLev((TrigSource)ch, TrigLevZero);
 
     FPGA::SetCalibratorMode(Calibrator_GND);                 // Устанавливаем выход калибратора в ноль
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static bool RunFuncAndWaitFlag(pFuncVV func, uint8 fl)
+/*
+static bool RunFuncAndWaitFlag(pFuncVV func, uint8)
 {
     func();
 
@@ -160,10 +166,12 @@ static bool RunFuncAndWaitFlag(pFuncVV func, uint8 fl)
 
     return true;
 }
+*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int16 FPGA::CalculateAdditionRShift(Channel ch, Range range, bool wait)
+int16 FPGA::CalculateAdditionRShift(Channel, Range, bool)
 {
+    /*
     FPGA::SetModeCouple(ch, ModeCouple_GND);
     FPGA::SetRange(ch, range);
 
@@ -225,11 +233,15 @@ int16 FPGA::CalculateAdditionRShift(Channel ch, Range range, bool wait)
     }
 
     return retValue;
+    */
+
+    return 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float FPGA::CalculateStretchADC(Channel ch)
+float FPGA::CalculateStretchADC(Channel)
 {
+    /*
     Write(RecordFPGA, WR_UPR, BIN_U8(00000100), false);
 
     SetRange(ch, (SET_CALIBR_MODE(ch) == CalibrationMode_x1) ? Range_500mV : Range_50mV);
@@ -300,6 +312,9 @@ float FPGA::CalculateStretchADC(Channel ch)
     }
 
     return retValue;
+    */
+
+    return 0.0f;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -412,7 +427,7 @@ static void FuncAttScreen()
         case StateCalibration_None:
         {
 
-            Painter::DrawTextInRect(40 + dX, y + 25 + dY, SCREEN_WIDTH - 100, "Калибровка завершена. Нажмите любую кнопку, чтобы выйти из режима калибровки.");
+            Painter::DrawTextInRect(40 + dX, y + 25 + dY, Display::WIDTH - 100, "Калибровка завершена. Нажмите любую кнопку, чтобы выйти из режима калибровки.");
 
             bool drawA = IsCalibrateChannel(A);
             bool drawB = IsCalibrateChannel(B);
@@ -456,7 +471,7 @@ static void FuncAttScreen()
             break;
 
         case StateCalibration_RShiftAstart:
-            Painter::DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 1 выход калибратора и нажмите кнопку ПУСК/СТОП. \
+            Painter::DrawTextInRect(50, y + 25, Display::WIDTH - 100, "Подключите ко входу канала 1 выход калибратора и нажмите кнопку ПУСК/СТОП. \
                                                                         Если вы не хотите калибровать первый канала, нажмите любую другую кнопку.");
             break;
 
@@ -464,7 +479,7 @@ static void FuncAttScreen()
             break;
 
         case StateCalibration_RShiftBstart:
-            Painter::DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 2 выход калибратора и нажмите кнопку ПУСК/СТОП. \
+            Painter::DrawTextInRect(50, y + 25, Display::WIDTH - 100, "Подключите ко входу канала 2 выход калибратора и нажмите кнопку ПУСК/СТОП. \
                                                                         Если вы не хотите калибровать второй канал, нажмите любую другую кнопку.");
             break;
 
@@ -502,8 +517,9 @@ static void FuncAttScreen()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float FPGA::CalculateDeltaADC(Channel ch, float *avgADC1, float *avgADC2, float *delta)
+float FPGA::CalculateDeltaADC(Channel , float *, float *, float *)
 {
+    /*
     uint *startTime = (ch == A) ? &cal->startTimeChanA : &cal->startTimeChanB;
     *startTime = TIME_MS;
 
@@ -542,6 +558,9 @@ float FPGA::CalculateDeltaADC(Channel ch, float *avgADC1, float *avgADC2, float 
     *delta = *avgADC1 - *avgADC2;
 
     return ((*avgADC1) - (*avgADC2)) / 255.0f * 100;
+    */
+
+    return 0.0f;
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -564,13 +583,13 @@ void FPGA::CalibrateChannel(Channel ch)
 {
     if (IsCalibrateChannel(ch))
     {
-        if (Panel::WaitPressingButton() == B_Start)             // Ожидаем подтверждения или отмены процедуры калибровки канала.
+        if (Keyboard::WaitPressingButton() == K_Start)             // Ожидаем подтверждения или отмены процедуры калибровки канала.
         {
             gStateFPGA.stateCalibration = (ch == A) ? StateCalibration_RShiftAinProgress : StateCalibration_RShiftBinProgress;
 
             CalibrateAddRShift(ch, false);
 
-            CalibrateStretch(ch);
+//            CalibrateStretch(ch);
         }
     }
 }
@@ -594,7 +613,7 @@ static void WriteAdditionRShifts(Channel ch)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------]
-static void RestoreSettingsForCalibration(const Settings *savedSettings)
+static void RestoreSettingsForCalibration(const Settings *)
 {
     int16 stretch[2][3];
     
@@ -608,7 +627,7 @@ static void RestoreSettingsForCalibration(const Settings *savedSettings)
 
     StretchADCtype type = NRST_STRETCH_ADC_TYPE;
     
-    Settings::RestoreState(savedSettings);
+//    Settings::RestoreState(savedSettings);
 
     for(int ch = 0; ch < 2; ++ch)
     {
@@ -639,8 +658,8 @@ void FPGA::ProcedureCalibration()
     
     cal->barA.fullTime = cal->barA.passedTime = cal->barB.fullTime = cal->barB.passedTime = 0;
     
-    Settings::SaveState(&storedSettings);    // Сохраняем текущее состояние.
-    Panel::Disable();                        // Отлкючаем панель управления.
+//    Settings::SaveState(&storedSettings);    // Сохраняем текущее состояние.
+    Keyboard::Disable();                        // Отлкючаем панель управления.
     
     volatile bool run = true;
     while (run)
@@ -688,12 +707,12 @@ void FPGA::ProcedureCalibration()
     
     gStateFPGA.stateCalibration = StateCalibration_None;
     
-    Panel::WaitPressingButton();
+    Keyboard::WaitPressingButton();
     
     WriteAdditionRShifts(A);
     WriteAdditionRShifts(B);
     
-    Panel::Enable();
+    Keyboard::Enable();
     Display::SetDrawMode(DrawMode_Auto, 0);
     
     SET_ENABLED_A = chanAenable;
@@ -714,8 +733,8 @@ void FPGA::BalanceChannel(Channel ch)
     Display::FuncOnWaitStart(DICT(ch == A ? DBalanceChA : DBalanceChB), false);
 
     Settings storedSettings;
-    Settings::SaveState(&storedSettings);
-    Panel::Disable();
+//    Settings::SaveState(&storedSettings);
+    Keyboard::Disable();
 
     CalibrateAddRShift(ch, true);
 
@@ -728,7 +747,7 @@ void FPGA::BalanceChannel(Channel ch)
     
     SET_CALIBR_MODE(ch) = mode;
 
-    Panel::Enable();
+    Keyboard::Enable();
 
     Display::FuncOnWaitStop();
     
@@ -742,6 +761,7 @@ void FPGA::BalanceChannel(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::FreqMeter_Init()
 {
+    /*
     drawFreq = false;
     drawPeriod = false;
 
@@ -776,6 +796,7 @@ bool FPGA::FreqMeter_Init()
 
         return true;
     }
+    */
 
     return false;
 }
@@ -846,6 +867,7 @@ float FPGA::FreqMeter_GetFreq()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 static void ReadFreq()
 {
     freqSet.halfWord[0] = *RD_FREQ_LOW;
@@ -869,8 +891,10 @@ static void ReadFreq()
         prevFreq = fr;
     }
 }
+*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 static void ReadPeriod()
 {
     periodSet.halfWord[0] = *RD_PERIOD_LOW;
@@ -888,10 +912,12 @@ static void ReadPeriod()
     prevFreq = fr;
     readPeriod = false;
 }
+*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::FreqMeter_Update(uint16 flag_)
+void FPGA::FreqMeter_Update(uint16)
 {
+    /*
     flag = flag_;
 
     bool freqReady = _GET_BIT(flag, FL_FREQ_READY) == 1;
@@ -920,6 +946,7 @@ void FPGA::FreqMeter_Update(uint16 flag_)
             ReadPeriod();
         }
     }
+    */
 }
 
 /** @addtogroup AutoFind
@@ -1142,7 +1169,7 @@ bool FPGA::FindParams(Channel, TBase *tBase)
     Stop(false);
     float freq = FreqMeter_GetFreq();
 
-    SetTrigInput(freq < 1e6f ? TrigInput_LPF : TrigInput_Full);
+    //SetTrigInput(freq < 1e6f ? TrigInput_LPF : TrigInput_Full);
 
     Start();
     while (_GET_BIT(ReadFlag(), FL_FREQ_READY) == 0)
@@ -1160,12 +1187,12 @@ bool FPGA::FindParams(Channel, TBase *tBase)
         }
         SetTBase(*tBase);
         Start();
-        SetTrigInput(freq < 500e3f ? TrigInput_LPF : TrigInput_HPF);
+//        SetTrigInput(freq < 500e3f ? TrigInput_LPF : TrigInput_HPF);
         return true;
     }
     else
     {
-        SetTrigInput(TrigInput_LPF);
+//        SetTrigInput(TrigInput_LPF);
         freq = FreqMeter_GetFreq();
         if (freq > 0.0f)
         {
@@ -1192,12 +1219,12 @@ void FPGA::CalibrateStretch(Channel ch)
     {
         cal->isCalculateStretch[ch] = false;
         gStateFPGA.stateCalibration = (ch == A) ? StateCalibration_ErrorCalibrationA : StateCalibration_ErrorCalibrationB;
-        Panel::WaitPressingButton();
+        Keyboard::WaitPressingButton();
     }
     else
     {
         cal->isCalculateStretch[ch] = true;
-        NRST_STRETCH_ADC_TYPE = StretchADC_Settings;
+        //NRST_STRETCH_ADC_TYPE = StretchADC_Settings;
         SetStretchADC(ch, kStretch);
     }
 }

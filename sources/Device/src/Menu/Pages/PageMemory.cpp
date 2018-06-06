@@ -1,7 +1,7 @@
 #include "PageMemory.h"
 #include "Tables.h"
 #include "Data/Reader.h"
-#include "Data/DataStorage.h"
+#include "Data/Storage.h"
 #include "Display/Grid.h"
 #include "Display/Symbols.h"
 #include "Display/Painter.h"

@@ -66,6 +66,9 @@ private:
     static const uint8 COLOR_DATA_WHITE_ACCUM_B;
     static const uint8 COLOR_GRID_WHITE;
     static const uint8 COLOR_EMPTY;
+    static const uint8 COLOR_RED;
+    static const uint8 COLOR_GREEN;
+    static const uint8 COLOR_BLUE;
     static const uint8 COLOR_NUMBER;
     static const uint8 COLOR_FLASH_10;
     static const uint8 COLOR_FLASH_01;

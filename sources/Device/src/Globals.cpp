@@ -2,6 +2,12 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DAC_HandleTypeDef handleDAC =
+{
+    DAC
+};
+
+
 volatile BitField gBF =
 {
     0,  // currentNumRAMSignal
@@ -14,4 +20,11 @@ volatile BitField gBF =
     0,  // temporaryShowStrNavi
     0,  // runningFPGAbeforeSmallButtons
     0   // exitFromROMtoRAM
+};
+
+StateFPGA gStateFPGA =
+{
+    false,
+    StateWorkFPGA_Stop,
+    StateCalibration_None
 };

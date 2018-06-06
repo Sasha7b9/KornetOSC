@@ -1710,6 +1710,31 @@
               <FileType>5</FileType>
               <FilePath>.\src\Device.h</FilePath>
             </File>
+            <File>
+              <FileName>Globals.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Globals.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Globals.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Globals.h</FilePath>
+            </File>
+            <File>
+              <FileName>structs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\structs.h</FilePath>
+            </File>
+            <File>
+              <FileName>Tables.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Tables.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Tables.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Tables.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1786,21 +1811,6 @@
               <FilePath>.\src\FPGA\FPGA.h</FilePath>
             </File>
             <File>
-              <FileName>FPGA_Types.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\FPGA\FPGA_Types.h</FilePath>
-            </File>
-            <File>
-              <FileName>Storage.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\FPGA\Storage.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Storage.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\FPGA\Storage.h</FilePath>
-            </File>
-            <File>
               <FileName>AD9286.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\FPGA\AD9286.cpp</FilePath>
@@ -1809,6 +1819,31 @@
               <FileName>AD9286.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\FPGA\AD9286.h</FilePath>
+            </File>
+            <File>
+              <FileName>FPGAextensions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FPGA\FPGAextensions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGAextensions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FPGA\FPGAextensions.h</FilePath>
+            </File>
+            <File>
+              <FileName>FPGAMath.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FPGA\FPGAMath.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGAMath.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FPGA\FPGAMath.h</FilePath>
+            </File>
+            <File>
+              <FileName>FPGATypes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FPGA\FPGATypes.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1874,6 +1909,36 @@
               <FileName>AT25160N.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\AT25160N.h</FilePath>
+            </File>
+            <File>
+              <FileName>CPU.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\CPU.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CPU.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\CPU.h</FilePath>
+            </File>
+            <File>
+              <FileName>Keyboard.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\Keyboard.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Keyboard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\Keyboard.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sound.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\Sound.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Sound.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\Sound.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2091,6 +2156,91 @@
               <FilePath>.\src\Settings\Settings.h</FilePath>
             </File>
             <File>
+              <FileName>SettingsChannel.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\SettingsChannel.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsChannel.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsChannel.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsCursors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\SettingsCursors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsCursors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsCursors.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsDebug.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\SettingsDebug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsDebug.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsDebug.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsDisplay.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\SettingsDisplay.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsDisplay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsDisplay.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsMath.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsMath.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsMeasures.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsMeasures.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsMemory.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\SettingsMemory.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsMemory.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsMemory.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsNRST.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsNRST.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsService.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsService.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsTime.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\SettingsTime.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsTime.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsTime.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsTrig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\SettingsTrig.h</FilePath>
+            </File>
+            <File>
               <FileName>SettingsTypes.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Settings\SettingsTypes.h</FilePath>
@@ -2174,6 +2324,61 @@
               <FileName>Math.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Math.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Data</GroupName>
+          <Files>
+            <File>
+              <FileName>DataSettings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Data\DataSettings.h</FilePath>
+            </File>
+            <File>
+              <FileName>Reader.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Data\Reader.h</FilePath>
+            </File>
+            <File>
+              <FileName>Storage.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Data\Storage.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Display/Font</GroupName>
+          <Files>
+            <File>
+              <FileName>Font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Font\Font.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Font\Font.h</FilePath>
+            </File>
+            <File>
+              <FileName>font5.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Font\font5.inc</FilePath>
+            </File>
+            <File>
+              <FileName>font8.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Font\font8.inc</FilePath>
+            </File>
+            <File>
+              <FileName>fontUGO.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Font\fontUGO.inc</FilePath>
+            </File>
+            <File>
+              <FileName>fontUGO2.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Font\fontUGO2.inc</FilePath>
             </File>
           </Files>
         </Group>

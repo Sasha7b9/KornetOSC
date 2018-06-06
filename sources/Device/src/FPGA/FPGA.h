@@ -6,9 +6,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define RShiftMin       20
-#define RShiftZero      500
-#define RShiftMax       980
 #define TrigLevZero     500
 #define TrigLevMax      980
 #define TrigLevMin      20
@@ -16,9 +13,15 @@
 #define TShiftMin       0
 #define TShiftMax       60000
 
-/// На столько единиц нужно изменить значение смещения, чтобы маркер смещения по напряжению передвинулся на одну точку.
-#define STEP_RSHIFT     (((RShiftMax - RShiftMin) / 24) / 20)
+
 #define STEP_TRIGLEV    STEP_RSHIFT
+
+enum TypeRecord
+{
+    RecordFPGA,
+    RecordAnalog,
+    RecordDAC
+};
 
 enum Pin
 {
@@ -143,7 +146,46 @@ public:
 
     static void EnableRecorderMode(bool enable);
 
+    static int16 CalculateAdditionRShift(Channel ch, Range range, bool wait);
+
+    static float CalculateStretchADC(Channel ch);
+
+    static float CalculateDeltaADC(Channel ch, float *avgADC1, float *avgADC2, float *delta);
+    /// Если wait == true, то нужно ожидать после установки режима перед измерением для исключения переходного процесса
+    static void CalibrateAddRShift(Channel ch, bool wait);
+
+    static void CalibrateChannel(Channel ch);
+    /// Запуск функции калибровки
+    static void ProcedureCalibration();
+    /// Установить масштаб по напряжению
+    static void SetRange(Channel ch, Range range);
+
+    static void FreqMeter_Draw(int x, int y);
+    /// Получить значение частоты для вывода в нижней части экрана
+    static float FreqMeter_GetFreq();
+    /// Функция вызывается из FPGA
+    static void FreqMeter_Update(uint16 flag);
+    /// Запуск процесса поиска сигнала
+    static void  AutoFind();
+
+    static bool FindWave(Channel ch);
+
+    static bool AccurateFindParams(Channel ch);
+    /// \brief Функция даёт старт АЦП и ждёт считывания информаии timeWait мс. Если данные получены, то функция возвращает true и их можно получить 
+    /// DS_GetData_RAM(ch, 0). Если данные не получены, функция возвращает false.
+    static bool ReadingCycle(uint timeWait);
+
+    static void SetTPos(TPos tPos);
+
 private:
+
+    static TBase CalculateTBase(float freq);
+
+    static void CalibrateStretch(Channel ch);
+
+    static bool FindParams(Channel ch, TBase *tBase);
+    ///< Возвращает RangeSize, если масштаб не найден.
+    static Range FindRange(Channel ch);
 
     static void GPIO_Init();
 
@@ -180,6 +222,10 @@ private:
     static bool CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax);
 
     static int CalculateShift();
+    /// Загрузить регистр WR_UPR (пиковый детектор и калибратор).
+    static void LoadRegUPR();
+
+    static void Write(TypeRecord type, uint16 *address, uint data, bool restart);
 
     static bool isRunning;
     /// True, если дан запуск

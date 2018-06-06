@@ -24,10 +24,13 @@ const uint8 Color::COLOR_DATA_WHITE_ACCUM_A = 12;
 const uint8 Color::COLOR_DATA_WHITE_ACCUM_B = 13;
 const uint8 Color::COLOR_GRID_WHITE         = 14;
 const uint8 Color::COLOR_EMPTY              = 15;
-const uint8 Color::COLOR_NUMBER             = 16;
-const uint8 Color::COLOR_FLASH_10           = 17;
-const uint8 Color::COLOR_FLASH_01           = 18;
-const uint8 Color::COLOR_INVERSE            = 19;
+const uint8 Color::COLOR_RED                = 16;
+const uint8 Color::COLOR_GREEN              = 17;
+const uint8 Color::COLOR_BLUE               = 18;
+const uint8 Color::COLOR_NUMBER             = 32;
+const uint8 Color::COLOR_FLASH_10           = 33;
+const uint8 Color::COLOR_FLASH_01           = 34;
+const uint8 Color::COLOR_INVERSE            = 35;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,6 +43,9 @@ Color Color::MENU_ITEM_DARK(COLOR_MENU_ITEM_DARK);
 Color Color::MENU_ITEM_BRIGHT(COLOR_MENU_ITEM_BRIGHT);
 Color Color::DATA_WHITE_ACCUM_A(COLOR_DATA_WHITE_ACCUM_A);
 Color Color::DATA_WHITE_ACCUM_B(COLOR_DATA_WHITE_ACCUM_B);
+Color Color::RED(COLOR_RED);
+Color Color::GREEN(COLOR_GREEN);
+Color Color::BLUE(COLOR_BLUE);
 Color Color::NUMBER(COLOR_NUMBER);
 Color Color::FLASH_10(COLOR_FLASH_10);
 Color Color::FLASH_01(COLOR_FLASH_01);
@@ -265,7 +271,17 @@ Color& Color::operator=(const Color &color)
     return *this;
 }
 
-#ifdef OSCI
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+Color Color::Chan(Channel ch)
+{
+    return Color::CHAN[ch];
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+Color Color::ChanHalf(Channel ch)
+{
+    return Color::CHAN[ch];
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::Trig()
@@ -282,5 +298,3 @@ Color Color::ChanAccum(Channel ch)
 {
     return (ch == A) ? Color(COLOR_DATA_WHITE_ACCUM_A) : Color(COLOR_DATA_WHITE_ACCUM_B);
 }
-
-#endif

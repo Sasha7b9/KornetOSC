@@ -76,5 +76,9 @@ public:
 
     static void DrawTextRelativelyRight(int xRight, int y, const char *text, Color color = Color::NUMBER);
 
+    static void DrawBigText(int x, int y, int size, const char *text, Color color = Color::NUMBER);
+
+    static void DrawTextInRect(int x, int y, int width, const char *text);
+
 private:
 };

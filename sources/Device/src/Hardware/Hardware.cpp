@@ -351,10 +351,9 @@ void Hardware::MX_GPIO_Init(void)
     HAL_GPIO_Init(FL_DISP_GPIO_Port, &GPIO_InitStruct);
 }
 
-#ifdef USE_FULL_ASSERT
-
-void assert_failed(uint8_t* file, uint32_t line)
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+uint Hardware::CalculateCRC32()
 {
+    return 0;
 }
 
-#endif

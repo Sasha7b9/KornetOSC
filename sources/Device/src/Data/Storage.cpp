@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "Globals.h"
-#include "DataStorage.h"
+#include "Storage.h"
 #include "Log.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/CPU.h"
@@ -41,7 +41,7 @@ static int numPointsP2P = 0;            // Когда в последнем фрейме хранятся точ
 static DataSettings dsP2P = {};        // Настройки поточечного режима    
 static bool inFrameP2Pmode = false;     // Если true - сейчас поточечный режим
 
-#define NUM_DATAS 999
+#define NUM_DATAS 10
 static DataSettings datas[NUM_DATAS];
 static uint8 gDataAve[NumChannels][FPGA_MAX_POINTS];
 

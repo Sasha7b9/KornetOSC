@@ -230,9 +230,10 @@ void MathFPGA::PointsVoltage2Rel(const float *voltage, int numPoints, Range rang
     Количество отсчётов должно быть 2**N
 */
 
+/*
 #ifndef DEBUG
-#include "TablesWindow.h"
-#include "TablesLog.h"
+#include "Utils/TablesWindow.h"
+#include "Utils/TablesLog.h"
 
 static float const *Koeff(int numPoints)
 {
@@ -256,6 +257,7 @@ static float const *Koeff(int numPoints)
 }
 
 #endif
+*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1)

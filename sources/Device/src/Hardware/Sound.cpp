@@ -2,7 +2,6 @@
 #include "globals.h"
 #include "Log.h"
 #include "Sound.h"
-#include "stub.h"
 #include "Settings/Settings.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"

@@ -81,9 +81,6 @@
     <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\FPGA\Storage.cpp">
-      <Filter>FPGA</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -255,9 +252,6 @@
     <ClCompile Include="..\..\Device\src\Data\DataSettings.cpp">
       <Filter>Data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Data\DataStorage.cpp">
-      <Filter>Data</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Data\Reader.cpp">
       <Filter>Data</Filter>
     </ClCompile>
@@ -266,6 +260,21 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Tables.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Data\Storage.cpp">
+      <Filter>Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\FPGA\FPGAextensions.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\FPGA\FPGAMath.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Display\DisplayPrimitives.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Hardware\Sound.cpp">
+      <Filter>Hardware</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -336,9 +345,6 @@
       <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h">
-      <Filter>FPGA</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\FPGA\Storage.h">
       <Filter>FPGA</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h">
@@ -578,9 +584,6 @@
     <ClInclude Include="..\..\Device\src\Data\DataSettings.h">
       <Filter>Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Data\DataStorage.h">
-      <Filter>Data</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Data\Reader.h">
       <Filter>Data</Filter>
     </ClInclude>
@@ -601,6 +604,24 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Tables.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Data\Storage.h">
+      <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FPGA\FPGAextensions.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FPGA\FPGAMath.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Utils\TablesWindow.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Display\DisplayPrimitives.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Display\Symbols.h">
+      <Filter>Display</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

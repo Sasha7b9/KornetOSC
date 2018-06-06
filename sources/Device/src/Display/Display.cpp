@@ -10,6 +10,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Debug.h"
 #include "Utils/MathOSC.h"
+#include "FPGA/FPGAMath.h"
 #include <stdlib.h>
 #include <string.h>
 

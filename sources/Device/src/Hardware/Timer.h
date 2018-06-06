@@ -34,6 +34,8 @@ public:
 
     static void SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms);
 
+    static void PauseOnTime(uint timeMS);
+
 private:
 };
 
