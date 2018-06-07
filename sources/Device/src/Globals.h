@@ -28,6 +28,8 @@ extern HCD_HandleTypeDef handleHCD;
 #define EXIT_FROM_ROM_TO_RAM    (gBF.exitFromROMtoRAM)
 #define FPGA_NEED_AUTO_FIND     (gBF.FPGAneedAutoFind)
 #define ALWAYS_SHOW_ROM_SIGNAL  (gBF.alwaysShowROMSignal)
+#define PANEL_CONTROL_RECEIVE   (gBF.panelControlReceive)
+#define FPGA_IN_PROCESS_OF_READ (gBF.FPGAinProcessingOfRead)
 
 #define FM_NEED_REDRAW          (gBF.needRedrawFileManager)
 #define FM_REDRAW_FULL          1
@@ -54,6 +56,8 @@ struct BitField
                                              ///< Если 2, то перерисовать только каталоги.
                                              ///< Если 3, то перерисовать только файлы.
     uint alwaysShowROMSignal            : 1; ///< Если 1, то показывать всегда выбранный в режиме "Внутр. ЗУ" сигнал.
+    uint panelControlReceive            : 1; ///< Если 1, то панель прислала команду.
+    uint FPGAinProcessingOfRead         : 1;
 };
 
 extern volatile BitField gBF;   ///< @brief Структура сделана volatile, потому что иначе при вклюённой оптимизации зависает во время выключения. 

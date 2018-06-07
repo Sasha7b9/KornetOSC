@@ -1805,21 +1805,31 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\Colors.h</FilePath>
             </File>
+            <File>
+              <FileName>DisplayPrimitives.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\DisplayPrimitives.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayPrimitives.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\DisplayPrimitives.h</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayTypes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\DisplayTypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>Symbols.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Symbols.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>FPGA</GroupName>
           <Files>
-            <File>
-              <FileName>FPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\FPGA\FPGA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>FPGA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\FPGA\FPGA.h</FilePath>
-            </File>
             <File>
               <FileName>AD9286.cpp</FileName>
               <FileType>8</FileType>
@@ -1829,6 +1839,16 @@
               <FileName>AD9286.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\FPGA\AD9286.h</FilePath>
+            </File>
+            <File>
+              <FileName>FPGA.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FPGA\FPGA.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGA.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FPGA\FPGA.h</FilePath>
             </File>
             <File>
               <FileName>FPGAextensions.cpp</FileName>
@@ -1999,6 +2019,41 @@
               <FileName>Menu.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Menu.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItems.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItems.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\MenuItems.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsAdd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\MenuItemsAdd.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsDefs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\MenuItemsDefs.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsGraphics.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\MenuItemsGraphics.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsLogic.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\MenuItemsLogic.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuPagesNames.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\MenuPagesNames.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2334,6 +2389,46 @@
               <FileName>Math.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>Dictionary.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Dictionary.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Dictionary.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Dictionary.h</FilePath>
+            </File>
+            <File>
+              <FileName>Measures.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Measures.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Measures.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Measures.h</FilePath>
+            </File>
+            <File>
+              <FileName>ProcessingSignal.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\ProcessingSignal.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ProcessingSignal.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\ProcessingSignal.h</FilePath>
+            </File>
+            <File>
+              <FileName>tableslog.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\tableslog.h</FilePath>
+            </File>
+            <File>
+              <FileName>TablesWindow.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\TablesWindow.h</FilePath>
             </File>
           </Files>
         </Group>

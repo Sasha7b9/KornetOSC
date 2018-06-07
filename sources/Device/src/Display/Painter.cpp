@@ -523,3 +523,20 @@ bool Painter::BitInFontIsExist(int eChar, int numByte, int bit)
     }
     return prevByte & (1 << bit);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::DrawTextRelativelyRight(int xRight, int y, const char *text, Color color)
+{
+    int lenght = Font::GetLengthText(text);
+    DrawText(xRight - lenght, y, text, color);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::Draw10SymbolsInRect(int x, int y, char eChar)
+{
+    for (char i = 0; i < 5; i++)
+    {
+        DrawChar(x + 8 * i, y, eChar + i);
+        DrawChar(x + 8 * i, y + 8, eChar + i + 16);
+    }
+}

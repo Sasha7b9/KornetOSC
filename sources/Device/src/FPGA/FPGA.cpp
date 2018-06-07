@@ -2,6 +2,7 @@
 #include "FPGAMath.h"
 #include "AD9286.h"
 #include "Log.h"
+#include "Data/Reader.h"
 #include "FPGA/FPGA.h"
 #include "Utils/MathOSC.h"
 #include "Display/Display.h"
@@ -12,6 +13,7 @@
 #include "Utils/CommonFunctions.h"
 #include "Utils/MathOSC.h"
 #include "Utils/Math.h"
+#include "Utils/ProcessingSignal.h"
 #include "Settings/Settings.h"
 #include "Data/Storage.h"
 #include <stdio.h>
@@ -21,6 +23,22 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define NULL_TSHIFT 1000000
+
+#define FPGA_IN_PAUSE                   (bf.pause)
+#define FPGA_CAN_READ_DATA              (bf.canRead)
+#define FPGA_FIRST_AFTER_WRITE          (bf.firstAfterWrite)
+#define NEED_STOP_AFTER_READ_FRAME_2P2  (bf.needStopAfterReadFrame2P2)
+
+
+static struct BitFieldFPGA
+{
+    uint pause : 1;
+    uint canRead : 1;
+    uint firstAfterWrite : 1;     ///< \brief Используется в режиме рандомизатора. После записи любого параметра в альтеру нужно не 
+                                            ///<        использовать первое считанное данное с АЦП, потому что оно завышено и портит ворота.
+    uint needStopAfterReadFrame2P2 : 1;
+    uint notUsed : 28;
+} bf = {0, 1, 0, 0, 0};
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,6 +85,12 @@ static uint8 ValueForRange(Channel ch);
 bool FPGA::isRunning = false;
 bool FPGA::givingStart = false;
 StateWorkFPGA fpgaStateWork = StateWorkFPGA_Stop;
+static uint8 *dataRandA = 0;
+static uint8 *dataRandB = 0;
+static uint timeCompletePredTrig = 0;   ///< Здесь окончание счёта предзапуска. Если == 0, то предзапуск не завершён.
+static DataSettings ds;
+static uint timeSwitchingTrig = 0;
+int FPGA::addShiftForFPGA = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void FPGA::Init()
@@ -969,6 +993,476 @@ void FPGA::SetTrigLev(TrigSource ch, uint16 trigLev)
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::IsRunning()
+{
+    return isRunning;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::Reset()
+{
+    bool needStart = IsRunning();
+    Stop(false);
+    if (needStart)
+    {
+        Start();
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetBandwidth(Channel ch)
+{
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetModeCouple(Channel ch, ModeCouple modeCoupe)
+{
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::ProcessingData()
+{
+    bool retValue = false;                          // Здесь будет true, когда данные считаются
+
+    static const int numRead[] = {100, 50, 20, 10, 5};
+
+    int num = IN_RANDOM_MODE ? numRead[SET_TBASE] / 2 : 1;
+
+    if (IN_RANDOM_MODE)
+    {
+        dataRandA = (uint8 *)AllocMemForChannelFromHeap(A, 0);
+        dataRandB = (uint8 *)AllocMemForChannelFromHeap(B, 0);
+
+        if (SAMPLE_TYPE_IS_REAL)
+        {
+            num = 1;                                // Для реальной выборки ограничим количество считываний - нам надо только одно измерение.
+        }
+    }
+
+    for (int i = 0; i < num; i++)
+    {
+        uint16 flag = ReadFlag();
+
+        if (_GET_BIT(flag, FL_PRED_READY) == 0)       // Если предзапуск не отсчитан - выходим
+        {
+            break;
+        }
+
+        if (timeCompletePredTrig == 0)              // Если окончание предзапуска ранее не было зафиксировано
+        {
+            timeCompletePredTrig = TIME_MS;         // записываем время, когда оно произошло.
+        }
+
+        if (i > 0)
+        {
+            uint time = TIME_MS;
+            // В рандомизаторных развёртках при повторных считываниях нужно подождать флага синхронизации
+            while (_GET_BIT(flag, FL_TRIG_READY) == 0 && _GET_BIT(flag, FL_DATA_READY) == 0 && (TIME_MS - time) < 10)
+            {                                                       // Это нужно для низких частот импульсов на входе
+                flag = ReadFlag();
+            }
+            if (_GET_BIT(flag, FL_DATA_READY) == 0)
+            {
+                i = num;
+            }
+        }
+
+        if (_GET_BIT(flag, FL_TRIG_READY))                            // Если прошёл импульс синхронизации
+        {
+            if (_GET_BIT(flag, FL_DATA_READY) == 1)                   // Проверяем готовность данных
+            {
+                fpgaStateWork = StateWorkFPGA_Stop;                 // И считываем, если данные готовы
+                HAL_NVIC_DisableIRQ(EXTI2_IRQn);                    // Отключаем чтение точек
+                DataReadSave(i == 0, i == num - 1, false);
+                ProcessingAfterReadData();
+                retValue = true;
+            }
+        }
+        else if (START_MODE_AUTO)  // Если имупльса синхронизации нету, а включён автоматический режим синхронизации
+        {
+            if (TIME_MS - timeCompletePredTrig > TSHIFT_2_ABS(2, SET_TBASE) * 1000) // Если прошло больше времени, чем помещается в десяти клетках
+            {
+                if (IN_P2P_MODE)
+                {
+                }
+                else
+                {
+                    SwitchingTrig();                                           // В непоточечном даём принудительно даём синхронизацю
+                }
+            }
+        }
+
+        if (i == num)
+        {
+            DataReadSave(false, true, true);
+            retValue = true;
+            break;
+        }
+
+        if (PANEL_CONTROL_RECEIVE && IN_RANDOM_MODE)
+        {
+            DataReadSave(false, true, true);
+            retValue = true;
+            break;
+        }
+    }
+
+    SAFE_FREE(dataRandA);
+    SAFE_FREE(dataRandB);
+
+    return retValue;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void InverseDataIsNecessary(Channel ch, uint8 *data)
+{
+    if (SET_INVERSE(ch))
+    {
+        for (int i = 0; i < FPGA_MAX_POINTS; i++)
+        {
+            data[i] = (uint8)((int)(2 * AVE_VALUE) - LimitationRet<uint8>(data[i], MIN_VALUE, MAX_VALUE));
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::DataReadSave(bool first, bool saveToStorage, bool onlySave)
+{
+    // В этой функции испльзуем память, предназначенную для хранения выходного сигнала, в качестве временного буфера.
+
+    FPGA_IN_PROCESS_OF_READ = 1;
+    if (IN_RANDOM_MODE)
+    {
+        ReadRandomizeModeSave(first, saveToStorage, onlySave);
+    }
+    else
+    {
+        ReadRealMode(OUT_A, OUT_B);
+    }
+
+    int numBytes = ds.BytesInChannel();
+
+    //CPU::RAM::MemCpy16(RAM8(FPGA_DATA_A), OUT_A, numBytes);
+    //CPU::RAM::MemCpy16(RAM8(FPGA_DATA_B), OUT_B, numBytes);
+
+    for (int i = 0; i < numBytes; i++)
+    {
+        LIMITATION(OUT_A[i], MIN_VALUE, MAX_VALUE);
+        LIMITATION(OUT_B[i], MIN_VALUE, MAX_VALUE);
+    }
+
+    if (!IN_RANDOM_MODE)
+    {
+        InverseDataIsNecessary(A, OUT_A);
+        InverseDataIsNecessary(B, OUT_B);
+    }
+
+    if (saveToStorage)
+    {
+        Storage::AddData(OUT_A, OUT_B, ds);
+    }
+
+    if (TRIG_MODE_FIND_AUTO)
+    {
+        FindAndSetTrigLevel();
+    }
+
+    FPGA_IN_PROCESS_OF_READ = 0;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::ProcessingAfterReadData()
+{
+    if (!START_MODE_SINGLE)
+    {
+        if (IN_P2P_MODE && START_MODE_AUTO)                              // Если находимся в режиме поточечного вывода при автоматической синхронизации
+        {
+            if (!NEED_STOP_AFTER_READ_FRAME_2P2)
+            {
+                Timer::SetAndStartOnce(kTimerStartP2P, FPGA::Start, 1000);    // то откладываем следующий запуск, чтобы зафиксировать сигнал на экране
+            }
+        }
+        else
+        {
+            Start();
+        }
+    }
+    else
+    {
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SwitchingTrig()
+{
+    if (TRIG_POLARITY_FRONT)
+    {
+        *WR_TRIG = 0;
+        *WR_TRIG = 1;
+    }
+    else
+    {
+        *WR_TRIG = 1;
+        *WR_TRIG = 0;
+    }
+    timeSwitchingTrig = TIME_MS;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static uint16 READ_DATA_ADC_16(const uint16 *address, Channel ch)
+{
+    float delta = AVE_VALUE - (RShiftZero - SET_RSHIFT(ch)) / (RSHIFT_IN_CELL / 20.0f);
+    BitSet16 point;
+    BitSet16 retValue;
+    point.halfWord = *address;
+    int byte0 = (int)(((float)point.byte[0] - delta) * GetStretchADC(ch) + delta + 0.5f);
+    LIMITATION(byte0, 0, 255);
+    retValue.byte0 = (uint8)byte0;
+    int byte1 = (int)(((float)point.byte[1] - delta) * GetStretchADC(ch) + delta + 0.5f);
+    LIMITATION(byte1, 0, 255);
+    retValue.byte1 = (uint8)byte1;
+    return retValue.halfWord;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void ReadRandomizeChannel(Channel ch, uint16 addrFirstRead, uint8 *data, const uint8 *last, int step, int numSkipped)
+{
+//    *WR_PRED = addrFirstRead;
+//    *WR_ADDR_NSTOP = 0xffff;
+
+    uint16 *addr = ADDRESS_READ(ch);
+
+    uint16 newData = 0;
+
+    for (int i = 0; i < numSkipped; i++)
+    {
+        newData = *addr;
+    }
+
+    if (SET_INVERSE(ch))
+    {
+        while (data <= last)
+        {
+            newData = READ_DATA_ADC_16(addr, ch);
+            *data = (uint8)((int)(2 * AVE_VALUE) - LimitationRet<uint8>((uint8)newData, MIN_VALUE, MAX_VALUE));
+            data += step;
+        }
+    }
+    else
+    {
+        while (data <= last)
+        {
+            *data = (uint8)READ_DATA_ADC_16(addr, ch);
+            data += step;
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::ReadRandomizeModeSave(bool first, bool last, bool onlySave)
+{
+    int bytesInChannel = ds.BytesInChannel();
+
+    if (first)
+    {
+        memset(dataRandA, 0, (uint)bytesInChannel);
+        memset(dataRandB, 0, (uint)bytesInChannel);
+    }
+
+    if (!onlySave)
+    {
+        int Tsm = CalculateShift();
+
+        // Считываем из внешнего ОЗУ ранее записанные туда данные
+        // Буфера dataRandA, dataRandB созданы заранее для ускорения, т.к. в режиме рандомизатора в FPGA_Update() выполняется несколько чтений
+        if (first)
+        {
+            if (ENABLED_DS_A)
+            {
+                memcpy(dataRandA, OUT_A, (uint)bytesInChannel);
+            }
+            if (ENABLED_DS_B)
+            {
+                memcpy(dataRandB, OUT_B, (uint)bytesInChannel);
+            }
+        }
+
+        if (Tsm == NULL_TSHIFT)
+        {
+            return false;
+        };
+
+        if (START_MODE_SINGLE || SAMPLE_TYPE_IS_REAL)
+        {
+            ClearData();
+
+            // Очищаем массив для данных. После чтения точек несчитанные позиции будут равны нулю, что нужно для экстраполяции
+            memset(dataRandA, 0, (uint)bytesInChannel);
+            memset(dataRandB, 0, (uint)bytesInChannel);
+        }
+
+        // Теперь считаем данные
+        TBase tBase = SET_TBASE;
+        int step = Kr[tBase];
+#define NUM_ADD_STEPS 2
+        int index = Tsm - addShiftForFPGA - NUM_ADD_STEPS * step;
+
+        int numSkipped = 0;
+
+        while (index < 0)
+        {
+            index += step;
+            numSkipped++;
+        }
+
+        // addrFirstRead - адрес, который мы должны записать в альтеру. Это адрес, с которого альтера начнёт чтение данных
+        // Но считывать будем с адреса на 3 меньшего, чем расчётный. Лишние данные нужны, чтобы достроить те точки вначале, 
+        // которые выпадают при программном сдвиге.
+        // Процедуре чтения мы укажем сколько первых точек выбросить через параметр numSkipped
+//        uint16 addrFirstRead = (uint16)(*RD_ADDR_NSTOP + 16384 - (uint16)(bytesInChannel / step) - 1 - NUM_ADD_STEPS);
+        uint16 addrFirstRead = 0;
+
+        //uint startRead = gTimerTics;
+
+        ReadRandomizeChannel(B, addrFirstRead, &dataRandB[index], &dataRandB[FPGA_MAX_POINTS - 1], step, numSkipped);
+        ReadRandomizeChannel(A, addrFirstRead, &dataRandA[index], &dataRandA[FPGA_MAX_POINTS - 1], step, numSkipped);
+
+        if (START_MODE_SINGLE || SAMPLE_TYPE_IS_REAL)
+        {
+            Processing::InterpolationSinX_X(dataRandA, bytesInChannel, tBase);
+            Processing::InterpolationSinX_X(dataRandB, bytesInChannel, tBase);
+        }
+    }
+
+    // Теперь сохраняем данные обратно во внешнее ОЗУ
+    if (last)
+    {
+//        CPU::RAM::MemCpy16(dataRandA, RAM8(FPGA_DATA_A), bytesInChannel);
+//        CPU::RAM::MemCpy16(dataRandB, RAM8(FPGA_DATA_B), bytesInChannel);
+    }
+
+    return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void ShiftOnePoint2Right(uint8 *data, int size)
+{
+    for (int i = size - 1; i >= 1; i--)
+    {
+        data[i] = data[i - 1];
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+// balance - свдиг точки вверх/вниз для балансировки
+static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool shift, int balance)
+{
+    if (length == 0)
+    {
+        return;
+    }
+//    *WR_PRED = nStop;
+//    *WR_ADDR_NSTOP = 0xffff;
+
+    uint16 *p = (uint16 *)data;
+    uint16 *endP = (uint16 *)&data[length];
+
+    uint16 *address = ADDRESS_READ(ch);
+
+    nStop = *address;
+
+    if (shift)
+    {
+        *((uint8 *)p) = (uint8)(*address);
+
+        p = (uint16 *)(((uint8 *)p) + 1);
+        endP -= 8;                          // Это нужно, чтбы не выйти за границу буфера - ведь мы сдвигаем данные на один байт
+    }
+
+    while (p < endP && FPGA_IN_PROCESS_OF_READ)
+    {
+        *p++ = READ_DATA_ADC_16(address, ch);
+        *p++ = READ_DATA_ADC_16(address, ch);
+        *p++ = READ_DATA_ADC_16(address, ch);
+        *p++ = READ_DATA_ADC_16(address, ch);
+        *p++ = READ_DATA_ADC_16(address, ch);
+        *p++ = READ_DATA_ADC_16(address, ch);
+        *p++ = READ_DATA_ADC_16(address, ch);
+        *p++ = READ_DATA_ADC_16(address, ch);
+    }
+
+    if (shift)                              ///  \todo Во-первых, теряется один байт. Во-вторых, не очень-то красиво выглядит
+    {
+        while (p < (uint16 *)&data[length - 1])
+        {
+            *p++ = READ_DATA_ADC_16(address, ch);
+        }
+    }
+
+    if (balance != 0)
+    {
+        for (int i = shift ? 1 : 0; i < length; i += 2)
+        {
+            int newData = (int)data[i] + balance;
+            if (newData < 0)
+            {
+                newData = 0;
+            }
+            if (newData > 255)
+            {
+                newData = 255;
+            }
+            data[i] = (uint8)newData;
+        }
+    }
+
+    ShiftOnePoint2Right(data, length);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::ReadRealMode(uint8 *dataA, uint8 *dataB)
+{
+    FPGA_IN_PROCESS_OF_READ = 1;
+
+    uint16 nStop = ReadNStop();
+
+    bool shift = _GET_BIT(ReadFlag(), FL_LAST_RECOR) == 0;    // Если true, будем сдвигать точки на одну
+
+    int balanceA = 0;
+    int balanceB = 0;
+
+    if (NRST_BALANCE_ADC_TYPE_IS_HAND &&
+        SET_PEAKDET_DIS)               // При включённом пиковом детекторе балансировка не нужна
+    {
+        balanceA = NRST_BALANCE_ADC_A;
+        balanceB = NRST_BALANCE_ADC_B;
+    }
+
+    ReadChannel(dataA, A, ds.BytesInChannel(), nStop, shift, balanceA);
+
+    ReadChannel(dataB, B, ds.BytesInChannel(), nStop, shift, balanceB);
+
+//    CPU::RAM::MemCpy16(dataA, RAM8(FPGA_DATA_A), FPGA_MAX_POINTS);
+//    CPU::RAM::MemCpy16(dataB, RAM8(FPGA_DATA_B), FPGA_MAX_POINTS);
+
+    FPGA_IN_PROCESS_OF_READ = 0;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::ClearData()
+{
+//    CPU::RAM::MemClear(RAM8(FPGA_DATA_A), FPGA_MAX_POINTS);
+//    CPU::RAM::MemClear(RAM8(FPGA_DATA_B), FPGA_MAX_POINTS);
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+uint16 FPGA::ReadNStop()
+{
+//    return (uint16)(*RD_ADDR_NSTOP + 16384 - (uint16)ds.BytesInChannel() / 2 - 1 - (uint16)gAddNStop);
+    return 0;
+}
+
 
 
 
@@ -1006,5 +1500,3 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 #ifdef __cplusplus
 }
 #endif
-
-

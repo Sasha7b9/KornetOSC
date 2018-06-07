@@ -103,3 +103,5 @@ inline void EmptyFuncVII(int, int) {}
 
 #define DISABLE_RU "Откл"
 #define DISABLE_EN "Off"
+
+#define SAFE_FREE(x) if(x) free(x); (x) = 0;

@@ -176,8 +176,14 @@ public:
     static bool ReadingCycle(uint timeWait);
 
     static void SetTPos(TPos tPos);
+    /// Удаляет данные. Нужно для режима рандомизаотра, где информация каждого цикла не является самостоятельной
+    static void ClearData();
+
+    static int addShiftForFPGA;
 
 private:
+    // Кажется, рассчитываем адрес последней записи
+    static uint16 ReadNStop();
 
     static TBase CalculateTBase(float freq);
 
@@ -226,6 +232,22 @@ private:
     static void LoadRegUPR();
 
     static void Write(TypeRecord type, uint16 *address, uint data, bool restart);
+    /// Возвращает true, если считаны данные.
+    static bool ProcessingData();
+    /// \brief Прочитать данные.
+    /// \param first          Нужно для режима рандомизматора - чтобы подготовить память.
+    /// \param saveToStorage  Нужно в режиме рандомизатора для указания, что пора сохранять измерение.
+    /// \param onlySave       Только сохранить в хранилище.
+    static void DataReadSave(bool first, bool saveToStorage, bool onlySave);
+    /// Действия, которые нужно предпринять после успешного считывания данных.
+    static void ProcessingAfterReadData();
+    /// Принудительно запустить синхронизацию
+    static void SwitchingTrig();
+    /// \brief first - если true, это первый вызов из последовательности, нужно подготовить память
+    /// last - если true, это последний вызов из последовательности, нужно записать результаты в память.
+    static bool ReadRandomizeModeSave(bool first, bool last, bool onlySave);
+
+    static void ReadRealMode(uint8 *dataA, uint8 *dataB);
 
     static bool isRunning;
     /// True, если дан запуск

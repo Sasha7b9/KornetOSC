@@ -1,4 +1,6 @@
 #pragma once
+#include "defines.h"
+#include "Settings/SettingsTypes.h"
 
 
 #define ADDR_ALTERA         ((uint8*)NOR_MEMORY_ADRESS1)
@@ -59,7 +61,6 @@
 #define UPR_BIT_CALIBRATOR_VOLTAGE  3   ///< 0/4В
 #define UPR_BIT_RECORDER            4   ///< 0 - обычный режим, 1 - регистратор
 
-
 #define FPGA_MAX_POINTS (8 * 1024)
 
 #define AVE_VALUE           127
@@ -84,3 +85,7 @@
 #define RSHIFT_IN_CELL (((RShiftMax) - (RShiftMin)) / 24)
 /// На столько единиц нужно изменить значение смещения, чтобы маркер смещения по напряжению передвинулся на одну точку.
 #define STEP_RSHIFT     (((RShiftMax - RShiftMin) / 24) / 20)
+
+
+extern uint16 *addressesADC[NumChannels];
+#define ADDRESS_READ(ch)    addressesADC[ch];
