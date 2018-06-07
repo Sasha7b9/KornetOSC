@@ -70,3 +70,33 @@ PackedTime CPU::RTC_::GetPackedTime()
 
     return time;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool CPU::RTC_::SetTimeAndData(int8 day, int8 month, int8 year, int8 hours, int8 minutes, int8 seconds)
+{
+    RTC_DateTypeDef dateStruct;
+    dateStruct.WeekDay = RTC_WEEKDAY_MONDAY;
+    dateStruct.Month = (uint8)month;
+    dateStruct.Date = (uint8)day;
+    dateStruct.Year = (uint8)year;
+
+    if (HAL_RTC_SetDate((RTC_HandleTypeDef*)&rtcHandle, &dateStruct, FORMAT_BIN) != HAL_OK)
+    {
+        return false;
+    };
+
+    RTC_TimeTypeDef timeStruct;
+    timeStruct.Hours = (uint8)hours;
+    timeStruct.Minutes = (uint8)minutes;
+    timeStruct.Seconds = (uint8)seconds;
+    timeStruct.TimeFormat = RTC_HOURFORMAT_24;
+    timeStruct.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+    timeStruct.StoreOperation = RTC_STOREOPERATION_SET;
+
+    if (HAL_RTC_SetTime((RTC_HandleTypeDef*)&rtcHandle, &timeStruct, FORMAT_BIN) != HAL_OK)
+    {
+        return false;
+    };
+
+    return true;
+}

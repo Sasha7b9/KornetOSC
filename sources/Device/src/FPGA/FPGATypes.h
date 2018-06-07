@@ -25,9 +25,11 @@
                                                         ///  произвольного адреса (который мы записываем в предзапуск)
 
 #define RD_DATA_A           (ADDR_ALTERA + 0)           ///< ƒанные первого канала
+#define RD_ADC_A            ((uint16 *)(RD_DATA_A))
 #define RD_DATA_A_PEAK_MAX  (RD_DATA_A)                 ///< ƒанные пикового детектора первого канала
 #define RD_DATA_A_PEAK_MIN  (RD_DATA_A_PEAK_MAX + 1)
 #define RD_DATA_B           (ADDR_ALTERA + 2)           ///< ƒанные второго канала
+#define RD_ADC_B            ((uint16 *)(RD_DATA_B))
 #define RD_DATA_B_PEAK_MAX  (RD_DATA_B)                 ///< ƒанные пиквого детектора второго канала
 #define RD_DATA_B_PEAK_MIN  (RD_DATA_B_PEAK_MAX + 1)
 #define RD_LAST_RECORD_LO   (ADDR_ALTERA + 4)           ///< јдрес последней записи

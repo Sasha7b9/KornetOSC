@@ -1,9 +1,16 @@
 #include "Painter.h"
 #include "Display/Font/Font.h"
 #include "Utils/Decoder.h"
+#include "Utils/Math.h"
 #include "Hardware/FSMC.h"
+#include "Hardware/Timer.h"
 #include <string.h>
 #include <stdarg.h>
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static bool inverseColors = false;
+Color    Painter::currentColor = Color::NUMBER;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -81,7 +88,7 @@ void Painter::DrawRectangle(int x, int y, int width, int height, Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawFormatText(int x, int y, Color color, char *text, ...)
+int Painter::DrawFormatText(int x, int y, Color color, char *text, ...)
 {
     SetColor(color);
 #define SIZE_BUFFER_DRAW_FORM_TEXT 200
@@ -90,7 +97,19 @@ void Painter::DrawFormatText(int x, int y, Color color, char *text, ...)
     va_start(args, text);
     vsprintf(buffer, text, args);
     va_end(args);
-    DrawText(x, y, buffer);
+    return DrawText(x, y, buffer);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawFormatText(int x, int y, char *text, ...)
+{
+#define SIZE_BUFFER_DRAW_FORM_TEXT 200
+    CHAR_BUF(buffer, SIZE_BUFFER_DRAW_FORM_TEXT);
+    va_list args;
+    va_start(args, text);
+    vsprintf(buffer, text, args);
+    va_end(args);
+    return DrawText(x, y, buffer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -539,4 +558,317 @@ void Painter::Draw10SymbolsInRect(int x, int y, char eChar)
         DrawChar(x + 8 * i, y, eChar + i);
         DrawChar(x + 8 * i, y + 8, eChar + i + 16);
     }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawStringInCenterRect(int eX, int eY, int width, int eHeight, const char *text, Color color)
+{
+    SetColor(color);
+    int lenght = Font::GetLengthText(text);
+    int height = Font::GetHeightSymbol(text[0]);
+    int x = eX + (width - lenght) / 2;
+    int y = eY + (eHeight - height) / 2;
+    return DrawText(x, y, text);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::ResetFlash()
+{
+    Timer::SetAndEnable(kFlashDisplay, OnTimerFlashDisplay, 400);
+    inverseColors = false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::OnTimerFlashDisplay()
+{
+    inverseColors = !inverseColors;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::DrawBigText(int eX, int eY, int size, const char *text, Color color)
+{
+    SetColor(color);
+
+    uint numSymbols = strlen(text);
+
+    int x = eX;
+
+    for (uint i = 0; i < numSymbols; i++)
+    {
+        x = DrawBigChar(x, eY, size, text[i]);
+        x += size;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawBigChar(int eX, int eY, int size, char symbol)
+{
+    int8 width = (int8)font->symbol[symbol].width;
+    int8 height = (int8)font->height;
+
+    for (int b = 0; b < height; b++)
+    {
+        if (ByteFontNotEmpty(symbol, b))
+        {
+            int x = eX;
+            int y = eY + b * size + 9 - height;
+            int endBit = 8 - width;
+            for (int bit = 7; bit >= endBit; bit--)
+            {
+                if (BitInFontIsExist(symbol, b, bit))
+                {
+                    for (int i = 0; i < size; i++)
+                    {
+                        for (int j = 0; j < size; j++)
+                        {
+                            SetPoint(x + i, y + j);
+                        }
+                    }
+                }
+                x += size;
+            }
+        }
+    }
+
+    return eX + width * size;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawFormText(int x, int y, Color color, pString text, ...)
+{
+#define SIZE_BUFFER_DRAW_FORM_TEXT 200
+    char buffer[SIZE_BUFFER_DRAW_FORM_TEXT];
+    va_list args;
+    va_start(args, text);
+    vsprintf(buffer, text, args);
+    va_end(args);
+    return DrawText(x, y, buffer, color);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::DrawTextInRect(int x, int y, int width, const char *text)
+{
+    int xStart = x;
+    int xEnd = xStart + width;
+
+    while (*text != 0)
+    {
+        int length = GetLenghtSubString(text);
+        if (length + x > xEnd)
+        {
+            x = xStart;
+            y += Font::GetHeightSymbol(*text);
+        }
+        int numSymbols = 0;
+        numSymbols = DrawSubString(x, y, text);
+        text += numSymbols;
+        x += length;
+        x = DrawSpaces(x, y, text, &numSymbols);
+        text += numSymbols;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::GetLenghtSubString(const char *text)
+{
+    int retValue = 0;
+    while (((*text) != ' ') && ((*text) != '\0'))
+    {
+        retValue += Font::GetLengthSymbol(*text);
+        text++;
+    }
+    return retValue;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawSubString(int x, int y, const char *text)
+{
+    int numSymbols = 0;
+    while (((*text) != ' ') && ((*text) != '\0'))
+    {
+        x = DrawChar(x, y, *text);
+#ifndef OPEN
+        ++x;
+#endif
+        numSymbols++;
+        text++;
+    }
+    return numSymbols;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawSpaces(int x, int y, const char *text, int *numSymbols)
+{
+    *numSymbols = 0;
+    while (*text == ' ')
+    {
+        x = DrawChar(x, y, *text);
+        text++;
+        (*numSymbols)++;
+    }
+    return x;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawStringInCenterRectAndBoundItC(int x, int y, int width, int height, const char *text, Color colorBackground, Color colorFill)
+{
+    DrawRectangle(x, y, width, height, colorFill);
+    FillRegion(x + 1, y + 1, width - 2, height - 2, colorBackground);
+    SetColor(colorFill);
+    return DrawStringInCenterRect(x, y, width, height, text);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+// Возвращает высоту экрана, которую займёт текст text, при выводе от left до right в переменной height. Если bool == false, то текст не влезет на экран 
+static bool GetHeightTextWithTransfers(int left, int top, int right, const char *text, int *height)
+{
+    char buffer[20];
+    int numSymbols = (int)strlen(text);
+
+    int y = top - 1;
+    int x = left;
+
+    int curSymbol = 0;
+
+    while (y < 231 && curSymbol < numSymbols)
+    {
+        while (x < right - 1 && curSymbol < numSymbols)
+        {
+            int length = 0;
+            char *word = GetWord(text + curSymbol, &length, buffer);
+
+            if (length <= 1)                            // Нет буквенных символов или один, т.е. слово не найдено
+            {
+                char symbol = text[curSymbol++];
+                if (symbol == '\n')
+                {
+                    x = right;
+                    continue;
+                }
+                if (symbol == ' ' && x == left)
+                {
+                    continue;
+                }
+                x += Font::GetLengthSymbol(symbol);
+            }
+            else                                            // А здесь найдено по крайней мере два буквенных символа, т.е. найдено слово
+            {
+                int lengthString = Font::GetLengthText(word);
+                if (x + lengthString > right + 5)
+                {
+                    int numSymb = DrawPartWord(word, x, y, right, false);
+                    x = right;
+                    curSymbol += numSymb;
+                    continue;
+                }
+                else
+                {
+                    curSymbol += length;
+                    x += Font::GetLengthText(word);
+                }
+            }
+        }
+        x = left;
+        y += 9;
+    }
+
+    *height = y - top + 4;
+    LIMITATION(*height, 0, 239);
+
+    return curSymbol == numSymbols;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawTextInBoundedRectWithTransfers(int x, int y, int width, const char *text, Color colorBackground, Color colorFill)
+{
+    int height = 0;
+    GetHeightTextWithTransfers(x + 3, y + 3, x + width - 8, text, &height);
+
+    DrawRectangle(x, y, width, height, colorFill);
+    FillRegion(x + 1, y + 1, width - 2, height - 2, colorBackground);
+    DrawTextInRectWithTransfersC(x + 3, y + 3, width - 8, height, text, colorFill);
+    return y + height;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::DrawVolumeButton(int x, int y, int width, int height, int thickness, Color normal, Color bright, Color dark, bool isPressed, bool isShade)
+{
+    FillRegion(x + thickness, y + thickness, width - thickness * 2, height - thickness * 2, normal);
+    if (isPressed && !isShade)
+    {
+        for (int i = 0; i < thickness; i++)
+        {
+            DrawHLine(y + i, x + i, x + width - i, dark);
+            DrawVLine(x + i, y + 1 + i, y + height - i);
+            DrawVLine(x + width - i, y + 1 + i, y + height - i, bright);
+            DrawHLine(y + height - i, x + 1 + i, x + width - i);
+        }
+    }
+    else
+    {
+        for (int i = 0; i < thickness; i++)
+        {
+            DrawHLine(y + i, x + i, x + width - i, bright);
+            DrawVLine(x + i, y + 1 + i, y + height - i);
+            DrawVLine(x + width - i, y + 1 + i, y + height - i, dark);
+            DrawHLine(y + height - i, x + 1 + i, x + width - i);
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::Draw4SymbolsInRect(int x, int y, char eChar, Color color /* = Color::NUMBER */)
+{
+    SetColor(color);
+    for (char i = 0; i < 2; i++)
+    {
+        DrawChar(x + 8 * i, y, eChar + i);
+        DrawChar(x + 8 * i, y + 8, eChar + i + 16);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::DrawStringInCenterRectOnBackgroundC(int x, int y, int width, int height, const char *text, Color colorText, int widthBorder, Color colorBackground)
+{
+    int lenght = Font::GetLengthText(text);
+    int eX = DrawStringInCenterRect(x, y, width, height, text, colorBackground);
+    int w = lenght + widthBorder * 2 - 2;
+    int h = 7 + widthBorder * 2 - 1;
+    FillRegion(eX - lenght - widthBorder, y - widthBorder + 1, w, h);
+    DrawStringInCenterRect(x, y, width, height, text, colorText);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawTextOnBackground(int x, int y, const char *text, Color colorBackground)
+{
+    int width = Font::GetLengthText(text);
+    int height = Font::GetSize();
+
+    Color colorText(GetColor());
+    FillRegion(x - 1, y, width, height, colorBackground);
+    SetColor(colorText);
+
+    return DrawText(x, y, text);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+Color Painter::GetColor()
+{
+    return currentColor;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::SetBrightnessDisplay(int16 brightness)
+{
+    float recValue = 1601.0f;
+    if (brightness < 100)
+    {
+        recValue = 64.0f + (600.0f - 63.0f) / 100.0f / 100.0f * brightness * brightness;
+    }
+    /*
+    uint8 command[4] = {SET_BRIGHTNESS};
+    WRITE_SHORT(1, recValue);
+
+    SendToDisplay(command, 4);
+    */
 }

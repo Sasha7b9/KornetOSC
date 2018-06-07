@@ -64,43 +64,21 @@ const float absStepTShift[] =
     10.0f   / 20    // 200e4
 };
 
-#ifdef S8_53
-/// Столько вольт содержится в одном пикселе экрана
-const float voltsInPoint[] =
-{
-    2e-3f   / GRID_DELTA,   // 2mV
-    5e-3f   / GRID_DELTA,   // 5mV
-    10e-3f  / GRID_DELTA,   // 10mV
-    20e-3f  / GRID_DELTA,   // 20mV
-    50e-3f  / GRID_DELTA,   // 50mV
-    100e-3f / GRID_DELTA,   // 100mV
-    200e-3f / GRID_DELTA,   // 200mV
-    500e-3f / GRID_DELTA,   // 500mV
-    1.0f    / GRID_DELTA,   // 1V
-    2.0f    / GRID_DELTA,   // 2V
-    5.0f    / GRID_DELTA,   // 5V
-    10.0f   / GRID_DELTA,   // 10V
-    20.0f   / GRID_DELTA    // 20V
-};
-#endif
-
-#ifdef S8_54
 /// Столько вольт содержится в одной точке сигнала по вертикали
 const float voltsInPoint[RangeSize] =
 {
-    2e-3f   / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 2mV
-    5e-3f   / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 5mV
-    10e-3f  / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 10mV
-    20e-3f  / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 20mV
-    50e-3f  / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 50mV
-    100e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 100mV
-    200e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 200mV
-    500e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 500mV
-    1.0f    / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 1V
-    2.0f    / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 2V
-    5.0f    / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE)    // 5V
+    2e-3f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 2mV
+    5e-3f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 5mV
+    10e-3f  / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 10mV
+    20e-3f  / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 20mV
+    50e-3f  / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 50mV
+    100e-3f / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 100mV
+    200e-3f / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 200mV
+    500e-3f / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 500mV
+    1.0f    / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 1V
+    2.0f    / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 2V
+    5.0f    / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE)    // 5V
 };
-#endif
 
 /// Столько вольт в одной точке экрана
 static const float voltsInPixel[] =

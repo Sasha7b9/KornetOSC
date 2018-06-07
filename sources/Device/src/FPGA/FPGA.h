@@ -178,6 +178,8 @@ public:
     static void SetTPos(TPos tPos);
     /// Удаляет данные. Нужно для режима рандомизаотра, где информация каждого цикла не является самостоятельной
     static void ClearData();
+    /// \todo временный костыль. При изменении tShift нужно временно останавливать альтеру, а при изменении развёртки не нужно
+    static void SetTShift(int tShift, bool needFPGApause);
 
     static int addShiftForFPGA;
 
@@ -248,6 +250,12 @@ private:
     static bool ReadRandomizeModeSave(bool first, bool last, bool onlySave);
 
     static void ReadRealMode(uint8 *dataA, uint8 *dataB);
+    /// Установить временную паузу после изменения ручек - чтобы смещённый сигнал зафиксировать на некоторое время
+    static void TemporaryPause();
+
+    static void OnPressStartStopInP2P();
+
+    static void LoadRange(Channel ch);
 
     static bool isRunning;
     /// True, если дан запуск

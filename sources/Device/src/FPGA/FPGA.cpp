@@ -16,6 +16,7 @@
 #include "Utils/ProcessingSignal.h"
 #include "Settings/Settings.h"
 #include "Data/Storage.h"
+#include "Menu/Pages/PageTime.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -39,6 +40,11 @@ static struct BitFieldFPGA
     uint needStopAfterReadFrame2P2 : 1;
     uint notUsed : 28;
 } bf = {0, 1, 0, 0, 0};
+
+uint16 gPost = 1024;
+int16 gPred = 1024;
+int gAddNStop = 0;
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,7 +95,7 @@ static uint8 *dataRandA = 0;
 static uint8 *dataRandB = 0;
 static uint timeCompletePredTrig = 0;   ///< Здесь окончание счёта предзапуска. Если == 0, то предзапуск не завершён.
 static DataSettings ds;
-static uint timeSwitchingTrig = 0;
+    static uint timeSwitchingTrig = 0;
 int FPGA::addShiftForFPGA = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1463,6 +1469,225 @@ uint16 FPGA::ReadNStop()
     return 0;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::Write(TypeRecord type, uint16 *address, uint data, bool restart)
+{
+    /*
+    // Если необходимо, сохраняем установленный режим на шине, чтобы затем его восстановить
+    ModeFSMC modePrev = FSMC::GetMode();
+    bool needRestore = modePrev != ModeFSMC_FPGA;
+    if (type == RecordFPGA && needRestore)
+    {
+        FSMC::SetMode(ModeFSMC_FPGA);
+    }
+
+
+    FPGA_FIRST_AFTER_WRITE = 1;
+    if (restart)
+    {
+        if (FPGA_IN_PROCESS_OF_READ)
+        {
+            Stop(true);
+            FPGA_IN_PROCESS_OF_READ = 0;
+            Write(type, address, data);
+            Start();
+        }
+        else
+        {
+            if (!FPGA_IN_STATE_STOP)
+            {
+                Stop(true);
+                Write(type, address, data);
+                Start();
+            }
+            else
+            {
+                Write(type, address, data);
+            }
+        }
+    }
+    else
+    {
+        Write(type, address, data);
+    }
+
+
+    // Восстанавливаем предыдущий режим на шине, если необходимо.
+    if (type == RecordFPGA && needRestore)
+    {
+        FSMC::SetMode(modePrev);
+    }
+
+    Panel::EnableLEDTrig(false); // После каждой засылки выключаем лампочку синхронизации
+    */
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetTShift(int tShift)
+{
+    SetTShift(tShift, true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetTShift(int tShift, bool needFPGApause)
+{
+    if (!SET_ENABLED_A && !SET_ENABLED_B)
+    {
+        return;
+    }
+
+    if (tShift < sTime_TShiftMin() || tShift > TShiftMax)
+    {
+        LIMITATION(tShift, sTime_TShiftMin(), TShiftMax);
+        Display::ShowWarning(LimitSweep_TShift);
+    }
+
+    int16 oldTShift = (int16)SET_TSHIFT;
+
+    sTime_SetTShift((int16)tShift);
+    LoadTShift();       /// \todo temp for s8-54
+    NEED_FINISH_DRAW = 1;
+
+    if (needFPGApause && tShift != oldTShift)
+    {
+        TemporaryPause();
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void StopTemporaryPause()
+{
+    FPGA_IN_PAUSE = 0;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::TemporaryPause()
+{
+    FPGA_IN_PAUSE = 1;
+    Timer::SetAndStartOnce(kTemporaryPauseFPGA, StopTemporaryPause, 100);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::OnPressStartStop()
+{
+    if (!MODE_WORK_IS_DIR || CONSOLE_IN_PAUSE)           // Если находимся не в режиме непосредственного считывания сигнала
+    {
+        return;
+    }
+
+    if (IN_P2P_MODE)
+    {
+        OnPressStartStopInP2P();
+    }
+    else if (FPGA_IN_STATE_STOP)
+    {
+        Start();
+        fpgaStateWork = StateWorkFPGA_Wait;
+    }
+    else
+    {
+        Stop(false);
+        fpgaStateWork = StateWorkFPGA_Stop;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::OnPressStartStopInP2P()
+{
+    if (Timer::IsRun(kTimerStartP2P))             // Если находимся в режиме поточечного вывода и в данный момент пауза после считывания очередного 
+    {                                           // полного сигнала
+        Timer::Disable(kTimerStartP2P);          // то останавливаем таймер, чтобы просмотреть сигнал
+    }
+    else                                        // Если идёт процесс сбора информации
+    {
+        if (FPGA_IN_STATE_STOP)
+        {
+            Start();
+        }
+        else
+        {   // то устанавливаем признак того, что после окончания не надо запускать следующий цикл
+            NEED_STOP_AFTER_READ_FRAME_2P2 = NEED_STOP_AFTER_READ_FRAME_2P2 == 0 ? 1u : 0u;
+            Stop(false);
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetTPos(TPos tPos)
+{
+    TPOS = tPos;
+    PageTime::OnChanged_TPos(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetRange(Channel ch, Range range)
+{
+    if (!SET_ENABLED(ch))
+    {
+        return;
+    }
+    if (range < RangeSize && (int)range >= 0)
+    {
+        float rShiftAbs = RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch));
+        float trigLevAbs = RSHIFT_2_ABS(SET_TRIGLEV(ch), SET_RANGE(ch));
+        sChannel_SetRange(ch, range);
+        if (LINKING_RSHIFT == LinkingRShift_Voltage)
+        {
+            SET_RSHIFT(ch) = (uint16)RSHIFT_2_REL(rShiftAbs, range);
+            SET_TRIGLEV(ch) = (uint16)RSHIFT_2_REL(trigLevAbs, range);
+        }
+        LoadRange(ch);
+        LoadTrigLev();
+    }
+    else
+    {
+        Display::ShowWarning(ch == A ? LimitChan1_Volts : LimitChan2_Volts);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::LoadRange(Channel ch)
+{
+    /*
+    PrepareAndWriteDataToAnalogSPI(ch == A ? CS3 : CS4);
+    PrepareAndWriteDataToAnalogSPI(CS2);
+
+    LoadRShift(ch);
+    if (ch == (Channel)TRIGSOURCE)
+    {
+        LoadTrigLev();
+    }
+    */
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetResistance(Channel ch, Resistance resistance)
+{
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetDeltaTShift(int16 shift)
+{
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetNumberMeasuresForGates(int number)
+{
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+// Функция вызывается, когда можно считывать очередной сигнал.
+static void OnTimerCanReadData()
+{
+    FPGA_CAN_READ_DATA = 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FPGA::SetENumSignalsInSec(int numSigInSec)
+{
+    Timer::SetAndEnable(kENumSignalsInSec, OnTimerCanReadData, (uint)(1000.f / numSigInSec));
+}
+
 
 
 
@@ -1500,3 +1725,4 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 #ifdef __cplusplus
 }
 #endif
+

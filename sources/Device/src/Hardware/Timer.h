@@ -36,6 +36,14 @@ public:
 
     static void PauseOnTime(uint timeMS);
 
+    static void SetAndEnable(TypeTimer type, pFuncVV func, uint dTms);
+    /// Назначает таймеру timer функцию и время срабатывания
+    static void Set(TypeTimer type, pFuncVV func, uint dTms);
+
+    static void Enable(TypeTimer type);
+
+    static bool IsRun(TypeTimer type);
+
 private:
 };
 

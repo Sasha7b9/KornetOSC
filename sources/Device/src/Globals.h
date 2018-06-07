@@ -30,6 +30,8 @@ extern HCD_HandleTypeDef handleHCD;
 #define ALWAYS_SHOW_ROM_SIGNAL  (gBF.alwaysShowROMSignal)
 #define PANEL_CONTROL_RECEIVE   (gBF.panelControlReceive)
 #define FPGA_IN_PROCESS_OF_READ (gBF.FPGAinProcessingOfRead)
+/// Если 1, то консоль находится в режиме паузы
+#define CONSOLE_IN_PAUSE        (gBF.consoleInPause)
 
 #define FM_NEED_REDRAW          (gBF.needRedrawFileManager)
 #define FM_REDRAW_FULL          1
@@ -58,6 +60,7 @@ struct BitField
     uint alwaysShowROMSignal            : 1; ///< Если 1, то показывать всегда выбранный в режиме "Внутр. ЗУ" сигнал.
     uint panelControlReceive            : 1; ///< Если 1, то панель прислала команду.
     uint FPGAinProcessingOfRead         : 1;
+    uint consoleInPause                 : 1; ///< Если 1, то консоль находится в режиме паузы.
 };
 
 extern volatile BitField gBF;   ///< @brief Структура сделана volatile, потому что иначе при вклюённой оптимизации зависает во время выключения. 

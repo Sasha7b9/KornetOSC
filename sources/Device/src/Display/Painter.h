@@ -24,7 +24,7 @@ public:
 
     static void DrawRectangle(int x, int y, int width, int height, Color color = Color::NUMBER);
 
-    static void DrawFormatText(int x, int y, Color color, char *format, ...);
+    static int DrawFormatText(int x, int y, Color color, char *format, ...);
 
     static int DrawChar(int x, int y, char symbol, Color color = Color::NUMBER);
 
@@ -80,6 +80,10 @@ public:
 
     static void DrawTextInRect(int x, int y, int width, const char *text);
 
+    static int DrawBigChar(int eX, int eY, int size, char symbol);
+    /// Возвращает текущий цвет рисования
+    static Color GetColor();
+
 private:
 
     static int DrawCharWithLimitation(int eX, int eY, char symbol, int limitX, int limitY, int limitWidth, int limitHeight);
@@ -87,4 +91,14 @@ private:
     static bool ByteFontNotEmpty(int eChar, int byte);
 
     static bool BitInFontIsExist(int eChar, int numByte, int bit);
+
+    static void OnTimerFlashDisplay();
+
+    static int GetLenghtSubString(const char *text);
+
+    static int DrawSubString(int x, int y, const char *text);
+
+    static int DrawSpaces(int x, int y, const char *text, int *numSymbols);
+
+    static Color currentColor;
 };
