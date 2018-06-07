@@ -1,7 +1,4 @@
-#pragma clang diagnostic ignored "-Wold-style-cast"
-#pragma clang diagnostic ignored "-Wpadded"
 #include <stm32f4xx.h>
-#pragma clang diagnostic warning "-Wpadded"
 #include "stm437.h"
 
 
