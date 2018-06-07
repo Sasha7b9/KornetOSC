@@ -68,6 +68,8 @@
 #define HAL_NOR_MODULE_ENABLED
 #define HAR_SRAM_MODULE_ENABLED
 #define HAL_TIM_MODULE_ENABLED
+#define HAL_HCD_MODULE_ENABLED
+#define HAL_RTC_MODULE_ENABLED
 
 /* ########################## HSE/HSI Values adaptation ##################### */
 /**

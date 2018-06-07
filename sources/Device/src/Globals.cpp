@@ -7,6 +7,8 @@ DAC_HandleTypeDef handleDAC =
     DAC
 };
 
+HCD_HandleTypeDef handleHCD;
+
 
 volatile BitField gBF =
 {

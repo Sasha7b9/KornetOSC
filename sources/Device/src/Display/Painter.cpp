@@ -451,3 +451,75 @@ int Painter::DrawTextInRectWithTransfers(int eX, int eY, int eWidth, int eHeight
 
     return y;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawTextWithLimitationC(int x, int y, const char *text, Color color, int limitX, int limitY, int limitWidth, int limitHeight)
+{
+    SetColor(color);
+    int retValue = x;
+    while (*text)
+    {
+        x = DrawCharWithLimitation(x, y, *text, limitX, limitY, limitWidth, limitHeight);
+        retValue += Font::GetLengthSymbol(*text);
+        text++;
+    }
+    return retValue + 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Painter::DrawCharWithLimitation(int eX, int eY, char symbol, int limitX, int limitY, int limitWidth, int limitHeight)
+{
+    int8 width = (int8)font->symbol[symbol].width;
+    int8 height = (int8)font->height;
+
+    for (int b = 0; b < height; b++)
+    {
+        if (ByteFontNotEmpty(symbol, b))
+        {
+            int x = eX;
+            int y = eY + b + 9 - height;
+            int endBit = 8 - width;
+            for (int bit = 7; bit >= endBit; bit--)
+            {
+                if (BitInFontIsExist(symbol, b, bit))
+                {
+                    if ((x >= limitX) && (x <= (limitX + limitWidth)) && (y >= limitY) && (y <= limitY + limitHeight))
+                    {
+                        Painter::SetPoint(x, y);
+                    }
+                }
+                x++;
+            }
+        }
+    }
+
+    return eX + width + 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Painter::ByteFontNotEmpty(int eChar, int byte)
+{
+    static const uint8 *bytes = 0;
+    static int prevChar = -1;
+    if (eChar != prevChar)
+    {
+        prevChar = eChar;
+        bytes = font->symbol[prevChar].bytes;
+    }
+    return bytes[byte];
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Painter::BitInFontIsExist(int eChar, int numByte, int bit)
+{
+    static uint8 prevByte = 0;      /// \todo здесь точно статики нужны?
+    static int prevChar = -1;
+    static int prevNumByte = -1;
+    if (prevNumByte != numByte || prevChar != eChar)
+    {
+        prevByte = font->symbol[eChar].bytes[numByte];
+        prevChar = eChar;
+        prevNumByte = numByte;
+    }
+    return prevByte & (1 << bit);
+}
