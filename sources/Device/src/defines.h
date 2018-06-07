@@ -6,19 +6,6 @@
 #define __attribute(x)
 #endif
 
-#pragma clang diagnostic ignored "-Wpadded"
-#pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
-#pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
-#pragma clang diagnostic ignored "-Wformat-nonliteral"
-#pragma clang diagnostic ignored "-Wwritable-strings"
-#pragma clang diagnostic ignored "-Wold-style-cast"
-#pragma clang diagnostic ignored "-Wweak-vtables"
-#pragma clang diagnostic ignored "-Winvalid-source-encoding"
-#pragma clang diagnostic ignored "-Wmissing-field-initializers"
-#pragma clang diagnostic ignored "-Wglobal-constructors"
-#pragma clang diagnostic ignored "-Wexit-time-destructors"
-
-
 #include <stm32f4xx.h>
 #include <stm32f4xx_hal.h>
 
