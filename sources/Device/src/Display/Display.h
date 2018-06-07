@@ -97,8 +97,6 @@ public:
     static void DrawConsole();
 
 private:
-
-    static void DrawGrid();
     /// Нарисовать информацию в нижней части экрана.
     static void WriteLowPart();
 

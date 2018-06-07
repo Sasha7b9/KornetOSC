@@ -185,17 +185,17 @@ void Display::UpdateOsci()
 {
     Painter::BeginScene(Color::BACK);
 
-    DrawGrid();
+    Grid::Draw();
 
-    WriteLowPart();
+    //WriteLowPart();
 
-    DrawRShift();
+    //DrawRShift();
 
     PainterData::DrawData();
    
-    DrawConsole();
+    //DrawConsole();
 
-    Menu::Draw();
+    //Menu::Draw();
 
     //Painter::DrawText(10, 10, ControlName(key), Color::FILL);
 
@@ -273,29 +273,6 @@ void Display::UpdateMultimeter()
     Painter::DrawText(10, 10, "Ìףכüעטלוענ", Color::RED);
 
     Painter::EndScene();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::DrawGrid()
-{
-    int x0 = Grid::Left();
-    int y0 = Grid::Top();
-
-    Painter::DrawVLine(x0 + Grid::WIDTH / 2, y0, y0 + Grid::HEIGHT, Color::GRID);
-
-    Painter::DrawHLine(y0 + Grid::HEIGHT / 2, x0, x0 + Grid::WIDTH);
-
-    for (int x = x0; x < x0 + Grid::Width(); x += Grid::SIZE_CELL)
-    {
-        Painter::DrawVLine(x, y0, y0 + Grid::HEIGHT);
-    }
-
-    for (int y = y0; y < y0 + Grid::HEIGHT; y += Grid::SIZE_CELL)
-    {
-        Painter::DrawHLine(y, x0, x0 + Grid::WIDTH);
-    }
-
-    Painter::DrawRectangle(x0, y0, Grid::WIDTH, Grid::HEIGHT, Color::FILL);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

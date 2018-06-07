@@ -6,38 +6,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern uint GlobalColors[32] =
-{
-/* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),   // BLACK
-/* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),   // WHITE
-/* 2  */    MAKE_COLOR(25,   25,   25),     // GRAY_10
-/* 3  */    MAKE_COLOR(0x40, 0x40, 0x40),   // GRAY_25
-/* 4  */    MAKE_COLOR(0x80, 0x80, 0x80),   // GRAY_50
-/* 5  */    MAKE_COLOR(0xc0, 0xc0, 0xc0),   // GRAY_75
-/* 6  */    MAKE_COLOR(0x00, 0x00, 0xff),   // BLUE
-/* 7  */    MAKE_COLOR(0x00, 0x00, 25),     // BLUE_10
-/* 8  */    MAKE_COLOR(0x00, 0x00, 0x40),   // BLUE_25
-/* 9  */    MAKE_COLOR(0x00, 0x00, 0x80),   // BLUE_50
-/* 10 */    MAKE_COLOR(0x00, 0x00, 0xc0),   // BLUE_75
-/* 11 */    MAKE_COLOR(0x00, 0xff, 0x00),   // GREEN
-/* 12 */    MAKE_COLOR(0x00, 13,   0x00),   // GREEN_5
-/* 13 */    MAKE_COLOR(0x00, 25,   0x00),   // GREEN_10
-/* 14 */    MAKE_COLOR(0x00, 0x40, 0x00),   // GREEN_25
-/* 15 */    MAKE_COLOR(0x00, 0x80, 0x00),   // GREEN_50
-/* 16 */    MAKE_COLOR(0x00, 0xc0, 0x00),   // GREEN_75
-/* 17 */    MAKE_COLOR(0xff, 0x00, 0x00),   // RED
-/* 18 */    MAKE_COLOR(0x40, 0x00, 0x00),   // RED_25
-/* 19 */    MAKE_COLOR(0x80, 0x00, 0x00),   // RED_50
-/* 20 */    MAKE_COLOR(0xc0, 0x00, 0x00),   // RED_75
-/* 21 */    MAKE_COLOR(0x00, 0x00, 0x80),   // CHAN_A_HALF
-/* 22 */    MAKE_COLOR(0x00, 0x80, 0x00),   // CHAN_B_HALF
-/* 23 */    MAKE_COLOR(0x00, 0x00, 0xff),   // CHAN_A
-/* 24 */    MAKE_COLOR(0x00, 0xff, 0x00),   // CHAN_B
-/* 25 */    MAKE_COLOR(0xaf, 0xaf, 0xaf)    // GRID
-};
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 static const Settings defaultSettings =
 {
@@ -82,15 +50,15 @@ Settings set;
 void Settings::Load(bool)
 {
     Reset();
-    EEPROM::LoadSettings();
+    //EEPROM::LoadSettings();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Settings::Save()
 {
-    EEPROM::SaveSettings();
+    //EEPROM::SaveSettings();
 
-    AT25160N::Save(set);
+    //AT25160N::Save(set);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

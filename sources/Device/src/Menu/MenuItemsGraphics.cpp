@@ -83,9 +83,9 @@ void GovernorColor::DrawValue(int x, int y, int delta)
     char *texts[4] = {"ßğ", "Ñí", "Çë", "Êğ"};
 
     uint color = COLOR(ct->color.value);
-    int red = R_FROM_COLOR(color);
-    int green = G_FROM_COLOR(color);
-    int blue = B_FROM_COLOR(color);
+    uint red = R_FROM_COLOR(color);
+    uint green = G_FROM_COLOR(color);
+    uint blue = B_FROM_COLOR(color);
     ct->Init(false);
     int16 vals[4] = {(int16)(ct->brightness * 100.0f), (int16)blue, (int16)green, (int16)red};
 

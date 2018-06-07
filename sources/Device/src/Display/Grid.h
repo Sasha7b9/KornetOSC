@@ -26,5 +26,8 @@ public:
     static int MathBottom();
     static int MathHeight();
 
+    /// Нарисовать сетку
+    static void Draw();
+
 private:
 };

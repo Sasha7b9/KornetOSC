@@ -8,29 +8,26 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const uint8 Color::COLOR_BLACK              = 0;
-const uint8 Color::COLOR_WHITE              = 1;
-const uint8 Color::COLOR_GRID               = 2;
-const uint8 Color::COLOR_DATA_A             = 3;
-const uint8 Color::COLOR_DATA_B             = 4;
-const uint8 Color::COLOR_MENU_FIELD         = 5;
-const uint8 Color::COLOR_MENU_TITLE         = 6;
-const uint8 Color::COLOR_MENU_TITLE_DARK    = 7;
-const uint8 Color::COLOR_MENU_TITLE_BRIGHT  = 8;
-const uint8 Color::COLOR_MENU_ITEM          = 9;
-const uint8 Color::COLOR_MENU_ITEM_DARK     = 10;
-const uint8 Color::COLOR_MENU_ITEM_BRIGHT   = 11;
-const uint8 Color::COLOR_DATA_WHITE_ACCUM_A = 12;
-const uint8 Color::COLOR_DATA_WHITE_ACCUM_B = 13;
-const uint8 Color::COLOR_GRID_WHITE         = 14;
-const uint8 Color::COLOR_EMPTY              = 15;
-const uint8 Color::COLOR_RED                = 16;
-const uint8 Color::COLOR_GREEN              = 17;
-const uint8 Color::COLOR_BLUE               = 18;
-const uint8 Color::COLOR_NUMBER             = 32;
-const uint8 Color::COLOR_FLASH_10           = 33;
-const uint8 Color::COLOR_FLASH_01           = 34;
-const uint8 Color::COLOR_INVERSE            = 35;
+extern uint GlobalColors[32] =
+{
+    /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),   // BLACK
+    /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),   // WHITE
+    /* 2  */    MAKE_COLOR(0x60, 0x60, 0x60),   // GRID
+    /* 3  */    MAKE_COLOR(0x40, 0x40, 0x40),   // DATA_A
+    /* 4  */    MAKE_COLOR(0x80, 0x80, 0x80),   // DATA_B
+    /* 5  */    MAKE_COLOR(0xc0, 0xc0, 0xc0),   // MENU_FIELD
+    /* 6  */    MAKE_COLOR(0x00, 0x00, 0xff),   // MENU_TITLE
+    /* 7  */    MAKE_COLOR(0x00, 0x00, 25),     // MENU_TITLE_DARK
+    /* 8  */    MAKE_COLOR(0x00, 0x00, 0x40),   // MENU_TITLE_BRIGHT
+    /* 9  */    MAKE_COLOR(0x00, 0x00, 0x80),   // MENU_ITEM
+    /* 10 */    MAKE_COLOR(0x00, 0x00, 0xc0),   // MENU_ITEM_DARK
+    /* 11 */    MAKE_COLOR(0x00, 0xff, 0x00),   // MENU_ITEM_BRIGHT
+    /* 12 */    MAKE_COLOR(0x00, 13,   0x00),   // DATA_WHITE_ACCUM_A
+    /* 13 */    MAKE_COLOR(0x00, 25,   0x00),   // DATA_WHITE_ACCUM_B
+    /* 14 */    MAKE_COLOR(0xff, 0x00, 0x00),   // RED
+    /* 15 */    MAKE_COLOR(0x00, 0xff, 0x00),   // GREEN
+    /* 16 */    MAKE_COLOR(0x00, 0x00, 0xff)    // BLUE
+};
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,7 +58,6 @@ void Color::InitGlobalColors()
 {
     Color::BACK.value = BACKGROUND_BLACK ? Color::BLACK.value : Color::WHITE.value;
     Color::FILL.value = BACKGROUND_BLACK ? Color::WHITE.value : Color::BLACK.value;
-    Color::GRID.value = BACKGROUND_BLACK ? Color(COLOR_GRID).value : Color(COLOR_GRID_WHITE).value;
     Color::CHAN[A].value = BACKGROUND_BLACK ? Color::CHAN[A].value : Color::DATA_WHITE_ACCUM_A.value;
     Color::CHAN[B].value = BACKGROUND_BLACK ? Color::CHAN[B].value : Color::DATA_WHITE_ACCUM_B.value;
     //Color::CHAN[A_B].value = Color::CHAN[MathCh].value = BACKGROUND_BLACK ? Color::WHITE.value : Color::BLACK.value;

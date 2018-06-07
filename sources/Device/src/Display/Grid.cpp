@@ -1,4 +1,5 @@
 #include "Grid.h"
+#include "Display/Painter.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,4 +72,27 @@ int Grid::MathBottom()
 int Grid::MathHeight()
 {
     return Height();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Grid::Draw()
+{
+    int x0 = Grid::Left();
+    int y0 = Grid::Top();
+
+    Painter::DrawVLine(x0 + Grid::WIDTH / 2, y0, y0 + Grid::HEIGHT, Color::GRID);
+
+    Painter::DrawHLine(y0 + Grid::HEIGHT / 2, x0, x0 + Grid::WIDTH);
+
+    for (int x = x0; x < x0 + Grid::Width(); x += Grid::SIZE_CELL)
+    {
+        Painter::DrawVLine(x, y0, y0 + Grid::HEIGHT);
+    }
+
+    for (int y = y0; y < y0 + Grid::HEIGHT; y += Grid::SIZE_CELL)
+    {
+        Painter::DrawHLine(y, x0, x0 + Grid::WIDTH);
+    }
+
+    Painter::DrawRectangle(x0, y0, Grid::WIDTH, Grid::HEIGHT, Color::FILL);
 }

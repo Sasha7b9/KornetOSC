@@ -19,25 +19,22 @@ DeviceMode Device::currentMode = Mode_Osci;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Device::Init()
-{
-    uint64 temp = (uint64)(rand() % 4);
-    temp++;
-    
+{       
     Hardware::Init();
 
-    Tester::Init();
+    //Tester::Init();
 
     Display::Init();
 
-    FPGA::Init();
+    //FPGA::Init();
 
-    Settings::Load();
+    //Settings::Load();
 
-    FPGA::LoadSettings();
+    //FPGA::LoadSettings();
 
     Menu::Init();
 
-    FPGA::OnPressStart();
+    //FPGA::OnPressStart();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -47,9 +44,9 @@ void Device::Update()
     Menu::Update();
     Display::Update();
     Decoder::Update();
-    FPGA::Update();
+    //FPGA::Update();
     //Menu::SaveSettings();
-    Tester::Update();
+    //Tester::Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
