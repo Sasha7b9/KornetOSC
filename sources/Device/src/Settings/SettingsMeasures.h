@@ -31,11 +31,11 @@
 #define SOURCE_MEASURE                  (set.meas_Source)
 
 /// јвтоматические измерени€ производ€тс€ по каналу 1
-#define SOURCE_MEASURE_IS_A             (SOURCE_MEASURE == A)
+#define SOURCE_MEASURE_IS_A             (SOURCE_MEASURE == MeasSource::A)
 /// јвтоматические измерени€ производ€тс€ по каналу 2
-#define SOURCE_MEASURE_IS_B             (SOURCE_MEASURE == B)
+#define SOURCE_MEASURE_IS_B             (SOURCE_MEASURE == MeasSource::B)
 /// јвтоматические измерени€ производ€тс€ по обоим каналам
-#define SOURCE_MEASURE_IS_A_B           (SOURCE_MEASURE == MeasSource_A_B)
+#define SOURCE_MEASURE_IS_A_B           (SOURCE_MEASURE == MeasSource::A_B)
 
 #define POS_MEAS_CUR_U(n)               (set.meas_PosCurU[n])
 #define POS_MEAS_CUR_U_0                (POS_MEAS_CUR_U(0))

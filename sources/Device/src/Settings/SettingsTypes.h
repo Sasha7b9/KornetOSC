@@ -103,11 +103,20 @@ enum Channel
     NumChannels
 };
 
-enum MeasSource
+
+struct MeasSource
 {
-    MeasSource_A,
-    MeasSource_B,
-    MeasSource_A_B
+    enum
+    {
+        A,
+        B,
+        A_B
+    };
+    uint8 value;
+    bool operator==(const uint8 obj)
+    {
+        return value == obj;
+    }
 };
 
 enum TrigPolarity
