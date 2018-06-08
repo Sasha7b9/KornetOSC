@@ -14,7 +14,7 @@ struct TBaseStruct
 
 
 // Массив структур описаний масштабов по времени.
-static const TBaseStruct tBases[TBaseSize] =
+static const TBaseStruct tBases[TBase::Size] =
 {
     {{"2\x10нс",     "2\x10ns"}},
     {{"5\x10нс",     "5\x10ns"}},

@@ -193,7 +193,7 @@ DEF_BUTTON(         bAccum_Clear,                                               
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool IsActive_Accum()
 {
-    return SET_TBASE > TBase_20ns;
+    return SET_TBASE > TBase::_20ns;
 }
 
 DEF_PAGE_3(         ppAccum,                                                                                               // дхяокеи - мюйнокемхе ///

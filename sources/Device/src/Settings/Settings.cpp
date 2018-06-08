@@ -29,7 +29,7 @@ static const Settings defaultSettings =
     RU,                             // serv_lang
 
     0,                              // time_shift
-    TBase_500us,                    // time_base
+    TBase::_500us,                    // time_base
 
     Control_Voltage,                // test_control
     Polarity_Positive,              // test_polarity
@@ -93,7 +93,7 @@ const char *NameRange(Range range)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *NameTBase(TBase tBase)
 {
-    static const char *names[TBaseSize][NumLanguages] =
+    static const char *names[TBase::Size][NumLanguages] =
     {
         {"2нс",     "2ns"},
         {"5нс",     "5ns"},

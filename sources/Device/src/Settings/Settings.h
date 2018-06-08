@@ -25,7 +25,7 @@
 #define ETH_ENABLED             (set.eth_enable)
 #define ETH_PORT                (set.eth_port)
 
-#define IN_RANDOMIZE_MODE               (SET_TBASE < TBase_100ns)
+#define IN_RANDOMIZE_MODE               (SET_TBASE < TBase::_100ns)
 #define CURRENT_PAGE                    (set.menu_currentPage)
 
 #define VIEW_MODE                       (set.disp_modeDrawSignal)

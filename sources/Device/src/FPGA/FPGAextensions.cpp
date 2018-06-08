@@ -140,7 +140,7 @@ static void DeleteCalibrationStruct()
 static void LoadSettingsCalcAddRShift(Channel ch)
 {
     FPGA::SetRShift(ch, RShiftZero);
-    FPGA::SetTBase(TBase_200us);
+    FPGA::SetTBase(TBase::_200us);
     FPGA::SetTrigSource(ch == A ? TrigSource_A : TrigSource_B);
     FPGA::SetTrigPolarity(Polarity_Rising);
     FPGA::SetTrigLev((TrigSource)ch, TrigLevZero);
@@ -667,7 +667,7 @@ void FPGA::ProcedureCalibration()
     {
         gStateFPGA.stateCalibration = StateCalibration_ADCinProgress;                  // Запускаем процедуру балансировки АЦП.
     
-        SetTBase(TBase_500us);
+        SetTBase(TBase::_500us);
         SetTShift(0);
         SetRange(A, Range::_500mV);
         SetRange(B, Range::_500mV);
@@ -1122,7 +1122,7 @@ Range FPGA::FindRange(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::AccurateFindParams(Channel ch)
 {
-    TBase tBase = TBaseSize;
+    TBase tBase = TBase::Size;
     FindParams(ch, &tBase);
     
     return true;
@@ -1233,7 +1233,7 @@ void FPGA::CalibrateStretch(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 TBase FPGA::CalculateTBase(float freq)
 {
-    return TBase_10ns;
+    return TBase::_10ns;
 }
 
 

@@ -19,7 +19,7 @@
 #define SET_PEAKDET_EN      (SET_PEAKDET == PeakDet_Enabled)
 #define SET_PEAKDET_DIS     (SET_PEAKDET == PeakDet_Disabled)
 
-#define IN_RANDOM_MODE      (SET_TBASE < TBase_50ns)
+#define IN_RANDOM_MODE      (SET_TBASE < TBase::_50ns)
 #define IN_P2P_MODE         (SET_TBASE >= MIN_TBASE_P2P)
 
 #define TPOS                (set.time_TPos)

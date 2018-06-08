@@ -260,7 +260,7 @@ void FPGA::StartForTester(int)
     // У нас двенадцать делений. На двенадцать делений должно приходиться не менее 2.5 мс
     // 2.5мс / 12дел = 0.2 мс/дел = 10мкс/тчк
 
-    SET_TBASE = TBase_500us;
+    SET_TBASE = TBase::_500us;
 
     LoadTBase();
 
@@ -554,7 +554,7 @@ void FPGA::DecreaseRange(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::IncreaseTBase()
 {
-    LimitationIncrease<uint8>((uint8 *)(&SET_TBASE), (uint8)(TBaseSize - 1));
+    LimitationIncrease<uint8>((uint8 *)(&SET_TBASE), (uint8)(TBase::Size - 1));
     LoadTBase();
     Start();
 }
@@ -780,7 +780,7 @@ void FPGA::SetRShift(Channel ch, uint16 rShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTBase()
 {
-    static const uint8 values[TBaseSize] =
+    static const uint8 values[TBase::Size] =
     {
         BIN_U8(00000000),    // 2ns     1       200MHz
         BIN_U8(00000000),    // 5ns     1       200MHz
@@ -914,7 +914,7 @@ void FPGA::SetTBase(TBase tBase)
     {
         return;
     }
-    if (tBase < TBaseSize && (int)tBase >= 0)
+    if (tBase < TBase::Size && (int)tBase >= 0)
     {
         float tShiftAbsOld = TSHIFT_2_ABS(SET_TSHIFT, SET_TBASE);
         sTime_SetTBase(tBase);

@@ -70,9 +70,9 @@
 #define MAX_VALUE           (AVE_VALUE + 125)
 
 /// — этого значени€ tBase должен включатьс€ режим поточечного вывода
-#define MIN_TBASE_P2P       TBase_50ms
+#define MIN_TBASE_P2P       TBase::_50ms
 /// ћинимальный масштаб по времени, при котором возможно включение режима пикового детектора
-#define MIN_TBASE_PEC_DEAT  TBase_500ns
+#define MIN_TBASE_PEC_DEAT  TBase::_500ns
 /// ≈сли значение == 0, значит, его нет. Ёто нужно дл€ режимов рандомизатора и поточечного вывода p2p, а также дл€ tShift ранее считанного сигнала
 #define NONE_VALUE  0
 

@@ -69,7 +69,7 @@ struct DataSettings
 #define RANGE_B(ds)             (RANGE(ds, B))
 
 #define Lval_TBASE(ds)          ((ds)->tBase)
-#define TBASE(ds)               ((TBase)Lval_TBASE(ds))
+#define TBASE(ds)               (Lval_TBASE(ds))
 
 #define Lval_ENABLED_A(ds)      ((ds)->enableA)
 #define Lval_ENABLED_B(ds)      ((ds)->enableB)

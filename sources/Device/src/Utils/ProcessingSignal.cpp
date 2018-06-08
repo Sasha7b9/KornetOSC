@@ -1250,7 +1250,7 @@ void Processing::InterpolationSinX_X(uint8 *data, int numPoints, TBase tBase)
             num++;
             float sinX = (part < delta - 1) ? sinf(PI / delta * (part + 1)) : sinf(PI / delta * (part - (delta - 1) * 2));
 
-            if (tBase > TBase_5ns)                 // Здесь используем более быструю, но более неправильную арифметику целвых чисел
+            if (tBase > TBase::_5ns)                 // Здесь используем более быструю, но более неправильную арифметику целвых чисел
             {
                 int sinXint = (int)(sinX * MUL_SIN);
                 int value = 0;
