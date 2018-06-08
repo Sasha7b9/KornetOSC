@@ -165,11 +165,16 @@ enum Bandwidth
     Bandwidth_750MHz
 };
 
-enum ModeTrig
+struct ModeTrig
 {
-    ModeTrig_Auto,
-    ModeTrig_Wait,
-    ModeTrig_Once
+    enum
+    {
+        Auto,
+        Wait,
+        Once
+    };
+    ModeTrig(uint8 v = Auto) : value(v) {};
+    uint8 value;
 };
 
 /// Чем будем управлять в тестер-компоненте - напряжением или током

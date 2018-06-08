@@ -24,7 +24,7 @@ static const Settings defaultSettings =
     TrigInput::Full,                // trig_input
     TrigPolarity::Rising,           // trig_polarity
     {TrigLevZero, TrigLevZero},     // trig_lev
-    ModeTrig_Auto,                  // trig_mode
+    ModeTrig::Auto,                 // trig_mode
 
     RU,                             // serv_lang
 
