@@ -68,46 +68,46 @@ void Menu::Update()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ProcessKeyEvent(KeyEvent event)
 {
-    static const pFuncVKE func[Key::NumButtons] =
+    static const pFuncVKE func[Key::NumButtons][4] =
     {
-/* None        */ Handlers::E,
-/* Function    */ Handlers::Function, 
-/* Measures    */ Handlers::Measures, 
-/* Memory      */ Handlers::Memory,   
-/* Service     */ Handlers::Service,  
-/* ChannelA    */ Handlers::Chan,     
-/* ChannelB    */ Handlers::Chan,     
-/* Time        */ Handlers::Time,     
-/* Start       */ Handlers::Start,    
-/* Trig        */ Handlers::Trig,     
-/* Display     */ Handlers::Display,  
-/* RangeMoreA  */ Handlers::Range,    
-/* RangeLessA  */ Handlers::Range,    
-/* RShiftMoreA */ Handlers::RShift,   
-/* RShiftLessA */ Handlers::RShift,   
-/* RangeMoreB  */ Handlers::Range,    
-/* RangeLessB  */ Handlers::Range,    
-/* RShiftMoreB */ Handlers::RShift,   
-/* RShiftLessB */ Handlers::RShift,   
-/* TBaseMore   */ Handlers::TBase,    
-/* TBaseLess   */ Handlers::TBase,    
-/* TShiftMore  */ Handlers::TShift,   
-/* TShiftLess  */ Handlers::TShift,   
-/* TrigLevMore */ Handlers::TrigLev,  
-/* TrigLevLess */ Handlers::TrigLev,  
-/* Left        */ Handlers::Arrow,    
-/* Right       */ Handlers::Arrow,    
-/* Up          */ Handlers::Arrow,    
-/* Down        */ Handlers::Arrow,    
-/* Enter       */ Handlers::Arrow,    
-/* F1          */ Handlers::Func,     
-/* F2          */ Handlers::Func,     
-/* F3          */ Handlers::Func,     
-/* F4          */ Handlers::Func,     
-/* F5          */ Handlers::Func
+        /* None        */ {Handlers::E,           Handlers::E,           Handlers::E,        Handlers::E},
+        /* Function    */ {Handlers::Function,    Handlers::Function,    Handlers::Function, Handlers::Function},
+        /* Measures    */ {Handlers::Measures,    Handlers::Measures,    Handlers::Measures, Handlers::Measures},
+        /* Memory      */ {Handlers::Memory,      Handlers::Memory,      Handlers::Memory,   Handlers::Memory},
+        /* Service     */ {Handlers::Service,     Handlers::Service,     Handlers::Service,  Handlers::Service},
+        /* ChannelA    */ {Handlers::Chan,        Handlers::Chan,        Handlers::Chan,     Handlers::Chan},
+        /* ChannelB    */ {Handlers::Chan,        Handlers::Chan,        Handlers::Chan,     Handlers::Chan},
+        /* Time        */ {Handlers::Time,        Handlers::Time,        Handlers::Time,     Handlers::Time},
+        /* Start       */ {Handlers::Start,       Handlers::Start,       Handlers::Start,    Handlers::Start},
+        /* Trig        */ {Handlers::Trig,        Handlers::Trig,        Handlers::Trig,     Handlers::Trig},
+        /* Display     */ {Handlers::Display,     Handlers::Display,     Handlers::Display,  Handlers::Display},
+        /* RangeMoreA  */ {Handlers::Range,       Handlers::Range,       Handlers::Range,    Handlers::Range},
+        /* RangeLessA  */ {Handlers::Range,       Handlers::Range,       Handlers::Range,    Handlers::Range},
+        /* RShiftMoreA */ {Handlers::RShiftMoreA, Handlers::RShiftMoreA, Handlers::E,        Handlers::E},
+        /* RShiftLessA */ {Handlers::RShiftLessA, Handlers::RShiftLessA, Handlers::E,        Handlers::E},
+        /* RangeMoreB  */ {Handlers::Range,       Handlers::Range,       Handlers::Range,    Handlers::Range},
+        /* RangeLessB  */ {Handlers::Range,       Handlers::Range,       Handlers::Range,    Handlers::Range},
+        /* RShiftMoreB */ {Handlers::RShiftMoreB, Handlers::RShiftMoreB, Handlers::E,        Handlers::E},
+        /* RShiftLessB */ {Handlers::RShiftLessB, Handlers::RShiftLessB, Handlers::E,        Handlers::E},
+        /* TBaseMore   */ {Handlers::TBase,       Handlers::TBase,       Handlers::TBase,    Handlers::TBase},
+        /* TBaseLess   */ {Handlers::TBase,       Handlers::TBase,       Handlers::TBase,    Handlers::TBase},
+        /* TShiftMore  */ {Handlers::TShift,      Handlers::TShift,      Handlers::TShift,   Handlers::TShift},
+        /* TShiftLess  */ {Handlers::TShift,      Handlers::TShift,      Handlers::TShift,   Handlers::TShift},
+        /* TrigLevMore */ {Handlers::TrigLev,     Handlers::TrigLev,     Handlers::TrigLev,  Handlers::TrigLev},
+        /* TrigLevLess */ {Handlers::TrigLev,     Handlers::TrigLev,     Handlers::TrigLev,  Handlers::TrigLev},
+        /* Left        */ {Handlers::Arrow,       Handlers::Arrow,       Handlers::Arrow,    Handlers::Arrow},
+        /* Right       */ {Handlers::Arrow,       Handlers::Arrow,       Handlers::Arrow,    Handlers::Arrow},
+        /* Up          */ {Handlers::Arrow,       Handlers::Arrow,       Handlers::Arrow,    Handlers::Arrow},
+        /* Down        */ {Handlers::Arrow,       Handlers::Arrow,       Handlers::Arrow,    Handlers::Arrow},
+        /* Enter       */ {Handlers::Arrow,       Handlers::Arrow,       Handlers::Arrow,    Handlers::Arrow},
+        /* F1          */ {Handlers::Func,        Handlers::Func,        Handlers::Func,     Handlers::Func},
+        /* F2          */ {Handlers::Func,        Handlers::Func,        Handlers::Func,     Handlers::Func},
+        /* F3          */ {Handlers::Func,        Handlers::Func,        Handlers::Func,     Handlers::Func},
+        /* F4          */ {Handlers::Func,        Handlers::Func,        Handlers::Func,     Handlers::Func},
+        /* F5          */ {Handlers::Func,        Handlers::Func,        Handlers::Func,     Handlers::Func}
     };
 
-    func[event.key.code](event);
+    func[event.key.code][event.type.type](event);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

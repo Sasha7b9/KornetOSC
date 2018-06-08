@@ -11,7 +11,10 @@ class Handlers
 {
 public:
     static void E(KeyEvent);
-    static void RShift(KeyEvent);
+    static void RShiftLessA(KeyEvent);
+    static void RShiftMoreA(KeyEvent);
+    static void RShiftLessB(KeyEvent);
+    static void RShiftMoreB(KeyEvent);
     static void Range(KeyEvent);
     static void TShift(KeyEvent);
     static void TBase(KeyEvent);
