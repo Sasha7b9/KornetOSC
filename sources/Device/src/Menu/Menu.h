@@ -15,14 +15,6 @@
 #define PAGE_IS_MAIN                   (name == Page_Main)
 #define MENU_TEMP_ENABLE_STRING_NAVI() Menu::TemporaryEnableStrNavi()
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Сюда складируются поступающие события кнопок
-class BufferButtons
-{
-public:
-    static bool Add();
-};
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Menu
@@ -39,7 +31,7 @@ public:
     /// Функция обработки длинного нажатия кнопки (более 0.5 сек.).
     static void LongPressureButton(Key button);
     /// Функция вызывается при нажатии, повторе и отпускании кнопки
-    static void ButtonEvent(Key key, TypePress type);
+    static void ButtonEvent(KeyEvent event);
     /// Установить время автоматического сокрытия меню в соответствии с установками.
     static void SetAutoHide(bool active);
     /// Возвращает путь к текущему пункту меню в текстовом виде, готовом к выводу на экран.
@@ -85,6 +77,9 @@ public:
     static Control *itemHint;
 
 private:
+
+    static void ProcessKeyEvent(KeyEvent event);
+
     static void *RetLastOpened(Page *_page, TypeItem *_type);
     /// Обработка короткого нажатия кнопки
     static void ProcessingShortPressureButton();

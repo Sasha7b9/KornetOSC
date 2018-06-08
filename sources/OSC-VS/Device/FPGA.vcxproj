@@ -62,6 +62,8 @@
     <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_it.c" />
     <ClCompile Include="..\..\Device\src\Log.cpp" />
     <ClCompile Include="..\..\Device\src\main.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\BufferButtons.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\HandlersKeys.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Menu.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\MenuItems.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\MenuItemsGraphics.cpp" />
@@ -179,6 +181,8 @@
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_it.h" />
     <ClInclude Include="..\..\Device\src\Log.h" />
     <ClInclude Include="..\..\Device\src\main.h" />
+    <ClInclude Include="..\..\Device\src\Menu\BufferButtons.h" />
+    <ClInclude Include="..\..\Device\src\Menu\HandlersKeys.h" />
     <ClInclude Include="..\..\Device\src\Menu\Menu.h" />
     <ClInclude Include="..\..\Device\src\Menu\MenuItems.h" />
     <ClInclude Include="..\..\Device\src\Menu\MenuItemsAdd.h" />

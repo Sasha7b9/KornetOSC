@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "Log.h"
+#include "BufferButtons.h"
 #include "Globals.h"
 #include "Display/Grid.h"
 #include "Display/DisplayTypes.h"
@@ -17,6 +18,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "MenuTriggers.h"
+#include "HandlersKeys.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,16 +36,78 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Menu::Update()
 {
-    ProcessingShortPressureButton();
-    ProcessingLongPressureButton();
-    ProcessingPressButton();
-    ProcessingReleaseButton();
+    while(!BufferButtons::IsEmpty())
+    {
+        KeyEvent event = BufferButtons::Extract();
+
+        LOG_WRITE("%s %s", event.key.Name(), event.type.ToString());
+
+        if (HINT_MODE_ENABLED)
+        {
+            ProcessButtonForHint(event.key);
+            continue;
+        }
+
+        if (!MENU_IS_SHOWN)
+        {
+            if(TriggerDebugConsole::Update(event.key))
+            {
+                continue;
+            }
+        }
+        ProcessKeyEvent(event);
+    }
 
     if (funcAterUpdate)
     {
         funcAterUpdate();
         funcAterUpdate = 0;
     }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::ProcessKeyEvent(KeyEvent event)
+{
+    static const pFuncVKE func[Key::NumButtons] =
+    {
+/* None        */ Handlers::E,
+/* Function    */ Handlers::Function, 
+/* Measures    */ Handlers::Measures, 
+/* Memory      */ Handlers::Memory,   
+/* Service     */ Handlers::Service,  
+/* ChannelA    */ Handlers::Chan,     
+/* ChannelB    */ Handlers::Chan,     
+/* Time        */ Handlers::Time,     
+/* Start       */ Handlers::Start,    
+/* Trig        */ Handlers::Trig,     
+/* Display     */ Handlers::Display,  
+/* RangeMoreA  */ Handlers::Range,    
+/* RangeLessA  */ Handlers::Range,    
+/* RShiftMoreA */ Handlers::RShift,   
+/* RShiftLessA */ Handlers::RShift,   
+/* RangeMoreB  */ Handlers::Range,    
+/* RangeLessB  */ Handlers::Range,    
+/* RShiftMoreB */ Handlers::RShift,   
+/* RShiftLessB */ Handlers::RShift,   
+/* TBaseMore   */ Handlers::TBase,    
+/* TBaseLess   */ Handlers::TBase,    
+/* TShiftMore  */ Handlers::TShift,   
+/* TShiftLess  */ Handlers::TShift,   
+/* TrigLevMore */ Handlers::TrigLev,  
+/* TrigLevLess */ Handlers::TrigLev,  
+/* Left        */ Handlers::Arrow,    
+/* Right       */ Handlers::Arrow,    
+/* Up          */ Handlers::Arrow,    
+/* Down        */ Handlers::Arrow,    
+/* Enter       */ Handlers::Arrow,    
+/* F1          */ Handlers::Func,     
+/* F2          */ Handlers::Func,     
+/* F3          */ Handlers::Func,     
+/* F4          */ Handlers::Func,     
+/* F5          */ Handlers::Func
+    };
+
+    func[event.key.code](event);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -376,9 +440,6 @@ void Menu::ProcessingLongPressureButton()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ProcessingPressButton()
 {
-
-
-
     if ((pressButton.code >= Key::F1 && pressButton.code <= Key::F5) || pressButton.Is(Key::Enter))
     {
         if (!pressButton.Is(Key::Enter))
@@ -802,28 +863,9 @@ void Menu::SetItemForHint(void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::ButtonEvent(Key button, TypePress press)
+void Menu::ButtonEvent(KeyEvent event)
 {
-    Sound::Beep(press);
+    Sound::Beep(event.type);
 
-    LOG_WRITE("%s %s", button.Name(), press.ToString());
-
-    if (HINT_MODE_ENABLED)
-    {
-        ProcessButtonForHint(button);
-        return;
-    }
-
-    if (!MENU_IS_SHOWN)
-    {
-        TriggerDebugConsole::Update(button);
-    }
-    if(press.Is(TypePress::Press) || press.Is(TypePress::Repeat))
-    {
-        pressButton = button;
-    }
-    else if(press.Is(TypePress::Release))
-    {
-        releaseButton = button;
-    }
+    BufferButtons::Push(event);
 }

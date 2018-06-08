@@ -303,6 +303,12 @@
     <ClCompile Include="..\..\Device\src\Keyboard\Keyboard.cpp">
       <Filter>Keyboard</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\BufferButtons.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\HandlersKeys.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -670,6 +676,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Keyboard\Keyboard.h">
       <Filter>Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\BufferButtons.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\HandlersKeys.h">
+      <Filter>Menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

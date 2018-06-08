@@ -96,7 +96,7 @@ bool Decoder::ButtonPress(uint8 data)
     }
     else
     {
-        Menu::ButtonEvent(button, TypePress(data));
+        Menu::ButtonEvent(KeyEvent(button, data));
     }
     return true;
 }

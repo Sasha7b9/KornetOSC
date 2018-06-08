@@ -12,7 +12,8 @@
 class TriggerDebugConsole
 {
 public:
-    static void Update(Key key);
+    /// Возвращает true, если триггер сработал - консоль открылась
+    static bool Update(Key key);
 
 private:
     static const int SIZE_BUFFER_FOR_BUTTONS = 10;

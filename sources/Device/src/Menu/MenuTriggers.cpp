@@ -11,7 +11,7 @@ const Key TriggerDebugConsole::sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS] =
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void TriggerDebugConsole::Update(Key button)
+bool TriggerDebugConsole::Update(Key button)
 {
     for (int i = SIZE_BUFFER_FOR_BUTTONS - 1; i > 0; i--)
     {
@@ -23,6 +23,9 @@ void TriggerDebugConsole::Update(Key button)
     {
         SHOW_DEBUG_MENU = 1;
         Display::ShowWarning(MenuDebugEnabled);
+        return true;
     }
+
+    return false;
 }
 

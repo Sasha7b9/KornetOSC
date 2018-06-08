@@ -2100,6 +2100,26 @@
               <FileType>5</FileType>
               <FilePath>.\src\Menu\MenuTriggers.h</FilePath>
             </File>
+            <File>
+              <FileName>BufferButtons.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\BufferButtons.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>BufferButtons.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\BufferButtons.h</FilePath>
+            </File>
+            <File>
+              <FileName>HandlersKeys.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\HandlersKeys.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HandlersKeys.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\HandlersKeys.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
