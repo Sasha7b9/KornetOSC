@@ -11,6 +11,7 @@ class Handlers
 {
 public:
     static void E(KeyEvent);
+
     static void RShiftLessA(KeyEvent);
     static void RShiftMoreA(KeyEvent);
     static void RShiftLessB(KeyEvent);
@@ -19,11 +20,17 @@ public:
     static void RangeMoreA(KeyEvent);
     static void RangeLessB(KeyEvent);
     static void RangeMoreB(KeyEvent);
-    static void TShift(KeyEvent);
-    static void TBase(KeyEvent);
+
+    static void TShiftLess(KeyEvent);
+    static void TShiftMore(KeyEvent);
+    static void TBaseLess(KeyEvent);
+    static void TBaseMore(KeyEvent);
+
+    static void TrigLevLess(KeyEvent);
+    static void TrigLevMore(KeyEvent);
+
     static void Func(KeyEvent);
     static void Arrow(KeyEvent);
-    static void TrigLev(KeyEvent);
     static void ChannelA(KeyEvent);
     static void ChannelB(KeyEvent);
     static void Function(KeyEvent);
