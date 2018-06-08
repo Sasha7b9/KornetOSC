@@ -94,12 +94,6 @@ public:
     static void Clear();
 
 private:
-    /// Нарисовать информацию в нижней части экрана.
-    static void WriteLowPart();
-
-    static int WriteChannel(Channel ch, int x, int y);
-
-    static void WriteTBase(int x, int y);
 
     static void DrawRShift();
 
