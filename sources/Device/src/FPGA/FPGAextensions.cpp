@@ -1009,7 +1009,7 @@ bool FPGA::FindWave(Channel ch)
     SetTrigLev((TrigSource)ch, TrigLevZero);
     SetRShift(ch, RShiftZero);
     SetModeCouple(ch, ModeCouple_AC);
-    SetTrigInput(TrigInput_Full);
+    SetTrigInput(TrigInput::Full);
 
     Range range = FindRange(ch);
 
@@ -1160,7 +1160,7 @@ static void FuncDrawAutoFind()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::FindParams(Channel, TBase *tBase)
 {
-    SetTrigInput(TrigInput_Full);
+    SetTrigInput(TrigInput::Full);
 
     Start();
     while (_GET_BIT(ReadFlag(), FL_FREQ_READY) == 0)

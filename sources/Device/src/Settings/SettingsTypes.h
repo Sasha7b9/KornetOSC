@@ -78,11 +78,20 @@ struct TBase
     }
 };
 
-enum TrigInput
+struct TrigInput
 {
-    TrigInput_Full,
-    TrigInput_HF,
-    TrigInput_LF
+    enum
+    {
+        Full,
+        HF,
+        LF
+    };
+    TrigInput(uint8 v = Full) : value(v) {};
+    uint8 value;
+    operator uint8() const
+    {
+        return value;
+    }
 };
 
 enum Channel
