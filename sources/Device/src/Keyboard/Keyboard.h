@@ -16,6 +16,11 @@ public:
         return code == value;
     }
 
+    bool IsFunctional()
+    {
+        return code >= F1 && code <= F5;
+    }
+
     pString Name();
 
     enum

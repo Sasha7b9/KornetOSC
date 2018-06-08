@@ -13,17 +13,24 @@ const Key TriggerDebugConsole::sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS] =
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool TriggerDebugConsole::Update(Key button)
 {
-    for (int i = SIZE_BUFFER_FOR_BUTTONS - 1; i > 0; i--)
+    if (button.IsFunctional())
     {
-        bufferForButtons[i] = bufferForButtons[i - 1];
-    }
-    bufferForButtons[0] = button;
+        for (int i = SIZE_BUFFER_FOR_BUTTONS - 1; i > 0; i--)
+        {
+            bufferForButtons[i] = bufferForButtons[i - 1];
+        }
+        bufferForButtons[0] = button;
 
-    if (memcmp(bufferForButtons, sampleBufferForButtons, SIZE_BUFFER_FOR_BUTTONS) == 0)
+        if (memcmp(bufferForButtons, sampleBufferForButtons, SIZE_BUFFER_FOR_BUTTONS) == 0)
+        {
+            SHOW_DEBUG_MENU = 1;
+            Display::ShowWarning(MenuDebugEnabled);
+            return true;
+        }
+    }
+    else
     {
-        SHOW_DEBUG_MENU = 1;
-        Display::ShowWarning(MenuDebugEnabled);
-        return true;
+        bufferForButtons[0] = button;
     }
 
     return false;
