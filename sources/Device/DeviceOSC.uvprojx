@@ -1855,6 +1855,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\BottomPart.h</FilePath>
             </File>
+            <File>
+              <FileName>RShift.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\RShift.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RShift.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\RShift.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

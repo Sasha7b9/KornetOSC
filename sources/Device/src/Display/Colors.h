@@ -27,12 +27,10 @@ public:
 
     static Color NUMBER;
 
-    static Color FLASH_10;
-    static Color FLASH_01;
-
     static Color FILL;
     static Color BACK;
-    static Color CHAN[4];
+    static Color FLASH_10;
+    static Color FLASH_01;
 
     explicit Color(uint8 val) : value(val) { }
     Color(const Color &color) : value(color.value) { }
@@ -56,6 +54,8 @@ public:
     Color& operator=(const Color &color);
 
 private:
+
+    static Color CHAN[4];
     
     enum
     {

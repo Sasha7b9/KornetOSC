@@ -28,7 +28,7 @@ void Device::Init()
 
     //FPGA::Init();
 
-    //Settings::Load();
+    Settings::Load();
 
     //FPGA::LoadSettings();
 

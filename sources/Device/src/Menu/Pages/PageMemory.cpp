@@ -186,7 +186,7 @@ static void OnPress_Last_SaveToDrive()
 
 static void Draw_Last_SaveToDrive(int x, int y)
 {
-    if (FDRIVE_IS_CONNECTED)
+    if (FDrive::IsConnected())
     {
         Painter::SetFont(TypeFont_UGO2);
         Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
@@ -312,12 +312,12 @@ DEF_SMALL_BUTTON(   bDrive_Manager_LevelDown,                                   
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool IsActive_Drive_Manager()
 {
-    return FDRIVE_IS_CONNECTED;
+    return FDrive::IsConnected();
 }
 
 void OnPress_Drive_Manager()
 {
-    if (FDRIVE_IS_CONNECTED)
+    if (FDrive::IsConnected())
     {
         FDrive::Mount();
         Display::SetDrawMode(DrawMode_Auto, FileManager::Draw);
@@ -657,7 +657,7 @@ DEF_PAGE_4(         pMemory,                                                    
 
 void Memory_SaveSignalToFlashDrive()
 {
-    if (FDRIVE_IS_CONNECTED)
+    if (FDrive::IsConnected())
     {
         if (FILE_NAMING_MODE_MANUAL)
         {
@@ -913,7 +913,7 @@ static void OnPress_Internal_SaveToDrive()
 
 static void Draw_Internal_SaveToDrive(int x, int y)
 {
-    if (FDRIVE_IS_CONNECTED)
+    if (FDrive::IsConnected())
     {
         Painter::SetFont(TypeFont_UGO2);
         Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
@@ -1095,7 +1095,7 @@ DEF_SMALL_BUTTON(   bSetName_Insert,                                            
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_SetName_Save()
 {
-    if (FDRIVE_IS_CONNECTED)
+    if (FDrive::IsConnected())
     {
         OnPress_SetName_Exit();
         NEED_SAVE_TO_FLASHDRIVE = 1;
@@ -1104,7 +1104,7 @@ static void OnPress_SetName_Save()
 
 static void Draw_SetName_Save(int x, int y)
 {
-    if (FDRIVE_IS_CONNECTED)
+    if (FDrive::IsConnected())
     {
         Painter::SetFont(TypeFont_UGO2);
         Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);

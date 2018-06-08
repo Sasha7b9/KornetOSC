@@ -95,10 +95,6 @@ public:
 
 private:
 
-    static void DrawRShift();
-
-    static void DrawRShift(Channel ch);
-
     static void UpdateOsci();
 
     static void UpdateTester();

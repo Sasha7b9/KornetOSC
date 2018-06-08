@@ -17,10 +17,10 @@ static const Settings defaultSettings =
 
     {RShiftZero, RShiftZero},       // chan_shift
     {Range_500mV, Range_500mV},     // chan_range
-    {ModeCouple_DC, ModeCouple_DC},         // chan_couple
+    {ModeCouple_DC, ModeCouple_DC}, // chan_couple
     {true, true},                   // chan_enable
 
-    TrigSource_A,                              // trig_source
+    TrigSource_A,                   // trig_source
     TrigInput_Full,                 // trig_input
     Polarity_Rising,                // trig_polarity
     {TrigLevZero, TrigLevZero},     // trig_lev

@@ -41,7 +41,7 @@ DEF_CHOICE_2(       cSettings_Colors_Scheme,                                    
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-ColorType PageDisplay::colorTypeA = COLOR_TYPE(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::CHAN[A])
+ColorType PageDisplay::colorTypeA = COLOR_TYPE(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::Chan(A))
 
 DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelA,                                                        //--- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Êàíàë 1 ---
     "Êàíàë 1", "Channel 1",
@@ -51,7 +51,7 @@ DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelA,                                 
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-ColorType PageDisplay::colorTypeB = COLOR_TYPE(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::CHAN[B])
+ColorType PageDisplay::colorTypeB = COLOR_TYPE(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::Chan(B))
 DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelB,                                                        //--- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Êàíàë 2 ---
     "Êàíàë 2", "Channel 2",
     "Âûáîð öâåòà êàíàëà 1",
@@ -73,8 +73,8 @@ void PageDisplay::OnChanged_Settings_Colors_Background(bool)
 {
     Color::InitGlobalColors();
 
-    gcSettings_Colors_ChannelA.ct->color = Color::CHAN[A];
-    gcSettings_Colors_ChannelB.ct->color = Color::CHAN[B];
+    gcSettings_Colors_ChannelA.ct->color = Color::Chan(A);
+    gcSettings_Colors_ChannelB.ct->color = Color::Chan(B);
     gcSettings_Colors_Grid.ct->color = Color::GRID;
 
     gcSettings_Colors_ChannelA.ct->Init(true);

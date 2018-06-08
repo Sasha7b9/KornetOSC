@@ -294,6 +294,9 @@
     <ClCompile Include="..\..\Device\src\Display\BottomPart.cpp">
       <Filter>Display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Display\RShift.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -654,6 +657,9 @@
       <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\BottomPart.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Display\RShift.h">
       <Filter>Display</Filter>
     </ClInclude>
   </ItemGroup>

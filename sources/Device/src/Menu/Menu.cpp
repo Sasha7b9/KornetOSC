@@ -51,7 +51,7 @@ void Menu::ShortPressureButton(Key button)
 {
     if (!HINT_MODE_ENABLED)
     {
-        if (button == K_Memory && FDRIVE_IS_CONNECTED && MODE_BTN_MEMORY_IS_SAVE)
+        if (button == K_Memory && FDrive::IsConnected() && MODE_BTN_MEMORY_IS_SAVE)
         {
             NEED_SAVE_TO_FLASHDRIVE = 1;
         }
@@ -248,7 +248,7 @@ void Menu::ProcessingShortPressureButton()
 {
     if(shortPressureButton != K_None)
     {
-        if (shortPressureButton == K_Memory && MODE_BTN_MEMORY_IS_SAVE && FDRIVE_IS_CONNECTED)
+        if (shortPressureButton == K_Memory && MODE_BTN_MEMORY_IS_SAVE && FDrive::IsConnected())
         {
             EXIT_FROM_SETNAME_TO = (uint)(MENU_IS_SHOWN ? RETURN_TO_MAIN_MENU : RETURN_TO_DISABLE_MENU);
             Memory_SaveSignalToFlashDrive();
@@ -462,7 +462,7 @@ void Menu::ShortPress_MAC(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ChangeStateFlashDrive()
 {
-    if(!FDRIVE_IS_CONNECTED)
+    if(!FDrive::IsConnected())
     {
         if(GetNameOpenedPage() == PageSB_Memory_Drive_Manager)
         {

@@ -14,6 +14,7 @@
 #include "FPGA/FPGAMath.h"
 #include "Console.h"
 #include "BottomPart.h"
+#include "RShift.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -188,7 +189,7 @@ void Display::UpdateOsci()
 
     BottomPart::Draw();
 
-    DrawRShift();
+    RShift::Draw();
 
     PainterData::DrawData();
    
@@ -270,31 +271,6 @@ void Display::UpdateMultimeter()
     Painter::DrawText(10, 10, "Ìףכüעטלוענ", Color::RED);
 
     Painter::EndScene();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::DrawRShift()
-{
-    DrawRShift(A);
-    DrawRShift(B);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::DrawRShift(Channel ch)
-{
-    Painter::SetColor(Color::Chan(ch));
-
-    int delta = (SET_RSHIFT(ch) - RShiftZero) / STEP_RSHIFT;
-
-    int y = (Grid::Bottom() - Grid::Top()) / 2 + Grid::Top() - delta;
-
-    Painter::DrawChar(Grid::Left() - 8, y - 4, (char)SYMBOL_RSHIFT_MARKER);
-
-    Painter::SetFont(TypeFont_5);
-
-    Painter::DrawChar(Grid::Left() - 7, y - 6, ch == A ? '1' : '2', Color::BACK);
-
-    Painter::SetFont(TypeFont_8);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

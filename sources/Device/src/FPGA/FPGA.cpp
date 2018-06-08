@@ -14,6 +14,7 @@
 #include "Utils/MathOSC.h"
 #include "Utils/Math.h"
 #include "Utils/ProcessingSignal.h"
+#include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
 #include "Data/Storage.h"
 #include "Menu/Pages/PageTime.h"
@@ -1688,6 +1689,12 @@ void FPGA::SetENumSignalsInSec(int numSigInSec)
     Timer::SetAndEnable(kENumSignalsInSec, OnTimerCanReadData, (uint)(1000.f / numSigInSec));
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+const char *FPGA::GetTShiftString(int16 tShiftRel, char buffer[20])
+{
+    float tShiftVal = TSHIFT_2_ABS(tShiftRel, SET_TBASE);
+    return Time2String(tShiftVal, true, buffer);
+}
 
 
 

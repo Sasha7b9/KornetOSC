@@ -13,8 +13,8 @@ extern uint GlobalColors[32] =
     /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),   // BLACK
     /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),   // WHITE
     /* 2  */    MAKE_COLOR(0x60, 0x60, 0x60),   // GRID
-    /* 3  */    MAKE_COLOR(0x40, 0x40, 0x40),   // DATA_A
-    /* 4  */    MAKE_COLOR(0x80, 0x80, 0x80),   // DATA_B
+    /* 3  */    MAKE_COLOR(0x00, 0xdf, 0xff),   // DATA_A
+    /* 4  */    MAKE_COLOR(0x00, 0xff, 0x00),   // DATA_B
     /* 5  */    MAKE_COLOR(0xc0, 0xc0, 0xc0),   // MENU_FIELD
     /* 6  */    MAKE_COLOR(0x00, 0x00, 0xff),   // MENU_TITLE
     /* 7  */    MAKE_COLOR(0x00, 0x00, 25),     // MENU_TITLE_DARK

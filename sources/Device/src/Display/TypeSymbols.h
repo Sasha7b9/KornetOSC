@@ -10,3 +10,7 @@
 // TypeFont_8
 
 #define SYMBOL_RSHIFT_MARKER    '\x93'
+
+// TypeFont_UGO2
+
+#define SYMBOL_FLASH_DRIVE      '\x80'  ///< Символ флешки внизу экрана

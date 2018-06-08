@@ -34,6 +34,7 @@
     <ClCompile Include="..\..\Device\src\Display\Grid.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp" />
     <ClCompile Include="..\..\Device\src\Display\PainterData.cpp" />
+    <ClCompile Include="..\..\Device\src\Display\RShift.cpp" />
     <ClCompile Include="..\..\Device\src\FlashDrive\FileManager.cpp" />
     <ClCompile Include="..\..\Device\src\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="..\..\Device\src\Display\Grid.h" />
     <ClInclude Include="..\..\Device\src\Display\Painter.h" />
     <ClInclude Include="..\..\Device\src\Display\PainterData.h" />
+    <ClInclude Include="..\..\Device\src\Display\RShift.h" />
     <ClInclude Include="..\..\Device\src\Display\Symbols.h" />
     <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h" />
     <ClInclude Include="..\..\Device\src\FlashDrive\FileManager.h" />

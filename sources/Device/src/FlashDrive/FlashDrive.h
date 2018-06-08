@@ -61,7 +61,5 @@ public:
 };
 
 
-#define FDRIVE_IS_CONNECTED (FDrive::IsConnected())
-
 /** @}
  */

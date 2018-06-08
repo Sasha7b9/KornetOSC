@@ -882,7 +882,7 @@ DEF_PAGE_SB(        ppSettings,                                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_SaveFirmware()
 {
-    return FDRIVE_IS_CONNECTED;
+    return FDrive::IsConnected();
 }
 
 static void OnPress_SaveFirmware()

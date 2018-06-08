@@ -180,6 +180,8 @@ public:
     static void ClearData();
     /// \todo временный костыль. ѕри изменении tShift нужно временно останавливать альтеру, а при изменении развЄртки не нужно
     static void SetTShift(int tShift, bool needFPGApause);
+    /// ¬озвращает установленное смещение по времени в текстовом виде, пригодном дл€ вывода на экран
+    static const char *GetTShiftString(int16 tShiftRel, char buffer[20]);
 
     static int addShiftForFPGA;
 
