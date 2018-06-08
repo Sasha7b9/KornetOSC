@@ -4,7 +4,7 @@
 #include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
 #include "Hardware/Timer.h"
-#include "Hardware/Decoder.h"
+#include "Keyboard/Decoder.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"

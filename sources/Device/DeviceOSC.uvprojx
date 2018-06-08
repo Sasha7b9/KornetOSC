@@ -1996,16 +1996,6 @@
               <FilePath>.\src\Hardware\CPU.h</FilePath>
             </File>
             <File>
-              <FileName>Keyboard.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Keyboard.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Keyboard.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Keyboard.h</FilePath>
-            </File>
-            <File>
               <FileName>Sound.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\Sound.cpp</FilePath>
@@ -2014,16 +2004,6 @@
               <FileName>Sound.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Sound.h</FilePath>
-            </File>
-            <File>
-              <FileName>Decoder.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Decoder.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Decoder.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Decoder.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2109,6 +2089,16 @@
               <FileName>MenuPagesNames.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\MenuPagesNames.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuTriggers.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\MenuTriggers.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuTriggers.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\MenuTriggers.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2714,6 +2704,31 @@
               <FileName>usbh_msc_bot.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Keyboard</GroupName>
+          <Files>
+            <File>
+              <FileName>Decoder.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Keyboard\Decoder.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Decoder.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Keyboard\Decoder.h</FilePath>
+            </File>
+            <File>
+              <FileName>Keyboard.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Keyboard\Keyboard.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Keyboard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Keyboard\Keyboard.h</FilePath>
             </File>
           </Files>
         </Group>

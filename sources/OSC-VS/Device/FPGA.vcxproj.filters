@@ -55,6 +55,9 @@
     <Filter Include="FlashDrive">
       <UniqueIdentifier>{515d5df4-2a3c-4624-aaf8-ac449aa40684}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Keyboard">
+      <UniqueIdentifier>{951b15f8-82d7-46c1-9900-310183ef7e32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
@@ -231,9 +234,6 @@
     <ClCompile Include="..\..\Device\src\Settings\SettingsMemory.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Hardware\Keyboard.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Settings\SettingsChannel.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
@@ -294,8 +294,14 @@
     <ClCompile Include="..\..\Device\src\Display\RShift.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Hardware\Decoder.cpp">
-      <Filter>Hardware</Filter>
+    <ClCompile Include="..\..\Device\src\Menu\MenuTriggers.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Keyboard\Decoder.cpp">
+      <Filter>Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Keyboard\Keyboard.cpp">
+      <Filter>Keyboard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -572,9 +578,6 @@
     <ClInclude Include="..\..\Device\src\Settings\SettingsMemory.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Hardware\Keyboard.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Settings\SettingsChannel.h">
       <Filter>Settings</Filter>
     </ClInclude>
@@ -659,8 +662,14 @@
     <ClInclude Include="..\..\Device\src\Display\RShift.h">
       <Filter>Display</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Hardware\Decoder.h">
-      <Filter>Hardware</Filter>
+    <ClInclude Include="..\..\Device\src\Menu\MenuTriggers.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Keyboard\Decoder.h">
+      <Filter>Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Keyboard\Keyboard.h">
+      <Filter>Keyboard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

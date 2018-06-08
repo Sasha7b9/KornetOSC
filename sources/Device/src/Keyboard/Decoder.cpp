@@ -1,6 +1,7 @@
 #include "Decoder.h"
 #include "Hardware/FSMC.h"
 #include "Menu/Menu.h"
+#include "Log.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +96,7 @@ bool Decoder::ButtonPress(uint8 data)
     }
     else
     {
-        Menu::ButtonPress(button, data);
+        Menu::ButtonEvent(button, TypePress(data));
     }
     return true;
 }

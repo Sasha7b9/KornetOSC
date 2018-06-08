@@ -5,7 +5,7 @@
 #include "FPGA/FPGA.h" 
 #include "Hardware/Timer.h"
 #include "Menu/Pages/PageDebug.h"
-#include "Hardware/Keyboard.h"
+#include "Keyboard/Keyboard.h"
 #include "Utils/Dictionary.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"

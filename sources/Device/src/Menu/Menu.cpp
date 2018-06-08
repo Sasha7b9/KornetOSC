@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Log.h"
 #include "Globals.h"
 #include "Display/Grid.h"
 #include "Display/DisplayTypes.h"
@@ -15,6 +16,7 @@
 #include "Menu/Pages/PageChannels.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
+#include "MenuTriggers.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,9 +26,6 @@
       Key Menu::releaseButton = Key::None;
          Control *Menu::itemUnderKey = 0;
           pFuncVV Menu::funcAterUpdate = 0;
-      Key Menu::bufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {Key::None};
-const Key Menu::sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {Key::F5, Key::F5, Key::F4, Key::F4, Key::F3, Key::F3, Key::F2, Key::F2, Key::F1, 
-                                                                    Key::F1};
          Control *Menu::itemUnderButton[Key::NumButtons] = {0};
       const char *Menu::stringForHint = 0;
          Control *Menu::itemHint = 0;
@@ -178,16 +177,6 @@ void Menu::ProcessButtonForHint(Key button)
     else
     {
         shortPressureButton = button;
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::ReleaseButton(Key button)
-{
-    Sound::ButtonRelease();
-    if (!HINT_MODE_ENABLED)
-    {
-        releaseButton = button;
     }
 }
 
@@ -387,6 +376,9 @@ void Menu::ProcessingLongPressureButton()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ProcessingPressButton()
 {
+
+
+
     if ((pressButton.code >= Key::F1 && pressButton.code <= Key::F5) || pressButton.Is(Key::Enter))
     {
         if (!pressButton.Is(Key::Enter))
@@ -810,14 +802,12 @@ void Menu::SetItemForHint(void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::ButtonPress(Key button, TypePress press)
+void Menu::ButtonEvent(Key button, TypePress press)
 {
-    if(!press.Is(TypePress::Release))
-    {
-        //return;
-    }
+    Sound::Beep(press);
 
-    Sound::ButtonPress();
+    LOG_WRITE("%s %s", button.Name(), press.ToString());
+
     if (HINT_MODE_ENABLED)
     {
         ProcessButtonForHint(button);
@@ -826,17 +816,14 @@ void Menu::ButtonPress(Key button, TypePress press)
 
     if (!MENU_IS_SHOWN)
     {
-        for (int i = SIZE_BUFFER_FOR_BUTTONS - 1; i > 0; i--)
-        {
-            bufferForButtons[i] = bufferForButtons[i - 1];
-        }
-        bufferForButtons[0] = button;
-
-        if (memcmp(bufferForButtons, sampleBufferForButtons, SIZE_BUFFER_FOR_BUTTONS) == 0)
-        {
-            SHOW_DEBUG_MENU = 1;
-            Display::ShowWarning(MenuDebugEnabled);
-        }
+        TriggerDebugConsole::Update(button);
     }
-    pressButton = button;
+    if(press.Is(TypePress::Press) || press.Is(TypePress::Repeat))
+    {
+        pressButton = button;
+    }
+    else if(press.Is(TypePress::Release))
+    {
+        releaseButton = button;
+    }
 }

@@ -1,5 +1,5 @@
 #include "defines.h"
-#include "Hardware/Decoder.h"
+#include "Keyboard/Decoder.h"
 #include "FSMC.h"
 #include "GPIO.h"
 #include "Log.h"

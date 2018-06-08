@@ -44,17 +44,17 @@
     <ClCompile Include="..\..\Device\src\Globals.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\AT25160N.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp" />
-    <ClCompile Include="..\..\Device\src\Hardware\Decoder.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\EEPROM.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\GPIO.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\Hardware.cpp" />
-    <ClCompile Include="..\..\Device\src\Hardware\Keyboard.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\Sound.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\stm32\stm32.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\stm32\stm437.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\stm32\Timer4XX.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\Timer.cpp" />
+    <ClCompile Include="..\..\Device\src\Keyboard\Decoder.cpp" />
+    <ClCompile Include="..\..\Device\src\Keyboard\Keyboard.cpp" />
     <ClCompile Include="..\..\Device\src\libs\CMSIS\system_stm32f4xx.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -66,6 +66,7 @@
     <ClCompile Include="..\..\Device\src\Menu\MenuItems.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\MenuItemsGraphics.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\MenuItemsLogic.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\MenuTriggers.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\Definition.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\HelpContent.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannels.cpp" />
@@ -163,17 +164,17 @@
     <ClInclude Include="..\..\Device\src\Globals.h" />
     <ClInclude Include="..\..\Device\src\Hardware\AT25160N.h" />
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />
-    <ClInclude Include="..\..\Device\src\Hardware\Decoder.h" />
     <ClInclude Include="..\..\Device\src\Hardware\EEPROM.h" />
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h" />
     <ClInclude Include="..\..\Device\src\Hardware\GPIO.h" />
     <ClInclude Include="..\..\Device\src\Hardware\Hardware.h" />
-    <ClInclude Include="..\..\Device\src\Hardware\Keyboard.h" />
     <ClInclude Include="..\..\Device\src\Hardware\Sound.h" />
     <ClInclude Include="..\..\Device\src\Hardware\stm32\stm32.h" />
     <ClInclude Include="..\..\Device\src\Hardware\stm32\stm437.h" />
     <ClInclude Include="..\..\Device\src\Hardware\stm32\Timer4XX.h" />
     <ClInclude Include="..\..\Device\src\Hardware\Timer.h" />
+    <ClInclude Include="..\..\Device\src\Keyboard\Decoder.h" />
+    <ClInclude Include="..\..\Device\src\Keyboard\Keyboard.h" />
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_it.h" />
     <ClInclude Include="..\..\Device\src\Log.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="..\..\Device\src\Menu\MenuItemsAdd.h" />
     <ClInclude Include="..\..\Device\src\Menu\MenuItemsDefs.h" />
     <ClInclude Include="..\..\Device\src\Menu\MenuPagesNames.h" />
+    <ClInclude Include="..\..\Device\src\Menu\MenuTriggers.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\Definition.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\HelpContent.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\HelpContentPages.h" />

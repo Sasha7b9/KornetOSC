@@ -1,5 +1,5 @@
 #pragma once
-#include "Hardware/Keyboard.h"
+#include "Keyboard/Keyboard.h"
 #include "Menu/MenuItems.h"
 
 
@@ -16,6 +16,15 @@
 #define MENU_TEMP_ENABLE_STRING_NAVI() Menu::TemporaryEnableStrNavi()
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Сюда складируются поступающие события кнопок
+class BufferButtons
+{
+public:
+    static bool Add();
+};
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Menu
 {
 public:
@@ -29,10 +38,8 @@ public:
     static void ShortPressureButton(Key button);
     /// Функция обработки длинного нажатия кнопки (более 0.5 сек.).
     static void LongPressureButton(Key button);
-
-    static void ButtonPress(Key key, TypePress type);
-    /// Функция вызывается, когда кнопка переходит из нажатого в отжатое положение.
-    static void ReleaseButton(Key button);
+    /// Функция вызывается при нажатии, повторе и отпускании кнопки
+    static void ButtonEvent(Key key, TypePress type);
     /// Установить время автоматического сокрытия меню в соответствии с установками.
     static void SetAutoHide(bool active);
     /// Возвращает путь к текущему пункту меню в текстовом виде, готовом к выводу на экран.
@@ -113,11 +120,6 @@ private:
     static Key releaseButton;
     /// Эта функция будет вызывана один раз после Menu::Update().
     static pFuncVV funcAterUpdate;
-  
-    static const int SIZE_BUFFER_FOR_BUTTONS = 10;
-    static Key bufferForButtons[SIZE_BUFFER_FOR_BUTTONS];
-    
-    static const Key sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS];
 };
 
 

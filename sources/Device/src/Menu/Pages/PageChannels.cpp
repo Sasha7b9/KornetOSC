@@ -5,7 +5,7 @@
 #include "FPGA/FPGAextensions.h"
 #include "Log.h"
 #include "Menu/MenuItems.h"
-#include "Hardware/Keyboard.h"
+#include "Keyboard/Keyboard.h"
 #include "Settings/Settings.h"
 #include "Settings/SettingsTypes.h"
 #include "Menu/Pages/Definition.h"

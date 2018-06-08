@@ -2,7 +2,7 @@
 #include "SettingsChannel.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAMath.h"
-#include "Hardware/Keyboard.h"
+#include "Keyboard/Keyboard.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 
