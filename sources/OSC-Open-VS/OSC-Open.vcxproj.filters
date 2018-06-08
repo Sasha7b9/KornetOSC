@@ -69,9 +69,6 @@
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma2d.h">
       <Filter>libs\HAL</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc.h">
-      <Filter>libs\HAL</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h">
       <Filter>libs\CMSIS</Filter>
     </ClInclude>
@@ -195,6 +192,12 @@
     <ClInclude Include="..\OSC-Open\src\Hardware\LTDC.h">
       <Filter>Hardware</Filter>
     </ClInclude>
+    <ClInclude Include="..\common\libs\STM32Cube_F7\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_ltdc.h">
+      <Filter>libs\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\libs\STM32Cube_F7\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_ltdc_ex.h">
+      <Filter>libs\HAL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -228,9 +231,6 @@
       <Filter>libs\HAL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma2d.c">
-      <Filter>libs\HAL</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc.c">
       <Filter>libs\HAL</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Panel\src\libs\CMSIS\system_stm32f4xx.c">
@@ -295,6 +295,9 @@
     </ClCompile>
     <ClCompile Include="..\OSC-Open\src\Hardware\LTDC.cpp">
       <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\libs\STM32Cube_F7\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_ltdc.c">
+      <Filter>libs\HAL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

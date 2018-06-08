@@ -19,4 +19,7 @@ public:
 private:
 
     static void SetBuffers(uint frontBuffer, uint backBuffer);
+
+    static uint frontBuffer;
+    static uint backBuffer;
 };

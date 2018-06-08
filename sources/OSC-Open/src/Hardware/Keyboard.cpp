@@ -50,31 +50,31 @@ static int selY = 0; // çäåñü å¸ êîîğäèíàòû
 static StructButton strBtn1[ROWS1][COLS1] =
 {
     {{"F1",      B_1},        {"F2",      B_2},       {"F3",     B_3},       {"F4",        B_4},        {"F5",     B_5}},
-    {{"ÔÓÍÊÖÈß", B_Function}, {"ÄÈÑÏËÅÉ", B_Display}, {"ÑÅĞÂÈÑ", B_Service}, {"ÈÇÌÅĞÅÍÈß", B_Measures}, {"ÏÀÌßÒÜ", B_Memory}}
+    {{"ÔÓÍÊÖÈß", K_Function}, {"ÄÈÑÏËÅÉ", K_Display}, {"ÑÅĞÂÈÑ", K_Service}, {"ÈÇÌÅĞÅÍÈß", K_Measures}, {"ÏÀÌßÒÜ", K_Memory}}
 };
 
 static const Color green = Color::GREEN_25;
 static const Color blue = Color::BLUE_25;
 static const Color red = Color::RED_25;
 
-static StructButton bNone        = {"",          B_None };
+static StructButton bNone        = {"",          K_None };
 static StructButton bTBaseMore   = {"íÑ",        B_TBaseMore,   green };
 static StructButton bTBaseLess   = {"Ñ",         B_TBaseLess,   green };
-static StructButton bTime        = {"ĞÀÇÂÅĞÒÊÀ", B_Time,        Color::GRAY_25 };
+static StructButton bTime        = {"ĞÀÇÂÅĞÒÊÀ", K_Time,        Color::GRAY_25 };
 static StructButton bTShiftLess  = {"Âğ âëåâî",  B_TShiftLess,  green };
 static StructButton bTShiftMore  = {"Âğ âïğàâî", B_TShiftMore,  green };
-static StructButton bStart       = {"ÏÓÑÊ/ÑÒÎÏ", B_Start,       Color::GRAY_25};
-static StructButton bChannelA    = {"ÊÀÍÀË 1",   B_ChannelA,    Color::GRAY_25 };
+static StructButton bStart       = {"ÏÓÑÊ/ÑÒÎÏ", K_Start,       Color::GRAY_25};
+static StructButton bChannelA    = {"ÊÀÍÀË 1",   K_ChannelA,    Color::GRAY_25 };
 static StructButton bRangeLessA  = {"ìÂ",        B_RangeLessA,  red };
-static StructButton bRangeMoreA  = {"Â",         B_RangeMoreA,  red };
+static StructButton bRangeMoreA  = {"Â",         K_RangeMoreA,  red };
 static StructButton bRShiftMoreA = {"Ââåğõ",     B_RShiftMoreA, red };
 static StructButton bRShiftLessA = {"Âíèç",      B_RShiftLessA, red };
-static StructButton bChannelB    = {"ÊÀÍÀË 2",   B_ChannelB,    Color::GRAY_25 };
+static StructButton bChannelB    = {"ÊÀÍÀË 2",   K_ChannelB,    Color::GRAY_25 };
 static StructButton bRangeLessB  = {"ìÂ",        B_RangeLessB,  red };
 static StructButton bRangeMoreB  = {"Â",         B_RangeMoreB,  red };
 static StructButton bRShiftMoreB = {"Ââåğõ",     B_RShiftMoreB, red };
 static StructButton bRShiftLessB = {"Âíèç",      B_RShiftLessB, red };
-static StructButton bTrig        = {"Ñèíõğ",     B_Trig,        Color::GRAY_25 };
+static StructButton bTrig        = {"Ñèíõğ",     K_Trig,        Color::GRAY_25 };
 static StructButton bTrigLevMore = {"Ñ ââåğõ",   B_TrigLevMore, blue };
 static StructButton bTrigLevLess = {"Ñ âíèç",    B_TrigLevLess, blue };
 
@@ -217,13 +217,51 @@ void Keyboard::Update()
                     {
                         selX = strBtn1[i][j].x;
                         selY = strBtn1[i][j].y;
+                        timeLastPress = TIME_MS;
+                    }
+                }
+            }
+            for (int i = 0; i < ROWS2; i++)
+            {
+                for (int j = 0; j < COLS2; j++)
+                {
+                    if (x > strBtn2[i][j].x && x < (strBtn2[i][j].x + WIDTH_BTN2) &&
+                        y > strBtn2[i][j].y && y < (strBtn2[i][j].y + HEIGHT_BTN2))
+                    {
+                        selX = strBtn2[i][j].x;
+                        selY = strBtn2[i][j].y;
+                        timeLastPress = TIME_MS;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < ROWS1; i++)
+            {
+                for (int j = 0; j < COLS1; j++)
+                {
+                    if (selX == strBtn1[i][j].x && selY == strBtn1[i][j].y)
+                    {
+                        FillCommand(strBtn1[i][j].control, Release);
+                        selX = -1;
+                    }
+                }
+            }
+            for (int i = 0; i < ROWS2; i++)
+            {
+                for (int j = 0; j < COLS2; j++)
+                {
+                    if (selX == strBtn2[i][j].x && selY == strBtn2[i][j].y)
+                    {
+                        FillCommand(strBtn2[i][j].control, Release);
+                        selX = -1;
                     }
                 }
             }
         }
 
         TS_flag = 0;
-        timeLastPress = TIME_MS;
     }
     else if (selX != -1)
     {
@@ -233,7 +271,7 @@ void Keyboard::Update()
             {
                 if (selX == strBtn1[i][j].x && selY == strBtn1[i][j].y)
                 {
-                    FillCommand(strBtn1[i][j].control, Up);
+                    FillCommand(strBtn1[i][j].control, Release);
                     selX = -1;
                 }
             }

@@ -2,8 +2,8 @@
 
 enum Control
 {
-    B_None,
-    B_Function,
+    K_None,
+    K_Function,
     K_Measures,
     K_Memory,
     K_Service,
@@ -13,7 +13,7 @@ enum Control
     K_Start,
     K_Trig,         //
     K_Display,
-    B_RangeMoreA,
+    K_RangeMoreA,
     B_RangeLessA,
     B_RShiftMoreA,
     B_RShiftLessA,
@@ -44,7 +44,7 @@ enum TypePress
 {
     Press,
     Repeat,
-    Up
+    Release
 };
 
 /// Хранит код органа управления и его дейстиве
