@@ -141,9 +141,16 @@ static void LoadSettingsCalcAddRShift(Channel ch)
 {
     FPGA::SetRShift(ch, RShiftZero);
     FPGA::SetTBase(TBase::_200us);
-    FPGA::SetTrigSource(ch == A ? TrigSource_A : TrigSource_B);
+    if (ch == A)
+    {
+        FPGA::SetTrigSource(TrigSource::A);
+    }
+    else
+    {
+        FPGA::SetTrigSource(TrigSource::B);
+    }
     FPGA::SetTrigPolarity(TrigPolarity::Rising);
-    FPGA::SetTrigLev((TrigSource)ch, TrigLevZero);
+    FPGA::SetTrigLev(TrigSource((uint8)ch), TrigLevZero);
 
     FPGA::SetCalibratorMode(Calibrator_GND);                 // Устанавливаем выход калибратора в ноль
 }
@@ -1005,8 +1012,8 @@ bool FPGA::FindWave(Channel ch)
 {
     SetTBase((TBase)((int)MIN_TBASE_P2P - 1));
     sChannel_SetEnabled(ch, true);
-    SetTrigSource((TrigSource)ch);
-    SetTrigLev((TrigSource)ch, TrigLevZero);
+    SetTrigSource(TrigSource((uint8)ch));
+    SetTrigLev(TrigSource((uint8)ch), TrigLevZero);
     SetRShift(ch, RShiftZero);
     SetModeCouple(ch, ModeCouple_AC);
     SetTrigInput(TrigInput::Full);

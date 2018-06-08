@@ -351,7 +351,7 @@ void Menu::ProcessingLongPressureButton()
         }
         else if(button.Is(Key::Trig))
         {
-            FPGA::SetTrigLev(TRIGSOURCE, TrigLevZero);
+            FPGA::SetTrigLev(TRIG_SOURCE, TrigLevZero);
         }
         else if(button.Is(Key::ChannelA))
         {

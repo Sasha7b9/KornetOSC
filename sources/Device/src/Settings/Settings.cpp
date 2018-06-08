@@ -20,7 +20,7 @@ static const Settings defaultSettings =
     {ModeCouple_DC, ModeCouple_DC}, // chan_couple
     {true, true},                   // chan_enable
 
-    TrigSource_A,                   // trig_source
+    TrigSource::A,                  // trig_source
     TrigInput::Full,                // trig_input
     TrigPolarity::Rising,           // trig_polarity
     {TrigLevZero, TrigLevZero},     // trig_lev

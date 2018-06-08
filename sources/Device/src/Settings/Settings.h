@@ -34,7 +34,6 @@
 #define THICKNESS_SIGNAL_IS_3           (THICKNESS_SIGNAL == Thickness_3)
 
 #define TRIG_MODE                       (set.trig_mode)
-#define TRIG_SOURCE                     (set.trig_source)
 
 #define TESTER_CONTROL                  (set.test_control)
 #define TESTER_CONTROL_IS_U             (TESTER_CONTROL == Control_Voltage)

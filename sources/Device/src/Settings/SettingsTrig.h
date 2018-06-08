@@ -10,8 +10,8 @@
  *  @{
  */
 
-#define SET_TRIGLEV(ch)         (set.trig_lev[ch])
-#define SET_TRIGLEV_SOURCE      SET_TRIGLEV(TRIGSOURCE)
+#define SET_TRIGLEV(ch)         (set.trig_lev[(uint8)ch])
+#define SET_TRIGLEV_SOURCE      SET_TRIGLEV((uint8)TRIG_SOURCE)
 #define SET_TRIGLEV_A           (SET_TRIGLEV(A))
 #define SET_TRIGLEV_B           (SET_TRIGLEV(B))
 
@@ -19,10 +19,10 @@
 #define TRIG_MODE_FIND_HAND     (TRIG_MODE_FIND == TrigModeFind_Hand)
 #define TRIG_MODE_FIND_AUTO     (TRIG_MODE_FIND == TrigModeFind_Auto)
 
-#define TRIGSOURCE              (set.trig_source)
-#define TRIGSOURCE_IS_A         (TRIGSOURCE == TrigSource_A)
-#define TRIGSOURCE_IS_B         (TRIGSOURCE == TrigSource_B)
-#define TRIGSOURCE_IS_EXT       (TRIGSOURCE == TrigSource_Ext)
+#define TRIG_SOURCE              (set.trig_source)
+#define TRIG_SOURCE_IS_A         (TRIG_SOURCE == TrigSource::A)
+#define TRIG_SOURCE_IS_B         (TRIG_SOURCE == TrigSource::B)
+#define TRIG_SOURCE_IS_EXT       (TRIG_SOURCE == TrigSource::Ext)
 
 #define START_MODE              (set.trig_StartMode)
 #define START_MODE_AUTO         (START_MODE == StartMode_Auto)

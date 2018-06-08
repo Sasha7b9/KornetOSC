@@ -61,7 +61,7 @@ DEF_CHOICE_3(       cMode,                                                      
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Source(bool)
 {
-    FPGA::SetTrigSource(TRIGSOURCE);
+    FPGA::SetTrigSource(TRIG_SOURCE);
 }
 
 DEF_CHOICE_3(       cSource,                                                                                                //--- СИНХР - Источник ---
@@ -71,7 +71,7 @@ DEF_CHOICE_3(       cSource,                                                    
     "Канал 1", "Channel 1",
     "Канал 2", "Channel 2",
     "Внешний", "External",
-    TRIGSOURCE, pTrig, FuncActive, OnChanged_Source, FuncDraw
+    TRIG_SOURCE, pTrig, FuncActive, OnChanged_Source, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

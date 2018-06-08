@@ -47,7 +47,7 @@ void BottomPart::Draw()
     pString source[3] = {"1", "2", "\x82"};
     if (MODE_WORK_IS_DIR)
     {
-        snprintf(buffer, 100, "ñ\xa5\x10%s", source[TRIGSOURCE]);
+        snprintf(buffer, 100, "ñ\xa5\x10%s", source[(uint8)TRIG_SOURCE]);
     }
 
     Painter::DrawText(x, y1, buffer, Color::Trig());

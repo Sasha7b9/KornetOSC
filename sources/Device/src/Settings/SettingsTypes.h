@@ -260,11 +260,24 @@ enum Divider
 };
 
 /// Источник синхронизации
-enum TrigSource
+struct TrigSource
 {
-    TrigSource_A,    /// Канал 1
-    TrigSource_B,    /// Канал 2
-    TrigSource_Ext   /// Внешняя
+    enum
+    {
+        A,    /// Канал 1
+        B,    /// Канал 2
+        Ext   /// Внешняя
+    };
+    TrigSource(uint8 v = A) : value(v) {};
+    uint8 value;
+    operator uint8() const
+    {
+        return value;
+    }
+    operator Channel() const
+    {
+        return (Channel)value;
+    }
 };
 
 /// Режим работы.

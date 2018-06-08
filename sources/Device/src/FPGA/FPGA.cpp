@@ -857,15 +857,15 @@ void FPGA::LoadTrigSourceInput()
         {BIN_U8(00000011), BIN_U8(00000101)}  // อื
     };
     
-    WritePin(A1S, _GET_BIT(datas[TRIG_INPUT][TRIG_SOURCE], 2));
-    WritePin(A0S, _GET_BIT(datas[TRIG_INPUT][TRIG_SOURCE], 1));
-    WritePin(LFS, _GET_BIT(datas[TRIG_INPUT][TRIG_SOURCE], 0));
+    WritePin(A1S, _GET_BIT(datas[TRIG_INPUT][(uint8)TRIG_SOURCE], 2));
+    WritePin(A0S, _GET_BIT(datas[TRIG_INPUT][(uint8)TRIG_SOURCE], 1));
+    WritePin(LFS, _GET_BIT(datas[TRIG_INPUT][(uint8)TRIG_SOURCE], 0));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::FindAndSetTrigLevel()
 {
-    if (Storage::NumElementsInStorage() == 0 || TRIGSOURCE_IS_EXT)
+    if (Storage::NumElementsInStorage() == 0 || TRIG_SOURCE_IS_EXT)
     {
         return;
     }
@@ -876,7 +876,7 @@ void FPGA::FindAndSetTrigLevel()
 
     Storage::GetDataFromEnd_RAM(0, &ds_, &dataA, &dataB);
 
-    const uint16 *data = TRIGSOURCE_IS_A ? dataA : dataB;
+    const uint16 *data = TRIG_SOURCE_IS_A ? dataA : dataB;
 
     int lastPoint = NUM_BYTES(ds_) - 1;
 
@@ -887,9 +887,9 @@ void FPGA::FindAndSetTrigLevel()
 
     static const float scale = (float)(TrigLevMax - TrigLevZero) / (float)(MAX_VALUE - AVE_VALUE) / 2.4f;
 
-    int trigLev = (int)(TrigLevZero + scale * ((int)aveValue - AVE_VALUE) - (SET_RSHIFT(TRIGSOURCE) - RShiftZero));
+    int trigLev = (int)(TrigLevZero + scale * ((int)aveValue - AVE_VALUE) - (SET_RSHIFT((uint8)TRIG_SOURCE) - RShiftZero));
 
-    SetTrigLev(TRIGSOURCE, (uint16)trigLev);
+    SetTrigLev(TRIG_SOURCE, (uint16)trigLev);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
