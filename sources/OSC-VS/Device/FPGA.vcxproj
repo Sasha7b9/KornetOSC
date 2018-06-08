@@ -44,6 +44,7 @@
     <ClCompile Include="..\..\Device\src\Globals.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\AT25160N.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\Decoder.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\EEPROM.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\GPIO.cpp" />
@@ -90,7 +91,6 @@
     <ClCompile Include="..\..\Device\src\Tester\Tester.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
-    <ClCompile Include="..\..\Device\src\Utils\Decoder.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Math.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\MathOSC.cpp" />
@@ -163,6 +163,7 @@
     <ClInclude Include="..\..\Device\src\Globals.h" />
     <ClInclude Include="..\..\Device\src\Hardware\AT25160N.h" />
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />
+    <ClInclude Include="..\..\Device\src\Hardware\Decoder.h" />
     <ClInclude Include="..\..\Device\src\Hardware\EEPROM.h" />
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h" />
     <ClInclude Include="..\..\Device\src\Hardware\GPIO.h" />
@@ -213,7 +214,6 @@
     <ClInclude Include="..\..\Device\src\Tester\Tester.h" />
     <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\Device\src\Utils\Debug.h" />
-    <ClInclude Include="..\..\Device\src\Utils\Decoder.h" />
     <ClInclude Include="..\..\Device\src\Utils\Dictionary.h" />
     <ClInclude Include="..\..\Device\src\Utils\Math.h" />
     <ClInclude Include="..\..\Device\src\Utils\MathOSC.h" />

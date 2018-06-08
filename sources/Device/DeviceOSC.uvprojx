@@ -2015,6 +2015,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Sound.h</FilePath>
             </File>
+            <File>
+              <FileName>Decoder.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\Decoder.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Decoder.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\Decoder.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2404,16 +2414,6 @@
               <FileName>MathOSC.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\MathOSC.h</FilePath>
-            </File>
-            <File>
-              <FileName>Decoder.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Decoder.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Decoder.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Decoder.h</FilePath>
             </File>
             <File>
               <FileName>StringUtils.cpp</FileName>

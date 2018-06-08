@@ -1,6 +1,6 @@
 #include "Painter.h"
 #include "Display/Font/Font.h"
-#include "Utils/Decoder.h"
+#include "Hardware/Decoder.h"
 #include "Utils/Math.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/Timer.h"
