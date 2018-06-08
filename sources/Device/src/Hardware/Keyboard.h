@@ -3,44 +3,58 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-enum Key
+class Key
 {
-    K_None,
-    K_Function,
-    K_Measures,
-    K_Memory,
-    K_Service,
-    K_ChannelA,
-    K_ChannelB,
-    K_Time,         //
-    K_Start,
-    K_Trig,         //
-    K_Display,
-    K_RangeMoreA,
-    K_RangeLessA,
-    K_RShiftMoreA,
-    K_RShiftLessA,
-    K_RangeMoreB,
-    K_RangeLessB,
-    K_RShiftMoreB,
-    K_RShiftLessB,
-    K_TBaseMore,
-    K_TBaseLess,
-    K_TShiftMore,   //
-    K_TShiftLess,   //
-    K_TrigLevMore,     //
-    K_TrigLevLess,
-    K_Left,
-    K_Right,
-    K_Up,
-    K_Down,
-    K_Enter,
-    K_1,
-    K_2,
-    K_3,
-    K_4,
-    K_5,
-    NumButtons
+public:
+    Key(uint8 value = None) : code(value)
+    {
+    };
+    uint8 code;
+
+    bool Is(uint8 value)
+    {
+        return code == value;
+    }
+
+    enum
+    {
+        None,
+        Function,
+        Measures,
+        Memory,
+        Service,
+        ChannelA,
+        ChannelB,
+        Time,         //
+        Start,
+        Trig,         //
+        Display,
+        RangeMoreA,
+        RangeLessA,
+        RShiftMoreA,
+        RShiftLessA,
+        RangeMoreB,
+        RangeLessB,
+        RShiftMoreB,
+        RShiftLessB,
+        TBaseMore,
+        TBaseLess,
+        TShiftMore,   //
+        TShiftLess,   //
+        TrigLevMore,     //
+        TrigLevLess,
+        Left,
+        Right,
+        Up,
+        Down,
+        Enter,
+        F1,
+        F2,
+        F3,
+        F4,
+        F5,
+        NumButtons
+    };
 };
 
 enum TypePress

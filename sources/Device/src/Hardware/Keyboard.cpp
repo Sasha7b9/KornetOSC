@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Key Keyboard::WaitPressingButton()
 {
-    return K_None;
+    return Key::None;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -20,13 +20,13 @@ void Keyboard::Disable()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Keyboard::IsFunctionalButton(Key button)
 {
-    return button >= K_1 && button <= K_5;
+    return button.code >= Key::F1 && button.code <= Key::F5;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString Keyboard::KeyName(Key control)
 {
-    static pString names[NumButtons] =
+    static pString names[Key::NumButtons] =
     {
         "None",
         "Функция",
@@ -65,5 +65,5 @@ pString Keyboard::KeyName(Key control)
         "5"
     };
 
-    return names[control];
+    return names[control.code];
 }

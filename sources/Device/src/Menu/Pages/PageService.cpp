@@ -41,7 +41,7 @@ static void OnPress_ResetSettings()
     Keyboard::Disable();
     Display::SetDrawMode(DrawMode_Hand, Draw_ResetSettings);
 
-    if (Keyboard::WaitPressingButton() == K_Start)
+    if (Keyboard::WaitPressingButton().Is(Key::Start))
     {
         Settings::Load(true);
     }

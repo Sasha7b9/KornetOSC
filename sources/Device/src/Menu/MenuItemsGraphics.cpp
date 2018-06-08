@@ -24,17 +24,17 @@ static Key GetFuncButtonFromY(int _y)
 {
     int y = Grid::Top() + Grid::Height() / 12;
     int step = Grid::Height() / 6;
-    Key button = K_Enter;
+    Key button = Key::Enter;
     for (int i = 0; i < 6; i++)
     {
         if (_y < y)
         {
             return button;
         }
-        button = (Key)((int)button + 1);    // button++;
+        button = Key((uint8)((int)button.code + 1));    // button++;
         y += step;
     }
-    return  K_5;
+    return  Key::F5;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -515,9 +515,9 @@ void Page::Draw(int x, int y, bool opened)
             Control *item = Item(posCurItem);
             for (int i = 0; i < 5; i++)
             {
-                if (Menu::itemUnderButton[i + K_1] != item)
+                if (Menu::itemUnderButton[i + Key::F1] != item)
                 {
-                    Menu::itemUnderButton[i + K_1] = 0;
+                    Menu::itemUnderButton[i + Key::F1] = 0;
                 }
             }
             if (IS_CHOICE(item) || IS_CHOICE_REG(item))
@@ -605,7 +605,7 @@ void Page::DrawTitle(int x, int yTop)
         Painter::Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(CurrentSubPage()), colorText);
     }
 
-    Menu::itemUnderButton[GetFuncButtonFromY(yTop)] = this;
+    Menu::itemUnderButton[GetFuncButtonFromY(yTop).code] = this;
 
     delta = 0;
 
@@ -630,7 +630,7 @@ void Page::DrawItems(int x, int yTop)
         {
             int top = yTop + MI_HEIGHT * (posItem - posFirstItem);
             item->Draw(x, top, false);
-            Menu::itemUnderButton[GetFuncButtonFromY(top)] = item;
+            Menu::itemUnderButton[GetFuncButtonFromY(top).code] = item;
         }
     }
 }

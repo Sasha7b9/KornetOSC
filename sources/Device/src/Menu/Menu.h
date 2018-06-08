@@ -71,7 +71,7 @@ public:
     /// если ни одна кнопка не нажата.
     static Control *itemUnderKey;
 
-    static Control *itemUnderButton[NumButtons];
+    static Control *itemUnderButton[Key::NumButtons];
     /// Строка подсказки, которую надо выводить в случае включённого режима подсказок.
     static const char *stringForHint;
     /// Item, подсказку для которого нужно выводить в случае включённого режима подсказок.

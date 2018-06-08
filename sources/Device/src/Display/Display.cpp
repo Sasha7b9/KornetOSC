@@ -89,7 +89,7 @@ static uint                     timeWarnings[NUM_WARNINGS] = {0};   ///< Здесь в
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Key Display::key = K_None;
+Key Display::key = Key::None;
 static bool showLevelTrigLev = false;   ///< Нужно ли рисовать горизонтальную линию уровня смещения уровня синхронизации.
 static bool drawRShiftMarkers = false;
 static pFuncVV funcOnHand       = 0;
