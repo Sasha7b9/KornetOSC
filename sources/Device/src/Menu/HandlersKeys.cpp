@@ -2,155 +2,226 @@
 #include "Menu.h"
 #include "Settings/Settings.h"
 #include "FPGA/FPGA.h"
+#include "Log.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Handlers::E(KeyEvent)
+KeyEvent Handlers::event;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Handlers::Process(KeyEvent e)
+{
+    event = e;
+
+    static const pFuncVV func[Key::NumButtons][4] =
+    {
+        /* None        */ {E,           E,           E,        E},
+        /* Function    */ {Function,    Function,    Function, Function},
+        /* Measures    */ {Measures,    Measures,    Measures, Measures},
+        /* Memory      */ {Memory,      Memory,      Memory,   Memory},
+        /* Service     */ {Service,     Service,     Service,  Service},
+        /* ChannelA    */ {ChannelA,    E,           E,        E},
+        /* ChannelB    */ {ChannelB,    E,           E,        E},
+        /* Time        */ {Time,        Time,        Time,     Time},
+        /* Start       */ {Start,       Start,       Start,    Start},
+        /* Trig        */ {Trig,        Trig,        Trig,     Trig},
+        /* Display     */ {Display,     Display,     Display,  Display},
+        /* RangeMoreA  */ {RangeMoreA,  E,           E,        E},
+        /* RangeLessA  */ {RangeLessA,  E,           E,        E},
+        /* RShiftMoreA */ {RShiftMoreA, RShiftMoreA, E,        E},
+        /* RShiftLessA */ {RShiftLessA, RShiftLessA, E,        E},
+        /* RangeMoreB  */ {RangeMoreB,  E,           E,        E},
+        /* RangeLessB  */ {RangeLessB,  E,           E,        E},
+        /* RShiftMoreB */ {RShiftMoreB, RShiftMoreB, E,        E},
+        /* RShiftLessB */ {RShiftLessB, RShiftLessB, E,        E},
+        /* TBaseMore   */ {TBaseMore,   E,           E,        E},
+        /* TBaseLess   */ {TBaseLess,   E,           E,        E},
+        /* TShiftMore  */ {TShiftMore,  TShiftMore,  E,        E},
+        /* TShiftLess  */ {TShiftLess,  TShiftLess,  E,        E},
+        /* TrigLevMore */ {TrigLevMore, TrigLevMore, E,        E},
+        /* TrigLevLess */ {TrigLevLess, TrigLevLess, E,        E},
+        /* Left        */ {Arrow,       Arrow,       Arrow,    Arrow},
+        /* Right       */ {Arrow,       Arrow,       Arrow,    Arrow},
+        /* Up          */ {Arrow,       Arrow,       Arrow,    Arrow},
+        /* Down        */ {Arrow,       Arrow,       Arrow,    Arrow},
+        /* Enter       */ {Enter,       E,           E,        E},
+        /* F1          */ {Func,        Func,        Func,     Func},
+        /* F2          */ {Func,        Func,        Func,     Func},
+        /* F3          */ {Func,        Func,        Func,     Func},
+        /* F4          */ {Func,        Func,        Func,     Func},
+        /* F5          */ {Func,        Func,        Func,     Func}
+    };
+
+    func[event.key.code][event.type.type]();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Handlers::E()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::RShiftLessA(KeyEvent)
+void Handlers::RShiftLessA()
 {
     FPGA::RShiftChange(A, -1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::RShiftMoreA(KeyEvent)
+void Handlers::RShiftMoreA()
 {
     FPGA::RShiftChange(A, 1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::RShiftLessB(KeyEvent)
+void Handlers::RShiftLessB()
 {
     FPGA::RShiftChange(B, -1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::RShiftMoreB(KeyEvent)
+void Handlers::RShiftMoreB()
 {
     FPGA::RShiftChange(B, 1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::RangeLessA(KeyEvent)
+void Handlers::RangeLessA()
 {
     FPGA::DecreaseRange(A);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::RangeMoreA(KeyEvent)
+void Handlers::RangeMoreA()
 {
     FPGA::IncreaseRange(A);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::RangeLessB(KeyEvent)
+void Handlers::RangeLessB()
 {
     FPGA::DecreaseRange(B);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::RangeMoreB(KeyEvent)
+void Handlers::RangeMoreB()
 {
     FPGA::IncreaseRange(B);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::TShiftLess(KeyEvent)
+void Handlers::TShiftLess()
 {
     FPGA::TShiftChange(-1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::TShiftMore(KeyEvent)
+void Handlers::TShiftMore()
 {
     FPGA::TShiftChange(1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::TBaseLess(KeyEvent)
+void Handlers::TBaseLess()
 {
     FPGA::DecreaseTBase();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::TBaseMore(KeyEvent)
+void Handlers::TBaseMore()
 {
     FPGA::IncreaseTBase();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Func(KeyEvent)
+void Handlers::Func()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Arrow(KeyEvent)
+void Handlers::Arrow()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::TrigLevLess(KeyEvent)
+void Handlers::Enter()
+{
+    TypePress press = event.type;
+
+    if (press.Is(TypePress::Press))
+    {
+        if (!MENU_IS_SHOWN)
+        {
+            Menu::Show(true);
+        }
+    }
+    else if(press.Is(TypePress::Long))
+    {
+        Menu::Show(!MENU_IS_SHOWN);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Handlers::TrigLevLess()
 {
     FPGA::TrigLevChange(-1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::TrigLevMore(KeyEvent)
+void Handlers::TrigLevMore()
 {
     FPGA::TrigLevChange(1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::ChannelA(KeyEvent)
+void Handlers::ChannelA()
 {
     SET_ENABLED_A = !SET_ENABLED_A;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::ChannelB(KeyEvent)
+void Handlers::ChannelB()
 {
     SET_ENABLED_B = !SET_ENABLED_B;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Function(KeyEvent)
+void Handlers::Function()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Measures(KeyEvent)
+void Handlers::Measures()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Memory(KeyEvent)
+void Handlers::Memory()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Service(KeyEvent)
+void Handlers::Service()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Time(KeyEvent)
+void Handlers::Time()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Start(KeyEvent)
+void Handlers::Start()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Trig(KeyEvent)
+void Handlers::Trig()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Display(KeyEvent)
+void Handlers::Display()
 {
 }
+

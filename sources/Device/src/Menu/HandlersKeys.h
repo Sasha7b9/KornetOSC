@@ -3,44 +3,46 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-typedef void(*pFuncVKE)(KeyEvent);
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Handlers
 {
 public:
-    static void E(KeyEvent);
+    static void Process(KeyEvent);
 
-    static void RShiftLessA(KeyEvent);
-    static void RShiftMoreA(KeyEvent);
-    static void RShiftLessB(KeyEvent);
-    static void RShiftMoreB(KeyEvent);
-    static void RangeLessA(KeyEvent);
-    static void RangeMoreA(KeyEvent);
-    static void RangeLessB(KeyEvent);
-    static void RangeMoreB(KeyEvent);
+private:
+    static void E();
 
-    static void TShiftLess(KeyEvent);
-    static void TShiftMore(KeyEvent);
-    static void TBaseLess(KeyEvent);
-    static void TBaseMore(KeyEvent);
+    static void RShiftLessA();
+    static void RShiftMoreA();
+    static void RShiftLessB();
+    static void RShiftMoreB();
+    static void RangeLessA();
+    static void RangeMoreA();
+    static void RangeLessB();
+    static void RangeMoreB();
 
-    static void TrigLevLess(KeyEvent);
-    static void TrigLevMore(KeyEvent);
+    static void TShiftLess();
+    static void TShiftMore();
+    static void TBaseLess();
+    static void TBaseMore();
 
-    static void Func(KeyEvent);
-    static void Arrow(KeyEvent);
-    static void ChannelA(KeyEvent);
-    static void ChannelB(KeyEvent);
-    static void Function(KeyEvent);
-    static void Measures(KeyEvent);
-    static void Memory(KeyEvent);
-    static void Service(KeyEvent);
-    static void Time(KeyEvent);
-    static void Start(KeyEvent);
-    static void Trig(KeyEvent);
-    static void Display(KeyEvent);
+    static void TrigLevLess();
+    static void TrigLevMore();
+
+    static void Func();
+    static void Arrow();
+    static void Enter();
+    static void ChannelA();
+    static void ChannelB();
+    static void Function();
+    static void Measures();
+    static void Memory();
+    static void Service();
+    static void Time();
+    static void Start();
+    static void Trig();
+    static void Display();
+
+    static KeyEvent event;
 };
 
 

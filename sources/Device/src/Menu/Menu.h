@@ -78,8 +78,6 @@ public:
 
 private:
 
-    static void ProcessKeyEvent(KeyEvent event);
-
     static void *RetLastOpened(Page *_page, TypeItem *_type);
     /// Обработка короткого нажатия кнопки
     static void ProcessingShortPressureButton();
