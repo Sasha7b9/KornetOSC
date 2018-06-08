@@ -437,7 +437,7 @@ static void FuncAttScreen()
             if (drawB) { Painter::DrawText(10 + dX, 80 + dY, "Поправка нуля 2к :"); }
 
             int x = 95 + dX;
-            for(int i = 0; i < RangeSize; i++)
+            for(int i = 0; i < Range::Size; i++)
             {
                 if (drawA)
                 {
@@ -569,7 +569,7 @@ void FPGA::CalibrateAddRShift(Channel ch, bool wait)
 {
     LoadSettingsCalcAddRShift(ch);
 
-    for (int range = 0; range < RangeSize; range++)
+    for (Range range; range < Range::Size; ++range)
     {
         for (int i = 0; i < 2; i++)
         {
@@ -602,7 +602,7 @@ static void WriteAdditionRShifts(Channel ch)
     {
         for (int mode = 0; mode < 2; mode++)
         {
-            for (int range = 0; range < RangeSize; range++)
+            for (Range range; range < Range::Size; ++range)
             {
                 if (NRST_RSHIFT_ADD(ch, range, mode) == ERROR_VALUE_INT16)
                 {
@@ -669,8 +669,8 @@ void FPGA::ProcedureCalibration()
     
         SetTBase(TBase_500us);
         SetTShift(0);
-        SetRange(A, Range_500mV);
-        SetRange(B, Range_500mV);
+        SetRange(A, Range::_500mV);
+        SetRange(B, Range::_500mV);
         SetRShift(A, RShiftZero);
         SetRShift(B, RShiftZero);
         SetModeCouple(A, ModeCouple_GND);
@@ -1013,7 +1013,7 @@ bool FPGA::FindWave(Channel ch)
 
     Range range = FindRange(ch);
 
-    if (range == RangeSize)
+    if (range == Range::Size)
     {
         return false;
     }
@@ -1073,10 +1073,10 @@ Range FPGA::FindRange(Channel ch)
 
     Stop(false);
     SetPeackDetMode(PeakDet_Enabled);
-    SetRange(ch, Range_2mV);
+    SetRange(ch, Range::_2mV);
     SetTPos(TPos_Left);
 
-    int range = RangeSize;
+    Range range = Range::Size;
     
     ReadingCycle(1000);
 
@@ -1091,11 +1091,11 @@ Range FPGA::FindRange(Channel ch)
         {
             START_MODE = StartMode_Auto;
 
-            for (range = 0; range < RangeSize; ++range)
+            for (range = 0; range < Range::Size; ++range)
             {
                 /// \todo Этот алгоритм возвращает результат "Сигнал не найден", если при (range == RangeSize - 1) сигнал выходит за пределы экрана
 
-                SetRange(ch, (Range)range);
+                SetRange(ch, range);
 
                 ReadingCycle(10000);
 

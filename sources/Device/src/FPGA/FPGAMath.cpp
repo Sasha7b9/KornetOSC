@@ -65,7 +65,7 @@ const float absStepTShift[] =
 };
 
 /// Столько вольт содержится в одной точке сигнала по вертикали
-const float voltsInPoint[RangeSize] =
+const float voltsInPoint[Range::Size] =
 {
     2e-3f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 2mV
     5e-3f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 5mV

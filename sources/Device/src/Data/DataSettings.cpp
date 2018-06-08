@@ -26,8 +26,8 @@ void DataSettings::Fill()
     Lval_ENABLED_B(this) = SET_ENABLED_B ? 1U : 0U;
     INVERSE_A(this) = SET_INVERSE_A ? 1U : 0U;
     INVERSE_B(this) = SET_INVERSE_B ? 1U : 0U;
-    Lval_RANGE_A(this) = (uint8)SET_RANGE_A;
-    Lval_RANGE_B(this) = (uint8)SET_RANGE_B;
+    Lval_RANGE_A(this) = SET_RANGE_A;
+    Lval_RANGE_B(this) = SET_RANGE_B;
     RSHIFT_A(this) = SET_RSHIFT_A;
     RSHIFT_B(this) = SET_RSHIFT_B;
     Lval_TBASE(this) = SET_TBASE;

@@ -33,7 +33,7 @@ struct DataSettings
     uint16      rShift[2];
     uint16      trigLev[2];
     int16       tShift;                 ///< Смещение по времени
-    uint8       range[2];               ///< Масштаб по напряжению обоих каналов.
+    Range       range[2];               ///< Масштаб по напряжению обоих каналов.
     uint        tBase           : 5;    ///< Масштаб по времени
     uint        enableA         : 1;    ///< Включён ли канал A
     uint        enableB         : 1;    ///< Включен ли канал B
@@ -64,7 +64,7 @@ struct DataSettings
 #define Lval_RANGE(ds, ch)      ((ds)->range[ch])
 #define Lval_RANGE_A(ds)        (Lval_RANGE(ds, A))
 #define Lval_RANGE_B(ds)        (Lval_RANGE(ds, B))
-#define RANGE(ds, ch)           ((Range)Lval_RANGE(ds, ch))
+#define RANGE(ds, ch)           (Lval_RANGE(ds, ch))
 #define RANGE_A(ds)             (RANGE(ds, A))
 #define RANGE_B(ds)             (RANGE(ds, B))
 

@@ -496,7 +496,7 @@ DEF_GOVERNOR(       gADC_Shift_A2mV,                                            
     "—м 1к 2м¬ пост", "Shift 1ch 2mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_A(Range_2mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_A(Range::_2mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -509,7 +509,7 @@ DEF_GOVERNOR(       gADC_Shift_B2mV,                                            
     "—м 2к 2м¬ пост", "Shift 2ch 2mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_B(Range_2mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_B(Range::_2mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -517,7 +517,7 @@ DEF_GOVERNOR(       gADC_Shift_A5mV,                                            
     "—м 1к 5м¬ пост", "Shift 1ch 5mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_A(Range_5mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_A(Range::_5mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -525,7 +525,7 @@ DEF_GOVERNOR(       gADC_Shift_B5mV,                                            
     "—м 2к 5м¬ пост", "Shift 2ch 5mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_B(Range_5mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_B(Range::_5mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -533,7 +533,7 @@ DEF_GOVERNOR(       gADC_Shift_A10mV,                                           
     "—м 1к 10м¬ пост", "Shift 1ch 10mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_A(Range_10mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_A(Range::_10mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -541,7 +541,7 @@ DEF_GOVERNOR(       gADC_Shift_B10mV,                                           
     "—м 2к 10м¬ пост", "Shift 2ch 10mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_B(Range_10mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_B(Range::_10mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -816,7 +816,7 @@ static void DebugShowSetInfo_Draw()
     {
         for (int ch = 0; ch < 2; ch++)
         {
-            for (int range = 0; range < RangeSize; range++)
+            for (Range range; range < Range::Size; ++range)
             {
                 Painter::DrawFormatText(x + range * 20, y + dY * ddY, "%d", NRST_RSHIFT_ADD(ch, range, type));
             }

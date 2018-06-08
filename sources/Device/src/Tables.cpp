@@ -117,7 +117,7 @@ const char *Tables_GetTBaseStringEN(TBase tBase)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *Tables_RangeNameFromValue(Range range)
 {
-    static pString names[RangeSize] =
+    static pString names[Range::Size] =
     {
         "Range_2mV",
         "Range_5mV",

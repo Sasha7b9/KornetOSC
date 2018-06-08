@@ -15,7 +15,7 @@ typedef struct
 } RangeStruct;
 
 // Массив структур описаний масштабов по напряжению.
-static const RangeStruct ranges[RangeSize] =
+static const RangeStruct ranges[Range::Size] =
 {
     {{{"2\x10мВ",  "20\x10мВ"}, {"2\x10мV",  "20\x10мV"}}},
     {{{"5\x10мВ",  "50\x10мВ"}, {"5\x10mV",  "50\x10mV"}}},

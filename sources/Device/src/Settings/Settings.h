@@ -129,7 +129,7 @@ public:
                                                 ///< значения "Полная".
     bool                dbg_ShowStats;              ///< Показывать статистику на экране (fps, например).
     DisplayOrientation  dbg_Orientation;
-    int16               nrst_RShiftAdd[NumChannels][RangeSize][2];  ///< Добавочное смещение, которое пишется сюда при калибровке и балансировке
+    int16               nrst_RShiftAdd[NumChannels][Range::Size][2];  ///< Добавочное смещение, которое пишется сюда при калибровке и балансировке
     int16               nrst_CorrectionTime;                        ///< Коэффициент коррекции времени.
     Bandwidth       chan_Bandwidth[2];              ///< Ограничение полосы.
     Resistance      chan_Resistance[2];             ///< Сопротивление входа.

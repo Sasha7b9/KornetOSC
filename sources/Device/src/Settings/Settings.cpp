@@ -16,7 +16,7 @@ static const Settings defaultSettings =
     Thickness_1,                    // disp_thickness
 
     {RShiftZero, RShiftZero},       // chan_shift
-    {Range_500mV, Range_500mV},     // chan_range
+    {Range::_500mV, Range::_500mV}, // chan_range
     {ModeCouple_DC, ModeCouple_DC}, // chan_couple
     {true, true},                   // chan_enable
 
@@ -70,7 +70,7 @@ void Settings::Reset()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *NameRange(Range range)
 {
-    static const char *names[RangeSize][NumLanguages] =
+    static const char *names[Range::Size][NumLanguages] =
     {
         {"2ìÂ",     "2mV"},
         {"5ìÂ",     "5mV"},

@@ -540,7 +540,7 @@ void FPGA::LoadSettings()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::IncreaseRange(Channel ch)
 {
-    LimitationIncrease<uint8>((uint8 *)(&SET_RANGE(ch)), (uint8)(RangeSize - 1));
+    LimitationIncrease<uint8>((uint8 *)(&SET_RANGE(ch)), (uint8)(Range::Size - 1));
     LoadRanges();
 }
 
@@ -623,7 +623,7 @@ static uint8 ValueForRange(Channel ch)
         return datas[ModeCouple_GND];
     }
 
-    static const uint16 values[RangeSize][NumChannels] =
+    static const uint16 values[Range::Size][NumChannels] =
     {   //             A                    B
         { BIN_U8(00100101), BIN_U8(00010101) },   // 2mV
         { BIN_U8(00100101), BIN_U8(00010101) },   // 5mV
@@ -658,7 +658,7 @@ void FPGA::LoadRanges()
 
     WriteRegisters(SPI3_CS2, 0);    // Записываем ноль, чтобы реле не потребляли энергии
 
-    static const uint8 vals[RangeSize][NumChannels] =
+    static const uint8 vals[Range::Size][NumChannels] =
     {
         { BIN_U8(00000000),  BIN_U8(00000000) },  // 2mV
         { BIN_U8(00000001),  BIN_U8(00000010) },  // 5mV
@@ -1627,7 +1627,7 @@ void FPGA::SetRange(Channel ch, Range range)
     {
         return;
     }
-    if (range < RangeSize && (int)range >= 0)
+    if (range < Range::Size && (int)range >= 0)
     {
         float rShiftAbs = RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch));
         float trigLevAbs = RSHIFT_2_ABS(SET_TRIGLEV(ch), SET_RANGE(ch));
