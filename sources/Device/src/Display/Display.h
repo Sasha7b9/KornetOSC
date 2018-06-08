@@ -9,7 +9,6 @@
 class LogEntity
 {
     friend class Log;
-    static void AddToConsole(char *string);
 };
 
 #define DISPLAY_SHOW_WARNING(warn)  Display::ShowWarning(warn)
@@ -93,8 +92,6 @@ public:
     static void ChangedRShiftMarkers(bool active);
 
     static void Clear();
-    /// Вывести сообщения отладочной консоли
-    static void DrawConsole();
 
 private:
     /// Нарисовать информацию в нижней части экрана.
@@ -115,8 +112,6 @@ private:
     static void DrawDataTester(int numStep, int x, int y);
 
     static void UpdateMultimeter();
-    /// true означает, что идёт процесс вывода консоли и добавлять в неё новые строки нельзя (это происходит, когда добавление идёт из прерывания)
-    static bool inProcessDrawConsole;
 
     static Key key;
 };

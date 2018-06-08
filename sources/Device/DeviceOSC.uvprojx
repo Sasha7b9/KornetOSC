@@ -1835,6 +1835,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\Symbols.h</FilePath>
             </File>
+            <File>
+              <FileName>Console.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Console.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Console.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Console.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

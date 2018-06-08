@@ -22,7 +22,7 @@ void Device::Init()
 {       
     Hardware::Init();
 
-    //Tester::Init();
+    Tester::Init();
 
     Display::Init();
 

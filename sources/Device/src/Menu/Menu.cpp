@@ -181,33 +181,6 @@ void Menu::ProcessButtonForHint(Key button)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::PressButton(Key button)
-{
-    Sound::ButtonPress();
-    if (HINT_MODE_ENABLED)
-    {
-        ProcessButtonForHint(button);
-        return;
-    }
-
-    if (!MENU_IS_SHOWN)
-    {
-        for (int i = SIZE_BUFFER_FOR_BUTTONS - 1; i > 0; i--)
-        {
-            bufferForButtons[i] = bufferForButtons[i - 1];
-        }
-        bufferForButtons[0] = button;
-      
-        if (memcmp(bufferForButtons, sampleBufferForButtons, SIZE_BUFFER_FOR_BUTTONS) == 0)
-        {
-            SHOW_DEBUG_MENU = 1;
-            Display::ShowWarning(MenuDebugEnabled);
-        }
-    }
-    pressButton = button;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ReleaseButton(Key button)
 {
     Sound::ButtonRelease();
@@ -836,6 +809,33 @@ void Menu::SetItemForHint(void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::ButtonPress(Key, TypePress)
+void Menu::ButtonPress(Key button, TypePress press)
 {
+    if(press != Release)
+    {
+        //return;
+    }
+
+    Sound::ButtonPress();
+    if (HINT_MODE_ENABLED)
+    {
+        ProcessButtonForHint(button);
+        return;
+    }
+
+    if (!MENU_IS_SHOWN)
+    {
+        for (int i = SIZE_BUFFER_FOR_BUTTONS - 1; i > 0; i--)
+        {
+            bufferForButtons[i] = bufferForButtons[i - 1];
+        }
+        bufferForButtons[0] = button;
+
+        if (memcmp(bufferForButtons, sampleBufferForButtons, SIZE_BUFFER_FOR_BUTTONS) == 0)
+        {
+            SHOW_DEBUG_MENU = 1;
+            Display::ShowWarning(MenuDebugEnabled);
+        }
+    }
+    pressButton = button;
 }

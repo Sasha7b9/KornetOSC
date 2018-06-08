@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "Log.h"
-#include "Display/Display.h"
+#include "Display/Console.h"
 #include <stdarg.h>
 #include <string.h>
 #include <stdio.h>
@@ -22,5 +22,5 @@ void Log::Message(char *format, ...)
     vsprintf(buffer, format, args);
     va_end(args);
 
-    LogEntity::AddToConsole(buffer);
+    Console::AddString(buffer);
 }

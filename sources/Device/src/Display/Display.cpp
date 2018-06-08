@@ -12,6 +12,7 @@
 #include "Utils/Debug.h"
 #include "Utils/MathOSC.h"
 #include "FPGA/FPGAMath.h"
+#include "Console.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -86,11 +87,6 @@ static uint                     timeWarnings[NUM_WARNINGS] = {0};   ///< Здесь в
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define SIZE_CONSOLE    20
-static CHAR_BUF2(buffer, SIZE_CONSOLE, 100);
-static int stringInConsole = 0;
-
-bool Display::inProcessDrawConsole = false;
 Key Display::key = K_None;
 static bool showLevelTrigLev = false;   ///< Нужно ли рисовать горизонтальную линию уровня смещения уровня синхронизации.
 static bool drawRShiftMarkers = false;
@@ -183,6 +179,8 @@ void Display::Update()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::UpdateOsci()
 {
+    LOG_WRITE("");
+    
     Painter::BeginScene(Color::BACK);
 
     Grid::Draw();
@@ -193,9 +191,9 @@ void Display::UpdateOsci()
 
     PainterData::DrawData();
    
-    //DrawConsole();
+    Console::Draw();
 
-    //Menu::Draw();
+    Menu::Draw();
 
     //Painter::DrawText(10, 10, ControlName(key), Color::FILL);
 
@@ -219,7 +217,7 @@ void Display::UpdateTester()
 
     Menu::Draw();
 
-    DrawConsole();
+    Console::Draw();
 
     Painter::EndScene();
 }
@@ -340,46 +338,6 @@ void Display::DrawRShift(Channel ch)
     Painter::DrawChar(Grid::Left() - 7, y - 6, ch == A ? '1' : '2', Color::BACK);
 
     Painter::SetFont(TypeFont_8);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void LogEntity::AddToConsole(char *string)
-{
-    /// \todo Мы пропускаем некоторые строки. Сделать отложенное добавление
-    if (!Display::inProcessDrawConsole)      // Страхуемся на предмет того, что сейчас не происходит вывод консоли в другом потоке
-    {
-        static int count = 0;
-        if (stringInConsole == SIZE_CONSOLE)
-        {
-            for (int i = 1; i < SIZE_CONSOLE; i++)
-            {
-                strcpy(buffer[i - 1], buffer[i]);
-            }
-            stringInConsole--;
-        }
-        sprintf(buffer[stringInConsole], "%d %s", count++, string);
-        stringInConsole++;
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::DrawConsole()
-{
-    inProcessDrawConsole = true;
-
-    Painter::SetFont(TypeFont_5);
-
-    int y = 0;
-
-    for (int i = 0; i < stringInConsole; i++)
-    {
-        Painter::DrawText(1, y, buffer[i], Color::FILL);
-        y += 6;
-    }
-
-    Painter::SetFont(TypeFont_8);
-
-    inProcessDrawConsole = false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

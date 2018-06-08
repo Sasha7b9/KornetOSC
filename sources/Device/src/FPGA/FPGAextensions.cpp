@@ -1,6 +1,7 @@
 #include "Data/Reader.h"
 #include "Data/Storage.h"
 #include "Display/DisplayPrimitives.h"
+#include "Display/Console.h"
 #include "FPGA/FPGA.h" 
 #include "Hardware/Timer.h"
 #include "Menu/Pages/PageDebug.h"
@@ -1151,7 +1152,7 @@ static void FuncDrawAutoFind()
     }
     Painter::DrawStringInCenterRect(x, y + (height - 30), width, 20, buffer);
 
-    Display::DrawConsole();
+    Console::Draw();
 
     Painter::EndScene();
 }
