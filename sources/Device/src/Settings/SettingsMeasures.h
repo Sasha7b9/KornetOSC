@@ -21,11 +21,11 @@
 #define MEAS_ZONE_HAND                  (MEAS_ZONE == MeasuresZone_Hand)
 
 #define NUM_MEASURES                    (set.meas_Number)
-#define NUM_MEASURES_IS_1_5             (NUM_MEASURES == MN_1_5)
-#define NUM_MEASURES_IS_2_5             (NUM_MEASURES == MN_2_5)
-#define NUM_MEASURES_IS_3_5             (NUM_MEASURES == MN_3_5)
-#define NUM_MEASURES_IS_6_1             (NUM_MEASURES == MN_6_1)
-#define NUM_MEASURES_IS_6_2             (NUM_MEASURES == MN_6_2)
+#define NUM_MEASURES_IS_1_5             (NUM_MEASURES == MeasuresNumber::_1_5)
+#define NUM_MEASURES_IS_2_5             (NUM_MEASURES == MeasuresNumber::_2_5)
+#define NUM_MEASURES_IS_3_5             (NUM_MEASURES == MeasuresNumber::_3_5)
+#define NUM_MEASURES_IS_6_1             (NUM_MEASURES == MeasuresNumber::_6_1)
+#define NUM_MEASURES_IS_6_2             (NUM_MEASURES == MeasuresNumber::_6_2)
 
 /// По какому каналу производить автоматические измерения
 #define SOURCE_MEASURE                  (set.meas_Source)
