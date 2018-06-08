@@ -46,15 +46,15 @@ const void *PageForButton(Key button)
     {  
         0,                  // K_None
         0,                  // K_Function
-        (void *)&pMeasures, // K_Measures
-        (void *)&pMemory,   // K_Memory
-        (void *)&pService,  // K_Service
-        (void *)&pChanA,    // K_ChannelA
-        (void *)&pChanB,    // K_ChannelB
-        (void *)&pTime,     // K_Time
-        0,                  // K_Start
-        (void *)&pTrig,     // K_Trig
-        (void *)&pDisplay   // K_Display
+        (void *)&pMeasures, // K_Measures  2
+        (void *)&pMemory,   // K_Memory    3
+        (void *)&pService,  // K_Service   4
+        (void *)&pChanA,    // K_ChannelA  5
+        (void *)&pChanB,    // K_ChannelB  6
+        (void *)&pTime,     // K_Time      7
+        0,                  // K_Start     
+        (void *)&pTrig,     // K_Trig      9
+        (void *)&pDisplay   // K_Display  10
     };
 
     return pages[button.code];

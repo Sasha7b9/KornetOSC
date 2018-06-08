@@ -24,9 +24,9 @@ bool Keyboard::IsFunctionalButton(Key button)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-pString Keyboard::KeyName(Key control)
+pString Key::Name()
 {
-    static pString names[Key::NumButtons] =
+    static const pString names[Key::NumButtons] =
     {
         "None",
         "Функция",
@@ -65,5 +65,19 @@ pString Keyboard::KeyName(Key control)
         "5"
     };
 
-    return names[control.code];
+    return names[code];
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+pString TypePress::ToString()
+{
+    static const pString names[4] =
+    {
+        "Вниз",
+        "Повтор",
+        "Вверх",
+        "Пусто"
+    };
+
+    return names[type];
 }

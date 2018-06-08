@@ -812,7 +812,7 @@ void Menu::SetItemForHint(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ButtonPress(Key button, TypePress press)
 {
-    if(press != Release)
+    if(!press.Is(TypePress::Release))
     {
         //return;
     }

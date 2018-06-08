@@ -16,52 +16,74 @@ public:
         return code == value;
     }
 
+    pString Name();
+
     enum
     {
-        None,
-        Function,
-        Measures,
-        Memory,
-        Service,
-        ChannelA,
-        ChannelB,
-        Time,         //
-        Start,
-        Trig,         //
-        Display,
-        RangeMoreA,
-        RangeLessA,
-        RShiftMoreA,
-        RShiftLessA,
-        RangeMoreB,
-        RangeLessB,
-        RShiftMoreB,
-        RShiftLessB,
-        TBaseMore,
-        TBaseLess,
-        TShiftMore,   //
-        TShiftLess,   //
-        TrigLevMore,     //
-        TrigLevLess,
-        Left,
-        Right,
-        Up,
-        Down,
-        Enter,
-        F1,
-        F2,
-        F3,
-        F4,
-        F5,
+        None = 0,
+        Function = 1,
+        Measures = 2,
+        Memory = 3,
+        Service = 4,
+        ChannelA = 5,
+        ChannelB = 6,
+        Time = 7,
+        Start = 8,
+        Trig = 9,
+        Display = 10,
+        RangeMoreA = 11,
+        RangeLessA = 12,
+        RShiftMoreA = 13,
+        RShiftLessA = 14,
+        RangeMoreB = 15,
+        RangeLessB = 16,
+        RShiftMoreB = 17,
+        RShiftLessB = 18,
+        TBaseMore = 19,
+        TBaseLess = 20,
+        TShiftMore = 21,
+        TShiftLess = 22,
+        TrigLevMore = 23,
+        TrigLevLess = 24,
+        Left = 25,
+        Right = 26,
+        Up = 27,
+        Down = 28,
+        Enter = 29,
+        F1 = 30,
+        F2 = 31,
+        F3 = 32,
+        F4 = 33,
+        F5 = 34,
         NumButtons
     };
 };
 
-enum TypePress
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class TypePress
 {
-    Press,      ///< Нажатие кнопки
-    Repeat,     ///< Автоматический повтор
-    Release     ///< Отпускание кнопки
+public:
+    TypePress(uint8 value = None) : type(value)
+    {
+    };
+
+    uint8 type;
+
+    bool Is(uint8 value)
+    {
+        return type == value;
+    }
+
+    pString ToString();
+
+    enum
+    {
+        Press,      ///< Нажатие кнопки
+        Repeat,     ///< Автоматический повтор
+        Release,    ///< Отпускание кнопки
+        None
+    };
 };
 
 
@@ -78,6 +100,4 @@ public:
     static Key WaitPressingButton();
 
     static void Enable();
-
-    static pString KeyName(Key control);
 };
