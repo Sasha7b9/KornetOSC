@@ -21,8 +21,8 @@ static const Settings defaultSettings =
     {true, true},                   // chan_enable
 
     TrigSource_A,                   // trig_source
-    TrigInput::Full,                 // trig_input
-    Polarity_Rising,                // trig_polarity
+    TrigInput::Full,                // trig_input
+    TrigPolarity::Rising,           // trig_polarity
     {TrigLevZero, TrigLevZero},     // trig_lev
     ModeTrig_Auto,                  // trig_mode
 

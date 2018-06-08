@@ -113,16 +113,25 @@ struct MeasSource
         A_B
     };
     uint8 value;
-    bool operator==(const uint8 obj)
+    operator uint8() const
     {
-        return value == obj;
+        return value;
     }
 };
 
-enum TrigPolarity
+struct TrigPolarity
 {
-    Polarity_Rising,
-    Polarity_Falling
+    enum
+    {
+        Rising,
+        Falling
+    };
+    TrigPolarity(uint8 v = Rising) : value(v) {};
+    uint8 value;
+    operator uint8() const
+    {
+        return value;
+    }
 };
 
 enum Language

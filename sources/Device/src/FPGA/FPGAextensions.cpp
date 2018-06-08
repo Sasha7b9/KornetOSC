@@ -142,7 +142,7 @@ static void LoadSettingsCalcAddRShift(Channel ch)
     FPGA::SetRShift(ch, RShiftZero);
     FPGA::SetTBase(TBase::_200us);
     FPGA::SetTrigSource(ch == A ? TrigSource_A : TrigSource_B);
-    FPGA::SetTrigPolarity(Polarity_Rising);
+    FPGA::SetTrigPolarity(TrigPolarity::Rising);
     FPGA::SetTrigLev((TrigSource)ch, TrigLevZero);
 
     FPGA::SetCalibratorMode(Calibrator_GND);                 // Устанавливаем выход калибратора в ноль
