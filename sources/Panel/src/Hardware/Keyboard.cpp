@@ -30,12 +30,12 @@ static TIM_HandleTypeDef handleTIM4;
 
 static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
 { // SL0         SL1        SL2            SL3            SL4            SL5            SL6            SL7
-    {B_None,     B_3,       B_Down,        B_None,        B_TrigLevLess, B_TrigLevMore, B_RangeLessB,  B_RShiftMoreB},  // RL0
+    {K_None,     B_3,       B_Down,        K_None,        B_TrigLevLess, B_TrigLevMore, B_RangeLessB,  B_RShiftMoreB},  // RL0
     {B_1,        B_4,       B_Right,       B_Enter,       K_Start,       K_Trig,        B_RangeMoreB,  B_RShiftLessB},  // RL1
-    {B_2,        B_5,       B_Up,          B_Left,        B_None,        B_None,        B_None,        K_ChannelB},     // RL2
-    {B_Function, K_Service, B_RangeLessA,  B_RangeMoreA,  B_None,        B_TShiftLess,  B_None,        B_None},         // RL3
-    {K_Measures, B_None,    K_ChannelA,    B_None,        B_TBaseMore,   B_TShiftMore,  B_None,        B_None},         // RL4
-    {K_Memory,   K_Display, B_RShiftMoreA, B_RShiftLessA, K_Time,        B_TBaseLess,   B_None,        B_None}          // RL5
+    {B_2,        B_5,       B_Up,          B_Left,        K_None,        K_None,        K_None,        K_ChannelB},     // RL2
+    {K_Function, K_Service, B_RangeLessA,  K_RangeMoreA,  K_None,        B_TShiftLess,  K_None,        K_None},         // RL3
+    {K_Measures, K_None,    K_ChannelA,    K_None,        B_TBaseMore,   B_TShiftMore,  K_None,        K_None},         // RL4
+    {K_Memory,   K_Display, B_RShiftMoreA, B_RShiftLessA, K_Time,        B_TBaseLess,   K_None,        K_None}          // RL5
 };               
 
 
@@ -143,7 +143,7 @@ void Keyboard::Update()
 
             volatile Control control = controls[rl][sl];
 
-            if (control != B_None)
+            if (control != K_None)
             {
                 if (timePress[rl][sl])                      // Если клавиша находится в нажатом положении
                 {
@@ -152,7 +152,7 @@ void Keyboard::Update()
                         if (!BUTTON_IS_PRESS(state))        // Если сейчас кнопка находится в отжатом состояини
                         {
                             timePress[rl][sl] = 0;
-                            FillCommand(controls[rl][sl], Up);
+                            FillCommand(controls[rl][sl], Release);
                             prevRepeat = 0;
                         }
                         else if(IsRepeatable(control))      // А здесь она нходится в нажатом положении - отрабатываем автоповтор

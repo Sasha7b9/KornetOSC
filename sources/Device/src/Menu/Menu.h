@@ -65,7 +65,7 @@ public:
 
     static int CalculateX(int layer);
     /// Вернуть указатель на малую кнопку, соответствующую данной кнопки панели.
-    static const SButton*  GetSmallButton(Key button);
+    static const SButton* GetSmallButton(Key button);
 
     static void SetItemForHint(void *item);
     ///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, 
