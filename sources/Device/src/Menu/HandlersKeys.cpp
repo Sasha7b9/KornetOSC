@@ -142,10 +142,10 @@ void Handlers::Func()
     {
         if (MENU_IS_SHOWN)
         {
-            void *item = Menu::itemUnderButton[event.key.code];
-            if (item)
+            Control *control = (Control *)Menu::itemUnderButton[event.key.code];
+            if (control)
             {
-                ((Control *)item)->ShortPress();
+                control->ShortPress();
             }
         }
     }

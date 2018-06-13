@@ -250,7 +250,7 @@ void Control::ShortPress()
     {
         Page *page = (Page *)this;
         page->funcOnPress();
-        page->SetCurrentSB();
+        page->SetCurrentPage();
     }
     else if(type == Item_Governor)
     {

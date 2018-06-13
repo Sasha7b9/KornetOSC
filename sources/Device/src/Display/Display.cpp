@@ -144,7 +144,7 @@ void Display::UpdateOsci()
 
     RShift::Draw();
 
-    PainterData::DrawData();
+//    PainterData::DrawData();
    
     Console::Draw();
 

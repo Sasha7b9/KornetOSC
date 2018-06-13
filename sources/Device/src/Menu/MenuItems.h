@@ -119,20 +119,30 @@ class Page : public Control
 public:
     /// Возвращает true, если текущий элемент страницы открыт
     bool CurrentItemIsOpened() const;
+
     const Control * const *items;   ///< Здесь указатели на пункты этой страницы (в обычной странице)
                                     ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - K_Enter, 1...5 - K_1...K_5
     pFuncVV  funcOnPress;           ///< Будет вызываться при нажатии на свёрнутую страницу
+
     pFuncVV  funcOnDraw;            ///< Будет вызываться после отрисовки кнопок
+
     pFuncVI  funcRegSetSB;          ///< В странице малых кнопок вызывается при повороте ручки установка
+
     int NumSubPages() const;        ///< Dозвращает число подстраниц в странице по адресу page
+
     int NumItems() const;           ///< Возвращает количество элементов в странице по адресу page
+
     NamePage GetNamePage() const;   ///< Возвращает имя страницы page
-    void SetCurrentSB();            ///< Установить текущей данную страницу с мылыми кнопками.
+
+    void SetCurrentPage();          ///< Установить текущей данную страницу.
+
     int8 CurrentSubPage() const;
+
     void SetCurrentSubPage(int8 pos);
-    void SetPosActItem(int8 pos);   ///< Устанавливает позицию активного пункта меню
-    
-    Control *Item(int numElement) const;       ///< Возвращает адрес элемента меню заданной страницы
+    ///< Устанавливает позицию активного пункта меню
+    void SetPosActItem(int8 pos);
+    ///< Возвращает адрес элемента меню заданной страницы
+    Control *Item(int numElement) const;
     /// \todo Возвращает позицию первого элемента страницы по адресу page на экране. Если текущая подстраница 0, это будет 0, если текущая 
     /// подстраница 1, это будет 5 и т.д.
     int PosItemOnTop();
@@ -140,12 +150,19 @@ public:
     void ShortPressOnItem(int numItem);
     /// Возвращает позицию текущего элемента странцы page
     int8 PosCurrentItem() const;
+    
     void ChangeSubPage(int delta);
+
     void Draw(int x, int y, bool opened);
+
     void DrawTitle(int x, int y);
+
     void DrawItems(int x, int y);
+
     static int ItemOpenedPosY(Control *item);
+
     void DrawPagesUGO(int right, int bottom);
+
     void DrawNestingPage(int left, int bottom);
 };
 

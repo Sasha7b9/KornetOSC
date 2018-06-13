@@ -42,6 +42,12 @@ void Menu::Update()
 
         LOG_WRITE("%s %s", event.key.Name(), event.type.ToString());
 
+        if(event.key.IsFunctional())
+        {
+            __IO int i = 0;
+            ++i;
+        }
+
         if (HINT_MODE_ENABLED)
         {
             ProcessButtonForHint(event.key);

@@ -817,14 +817,15 @@ void Painter::DrawVolumeButton(int x, int y, int width, int height, int thicknes
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::Draw4SymbolsInRect(int x, int y, char eChar, Color color /* = Color::NUMBER */)
+void Painter::Draw4SymbolsInRect(int x, int y, char eChar, Color color)
 {
-    SetColor(color);
-    for (char i = 0; i < 2; i++)
-    {
-        DrawChar(x + 8 * i, y, eChar + i);
-        DrawChar(x + 8 * i, y + 8, eChar + i + 16);
-    }
+     SetColor(color);
+ 
+     for (char i = 0; i < 2; i++)
+     {
+//        DrawChar(x + 8 * i, y, eChar + i);
+          DrawChar(x + 8 * i, y + 8, eChar + i + 16);
+     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

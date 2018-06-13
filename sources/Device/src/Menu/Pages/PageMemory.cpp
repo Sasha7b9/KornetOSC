@@ -154,7 +154,7 @@ DEF_SMALL_BUTTON(   bLast_Prev,                                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_SaveToROM()
 {
-    ((Page *)&ppInternal)->SetCurrentSB();
+    ((Page *)&ppInternal)->SetCurrentPage();
     MODE_WORK = ModeWork_ROM;   // Находимся в режиме внутренного ЗУ
     EXIT_FROM_ROM_TO_RAM = 1;   // Этот признак мы устанавливаем для того, чтобы:
                                 // 1 - по нажатии кнопки Выход со страницы "ВНУТР ЗУ" выходить в "Последние", а не в основное меню;
@@ -723,7 +723,7 @@ static void DrawSetName()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void FuncForInternalExit()
 {
-    ((Page *)&ppLast)->SetCurrentSB();
+    ((Page *)&ppLast)->SetCurrentPage();
 }
 
 static void OnPress_Internal_Exit()
