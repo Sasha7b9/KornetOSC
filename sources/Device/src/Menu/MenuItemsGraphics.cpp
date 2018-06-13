@@ -579,12 +579,12 @@ void Page::DrawTitle(int x, int yTop)
         SMALL_BUTTON_FROM_PAGE(this, 0)->Draw(LEFT_SB, yTop + 3);
         return;
     }
-    int height = HeightOpened();
+
     bool shade = CurrentItemIsOpened();
 
-    Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, height + 2, Color::BACK);
+    Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, MP_TITLE_HEIGHT + 2, Color::BACK);
 
-    Painter::DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, height + 1, Color::BorderMenu(shade));
+    Painter::DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, MP_TITLE_HEIGHT + 1, Color::BorderMenu(shade));
 
     if (shade)
     {
