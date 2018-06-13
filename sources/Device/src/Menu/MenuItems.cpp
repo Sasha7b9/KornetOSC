@@ -61,7 +61,7 @@ Control *Page::Item(int numElement) const
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Page::PosItemOnTop()
+int Page::PosItemOnLeft()
 {
     return CurrentSubPage() * MENU_ITEMS_ON_DISPLAY;
 }

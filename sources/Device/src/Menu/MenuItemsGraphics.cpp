@@ -617,13 +617,13 @@ void Page::DrawTitle(int x, int yTop)
     DrawNestingPage(eX + 5, yTop + MP_TITLE_HEIGHT - 8);
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Page::DrawItems(int x, int yTop)
+void Page::DrawItems(int x, int y)
 {
     if (IS_PAGE_SB(this))
     {
         x = LEFT_SB;
     }
-    int posFirstItem = PosItemOnTop();
+    int posFirstItem = PosItemOnLeft();
     int posLastItem = posFirstItem + MENU_ITEMS_ON_DISPLAY - 1;
     LIMITATION(posLastItem, 0, NumItems() - 1);
     for (int posItem = posFirstItem; posItem <= posLastItem; posItem++)
@@ -631,9 +631,9 @@ void Page::DrawItems(int x, int yTop)
         Control *item = Item(posItem);
         if (item)
         {
-            int top = yTop + MI_HEIGHT * (posItem - posFirstItem);
-            item->Draw(x, top, false);
-            Menu::itemUnderButton[GetFuncButtonFromY(top).code] = item;
+            item->Draw(x, y, false);
+            Menu::itemUnderButton[GetFuncButtonFromY(x).code] = item;
+            x += MI_WIDTH;
         }
     }
 }
