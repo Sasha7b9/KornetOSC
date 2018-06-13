@@ -19,6 +19,8 @@ public:
 
     static uint8 *GetBuffer();
 
+    static uint8 *GetBufferEnd();
+
     static void ToggleBuffers();
 
 private:

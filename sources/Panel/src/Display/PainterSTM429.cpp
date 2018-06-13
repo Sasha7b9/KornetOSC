@@ -56,7 +56,7 @@ void Painter::DrawHLine(int y, int x0, int x1, Color col)
     SetColor(col);
 
     uint8 *address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH;
-    uint8 *end = Display::GetBuffer() + BUFFER_WIDTH * BUFFER_HEIGHT;
+    uint8 *end = Display::GetBufferEnd();
 
     uint8 value = currentColor.value;
 
@@ -155,11 +155,17 @@ void Painter::DrawVLine(int x, int y0, int y1, Color col)
 #endif
 
     uint8 *address = Display::GetBuffer() + x + y0 * BUFFER_WIDTH;
+    uint8 *end = Display::GetBufferEnd();
 
     uint8 value = currentColor.value;
 
     for (int y = y0; y < y1; ++y)
     {
+        if (address > end)
+        {
+            break;
+        }
+
         *address = value;
 #ifdef OPEN
         *(address + 1) = value;
