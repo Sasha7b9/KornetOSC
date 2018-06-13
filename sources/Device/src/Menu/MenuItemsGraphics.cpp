@@ -507,8 +507,9 @@ void Page::Draw(int x, int y, bool opened)
 {
     if(opened)
     {
-        DrawTitle(x, y);
-        DrawItems(x, y + MP_TITLE_HEIGHT);
+        DrawTitle(x, y - MP_TITLE_HEIGHT);
+
+        DrawItems(x, y);
         if (CurrentItemIsOpened())
         {
             int8 posCurItem = PosCurrentItem();
@@ -522,27 +523,27 @@ void Page::Draw(int x, int y, bool opened)
             }
             if (IS_CHOICE(item) || IS_CHOICE_REG(item))
             {
-                ((Choice *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+                ((Choice *)item)->Draw(Menu::CalculateX(), ItemOpenedPosY(item), true);
             }
             else if (IS_GOVERNOR(item))
             {
-                ((Governor *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+                ((Governor *)item)->Draw(Menu::CalculateX(), ItemOpenedPosY(item), true);
             }
             else if (IS_GOVERNOR_COLOR(item))
             {
-                ((GovernorColor *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+                ((GovernorColor *)item)->Draw(Menu::CalculateX(), ItemOpenedPosY(item), true);
             }
             else if (IS_TIME(item))
             {
-                ((Time *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+                ((Time *)item)->Draw(Menu::CalculateX(), ItemOpenedPosY(item), true);
             }
             else if (IS_IP(item))
             {
-                ((IPaddress *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+                ((IPaddress *)item)->Draw(Menu::CalculateX(), ItemOpenedPosY(item), true);
             }
             else if (IS_MAC(item))
             {
-                ((MACaddress *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+                ((MACaddress *)item)->Draw(Menu::CalculateX(), ItemOpenedPosY(item), true);
             }
         }
 
@@ -580,7 +581,9 @@ void Page::DrawTitle(int x, int yTop)
     }
     int height = HeightOpened();
     bool shade = CurrentItemIsOpened();
+
     Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, height + 2, Color::BACK);
+
     Painter::DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, height + 1, Color::BorderMenu(shade));
 
     if (shade)

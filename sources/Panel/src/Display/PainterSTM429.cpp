@@ -56,11 +56,16 @@ void Painter::DrawHLine(int y, int x0, int x1, Color col)
     SetColor(col);
 
     uint8 *address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH;
+    uint8 *end = Display::GetBuffer() + BUFFER_WIDTH * BUFFER_HEIGHT;
 
     uint8 value = currentColor.value;
 
     for (int x = x0; x <= x1; ++x)
     {
+        if (address >= end)
+        {
+            break;
+        }
         *address++ = value;
     }
 
