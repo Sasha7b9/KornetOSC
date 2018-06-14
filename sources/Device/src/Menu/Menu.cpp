@@ -40,8 +40,6 @@ void Menu::Update()
     {
         KeyEvent event = BufferButtons::Extract();
 
-        LOG_WRITE("%s %s", event.key.Name(), event.type.ToString());
-
         if(event.key.IsFunctional())
         {
             __IO int i = 0;
