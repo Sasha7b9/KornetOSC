@@ -817,7 +817,8 @@ INPUT_ENCODING         = CP1251
 
 FILE_PATTERNS          = *.c \
                          *.h \
-                         *.py
+                         *.py \
+                         *.cpp
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
@@ -834,8 +835,8 @@ RECURSIVE              = YES
 
 EXCLUDE                = ../../sources/Panel/src/libs \
                          ../../sources/libs/STM32Cube_F4 \
-                         ../../sources/libs/STM32Cube_F7 \
-                         ../../sources/Device/src/libs
+                         ../../sources/Device/src/libs \
+                         ../../sources/common/libs
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded

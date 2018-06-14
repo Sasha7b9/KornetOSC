@@ -19,20 +19,26 @@ static void GovernorIpCommon_DrawOpened(Control *item, int x, int y, int dWidth)
 static void DrawValueWithSelectedPosition(int x, int y, int value, int numDigits, int selPos, bool hLine, bool fillNull);
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static Key GetFuncButtonFromY(int _y)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////q
+///Возвращает функциональную кнопку, находящуюся на данном X.
+/// Расстояние между левой и правой границами выведенного меню делится на пять раввных промежутков и возвращается название той кнопки, которая
+/// попадает в даннуй промежуток.
+static Key GetFuncButtonFromX(int _x)
 {
-    int y = Grid::Top() + Grid::Height() / 12;
-    int step = Grid::Height() / 6;
-    Key button = Key::Enter;
-    for (int i = 0; i < 6; i++)
+    int x = Grid::Left() + Grid::Width() / 10;
+
+    int step = Grid::Width() / 5;
+
+    Key button = Key::F1;
+
+    for (int i = 0; i < 5; i++)
     {
-        if (_y < y)
+        if (_x < x)
         {
             return button;
         }
         button = Key((uint8)((int)button.code + 1));    // button++;
-        y += step;
+        x += step;
     }
     return  Key::F5;
 }
@@ -608,7 +614,7 @@ void Page::DrawTitle(int x, int yTop)
         Painter::Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(CurrentSubPage()), colorText);
     }
 
-    Menu::itemUnderButton[GetFuncButtonFromY(yTop).code] = this;
+    Menu::itemUnderButton[GetFuncButtonFromX(yTop).code] = this;
 
     delta = 0;
 
@@ -632,7 +638,7 @@ void Page::DrawItems(int x, int y)
         if (item)
         {
             item->Draw(x, y, false);
-            Menu::itemUnderButton[GetFuncButtonFromY(x).code] = item;
+            Menu::itemUnderButton[GetFuncButtonFromX(x).code] = item;
             x += MI_WIDTH;
         }
     }

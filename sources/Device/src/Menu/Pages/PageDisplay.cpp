@@ -122,7 +122,7 @@ void PageDisplay_Init()
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cViewMode,                                                                                         //--- ДИСПЛЕЙ - Отображение ---
-    "Отображение", "View",
+    "Отображ.", "View",
     "Задаёт режим отображения сигнала.",
     "Sets the display mode signal.",
     "Вектор", "Vector",
@@ -197,7 +197,7 @@ static bool IsActive_Accum()
 }
 
 DEF_PAGE_3(         ppAccum,                                                                                               // ДИСПЛЕЙ - НАКОПЛЕНИЕ ///
-    "НАКОПЛЕНИЕ", "ACCUMULATION",
+    "НАКОПЛ.", "ACCUM.",
     "Настройки режима отображения последних сигналов на экране.",
     "Mode setting signals to display the last screen.",
     cAccum_Num,     // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Количество
@@ -248,7 +248,7 @@ static bool IsActive_Average()
 }
 
 DEF_PAGE_2(         ppAverage,                                                                                             // ДИСПЛЕЙ - УСРЕДНЕНИЕ ///
-    "УСРЕДНЕНИЕ", "AVERAGE",
+    "УСРЕДН.", "AVERAGE",
     "Настройки режима усреднения по последним измерениям.",
     "Settings of the mode of averaging on the last measurements.",
     cAverage_Num,   // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Количество
@@ -294,7 +294,7 @@ DEF_CHOICE_8(       cMinMax,                                                    
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_REG_10(  cSmoothing,                                                                                        //--- ДИСПЛЕЙ - Сглаживание ---
-    "Сглаживание", "Smoothing",
+    "Сглаж.", "Smoothing",
     "Устанавливает количество точек для расчёта сглаженного по соседним точкам сигнала.",
     "Establishes quantity of points for calculation of the signal smoothed on the next points."
     ,
