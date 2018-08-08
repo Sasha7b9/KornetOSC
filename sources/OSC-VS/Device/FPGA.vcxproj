@@ -59,7 +59,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_msp.cpp" />
-    <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_it.c" />
+    <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_it.cpp" />
     <ClCompile Include="..\..\Device\src\Log.cpp" />
     <ClCompile Include="..\..\Device\src\main.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\BufferButtons.cpp" />

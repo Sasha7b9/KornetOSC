@@ -96,7 +96,7 @@ static uint8 *dataRandA = 0;
 static uint8 *dataRandB = 0;
 static uint timeCompletePredTrig = 0;   ///< Здесь окончание счёта предзапуска. Если == 0, то предзапуск не завершён.
 static DataSettings ds;
-    static uint timeSwitchingTrig = 0;
+volatile static uint timeSwitchingTrig = 0;
 int FPGA::addShiftForFPGA = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1363,7 +1363,7 @@ static void ShiftOnePoint2Right(uint8 *data, int size)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // balance - свдиг точки вверх/вниз для балансировки
-static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool shift, int balance)
+static void ReadChannel(uint8 *data, Channel ch, int length, uint16, bool shift, int balance)
 {
     if (length == 0)
     {
@@ -1377,7 +1377,8 @@ static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool 
 
     uint16 *address = ADDRESS_READ(ch);
 
-    nStop = *address;
+    volatile uint16 nStop = *address;
+    nStop = nStop;
 
     if (shift)
     {

@@ -1,6 +1,7 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
+#include "Hardware/Sound.h"
 
 
 #ifdef MSVC
@@ -19,7 +20,7 @@ void NMI_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-__attribute((noreturn)) void HardFault_Handler(void)
+void HardFault_Handler()
 {
     while (1)
     {
@@ -27,7 +28,7 @@ __attribute((noreturn)) void HardFault_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-__attribute((noreturn)) void MemManage_Handler(void)
+void MemManage_Handler()
 {
   while (1)
   {
@@ -35,7 +36,7 @@ __attribute((noreturn)) void MemManage_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-__attribute((noreturn)) void BusFault_Handler(void)
+void BusFault_Handler()
 {
   while (1)
   {
@@ -43,7 +44,7 @@ __attribute((noreturn)) void BusFault_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-__attribute((noreturn)) void UsageFault_Handler(void)
+void UsageFault_Handler()
 {
   while (1)
   {
@@ -75,6 +76,12 @@ void SysTick_Handler(void)
 void EXTI9_5_IRQHandler(void)
 {
     HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void DMA1_Stream5_IRQHandler(void)
+{
+    HAL_DMA_IRQHandler(Sound::handleDAC.DMA_Handle1);
 }
 
 

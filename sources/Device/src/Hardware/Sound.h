@@ -44,6 +44,8 @@ public:
 
     static void Beep(TypePress type);
 
+    static DAC_HandleTypeDef handleDAC;
+
 private:
 
     static void Beep(const TypeWave newTypeWave, const float newFreq, const float newAmpl, const int newDuration);

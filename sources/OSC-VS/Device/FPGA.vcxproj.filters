@@ -144,9 +144,6 @@
     <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_msp.cpp">
       <Filter>libs\HAL</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_it.c">
-      <Filter>libs\HAL</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -308,6 +305,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\HandlersKeys.cpp">
       <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_it.cpp">
+      <Filter>libs\HAL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

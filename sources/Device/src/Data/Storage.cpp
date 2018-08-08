@@ -11,7 +11,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Возвращает 0, если канал выключен
-static uint8 *AddressChannel(DataSettings *ds, Channel ch);
+//static uint8 *AddressChannel(DataSettings *ds, Channel ch);
 static bool DataSettingsIsEquals(const DataSettings *ds1, const DataSettings *ds2);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -668,10 +668,10 @@ bool Storage::GetLimitation(Channel ch, uint8 *, int direction)
 
 //    DataSettings *ds = DataSettingsFromEnd(0);
 
-    uint8 *limit = A == ch ? (uint8 *)limitDownA_RAM : (uint8 *)limitDownB_RAM;
+//   uint8 *limit = A == ch ? (uint8 *)limitDownA_RAM : (uint8 *)limitDownB_RAM;
     if (direction == 1)
     {
-        limit = A == ch ? (uint8 *)limitUpA_RAM : (uint8 *)limitUpB_RAM;
+//        limit = A == ch ? (uint8 *)limitUpA_RAM : (uint8 *)limitUpB_RAM;
     }
 //    CPU::RAM::MemCpy16(limit, data, NUM_BYTES(ds));
 

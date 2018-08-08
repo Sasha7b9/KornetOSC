@@ -66,8 +66,8 @@ void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 int RequestBytesForChannel(Channel, DataSettings *ds)
 {
-    ENumPointsFPGA numBytes;
-    PeakDetMode peakDet;
+    volatile ENumPointsFPGA numBytes;
+    volatile PeakDetMode peakDet;
 
     if (ds)
     {

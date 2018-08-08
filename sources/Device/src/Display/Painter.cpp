@@ -861,7 +861,7 @@ Color Painter::GetColor()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::SetBrightnessDisplay(int16 brightness)
 {
-    float recValue = 1601.0f;
+    volatile float recValue = 1601.0f;
     if (brightness < 100)
     {
         recValue = 64.0f + (600.0f - 63.0f) / 100.0f / 100.0f * brightness * brightness;
