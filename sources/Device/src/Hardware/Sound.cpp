@@ -165,7 +165,7 @@ void Sound::Beep(const TypeWave newTypeWave, const float newFreq, const float ne
     }
     if (!SOUND_ENABLED)
     {
-        return;
+        //return;
     }
     if (frequency != newFreq || amplitude != newAmpl || typeWave != newTypeWave)
     {

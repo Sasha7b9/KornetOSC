@@ -34,3 +34,6 @@ sources/OSC-Open/DebugConfig/*
 sources/OSC-Open/Listings/*
 
 sources/OSC-Open-VS/Debug/*
+
+sources/OSC-VS/Device/x64/*
+sources/OSC-VS/Panel/x64/*

@@ -22,11 +22,13 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define NEED_SET_ORIENTATION    (bf.needSetOrientation)
 
+/*
 static struct BitFieldDisplay
 {
     uint needSetOrientation : 1;
     uint notUsed : 31;
 } bf = {};
+*/
 
 typedef struct
 {
@@ -90,13 +92,13 @@ static uint                     timeWarnings[NUM_WARNINGS] = {0};   ///< Здесь в
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Key Display::key = Key::None;
-static bool showLevelTrigLev = false;   ///< Нужно ли рисовать горизонтальную линию уровня смещения уровня синхронизации.
-static bool drawRShiftMarkers = false;
+volatile static bool showLevelTrigLev = false;   ///< Нужно ли рисовать горизонтальную линию уровня смещения уровня синхронизации.
+volatile static bool drawRShiftMarkers = false;
 static pFuncVV funcOnHand       = 0;
 static uint timeStart = 0;
 static const char *textWait = 0;
 static bool clearBackground = false;
-static pFuncVV funcAdditionDraw = 0;
+volatile static pFuncVV funcAdditionDraw = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -416,7 +418,7 @@ void Display::RemoveAddDrawFunction()
 void Display::SetOrientation(DisplayOrientation orientation)
 {
     DISPLAY_ORIENTATION = orientation;
-    NEED_SET_ORIENTATION = 1;
+//    NEED_SET_ORIENTATION = 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

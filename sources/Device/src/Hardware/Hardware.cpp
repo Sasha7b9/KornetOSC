@@ -4,6 +4,7 @@
 #include "FSMC.h"
 #include "Timer.h"
 #include "stm32/stm32.h"
+#include "Sound.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,6 +40,7 @@ void Hardware::Init()
     MX_GPIO_Init();
     Timer::Init();
     FSMC::Init();
+    Sound::Init();
 
     //MX_ADC3_Init();
     //MX_DAC_Init();

@@ -7,6 +7,7 @@
 #include "Keyboard/Decoder.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/Timer.h"
+#include "Hardware/Sound.h"
 #include "Settings/Settings.h"
 #include "Utils/MathOSC.h"
 #include <stdlib.h>
@@ -44,6 +45,7 @@ void Device::Update()
     Menu::Update();
     Display::Update();
     Decoder::Update();
+    Sound::ButtonPress();
     //FPGA::Update();
     //Menu::SaveSettings();
     //Tester::Update();

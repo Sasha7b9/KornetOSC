@@ -1,11 +1,26 @@
-#include "Timer.h"
 #include "defines.h"
-#include "Hardware/stm32/Timer4XX.h"
+#include "Timer.h"
+#include "Log.h"
+#include <stm32f4xx.h>
+#include "stm32/Timer4XX.h"
 #include <limits.h>
-
+#include "Hardware/CPU.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-struct TimerStruct
+#if defined(STM32F437xx) || defined(STM32F407xx) || defined(STM32F429xx)
+
+static Timer4XX tim2;   // Для тиков
+static Timer4XX tim3;   // Для таймеров
+
+#elif defined STM32F207xx
+
+static Timer2XX tim2;   // Для тиков
+static Timer2XX tim3;   // Для таймеров
+
+#endif
+
+
+typedef struct
 {
     pFuncVV func;       // Функция таймера
     uint    dTms;          // Период срабатывания, мс
@@ -14,43 +29,99 @@ struct TimerStruct
     uint8   notUsed0;
     uint8   notUsed1;
     uint8   notUsed2;
-};
+} TimerStruct;
 
-static TimerStruct timers[NumTimers];
-
-static Timer4XX tim3;   // Для таймеров
-
-#define TIME_NEXT(type) (timers[type].timeNextMS)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static TimerStruct timers[NumTimers];
+static uint timeStartLogging = 0;
+static uint timePrevPoint = 0;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#undef TIME_NEXT
+#define TIME_NEXT(type) (timers[type].timeNextMS)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Завести таймр, который остановится в timeStop мс
+static void StartTIM(uint timeStop);
+
+static void StopTIM();
+/// Возвращает время срабатывания ближайщего таймера, либо 0, если таймеров нет
+static uint NearestTime();
+/// Настроить систему на таймер
+static void TuneTIM(TypeTimer type);
+/// Вызывается при срабатывании таймера
+static void ElapsedCallback();
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool Timer::IsRun(TypeTimer type)
+{
+    return TIME_NEXT(type) != UINT_MAX;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Timer::Init()
 {
-    __HAL_RCC_TIM2_CLK_ENABLE();
-
-    TIM_HandleTypeDef handleTIM2 =
+    for(uint i = 0; i < NumTimers; i++)
     {
-        TIM2,
+        timers[i].timeNextMS = UINT_MAX;
+    }
+   
+    tim3.Init(TIM3, 54000 - 1, TIM_COUNTERMODE_UP, 1, TIM_CLOCKDIVISION_DIV1);
+    tim3.EnabledIRQ(1, 1);
+
+    tim2.Init(TIM2, 0, TIM_COUNTERMODE_UP, (uint)-1, TIM_CLOCKDIVISION_DIV1);
+    tim2.Start();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Timer::DeInit()
+{
+    tim2.Stop();
+    tim2.DeInit();
+    
+    tim3.DisableIRQ();
+    tim3.StopIT();
+    tim3.DeInit();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void ElapsedCallback()
+{
+    uint time = TIME_MS;
+
+    if (NearestTime() > time)
+    {
+        return;
+    }
+
+    StopTIM();
+
+    for (uint type = 0; type < NumTimers; type++)
+    {
+        if (TIME_NEXT(type) <= time)            // Если пришло время срабатывания
         {
-            0,
-            TIM_COUNTERMODE_UP,
-            (uint)-1,
-            TIM_CLOCKDIVISION_DIV1
+            TimerStruct *timer = &timers[type];
+            timer->func();
+            if (timer->repeat)
+            {
+                do      // Цикл нужен потому, что системный таймер SysTick, который отсчитываем миллисекунды, имеет наивысший приоритет,
+                {       // и если функция выполняется дольше, чем timer->dTm мс, то оно тут зависнет
+                    timer->timeNextMS += timer->dTms;
+                } while (timer->timeNextMS < TIME_MS);
+
+            }
+            else
+            {
+                timer->timeNextMS = UINT_MAX;
+            }
         }
-    };
-    HAL_TIM_Base_Init(&handleTIM2);
-    HAL_TIM_Base_Start(&handleTIM2);
-}
+    }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer::SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms)
-{
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer::SetAndEnable(TypeTimer type, pFuncVV func, uint dTms)
-{
-    Set(type, func, dTms);
-    Enable(type);
+    StartTIM(NearestTime());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -62,40 +133,31 @@ void Timer::Set(TypeTimer type, pFuncVV func, uint dTms)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static uint NearestTime()
+void Timer::SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms)
 {
-    uint time = UINT_MAX;
-
-    for (uint type = 0; type < NumTimers; type++)
-    {
-        if (TIME_NEXT(type) < time)
-        {
-            time = TIME_NEXT(type);
-        }
-    }
-
-    return time;
+    Timer::Set(type, func, dTms);
+    StartOnce(type);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void StopTIM()
+void Timer::SetAndEnable(TypeTimer type, pFuncVV func, uint dTms)
 {
-    tim3.StopIT();
+    Set(type, func, dTms);
+    Enable(type);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void StartTIM(uint timeStopMS)
+void Timer::StartOnce(TypeTimer type)
 {
-    StopTIM();
+    timers[type].repeat = false;
+    TuneTIM(type);
+}
 
-    if (timeStopMS == UINT_MAX)
-    {
-        return;
-    }
-
-    uint dT = timeStopMS - TIME_MS;
-
-    tim3.StartIT((dT * 2) - 1);             // 10 соответствует 0.1мс. Т.е. если нам нужна 1мс, нужно засылать (100 - 1)
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Timer::Enable(TypeTimer type)
+{
+    timers[type].repeat = true;
+    TuneTIM(type);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -108,17 +170,10 @@ static void TuneTIM(TypeTimer type)
     uint timeNext = TIME_MS + timer->dTms;
     timer->timeNextMS = timeNext;
 
-    if (timeNext < timeNearest)      // Если таймер должен сработать раньше текущего
+    if(timeNext < timeNearest)      // Если таймер должен сработать раньше текущего
     {
         StartTIM(timeNext);         // то заводим таймер на наше время
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer::Enable(TypeTimer type)
-{
-    timers[type].repeat = true;
-    TuneTIM(type);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -129,9 +184,40 @@ void Timer::Disable(TypeTimer type)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Timer::IsRun(TypeTimer type)
+static uint NearestTime()
 {
-    return TIME_NEXT(type) != UINT_MAX;
+    uint time = UINT_MAX;
+
+    for(uint type = 0; type < NumTimers; type++)
+    {
+        if(TIME_NEXT(type) < time)
+        {
+            time = TIME_NEXT(type);
+        }
+    }
+    
+    return time;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void StartTIM(uint timeStopMS)
+{
+    StopTIM();
+
+    if(timeStopMS == UINT_MAX)
+    {
+        return;
+    }
+
+    uint dT = timeStopMS - TIME_MS;
+
+    tim3.StartIT((dT * 2) - 1);             // 10 соответствует 0.1мс. Т.е. если нам нужна 1мс, нужно засылать (100 - 1)
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void StopTIM()
+{
+    tim3.StopIT();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -139,3 +225,69 @@ void Timer::PauseOnTime(uint timeMS)
 {
     HAL_Delay(timeMS);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Timer::PauseOnTicks(uint numTicks)
+{
+    uint startTicks = TIME_TICKS;
+    while (TIME_TICKS - startTicks < numTicks)
+    {
+    };
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Timer::StartMultiMeasurement()
+{
+    TIM2->CR1 &= (uint)~TIM_CR1_CEN;
+    TIM2->CNT = 0;
+    TIM2->CR1 |= TIM_CR1_CEN;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Timer::StartLogging()
+{
+    timeStartLogging = TIME_TICKS;
+    timePrevPoint = timeStartLogging;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+uint Timer::LogPointUS(char * name)
+{
+    uint interval = TIME_TICKS - timePrevPoint;
+    timePrevPoint = TIME_TICKS;
+    LOG_WRITE("%s %.2f us", name, interval / 120.0);
+    return interval;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+uint Timer::LogPointMS(char * name)
+{
+    uint interval = TIME_TICKS - timePrevPoint;
+    timePrevPoint = TIME_TICKS;
+    LOG_WRITE("%s %.2f ms", name, interval / 120e3);
+    return interval;
+}
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    void TIM3_IRQHandler()
+    {
+        if ((TIM3->SR & TIM_SR_UIF) == TIM_SR_UIF)
+        {
+            if((TIM3->DIER & TIM_DIER_UIE) == TIM_DIER_UIE)
+            {
+                TIM3->SR = ~TIM_DIER_UIE;
+                ElapsedCallback();
+            }
+        }
+    }
+
+#ifdef __cplusplus
+}
+#endif
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#undef TIME_NEXT

@@ -2,27 +2,48 @@
 #include "defines.h"
 
 
+#define START_MULTI_MEASUREMENT() Timer::StartMultiMeasurement()
+#define PAUSE_ON_TICKS(ticks)     Timer::PauseOnTicks(ticks)
+#define PAUSE_ON_MS(ms)           Timer::PauseOnTime(ms)
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/** @addtogroup Hardware
+ *  @{
+ *  @defgroup Timer
+ *  @brief –†–∞–∑–Ω—ã–µ —Ç–∞–π–º–µ—Ä—ã
+ *  @{
+ */
+
+ /// @brief –ö–æ–ª–∏—á–µ—Å—Ç–≤–æ —Ç–∏–∫–æ–≤, –ø—Ä–æ—à–µ–¥—à–∏—Ö —Å –º–æ–º–µ–Ω—Ç–∞ –ø–æ—Å–ª–µ–¥–Ω–µ–≥–æ –≤—ã–∑–æ–≤–∞ —Ñ—É–Ω–∫—Ü–∏–∏ Timer_StartMultiMeasurement(). –ù–µ –±–æ–ª–µ–µ (1 << 32)
+ /// –í –æ–¥–Ω–æ–π —Å–µ–∫—É–Ω–¥–µ 120.000.000 —Ç–∏–∫–æ–≤ –¥–ª—è –°8-53 –∏ 90.000.000 —Ç–∏–∫–æ–≤ –¥–ª—è –°8-54.
+ /// –ú–∞–∫—Å–∏–º–∞–ª—å–Ω—ã–π –æ—Ç—Ä–µ–∑–æ–∫ –≤—Ä–µ–º–µ–Ω–∏, –∫–æ—Ç–æ—Ä—ã–π –º–æ–∂–Ω–æ –æ—Ç—Å—á–∏—Ç–∞—Ç—å —Å –µ—ë –ø–æ–º–æ—â—å—é - 35 —Å–µ–∫.
+#define TIME_TICKS (TIM2->CNT)
+#define TIME_US    (TIM2->CNT / 90)
+#define TIME_MS    HAL_GetTick()
+
 enum TypeTimer
 {
-    kPressKey,                  ///< ÕÛÊÌÓ ÛÒÚ‡Ì‡‚ÎË‚‡Ú¸, ÍÓ„‰‡ ÔËıÓ‰ËÚ Ì‡Ê‡ÚËÂ ÍÎ‡‚Ë¯Ë.
-    kShowLevelRShiftA,          ///< ÕÛÊÌÓ ÛÒÚ‡Ì‡‚ÎË‚‡Ú¸, ÍÓ„‰‡ ËÁÏÂÌˇÂÚÒˇ ÔÓÎÓÊÂÌËÂ Û˜ÍË ÒÏÂ˘ÂÌËˇ Í‡Ì‡Î‡ 1.
-    kShowLevelRShiftB,          ///< ÕÛÊÌÓ ÛÒÚ‡Ì‡‚ÎË‚‡Ú¸, ÍÓ„‰‡ ËÁÏÂÌˇÂÚÒˇ ÔÓÎÓÊÂÌËÂ Û˜ÍË ÒÏÂ˘ÂÌËˇ Í‡Ì‡Î‡ 2.
-    kShowLevelTrigLev,          ///< ÕÛÊÌÓ ÛÒÚ‡Ì‡‚ÎË‚‡Ú¸, ÍÓ„‰‡ ËÁÏÂÌˇÂÚÒˇ ÔÓÎÓÊÂÌËÂ Û˜ÍË ÛÓ‚Ìˇ ÒËÌıÓÌËÁ‡ˆËË
-    kENumSignalsInSec,          ///< ƒÎˇ ÛÒÚ‡ÌÓ‚ÍË ÍÓÎË˜ÂÒÚ‚‡ Ò˜ËÚ˚‚‡ÌËÈ ÒË„Ì‡Î‡ ‚ ÒÂÍÛÌ‰Û.
-    kFlashDisplay,              ///< “‡ÈÏÂ ‰Îˇ ÏÂˆ‡˛˘Ëı Û˜‡ÒÚÍÓ‚ ˝Í‡Ì‡ ˜∏ÌÓ-·ÂÎÓ„Ó ‰ËÒÔÎÂˇ.
-    kShowMessages,              ///< “‡ÈÏÂ ‰Îˇ Á‡ÒÂÍ‡ÌËˇ ‚ÂÏˇ ÔÓÍ‡Á‡ ËÌÙÓÏ‡ˆËÓÌÌ˚ı Ë ÔÂ‰ÛÔÂÊ‰‡˛˘Ëı ÒÓÓ·˘ÂÌËÈ.
-    kMenuAutoHide,              ///< “‡ÈÏÂ ‰Îˇ ÓÚÒ˜∏Ú‡ ‚ÂÏÂÌË ÒÍ˚‚‡ÌËˇ ÏÂÌ˛.
-    kRShiftMarkersAutoHide,     ///< “‡ÈÏÂ ‰Îˇ ÓÚÒ˜∏Ú‡ ‚ÂÏÂÌË ÒÍ˚‚‡ÌËˇ ‰ÓÔÓÎÌËÚÂÎ¸Ì˚ı ·ÓÍÓ‚˚ı ÏÂÚÓÍ.
-    kUSB,                       ///< ¬ÒÔÓÏÓ„‡ÚÂÎ¸Ì˚È, ‰Îˇ Ó·˘Ëı ÌÛÊ‰.
-    kStopSound,                 ///< ¬˚ÍÎ˛˜ËÚ¸ Á‚ÛÍ
-    kTemporaryPauseFPGA,        ///< ¬ÂÏÂÌÌ‡ˇ Ô‡ÛÁ‡ ‰Îˇ ÙËÍÒ‡ˆËË ÒË„Ì‡Î‡ Ì‡ ˝Í‡ÌÂ ÔÓÒÎÂ ÔÓ‚ÓÓÚ‡ Û˜ÂÍ
-    kStrNaviAutoHide,           ///< œˇÚ‡Ú¸ ÒÚÓÍÛ Ì‡‚Ë„‡ˆËË ÏÂÌ˛
-    kTimerStartP2P,             ///< “‡ÈÏÂ ‰Îˇ Á‡ÔÛÒÍ‡ ÒÎÂ‰Û˛˘Â„Ó ˆËÍÎ‡ ÔÓÚÓ˜Â˜ÌÓ„Ó ˜ÚÂÌËˇ
-    kTimerDisplay,              ///< “‡ÈÏÂ Ì‡ Û˜ÌÛ˛ ÓÚËÒÓ‚ÍÛ ˝Í‡Ì‡
+    kPressKey,                  ///< –ù—É–∂–Ω–æ —É—Å—Ç–∞–Ω–∞–≤–ª–∏–≤–∞—Ç—å, –∫–æ–≥–¥–∞ –ø—Ä–∏—Ö–æ–¥–∏—Ç –Ω–∞–∂–∞—Ç–∏–µ –∫–ª–∞–≤–∏—à–∏.
+    kShowLevelRShiftA,          ///< –ù—É–∂–Ω–æ —É—Å—Ç–∞–Ω–∞–≤–ª–∏–≤–∞—Ç—å, –∫–æ–≥–¥–∞ –∏–∑–º–µ–Ω—è–µ—Ç—Å—è –ø–æ–ª–æ–∂–µ–Ω–∏–µ —Ä—É—á–∫–∏ —Å–º–µ—â–µ–Ω–∏—è –∫–∞–Ω–∞–ª–∞ 1.
+    kShowLevelRShiftB,          ///< –ù—É–∂–Ω–æ —É—Å—Ç–∞–Ω–∞–≤–ª–∏–≤–∞—Ç—å, –∫–æ–≥–¥–∞ –∏–∑–º–µ–Ω—è–µ—Ç—Å—è –ø–æ–ª–æ–∂–µ–Ω–∏–µ —Ä—É—á–∫–∏ —Å–º–µ—â–µ–Ω–∏—è –∫–∞–Ω–∞–ª–∞ 2.
+    kShowLevelTrigLev,          ///< –ù—É–∂–Ω–æ —É—Å—Ç–∞–Ω–∞–≤–ª–∏–≤–∞—Ç—å, –∫–æ–≥–¥–∞ –∏–∑–º–µ–Ω—è–µ—Ç—Å—è –ø–æ–ª–æ–∂–µ–Ω–∏–µ —Ä—É—á–∫–∏ —É—Ä–æ–≤–Ω—è —Å–∏–Ω—Ö—Ä–æ–Ω–∏–∑–∞—Ü–∏–∏
+    kENumSignalsInSec,          ///< –î–ª—è —É—Å—Ç–∞–Ω–æ–≤–∫–∏ –∫–æ–ª–∏—á–µ—Å—Ç–≤–∞ —Å—á–∏—Ç—ã–≤–∞–Ω–∏–π —Å–∏–≥–Ω–∞–ª–∞ –≤ —Å–µ–∫—É–Ω–¥—É.
+    kFlashDisplay,              ///< –¢–∞–π–º–µ—Ä –¥–ª—è –º–µ—Ä—Ü–∞—é—â–∏—Ö —É—á–∞—Å—Ç–∫–æ–≤ —ç–∫—Ä–∞–Ω–∞ —á—ë—Ä–Ω–æ-–±–µ–ª–æ–≥–æ –¥–∏—Å–ø–ª–µ—è.
+    kShowMessages,              ///< –¢–∞–π–º–µ—Ä –¥–ª—è –∑–∞—Å–µ–∫–∞–Ω–∏—è –≤—Ä–µ–º—è –ø–æ–∫–∞–∑–∞ –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏–æ–Ω–Ω—ã—Ö –∏ –ø—Ä–µ–¥—É–ø—Ä–µ–∂–¥–∞—é—â–∏—Ö —Å–æ–æ–±—â–µ–Ω–∏–π.
+    kMenuAutoHide,              ///< –¢–∞–π–º–µ—Ä –¥–ª—è –æ—Ç—Å—á—ë—Ç–∞ –≤—Ä–µ–º–µ–Ω–∏ —Å–∫—Ä—ã–≤–∞–Ω–∏—è –º–µ–Ω—é.
+    kRShiftMarkersAutoHide,     ///< –¢–∞–π–º–µ—Ä –¥–ª—è –æ—Ç—Å—á—ë—Ç–∞ –≤—Ä–µ–º–µ–Ω–∏ —Å–∫—Ä—ã–≤–∞–Ω–∏—è –¥–æ–ø–æ–ª–Ω–∏—Ç–µ–ª—å–Ω—ã—Ö –±–æ–∫–æ–≤—ã—Ö –º–µ—Ç–æ–∫.
+    kUSB,                       ///< –í—Å–ø–æ–º–æ–≥–∞—Ç–µ–ª—å–Ω—ã–π, –¥–ª—è –æ–±—â–∏—Ö –Ω—É–∂–¥.
+    kStopSound,                 ///< –í—ã–∫–ª—é—á–∏—Ç—å –∑–≤—É–∫
+    kTemporaryPauseFPGA,        ///< –í—Ä–µ–º–µ–Ω–Ω–∞—è –ø–∞—É–∑–∞ –¥–ª—è —Ñ–∏–∫—Å–∞—Ü–∏–∏ —Å–∏–≥–Ω–∞–ª–∞ –Ω–∞ —ç–∫—Ä–∞–Ω–µ –ø–æ—Å–ª–µ –ø–æ–≤–æ—Ä–æ—Ç–∞ —Ä—É—á–µ–∫
+    kStrNaviAutoHide,           ///< –ü—Ä—è—Ç–∞—Ç—å —Å—Ç—Ä–æ–∫—É –Ω–∞–≤–∏–≥–∞—Ü–∏–∏ –º–µ–Ω—é
+    kTimerStartP2P,             ///< –¢–∞–π–º–µ—Ä –¥–ª—è –∑–∞–ø—É—Å–∫–∞ —Å–ª–µ–¥—É—é—â–µ–≥–æ —Ü–∏–∫–ª–∞ –ø–æ—Ç–æ—á–µ—á–Ω–æ–≥–æ —á—Ç–µ–Ω–∏—è
+    kTimerDisplay,              ///< –¢–∞–π–º–µ—Ä –Ω–∞ —Ä—É—á–Ω—É—é –æ—Ç—Ä–∏—Å–æ–≤–∫—É —ç–∫—Ä–∞–Ω–∞
     kTemp,
     NumTimers
 };
+
 
 class Timer
 {
@@ -30,33 +51,35 @@ public:
 
     static void Init();
 
-    static void Disable(TypeTimer type);
+    static void DeInit();
+    /// –ù–∞–∑–Ω–∞—á–∞–µ—Ç —Ç–∞–π–º–µ—Ä—É timer —Ñ—É–Ω–∫—Ü–∏—é –∏ –≤—Ä–µ–º—è —Å—Ä–∞–±–∞—Ç—ã–≤–∞–Ω–∏—è
+    static void Set(TypeTimer type, pFuncVV func, uint dTms);
 
     static void SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms);
 
-    static void PauseOnTime(uint timeMS);
-
     static void SetAndEnable(TypeTimer type, pFuncVV func, uint dTms);
-    /// Õ‡ÁÌ‡˜‡ÂÚ Ú‡ÈÏÂÛ timer ÙÛÌÍˆË˛ Ë ‚ÂÏˇ Ò‡·‡Ú˚‚‡ÌËˇ
-    static void Set(TypeTimer type, pFuncVV func, uint dTms);
+
+    static void StartOnce(TypeTimer type);
 
     static void Enable(TypeTimer type);
 
+    static void Disable(TypeTimer type);
+
     static bool IsRun(TypeTimer type);
 
-private:
+    static void PauseOnTime(uint timeMS);
+
+    static void PauseOnTicks(uint numTicks);
+    /// –ó–∞–ø—É—Å–∫–∞–µ—Ç —Å—á—ë—Ç—á–∏–∫ –¥–ª—è –∏–∑–º–µ—Ä–µ–Ω–∏—è –º–∞–ª—ã—Ö –æ—Ç—Ä–µ–∑–∫–æ–≤ –≤—Ä–µ–º–µ–Ω–∏
+    static void StartMultiMeasurement();
+    /// –£—Å—Ç–∞–Ω–∞–≤–ª–∏–≤–∞–µ—Ç —Å—Ç–∞—Ä—Ç–æ–≤—É—é —Ç–æ—á–∫—É –ª–æ–≥–≥–∏—Ä–æ–≤–∞–Ω–∏—è. –î–∞–ª–µ–µ –≤—ã–∑–æ–≤—ã Timer_LogPoint –∑–∞—Å–µ–∫–∞—é—Ç –≤—Ä–µ–º–µ–Ω–Ω—ã–µ –∏–Ω—Ç–µ—Ä–≤–∞–ª—ã –æ—Ç —ç—Ç–æ —Ç–æ—á–∫–∏
+    static void StartLogging();
+
+    static uint LogPointUS(char *name);
+
+    static uint LogPointMS(char *name);
 };
 
 
-/// «‡ÔÛÒÍ‡ÂÚ Ò˜∏Ú˜ËÍ ‰Îˇ ËÁÏÂÂÌËˇ Ï‡Î˚ı ÓÚÂÁÍÓ‚ ‚ÂÏÂÌË (ÚËÍÓ‚ Ë ÏËÍÓÒÂÍÛÌ‰). —˜∏Ú˜ËÍ‡ ı‚‡Ú‡ÂÚ „‰Â-ÚÓ Ì‡ 30 ÒÂÍÛÌ‰.
-#define START_MULTI_MEASUREMENT()   { TIM2->CR1 &= (uint)~TIM_CR1_CEN; TIM2->CNT = 0; TIM2->CR1 |= TIM_CR1_CEN; }
-///  ÓÎË˜ÂÒÚ‚Ó ÔÓ¯Â‰¯Ëı Ú‡ÍÚÓ‚ Ò ÔÓÒÎÂ‰ÌÂ„Ó ‚˚ÁÓ‚‡ START_MULTI_MEASUREMENT
-#define TIME_TICKS  (TIM2->CNT)
-///  ÓÎË˜ÂÒÚ‚Ó ÔÓ¯Â‰¯Ëı ÏËÍÓÒÂÍÛÌ‰ Ò ÔÓÒÎÂ‰ÌÂ„Ó ‚˚ÁÓ˚‚‡ START_MULTI_MEASUREMENT
-#define TIME_US     (TIME_TICKS / 90)
-///  ÓÎË˜ÂÒÚ‚Ó ÏËÎÎËÒÂÍÛÌ‰, ÔÓ¯Â‰¯Ëı Ò Ì‡˜‡Î‡ ‡·ÓÚ˚ ÔÓ„‡ÏÏ˚
-#define TIME_MS     HAL_GetTick()
-
-#define PAUSE_ON_TICKS(x)   { uint time = TIME_TICKS; while(time + (x) > TIME_TICKS) {}; }
-#define PAUSE_ON_US(x)      { uint time = TIME_US; while (TIME_US - time < (x)) {}; }
-#define PAUSE_ON_MS(x)      { uint time = TIME_MS; while (TIME_MS - time < (x)) {}; }
+/** @}  @}
+ */
