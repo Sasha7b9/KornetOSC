@@ -92,76 +92,23 @@ void HAL_DAC_MspInit(DAC_HandleTypeDef* hdac)
     {
         __HAL_RCC_DAC_CLK_ENABLE();
     
-        GPIO_InitStruct.Pin = GPIO_PIN_4|TESTER_DAC_Pin;
+        GPIO_InitStruct.Pin = TESTER_DAC_Pin;
         GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
         GPIO_InitStruct.Pull = GPIO_NOPULL;
         HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
     }
 
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    /*
-    GPIO_InitTypeDef structGPIO =
-    {
-        GPIO_PIN_4,
-        GPIO_MODE_ANALOG,
-        GPIO_NOPULL,
-        0, 0
-    };
-
-    HAL_GPIO_Init(GPIOA, &structGPIO);
-
-    static DMA_HandleTypeDef hdmaDAC1 =
-    {
-        DMA1_Stream5,
-    {
-        DMA_CHANNEL_7,
-        DMA_MEMORY_TO_PERIPH,
-        DMA_PINC_DISABLE,
-        DMA_MINC_ENABLE,
-        DMA_PDATAALIGN_BYTE,
-        DMA_MDATAALIGN_BYTE,
-        DMA_CIRCULAR,
-        DMA_PRIORITY_HIGH,
-        DMA_FIFOMODE_DISABLE,
-        DMA_FIFO_THRESHOLD_HALFFULL,
-        DMA_MBURST_SINGLE,
-        DMA_PBURST_SINGLE
-    },
-        HAL_UNLOCKED, HAL_DMA_STATE_RESET, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    };
-
-    HAL_DMA_Init(&hdmaDAC1);
-
-    __HAL_LINKDMA(hdac, DMA_Handle1, hdmaDAC1);
-
-    HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, PRIORITY_SOUND_DMA1_STREAM5);
-    HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
-    */
 }
 
 void HAL_DAC_MspDeInit(DAC_HandleTypeDef* hdac)
 {
-
-  if(hdac->Instance==DAC)
-  {
-  /* USER CODE BEGIN DAC_MspDeInit 0 */
-
-  /* USER CODE END DAC_MspDeInit 0 */
-    /* Peripheral clock disable */
-    __HAL_RCC_DAC_CLK_DISABLE();
+    if(hdac->Instance==DAC)
+    {
+        __HAL_RCC_DAC_CLK_DISABLE();
   
-    /**DAC GPIO Configuration    
-    PA4     ------> DAC_OUT1
-    PA5     ------> DAC_OUT2 
-    */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_4|TESTER_DAC_Pin);
-
-  /* USER CODE BEGIN DAC_MspDeInit 1 */
-
-  /* USER CODE END DAC_MspDeInit 1 */
-  }
-
+        HAL_GPIO_DeInit(GPIOA, TESTER_DAC_Pin);
+    }
 }
 
 void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)

@@ -43,7 +43,7 @@ void Hardware::Init()
     Sound::Init();
 
     //MX_ADC3_Init();
-    //MX_DAC_Init();
+    MX_DAC_Init();
     //MX_SPI4_Init();
     //MX_USART3_UART_Init();
     //MX_USB_OTG_FS_PCD_Init();

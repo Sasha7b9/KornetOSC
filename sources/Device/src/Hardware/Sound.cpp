@@ -3,7 +3,8 @@
 #include "Log.h"
 #include "Sound.h"
 #include "Settings/Settings.h"
-#include "Hardware/Timer.h"
+#include "Timer.h"
+#include "Hardware.h"
 #include "Utils/Math.h"
 #include <math.h>
 
@@ -25,8 +26,46 @@ static volatile bool isBeep = false;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Sound::Init()
 {
-    __DMA1_CLK_ENABLE();        // Для DAC1 (бикалка)
-    __TIM7_CLK_ENABLE();        // Для DAC1 (бикалка)
+    __DMA1_CLK_ENABLE();
+    __TIM7_CLK_ENABLE();
+    __DAC_CLK_ENABLE();
+
+    GPIO_InitTypeDef structGPIO =
+    {
+        GPIO_PIN_4,
+        GPIO_MODE_ANALOG,
+        GPIO_NOPULL,
+        0, 0
+    };
+
+     HAL_GPIO_Init(GPIOA, &structGPIO);
+
+    static DMA_HandleTypeDef hdmaDAC1 =
+    {
+        DMA1_Stream5,
+    {
+        DMA_CHANNEL_7,
+        DMA_MEMORY_TO_PERIPH,
+        DMA_PINC_DISABLE,
+        DMA_MINC_ENABLE,
+        DMA_PDATAALIGN_BYTE,
+        DMA_MDATAALIGN_BYTE,
+        DMA_CIRCULAR,
+        DMA_PRIORITY_HIGH,
+        DMA_FIFOMODE_DISABLE,
+        DMA_FIFO_THRESHOLD_HALFFULL,
+        DMA_MBURST_SINGLE,
+        DMA_PBURST_SINGLE
+    },
+        HAL_UNLOCKED, HAL_DMA_STATE_RESET, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    };
+
+    HAL_DMA_Init(&hdmaDAC1);
+
+    __HAL_LINKDMA(&handleDAC, DMA_Handle1, hdmaDAC1);
+
+    HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, PRIORITY_SOUND_DMA1_STREAM5);
+    HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
 
 
     DAC_ChannelConfTypeDef config =
@@ -42,7 +81,6 @@ void Sound::Init()
     HAL_DAC_ConfigChannel(&handleDAC, &config, DAC_CHANNEL_1);
 }
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::Stop()
 {
@@ -50,7 +88,6 @@ void Sound::Stop()
     isBeep = false;
     soundWarnIsBeep = false;
 }
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::ConfigTIM7(uint16 prescaler, uint16 period)
@@ -78,7 +115,6 @@ void Sound::ConfigTIM7(uint16 prescaler, uint16 period)
     HAL_TIM_Base_Start(&htim);
 }
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint16 Sound::CalculatePeriodForTIM()
 {
@@ -86,7 +122,6 @@ uint16 Sound::CalculatePeriodForTIM()
 
     return (uint16)(MULTIPLIER_CALCPERFORTIM / frequency / POINTS_IN_PERIOD_SOUND);
 }
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::CalculateSine()
@@ -268,4 +303,16 @@ void Sound::Beep(TypePress type)
 
     func[type.type]();
 
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Sound::Test()
+{
+    ButtonPress();
+    ButtonRelease();
+    GovernorChangedValue();
+    RegulatorShiftRotate();
+    RegulatorSwitchRotate();
+    WarnBeepBad();
+    WarnBeepGood();
 }

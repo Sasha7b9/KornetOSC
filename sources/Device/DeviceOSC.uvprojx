@@ -370,7 +370,7 @@
             <ScatterFile>.\FPGA.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc>--diag_suppress=L6776</Misc>
+            <Misc></Misc>
             <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
@@ -2004,6 +2004,11 @@
               <FileName>Sound.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Sound.h</FilePath>
+            </File>
+            <File>
+              <FileName>CPU_IT.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\CPU_IT.cpp</FilePath>
             </File>
           </Files>
         </Group>

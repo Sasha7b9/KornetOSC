@@ -44,6 +44,7 @@
     <ClCompile Include="..\..\Device\src\Globals.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\AT25160N.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp" />
+    <ClCompile Include="..\..\Device\src\Hardware\CPU_IT.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\EEPROM.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\GPIO.cpp" />

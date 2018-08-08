@@ -25,6 +25,7 @@ class Sound
 {
 public:
     static void Init();
+
     /// Звук нажатия на кнопку.
     static void ButtonPress();
     /// Функция вызовет звук отпускаемой кнопки только если перед этим проигрывался звук нажатия кнопки.
@@ -43,6 +44,8 @@ public:
     static void WaitForCompletion();
 
     static void Beep(TypePress type);
+
+    static void Test();
 
     static DAC_HandleTypeDef handleDAC;
 

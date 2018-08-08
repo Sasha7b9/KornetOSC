@@ -45,7 +45,9 @@ void Device::Update()
     Menu::Update();
     Display::Update();
     Decoder::Update();
-    Sound::ButtonPress();
+
+    Sound::Test();
+
     //FPGA::Update();
     //Menu::SaveSettings();
     //Tester::Update();
