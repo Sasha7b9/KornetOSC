@@ -12,9 +12,13 @@
  *  @{
  */
 
-void OnChanged_Points(bool active);
-void OnPress_Drive_Manager();
-void Memory_SaveSignalToFlashDrive();
+class PageMemory
+{
+public:
+    static void OnChanged_Points(bool active);
+    static void OnPress_Drive_Manager();
+    static void SaveSignalToFlashDrive();
+};
 
 
 extern pString namesLengthMemory[];

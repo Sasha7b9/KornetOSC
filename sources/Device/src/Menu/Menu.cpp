@@ -264,7 +264,7 @@ void Menu::ProcessingShortPressureButton()
         if (shortPressureButton.Is(Key::Memory) && MODE_BTN_MEMORY_IS_SAVE && FDrive::IsConnected())
         {
             EXIT_FROM_SETNAME_TO = (uint)(MENU_IS_SHOWN ? RETURN_TO_MAIN_MENU : RETURN_TO_DISABLE_MENU);
-            Memory_SaveSignalToFlashDrive();
+            PageMemory::SaveSignalToFlashDrive();
             shortPressureButton = Key::None;
             return;
         }
@@ -484,7 +484,7 @@ void Menu::ChangeStateFlashDrive()
     }
     else if(FLASH_AUTOCONNECT)
     {
-        OnPress_Drive_Manager();
+        PageMemory::OnPress_Drive_Manager();
     }
 }
 

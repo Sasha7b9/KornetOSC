@@ -2,6 +2,7 @@
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"
 #include "Menu/Pages/Definition.h"
+#include "PageMeasures.h"
 #include "Utils/Math.h"
 #include "Utils/Measures.h"
 
@@ -246,7 +247,7 @@ static void OnRegSet_Tune(int angle)
     currentAngle = 0;
 }
 
-DEF_PAGE_SB(        ppTune,                                                                                               // ИЗМЕРЕНИЯ - НАСТРОИТЬ ///
+DEF_PAGE_SB(ppTune,                                                                                               // ИЗМЕРЕНИЯ - НАСТРОИТЬ ///
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режми точной настройки количества и видов измерений",
     "Transition to rezhm of exact control of quantity and types of measurements",
@@ -260,7 +261,7 @@ DEF_PAGE_SB(        ppTune,                                                     
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_4(         ppFreqMeter,                                                                                         // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР ///
+DEF_PAGE_4(ppFreqMeter,                                                                                         // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР ///
     "ЧАСТОТОМЕР", "FREQ METER",
     "",
     "",
@@ -272,6 +273,8 @@ DEF_PAGE_4(         ppFreqMeter,                                                
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const PageBase *PageMeasures::pointer = &pMeasures;
+
 DEF_PAGE_6(         pMeasures,                                                                                                        // ИЗМЕРЕНИЯ ///
     "ИЗМЕРЕНИЯ", "MEASURES",
     "Автоматические измерения",

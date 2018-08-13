@@ -42,7 +42,7 @@ static bool IsActive_Points()
     return SET_PEAKDET_DIS;
 }
 
-void OnChanged_Points(bool active)
+void PageMemory::OnChanged_Points(bool active)
 {
     // Если включен пиковый детектор, то не можем переключать память
     if (SET_PEAKDET_EN && !active)
@@ -92,7 +92,7 @@ DEF_CHOICE_6(       cPoints,                                                    
     namesLengthMemory[4], namesLengthMemory[4],
     namesLengthMemory[5], namesLengthMemory[5],
     //,namesLengthMemory[6], namesLengthMemory[6],
-    FPGA_ENUM_POINTS, pMemory, IsActive_Points, OnChanged_Points, FuncDraw
+    FPGA_ENUM_POINTS, pMemory, IsActive_Points, PageMemory::OnChanged_Points, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -181,7 +181,7 @@ DEF_SMALL_BUTTON(   bLast_SaveToROM,                                            
 static void OnPress_Last_SaveToDrive()
 {
     EXIT_FROM_SETNAME_TO = RETURN_TO_LAST_MEM;
-    Memory_SaveSignalToFlashDrive();
+    PageMemory::SaveSignalToFlashDrive();
 }
 
 static void Draw_Last_SaveToDrive(int x, int y)
@@ -315,7 +315,7 @@ static bool IsActive_Drive_Manager()
     return FDrive::IsConnected();
 }
 
-void OnPress_Drive_Manager()
+void PageMemory::OnPress_Drive_Manager()
 {
     if (FDrive::IsConnected())
     {
@@ -339,7 +339,7 @@ DEF_PAGE_SB(        pppDrive_Manager,                                           
     0,
     &bDrive_Manager_LevelUp,    // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выйти из каталога
     &bDrive_Manager_LevelDown,  // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог
-    PageSB_Memory_Drive_Manager, &ppDrive, IsActive_Drive_Manager, OnPress_Drive_Manager, FuncDrawPage, FileManager::RotateRegSet
+    PageSB_Memory_Drive_Manager, &ppDrive, IsActive_Drive_Manager, PageMemory::OnPress_Drive_Manager, FuncDrawPage, FileManager::RotateRegSet
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -655,7 +655,7 @@ DEF_PAGE_4(         pMemory,                                                    
     Page_Memory, &mainPage, FuncActive, EmptyPressPage
 )
 
-void Memory_SaveSignalToFlashDrive()
+void PageMemory::SaveSignalToFlashDrive()
 {
     if (FDrive::IsConnected())
     {
@@ -908,7 +908,7 @@ DEF_SMALL_BUTTON(   bInternal_SaveToMemory,                                     
 static void OnPress_Internal_SaveToDrive()
 {
     EXIT_FROM_SETNAME_TO = RETURN_TO_INT_MEM;
-    Memory_SaveSignalToFlashDrive();
+    PageMemory::SaveSignalToFlashDrive();
 }
 
 static void Draw_Internal_SaveToDrive(int x, int y)

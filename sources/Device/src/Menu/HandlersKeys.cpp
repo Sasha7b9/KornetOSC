@@ -2,6 +2,9 @@
 #include "Menu.h"
 #include "Settings/Settings.h"
 #include "FPGA/FPGA.h"
+#include "Menu/Pages/Definition.h"
+#include "Menu/Pages/PageMeasures.h"
+#include "Menu/Pages/PageMemory.h"
 #include "Log.h"
 
 
@@ -154,6 +157,34 @@ void Handlers::Func()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Arrow()
 {
+    Control *item = Menu::OpenedItem();
+
+    Page *page = 0;
+
+    if(IS_PAGE(item))
+    {
+        page = (Page *)item;
+    }
+
+    switch(event.key.code)
+    {
+        case Key::Left:
+            if(page)
+            {
+                page->ChangeOpened(-1);
+            }
+            break;
+        case Key::Right:
+            if(page)
+            {
+                page->ChangeOpened(1);
+            }
+            break;
+        case Key::Up:
+            break;
+        case Key::Down:
+            break;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -166,6 +197,10 @@ void Handlers::Enter()
         if (!MENU_IS_SHOWN)
         {
             Menu::Show(true);
+        }
+        else
+        {
+            Menu::CloseOpenedItem();
         }
     }
     else if(press.Is(TypePress::Long))
@@ -206,11 +241,17 @@ void Handlers::Function()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Measures()
 {
+    ((Page *)PageMeasures::pointer)->SetCurrentPage();
+    ((Page *)PageMeasures::pointer)->Open(true);
+    Menu::Show(true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Memory()
 {
+//    ((Page *)PageMemory::pointer)->SetCurrentPage();
+//    ((Page *)PageMemory::pointer)->Open(true);
+//    Menu::Show(true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

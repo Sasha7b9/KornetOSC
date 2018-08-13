@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define MP_TITLE_WIDTH          79
 #define MP_X                    ((Grid::Right()) - (MP_TITLE_WIDTH) - 1)
-#define MP_TITLE_HEIGHT         34
+#define MP_TITLE_HEIGHT         20
 #define MI_HEIGHT               33
 #define MI_WIDTH                (320 / 5)
 #define MOSI_HEIGHT             14

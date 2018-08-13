@@ -174,11 +174,6 @@ const char *Control::Title() const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Control::ChangeOpened(int delta)
 {
-    if (delta < 2 && delta > -2)
-    {
-        return false;
-    }
-
     if (type == Item_Page)
     {
         ((Page *)this)->ChangeSubPage(delta);
