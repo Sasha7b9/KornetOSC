@@ -30,8 +30,6 @@
 
 #define VIEW_MODE                       (set.disp_modeDrawSignal)
 #define VIEW_MODE_IS_LINES              (VIEW_MODE == Mode_Lines)
-#define THICKNESS_SIGNAL                (set.disp_thickness)
-#define THICKNESS_SIGNAL_IS_3           (THICKNESS_SIGNAL == Thickness_3)
 
 #define TRIG_MODE                       (set.trig_mode)
 
@@ -216,9 +214,9 @@ public:
     uint8       eth_mac3;
     uint8       eth_mac4;
     uint8       eth_mac5;
-    bool                serv_SoundEnable;       ///< Включены ли звуки.
-    int16               serv_SoundVolume;       ///< Громкость звука [0...100].
-    FileNamingMode  mem_FileNamingMode;             ///< Режим именования файлов.
+    bool                serv_SoundEnable;               ///< Включены ли звуки.
+    int16               serv_SoundVolume;               ///< Громкость звука [0...100].
+    FileNamingMode  mem_FileNamingMode;                 ///< Режим именования файлов.
 #define MAX_SYMBOLS_IN_FILE_NAME 35
     char            mem_FileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; ///< \brief Здесь маска для автоматического именования файлов.
             ///< \details Правила именования.\n
@@ -230,12 +228,12 @@ public:
             /// При этом обратите внимание, что если спецификатор %4N стоИт после временнЫх параметров, то, скорее всего, этот параметр 
             /// будет всегда равен 0001, т.к. для определения номера просматриваются.
             /// \endcode
-    int8            mem_IndexCurSymbolNameMask; ///< Индекс текущего символа в режиме задания маски или выбора имени.
-    ModeSaveSignal  mem_ModeSaveSignal;         ///< В каком виде сохранять сигнал.
+    int8            mem_IndexCurSymbolNameMask;             ///< Индекс текущего символа в режиме задания маски или выбора имени.
+    ModeSaveSignal  mem_ModeSaveSignal;                     ///< В каком виде сохранять сигнал.
     char            mem_FileName[MAX_SYMBOLS_IN_FILE_NAME]; ///< Имя файла для режима ручного задания.
-    ModeShowIntMem  mem_ModeShowIntMem;         ///< Что показывать в режиме ВНУТР ЗУ - считанный или записанный сигнал.
-    float           curs_PosCurT[NumChannels][2];   ///< Текущие позиции курсоров времени обоих каналов.
-    Meas            meas_Marked;                ///< Измерение, на которое нужно выводить маркеры.
+    ModeShowIntMem  mem_ModeShowIntMem;                     ///< Что показывать в режиме ВНУТР ЗУ - считанный или записанный сигнал.
+    float           curs_PosCurT[NumChannels][2];           ///< Текущие позиции курсоров времени обоих каналов.
+    Meas            meas_Marked;                            ///< Измерение, на которое нужно выводить маркеры.
 };
 
 #pragma pack(pop)

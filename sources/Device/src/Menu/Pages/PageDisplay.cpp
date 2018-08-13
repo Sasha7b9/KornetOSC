@@ -31,6 +31,16 @@ DEF_BUTTON(         bResetColors,                                               
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2 (      cThickness,                                                                                            //--- ДИСПЛЕЙ - Толщина ---
+    "Толщина", "Thickness",
+    "Позволяет изменять толщину выводимых на экран изображений",
+    "Allows you to change the thickness of the signals displayed on the screen",
+    "x1", "x1",
+    "x3", "x3",
+    THICKNESS_SIGNAL, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cSettings_Colors_Scheme,                                                    //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема ---
     "Цветовая схема", "Color scheme",
     "Изменение цветовой схемы",
@@ -383,7 +393,7 @@ DEF_CHOICE_2(       cScaleYtype,                                                
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_9(         pDisplay,                                                                                                           // ДИСПЛЕЙ ///
+DEF_PAGE_10(         pDisplay,                                                                                                           // ДИСПЛЕЙ ///
     "ДИСПЛЕЙ", "DISPLAY",
     "Содержит настройки отображения дисплея.",
     "Contains settings of display of the display.",
@@ -396,6 +406,7 @@ DEF_PAGE_9(         pDisplay,                                                   
     ppGrid,             // ДИСПЛЕЙ - СЕТКА
     cScaleYtype,        // ДИСПЛЕЙ - Смещение
     ppDisplaySettings,  // ДИСПЛЕЙ - НАСТРОЙКИ
+    cThickness,         // ДИСПЛЕЙ - Толщина
     Page_Display, &mainPage, FuncActive, EmptyPressPage
 )
 
@@ -494,6 +505,6 @@ DEF_PAGE_7(         ppDisplaySettings,                                          
     gSettings_Time,             // ДИСПЛЕЙ - НАСТРОЙКИ - Время
     cSettings_StringNavigation, // ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню
     cSettings_AltMarkers,       // ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры
-    cSettings_AutoHide,         // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать,
+    cSettings_AutoHide,         // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать
     Page_Display_Settings, &pDisplay, FuncActive, EmptyPressPage
 )

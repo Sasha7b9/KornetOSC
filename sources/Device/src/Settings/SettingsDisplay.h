@@ -13,6 +13,10 @@
  *  @{
  */
 
+#define THICKNESS_SIGNAL            (set.disp_thickness)
+#define THICKNESS_SIGNAL_IS_3       (THICKNESS_SIGNAL == Thickness_3)
+
+
 #define SHIFT_IN_MEMORY             (set.disp_ShiftInMemory)
 #define TIME_MESSAGES               (set.disp_TimeMessages)
 #define ENUM_SIGNALS_IN_SEC         (set.disp_ENumSignalsInSec)
