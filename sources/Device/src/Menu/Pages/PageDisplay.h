@@ -1,5 +1,6 @@
 #pragma once
 #include "Display/Colors.h"
+#include "Menu/MenuItems.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,4 +24,6 @@ public:
     static ColorType colorTypeA;
 
     static ColorType colorTypeB;
+
+    static const PageBase *pointer;
 };

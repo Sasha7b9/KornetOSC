@@ -5,6 +5,11 @@
 #include "Menu/Pages/Definition.h"
 #include "Menu/Pages/PageMeasures.h"
 #include "Menu/Pages/PageMemory.h"
+#include "Menu/Pages/PageDisplay.h"
+#include "Menu/Pages/PageService.h"
+#include "Menu/Pages/PageTime.h"
+#include "Menu/Pages/PageChannels.h"
+#include "Menu/Pages/PageTrig.h"
 #include "Log.h"
 
 
@@ -160,6 +165,7 @@ void Handlers::Arrow()
     Control *item = Menu::OpenedItem();
 
     Page *page = 0;
+    TypePress type = event.type;
 
     if(IS_PAGE(item))
     {
@@ -169,13 +175,13 @@ void Handlers::Arrow()
     switch(event.key.code)
     {
         case Key::Left:
-            if(page)
+            if(page && type.Is(TypePress::Press))
             {
                 page->ChangeOpened(-1);
             }
             break;
         case Key::Right:
-            if(page)
+            if(page && type.Is(TypePress::Press))
             {
                 page->ChangeOpened(1);
             }
@@ -224,13 +230,17 @@ void Handlers::TrigLevMore()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::ChannelA()
 {
-    SET_ENABLED_A = !SET_ENABLED_A;
+    //SET_ENABLED_A = !SET_ENABLED_A;
+
+    OpenPage(PageChannelA::pointer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::ChannelB()
 {
-    SET_ENABLED_B = !SET_ENABLED_B;
+    //SET_ENABLED_B = !SET_ENABLED_B;
+
+    OpenPage(PageChannelB::pointer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -241,27 +251,25 @@ void Handlers::Function()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Measures()
 {
-    ((Page *)PageMeasures::pointer)->SetCurrentPage();
-    ((Page *)PageMeasures::pointer)->Open(true);
-    Menu::Show(true);
+    OpenPage(PageMeasures::pointer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Memory()
 {
-//    ((Page *)PageMemory::pointer)->SetCurrentPage();
-//    ((Page *)PageMemory::pointer)->Open(true);
-//    Menu::Show(true);
+    OpenPage(PageMemory::pointer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Service()
 {
+    OpenPage(PageService::pointer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Time()
 {
+    OpenPage(PageTime::pointer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -272,10 +280,19 @@ void Handlers::Start()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Trig()
 {
+    OpenPage(PageTrig::pointer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Display()
 {
+    OpenPage(PageDisplay::pointer);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Handlers::OpenPage(const PageBase *page)
+{
+    ((Page *)page)->SetCurrentPage();
+    ((Page *)page)->Open(true);
+    Menu::Show(true);
+}

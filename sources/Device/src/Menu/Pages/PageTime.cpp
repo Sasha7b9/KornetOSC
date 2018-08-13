@@ -65,18 +65,18 @@ void PageTime::OnChanged_TPos(bool active)
     FPGA::SetTShift(SET_TSHIFT);
 }
 
-DEF_CHOICE_3(       cTPos,                                                                                                    //--- РАЗВЕРТКА - То ---
+DEF_CHOICE_3(cTPos,                                                                                                    //--- РАЗВЕРТКА - То ---
     "\x7b", "\x7b",
     "Задаёт точку привязки нулевого смещения по времени к экрану - левый край, центр, правый край.",
     "Sets the anchor point nuleovgo time offset to the screen - the left edge, center, right edge.",
-    "Лево",  "Left",
+    "Лево", "Left",
     "Центр", "Center",
     "Право", "Right",
     TPOS, pTime, FuncActive, PageTime::OnChanged_TPos, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       cDivRole,                                                                                       //--- РАЗВЕРТКА - Ф-ция ВР/ДЕЛ ---
+DEF_CHOICE_2(cDivRole,                                                                                       //--- РАЗВЕРТКА - Ф-ция ВР/ДЕЛ ---
     "Ф-ция ВР/ДЕЛ", "Funct Time/DIV"
     ,
     "Задаёт функцию для ручки ВРЕМЯ/ДЕЛ: в режиме сбора информации (ПУСК/СТОП в положении ПУСК):\n"
@@ -87,13 +87,13 @@ DEF_CHOICE_2(       cDivRole,                                                   
     "1. \"Time\" - change the time shift.\n"
     "2. \"Memory\" - moving from memory."
     ,
-    "Время",  "Time",
+    "Время", "Time",
     "Память", "Memory",
     TIME_DIV_XPOS, pTime, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       cShiftXtype,                                                                                        //--- РАЗВЕРТКА - Смещение ---
+DEF_CHOICE_2(cShiftXtype,                                                                                        //--- РАЗВЕРТКА - Смещение ---
     "Смещение", "Offset"
     ,
     "Задаёт режим удержания смещения по горизонтали\n1. \"Время\" - сохраняется абсолютное смещение в секундах.\n2. \"Деления\" - сохраняется "
@@ -102,12 +102,15 @@ DEF_CHOICE_2(       cShiftXtype,                                                
     "Sets the mode of retaining the horizontal displacement\n1. \"Time\" - saved the asbolutic offset in seconds.\n2. \"Divisions\" - retained "
     "the position of the offset on the screen."
     ,
-    "Время",   "Time",
+    "Время", "Time",
     "Деления", "Divisions",
     LINKING_TSHIFT, pTime, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const PageBase *PageTime::pointer = &pTime;
+
+
 DEF_PAGE_5(         pTime,                                                                                                            // РАЗВЕРТКА ///
     "РАЗВ.", "SCAN",
     "Содержит настройки развёртки.",

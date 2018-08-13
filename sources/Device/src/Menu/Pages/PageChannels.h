@@ -1,11 +1,26 @@
 #pragma once
+#include "Menu/MenuItems.h"
 
 
-class PageChannels
+class PageChannelA
 {
 public:
-    static void OnChanged_InputA(bool active);
-    static void OnChanged_InputB(bool active);
-    static void OnChanged_CoupleA(bool active);
-    static void OnChanged_CoupleB(bool active);
+
+    static void OnChanged_Input(bool active);
+
+    static void OnChanged_Couple(bool active);
+
+    static const PageBase *pointer;
+};
+
+
+class PageChannelB
+{
+public:
+
+    static void OnChanged_Input(bool active);
+
+    static void OnChanged_Couple(bool active);
+
+    static const PageBase *pointer;
 };

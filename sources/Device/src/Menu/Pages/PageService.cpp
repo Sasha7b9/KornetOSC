@@ -8,6 +8,7 @@
 #include "Hardware/Sound.h"
 #include "Menu/Menu.h"
 #include "Menu/Pages/Definition.h"
+#include "Menu/Pages/PageService.h"
 #include "Keyboard/Keyboard.h"
 #include "Utils/CommonFunctions.h"
 #include "Utils/Dictionary.h"
@@ -863,12 +864,12 @@ static void OnPress_Information_Exit()
     Display::SetDrawMode(DrawMode_Auto, 0);
 }
 
-DEF_SMALL_BUTTON_EXIT(  bInformation_Exit,                                                                       //--- СЕРВИС - ИНФОРМАЦИЯ - Выход ---
-    ppInformation, FuncActive, OnPress_Information_Exit, DrawSB_Exit
+DEF_SMALL_BUTTON_EXIT(bInformation_Exit,                                                                       //--- СЕРВИС - ИНФОРМАЦИЯ - Выход ---
+                      ppInformation, FuncActive, OnPress_Information_Exit, DrawSB_Exit
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_SB(        ppInformation,                                                                                          // СЕРВИС - ИНФОРМАЦИЯ ///
+DEF_PAGE_SB(ppInformation,                                                                                          // СЕРВИС - ИНФОРМАЦИЯ ///
     "ИНФОРМАЦИЯ", "INFORMATION",
     "Показывает информацию о приборе",
     "Displays information about the device",
@@ -882,43 +883,43 @@ DEF_PAGE_SB(        ppInformation,                                              
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+const PageBase *PageService::pointer = &pService;
 
 #ifdef OLD_RECORDER
 DEF_PAGE_11_GLOBAL(pService,                                                                                                            // СЕРВИС ///
-                   "СЕРВИС", "SERVICE",
-                   "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
-                   "Additional settings, calibration, signal search, mathematical functions",
-                   bResetSettings,    // СЕРВИС - Сброс настроек
-                   bAutoSearch,       // СЕРВИС - Поиск сигнала
-                   ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
-                   cRecorder,         // СЕРВИС - Регистратор
-                   ppFFT,             // СЕРВИС - СПЕКТР
-                   ppFunction,        // СЕРВИС - ФУНКЦИЯ
-                   ppEthernet,        // СЕРВИС - ETHERNET
-                   ppSound,           // СЕРВИС - ЗВУК
-                   ppRTC,             // СЕРВИС - ВРЕМЯ
-                   cLanguage,         // СЕРВИС - Язык
-                   ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
-                   Page_Service, &mainPage, FuncActive, FuncPress
+    "СЕРВИС", "SERVICE",
+    "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
+    "Additional settings, calibration, signal search, mathematical functions",
+    bResetSettings,    // СЕРВИС - Сброс настроек
+    bAutoSearch,       // СЕРВИС - Поиск сигнала
+    ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
+    cRecorder,         // СЕРВИС - Регистратор
+    ppFFT,             // СЕРВИС - СПЕКТР
+    ppFunction,        // СЕРВИС - ФУНКЦИЯ
+    ppEthernet,        // СЕРВИС - ETHERNET
+    ppSound,           // СЕРВИС - ЗВУК
+    ppRTC,             // СЕРВИС - ВРЕМЯ
+    cLanguage,         // СЕРВИС - Язык
+    ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
+    Page_Service, &mainPage, FuncActive, FuncPress
 )
 #else
 DEF_PAGE_11_GLOBAL(pService,                                                                                                            // СЕРВИС ///
-                   "СЕРВИС", "SERVICE",
-                   "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
-                   "Additional settings, calibration, signal search, mathematical functions",
-                   bResetSettings,    // СЕРВИС - Сброс настроек
-                   bAutoSearch,       // СЕРВИС - Поиск сигнала
-                   ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
-                   ppRecorder,        // СЕРВИС - РЕГИСТРАТОР
-                   ppFFT,             // СЕРВИС - СПЕКТР
-                   ppFunction,        // СЕРВИС - ФУНКЦИЯ
-                   ppEthernet,        // СЕРВИС - ETHERNET
-                   ppSound,           // СЕРВИС - ЗВУК
-                   ppRTC,             // СЕРВИС - ВРЕМЯ
-                   cLanguage,         // СЕРВИС - Язык
-                   ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
-                   Page_Service, &mainPage, FuncActive, FuncPress
+    "СЕРВИС", "SERVICE",
+    "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
+    "Additional settings, calibration, signal search, mathematical functions",
+    bResetSettings,    // СЕРВИС - Сброс настроек
+    bAutoSearch,       // СЕРВИС - Поиск сигнала
+    ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
+    ppRecorder,        // СЕРВИС - РЕГИСТРАТОР
+    ppFFT,             // СЕРВИС - СПЕКТР
+    ppFunction,        // СЕРВИС - ФУНКЦИЯ
+    ppEthernet,        // СЕРВИС - ETHERNET
+    ppSound,           // СЕРВИС - ЗВУК
+    ppRTC,             // СЕРВИС - ВРЕМЯ
+    cLanguage,         // СЕРВИС - Язык
+    ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
+    Page_Service, &mainPage, FuncActive, FuncPress
 );
 #endif
 

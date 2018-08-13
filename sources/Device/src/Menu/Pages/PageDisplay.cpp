@@ -468,7 +468,7 @@ static void OnChanged_Settings_AutoHide(bool autoHide)
     Menu::SetAutoHide(autoHide);
 }
 
-DEF_CHOICE_6(       cSettings_AutoHide,                                                                       //--- ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать ---
+DEF_CHOICE_6(cSettings_AutoHide,                                                                       //--- ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать ---
     "Скрывать", "Hide",
     "Установка после последнего нажатия кнопки или поворота ручки, по истечении которого меню автоматически убирается с экрана",
     "Installation after the last keystroke or turning the handle, after which the menu will automatically disappear",
@@ -482,6 +482,8 @@ DEF_CHOICE_6(       cSettings_AutoHide,                                         
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const PageBase *PageDisplay::pointer = &pDisplay;
+
 DEF_PAGE_7(         ppDisplaySettings,                                                                                      // ДИСПЛЕЙ - НАСТРОЙКИ ///
     "НАСТРОЙКИ", "SETTINGS",
     "Дополнительные настройки дисплея",

@@ -311,13 +311,13 @@ void Menu::ProcessingShortPressureButton()
                 if(button.Is(Key::ChannelA) && name == Page_ChannelA && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
-                    PageChannels::OnChanged_InputA(true);
+                    PageChannelA::OnChanged_Input(true);
                     break;
                 }
                 if(button.Is(Key::ChannelB) && name == Page_ChannelB && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_B = !SET_ENABLED_B;
-                    PageChannels::OnChanged_InputB(true);
+                    PageChannelB::OnChanged_Input(true);
                     break;
                 }
 

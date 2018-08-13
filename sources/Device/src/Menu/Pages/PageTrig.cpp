@@ -150,7 +150,7 @@ static void OnPress_Search_Search()
     FPGA::FindAndSetTrigLevel();
 }
 
-DEF_BUTTON(         bSearch_Search,                                                                                    //--- СИНХР - ПОИСК - Найти ---
+DEF_BUTTON(bSearch_Search,                                                                                    //--- СИНХР - ПОИСК - Найти ---
     "Найти", "Search",
     "Производит поиск уровня синхронизации.",
     "Runs for search synchronization level.",
@@ -159,7 +159,7 @@ DEF_BUTTON(         bSearch_Search,                                             
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2(         ppSearch,                                                                                                     // СИНХР - ПОИСК ///
+DEF_PAGE_2(ppSearch,                                                                                                     // СИНХР - ПОИСК ///
     "ПОИСК", "SEARCH",
     "Управление автоматическим поиском уровня синхронизации.",
     "Office of the automatic search the trigger level.",
@@ -169,6 +169,8 @@ DEF_PAGE_2(         ppSearch,                                                   
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const PageBase *PageTrig::pointer = &pTrig;
+
 DEF_PAGE_5(         pTrig,                                                                                                                // СИНХР ///
     "СИНХР", "TRIG",
     "Содержит настройки синхронизации.",

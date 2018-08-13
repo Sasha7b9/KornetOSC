@@ -77,7 +77,7 @@ void PageMemory::OnChanged_Points(bool active)
     FPGA::Reset();
 }
 
-pString namesLengthMemory[] = {"512", "1k", "2k", "4k", "8k", "16k", "32k"};
+static pString namesLengthMemory[] = {"512", "1k", "2k", "4k", "8k", "16k", "32k"};
 
 DEF_CHOICE_6(       cPoints,                                                                                                  //--- ПАМЯТЬ - Точки ---
     "Длина памяти", "Mem length",
@@ -1112,7 +1112,7 @@ static void Draw_SetName_Save(int x, int y)
     }
 }
 
-DEF_SMALL_BUTTON(   bSetName_Save,                                                                                     //--- ИМЯ ФАЙЛА - Сохранить ---
+DEF_SMALL_BUTTON(bSetName_Save,                                                                                     //--- ИМЯ ФАЙЛА - Сохранить ---
     "Сохранить", "Save",
     "Сохранение на флеш под заданным именем",
     "Saving to flashdrive with the specified name",
@@ -1120,6 +1120,9 @@ DEF_SMALL_BUTTON(   bSetName_Save,                                              
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const PageBase *PageMemory::pointer = &pMemory;
+
+
 static void OnRegSet_SetName(int angle)
 {
     OnMemExtSetMaskNameRegSet(angle, sizeof(symbolsAlphaBet) / 4 - 7);

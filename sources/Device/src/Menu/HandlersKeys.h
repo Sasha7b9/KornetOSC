@@ -1,5 +1,6 @@
 #pragma once
 #include "Keyboard/Keyboard.h"
+#include "Menu/MenuItems.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,6 +42,8 @@ private:
     static void Start();
     static void Trig();
     static void Display();
+
+    static void OpenPage(const PageBase *page);
 
     static KeyEvent event;
 };

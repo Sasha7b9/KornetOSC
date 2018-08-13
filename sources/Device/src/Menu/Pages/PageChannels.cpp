@@ -39,7 +39,7 @@ static const char chanDividerRu[] = "Ослабление сигнала:\n\"Выкл\" - сигнал не о
 static const char chanDividerEn[] = "Attenuation: \n\"Off\" - the signal is not attenuated.\n\"x10\" - the signal is attenuated by 10 times";
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PageChannels::OnChanged_InputA(bool)
+void PageChannelA::OnChanged_Input(bool)
 {
 
 }
@@ -50,11 +50,11 @@ DEF_CHOICE_2(       cChanA_Input,                                               
     chanInputEn,
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU, ENABLE_EN,
-    SET_ENABLED_A, pChanA, FuncActive, PageChannels::OnChanged_InputA, FuncDraw
+    SET_ENABLED_A, pChanA, FuncActive, PageChannelA::OnChanged_Input, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PageChannels::OnChanged_CoupleA(bool)
+void PageChannelA::OnChanged_Couple(bool)
 {
     FPGA::SetModeCouple(A, SET_COUPLE_A);
 }
@@ -66,7 +66,7 @@ DEF_CHOICE_3(       cChanA_Couple,                                              
     "Пост",  "AC",
     "Перем", "DC",
     "Земля", "Ground",
-    SET_COUPLE_A, pChanA, FuncActive, PageChannels::OnChanged_CoupleA, FuncDraw
+    SET_COUPLE_A, pChanA, FuncActive, PageChannelA::OnChanged_Couple, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ static void OnPress_ChanA_Balance()
     FPGA::BalanceChannel(A);
 }
 
-DEF_BUTTON(         bChanA_Balance,                                                                                  //--- КАНАЛ 1 - Балансировать ---
+DEF_BUTTON(bChanA_Balance,                                                                                  //--- КАНАЛ 1 - Балансировать ---
     "Балансировать", "Balance",
     "Балансировать канал",
     "Balancing channel",
@@ -142,6 +142,8 @@ DEF_BUTTON(         bChanA_Balance,                                             
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const PageBase *PageChannelA::pointer = &pChanA;
+
 DEF_PAGE_7(         pChanA,                                                                                                             // КАНАЛ 1 ///
     "КАНАЛ 1", "CHANNEL 1",
     "Содержит настройки канала 1.",
@@ -157,7 +159,7 @@ DEF_PAGE_7(         pChanA,                                                     
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PageChannels::OnChanged_InputB(bool active)
+void PageChannelB::OnChanged_Input(bool active)
 {
     if (!active)
     {
@@ -172,11 +174,11 @@ DEF_CHOICE_2(       cChanB_Input,                                               
     chanInputEn,
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    SET_ENABLED_B, pChanB, FuncActive, PageChannels::OnChanged_InputB, FuncDraw
+    SET_ENABLED_B, pChanB, FuncActive, PageChannelB::OnChanged_Input, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PageChannels::OnChanged_CoupleB(bool)
+void PageChannelB::OnChanged_Couple(bool)
 {
     FPGA::SetModeCouple(B, SET_COUPLE_B);
 }
@@ -188,7 +190,7 @@ DEF_CHOICE_3(       cChanB_Couple,                                              
     "Пост",  "AC",
     "Перем", "DC",
     "Земля", "Ground",
-    SET_COUPLE_B, pChanB, FuncActive, PageChannels::OnChanged_CoupleB, FuncDraw
+    SET_COUPLE_B, pChanB, FuncActive, PageChannelB::OnChanged_Couple, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -255,7 +257,7 @@ static void OnPress_ChanB_Balance()
     FPGA::BalanceChannel(B);
 }
 
-DEF_BUTTON(         bChanB_Balance,                                                                                  //--- КАНАЛ 2 - Балансировать ---
+DEF_BUTTON(bChanB_Balance,                                                                                  //--- КАНАЛ 2 - Балансировать ---
     "Балансировать", "Balance",
     "Балансировать канал",
     "Balancing channel",
@@ -263,6 +265,8 @@ DEF_BUTTON(         bChanB_Balance,                                             
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const PageBase *PageChannelB::pointer = &pChanB;
+
 DEF_PAGE_7(         pChanB,                                                                                                             // КАНАЛ 2 ///
     "КАНАЛ 2", "CHANNEL 2",
     "Содержит настройки канала 2.",
