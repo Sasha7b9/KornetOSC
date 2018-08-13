@@ -53,7 +53,7 @@ static void OnPress_ResetSettings()
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_BUTTON(         bResetSettings,                                                                                  //--- СЕРВИС - Сброс настроек ---
-    "Сброс настроек", "Reset settings",
+    "Сброс настр", "Reset set",
     "Сброс настроек на настройки по умолчанию",
     "Reset to default settings",
     pService, EmptyFuncBV, OnPress_ResetSettings, EmptyFuncVII
@@ -66,7 +66,7 @@ static void OnPress_AutoSearch()
 }
 
 DEF_BUTTON(         bAutoSearch,                                                                                      //--- СЕРВИС - Поиск сигнала ---
-    "Поиск сигнала", "Find signal",
+    "Поиск сигн", "Find sign",
     "Устанавливает оптимальные установки осциллографа для сигнала в канале 1",
     "Sets optimal settings for the oscilloscope signal on channel 1",
     pService, FuncActive, OnPress_AutoSearch, FuncDraw
