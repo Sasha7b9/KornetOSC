@@ -80,5 +80,5 @@ int RequestBytesForChannel(Channel, DataSettings *ds)
         peakDet = SET_PEAKDET;
     }
 
-    return FPGA_MAX_POINTS;
+    return FPGA_MAX_NUM_POINTS;
 }

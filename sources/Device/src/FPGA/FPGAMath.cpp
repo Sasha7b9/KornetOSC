@@ -1,6 +1,7 @@
 #include "FPGAMath.h"
 #include "Display/DisplayTypes.h"
 #include "Display/Grid.h"
+#include "FPGA/FPGA.h"
 #include "FPGA/FPGATypes.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
@@ -29,9 +30,7 @@ const float absStepRShift[] =
 
 const float absStepTShift[] =
 {
-#if defined(S8_54_55)
     1e-9f   / 20.0f,
-#endif
     2e-9f   / 20, 
     5e-9f   / 20, 
     10e-9f  / 20, 
@@ -63,6 +62,7 @@ const float absStepTShift[] =
     5.0f    / 20,   // 100e4
     10.0f   / 20    // 200e4
 };
+
 
 /// Столько вольт содержится в одной точке сигнала по вертикали
 const float voltsInPoint[Range::Size] =
@@ -175,11 +175,7 @@ void MathFPGA::PointsVoltage2Rel(const float *voltage, int numPoints, Range rang
 {
     float maxVoltOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
     float rShiftAbs = RSHIFT_2_ABS(rShift, range);
-#ifdef S8_54
     float voltInPixel = 1.0f / (voltsInPoint[range] / ((MAX_VALUE - MIN_VALUE) / 200.0f));
-#else
-    float voltInPixel = 1.0f / voltsInPoint[range];
-#endif
 
     float add = maxVoltOnScreen + rShiftAbs;
 
@@ -208,10 +204,9 @@ void MathFPGA::PointsVoltage2Rel(const float *voltage, int numPoints, Range rang
     Количество отсчётов должно быть 2**N
 */
 
-/*
 #ifndef DEBUG
-#include "Utils/TablesWindow.h"
-#include "Utils/TablesLog.h"
+#include "TablesWindow.h"
+#include "TablesLog.h"
 
 static float const *Koeff(int numPoints)
 {
@@ -235,7 +230,6 @@ static float const *Koeff(int numPoints)
 }
 
 #endif
-*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1)

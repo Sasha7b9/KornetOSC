@@ -18,6 +18,8 @@ public:
     static void Clear();
     /// ƒобавить считанные данные. ѕри этом настройками считаютс€ текущие настройки прибора.
     static void AddData(uint8 *dataA, uint8 *dataB, DataSettings dss);
+
+    static void AddData(uint8 *dataA, uint8 *dataB);
     /// ¬озвращает число непрерывных измерений, начина€ с последнего, с такими же настройками, как у последнего.
     static int NumElementsWithSameSettings();
     /// ¬озвращает число непрерывных измерений, начина€ с последнего, с текущими настройками прибора.

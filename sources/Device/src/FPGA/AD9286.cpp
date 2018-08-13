@@ -10,7 +10,7 @@
 #define PORT_DAT    GPIOC
 
 #define PIN_CS      GPIO_PIN_11
-#define PORT_CS     GPIOB
+#define PORT_CS     GPIOE
 
 #define SCK         PORT_SCK, PIN_SCK
 #define DAT         PORT_DAT, PIN_DAT
@@ -28,7 +28,7 @@ void AD9286::Init()
         DAT - 29 - PC3
         SCK - 69 - PB10
     */
-    
+   
     GPIO_InitTypeDef isGPI0 =                   // Инициализация CS
     {
         PIN_CS,
@@ -47,6 +47,12 @@ void AD9286::Init()
     ResetPin(DAT);
     ResetPin(SCK);
 
+    Tune();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void AD9286::Tune()
+{
     AD9286::WriteByte(0x09, 0x09);
     /// \todo Это должно быть в функции записи
     AD9286::WriteByte(0xff, 0x01);   // Пишем бит подтверждения.

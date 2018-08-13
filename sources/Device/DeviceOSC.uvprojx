@@ -1891,16 +1891,6 @@
               <FilePath>.\src\FPGA\FPGA.h</FilePath>
             </File>
             <File>
-              <FileName>FPGAextensions.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\FPGA\FPGAextensions.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>FPGAextensions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\FPGA\FPGAextensions.h</FilePath>
-            </File>
-            <File>
               <FileName>FPGAMath.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\FPGA\FPGAMath.cpp</FilePath>
@@ -1914,11 +1904,6 @@
               <FileName>FPGATypes.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\FPGA\FPGATypes.h</FilePath>
-            </File>
-            <File>
-              <FileName>FPGATypes.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\FPGA\FPGATypes.cpp</FilePath>
             </File>
           </Files>
         </Group>

@@ -18,7 +18,7 @@ extern const PageBase ppSearch;
 void PageTrig::OnChanged_TrigMode(bool)
 {
     FPGA::Stop(false);
-    if(!START_MODE_SINGLE)
+    if(!START_MODE_IS_SINGLE)
     {
         FPGA::OnPressStartStop();
     }
@@ -30,12 +30,12 @@ void PageTrig::OnChanged_TrigMode(bool)
     {
         // и переключаемся на одиночный режим запуска, то надо сохранить имеющийся тип выборки, чтобы восстановить при возвращении в режим 
         // рандомизатора автоматический или ждущий
-        if (START_MODE_SINGLE)
+        if (START_MODE_IS_SINGLE)
         {
             SAMPLE_TYPE_OLD = SAMPLE_TYPE;
             SAMPLE_TYPE = SampleType_Real;
         }
-        else if(START_MODE_AUTO)    // Иначе восстановим ранее сохранённый
+        else if(START_MODE_IS_AUTO)    // Иначе восстановим ранее сохранённый
         {
             SAMPLE_TYPE = SAMPLE_TYPE_OLD;
         }

@@ -1,5 +1,6 @@
 #include "Device.h"
 #include "Colors.h"
+#include "Globals.h"
 #include "Display.h"
 #include "Grid.h"
 #include "Painter.h"

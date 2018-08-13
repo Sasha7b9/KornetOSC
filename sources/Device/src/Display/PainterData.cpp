@@ -24,7 +24,7 @@ void PainterData::DrawData()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_POINTS])
+void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
 {
     int bottom = Grid::Bottom();
     int left = Grid::Left();

@@ -7,6 +7,7 @@ class AD9286
 {
 public:
     static void Init();
+    static void Tune();
 
 private:
     static void ConfigToWrite();

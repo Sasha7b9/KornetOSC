@@ -2,7 +2,7 @@
 #include "PageChannels.h"
 #include "Display/Display.h"
 #include "FPGA/FPGA.h"
-#include "FPGA/FPGAextensions.h"
+//#include "FPGA/FPGAextensions.h"
 #include "Log.h"
 #include "Menu/MenuItems.h"
 #include "Keyboard/Keyboard.h"

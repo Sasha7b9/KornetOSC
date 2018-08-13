@@ -84,9 +84,6 @@
     <ClCompile Include="..\..\Device\src\Display\PainterData.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp">
-      <Filter>FPGA</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -125,9 +122,6 @@
     </ClCompile>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac_ex.c">
       <Filter>libs\HAL</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp">
-      <Filter>FPGA</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp">
       <Filter>Utils</Filter>
@@ -261,12 +255,6 @@
     <ClCompile Include="..\..\Device\src\Data\Storage.cpp">
       <Filter>Data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\FPGA\FPGAextensions.cpp">
-      <Filter>FPGA</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\FPGA\FPGAMath.cpp">
-      <Filter>FPGA</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\DisplayPrimitives.cpp">
       <Filter>Display</Filter>
     </ClCompile>
@@ -311,6 +299,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\CPU_IT.cpp">
       <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\FPGA\FPGAMath.cpp">
+      <Filter>FPGA</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -380,9 +377,6 @@
     <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h">
       <Filter>Display</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\FPGA\FPGA.h">
-      <Filter>FPGA</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Hardware\FSMC.h">
       <Filter>Hardware</Filter>
     </ClInclude>
@@ -421,9 +415,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Tester\Tester.h">
       <Filter>Tester</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\FPGA\AD9286.h">
-      <Filter>FPGA</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h">
       <Filter>Utils</Filter>
@@ -617,9 +608,6 @@
     <ClInclude Include="..\..\Device\src\Data\Reader.h">
       <Filter>Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\FPGA\FPGATypes.h">
-      <Filter>FPGA</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Settings\SettingsCursors.h">
       <Filter>Settings</Filter>
     </ClInclude>
@@ -637,12 +625,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Data\Storage.h">
       <Filter>Data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\FPGA\FPGAextensions.h">
-      <Filter>FPGA</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\FPGA\FPGAMath.h">
-      <Filter>FPGA</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Utils\TablesWindow.h">
       <Filter>Utils</Filter>
@@ -691,6 +673,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageService.h">
       <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FPGA\AD9286.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FPGA\FPGA.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FPGA\FPGATypes.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FPGA\FPGAMath.h">
+      <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

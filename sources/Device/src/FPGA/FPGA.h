@@ -1,11 +1,13 @@
 #pragma once
 #include "defines.h"
-#include "Globals.h"
 #include "FPGATypes.h"
 #include "Settings/SettingsTypes.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define RShiftMin       20
+#define RShiftZero      500
+#define RShiftMax       980
 #define TrigLevZero     500
 #define TrigLevMax      980
 #define TrigLevMin      20
@@ -13,15 +15,12 @@
 #define TShiftMin       0
 #define TShiftMax       60000
 
-
+/// На столько единиц нужно изменить значение смещения, чтобы маркер смещения по напряжению передвинулся на одну точку.
+#define STEP_RSHIFT     (((RShiftMax - RShiftMin) / 24) / 20)
 #define STEP_TRIGLEV    STEP_RSHIFT
 
-enum TypeRecord
-{
-    RecordFPGA,
-    RecordAnalog,
-    RecordDAC
-};
+extern uint16 gPost;
+extern uint16 gPred;
 
 enum Pin
 {
@@ -41,11 +40,6 @@ enum Pin
     Num_Pins
 };
 
-extern uint16 gPost;
-extern int16 gPred;
-
-extern StateWorkFPGA fpgaStateWork;
-#define FPGA_IN_STATE_STOP (fpgaStateWork == StateWorkFPGA_Stop)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class HardwareFPGA
@@ -94,43 +88,48 @@ public:
 
     static void LoadTrigInput();
 
-    static void Stop(bool = true);
+    static void Stop(bool pause = false);
 
     static void LoadRanges();
     /// Запустить цикл чтения для тестер-компонента. В течение time секунд должно быть считано numPoints точек
     static void StartForTester(int numPoints);
 
     static void ReadForTester(uint8 *dataA, uint8 *dataB);
-    /// Установить относительное смещение по времени
-    static void SetTShift(int tShift);
-    /// Установить относительный уровень синхронизации
-    static void SetTrigLev(TrigSource ch, uint16 trigLev);
-    /// Запускает цикл сбора информации
-    static void OnPressStartStop();
-    /// Установить количество измерений, по которым будут рассчитываться ворота в режиме рандомизатора
-    static void SetNumberMeasuresForGates(int number);
-    /// Установить добавочное смещение по времени для режима рандомизатора. В каждой развёртке это смещение должно быть разное
-    static void SetDeltaTShift(int16 shift);
+
+    static bool IsRunning()
+    {
+        return isRunning; 
+    }
+
+    static bool InStateStop()
+    {
+        return false;
+    }
 
     static void LoadTShift();
 
-    static void SetBandwidth(Channel ch);
-    /// Установить режим канала по входу
-    static void SetModeCouple(Channel ch, ModeCouple modeCoupe);
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    static void SetTShift(uint tShift);
 
-    static void SetResistance(Channel ch, Resistance resistance);
+    static void Reset();
+
+    static void OnPressStartStop();
+
+    static pString GetTShiftString(int16 tShift, char buffer[20]);
+
+    static void SetModeCouple(Channel ch, ModeCouple couple);
+
+    static float FreqMeter_GetFreq();
+    /// Установить относительный уровень синхронизации
+    static void SetTrigLev(TrigSource ch, uint16 trigLev);
 
     static bool FreqMeter_Init();
-    /// Провести процедуру балансировки
-    static void BalanceChannel(Channel ch);
-    /// Возвращает true, если прибор находится не в процессе сбора информации
-    static bool IsRunning();
     /// Установить количество считываемых сигналов в секунду
     static void SetENumSignalsInSec(int numSigInSec);
-    /// Можно делать при изменении каких-то настроек. Например, при изменении числа точек (ПАМЯТЬ-Точки) если не вызвать, то будут артефакты изображения
-    static void Reset();
     /// Включить/выключить режим пикового детектора
     static void SetPeackDetMode(PeakDetMode peackDetMode);
+    /// Установить количество измерений, по которым будут рассчитываться ворота в режиме рандомизатора
+    static void SetNumberMeasuresForGates(int number);
     /// Установить масштаб по времени
     static void SetTBase(TBase tBase);
     /// Установить источник синхронизации
@@ -145,57 +144,14 @@ public:
     static void SetCalibratorMode(CalibratorMode calibratorMode);
 
     static void EnableRecorderMode(bool enable);
+    /// Установить добавочное смещение по времени для режима рандомизатора. В каждой развёртке это смещение должно быть разное
+    static void SetDeltaTShift(int16 shift);
 
-    static int16 CalculateAdditionRShift(Channel ch, Range range, bool wait);
+    static void SetBandwidth(Channel ch);
 
-    static float CalculateStretchADC(Channel ch);
-
-    static float CalculateDeltaADC(Channel ch, float *avgADC1, float *avgADC2, float *delta);
-    /// Если wait == true, то нужно ожидать после установки режима перед измерением для исключения переходного процесса
-    static void CalibrateAddRShift(Channel ch, bool wait);
-
-    static void CalibrateChannel(Channel ch);
-    /// Запуск функции калибровки
-    static void ProcedureCalibration();
-    /// Установить масштаб по напряжению
-    static void SetRange(Channel ch, Range range);
-
-    static void FreqMeter_Draw(int x, int y);
-    /// Получить значение частоты для вывода в нижней части экрана
-    static float FreqMeter_GetFreq();
-    /// Функция вызывается из FPGA
-    static void FreqMeter_Update(uint16 flag);
-    /// Запуск процесса поиска сигнала
-    static void  AutoFind();
-
-    static bool FindWave(Channel ch);
-
-    static bool AccurateFindParams(Channel ch);
-    /// \brief Функция даёт старт АЦП и ждёт считывания информаии timeWait мс. Если данные получены, то функция возвращает true и их можно получить 
-    /// DS_GetData_RAM(ch, 0). Если данные не получены, функция возвращает false.
-    static bool ReadingCycle(uint timeWait);
-
-    static void SetTPos(TPos tPos);
-    /// Удаляет данные. Нужно для режима рандомизаотра, где информация каждого цикла не является самостоятельной
-    static void ClearData();
-    /// \todo временный костыль. При изменении tShift нужно временно останавливать альтеру, а при изменении развёртки не нужно
-    static void SetTShift(int tShift, bool needFPGApause);
-    /// Возвращает установленное смещение по времени в текстовом виде, пригодном для вывода на экран
-    static const char *GetTShiftString(int16 tShiftRel, char buffer[20]);
-
-    static int addShiftForFPGA;
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 private:
-    // Кажется, рассчитываем адрес последней записи
-    static uint16 ReadNStop();
-
-    static TBase CalculateTBase(float freq);
-
-    static void CalibrateStretch(Channel ch);
-
-    static bool FindParams(Channel ch, TBase *tBase);
-    ///< Возвращает RangeSize, если масштаб не найден.
-    static Range FindRange(Channel ch);
 
     static void GPIO_Init();
 
@@ -223,7 +179,7 @@ private:
 
     static uint16 ReadLastRecord();
 
-    static void ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_POINTS]);
+    static void ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS]);
     /// Установить в соотвествующие положения выводы, отвечающие за источник и вход синхронизации
     static void LoadTrigSourceInput();
     /// Читать канал в рандомизаторе с адреса address
@@ -231,33 +187,7 @@ private:
 
     static bool CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax);
 
-    static int CalculateShift();
-    /// Загрузить регистр WR_UPR (пиковый детектор и калибратор).
-    static void LoadRegUPR();
-
-    static void Write(TypeRecord type, uint16 *address, uint data, bool restart);
-    /// Возвращает true, если считаны данные.
-    static bool ProcessingData();
-    /// \brief Прочитать данные.
-    /// \param first          Нужно для режима рандомизматора - чтобы подготовить память.
-    /// \param saveToStorage  Нужно в режиме рандомизатора для указания, что пора сохранять измерение.
-    /// \param onlySave       Только сохранить в хранилище.
-    static void DataReadSave(bool first, bool saveToStorage, bool onlySave);
-    /// Действия, которые нужно предпринять после успешного считывания данных.
-    static void ProcessingAfterReadData();
-    /// Принудительно запустить синхронизацию
-    static void SwitchingTrig();
-    /// \brief first - если true, это первый вызов из последовательности, нужно подготовить память
-    /// last - если true, это последний вызов из последовательности, нужно записать результаты в память.
-    static bool ReadRandomizeModeSave(bool first, bool last, bool onlySave);
-
-    static void ReadRealMode(uint8 *dataA, uint8 *dataB);
-    /// Установить временную паузу после изменения ручек - чтобы смещённый сигнал зафиксировать на некоторое время
-    static void TemporaryPause();
-
-    static void OnPressStartStopInP2P();
-
-    static void LoadRange(Channel ch);
+    static int CalculateShift(Channel ch);
 
     static bool isRunning;
     /// True, если дан запуск

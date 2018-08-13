@@ -428,7 +428,7 @@ int CalculatePeriodAccurately(Channel ch)
 {
     static int period[2];
 
-    int *sums = (int *)malloc(FPGA_MAX_POINTS);
+    int *sums = (int *)malloc(FPGA_MAX_NUM_POINTS);
 
     uint8 *dataIn = CHOICE_BUFFER;
 

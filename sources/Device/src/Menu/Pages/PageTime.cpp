@@ -15,7 +15,7 @@ extern const PageBase pTime;
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Sample()
 {
-    return IN_RANDOM_MODE && !START_MODE_SINGLE;
+    return IN_RANDOM_MODE && !START_MODE_IS_SINGLE;
 }
 
 DEF_CHOICE_2(       cSample,                                                                                             //--- ÐÀÇÂÅÐÒÊÀ - Âûáîðêà ---

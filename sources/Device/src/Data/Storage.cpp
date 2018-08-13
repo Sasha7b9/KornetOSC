@@ -43,7 +43,7 @@ static bool inFrameP2Pmode = false;     // Если true - сейчас поточечный режим
 
 #define NUM_DATAS 10
 static DataSettings datas[NUM_DATAS];
-static uint8 gDataAve[NumChannels][FPGA_MAX_POINTS];
+static uint8 gDataAve[NumChannels][FPGA_MAX_NUM_POINTS];
 
 #define ADDRESS_DATA(ds)        ((ds)->addr)
 
@@ -843,6 +843,10 @@ int Storage::GetFrameP2P_RAM(DataSettings **ds, uint8 **dataA, uint8 **dataB)
     *dataB = frameP2P + dsP2P.BytesInChannel();
 
     return numPointsP2P;
+}
+
+void Storage::AddData(uint8 *dataA, uint8 *dataB)
+{
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

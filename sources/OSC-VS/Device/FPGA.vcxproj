@@ -39,7 +39,6 @@
     <ClCompile Include="..\..\Device\src\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp" />
-    <ClCompile Include="..\..\Device\src\FPGA\FPGAextensions.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\Device\src\Globals.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\AT25160N.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="..\..\Device\src\FlashDrive\FlashDrive.h" />
     <ClInclude Include="..\..\Device\src\FPGA\AD9286.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
-    <ClInclude Include="..\..\Device\src\FPGA\FPGAextensions.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGATypes.h" />
     <ClInclude Include="..\..\Device\src\Globals.h" />

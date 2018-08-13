@@ -756,7 +756,7 @@ static int16 pred;
 
 static void OnChanged_Pred()
 {
-    gPred = ~pred;
+    gPred = (uint16)(~pred);
 }
 
 DEF_GOVERNOR(       mgPred,                                                                                             //--- ОТЛАДКА - Предзапуск ---

@@ -1,4 +1,5 @@
 #include "main.h"
+#include "Globals.h"
 #include "Display/Symbols.h"
 #include "Display/Painter.h"
 #include "FPGA/FPGA.h"
@@ -845,10 +846,8 @@ static void Information_Draw()
 
     dY = -10;
     Painter::DrawStringInCenterRect(0, 190 + dY, 320, 20, "Для получения помощи нажмите и удерживайте кнопку ПОМОЩЬ");
-#ifdef S8_54
     Painter::DrawStringInCenterRect(0, 205 + dY, 320, 20, "Отдел маркетинга: тел./факс. 8-017-262-57-50");
     Painter::DrawStringInCenterRect(0, 220 + dY, 320, 20, "Разработчики: e-mail: mnipi-24(@)tut.by, тел. 8-017-262-57-51");
-#endif
 
     Menu::Draw();
     Painter::EndScene();
