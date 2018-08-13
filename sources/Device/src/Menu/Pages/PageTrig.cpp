@@ -97,20 +97,17 @@ static void OnChanged_Input(bool)
     FPGA::SetTrigInput(TRIG_INPUT);
 }
 
-DEF_CHOICE_4(       cInput,                                                                                                     //--- СИНХР - Вход ---
+DEF_CHOICE_3(       cInput,                                                                                                     //--- СИНХР - Вход ---
     "Вход", "Input",
     "Выбор связи с источником синхронизации:\n"
     "1. \"ПС\" - полный сигнал.\n"
-    "2. \"АС\" - закрытый вход.\n"
-    "3. \"ФНЧ\" - фильтр низких частот.\n"
-    "4. \"ФВЧ\" - фильтр высоких частот.",
+    "2. \"ФНЧ\" - фильтр низких частот.\n"
+    "3. \"ФВЧ\" - фильтр высоких частот.",
     "The choice of communication with the source of synchronization:\n"
     "1. \"SS\" - a full signal.\n"
-    "2. \"AS\" - a gated entrance.\n"
-    "3. \"LPF\" - low-pass filter.\n"
-    "4. \"HPF\" - high-pass filter frequency.",
+    "2. \"LPF\" - low-pass filter.\n"
+    "3. \"HPF\" - high-pass filter frequency.",
     "ПС",  "Full",
-    "АС",  "AC",
     "ФНЧ", "LPF",
     "ФВЧ", "HPF",
     TRIG_INPUT, pTrig, FuncActive, OnChanged_Input, FuncDraw
