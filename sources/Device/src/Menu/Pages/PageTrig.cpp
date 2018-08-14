@@ -77,7 +77,7 @@ DEF_CHOICE_3(       cSource,                                                    
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Polarity(bool)
 {
-    FPGA::SetTrigPolarity(TRIG_POLARITY);
+    FPGA::LoadTrigPolarity();
 }
 
 DEF_CHOICE_2(       cPolarity,                                                                                            //--- ÑÈÍÕÐ - Ïîëÿðíîñòü ---
@@ -94,7 +94,7 @@ DEF_CHOICE_2(       cPolarity,                                                  
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Input(bool)
 {
-    FPGA::SetTrigInput(TRIG_INPUT);
+    FPGA::LoadTrigInput();
 }
 
 DEF_CHOICE_3(       cInput,                                                                                                     //--- ÑÈÍÕÐ - Âõîä ---
