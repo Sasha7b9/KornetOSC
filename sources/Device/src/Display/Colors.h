@@ -31,6 +31,8 @@ public:
     static Color BLUE_10;
     static Color GRAY_50;
     static Color GRAY_75;
+    static Color DATA_HALF_A;
+    static Color DATA_HALF_B;
 
     static Color NUMBER;
 
@@ -90,6 +92,8 @@ private:
         COLOR_BLUE_10 = 21,
         COLOR_GRAY_50 = 22,
         COLOR_GRAY_75 = 23,
+        COLOR_DATA_HALF_A = 24,
+        COLOR_DATA_HALF_B = 25,
 
         COLOR_NUMBER = 32,
 
