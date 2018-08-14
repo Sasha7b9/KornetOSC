@@ -13,6 +13,7 @@
 #define SYMBOL_TRIG_LEV_LOWER   '\x95'  ///< Символ уровень синхронизации ниже сетки
 #define SYMBOL_TRIG_LEV_ABOVE   '\x96'  ///< Символ уровень синхронизации выше сетки
 #define SYMBOL_TRIG_LEV_NORMAL  '\x94'  ///< Символ уровень синхронизации нормальный
+#define SYMBOL_PLAY             '\xae'  ///< Символ работы справа вверху экрана
 
 // TypeFont_UGO2
 

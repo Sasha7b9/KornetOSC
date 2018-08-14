@@ -54,7 +54,7 @@ void EEPROM::SaveSettings()
 
     uint freeMemory = ADDR_SECTOR_SETTINGS_1 + SIZE_SECTOR_128 - address;
 
-    if (freeMemory <= sizeof(Settings))
+    if(address == MAX_UINT || freeMemory <= sizeof(Settings))
     {
         EraseSector(ADDR_SECTOR_SETTINGS_1);
         address = ADDR_SECTOR_SETTINGS_1;

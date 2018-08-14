@@ -1865,6 +1865,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\RShift.h</FilePath>
             </File>
+            <File>
+              <FileName>DisplayOsci.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\DisplayOsci.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayOsci.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\DisplayOsci.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -95,8 +95,6 @@ public:
 
 private:
 
-    static void UpdateOsci();
-
     static void UpdateTester();
 
     static void DrawDataTester(int numStep, int x, int y);
