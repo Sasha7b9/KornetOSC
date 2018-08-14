@@ -91,8 +91,6 @@ public:
     static int DrawFormatText(int x, int y, char *format, ...);
     /// Пишет строку в позиции x, y
     static int DrawFormText(int x, int y, Color color, pString text, ...);
-
-    static int DrawTextWithLimitationC(int x, int y, const char *text, Color color, int limitX, int limitY, int limitWidth, int limitHeight);
     /// Возвращает нижнюю координату прямоугольника
     static int DrawTextInBoundedRectWithTransfers(int x, int y, int width, const char *text, Color colorBackground, Color colorFill);
 

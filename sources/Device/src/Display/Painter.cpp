@@ -472,9 +472,8 @@ int Painter::DrawTextInRectWithTransfers(int eX, int eY, int eWidth, int eHeight
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Painter::DrawTextWithLimitationC(int x, int y, const char *text, Color color, int limitX, int limitY, int limitWidth, int limitHeight)
+int Painter::DrawTextWithLimitation(int x, int y, const char *text, int limitX, int limitY, int limitWidth, int limitHeight)
 {
-    SetColor(color);
     int retValue = x;
     while (*text)
     {

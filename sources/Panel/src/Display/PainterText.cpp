@@ -118,20 +118,6 @@ int Painter::DrawCharWithLimitation(int eX, int eY, char symbol, int limitX, int
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Painter::DrawTextWithLimitationC(int x, int y, const char *text, Color color, int limitX, int limitY, int limitWidth, int limitHeight)
-{
-    SetColor(color);
-    int retValue = x;
-    while (*text)
-    {
-        x = DrawCharWithLimitation(x, y, *text, limitX, limitY, limitWidth, limitHeight);
-        retValue += Font::GetLengthSymbol(*text);
-        text++;
-    }
-    return retValue + 1;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsLetter(char symbol)
 {
     static const bool isLetter[256] =

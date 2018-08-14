@@ -196,19 +196,16 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
             int limY = y + 19;
             int limWidth = MI_WIDTH_VALUE;
             int limHeight = MI_HEIGHT_VALUE - 1;
+            Painter::SetColor(Color::BLACK);
             if (delta > 0)
             {
-                x = Painter::DrawTextWithLimitationC(drawX, y + 21 - delta, Int2String(*cell, false, 1, buffer),
-                    Color::BLACK, limX, limY, limWidth, limHeight);
-                Painter::DrawTextWithLimitationC(drawX, y + 21 + 10 - delta, Int2String(NextValue(), false, 1, buffer),
-                    Color::BLACK, limX, limY, limWidth, limHeight);
+                x = Painter::DrawTextWithLimitation(drawX, y + 21 - delta, Int2String(*cell, false, 1, buffer), limX, limY, limWidth, limHeight);
+                Painter::DrawTextWithLimitation(drawX, y + 21 + 10 - delta, Int2String(NextValue(), false, 1, buffer), limX, limY, limWidth, limHeight);
             }
             if (delta < 0)
             {
-                x = Painter::DrawTextWithLimitationC(drawX, y + 21 - delta, Int2String(*cell, false, 1, buffer),
-                    Color::BLACK, limX, limY, limWidth, limHeight);
-                Painter::DrawTextWithLimitationC(drawX, y + 21 - 10 - delta, Int2String(PrevValue(), false, 1, buffer),
-                    Color::BLACK, limX, limY, limWidth, limHeight);
+                x = Painter::DrawTextWithLimitation(drawX, y + 21 - delta, Int2String(*cell, false, 1, buffer), limX, limY, limWidth, limHeight);
+                Painter::DrawTextWithLimitation(drawX, y + 21 - 10 - delta, Int2String(PrevValue(), false, 1, buffer), limX, limY, limWidth, limHeight);
             }
         }
     }
@@ -446,13 +443,12 @@ void Choice::DrawClosed(int x, int y)
     }
     else
     {
-        Color color = Color::BACK;
-        Painter::DrawTextWithLimitationC(x + 4, y + MI_HEIGHT_VALUE - deltaY + 1, NameCurrentSubItem(), color, x, y + 11, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
+        Painter::SetColor(Color::BACK);
+        Painter::DrawTextWithLimitation(x + 4, y + MI_HEIGHT_VALUE - deltaY + 1, NameCurrentSubItem(), x, y + 11, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
         Painter::DrawHLine(y + (deltaY > 0 ? 24 : 19) - deltaY, x + 1, x + MI_WIDTH_VALUE + 2);
-        Painter::DrawTextWithLimitationC(x + 4, y + (deltaY > 0 ? (MI_HEIGHT_VALUE + 13) : 9) - deltaY, deltaY > 0 ? NameNextSubItem() : NamePrevSubItem(),
-                                        color, x, y + 11, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
+        Painter::DrawTextWithLimitation(x + 4, y + (deltaY > 0 ? (MI_HEIGHT_VALUE + 13) : 9) - deltaY, deltaY > 0 ? NameNextSubItem() : NamePrevSubItem(),
+                                        x, y + 11, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
     }
-    //Painter::DrawHLine(y + MI_HEIGHT + 1, x, x + MI_WIDTH, Color::BorderMenu(false));
   
     if (funcForDraw)
     {

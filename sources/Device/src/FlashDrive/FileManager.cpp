@@ -60,7 +60,8 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
     }
     else
     {
-        Painter::DrawTextWithLimitationC(x, y, string, color, x, y, WIDTH_COL, 10);
+        Painter::SetColor(color);
+        Painter::DrawTextWithLimitation(x, y, string, x, y, WIDTH_COL, 10);
         Painter::DrawText(x + WIDTH_COL + 3, y, "...");
     }
 }
