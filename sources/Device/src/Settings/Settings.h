@@ -28,9 +28,6 @@
 #define IN_RANDOMIZE_MODE               (SET_TBASE < TBase::_100ns)
 #define CURRENT_PAGE                    (set.menu_currentPage)
 
-#define VIEW_MODE                       (set.disp_modeDrawSignal)
-#define VIEW_MODE_IS_LINES              (VIEW_MODE == Mode_Lines)
-
 #define TRIG_MODE                       (set.trig_mode)
 
 #define TESTER_CONTROL                  (set.test_control)

@@ -189,7 +189,7 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
     MathOSC::Smoothing(dataX, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
     MathOSC::Smoothing(dataY, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
 
-    if (VIEW_MODE_IS_LINES)
+    if (MODE_DRAW_SIGNAL_IS_LINES)
     {
         int x1 = x0 + TESTER_NUM_POINTS - (dataX[1] - MIN_VALUE);
         int y1 = y0 + dataY[1] - MIN_VALUE;

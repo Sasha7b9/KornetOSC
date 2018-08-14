@@ -36,7 +36,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
     
     float scale = (float)Grid::Height() / 255.0f;
 
-    if (VIEW_MODE_IS_LINES)
+    if (MODE_DRAW_SIGNAL_IS_LINES)
     {
         if (THICKNESS_SIGNAL_IS_3)
         {
@@ -58,32 +58,12 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
         Painter::SetColor(Color::Chan(ch));
 
         int x = left;
-        
-        uint8 dat1 = 0;
-        uint8 dat2 = 0;
-        
-        float val1 = dat1 * scale;
-        float val2 = dat2 * scale;
-        
-        float value = 0.0f;
-        float valuePrev = 0.0f;
-        
+               
         for (int i = 1; i < 281; i++)
         {
-            dat1 = data[i - 1];
-            dat2 = data[i];
-            
-            val1 = dat1 * scale;
-            val2 = dat2 * scale;
-            
-            value = bottom - dat2 * scale;
-            valuePrev = bottom - dat1 * scale;
+            int value = (int)(bottom - data[i] * scale + 0.5f);
+            int valuePrev = (int)(bottom - data[i - 1] * scale + 0.5f);
             Painter::DrawVLine(x++, valuePrev, value);
-            
-            if(dat1 < dat2 && ch == A)
-            {
-                dat1 = dat1;
-            }
         }
     }
     else

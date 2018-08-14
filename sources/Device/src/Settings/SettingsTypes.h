@@ -143,8 +143,8 @@ enum Language
 
 enum ModeDrawSignal
 {
-    Mode_Lines,
-    Mode_Points
+    ModeDrawSignal_Lines,
+    ModeDrawSignal_Points
 };
 
 /// Тольщина рисуемого сигнала

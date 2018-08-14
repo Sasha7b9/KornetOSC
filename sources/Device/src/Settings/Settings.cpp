@@ -12,7 +12,7 @@ static const Settings defaultSettings =
     0,                              // size
     0,                              // crc32
 
-    Mode_Lines,                     // disp_modeDrawSignal
+    ModeDrawSignal_Lines,           // disp_modeDrawSignal
     Thickness_1,                    // disp_thickness
 
     {RShiftZero, RShiftZero},       // chan_shift

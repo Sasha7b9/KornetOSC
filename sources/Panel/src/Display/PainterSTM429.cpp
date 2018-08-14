@@ -169,7 +169,7 @@ void Painter::DrawVLine(int x, int y0, int y1, Color col)
 
     uint8 value = currentColor.value;
 
-    for (int y = y0; y < y1; ++y)
+    for (int y = y0; y <= y1; ++y)
     {
         if (address > end)
         {
