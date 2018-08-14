@@ -26,7 +26,7 @@ void PainterData::DrawData()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
 {
-    int bottom = Grid::Bottom();
+    int center = (Grid::Bottom() - Grid::Top()) / 2;
     int left = Grid::Left();
 
     if (!SET_ENABLED(ch))
@@ -34,7 +34,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
         return;
     }
     
-    float scale = (float)Grid::Height() / 255.0f;
+    float scale = (float)Grid::Height() / (MAX_VALUE - MIN_VALUE);
 
     if (MODE_DRAW_SIGNAL_IS_LINES)
     {
@@ -42,16 +42,32 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
         {
             Painter::SetColor(Color::ChanHalf(ch));
 
-            float valuePrev = bottom - data[0] * scale;
+            int x = left;
 
             for (int i = 1; i < 281; i++)
             {
-                float value = bottom - data[i] * scale;
+                int value = (int)(center - (data[i] - AVE_VALUE) * scale + 0.5f);
+                int valuePrev = (int)(center - (data[i - 1] - AVE_VALUE) * scale + 0.5f);
 
-                Painter::DrawVLine(left + i - 2, valuePrev, value);
-                Painter::DrawVLine(left + i, valuePrev, value);
+                if (value == valuePrev)
+                {
+                    Painter::DrawHLine(value, x - 1, x + 1);
+                    Painter::DrawVLine(x++, value - 1, value + 1);
+                }
+                else
+                {
+                    if(valuePrev > value)   { ++value;  }
+                    else                    { --value;  }
 
-                valuePrev = value;
+                    if(valuePrev < value)
+                    {
+                        Swap(&valuePrev, &value);
+                    }
+
+                    Painter::DrawVLine(x - 1, value, valuePrev);
+                    Painter::DrawVLine(x + 1, value, valuePrev);
+                    Painter::DrawVLine(x++, valuePrev + 1, value - 1);
+                }
             }
         }
 
@@ -61,8 +77,8 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
                
         for (int i = 1; i < 281; i++)
         {
-            int value = (int)(bottom - data[i] * scale + 0.5f);
-            int valuePrev = (int)(bottom - data[i - 1] * scale + 0.5f);
+            int value = (int)(center - (data[i] - AVE_VALUE) * scale + 0.5f);
+            int valuePrev = (int)(center - (data[i - 1] - AVE_VALUE) * scale + 0.5f);
 
             if(value == valuePrev)
             {
@@ -76,23 +92,11 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
     }
     else
     {
-        if (THICKNESS_SIGNAL_IS_3)
-        {
-            Painter::SetColor(Color::ChanHalf(ch));
-
-            for (int i = 0; i < 280; i++)
-            {
-                float value = bottom - data[i] * scale;
-                Painter::DrawHLine(value, left + i - 1, left + i + 1);
-                Painter::DrawVLine(left + i, value - 1, value + 1);
-            }
-        }
-
         Painter::SetColor(Color::Chan(ch));
 
         for (int i = 0; i < 280; i++)
         {
-            float value = bottom - data[i] * scale;
+            float value = center - (data[i] - AVE_VALUE) * scale;
             Painter::SetPoint(left + i, (uint8)ROUND(value));
         }
     }
