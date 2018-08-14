@@ -130,8 +130,6 @@ public:
     static void SetNumberMeasuresForGates(int number);
     /// ”становить масштаб по времени
     static void SetTBase(TBase tBase);
-    /// ”становить источник синхронизации
-    static void SetTrigSource(TrigSource trigSource);
     /// ”становить пол€рность синхронизации
     static void SetTrigPolarity(TrigPolarity polarity);
     /// ”становить режим входа синхронизации

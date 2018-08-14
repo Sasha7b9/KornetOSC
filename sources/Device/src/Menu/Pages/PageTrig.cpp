@@ -61,7 +61,7 @@ DEF_CHOICE_3(       cMode,                                                      
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Source(bool)
 {
-    FPGA::SetTrigSource(TRIG_SOURCE);
+    FPGA::LoadTrigSource();
 }
 
 DEF_CHOICE_3(       cSource,                                                                                                //--- СИНХР - Источник ---
