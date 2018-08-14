@@ -113,7 +113,7 @@ Color Color::LightShadingText()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::MenuItem(bool shade)
 {
-    return shade ? Color(COLOR_MENU_ITEM_DARK) : Color(COLOR_MENU_ITEM);
+    return shade ? Color::GRAY_10 : Color::BLUE_10;
 }
 
 Color Color::Contrast(Color color)

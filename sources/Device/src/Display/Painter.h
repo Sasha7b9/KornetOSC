@@ -44,8 +44,6 @@ public:
 
     static void DrawBoundedRegion(int x, int y, int width, int height, Color colorFill, Color colorBound);
 
-    static void DrawVolumeButton(int x, int y, int width, int height, int thickness, Color normal, Color bright, Color dark, bool isPressed, bool isShade);
-
     static void Draw4SymbolsInRect(int x, int y, char eChar, Color color = Color::NUMBER);
 
     static int DrawStringInCenterRect(int x, int y, int width, int height, const char *text, Color color = Color::NUMBER);

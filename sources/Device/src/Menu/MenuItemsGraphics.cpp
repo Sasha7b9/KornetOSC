@@ -64,8 +64,7 @@ void GovernorColor::DrawOpened(int x, int y)
     ct->Init(false);
     Painter::DrawRectangle(x - 1, y - 1, MI_WIDTH + delta + 2, MI_HEIGHT + 2, Color::BLACK);
     Painter::DrawRectangle(x, y, MI_WIDTH + delta, MI_HEIGHT, Color::MenuTitle(false));
-    Painter::DrawVolumeButton(x + 1, y + 1, MI_WIDTH_VALUE + 2 + delta, MI_HEIGHT_VALUE + 3, 2, Color::MenuItem(false),
-                             Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, IsPressed(), IsShade());
+    Painter::FillRegion(x + 1, y + 1, MI_WIDTH_VALUE + 2 + delta, MI_HEIGHT_VALUE + 3, Color::MenuItem(false));
     Painter::DrawHLine(y + MI_HEIGHT / 2 + 2, x, x + MI_WIDTH + delta, Color::MenuTitle(false));
     Painter::DrawStringInCenterRect(x + (IsPressed() ? 2 : 1), y + (IsPressed() ? 2 : 1), MI_WIDTH + delta, MI_HEIGHT / 2 + 2, Title(),
                                     Color::WHITE);
@@ -176,8 +175,7 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
 
     Color colorTextDown = Color::BLACK;
 
-    Painter::DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 2, Color::MENU_FIELD,
-        Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, true, shade);
+    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, Color::MENU_FIELD);
     if (shade)
     {
         colorTextDown = Color::MenuItem(false);
@@ -294,8 +292,7 @@ void IPaddress::DrawLowPart(int x, int y, bool, bool shade)
 
     Color colorTextDown = Color::BLACK;
 
-    Painter::DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 2, Color::MENU_FIELD,
-        Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, true, shade);
+    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, Color::MENU_FIELD);
     if (shade)
     {
         colorTextDown = Color::MenuItem(false);
@@ -375,8 +372,7 @@ void MACaddress::DrawLowPart(int x, int y, bool, bool shade)
 
     Color colorTextDown = Color::BLACK;
 
-    Painter::DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 2, Color::MENU_FIELD,
-        Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, true, shade);
+    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, Color::MENU_FIELD);
     if (shade)
     {
         colorTextDown = Color::MenuItem(false);
@@ -419,8 +415,7 @@ void Choice::DrawOpened(int x, int y)
     Painter::DrawRectangle(x - 1, y, MP_TITLE_WIDTH + 1, height + 1, Color::MenuTitle(false));
 
     Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH);
-    Painter::DrawVolumeButton(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1, height - MOI_HEIGHT_TITLE, 1, Color::BLACK, Color::MENU_TITLE_BRIGHT,
-        Color::MENU_TITLE_DARK, false, IsShade());
+    Painter::FillRegion(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1, height - MOI_HEIGHT_TITLE, Color::BLACK);
     int8 index = *cell;
     for (int i = 0; i < NumSubItems(); i++)
     {
@@ -428,8 +423,7 @@ void Choice::DrawOpened(int x, int y)
         bool pressed = i == index;
         if (pressed)
         {
-            Painter::DrawVolumeButton(x + 1, yItem, MOI_WIDTH - 2, MOSI_HEIGHT - 2, 2, Color::MENU_FIELD, Color::MENU_TITLE_BRIGHT,
-                Color::MENU_TITLE_DARK, pressed, IsShade());
+            Painter::FillRegion(x + 1, yItem, MOI_WIDTH - 2, MOSI_HEIGHT - 2, Color::MENU_FIELD);
         }
         Painter::DrawText(x + 4, yItem + 2, NameSubItem(i), pressed ? Color::BLACK : Color::MENU_FIELD);
     }
@@ -441,8 +435,7 @@ void Choice::DrawClosed(int x, int y)
     bool pressed = IsPressed();
     bool shade = IsShade() || !funcOfActive();
 
-    Painter::DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 1, Color::MENU_FIELD, Color::MENU_ITEM_BRIGHT,
-        Color::MENU_ITEM_DARK, true, shade);
+    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, Color::MENU_FIELD);
 
     int deltaY = (int)Step();
     Color colorText = shade ? Color::MenuItem(true) : Color::BLACK;
@@ -476,8 +469,7 @@ void Button::Draw(int x, int y)
     Painter::DrawHLine(y + 1, x, x + MI_WIDTH, Color::MenuTitle(shade));
     Color color = shade ? Color::MenuItem(true) : Color::WHITE;
     Painter::FillRegion(x + 1, y + 2, MI_WIDTH - 2, MI_HEIGHT - 2, Color::MenuItem(false));
-    Painter::DrawVolumeButton(x + 3, y + 4, MI_WIDTH - 6, MI_HEIGHT - 6, 2, Color::MenuItem(false), Color::MENU_ITEM_BRIGHT,
-        Color::MENU_ITEM_DARK, pressed, shade);
+    Painter::FillRegion(x + 3, y + 4, MI_WIDTH - 6, MI_HEIGHT - 6, Color::MenuItem(false));
 
     int delta = (pressed && (!shade)) ? 2 : 1;
 
@@ -561,8 +553,7 @@ void Page::Draw(int x, int y, bool opened)
         bool isPressed = IsPressed();
         Painter::DrawHLine(y + 1, x, x + MI_WIDTH, Color::BorderMenu(false));
 
-        Painter::DrawVolumeButton(x + 1, y + 2, MI_WIDTH - 2, MI_HEIGHT - 2, 1, Color::MenuItem(false), Color::MENU_ITEM_BRIGHT, 
-            Color::MENU_ITEM_DARK, isPressed, isShade);
+        Painter::FillRegion(x + 1, y + 2, MI_WIDTH - 2, MI_HEIGHT - 2, Color::MenuItem(false));
 
         Color colorText = isShade ? Color::MenuItem(true) : Color::BLACK;
         int delta = 0;
@@ -599,8 +590,7 @@ void Page::DrawTitle(int x, int yTop)
     }
     else
     {
-        Painter::DrawVolumeButton(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, 2, Color::MenuTitle(false),
-            Color::MENU_TITLE_BRIGHT, Color::MENU_TITLE_DARK, shade, shade);
+        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, Color::MenuTitle(false));
     }
 
     Painter::DrawVLine(x, yTop, yTop + HeightOpened(), Color::BorderMenu(false));
@@ -710,8 +700,7 @@ void Time::DrawClosed(int x, int y)
     bool shade = IsShade();
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 
-    Painter::DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 1, Color::MENU_FIELD, Color::MENU_ITEM_BRIGHT,
-        Color::MENU_ITEM_DARK, true, shade);
+    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, Color::MENU_FIELD);
 
     int deltaField = 10;
     int deltaSeparator = 2;
@@ -745,8 +734,7 @@ void Time::DrawOpened(int x, int y)
     Painter::DrawRectangle(x - 1, y, width + 1, height + 1, Color::MenuTitle(false));
 
     Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH);
-    Painter::DrawVolumeButton(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1, height - MOI_HEIGHT_TITLE, 1, Color::BLACK, Color::MENU_TITLE_BRIGHT,
-        Color::MENU_TITLE_DARK, false, IsShade());
+    Painter::FillRegion(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1, height - MOI_HEIGHT_TITLE, Color::BLACK);
 
     int y0 = 21;
     int y1 = 31;
@@ -812,8 +800,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(Control *item, int x, int y, bo
     Color color = shade ? Color::MENU_TITLE_DARK : Color::WHITE;
     Painter::DrawHLine(y + 1, x, x + width + 3, Color::BorderMenu(false));
 
-    Painter::DrawVolumeButton(x + 1, y + 2, width + 2, MI_HEIGHT_VALUE + 3, 1, Color::MenuItem(false), Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK,
-        pressed, shade);
+    Painter::FillRegion(x + 1, y + 2, width + 2, MI_HEIGHT_VALUE + 3, Color::MenuItem(false));
 
     Painter::DrawText(x + 6 + delta, y + 6 + delta, item->Title(), color);
     if(Menu::CurrentItem() == item)
@@ -890,8 +877,7 @@ static void GovernorIpCommon_DrawOpened(Control *item, int x, int y, int dWidth)
     Painter::DrawRectangle(x - 1, y, MP_TITLE_WIDTH + 1 + dWidth, height + 1, Color::MenuTitle(false));
     Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH + dWidth);
     DrawGovernorChoiceColorFormulaHiPart(item, x - 1, y - 1, control->IsPressed(), false, true);
-    Painter::DrawVolumeButton(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1 + dWidth, height - MOI_HEIGHT_TITLE, 1, Color::BLACK, Color::MENU_TITLE_BRIGHT,
-        Color::MENU_TITLE_DARK, false, control->IsShade());
+    Painter::FillRegion(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1 + dWidth, height - MOI_HEIGHT_TITLE, Color::BLACK);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
