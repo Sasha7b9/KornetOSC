@@ -174,7 +174,7 @@ void FPGA::Update()
 
     uint8 flag = ReadFlag();
 
-    if (_GET_BIT(flag, BIT_FLAG_PRED) == 1 && ! givingStart)
+    if (_GET_BIT(flag, BIT_FLAG_PRED) == 1 && !givingStart)
     {
         if (START_MODE_IS_AUTO)
         {
@@ -183,8 +183,6 @@ void FPGA::Update()
         }
     }
 
-    int i = 0;
-    
     if (_GET_BIT(flag, BIT_FLAG_DATA_READY) == 1)
     {
         ReadData();
@@ -196,10 +194,6 @@ void FPGA::Update()
         {
             Start();
         }
-    }
-    else
-    {
-        i++;
     }
 }
 
