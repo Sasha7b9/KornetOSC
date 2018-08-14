@@ -793,7 +793,8 @@ int Painter::DrawTextInBoundedRectWithTransfers(int x, int y, int width, const c
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawVolumeButton(int x, int y, int width, int height, int thickness, Color normal, Color bright, Color dark, bool isPressed, bool isShade)
 {
-    FillRegion(x + thickness, y + thickness, width - thickness * 2, height - thickness * 2, normal);
+    FillRegion(x, y, width, height, normal);
+    /*
     if (isPressed && !isShade)
     {
         for (int i = 0; i < thickness; i++)
@@ -814,6 +815,7 @@ void Painter::DrawVolumeButton(int x, int y, int width, int height, int thicknes
             DrawHLine(y + height - i, x + 1 + i, x + width - i);
         }
     }
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -607,18 +607,18 @@ void Page::DrawTitle(int x, int yTop)
     bool condDrawRSet = NumSubPages() > 1 && NOT_CHOICE_REG(Menu::CurrentItem()) &&
         NOT_GOVERNOR(Menu::CurrentItem()) && IS_PAGE(Menu::OpenedItem());
     int delta = condDrawRSet ? -10 : 0;
-    Color colorText = shade ? Color::LightShadingText() : Color::BLACK;
+    Color colorText = Color::FILL;
     x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, Title(), colorText);
     if (condDrawRSet)
     {
-        Painter::Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(CurrentSubPage()), colorText);
+        //Painter::Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(CurrentSubPage()), colorText);
     }
 
     Menu::itemUnderButton[GetFuncButtonFromX(yTop).code] = this;
 
     delta = 0;
 
-    Painter::SetColor(colorText);
+    Painter::SetColor(Color::GRAY_75);
     DrawPagesUGO(eX + MP_TITLE_WIDTH - 3 + delta, yTop + MP_TITLE_HEIGHT - 2 + delta);
     DrawNestingPage(eX + 5, yTop + MP_TITLE_HEIGHT - 8);
 }
