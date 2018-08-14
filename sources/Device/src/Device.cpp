@@ -27,15 +27,17 @@ void Device::Init()
 
     Display::Init();
 
-    //FPGA::Init();
+    PAUSE_ON_MS(500);
+
+    FPGA::Init();
 
     Settings::Load();
 
-    //FPGA::LoadSettings();
+    FPGA::LoadSettings();
 
     Menu::Init();
 
-    //FPGA::OnPressStart();
+    FPGA::OnPressStart();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -45,12 +47,9 @@ void Device::Update()
     Menu::Update();
     Display::Update();
     Decoder::Update();
-
-    Sound::Test();
-
-    //FPGA::Update();
-    //Menu::SaveSettings();
-    //Tester::Update();
+    FPGA::Update();
+    Menu::SaveSettings();
+    Tester::Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

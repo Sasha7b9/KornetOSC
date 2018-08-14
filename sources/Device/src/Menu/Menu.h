@@ -70,6 +70,8 @@ public:
     static const SButton* GetSmallButton(Key button);
 
     static void SetItemForHint(void *item);
+
+    static void SaveSettings();
     ///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, 
     /// если ни одна кнопка не нажата.
     static Control *itemUnderKey;
@@ -117,6 +119,8 @@ private:
     static Key releaseButton;
     /// Эта функция будет вызывана один раз после Menu::Update().
     static pFuncVV funcAterUpdate;
+    /// Время последнего нажатия кнопки. Нужно для того, чтобы периодически сохранять настройки
+    static uint timeLastPressedButton;
 };
 
 

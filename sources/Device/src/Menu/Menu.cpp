@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "Log.h"
+#include "Device.h"
 #include "BufferButtons.h"
 #include "Globals.h"
 #include "Display/Grid.h"
@@ -22,15 +23,16 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      Key Menu::shortPressureButton = Key::None;
-      Key Menu::longPressureButton = Key::None;
-      Key Menu::pressButton = Key::None;
-      Key Menu::releaseButton = Key::None;
-         Control *Menu::itemUnderKey = 0;
-          pFuncVV Menu::funcAterUpdate = 0;
-         Control *Menu::itemUnderButton[Key::NumButtons] = {0};
-      const char *Menu::stringForHint = 0;
-         Control *Menu::itemHint = 0;
+       uint Menu::timeLastPressedButton = MAX_UINT;
+        Key Menu::shortPressureButton = Key::None;
+        Key Menu::longPressureButton = Key::None;
+        Key Menu::pressButton = Key::None;
+        Key Menu::releaseButton = Key::None;
+   Control *Menu::itemUnderKey = 0;
+    pFuncVV Menu::funcAterUpdate = 0;
+   Control *Menu::itemUnderButton[Key::NumButtons] = {0};
+const char *Menu::stringForHint = 0;
+   Control *Menu::itemHint = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -833,4 +835,17 @@ void Menu::ButtonEvent(KeyEvent event)
     Sound::Beep(event.type);
 
     BufferButtons::Push(event);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::SaveSettings()
+{
+    if((timeLastPressedButton != MAX_UINT) && (TIME_MS - timeLastPressedButton > 5000))
+    {
+        timeLastPressedButton = MAX_UINT;
+        if(Device::CurrentMode() != Mode_Tester)
+        {
+            Settings::Save();
+        }
+    }
 }

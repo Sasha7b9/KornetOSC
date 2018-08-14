@@ -847,6 +847,7 @@ int Storage::GetFrameP2P_RAM(DataSettings **ds, uint8 **dataA, uint8 **dataB)
 
 void Storage::AddData(uint8 *dataA, uint8 *dataB)
 {
+    
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
