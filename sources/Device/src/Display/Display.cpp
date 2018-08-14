@@ -132,8 +132,6 @@ void Display::Update()
     pFuncDisplayVV func = funcs[Device::CurrentMode()];
 
     func();
-
-    //LOG_WRITE("время : полное - %d, ожидание - %d", TIME_US - timeStart, debug.GetTimeCounterUS());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -147,7 +145,7 @@ void Display::UpdateOsci()
 
     RShift::Draw();
 
-//    PainterData::DrawData();
+    PainterData::DrawData();
    
     Console::Draw();
 

@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "Globals.h"
 #include "Storage.h"
+#include "Reader.h"
 #include "Log.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/CPU.h"
@@ -845,10 +846,22 @@ int Storage::GetFrameP2P_RAM(DataSettings **ds, uint8 **dataA, uint8 **dataB)
     return numPointsP2P;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Storage::AddData(uint8 *dataA, uint8 *dataB)
 {
-    
+    memcpy(IN_A, dataA, 16 * 1024);
+    memcpy(IN_B, dataB, 16 * 1024);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Storage::GetData(uint8 **dataA, uint8 **dataB)
+{
+    memcpy(OUT_A, IN_A, 16 * 1024);
+    memcpy(OUT_B, IN_B, 16 * 1024);
+    *dataA = OUT_A;
+    *dataB = OUT_B;
+}
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /*

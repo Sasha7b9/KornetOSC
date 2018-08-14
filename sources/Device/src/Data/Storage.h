@@ -20,6 +20,8 @@ public:
     static void AddData(uint8 *dataA, uint8 *dataB, DataSettings dss);
 
     static void AddData(uint8 *dataA, uint8 *dataB);
+
+    static void GetData(uint8 **dataA, uint8 **dataB);
     /// Возвращает число непрерывных измерений, начиная с последнего, с такими же настройками, как у последнего.
     static int NumElementsWithSameSettings();
     /// Возвращает число непрерывных измерений, начиная с последнего, с текущими настройками прибора.

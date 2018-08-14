@@ -17,7 +17,7 @@ void PainterData::DrawData()
     uint8 *dataA = 0;
     uint8 *dataB = 0;
 
-//    Storage::GetData(&dataA, &dataB);
+2    Storage::GetData(&dataA, &dataB);
 
     DrawChannel(A, dataA);
     DrawChannel(B, dataB);
