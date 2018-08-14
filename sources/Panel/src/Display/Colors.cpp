@@ -278,23 +278,3 @@ Color& Color::operator=(const Color &color)
     value = color.value;
     return *this;
 }
-
-#ifdef OSCI
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-Color Color::Trig()
-{
-    if (TRIGSOURCE_IS_EXT)
-    {
-        return FILL;
-    }
-    return CHAN[(Channel)TRIGSOURCE];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-Color Color::ChanAccum(Channel ch)
-{
-    return (ch == A) ? Color(COLOR_DATA_WHITE_ACCUM_A) : Color(COLOR_DATA_WHITE_ACCUM_B);
-}
-
-#endif

@@ -27,10 +27,6 @@ public:
     static void SetColorValue(Color color, uint value);
     /// Загружает в дисплей все цвета
     static void LoadPalette();
-    /// Послать изображение во внешнее устройство через USB или LAN. Если first == true, то посылается шрифт
-    static void SendFrame(bool first);
-    /// Сброс таймера мигания. Нужно для того, чтобы мигающие значки при перемещении не исчезали с экрана
-    static void ResetFlash();
     /// Установить цвет рисования
     /// Нарисовать точку текущим цветом
     static void SetPoint(int x, int y);
@@ -38,12 +34,6 @@ public:
     static void DrawHPointLine(int y, int x0, int x1, float delta);
     /// Нарисовать вертикальную линию от y0 до y1 точками через каждые delta пикселей
     static void DrawVPointLine(int x, int y0, int y1, float delta);
-    /// \brief Нарисовать numLines вертикальных линий, состоящих из count точек каждая с расстоянием между точками delta. Горизонтальная координата
-    /// первой точки каждой линии соответствует очередному элементу массива x[]
-    static void DrawMultiVPointLine(int numLines, int y, uint16 x[], int delta, int count, Color color = Color::NUMBER);
-    /// \brief Нарисовать numLines горизонтальных линий, состоящих из count точек каждая с расстоянием между точками delta. Вертикальная координата
-    /// первой точки каждой линии соответствует очередному элементу массива y[]
-    static void DrawMultiHPointLine(int numLines, int x, uint8 y[], int delta, int count, Color color = Color::NUMBER);
     /// Нарисовать горизонтальную линию
     static void DrawHLine(int y, int x0, int x1, Color color = Color::NUMBER);
     /// Нарисовать вертикальную линию
@@ -61,26 +51,10 @@ public:
     static void FillRegion(int x, int y, int width, int height, Color color = Color::NUMBER);
 
     static void DrawVolumeButton(int x, int y, int width, int height, int thickness, Color normal, Color bright, Color dark, bool isPressed, bool isShade);
-    /// Установить яркость дисплея.
-    static void SetBrightnessDisplay(int16 brightness);
 
     static uint ReduceBrightness(uint colorValue, float newBrightness);
-    /// Нарисовать массив вертикальных линий. Линии рисуются одна за другой. y0y1 - массив вертикальных координат.
-    static void DrawVLineArray(int x, int numLines, uint8 *y0y1, Color color);
-    /// modeLines - true - точками, false - точками.
-    static void DrawSignal(int x, uint8 data[281], bool modeLines);
-
-    static void DrawPicture(int x, int y, int width, int height, uint8 *address);
-
-    static bool SaveScreenToFlashDrive();
-
-    static void SendToDisplay(uint8 *bytes, int numBytes);
-
-    static void SendToInterfaces(uint8 *pointer, int size);
 
     static void SetFont(TypeFont typeFont);
-    ///  Загрузить шрифта в дисплей
-    static void LoadFont(TypeFont typeFont);
 
     static int DrawChar(int x, int y, char symbol, Color color = Color::NUMBER);
 
@@ -91,19 +65,8 @@ public:
     static int DrawFormatText(int x, int y, char *format, ...);
     /// Пишет строку в позиции x, y
     static int DrawFormText(int x, int y, Color color, pString text, ...);
-    /// Возвращает нижнюю координату прямоугольника
-    static int DrawTextInBoundedRectWithTransfers(int x, int y, int width, const char *text, Color colorBackground, Color colorFill);
-
-    static int DrawTextInRectWithTransfersC(int x, int y, int width, int height, const char *text, Color color);
 
     static int DrawStringInCenterRect(int x, int y, int width, int height, const char *text, Color color = Color::NUMBER);
-    /// Пишет строку текста в центре области(x, y, width, height)цветом ColorText на прямоугольнике с шириной бордюра widthBorder цвета colorBackground
-    static void DrawStringInCenterRectOnBackgroundC(int x, int y, int width, int height, const char *text, Color colorText, int widthBorder, 
-                                             Color colorBackground);
-
-    static int DrawStringInCenterRectAndBoundItC(int x, int y, int width, int height, const char *text, Color colorBackground, Color colorFill);
-
-    static void DrawTextInRect(int x, int y, int width, const char *text);
 
     static void DrawTextRelativelyRight(int xRight, int y, const char *text, Color color = Color::NUMBER);
 
