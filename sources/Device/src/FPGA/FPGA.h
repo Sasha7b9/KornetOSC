@@ -113,8 +113,6 @@ public:
 
     static void Reset();
 
-    static void OnPressStartStop();
-
     static pString GetTShiftString(int16 tShift, char buffer[20]);
 
     static void SetModeCouple(Channel ch, ModeCouple couple);

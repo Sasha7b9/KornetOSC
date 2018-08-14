@@ -20,7 +20,7 @@ void PageTrig::OnChanged_TrigMode(bool)
     FPGA::Stop(false);
     if(!START_MODE_IS_SINGLE)
     {
-        FPGA::OnPressStartStop();
+        FPGA::OnPressStart();
     }
     
     // Елси находимся в режиме рандомизатора

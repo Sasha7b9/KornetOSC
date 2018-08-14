@@ -410,7 +410,7 @@ void Menu::ProcessingPressButton()
     }
     if (pressButton.Is(Key::Start) && !MODE_WORK_IS_RAM)
     {
-        FPGA::OnPressStartStop();
+        FPGA::OnPressStart();
     }
     pressButton = Key::None;
 }
