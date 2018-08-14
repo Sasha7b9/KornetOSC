@@ -120,6 +120,7 @@ Color Color::MenuItem(bool shade)
     return shade ? Color::GRAY_10 : Color::BLUE_10;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::Contrast(Color color)
 {
     uint colorValue = COLOR(color.value);
@@ -301,11 +302,15 @@ Color Color::ChanHalf(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::Trig()
 {
-    if (TRIG_SOURCE_IS_EXT)
+    if(TRIG_SOURCE == TrigSource::A)
     {
-        return FILL;
+        return Chan(A);
     }
-    return CHAN[(Channel)TRIG_SOURCE];
+    else if(TRIG_SOURCE == TrigSource::B)
+    {
+        return Chan(B);
+    }
+    return Color::FILL;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

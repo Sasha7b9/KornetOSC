@@ -10,6 +10,9 @@
 // TypeFont_8
 
 #define SYMBOL_RSHIFT_MARKER    '\x93'
+#define SYMBOL_TRIG_LEV_LOWER   '\x95'  ///< Символ уровень синхронизации ниже сетки
+#define SYMBOL_TRIG_LEV_ABOVE   '\x96'  ///< Символ уровень синхронизации выше сетки
+#define SYMBOL_TRIG_LEV_NORMAL  '\x94'  ///< Символ уровень синхронизации нормальный
 
 // TypeFont_UGO2
 

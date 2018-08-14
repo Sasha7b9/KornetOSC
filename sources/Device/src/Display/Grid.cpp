@@ -103,3 +103,9 @@ int Grid::ChannelBottom()
 {
     return (sDisplay_IsSeparate()) ? (Top() + Height() / 2) : FullBottom();
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Grid::ChannelCenterHeight()
+{
+    return (Top() + Bottom()) / 2;
+}
