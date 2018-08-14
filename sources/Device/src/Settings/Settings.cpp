@@ -40,7 +40,7 @@ static const Settings defaultSettings =
     FNP_512,                        // mem__enumPoints
         
     0,                              // menu_currentPage
-    false                           // menu_show
+    true                            // menu_show
 };
 
 Settings set;

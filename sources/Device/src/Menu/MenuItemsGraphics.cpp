@@ -435,23 +435,24 @@ void Choice::DrawClosed(int x, int y)
     bool pressed = IsPressed();
     bool shade = IsShade() || !funcOfActive();
 
-    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, Color::MENU_FIELD);
+    Painter::FillRegion(x + 1, y + MI_HEIGHT_VALUE, MI_WIDTH_VALUE + 1, MI_HEIGHT_VALUE - 3, Color::MENU_FIELD);
 
     int deltaY = (int)Step();
     Color colorText = shade ? Color::MenuItem(true) : Color::BLACK;
     Painter::SetColor(colorText);
     if (deltaY == 0)
     {
-        Painter::DrawText(x + 4, y + 21, NameCurrentSubItem());
+        Painter::DrawText(x + 4, y + MI_HEIGHT_VALUE + 1, NameCurrentSubItem());
     }
     else
     {
-        Painter::DrawTextWithLimitationC(x + 4, y + 21 - deltaY, NameCurrentSubItem(), colorText, x, y + 19, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
-        Painter::DrawHLine(y + (deltaY > 0 ? 31 : 19) - deltaY, x + 3, x + MI_WIDTH_VALUE + 1, Color::BLACK);
-        Painter::DrawTextWithLimitationC(x + 4, y + (deltaY > 0 ? 33 : 9) - deltaY, deltaY > 0 ? NameNextSubItem() : NamePrevSubItem(),
-                                        colorText, x, y + 19, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
+        Color color = Color::BACK;
+        Painter::DrawTextWithLimitationC(x + 4, y + MI_HEIGHT_VALUE - deltaY + 1, NameCurrentSubItem(), color, x, y + 11, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
+        Painter::DrawHLine(y + (deltaY > 0 ? 24 : 19) - deltaY, x + 1, x + MI_WIDTH_VALUE + 2);
+        Painter::DrawTextWithLimitationC(x + 4, y + (deltaY > 0 ? (MI_HEIGHT_VALUE + 13) : 9) - deltaY, deltaY > 0 ? NameNextSubItem() : NamePrevSubItem(),
+                                        color, x, y + 11, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
     }
-      Painter::DrawHLine(y + MI_HEIGHT + 1, x, x + MI_WIDTH, Color::BorderMenu(false));
+    //Painter::DrawHLine(y + MI_HEIGHT + 1, x, x + MI_WIDTH, Color::BorderMenu(false));
   
     if (funcForDraw)
     {
@@ -581,7 +582,6 @@ void Page::DrawTitle(int x, int yTop)
         Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, Color::MenuTitle(false));
     }
 
-    Painter::DrawVLine(x, yTop, yTop + HeightOpened(), Color::BorderMenu(false));
     bool condDrawRSet = NumSubPages() > 1 && NOT_CHOICE_REG(Menu::CurrentItem()) &&
         NOT_GOVERNOR(Menu::CurrentItem()) && IS_PAGE(Menu::OpenedItem());
     int delta = condDrawRSet ? -10 : 0;
@@ -789,9 +789,9 @@ static void DrawGovernorChoiceColorFormulaHiPart(Control *item, int x, int y, bo
     Color color = shade ? Color::MENU_TITLE_DARK : Color::WHITE;
     Painter::DrawHLine(y + 1, x, x + width + 3, Color::BorderMenu(false));
 
-    Painter::FillRegion(x + 1, y + 2, width + 1, MI_HEIGHT_VALUE + 3, Color::MenuItem(false));
+    Painter::FillRegion(x + 1, y + 2, width + 1, MI_HEIGHT_VALUE - 3, Color::MenuItem(false));
 
-    Painter::DrawText(x + 6 + delta, y + 6 + delta, item->Title(), color);
+    Painter::DrawText(x + 6 + delta, y + 3 + delta, item->Title(), color);
     if(Menu::CurrentItem() == item)
     {
            char symbol = 0;

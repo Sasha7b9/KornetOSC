@@ -2,11 +2,11 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define MP_TITLE_WIDTH          79
 #define MP_X                    ((Grid::Right()) - (MP_TITLE_WIDTH) - 1)
-#define MP_TITLE_HEIGHT         20
-#define MI_HEIGHT               33
+#define MI_HEIGHT               23
 #define MI_WIDTH                (320 / 5)
+#define MP_TITLE_HEIGHT         12
+#define MP_TITLE_WIDTH          (MI_WIDTH * 2 - 2)
 #define MOSI_HEIGHT             14
 #define MI_HEIGHT_VALUE         13
 #define MI_WIDTH_VALUE          ((MI_WIDTH) - 4)

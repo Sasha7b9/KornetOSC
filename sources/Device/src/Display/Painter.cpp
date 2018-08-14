@@ -563,12 +563,11 @@ void Painter::Draw10SymbolsInRect(int x, int y, char eChar)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Painter::DrawStringInCenterRect(int eX, int eY, int width, int eHeight, const char *text, Color color)
 {
-    SetColor(color);
     int lenght = Font::GetLengthText(text);
     int height = Font::GetHeightSymbol(text[0]);
     int x = eX + (width - lenght) / 2;
-    int y = eY + (eHeight - height) / 2;
-    return DrawText(x, y, text);
+    int y = eY + (eHeight - height) / 2 + 1;
+    return DrawText(x, y, text, color);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
