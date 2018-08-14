@@ -549,20 +549,8 @@ void Page::Draw(int x, int y, bool opened)
     }
     else
     {
-        bool isShade = IsShade() || !funcOfActive();
-        bool isPressed = IsPressed();
-        Painter::DrawHLine(y + 1, x, x + MI_WIDTH, Color::BorderMenu(false));
-
-        Painter::FillRegion(x + 1, y + 2, MI_WIDTH - 2, MI_HEIGHT - 2, Color::MenuItem(false));
-
-        Color colorText = isShade ? Color::MenuItem(true) : Color::BLACK;
-        int delta = 0;
-        if (isPressed && (!isShade))
-        {
-            colorText = Color::WHITE;
-            delta = 1;
-        }
-        Painter::DrawStringInCenterRect(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, Title(), colorText);
+        Painter::FillRegion(x + 1, y + 2, MI_WIDTH - 3, MI_HEIGHT - 2, Color::MenuItem(false));
+        Painter::DrawStringInCenterRect(x, y + 1, MI_WIDTH, MI_HEIGHT, Title(), Color::FILL);
     }
 }
 
@@ -627,6 +615,7 @@ void Page::DrawItems(int x, int y)
         Control *item = Item(posItem);
         if (item)
         {
+            Painter::DrawRectangle(x, y + 1, MI_WIDTH - 1, MI_HEIGHT, Color::FILL);
             item->Draw(x, y, false);
             Menu::itemUnderButton[GetFuncButtonFromX(x).code] = item;
             x += MI_WIDTH;
@@ -800,7 +789,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(Control *item, int x, int y, bo
     Color color = shade ? Color::MENU_TITLE_DARK : Color::WHITE;
     Painter::DrawHLine(y + 1, x, x + width + 3, Color::BorderMenu(false));
 
-    Painter::FillRegion(x + 1, y + 2, width + 2, MI_HEIGHT_VALUE + 3, Color::MenuItem(false));
+    Painter::FillRegion(x + 1, y + 2, width + 1, MI_HEIGHT_VALUE + 3, Color::MenuItem(false));
 
     Painter::DrawText(x + 6 + delta, y + 6 + delta, item->Title(), color);
     if(Menu::CurrentItem() == item)

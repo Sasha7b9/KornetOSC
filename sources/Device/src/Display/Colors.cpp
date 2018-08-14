@@ -33,7 +33,7 @@ extern uint GlobalColors[256] =
     /* 20 */    MAKE_COLOR(0x33, 0x33, 0x33),       // GRAY_20
     /* 21 */    MAKE_COLOR(0x00, 0x00, 0x1a),       // BLUE_10
     /* 22 */    MAKE_COLOR(0x80, 0x80, 0x80),       // GRAY_50
-    /* 23 */    MAKE_COLOR(0xc0, 0xc0, 0xc0)        // GRAY_75
+    /* 23 */    MAKE_COLOR(0xc0  , 0xc0, 0xc0)        // GRAY_75
 };
 
 
