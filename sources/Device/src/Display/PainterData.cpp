@@ -63,7 +63,15 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
         {
             int value = (int)(bottom - data[i] * scale + 0.5f);
             int valuePrev = (int)(bottom - data[i - 1] * scale + 0.5f);
-            Painter::DrawVLine(x++, valuePrev, value);
+
+            if(value == valuePrev)
+            {
+                Painter::SetPoint(x++, valuePrev);
+            }
+            else
+            {
+                Painter::DrawVLine(x++, valuePrev, valuePrev > value ? (value + 1) : (value - 1));
+            }
         }
     }
     else
