@@ -67,16 +67,8 @@ public:
     static int DrawFormText(int x, int y, Color color, pString text, ...);
 
     static int DrawStringInCenterRect(int x, int y, int width, int height, const char *text, Color color = Color::NUMBER);
-
-    static void DrawTextRelativelyRight(int xRight, int y, const char *text, Color color = Color::NUMBER);
-
-    static void Draw2SymbolsC(int x, int y, char symbol1, char symbol2, Color color1, Color color2);
-
-    static void Draw4SymbolsInRect(int x, int y, char eChar, Color color = Color::NUMBER);
-
-    static void Draw10SymbolsInRect(int x, int y, char eChar);
     /// Пишет текст с переносами
-    static int DrawTextInRectWithTransfers(int x, int y, int width, int height, const char *text);
+    //static int DrawTextInRectWithTransfers(int x, int y, int width, int height, const char *text);
 
     static void DrawBigText(int x, int y, int size, const char *text, Color color = Color::NUMBER);
     
