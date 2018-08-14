@@ -55,6 +55,11 @@ void Painter::DrawHLine(int y, int x0, int x1, Color col)
 
     SetColor(col);
 
+    if(x0 > x1)
+    {
+        Swap(&x0, &x1);
+    }
+
     uint8 *address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH;
     uint8 *end = Display::GetBufferEnd();
 
@@ -153,6 +158,11 @@ void Painter::DrawVLine(int x, int y0, int y1, Color col)
     y0 *= 2;
     y1 *= 2;
 #endif
+
+    if(y0 > y1)
+    {
+        Swap(&y0, &y1);
+    }
 
     uint8 *address = Display::GetBuffer() + x + y0 * BUFFER_WIDTH;
     uint8 *end = Display::GetBufferEnd();
