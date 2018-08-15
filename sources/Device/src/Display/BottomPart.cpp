@@ -22,11 +22,11 @@ void BottomPart::Draw()
     int y1 = Display::HEIGHT - 10;
     int x = -1;
 
-    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2, Color::FILL);
+    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2, Color::GRAY_50);
     Painter::DrawHLine(Grid::FullBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2);
     WriteTextVoltage(A, x + 2, y0);
     WriteTextVoltage(B, x + 2, y1);
-    Painter::DrawVLine(x + 95, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::FILL);
+    Painter::DrawVLine(x + 95, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::GRAY_50);
 
     x += 98;
     const int SIZE = 100;

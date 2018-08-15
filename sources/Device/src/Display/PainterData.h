@@ -8,6 +8,12 @@
 class PainterData
 {
 public:
+    
     static void DrawData();
+
     static void DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS]);
+
+private:
+    
+    static void DrawData_ModeDir();
 };

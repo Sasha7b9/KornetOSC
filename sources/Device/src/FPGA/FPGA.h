@@ -1,5 +1,6 @@
 #pragma once
 #include "defines.h"
+#include "Globals.h"
 #include "FPGATypes.h"
 #include "Settings/SettingsTypes.h"
 
@@ -40,6 +41,9 @@ enum Pin
     Num_Pins
 };
 
+#define FPGA_IN_STATE_STOP (FPGA::fpgaStateWork == StateWorkFPGA_Stop)
+#define FPGA_IN_STATE_WORK (FPGA::fpgaStateWork == StateWorkFPGA_Work)
+#define FPGA_IN_STATE_WAIT (FPGA::fpgaStateWork == StateWorkFPGA_Wait)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class HardwareFPGA
@@ -107,6 +111,8 @@ public:
     }
 
     static void LoadTShift();
+    
+    static StateWorkFPGA GetStateWork();
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static void SetTShift(uint tShift);
@@ -184,4 +190,7 @@ private:
     static bool isRunning;
     /// True, если дан запуск
     static bool givingStart;
+    
+public:
+    static StateWorkFPGA fpgaStateWork;
 };

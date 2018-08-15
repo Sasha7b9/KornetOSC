@@ -22,6 +22,8 @@ void DisplayOsci::Update()
     Painter::BeginScene(Color::BACK);
 
     Grid::Draw();
+    
+    PainterData::DrawData();
 
     BottomPart::Draw();
 

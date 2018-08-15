@@ -1,12 +1,23 @@
 #include "HiPart.h"
+#include "Settings/Settings.h"
+#include "Painter.h"
+#include "Grid.h"
+#include "Utils/Dictionary.h"
+#include "FPGA/FPGA.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool HiPart::trigLabel = false;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void HiPart::Draw()
 {
     WriteCursors();
     DrawRightPart();
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void HiPart::WriteCursors()
 {
     /*
@@ -90,6 +101,78 @@ void HiPart::WriteCursors()
     */
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void HiPart::DrawRightPart()
 {
+    // Синхроимпульс
+    int y = 2;
+
+    static const int xses[3] ={280, 271, 251};
+    int x = xses[MODE_WORK];
+
+    if(!MODE_WORK_IS_RAM)
+    {
+        Painter::DrawVLine(x, 1, Grid::Top() - 2, Color::FILL);
+
+        x += 2;
+
+        if(trigLabel)
+        {
+            Painter::FillRegion(x, 1 + y, Grid::Top() - 3, Grid::Top() - 7, Color::FILL);
+            Painter::DrawText(x + 3, 3 + y, DICT(DTrig), Color::BACK);
+        }
+    }
+
+    // Режим работы
+    static pString strs[][2] =
+    {
+        {"ИЗМ", "MEAS"},
+        {"ПОСЛ", "LAST"},
+        {"ВНТР", "INT"}
+    };
+
+    if(!MODE_WORK_IS_DIR)
+    {
+        x += 18;
+        Painter::DrawVLine(x, 1, Grid::Top() - 2, Color::FILL);
+        x += 2;
+        Painter::DrawText(LANG_RU ? x : x + 3, -1, DICT(DMode));
+        Painter::DrawStringInCenterRect(x + 1, 9, 25, 8, strs[MODE_WORK][LANG]);
+    }
+    else
+    {
+        x -= 9;
+    }
+
+    if(!MODE_WORK_IS_RAM)
+    {
+        x += 27;
+        Painter::DrawVLine(x, 1, Grid::Top() - 2, Color::FILL);
+
+        x += 2;
+        y = 1;
+        if(FPGA_IN_STATE_WORK)       // Рабочий режим
+        {
+            Painter::Draw4SymbolsInRect(x, 1, SYMBOL_PLAY);
+        }
+        else if(FPGA_IN_STATE_STOP)  // Режим остановки
+        {
+            Painter::FillRegion(x + 3, y + 3, 10, 10);
+        }
+        else if(FPGA_IN_STATE_WAIT)  // Режим ожидания сигнала
+        {
+            int w = 4;
+            int h = 14;
+            int delta = 4;
+            x = x + 2;
+            Painter::FillRegion(x, y + 1, w, h);
+            Painter::FillRegion(x + w + delta, y + 1, w, h);
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void HiPart::EnableTrigLabel(bool enable)
+{
+    trigLabel = enable;
 }

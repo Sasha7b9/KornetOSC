@@ -70,6 +70,7 @@ static uint8 ValueForRange(Channel ch);
 
 bool FPGA::isRunning = false;
 bool FPGA::givingStart = false;
+StateWorkFPGA FPGA::fpgaStateWork = StateWorkFPGA_Stop;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void FPGA::Init()
@@ -924,6 +925,12 @@ void FPGA::SetTBase(TBase tBase)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::FindAndSetTrigLevel()
 {
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+StateWorkFPGA FPGA::GetStateWork()
+{
+    return fpgaStateWork;
 }
 
 
