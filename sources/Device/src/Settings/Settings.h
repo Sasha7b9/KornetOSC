@@ -91,11 +91,11 @@ public:
     ModeCouple          chan_couple[NumChannels];           ///< Связь по входу
     bool                chan_enable[NumChannels];           ///< Включен/выключен канал
     int8                chan_balanceShiftADC[2];            ///< Добавочное смещение для балансировки АЦП.
-    Bandwidth           chan_Bandwidth[2];                  ///< Ограничение полосы.
-    Resistance          chan_Resistance[2];                 ///< Сопротивление входа.
-    bool                chan_Inverse[2];
-    Divider             chan_Divider[2];                    ///< Множитель.
-    CalibrationMode     chan_CalibrationMode[2];            ///< Режим калибровки.
+    Bandwidth           chan_bandwidth[2];                  ///< Ограничение полосы.
+    Resistance          chan_resistance[2];                 ///< Сопротивление входа.
+    bool                chan_inverse[2];
+    Divider             chan_divider[2];                    ///< Множитель.
+    CalibrationMode     chan_calibrationMode[2];            ///< Режим калибровки.
 
     // Меню СИНХРОНИЗАЦИЯ
 
@@ -103,49 +103,48 @@ public:
     TrigInput           trig_input;
     TrigPolarity        trig_polarity;
     uint16              trig_lev[NumChannels];
-    ModeTrig            trig_mode;
-    StartMode           trig_StartMode;                     ///< Режим запуска.
-    TrigModeFind        trig_ModeFind;                      ///< Поиск синхронизации - вручную или автоматически.
+    StartMode           trig_startMode;                     ///< Режим запуска.
+    TrigModeFind        trig_modeFind;                      ///< Поиск синхронизации - вручную или автоматически.
 
     // Меню РАЗВЁРТКА
 
     uint16              time_shift;
     TBase               time_base;
-    PeakDetMode         time_PeakDet;
+    PeakDetMode         time_peakDet;
     TPos                time_TPos;
-    SampleType          time_SampleType;
-    FunctionTime        time_TimeDivXPos;
-    LinkingTShift       time_LinkingTShift;                 ///< Тип привязки смещения по горизонтали
-    SampleType          time_SampleTypeOld;
+    SampleType          time_sampleType;
+    FunctionTime        time_timeDivXPos;
+    LinkingTShift       time_linkingTShift;                 ///< Тип привязки смещения по горизонтали
+    SampleType          time_sampleTypeOld;
 
     // Меню КУРСОРЫ
 
-    bool                curs_ShowCursors;                   ///< Показывать ли курсоры.
-    CursLookMode        curs_LookMode[2];                   ///< Режимы слежения за курсорами для двух пар курсоров.
-    bool                curs_ShowFreq;                      ///< Установленное в true значение, что нужно показывать на экране 1/dT между курсорами.
-    CursActive          curs_Active;                        ///< Какие курсоры сейас активны.
-    Channel             curs_Source;                        ///< Источник - к какому каналу относятся курсоры.
-    CursCntrl           curs_CntrlU[NumChannels];           ///< Активные курсоры напряжения.
-    CursCntrl           curs_CntrlT[NumChannels];           ///< Активные курсоры времени.
-    CursMovement        curs_Movement;                      ///< Как перемещаться курсорам - по точкам или процентам.
-    float               curs_DeltaU100percents[2];          ///< Расстояние между курсорами напряжения для 100%, для обоих каналов.
-    float               curs_DeltaT100percents[2];          ///< Расстояние между курсорами времени для 100%, для обоих каналов.
-    float               curs_PosCurU[NumChannels][2];       ///< Текущие позиции курсоров напряжения обоих каналов.
-    float               curs_PosCurT[NumChannels][2];       ///< Текущие позиции курсоров времени обоих каналов.
+    bool                curs_showCursors;                   ///< Показывать ли курсоры.
+    CursLookMode        curs_lookMode[2];                   ///< Режимы слежения за курсорами для двух пар курсоров.
+    bool                curs_showFreq;                      ///< Установленное в true значение, что нужно показывать на экране 1/dT между курсорами.
+    CursActive          curs_active;                        ///< Какие курсоры сейас активны.
+    Channel             curs_source;                        ///< Источник - к какому каналу относятся курсоры.
+    CursCntrl           curs_cntrlU[NumChannels];           ///< Активные курсоры напряжения.
+    CursCntrl           curs_cntrlT[NumChannels];           ///< Активные курсоры времени.
+    CursMovement        curs_movement;                      ///< Как перемещаться курсорам - по точкам или процентам.
+    float               curs_deltaU100percents[2];          ///< Расстояние между курсорами напряжения для 100%, для обоих каналов.
+    float               curs_deltaT100percents[2];          ///< Расстояние между курсорами времени для 100%, для обоих каналов.
+    float               curs_posCurU[NumChannels][2];       ///< Текущие позиции курсоров напряжения обоих каналов.
+    float               curs_posCurT[NumChannels][2];       ///< Текущие позиции курсоров времени обоих каналов.
 
-    // Меню ИЗМЕРЕНИЯ
+    // Меню ПАМЯТЬ
 
 #define MAX_SYMBOLS_IN_FILE_NAME 35
-    ENumPointsFPGA      mem__enumPoints;                            ///< Число точек
-    ModeBtnMemory       mem__modeBtnMemory;
-    ModeWork            mem__modeWork;                              ///< Режим работы.
-    bool                mem__flashAutoConnect;                      ///< Если true, при подключении флешки автоматически выводится Файл-Менеджер.
-    int8                mem_IndexCurSymbolNameMask;                 ///< Индекс текущего символа в режиме задания маски или выбора имени.
-    ModeSaveSignal      mem_ModeSaveSignal;                         ///< В каком виде сохранять сигнал.
-    char                mem_FileName[MAX_SYMBOLS_IN_FILE_NAME];     ///< Имя файла для режима ручного задания.
-    ModeShowIntMem      mem_ModeShowIntMem;                         ///< Что показывать в режиме ВНУТР ЗУ - считанный или записанный сигнал.
-    FileNamingMode      mem_FileNamingMode;                         ///< Режим именования файлов.
-    char                mem_FileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; ///< \brief Здесь маска для автоматического именования файлов.
+    ENumPointsFPGA      mem_enumPoints;                             ///< Число точек
+    ModeBtnMemory       mem_modeBtnMemory;
+    ModeWork            mem_modeWork;                               ///< Режим работы.
+    bool                mem_flashAutoConnect;                       ///< Если true, при подключении флешки автоматически выводится Файл-Менеджер.
+    int8                mem_indexCurSymbolNameMask;                 ///< Индекс текущего символа в режиме задания маски или выбора имени.
+    ModeSaveSignal      mem_modeSaveSignal;                         ///< В каком виде сохранять сигнал.
+    char                mem_fileName[MAX_SYMBOLS_IN_FILE_NAME];     ///< Имя файла для режима ручного задания.
+    ModeShowIntMem      mem_modeShowIntMem;                         ///< Что показывать в режиме ВНУТР ЗУ - считанный или записанный сигнал.
+    FileNamingMode      mem_fileNamingMode;                         ///< Режим именования файлов.
+    char                mem_fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; ///< \brief Здесь маска для автоматического именования файлов.
                         ///< \details Правила именования.\n
                         /// \code
                         /// %y('\x42') - год, %m('\x43') - месяц, %d('\x44') - день, %H('\x45') - часы, %M('\x46') - минуты, %S('\x47') - секунды
@@ -155,6 +154,8 @@ public:
                         /// При этом обратите внимание, что если спецификатор %4N стоИт после временнЫх параметров, то, скорее всего, этот параметр 
                         /// будет всегда равен 0001, т.к. для определения номера просматриваются.
                         /// \endcode
+
+    // Меню ИЗМЕРЕНИЯ
 
     bool                meas_Show;                      ///< Показывать ли измерения.
     MeasuresNumber      meas_Number;                    ///< Сколько измерений выводить.

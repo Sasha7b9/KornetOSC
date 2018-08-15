@@ -10,7 +10,7 @@
  *  @{
  */
 
-#define SET_INVERSE(ch)         (set.chan_Inverse[ch])
+#define SET_INVERSE(ch)         (set.chan_inverse[ch])
 #define SET_INVERSE_A           (SET_INVERSE(A))
 #define SET_INVERSE_B           (SET_INVERSE(B))
 #define SET_RSHIFT_MATH         (set.math_RShift)
@@ -29,7 +29,7 @@
 #define SET_COUPLE_A            (SET_COUPLE(A))
 #define SET_COUPLE_B            (SET_COUPLE(B))
 
-#define SET_DIVIDER(ch)         (set.chan_Divider[ch])
+#define SET_DIVIDER(ch)         (set.chan_divider[ch])
 #define SET_DIVIDER_A           (SET_DIVIDER(A))
 #define SET_DIVIDER_B           (SET_DIVIDER(B))
 #define SET_DIVIDER_10(ch)      (SET_DIVIDER(ch) == Divider_10)
@@ -44,16 +44,16 @@
 #define SET_BALANCE_ADC_A       (SET_BALANCE_ADC(A))
 #define SET_BALANCE_ADC_B       (SET_BALANCE_ADC(B))
 
-#define SET_BANDWIDTH(ch)       (set.chan_Bandwidth[ch])
+#define SET_BANDWIDTH(ch)       (set.chan_bandwidth[ch])
 #define SET_BANDWIDTH_A         (SET_BANDWIDTH(A))
 #define SET_BANDWIDTH_B         (SET_BANDWIDTH(B))
 #define SET_BANDWIDTH_20MHz(ch) (SET_BANDWIDTH(ch) == Bandwidth_20MHz)
 
-#define SET_RESISTANCE(ch)      (set.chan_Resistance[ch])
+#define SET_RESISTANCE(ch)      (set.chan_resistance[ch])
 #define SET_RESISTANCE_A        (SET_RESISTANCE(A))
 #define SET_RESISTANCE_B        (SET_RESISTANCE(B))
 
-#define SET_CALIBR_MODE(ch)     (set.chan_CalibrationMode[ch])
+#define SET_CALIBR_MODE(ch)     (set.chan_calibrationMode[ch])
 #define SET_CALIBR_MODE_A       (SET_CALIBR_MODE(A))
 #define CALIBR_MODE_B           (SET_CALIBR_MODE(B))
 

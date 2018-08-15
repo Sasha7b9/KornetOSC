@@ -12,37 +12,79 @@ static const Settings defaultSettings =
 /* size                       */   0,
 /* crc32                      */   0,
 
-                                    // Ìåíş ÄÈÑÏËÅÉ
+                                        // Ìåíş ÄÈÑÏËÅÉ
 
-/* disp_modeDrawSignal;       */   ModeDrawSignal_Lines,
-/* disp_thickness;            */   Thickness_1,
-/* disp_background;           */   Background_Black,
-/* disp_showStringNavigation; */   ShowStrNavi_Temp,
-/* disp_ENumMinMax;           */   ENumMinMax_1,
-/* disp_modeAveraging;        */   ModeAveraging_Accurately,
-/* disp_ENumAverage;          */   ENumAverage_1,
-/* disp_ENumAccum;            */   ENumAccum_1,
-/* disp_modeAccumulation;     */   ModeAccumulation_NoReset,
-/* disp_ENumSmoothing;        */   ENumSmooth_Disable,
-/* disp_ENumSignalsInSec;     */   ENumSignalsInSec_25,
-/* disp_typeGrid;             */   TypeGrid_1,
-/* disp_brightnessGrid;       */   50,
-/* disp_linkingRShift;        */   LinkingRShift_Position,
-/* disp_brightness;           */   100,
-/* disp_timeShowLevels;       */   5,
-/* disp_timeMessages;         */   5,
-/* disp_altMarkers;           */   AltMarkers_AutoHide,
-/* disp_menuAutoHide;         */   MenuAutoHide_None,
-/* disp_shiftInMemory;        */   0,
-/* disp_lastAffectedChannel;  */   A
+/* disp_modeDrawSignal;       */    ModeDrawSignal_Lines,
+/* disp_thickness;            */    Thickness_1,
+/* disp_background;           */    Background_Black,
+/* disp_showStringNavigation; */    ShowStrNavi_Temp,
+/* disp_ENumMinMax;           */    ENumMinMax_1,
+/* disp_modeAveraging;        */    ModeAveraging_Accurately,
+/* disp_ENumAverage;          */    ENumAverage_1,
+/* disp_ENumAccum;            */    ENumAccum_1,
+/* disp_modeAccumulation;     */    ModeAccumulation_NoReset,
+/* disp_ENumSmoothing;        */    ENumSmooth_Disable,
+/* disp_ENumSignalsInSec;     */    ENumSignalsInSec_25,
+/* disp_typeGrid;             */    TypeGrid_1,
+/* disp_brightnessGrid;       */    50,
+/* disp_linkingRShift;        */    LinkingRShift_Position,
+/* disp_brightness;           */    100,
+/* disp_timeShowLevels;       */    5,
+/* disp_timeMessages;         */    5,
+/* disp_altMarkers;           */    AltMarkers_AutoHide,
+/* disp_menuAutoHide;         */    MenuAutoHide_None,
+/* disp_shiftInMemory;        */    0,
+/* disp_lastAffectedChannel;  */    A,
 
-    // Ìåíş ÊÀÍÀË 1, ÊÀÍÀË 2
+                                        // Ìåíş ÊÀÍÀË 1, ÊÀÍÀË 2
 
-    // Ìåíş ÑÈÍÕĞÎÍÈÇÀÖÈß
+/* chan_shift[NumChannels];  */     { RShiftZero, RShiftZero },
+/* chan_range[NumChannels];  */     { Range::_500mV, Range::_500mV },
+/* chan_couple[NumChannels]; */     { ModeCouple_DC, ModeCouple_DC },
+/* chan_enable[NumChannels]; */     { true, true },
+/* chan_balanceShiftADC[2];  */     { 0, 0 },
+/* chan_bandwidth[2];        */     { Bandwidth_20MHz, Bandwidth_20MHz },
+/* chan_resistance[2];       */     { Resistance_1Mom, Resistance_1Mom },
+/* chan_inverse[2];          */     { false, false},
+/* chan_divider[2];          */     { Divider_1, Divider_1 },
+/* chan_calibrationMode[2];  */     { CalibrationMode_Disable, CalibrationMode_Disable },
 
-    // Ìåíş ĞÀÇÂ¨ĞÒÊÀ
+                                        // Ìåíş ÑÈÍÕĞÎÍÈÇÀÖÈß
 
-    // Ìåíş ÊÓĞÑÎĞÛ
+/* trig_source;              */     TrigSource::A,
+/* trig_input;               */     TrigInput::Full,
+/* trig_polarity;            */     TrigPolarity::Rising,
+/* trig_lev[NumChannels];    */     { TrigLevZero, TrigLevZero },
+/* trig_startMode;           */     StartMode_Auto,
+/* trig_modeFind;            */     TrigModeFind_Hand,
+
+                                        // Ìåíş ĞÀÇÂ¨ĞÒÊÀ
+
+/* time_shift;               */     0,
+/* time_base;                */     TBase::_500us,
+/* time_peakDet;             */     PeakDet_Disabled,
+/* time_TPos;                */     TPos_Center,
+/* time_sampleType;          */     SampleType_Real,
+/* time_timeDivXPos;         */     FunctionTime_Time,
+/* time_linkingTShift;       */     LinkingTShift_Time,
+/* time_sampleTypeOld;       */     SampleType_Real,
+
+                                        // Ìåíş ÊÓĞÑÎĞÛ
+
+/* curs_showCursors;             */ false,
+/* curs_lookMode[2];             */ { CursLookMode_None, CursLookMode_None },
+/* curs_showFreq;                */ true,
+/* curs_active;                  */ CursActive_None,
+/* curs_source;                  */ A,
+/* curs_cntrlU[NumChannels];     */ { CursCntrl_Disable, CursCntrl_Disable },
+/* curs_cntrlT[NumChannels];     */ { CursCntrl_Disable, CursCntrl_Disable },
+/* curs_movement;                */ CursMovement_Pixels,
+/* curs_deltaU100percents[2];    */ { 100, 100 },
+/* curs_deltaT100percents[2];    */ { 100, 100 },
+/* curs_posCurU[NumChannels][2]; */ { { 100, 100 }, { 100, 100 } },
+/* curs_posCurT[NumChannels][2]; */ { { 100, 100 }, { 100, 100 } },
+
+    // Ìåíş ÏÀÌßÒÜ
 
     // Ìåíş ÈÇÌÅĞÅÍÈß
 
@@ -59,24 +101,13 @@ static const Settings defaultSettings =
     // Íåñáğàñûâàåìûå íàñòğîéêè êàëèáğîâêè
 
     /*
-    {RShiftZero, RShiftZero},       // chan_shift
-    {Range::_500mV, Range::_500mV}, // chan_range
-    {ModeCouple_DC, ModeCouple_DC}, // chan_couple
-    {true, true},                   // chan_enable
-    TrigSource::A,                  // trig_source
-    TrigInput::Full,                // trig_input
-    TrigPolarity::Rising,           // trig_polarity
-    {TrigLevZero, TrigLevZero},     // trig_lev
-    ModeTrig::Auto,                 // trig_mode
     RU,                             // serv_lang
-    0,                              // time_shift
-    TBase::_500us,                  // time_base
     Control_Voltage,                // test_control
     Polarity_Positive,              // test_polarity
     StepU_100mV,                    // test_stepU
     StepI_4mA,                      // test_stepI
     0,                              // test_smooth
-    FNP_512,                        // mem__enumPoints
+    FNP_512,                        // mem_enumPoints
     0,                              // menu_currentPage
     false                           // menu_show
     */

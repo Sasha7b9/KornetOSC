@@ -20,11 +20,11 @@
 #define SET_TRIGLEV_A           (SET_TRIGLEV(A))
 #define SET_TRIGLEV_B           (SET_TRIGLEV(B))
 
-#define TRIG_MODE_FIND          (set.trig_ModeFind)
+#define TRIG_MODE_FIND          (set.trig_modeFind)
 #define TRIG_MODE_FIND_HAND     (TRIG_MODE_FIND == TrigModeFind_Hand)
 #define TRIG_MODE_FIND_AUTO     (TRIG_MODE_FIND == TrigModeFind_Auto)
 
-#define START_MODE              (set.trig_StartMode)
+#define START_MODE              (set.trig_startMode)
 #define START_MODE_IS_AUTO      (START_MODE == StartMode_Auto)
 #define START_MODE_IS_WAIT      (START_MODE == StartMode_Wait)
 #define START_MODE_IS_SINGLE    (START_MODE == StartMode_Single)

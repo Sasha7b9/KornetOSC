@@ -89,12 +89,12 @@ const char *sCursors_GetCursorPercentsT(Channel source, char buffer[20])
 float GetCursPosT(Channel ch, int num)
 {
     float retValue = 0.0f;
-    memcpy(&retValue, &set.curs_PosCurT[ch][num], sizeof(float));
+    memcpy(&retValue, &set.curs_posCurT[ch][num], sizeof(float));
     return retValue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void SetCursPosT_temp(Channel ch, int num, float value)
 {
-    memcpy(&set.curs_PosCurT[ch][num], &value, sizeof(float));
+    memcpy(&set.curs_posCurT[ch][num], &value, sizeof(float));
 }
