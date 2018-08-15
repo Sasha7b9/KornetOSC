@@ -41,9 +41,9 @@ int sChannel_MultiplierRel2Abs(Divider divider)
 {
     switch (divider)
     {
-        case Divider_1:
+        case Divider::_1:
             return 1;
-        case Divider_10:
+        case Divider::_10:
             return 10;
     }
     return 1;

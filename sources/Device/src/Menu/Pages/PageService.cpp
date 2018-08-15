@@ -91,7 +91,7 @@ DEF_CHOICE_3(       cCalibrator_Calibrator,                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Calibrator_Calibrate()
 {
-    return !(SET_CALIBR_MODE_A == CalibrationMode_Disable && CALIBR_MODE_B == CalibrationMode_Disable);
+    return !(SET_CALIBR_MODE_A == CalibrationMode::Disable && CALIBR_MODE_B == CalibrationMode::Disable);
 }
 
 static void OnPress_Calibrator_Calibrate()

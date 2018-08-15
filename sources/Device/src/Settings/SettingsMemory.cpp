@@ -7,7 +7,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int sMemory_NumPointsInChannel_()
 {
-    static const int numPoints[FPGA_ENUM_POINTS_SIZE] =
+    static const int numPoints[ENumPointsFPGA::Size] =
     {
         512,
         1024,
@@ -30,18 +30,18 @@ int sMemory_NumBytesInChannel_()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 ENumPointsFPGA NumPoints_2_ENumPoints(int numPoints)
 {
-    if (numPoints == 8192)  { return FNP_8k; }
-    else if (numPoints == 4096)  { return FNP_4k; }
-    else if (numPoints == 2048)  { return FNP_2k; }
-    else if (numPoints == 1024)  { return FNP_1k; }
-    return FNP_512;
+    if (numPoints == 8192)  { return ENumPointsFPGA::_8k; }
+    else if (numPoints == 4096)  { return ENumPointsFPGA::_4k; }
+    else if (numPoints == 2048)  { return ENumPointsFPGA::_2k; }
+    else if (numPoints == 1024)  { return ENumPointsFPGA::_1k; }
+    return ENumPointsFPGA::_512;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int ENumPoints_2_NumPoints(ENumPointsFPGA numPoints)
 {
-    static const int n[FPGA_ENUM_POINTS_SIZE] =
+    static const int n[ENumPointsFPGA::Size] =
     {
         512,
         1024,
@@ -66,12 +66,12 @@ void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 int RequestBytesForChannel(Channel, DataSettings *ds)
 {
-    volatile ENumPointsFPGA numBytes;
-    volatile PeakDetMode peakDet;
+    ENumPointsFPGA numBytes;
+    PeakDetMode peakDet;
 
     if (ds)
     {
-        numBytes = (ENumPointsFPGA)ENUM_BYTES(ds);
+        numBytes = (ENumPointsFPGA)(ENUM_BYTES(ds));
         peakDet = PEAKDET(ds);
     }
     else

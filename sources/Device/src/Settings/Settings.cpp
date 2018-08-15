@@ -44,10 +44,10 @@ static const Settings defaultSettings =
     { true, true },                                         /* chan_enable[NumChannels]; */
     { 0, 0 },                                               /* chan_balanceShiftADC[2];  */
     { Bandwidth::_20MHz, Bandwidth::_20MHz },               /* chan_bandwidth[2];        */
-    { Resistance_1Mom, Resistance_1Mom },                   /* chan_resistance[2];       */
+    { Resistance::_1Mom, Resistance::_1Mom },               /* chan_resistance[2];       */
     { false, false },                                       /* chan_inverse[2];          */
-    { Divider_1, Divider_1 },                               /* chan_divider[2];          */
-    { CalibrationMode_Disable, CalibrationMode_Disable },   /* chan_calibrationMode[2];  */
+    { Divider::_1, Divider::_1 },                           /* chan_divider[2];          */
+    { CalibrationMode::Disable, CalibrationMode::Disable },   /* chan_calibrationMode[2];  */
 
         // ÃÂÌ˛ —»Õ’–ŒÕ»«¿÷»ﬂ
 
@@ -55,30 +55,30 @@ static const Settings defaultSettings =
     TrigInput::Full,                /* trig_input;               */
     TrigPolarity::Rising,           /* trig_polarity;            */
     { TrigLevZero, TrigLevZero },   /* trig_lev[NumChannels];    */
-    StartMode_Auto,                 /* trig_startMode;           */
-    TrigModeFind_Hand,              /* trig_modeFind;            */
+    StartMode::Auto,                /* trig_startMode;           */
+    TrigModeFind::Hand,             /* trig_modeFind;            */
 
         // ÃÂÌ˛ –¿«¬®–“ ¿
 
      0,                             /* time_shift;               */
      TBase::_500us,                 /* time_base;                */
-     PeakDet_Disabled,              /* time_peakDet;             */
-     TPos_Center,                   /* time_TPos;                */
-     SampleType_Real,               /* time_sampleType;          */
-     FunctionTime_Time,             /* time_timeDivXPos;         */
-     LinkingTShift_Time,            /* time_linkingTShift;       */
-     SampleType_Real,               /* time_sampleTypeOld;       */
+     PeakDetMode::Disabled,         /* time_peakDet;             */
+     TPos::Center,                  /* time_TPos;                */
+     SampleType::Real,              /* time_sampleType;          */
+     FunctionTime::Time,            /* time_timeDivXPos;         */
+     LinkingTShift::Time,           /* time_linkingTShift;       */
+     SampleType::Real,              /* time_sampleTypeOld;       */
 
         // ÃÂÌ˛  ”–—Œ–€
 
     false,                                      /* curs_showCursors;             */
-    { CursLookMode_None, CursLookMode_None },   /* curs_lookMode[2];             */
+    { CursLookMode::None, CursLookMode::None }, /* curs_lookMode[2];             */
     true,                                       /* curs_showFreq;                */
-    CursActive_None,                            /* curs_active;                  */
+    CursActive::None,                           /* curs_active;                  */
     A,                                          /* curs_source;                  */
-    { CursCntrl_Disable, CursCntrl_Disable },   /* curs_cntrlU[NumChannels];     */
-    { CursCntrl_Disable, CursCntrl_Disable },   /* curs_cntrlT[NumChannels];     */
-    CursMovement_Pixels,                        /* curs_movement;                */
+    { CursCntrl::Disable, CursCntrl::Disable }, /* curs_cntrlU[NumChannels];     */
+    { CursCntrl::Disable, CursCntrl::Disable }, /* curs_cntrlT[NumChannels];     */
+    CursMovement::Pixels,                       /* curs_movement;                */
     { 100, 100 },                               /* curs_deltaU100percents[2];    */
     { 100, 100 },                               /* curs_deltaT100percents[2];    */
     { { 100, 100 },{ 100, 100 } },              /* curs_posCurU[NumChannels][2]; */
@@ -86,7 +86,7 @@ static const Settings defaultSettings =
 
         // ÃÂÌ˛ œ¿Ãﬂ“‹
 
-    FNP_512,                /* mem_enumPoints;                             */
+    ENumPointsFPGA::_512,   /* mem_enumPoints;                             */
     ModeBtnMemory_Menu,     /* mem_modeBtnMemory;                          */
     ModeWork_Dir,           /* mem_modeWork;                               */
     false,                  /* mem_flashAutoConnect;                       */

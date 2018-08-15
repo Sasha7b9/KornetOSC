@@ -33,7 +33,7 @@ void PageTrig::OnChanged_TrigMode(bool)
         if (START_MODE_IS_SINGLE)
         {
             SAMPLE_TYPE_OLD = SAMPLE_TYPE;
-            SAMPLE_TYPE = SampleType_Real;
+            SAMPLE_TYPE = SampleType::Real;
         }
         else if(START_MODE_IS_AUTO)    // Иначе восстановим ранее сохранённый
         {

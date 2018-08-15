@@ -32,8 +32,8 @@
 #define SET_DIVIDER(ch)         (set.chan_divider[ch])
 #define SET_DIVIDER_A           (SET_DIVIDER(A))
 #define SET_DIVIDER_B           (SET_DIVIDER(B))
-#define SET_DIVIDER_10(ch)      (SET_DIVIDER(ch) == Divider_10)
-#define SET_DIVIDER_1(ch)       (SET_DIVIDER(ch) == Divider_1)
+#define SET_DIVIDER_10(ch)      (SET_DIVIDER(ch) == Divider::_10)
+#define SET_DIVIDER_1(ch)       (SET_DIVIDER(ch) == Divider::_1)
 
 #define SET_ENABLED(ch)         (set.chan_enable[ch])
 #define SET_ENABLED_A           (SET_ENABLED(A))

@@ -201,12 +201,16 @@ enum TesterStepI
 };
 
 /// Каким курсором управлять
-enum CursCntrl
+struct CursCntrl
 {
-    CursCntrl_1,        ///< первым
-    CursCntrl_2,        ///< вторым
-    CursCntrl_1_2,      ///< обоими
-    CursCntrl_Disable   ///< никаким
+    enum
+    {
+        _1,        ///< первым
+        _2,        ///< вторым
+        _1_2,      ///< обоими
+        Disable    ///< никаким
+    };
+    COMMON_ENUM;
 };
 
 /// Тип усреднений по измерениям
@@ -237,22 +241,31 @@ struct Background
 };
 
 /// Положение точки синхронизация на сигнале.
-enum TPos
+struct TPos
 {
-    TPos_Left,          ///< Привязка к левому краю.
-    TPos_Center,        ///< Привязка к центру.
-    TPos_Right          ///< Привязка к правому краю.
+    enum
+    {
+        Left,          ///< Привязка к левому краю.
+        Center,        ///< Привязка к центру.
+        Right          ///< Привязка к правому краю.
+    };
+    COMMON_ENUM;
 };
 
 /// Число точек сигнала, с которым идёт работа.
-enum ENumPointsFPGA
+struct ENumPointsFPGA
 {
-    FNP_512,
-    FNP_1k,
-    FNP_2k,
-    FNP_4k,
-    FNP_8k,
-    FPGA_ENUM_POINTS_SIZE
+    enum
+    {
+        _512,
+        _1k,
+        _2k,
+        _4k,
+        _8k,
+        Size
+    };
+    COMMON_ENUM;
+    ENumPointsFPGA(uint v = _512) : value((uint8)v) {};
 };
 
 /// Что делать при нажатии кнопки ПАМЯТЬ.
@@ -263,10 +276,15 @@ enum ModeBtnMemory
 };
 
 /// Делитель.
-enum Divider
+struct Divider
 {
-    Divider_1,
-    Divider_10
+    enum
+    {
+        _1,
+        _10
+    };
+    COMMON_ENUM;
+    Divider(uint v = _1) : value((uint8)v) {};
 };
 
 /// Источник синхронизации
@@ -362,10 +380,14 @@ struct ModeCouple
     ModeCouple(uint v = 0) : value((uint8)v) {};
 };
 
-enum Resistance
+struct Resistance
 {
-    Resistance_1Mom,
-    Resistance_50Om
+    enum
+    {
+        _1Mom,
+        _50Om
+    };
+    COMMON_ENUM;
 };
 
 /// Время счёта периода.
@@ -393,11 +415,16 @@ enum NumberPeriods
     NumberPeriods_100
 };
 
-enum PeakDetMode
+struct PeakDetMode
 {
-    PeakDet_Disabled,
-    PeakDet_Enabled,
-    PeakDet_Average
+    enum
+    {
+        Disabled,
+        Enabled,
+        Average
+    };
+    COMMON_ENUM;
+    PeakDetMode(uint v = 0) : value((uint8)v) {};
 };
 
 /// Количество измерений для расчёта минимального и максимального значений.
@@ -443,35 +470,52 @@ struct ENumAverage
 };
 
 /// Режим запуска.
-enum StartMode
+struct StartMode
 {
-    StartMode_Auto,     ///< Автоматический.
-    StartMode_Wait,     ///< Ждущий.
-    StartMode_Single    ///< Однократный.
+    enum
+    {
+        Auto,     ///< Автоматический.
+        Wait,     ///< Ждущий.
+        Single    ///< Однократный.
+    };
+    COMMON_ENUM;
 };
 
 /// Режим слежения курсоров.
-enum CursLookMode
+struct CursLookMode
 {
-    CursLookMode_None,      ///< Курсоры не следят.
-    CursLookMode_Voltage,   ///< Курсоры следят за напряжением автоматически.
-    CursLookMode_Time,      ///< Курсоры следят за временем автоматически.
-    CursLookMode_Both       ///< Курсоры следят за временем и напряжением, в зависимости от того, какой курсоры вращали последним.
+    enum
+    {
+        None,      ///< Курсоры не следят.
+        Voltage,   ///< Курсоры следят за напряжением автоматически.
+        Time,      ///< Курсоры следят за временем автоматически.
+        Both       ///< Курсоры следят за временем и напряжением, в зависимости от того, какой курсоры вращали последним.
+    };
+    COMMON_ENUM;
 };
 
 /// Какие курсоры сейчас активны. Какие активны, те и будут перемещаться по вращению ручки УСТАНОВКА.
-enum CursActive
+struct CursActive
 {
-    CursActive_U,
-    CursActive_T,
-    CursActive_None
+    enum
+    {
+        U,
+        T,
+        None
+    };
+    COMMON_ENUM;
+    CursActive(uint8 v = None) : value(v) {};
 };
 
 /// Дискретность перемещения курсоров.
-enum CursMovement
+struct CursMovement
 {
-    CursMovement_Pixels,    ///< По пикселям экрана
-    CursMovement_Percents   ///< По процентам
+    enum
+    {
+        Pixels,    ///< По пикселям экрана
+        Percents   ///< По процентам
+    };
+    COMMON_ENUM;
 };
 
 /// Количество накоплений.
@@ -615,30 +659,47 @@ enum ModeViewSignals
 };
 
 /// Тип выборки для режима рандомизатора.
-enum SampleType
+struct SampleType
 {
-    SampleType_Real,    ///< реальное время - в построении участвуют только реально считанные точки, ничего не рассчитывается.
-    SampleType_Equal    ///< эквивалентная - сигнал строится по последним точкам, полученным от рандомизатора.
+    enum
+    {
+        Real,    ///< реальное время - в построении участвуют только реально считанные точки, ничего не рассчитывается.
+        Equal    ///< эквивалентная - сигнал строится по последним точкам, полученным от рандомизатора.
+    };
+    COMMON_ENUM;
+    SampleType(uint8 v = Real) : value(v) {};
 };
 
 /// Функция ВР/ДЕЛ.
-enum FunctionTime
+struct FunctionTime
 {
-    FunctionTime_Time,
-    FunctionTime_ShiftInMemory
+    enum
+    {
+        Time,
+        ShiftInMemory
+    };
+    COMMON_ENUM;
 };
 
 /// Тип привязки к смещению по горизонтали
-enum LinkingTShift
+struct LinkingTShift
 {
-    LinkingTShift_Time,     ///< Смещение привязано к времени
-    LinkingTShift_Position  ///< Смещение привязано к позиции
+    enum
+    {
+        Time,     ///< Смещение привязано к времени
+        Position  ///< Смещение привязано к позиции
+    };
+    COMMON_ENUM;
 };
 
-enum TrigModeFind
+struct TrigModeFind
 {
-    TrigModeFind_Hand,      ///< Уровень синхронизации устанавливается вручную или автоматически - однократным нажажтием кнопки.
-    TrigModeFind_Auto       ///< Подстройки уровня синхронизации производится автоматически после каждого нового считанного сигнала.
+    enum
+    {
+        Hand,      ///< Уровень синхронизации устанавливается вручную или автоматически - однократным нажажтием кнопки.
+        Auto       ///< Подстройки уровня синхронизации производится автоматически после каждого нового считанного сигнала.
+    };
+    COMMON_ENUM;
 };
 
 enum CalibratorMode
@@ -649,11 +710,15 @@ enum CalibratorMode
 };
 
 /// Режим калибровки.
-enum CalibrationMode
+struct CalibrationMode
 {
-    CalibrationMode_x1,
-    CalibrationMode_x10,
-    CalibrationMode_Disable
+    enum
+    {
+        x1,
+        x10,
+        Disable
+    };
+    COMMON_ENUM;
 };
 
 enum ScaleFFT
