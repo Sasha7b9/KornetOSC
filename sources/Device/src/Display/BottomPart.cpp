@@ -22,11 +22,11 @@ void BottomPart::Draw()
     int y1 = Display::HEIGHT - 10;
     int x = -1;
 
-    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2, Color::GRAY_50);
+    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2, Color::SEPARATOR);
     Painter::DrawHLine(Grid::FullBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2);
     WriteTextVoltage(A, x + 2, y0);
     WriteTextVoltage(B, x + 2, y1);
-    Painter::DrawVLine(x + 95, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::GRAY_50);
+    Painter::DrawVLine(x + 95, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::SEPARATOR);
 
     x += 98;
     const int SIZE = 100;
@@ -36,7 +36,7 @@ void BottomPart::Draw()
     int16 tShift = (int16)SET_TSHIFT;
 
     snprintf(buffer, SIZE, "ð\xa5%s", Tables_GetTBaseString(tBase));
-    Painter::DrawText(x, y0, buffer);
+    Painter::DrawText(x, y0, buffer, Color::FILL);
 
     buffer[0] = 0;
     char bufForVal[20];
@@ -93,9 +93,9 @@ void BottomPart::Draw()
         Painter::DrawText(x + 63, y1, buffer);
     }
 
-    Painter::DrawVLine(x + 79, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::FILL);
+    Painter::DrawVLine(x + 79, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::SEPARATOR);
 
-    Painter::DrawHLine(Grid::Bottom(), Grid::Right() + 2, Display::WIDTH - 2);
+    Painter::DrawHLine(Grid::Bottom(), Grid::Right() + 2, Display::WIDTH - 2, Color::FILL);
     Painter::DrawHLine(Grid::ChannelBottom(), Grid::Right() + 2, Display::WIDTH - 2);
 
     x += 82;
@@ -112,7 +112,7 @@ void BottomPart::Draw()
     }
 
     x += 42;
-    Painter::DrawVLine(x, Grid::Bottom() + 2, Display::HEIGHT - 2);
+    Painter::DrawVLine(x, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::SEPARATOR);
 
     Painter::SetFont(TypeFont_8);
 
@@ -128,12 +128,12 @@ void BottomPart::Draw()
         {
             strcat(mesFreq, Freq2String(freq, false, buffer));
         }
-        Painter::DrawText(x + 3, Grid::Bottom() + 2, mesFreq);
+        Painter::DrawText(x + 3, Grid::Bottom() + 2, mesFreq, Color::FILL);
     }
 
     DrawTime(x + 3, Grid::Bottom() + 11);
 
-    Painter::DrawVLine(x + 55, Grid::Bottom() + 2, Display::HEIGHT - 2);
+    Painter::DrawVLine(x + 55, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::GRAY_50);
 
     Painter::SetFont(TypeFont_UGO2);
 

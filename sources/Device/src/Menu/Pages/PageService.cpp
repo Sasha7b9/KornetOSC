@@ -21,7 +21,6 @@ extern const PageBase ppCalibrator;
 extern const PageBase ppFFT;
 extern const PageBase pppFFT_Cursors;
 extern const PageBase ppFunction;
-extern const PageBase ppEthernet;
 extern const PageBase ppSound;
 extern const PageBase ppRTC;
 extern const PageBase ppInformation;
@@ -667,73 +666,6 @@ DEF_PAGE_SB(        ppFunction,                                                 
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Ethernet_Settings(bool)
-{
-    Display::ShowWarning(NeedRebootDevice);
-}
-
-DEF_CHOICE_2(       cEthernet_Ethernet,                                                                         //--- СЕРВИС - ETHERNET - Ethernet ---
-    "Ethernet", "Ethernet",
-    "Чтобы задействовать ethernet, выберите \"Включено\" и выключите прибор.\n"
-    "Чтобы отключить ethernet, выберите \"Отключено\" и выключите прибор.",
-    "To involve ethernet, choose \"Included\" and switch off the device.\n"
-    "To disconnect ethernet, choose \"Disconnected\" and switch off the device.",
-    "Включено",  "Included",
-    "Отключено", "Disconnected",
-    ETH_ENABLED, ppEthernet, FuncActive, OnChanged_Ethernet_Settings, FuncDraw
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_IP_ADDRESS(     ipEthernet_IP,                                                                              //--- СЕРВИС - ETHERNET - IP адрес ---
-    "IP адрес", "IP-address",
-    "Установка IP адреса",
-    "Set of IP-address",
-    IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3, &ETH_PORT,
-    ppEthernet, FuncActive, OnChanged_Ethernet_Settings
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_IP_ADDRESS(     ipEthernet_NetMask,                                                                    //--- СЕРВИС - ETHERNET - Маска подсети ---
-    "Маска подсети", "Network mask",
-    "Установка маски подсети",
-    "Set of network mask",
-    NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3, 0,
-    ppEthernet, FuncActive, OnChanged_Ethernet_Settings
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_IP_ADDRESS(     ipEthernet_Gateway,                                                                             //--- СЕРВИС - ETHERNET - Шлюз ---
-    "Шлюз", "Gateway",
-    "Установка адреса основного шлюза",
-    "Set of gateway address",
-    GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3, 0,
-    ppEthernet, FuncActive, OnChanged_Ethernet_Settings
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_MAC_ADDRESS(    ipEthernet_MAC,                                                                            //--- СЕРВИС - ETHERNET - MAC адрес ---
-    "MAC адрес", "MAC-address",
-    "Установка физического адреса",
-    "Set of MAC-address",
-    set.eth_mac0, set.eth_mac1, set.eth_mac2, set.eth_mac3, set.eth_mac4, set.eth_mac5,
-    ppEthernet, FuncActive, OnChanged_Ethernet_Settings
-)
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_5(         ppEthernet,                                                                                               // СЕРВИС - ETHERNET ///
-    "ETHERNET", "ETHERNET",
-    "Настройки ethernet",
-    "Settings of ethernet",
-    cEthernet_Ethernet,     // СЕРВИС - ETHERNET - Ethernet
-    ipEthernet_IP,          // СЕРВИС - ETHERNET - IP адрес
-    ipEthernet_NetMask,     // СЕРВИС - ETHERNET - Маска подсети
-    ipEthernet_Gateway,     // СЕРВИС - ETHERNET - Шлюз
-    ipEthernet_MAC,         // СЕРВИС - ETHERNET - MAC адрес
-    Page_Service_Ethernet, &pService, FuncActive, EmptyPressPage
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cSound_Enable,                                                                                      //--- СЕРВИС - ЗВУК - Звук ---
     "Звук", "Sound",
     "Включение/выключение звука",
@@ -884,8 +816,7 @@ DEF_PAGE_SB(ppInformation,                                                      
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageService::pointer = &pService;
 
-#ifdef OLD_RECORDER
-DEF_PAGE_11_GLOBAL(pService,                                                                                                            // СЕРВИС ///
+DEF_PAGE_10_GLOBAL(pService,                                                                                                            // СЕРВИС ///
     "СЕРВИС", "SERVICE",
     "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
     "Additional settings, calibration, signal search, mathematical functions",
@@ -895,40 +826,12 @@ DEF_PAGE_11_GLOBAL(pService,                                                    
     cRecorder,         // СЕРВИС - Регистратор
     ppFFT,             // СЕРВИС - СПЕКТР
     ppFunction,        // СЕРВИС - ФУНКЦИЯ
-    ppEthernet,        // СЕРВИС - ETHERNET
     ppSound,           // СЕРВИС - ЗВУК
     ppRTC,             // СЕРВИС - ВРЕМЯ
     cLanguage,         // СЕРВИС - Язык
     ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
     Page_Service, &mainPage, FuncActive, FuncPress
 )
-#else
-DEF_PAGE_11_GLOBAL(pService,                                                                                                            // СЕРВИС ///
-    "СЕРВИС", "SERVICE",
-    "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
-    "Additional settings, calibration, signal search, mathematical functions",
-    bResetSettings,    // СЕРВИС - Сброс настроек
-    bAutoSearch,       // СЕРВИС - Поиск сигнала
-    ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
-    ppRecorder,        // СЕРВИС - РЕГИСТРАТОР
-    ppFFT,             // СЕРВИС - СПЕКТР
-    ppFunction,        // СЕРВИС - ФУНКЦИЯ
-    ppEthernet,        // СЕРВИС - ETHERNET
-    ppSound,           // СЕРВИС - ЗВУК
-    ppRTC,             // СЕРВИС - ВРЕМЯ
-    cLanguage,         // СЕРВИС - Язык
-    ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
-    Page_Service, &mainPage, FuncActive, FuncPress
-);
-#endif
-
-
-
-
-
-
-
-
 
 
 

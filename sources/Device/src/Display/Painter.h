@@ -81,6 +81,8 @@ public:
     static int DrawBigChar(int eX, int eY, int size, char symbol);
     /// Возвращает текущий цвет рисования
     static Color GetColor();
+    /// Нарисовать массив вертикальных линий. Линии рисуются одна за другой. y0y1 - массив вертикальных координат.
+    static void DrawVLineArray(int x, int numLines, uint8 *y0y1, Color color);
 
 private:
 

@@ -32,6 +32,7 @@
 #define SYMBOL_GOVERNOR_SHIFT_0 '\xaa'  ///< Символ регулятора
 #define SYMBOL_GOVERNOR_SHIFT_1 '\xac'  ///< Символ регулятора
 #define SYMBOL_PLAY             '\xae'  ///< Символ работы справа вверху экрана
+#define SYMBOL_TPOS_1           '\x8a'  ///< 2-я часть символа TPos
 
 
 // TypeFont_UGO2

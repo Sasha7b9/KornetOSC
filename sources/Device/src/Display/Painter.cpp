@@ -846,3 +846,17 @@ void Painter::SetBrightnessDisplay(int16 brightness)
     SendToDisplay(command, 4);
     */
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::DrawVLineArray(int x, int numLines, uint8 *y0y1, Color color)
+{
+    SetColor(color);
+
+    for(int i = 0; i < numLines; i++)
+    {
+        uint8 y0 = *y0y1++;
+        uint8 y1 = *y0y1++;
+
+        DrawVLine(x, y0, y1);
+    }
+}

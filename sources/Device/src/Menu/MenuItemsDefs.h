@@ -113,6 +113,14 @@ static const Control * const  items##name[] = {                                 
 const PageBase name = {Item_Page, 10, false, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                  \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
+#define DEF_PAGE_10_GLOBAL(name, titleRU, titleEN, hintRU, hintEN,                                                                              \
+    item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, namePage, keeper, funcActive, funcPress)                             \
+static const Control * const  items##name[] = {(Control *)&item1, (Control *)&item2, (Control *)&item3, (Control *)&item4, (Control *)&item5,   \
+    (Control *)&item6, (Control *)&item7, (Control *)&item8, (Control *)&item9, (Control *)&item10};                                            \
+const PageBase name = {Item_Page, 11, false, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                  \
+    items##name, funcPress, FuncDrawPage, FuncRegSetPage};
+
+
 #define DEF_PAGE_11_GLOBAL(name, titleRU, titleEN, hintRU, hintEN,                                                                              \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, namePage, keeper, funcActive, funcPress)                     \
 static const Control * const  items##name[] = {(Control *)&item1, (Control *)&item2, (Control *)&item3, (Control *)&item4, (Control *)&item5,   \
