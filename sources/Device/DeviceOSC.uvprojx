@@ -1875,6 +1875,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\DisplayOsci.h</FilePath>
             </File>
+            <File>
+              <FileName>HiPart.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\HiPart.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HiPart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\HiPart.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
