@@ -64,26 +64,26 @@ ENumSignalsInSec Tables_ENumSignalsInSecToENUM(int numSignalsInSec)
 {
     if(numSignalsInSec == 1)
     {
-        return ENumSignalsInSec_1;
+        return ENumSignalsInSec::_1;
     }
     else if(numSignalsInSec == 2)
     {
-        return ENumSignalsInSec_2;
+        return ENumSignalsInSec::_2;
     }
     else if(numSignalsInSec == 5)
     {
-        return ENumSignalsInSec_5;
+        return ENumSignalsInSec::_5;
     }
     else if(numSignalsInSec == 10)
     {
-        return ENumSignalsInSec_10;
+        return ENumSignalsInSec::_10;
     }
     else if(numSignalsInSec == 25)
     {
-        return ENumSignalsInSec_25;
+        return ENumSignalsInSec::_25;
     }
 //    LOG_ERROR_TRACE("Число сигналов в секунду равно %d", numSignalsInSec);
-    return ENumSignalsInSec_1;
+    return ENumSignalsInSec::_1;
 }
 
 
@@ -91,7 +91,7 @@ ENumSignalsInSec Tables_ENumSignalsInSecToENUM(int numSignalsInSec)
 int Tables_ENUMtoENumSignalsInSec(ENumSignalsInSec numSignalsInSec)
 {
     static const int fps[] = {25, 10, 5, 2, 1};
-    if(numSignalsInSec <= ENumSignalsInSec_1)
+    if(numSignalsInSec <= ENumSignalsInSec::_1)
     {
         return fps[numSignalsInSec];
     }

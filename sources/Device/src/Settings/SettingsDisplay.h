@@ -34,10 +34,10 @@
 #define MODE_DRAW_SIGNAL_IS_POINTS  (MODE_DRAW_SIGNAL == ModeDrawSignal::Points)
 
 #define TYPE_GRID                   (set.disp_typeGrid)
-#define TYPE_GRID_1                 (TYPE_GRID == TypeGrid_1)
-#define TYPE_GRID_2                 (TYPE_GRID == TypeGrid_2)
-#define TYPE_GRID_3                 (TYPE_GRID == TypeGrid_3)
-#define TYPE_GRID_4                 (TYPE_GRID == TypeGrid_4)
+#define TYPE_GRID_1                 (TYPE_GRID == TypeGrid::_1)
+#define TYPE_GRID_2                 (TYPE_GRID == TypeGrid::_2)
+#define TYPE_GRID_3                 (TYPE_GRID == TypeGrid::_3)
+#define TYPE_GRID_4                 (TYPE_GRID == TypeGrid::_4)
 
 #define ENUM_ACCUM                  (set.disp_ENumAccum)
 #define ENUM_ACCUM_INF              (ENUM_ACCUM == ENumAccum_Infinity)
@@ -45,8 +45,8 @@
 #define IN_ACCUM_MODE               (ENUM_ACCUM > ENumAccum_1)
 
 #define MODE_ACCUM                  (set.disp_modeAccumulation)
-#define MODE_ACCUM_RESET            (MODE_ACCUM == ModeAccumulation_Reset)
-#define MODE_ACCUM_NO_RESET         (MODE_ACCUM == ModeAccumulation_NoReset)
+#define MODE_ACCUM_RESET            (MODE_ACCUM == ModeAccumulation::Reset)
+#define MODE_ACCUM_NO_RESET         (MODE_ACCUM == ModeAccumulation::NoReset)
 
 #define ENUM_MIN_MAX                (set.disp_ENumMinMax)
 #define MIN_MAX_ENABLED             (ENUM_MIN_MAX != ENumMinMax::_1)
@@ -55,16 +55,16 @@
 #define MODE_AVE                    (set.disp_modeAveraging)
 #define ENUM_AVE                    (set.disp_ENumAverage)
 #define NUM_AVE                     (1 << (int)ENUM_AVE)
-#define IN_AVERAGING_MODE           (ENUM_AVE > ENumAverage_1 && (!IN_P2P_MODE))
+#define IN_AVERAGING_MODE           (ENUM_AVE > ENumAverage::_1 && (!IN_P2P_MODE))
 
 #define ENUM_SMOOTHING              (set.disp_ENumSmoothing)
 #define NUM_SMOOTHING               (sDisplay_NumPointSmoothing())
-#define SMOOTHING_ENABLED           (ENUM_SMOOTHING != ENumSmooth_Disable)
+#define SMOOTHING_ENABLED           (ENUM_SMOOTHING != ENumSmoothing::Disable)
 
 #define ALT_MARKERS                 (set.disp_altMarkers)
-#define ALT_MARKERS_SHOW            (ALT_MARKERS == AltMarkers_Show)
-#define ALT_MARKERS_HIDE            (ALT_MARKERS == AltMarkers_Hide)
-#define ALT_MARKERS_AUTO            (ALT_MARKERS == AltMarkers_AutoHide)
+#define ALT_MARKERS_SHOW            (ALT_MARKERS == AltMarkers::Show)
+#define ALT_MARKERS_HIDE            (ALT_MARKERS == AltMarkers::Hide)
+#define ALT_MARKERS_AUTO            (ALT_MARKERS == AltMarkers::AutoHide)
 
 #define LINKING_RSHIFT              (set.disp_linkingRShift)
 

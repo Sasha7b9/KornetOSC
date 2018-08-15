@@ -443,18 +443,22 @@ enum ColorScheme
 };
 
 /// Количество усреднений по измерениям.
-enum ENumAverage
+struct ENumAverage
 {
-    ENumAverage_1,
-    ENumAverage_2,
-    ENumAverage_4,
-    ENumAverage_8,
-    ENumAverage_16,
-    ENumAverage_32,
-    ENumAverage_64,
-    ENumAverage_128,
-    ENumAverage_256,
-    ENumAverage_512
+    enum
+    {
+        _1,
+        _2,
+        _4,
+        _8,
+        _16,
+        _32,
+        _64,
+        _128,
+        _256,
+        _512
+    };
+    COMMON_ENUM;
 };
 
 /// Режим запуска.
@@ -490,84 +494,117 @@ enum CursMovement
 };
 
 /// Количество накоплений.
-enum ENumAccum
+struct ENumAccum
 {
-    ENumAccum_1,
-    ENumAccum_2,
-    ENumAccum_4,
-    ENumAccum_8,
-    ENumAccum_16,
-    ENumAccum_32,
-    ENumAccum_64,
-    ENumAccum_128,
-    ENumAccum_Infinity
+    enum
+    {
+        _1,
+        _2,
+        _4,
+        _8,
+        _16,
+        _32,
+        _64,
+        _128,
+        _Infinity
+    };
+    COMMON_ENUM;
 };
 
-enum ModeAccumulation
+struct ModeAccumulation
 {
-    ModeAccumulation_NoReset,   /// В этом режиме показываются строго N последних.
-    ModeAccumulation_Reset      /// В этом режиме набираются N последних и потом сбрасываются.
+    enum
+    {
+        NoReset,   /// В этом режиме показываются строго N последних.
+        Reset      /// В этом режиме набираются N последних и потом сбрасываются.
+    };
+    COMMON_ENUM;
 };
 
 /// Количество точек для расчёта сглаживания.
-enum ENumSmoothing
+struct ENumSmoothing
 {
-    ENumSmooth_Disable,
-    ENumSmooth_2points,
-    ENumSmooth_3points,
-    ENumSmooth_4points,
-    ENumSmooth_5points,
-    ENumSmooth_6points,
-    ENumSmooth_7points,
-    ENumSmooth_8points,
-    ENumSmooth_9points,
-    ENumSmooth_10points
+    enum
+    {
+        Disable,
+        _2points,
+        _3points,
+        _4points,
+        _5points,
+        _6points,
+        _7points,
+        _8points,
+        _9points,
+        _10points
+    };
+    COMMON_ENUM;
 };
 
 /// Ограничение FPS.
-enum ENumSignalsInSec
+struct ENumSignalsInSec
 {
-    ENumSignalsInSec_25,
-    ENumSignalsInSec_10,
-    ENumSignalsInSec_5,
-    ENumSignalsInSec_2,
-    ENumSignalsInSec_1
+    enum
+    {
+        _25,
+        _10,
+        _5,
+        _2,
+        _1
+    };
+    ENumSignalsInSec(uint8 v = _25) : value(v) {};
+    COMMON_ENUM;
 };
 
 /// Тип сетки на экране.
-enum TypeGrid
+struct TypeGrid
 {
-    TypeGrid_1,
-    TypeGrid_2,
-    TypeGrid_3,
-    TypeGrid_4,
-    TG_Size
+    enum
+    {
+        _1,
+        _2,
+        _3,
+        _4,
+        Size
+    };
+    COMMON_ENUM;
 };
 
 /// Тип привязки к смещению по вертикали
-enum LinkingRShift
+struct LinkingRShift
 {
-    LinkingRShift_Voltage,      ///< Смещение привязано к напряжению
-    LinkingRShift_Position      ///< Смещение привязано к позиции
+    enum
+    {
+        Voltage,      ///< Смещение привязано к напряжению
+        Position      ///< Смещение привязано к позиции
+    };
+    COMMON_ENUM;
 };
 
 /// Режим отображения дополнительных боковых маркеров смещения по напряжению.
-enum AltMarkers
+struct AltMarkers
 {
-    AltMarkers_Hide,        /// Никода не выводить.
-    AltMarkers_Show,        /// Всегда выводить.
-    AltMarkers_AutoHide     /// Выводить и прятать через timeShowLevels.
+    enum
+    {
+        Hide,        /// Никода не выводить.
+        Show,        /// Всегда выводить.
+        AutoHide     /// Выводить и прятать через timeShowLevels.
+    };
+    COMMON_ENUM;
 };
 
 /// Через какое время после последнего нажатия кнопки скрывать меню.
-enum MenuAutoHide
+struct MenuAutoHide
 {
-    MenuAutoHide_None = 0,   ///< Никогда.
-    MenuAutoHide_5 = 5,   ///< Через 5 секунд.
-    MenuAutoHide_10 = 10,  ///< Через 10 секунд.
-    MenuAutoHide_15 = 15,  ///< Через 15 секунд.
-    MenuAutoHide_30 = 30,  ///< Через 30 секунд.
-    MenuAutoHide_60 = 60   ///< Через 60 секунд.
+    enum
+    {
+        None = 0,   ///< Никогда.
+        _5 = 5,   ///< Через 5 секунд.
+        _10 = 10,  ///< Через 10 секунд.
+        _15 = 15,  ///< Через 15 секунд.
+        _30 = 30,  ///< Через 30 секунд.
+        _60 = 60   ///< Через 60 секунд.
+    };
+    COMMON_ENUM;
 };
 
 struct MeasuresNumber

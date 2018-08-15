@@ -20,19 +20,19 @@ static const Settings defaultSettings =
     ShowStrNavi::Temp,          /* disp_showStringNavigation; */
     ENumMinMax::_1,             /* disp_ENumMinMax;           */
     ModeAveraging::Accurately,  /* disp_modeAveraging;        */
-    ENumAverage_1,              /* disp_ENumAverage;          */
-    ENumAccum_1,                /* disp_ENumAccum;            */
-    ModeAccumulation_NoReset,   /* disp_modeAccumulation;     */
-    ENumSmooth_Disable,         /* disp_ENumSmoothing;        */
-    ENumSignalsInSec_25,        /* disp_ENumSignalsInSec;     */
-    TypeGrid_1,                 /* disp_typeGrid;             */
+    ENumAverage::_1,            /* disp_ENumAverage;          */
+    ENumAccum::_1,              /* disp_ENumAccum;            */
+    ModeAccumulation::NoReset,  /* disp_modeAccumulation;     */
+    ENumSmoothing::Disable,     /* disp_ENumSmoothing;        */
+    ENumSignalsInSec::_25,      /* disp_ENumSignalsInSec;     */
+    TypeGrid::_1,               /* disp_typeGrid;             */
     50,                         /* disp_brightnessGrid;       */
-    LinkingRShift_Position,     /* disp_linkingRShift;        */
+    LinkingRShift::Position,    /* disp_linkingRShift;        */
     100,                        /* disp_brightness;           */
     5,                          /* disp_timeShowLevels;       */
     5,                          /* disp_timeMessages;         */
-    AltMarkers_AutoHide,        /* disp_altMarkers;           */
-    MenuAutoHide_None,          /* disp_menuAutoHide;         */
+    AltMarkers::AutoHide,       /* disp_altMarkers;           */
+    MenuAutoHide::None,         /* disp_menuAutoHide;         */
     0,                          /* disp_shiftInMemory;        */
     A,                          /* disp_lastAffectedChannel;  */
 
