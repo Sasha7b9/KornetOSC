@@ -199,8 +199,8 @@ DEF_CHOICE_3(       cChanB_Couple,                                              
     "Связь", "Couple",
     chanCoupleRu,
     chanCoupleEn,
-    "Пост",  "AC",
-    "Перем", "DC",
+    "Пост",  "DC",
+    "Перем", "AC",
     "Земля", "Ground",
     SET_COUPLE_B, pChanB, FuncActive, PageChannelB::OnChanged_Couple, FuncDraw
 )

@@ -589,8 +589,8 @@ static uint8 ValueForRange(Channel ch)
 {
     static const uint8 datas[CoupleSize] =
     {
-        BIN_U8(10000001),    // AC
         BIN_U8(01000001),    // DC
+        BIN_U8(10000001),    // AC
         BIN_U8(00000010)     // GND
     };
 

@@ -337,8 +337,8 @@ enum DisplayOrientation
 /// Режим канала по входу.
 enum ModeCouple
 {
-    ModeCouple_DC,      ///< Открытый вход.
-    ModeCouple_AC,      ///< Закрытый вход.
+    ModeCouple_DC,      ///< Закрытый вход
+    ModeCouple_AC,      ///< Открытый вход
     ModeCouple_GND,     ///< Вход заземлён.
     CoupleSize
 };
