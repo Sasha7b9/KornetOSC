@@ -269,10 +269,14 @@ struct ENumPointsFPGA
 };
 
 /// Что делать при нажатии кнопки ПАМЯТЬ.
-enum ModeBtnMemory
+struct ModeBtnMemory
 {
-    ModeBtnMemory_Menu,     ///< Будет открывааться соответствующая страница меню.
-    ModeBtnMemory_Save      ///< Сохранение содержимого экрана на флешку.
+    enum
+    {
+        Menu,     ///< Будет открывааться соответствующая страница меню.
+        Save      ///< Сохранение содержимого экрана на флешку.
+    };
+    COMMON_ENUM;
 };
 
 /// Делитель.
@@ -297,24 +301,25 @@ struct TrigSource
         Ext   /// Внешняя
     };
     TrigSource(uint8 v = A) : value(v) {};
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
     operator Channel() const
     {
         return (Channel)value;
     }
+    COMMON_ENUM;
 };
 
 /// Режим работы.
-enum ModeWork
+struct ModeWork
 {
-    ModeWork_Dir,           ///< Основной режим.
-    ModeWork_RAM,           ///< В этом режиме можно просмотреть последние сохранённые измерения.
-    ModeWork_ROM,           ///< В этом режиме можно сохранять во flash-памяти измерения просматривать ранее сохранённые.
-    ModeWork_None           ///< Используется в модуле Data.c. Нужен, чтобы указать, что мудуль не настроен ни на какой режим.
+    enum
+    {
+        Dir,           ///< Основной режим.
+        RAM,           ///< В этом режиме можно просмотреть последние сохранённые измерения.
+        ROM,           ///< В этом режиме можно сохранять во flash-памяти измерения просматривать ранее сохранённые.
+        None           ///< Используется в модуле Data.c. Нужен, чтобы указать, что мудуль не настроен ни на какой режим.
+    };
+    COMMON_ENUM;
+    ModeWork(uint v = Dir) : value((uint8)v) {};
 };
 
 /// Режим показа строки навигации
@@ -758,25 +763,37 @@ enum ModeRegSet
 };
 
 /// Режим наименования файлов.
-enum FileNamingMode
+struct FileNamingMode
 {
-    FileNamingMode_Mask,        ///< Именовать по маске.
-    FileNamingMode_Manually     ///< Именовать вручную.
+    enum
+    {
+        Mask,        ///< Именовать по маске.
+        Manually     ///< Именовать вручную.
+    };
+    COMMON_ENUM;
 };
 
 /// Как сохранять данные на флешку.
-enum ModeSaveSignal
+struct ModeSaveSignal
 {
-    ModeSaveSignal_BMP,
-    ModeSaveSignal_TXT
+    enum
+    {
+        BMP,
+        TXT
+    };
+    COMMON_ENUM;
 };
 
 /// Что показывать в режиме Внутр ЗУ - считанный или записанный сигнал.
-enum ModeShowIntMem
+struct ModeShowIntMem
 {
-    ModeShowIntMem_Direct,  ///< Показывать данные реального времени.
-    ModeShowIntMem_Saved,   ///< Показывать сохранённые данные.
-    ModeShowIntMem_Both     ///< Показывать оба сигнала.
+    enum
+    {
+        Direct,  ///< Показывать данные реального времени.
+        Saved,   ///< Показывать сохранённые данные.
+        Both     ///< Показывать оба сигнала.
+    };
+    COMMON_ENUM;
 };
 
 const char *NameRange(Range range);

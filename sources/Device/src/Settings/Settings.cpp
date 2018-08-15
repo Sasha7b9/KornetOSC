@@ -87,14 +87,14 @@ static const Settings defaultSettings =
         // ÃÂÌ˛ œ¿Ãﬂ“‹
 
     ENumPointsFPGA::_512,   /* mem_enumPoints;                             */
-    ModeBtnMemory_Menu,     /* mem_modeBtnMemory;                          */
-    ModeWork_Dir,           /* mem_modeWork;                               */
+    ModeBtnMemory::Menu,    /* mem_modeBtnMemory;                          */
+    ModeWork::Dir,          /* mem_modeWork;                               */
     false,                  /* mem_flashAutoConnect;                       */
     0,                      /* mem_indexCurSymbolNameMask;                 */
-    ModeSaveSignal_BMP,     /* mem_modeSaveSignal;                         */
+    ModeSaveSignal::BMP,    /* mem_modeSaveSignal;                         */
     {},                     /* mem_fileName[MAX_SYMBOLS_IN_FILE_NAME];     */
-    ModeShowIntMem_Saved,   /* mem_modeShowIntMem;                         */
-    FileNamingMode_Mask,    /* mem_fileNamingMode;                         */
+    ModeShowIntMem::Saved,  /* mem_modeShowIntMem;                         */
+    FileNamingMode::Mask,   /* mem_fileNamingMode;                         */
     {}                      /* mem_fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; */
 
     // ÃÂÌ˛ »«Ã≈–≈Õ»ﬂ
