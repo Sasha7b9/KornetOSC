@@ -14,8 +14,8 @@ static const Settings defaultSettings =
 
         // Ìåíþ ÄÈÑÏËÅÉ
 
-    ModeDrawSignal_Lines,       /* disp_modeDrawSignal;       */
-    Thickness_1,                /* disp_thickness;            */
+    ModeDrawSignal::Lines,      /* disp_modeDrawSignal;       */
+    ThicknessSignal::_1,        /* disp_thickness;            */
     Background_Black,           /* disp_background;           */
     ShowStrNavi_Temp,           /* disp_showStringNavigation; */
     ENumMinMax_1,               /* disp_ENumMinMax;           */

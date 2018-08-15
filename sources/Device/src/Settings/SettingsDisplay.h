@@ -14,7 +14,7 @@
  */
 
 #define THICKNESS_SIGNAL            (set.disp_thickness)
-#define THICKNESS_SIGNAL_IS_3       (THICKNESS_SIGNAL == Thickness_3)
+#define THICKNESS_SIGNAL_IS_3       (THICKNESS_SIGNAL == ThicknessSignal::_3)
 
 
 #define SHIFT_IN_MEMORY             (set.disp_shiftInMemory)
@@ -30,8 +30,8 @@
 #define SHOW_STRING_NAVI_ALL        (SHOW_STRING_NAVI == ShowStrNavi_All)
 
 #define MODE_DRAW_SIGNAL            (set.disp_modeDrawSignal)
-#define MODE_DRAW_SIGNAL_IS_LINES   (MODE_DRAW_SIGNAL == ModeDrawSignal_Lines)
-#define MODE_DRAW_SIGNAL_IS_POINTS  (MODE_DRAW_SIGNAL == ModeDrawSignal_Points)
+#define MODE_DRAW_SIGNAL_IS_LINES   (MODE_DRAW_SIGNAL == ModeDrawSignal::Lines)
+#define MODE_DRAW_SIGNAL_IS_POINTS  (MODE_DRAW_SIGNAL == ModeDrawSignal::Points)
 
 #define TYPE_GRID                   (set.disp_typeGrid)
 #define TYPE_GRID_1                 (TYPE_GRID == TypeGrid_1)

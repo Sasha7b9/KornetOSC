@@ -126,22 +126,12 @@ struct TrigPolarity
         Rising,
         Falling
     };
-    TrigPolarity(uint8 v = Rising) : value(v) {};
     uint8 value;
     operator uint8() const
     {
         return value;
     }
 };
-
-/*
-enum Language
-{
-    RU,
-    EN,
-    NumLanguages
-};
-*/
 
 struct Language
 {
@@ -151,7 +141,6 @@ struct Language
         EN,
         Num
     };
-    Language(uint8 v = RU) : value(v) {};
     uint8 value;
     operator uint8() const
     {
@@ -159,17 +148,34 @@ struct Language
     }
 };
 
-enum ModeDrawSignal
+struct ModeDrawSignal
 {
-    ModeDrawSignal_Lines,
-    ModeDrawSignal_Points
+    enum
+    {
+        Lines,
+        Points
+    };
+    uint8 value;
+    operator uint8() const
+    {
+        return value;
+    }
 };
 
+
 /// Тольщина рисуемого сигнала
-enum ThicknessSignal
+struct ThicknessSignal
 {
-    Thickness_1,    ///< Сигнал рисуется линией толщиной одна точка
-    Thickness_3     ///< Сигнал рисуется линией толщиной три точки
+    enum
+    {
+        _1,         ///< Сигнал рисуется линией толщиной одна точка
+        _3          ///< Сигнал рисуется линией толщиной три точки
+    };
+    uint8 value;
+    operator uint8() const
+    {
+        return value;
+    }
 };
 
 enum Bandwidth
