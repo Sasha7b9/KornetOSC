@@ -1,5 +1,6 @@
 #include "Console.h"
 #include "Display/Painter.h"
+
 #include <string.h>
 
 
@@ -48,4 +49,10 @@ void Console::AddString(char *string)
         sprintf(buffer[stringInConsole], "%d %s", count++, string);
         stringInConsole++;
     }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Console::NumberOfLines()
+{
+    return stringInConsole;
 }

@@ -3,6 +3,7 @@
 #include "Device.h"
 #include "BufferButtons.h"
 #include "Globals.h"
+#include "Display/Console.h"
 #include "Display/Grid.h"
 #include "Display/DisplayTypes.h"
 #include "Display/Painter.h"
@@ -42,12 +43,6 @@ void Menu::Update()
     while(!BufferButtons::IsEmpty())
     {
         KeyEvent event = BufferButtons::Extract();
-
-        if(event.key.IsFunctional())
-        {
-            __IO int i = 0;
-            ++i;
-        }
 
         if (HINT_MODE_ENABLED)
         {

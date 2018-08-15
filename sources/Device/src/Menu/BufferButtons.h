@@ -13,7 +13,7 @@ public:
 private:
     enum
     {
-        SIZE = 10
+        SIZE = 100
     };
 
     /// Здесь хранятся все события

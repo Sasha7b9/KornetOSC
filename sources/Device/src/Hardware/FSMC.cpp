@@ -2,6 +2,7 @@
 #include "Keyboard/Decoder.h"
 #include "FSMC.h"
 #include "GPIO.h"
+#include "Display/Console.h"
 #include "Log.h"
 #include "Timer.h"
 #include "Hardware.h"
@@ -268,7 +269,39 @@ LabelReadByte:
     while (PAN_READY_TRANSMIT) { };
     if (PAN_RECIEVE_TRANSMIT_CONFIRM)
     {
-        Decoder::AddData(GetOutData());
+        uint8 data = GetOutData();
+
+        /*
+        static int step = 0;
+        if (Console::NumberOfLines() < 10)
+        {
+            if (step == 0)
+            {
+                if (data != 1)
+                {
+                    LOG_WRITE("Ошибка приёма");
+                }
+            }
+            else if (step == 1)
+            {
+                if (data != 14)
+                {
+                    LOG_WRITE("Ошибка приёма");
+                }
+            }
+            else if (step == 2)
+            {
+                if (data != 1)
+                {
+                    LOG_WRITE("Ошибка приёма");
+                }
+            }
+        }
+
+        step = (step + 1) % 3;
+        */
+
+        Decoder::AddData(data);
         NE4_SET;
         while (PAN_RECIEVE_TRANSMIT_CONFIRM) { };
     }

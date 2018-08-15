@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "Settings/Settings.h"
 #include "FPGA/FPGA.h"
+#include "Display/Console.h"
 #include "Menu/Pages/Definition.h"
 #include "Menu/Pages/PageMeasures.h"
 #include "Menu/Pages/PageMemory.h"
@@ -61,7 +62,18 @@ void Handlers::Process(KeyEvent e)
         /* F5          */ {Func,        Func,        Func,     Func}
     };
 
-    func[event.key.code][event.type.type]();
+    uint8 code = event.key.code;
+    uint8 type = event.type.type;
+
+    if (code < Key::NumButtons && type < TypePress::None)
+    {
+        func[event.key.code][event.type.type]();
+    }
+    else
+    {
+        /// \tode Временная затычка. Доделать, чтобы такого не было
+        //LOG_WRITE("Ошибка приёма команды кнопки");
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
