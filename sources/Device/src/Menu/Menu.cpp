@@ -18,6 +18,7 @@
 #include "Menu/Pages/PageChannels.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
+#include "Utils/Debug.h"
 #include "MenuTriggers.h"
 #include "HandlersKeys.h"
 
@@ -832,8 +833,8 @@ void Menu::SetItemForHint(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ButtonEvent(KeyEvent event)
 {
-    Sound::Beep(event.type);
-
+    /// \todo На звуке иногда виснет при длительном удержании кнопки смещения
+    //Sound::Beep(event.type);
     BufferButtons::Push(event);
 }
 

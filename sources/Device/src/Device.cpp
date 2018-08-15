@@ -10,6 +10,7 @@
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
 #include "Utils/MathOSC.h"
+#include "Utils/Debug.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -44,11 +45,17 @@ void Device::Init()
 void Device::Update()
 {
     START_MULTI_MEASUREMENT();
+
     Menu::Update();
+
     Display::Update();
+
     Decoder::Update();
+
     FPGA::Update();
+
     Menu::SaveSettings();
+
     Tester::Update();
 }
 

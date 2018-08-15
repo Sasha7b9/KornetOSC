@@ -13,7 +13,7 @@ void BufferButtons::Push(KeyEvent str)
 {
     if(end == SIZE)
     {
-        LOG_ERROR("Буфер переполнен");
+        //LOG_ERROR("Буфер переполнен");
         return;
     }
 

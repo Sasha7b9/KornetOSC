@@ -2,6 +2,7 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 #include "Hardware/Sound.h"
+#include "Utils/Debug.h"
 
 
 #ifdef MSVC
@@ -22,8 +23,13 @@ void NMI_Handler(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void HardFault_Handler()
 {
+    __IO char *file = Debug::file;
+    __IO int line = Debug::line;
+
     while (1)
     {
+        file = file;
+        line = line;
     }
 }
 

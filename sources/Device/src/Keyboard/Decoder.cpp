@@ -2,6 +2,7 @@
 #include "Hardware/FSMC.h"
 #include "Menu/Menu.h"
 #include "Log.h"
+#include "Utils/Debug.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +39,7 @@ void Decoder::Update()
         {
             RunStep(buffer[i]);
         }
+
         pointer = 0;
     }
 }
@@ -48,11 +50,24 @@ void Decoder::RunStep(uint8 data)
     static const pFuncBU8 commands[NUM_COMMANDS] =
     {
         &Decoder::EmptyFunc,
-        &Decoder::ButtonPress
+        &Decoder::ButtonPress,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc
     };
 
     if (step == 0)
     {
+
         if (data < NUM_COMMANDS)
         {
             curFunc = commands[data];
@@ -98,6 +113,7 @@ bool Decoder::ButtonPress(uint8 data)
     {
         Menu::ButtonEvent(KeyEvent(button, data));
     }
+
     return true;
 }
 

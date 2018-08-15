@@ -3,6 +3,11 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Хорошо использовать для трассировке, если потом в HardFault_Handler() отслеживать эти переменные
+#define DEBUG_POINT Debug::line = __LINE__; Debug::file = __FILE__;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Debug
 {
 public:
@@ -13,6 +18,10 @@ public:
     static void StartIncreaseCounter();
     static void StopIncreaseCounter();
     static uint GetTimeCounterUS();
+
+    static int line;
+    static char *file;
+
 private:
     static uint timeStart;
     static uint timeCounter;
