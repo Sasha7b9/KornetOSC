@@ -9,38 +9,77 @@
 
 static const Settings defaultSettings =
 {
-    0,                              // size
-    0,                              // crc32
+/* size                       */   0,
+/* crc32                      */   0,
 
-    ModeDrawSignal_Lines,           // disp_modeDrawSignal
-    Thickness_1,                    // disp_thickness
+                                    // Меню ДИСПЛЕЙ
 
+/* disp_modeDrawSignal;       */   ModeDrawSignal_Lines,
+/* disp_thickness;            */   Thickness_1,
+/* disp_background;           */   Background_Black,
+/* disp_showStringNavigation; */   ShowStrNavi_Temp,
+/* disp_ENumMinMax;           */   ENumMinMax_1,
+/* disp_modeAveraging;        */   ModeAveraging_Accurately,
+/* disp_ENumAverage;          */   ENumAverage_1,
+/* disp_ENumAccum;            */   ENumAccum_1,
+/* disp_modeAccumulation;     */   ModeAccumulation_NoReset,
+/* disp_ENumSmoothing;        */   ENumSmooth_Disable,
+/* disp_ENumSignalsInSec;     */   ENumSignalsInSec_25,
+/* disp_typeGrid;             */   TypeGrid_1,
+/* disp_brightnessGrid;       */   50,
+/* disp_linkingRShift;        */   LinkingRShift_Position,
+/* disp_brightness;           */   100,
+/* disp_timeShowLevels;       */   5,
+/* disp_timeMessages;         */   5,
+/* disp_altMarkers;           */   AltMarkers_AutoHide,
+/* disp_menuAutoHide;         */   MenuAutoHide_None,
+/* disp_shiftInMemory;        */   0,
+/* disp_lastAffectedChannel;  */   A
+
+    // Меню КАНАЛ 1, КАНАЛ 2
+
+    // Меню СИНХРОНИЗАЦИЯ
+
+    // Меню РАЗВЁРТКА
+
+    // Меню КУРСОРЫ
+
+    // Меню ИЗМЕРЕНИЯ
+
+    // Меню СЕРВИС
+
+    // Настройки математики
+
+    // Настройки частотомера
+
+    // Настройки тестер-компонента
+
+    // Настройки меню
+
+    // Несбрасываемые настройки калибровки
+
+    /*
     {RShiftZero, RShiftZero},       // chan_shift
     {Range::_500mV, Range::_500mV}, // chan_range
     {ModeCouple_DC, ModeCouple_DC}, // chan_couple
     {true, true},                   // chan_enable
-
     TrigSource::A,                  // trig_source
     TrigInput::Full,                // trig_input
     TrigPolarity::Rising,           // trig_polarity
     {TrigLevZero, TrigLevZero},     // trig_lev
     ModeTrig::Auto,                 // trig_mode
-
     RU,                             // serv_lang
-
     0,                              // time_shift
-    TBase::_500us,                    // time_base
-
+    TBase::_500us,                  // time_base
     Control_Voltage,                // test_control
     Polarity_Positive,              // test_polarity
     StepU_100mV,                    // test_stepU
     StepI_4mA,                      // test_stepI
     0,                              // test_smooth
-
     FNP_512,                        // mem__enumPoints
-        
     0,                              // menu_currentPage
     false                           // menu_show
+    */
 };
 
 Settings set;

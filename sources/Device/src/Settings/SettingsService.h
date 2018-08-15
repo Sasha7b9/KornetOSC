@@ -16,7 +16,7 @@
 
 #define RECORDER_MODE                   (set.serv_Recorder)
 
-#define TIME_SHOW_LEVELS                (set.disp_TimeShowLevels)
+#define TIME_SHOW_LEVELS                (set.disp_timeShowLevels)
 
 #define FREQ_METER_ENABLED              (set.freq_Enable)
 #define FREQ_METER_TIMECOUNTING         (set.freq_TimeCounting)

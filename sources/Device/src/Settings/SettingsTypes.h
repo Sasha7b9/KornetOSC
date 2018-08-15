@@ -215,8 +215,8 @@ enum CursCntrl
 /// Тип усреднений по измерениям
 enum ModeAveraging
 {
-    Averaging_Accurately,   ///< Усреднять точно.
-    Averaging_Around        ///< Усреднять приблизительно.
+    ModeAveraging_Accurately,   ///< Усреднять точно.
+    ModeAveraging_Around        ///< Усреднять приблизительно.
 };
 
 /// Выбор цвета фона.
@@ -512,9 +512,9 @@ enum LinkingRShift
 /// Режим отображения дополнительных боковых маркеров смещения по напряжению.
 enum AltMarkers
 {
-    AM_Hide,        /// Никода не выводить.
-    AM_Show,        /// Всегда выводить.
-    AM_AutoHide     /// Выводить и прятать через timeShowLevels.
+    AltMarkers_Hide,        /// Никода не выводить.
+    AltMarkers_Show,        /// Всегда выводить.
+    AltMarkers_AutoHide     /// Выводить и прятать через timeShowLevels.
 };
 
 /// Через какое время после последнего нажатия кнопки скрывать меню.
