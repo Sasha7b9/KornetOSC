@@ -40,10 +40,10 @@ static const Settings defaultSettings =
 
     { RShiftZero, RShiftZero },                             /* chan_shift[NumChannels];  */
     { Range::_500mV, Range::_500mV },                       /* chan_range[NumChannels];  */
-    { ModeCouple_DC, ModeCouple_DC },                       /* chan_couple[NumChannels]; */
+    { ModeCouple::DC, ModeCouple::DC },                     /* chan_couple[NumChannels]; */
     { true, true },                                         /* chan_enable[NumChannels]; */
     { 0, 0 },                                               /* chan_balanceShiftADC[2];  */
-    { Bandwidth_20MHz, Bandwidth_20MHz },                   /* chan_bandwidth[2];        */
+    { Bandwidth::_20MHz, Bandwidth::_20MHz },               /* chan_bandwidth[2];        */
     { Resistance_1Mom, Resistance_1Mom },                   /* chan_resistance[2];       */
     { false, false },                                       /* chan_inverse[2];          */
     { Divider_1, Divider_1 },                               /* chan_divider[2];          */

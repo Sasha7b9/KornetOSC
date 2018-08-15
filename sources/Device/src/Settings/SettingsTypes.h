@@ -68,11 +68,7 @@ struct TBase
         Size
     };
     TBase(uint8 v = _2ns) : value(v) {};
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
+    COMMON_ENUM;
 };
 
 struct TrigInput
@@ -84,11 +80,7 @@ struct TrigInput
         LF
     };
     TrigInput(uint8 v = Full) : value(v) {};
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
+    COMMON_ENUM
 };
 
 enum Channel
@@ -109,11 +101,7 @@ struct MeasSource
         B,
         A_B
     };
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
+    COMMON_ENUM;
 };
 
 struct TrigPolarity
@@ -123,11 +111,7 @@ struct TrigPolarity
         Rising,
         Falling
     };
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
+    COMMON_ENUM;
 };
 
 struct Language
@@ -138,11 +122,7 @@ struct Language
         EN,
         Num
     };
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
+    COMMON_ENUM;
 };
 
 struct ModeDrawSignal
@@ -152,11 +132,7 @@ struct ModeDrawSignal
         Lines,
         Points
     };
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
+    COMMON_ENUM;
 };
 
 
@@ -168,22 +144,22 @@ struct ThicknessSignal
         _1,         ///< Сигнал рисуется линией толщиной одна точка
         _3          ///< Сигнал рисуется линией толщиной три точки
     };
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
+    COMMON_ENUM;
 };
 
-enum Bandwidth
+struct Bandwidth
 {
-    Bandwidth_Full,     ///< Если это значение выбрано в меню КАНАЛ, то при этом положение устанавливается полоса из ОТЛАДКА-КАНАЛЫ-Полоса.
-    Bandwidth_20MHz,
-    Bandwidth_100MHz,
-    Bandwidth_200MHz,
-    Bandwidth_350MHz,
-    Bandwidth_650MHz,
-    Bandwidth_750MHz
+    enum
+    {
+        Full,     ///< Если это значение выбрано в меню КАНАЛ, то при этом положение устанавливается полоса из ОТЛАДКА-КАНАЛЫ-Полоса.
+        _20MHz,
+        _100MHz,
+        _200MHz,
+        _350MHz,
+        _650MHz,
+        _750MHz
+    };
+    COMMON_ENUM;
 };
 
 struct ModeTrig
@@ -373,12 +349,17 @@ enum DisplayOrientation
 };
 
 /// Режим канала по входу.
-enum ModeCouple
+struct ModeCouple
 {
-    ModeCouple_DC,      ///< Закрытый вход
-    ModeCouple_AC,      ///< Открытый вход
-    ModeCouple_GND,     ///< Вход заземлён.
-    CoupleSize
+    enum
+    {
+        DC,      ///< Закрытый вход
+        AC,      ///< Открытый вход
+        GND,     ///< Вход заземлён.
+        Size
+    };
+    COMMON_ENUM;
+    ModeCouple(uint v = 0) : value((uint8)v) {};
 };
 
 enum Resistance

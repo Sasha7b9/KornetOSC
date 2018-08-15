@@ -130,7 +130,7 @@ void Tester::Enable()
 {
     oldSet = set;
 
-    SET_COUPLE_A = SET_COUPLE_B = ModeCouple_GND;
+    SET_COUPLE_A = SET_COUPLE_B = ModeCouple::GND;
 
     FPGA::LoadRanges();
 

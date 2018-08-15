@@ -587,16 +587,16 @@ GPIO_TypeDef *FPGA::GetPort(Pin pin)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static uint8 ValueForRange(Channel ch)
 {
-    static const uint8 datas[CoupleSize] =
+    static const uint8 datas[ModeCouple::Size] =
     {
         BIN_U8(01000001),    // DC
         BIN_U8(10000001),    // AC
         BIN_U8(00000010)     // GND
     };
 
-    if (SET_COUPLE(ch) == ModeCouple_GND)
+    if (SET_COUPLE(ch) == ModeCouple::GND)
     {
-        return datas[ModeCouple_GND];
+        return datas[ModeCouple::GND];
     }
 
     static const uint16 values[Range::Size][NumChannels] =
