@@ -122,6 +122,7 @@ bool Decoder::ButtonPress(uint8 data)
             );
         }
         */
+        LOG_WRITE("code = %d, type = %d", button.code, data);
         Menu::ButtonEvent(KeyEvent(button, data));
     }
 

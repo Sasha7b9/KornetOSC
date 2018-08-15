@@ -7,7 +7,7 @@ enum Control
     K_Measures = 2,
     K_Memory = 3,
     K_Service = 4,
-    K_ChannelA = 4,
+    K_ChannelA = 5,
     K_ChannelB = 6,
     K_Time = 7,
     K_Start = 8,
