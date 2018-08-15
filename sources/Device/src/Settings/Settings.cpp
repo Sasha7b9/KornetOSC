@@ -16,10 +16,10 @@ static const Settings defaultSettings =
 
     ModeDrawSignal::Lines,      /* disp_modeDrawSignal;       */
     ThicknessSignal::_1,        /* disp_thickness;            */
-    Background_Black,           /* disp_background;           */
-    ShowStrNavi_Temp,           /* disp_showStringNavigation; */
-    ENumMinMax_1,               /* disp_ENumMinMax;           */
-    ModeAveraging_Accurately,   /* disp_modeAveraging;        */
+    Background::Black,          /* disp_background;           */
+    ShowStrNavi::Temp,          /* disp_showStringNavigation; */
+    ENumMinMax::_1,             /* disp_ENumMinMax;           */
+    ModeAveraging::Accurately,  /* disp_modeAveraging;        */
     ENumAverage_1,              /* disp_ENumAverage;          */
     ENumAccum_1,                /* disp_ENumAccum;            */
     ModeAccumulation_NoReset,   /* disp_modeAccumulation;     */

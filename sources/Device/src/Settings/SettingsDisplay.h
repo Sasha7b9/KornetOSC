@@ -26,8 +26,8 @@
 #define DISPLAY_ORIENTATION         (set.dbg_Orientation)
 
 #define SHOW_STRING_NAVI            (set.disp_showStringNavigation)
-#define SHOW_STRING_NAVI_TEMP       (SHOW_STRING_NAVI == ShowStrNavi_Temp)
-#define SHOW_STRING_NAVI_ALL        (SHOW_STRING_NAVI == ShowStrNavi_All)
+#define SHOW_STRING_NAVI_TEMP       (SHOW_STRING_NAVI == ShowStrNavi::Temp)
+#define SHOW_STRING_NAVI_ALL        (SHOW_STRING_NAVI == ShowStrNavi::All)
 
 #define MODE_DRAW_SIGNAL            (set.disp_modeDrawSignal)
 #define MODE_DRAW_SIGNAL_IS_LINES   (MODE_DRAW_SIGNAL == ModeDrawSignal::Lines)
@@ -49,7 +49,7 @@
 #define MODE_ACCUM_NO_RESET         (MODE_ACCUM == ModeAccumulation_NoReset)
 
 #define ENUM_MIN_MAX                (set.disp_ENumMinMax)
-#define MIN_MAX_ENABLED             (ENUM_MIN_MAX != ENumMinMax_1)
+#define MIN_MAX_ENABLED             (ENUM_MIN_MAX != ENumMinMax::_1)
 #define NUM_MIN_MAX                 (1 << (int)ENUM_MIN_MAX)                /* ¬озвращает количество измерений сигналов дл€ расчЄта минимумов и максимумов. */
 
 #define MODE_AVE                    (set.disp_modeAveraging)
@@ -69,7 +69,7 @@
 #define LINKING_RSHIFT              (set.disp_linkingRShift)
 
 #define BACKGROUND                  (set.disp_background)
-#define BACKGROUND_BLACK            (BACKGROUND == Background_Black)
+#define BACKGROUND_BLACK            (BACKGROUND == Background::Black)
 
 #define MENU_AUTO_HIDE              (set.disp_menuAutoHide)
 

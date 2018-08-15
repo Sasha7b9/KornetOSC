@@ -732,7 +732,7 @@ uint8 *Storage::GetAverageData(Channel ch)
 
     int numPoints = NUM_BYTES(ds);
 
-    if (sDisplay_GetModeAveraging() == ModeAveraging_Around)
+    if (sDisplay_GetModeAveraging() == ModeAveraging::Around)
     {
         float *floatAveData = (ch == A) ? aveDataA_RAM : aveDataB_RAM;
         

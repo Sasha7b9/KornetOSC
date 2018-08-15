@@ -1,6 +1,7 @@
 #pragma once
 #include "defines.h"
 
+#define COMMON_ENUM     uint8 value; operator uint8() const { return value; }
 
 struct Range
 {
@@ -22,11 +23,7 @@ struct Range
         Size
     };
     Range(uint8 v = _2mV) : value(v) {};
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
+    COMMON_ENUM;
     Range& operator++()
     {
         ++value;
@@ -237,17 +234,30 @@ enum CursCntrl
 };
 
 /// Тип усреднений по измерениям
-enum ModeAveraging
+struct ModeAveraging
 {
-    ModeAveraging_Accurately,   ///< Усреднять точно.
-    ModeAveraging_Around        ///< Усреднять приблизительно.
+    enum
+    {
+        Accurately,   ///< Усреднять точно.
+        Around        ///< Усреднять приблизительно.
+    };
+    ModeAveraging(uint8 v = Accurately) : value(v) {};
+    COMMON_ENUM;
 };
 
 /// Выбор цвета фона.
-enum Background
+struct Background
 {
-    Background_Black,
-    Background_White
+    enum
+    {
+        Black,
+        White
+    };
+    uint8 value;
+    operator uint8() const
+    {
+        return value;
+    }
 };
 
 /// Положение точки синхронизация на сигнале.
@@ -314,11 +324,15 @@ enum ModeWork
 };
 
 /// Режим показа строки навигации
-enum ShowStrNavi
+struct ShowStrNavi
 {
-    ShowStrNavi_Temp,   ///< Показывать на несколько секунд
-    ShowStrNavi_All,    ///< Всегда показывать
-    ShowStrNavi_None    ///< Никогда не показывать
+    enum
+    {
+        Temp,   ///< Показывать на несколько секунд
+        All,    ///< Всегда показывать
+        None    ///< Никогда не показывать
+    };
+    COMMON_ENUM;
 };
 
 enum FFTmaxDB
@@ -406,16 +420,20 @@ enum PeakDetMode
 };
 
 /// Количество измерений для расчёта минимального и максимального значений.
-enum ENumMinMax
+struct ENumMinMax
 {
-    ENumMinMax_1,
-    ENumMinMax_2,
-    ENumMinMax_4,
-    ENumMinMax_8,
-    ENumMinMax_16,
-    ENumMinMax_32,
-    ENumMinMax_64,
-    ENumMinMax_128
+    enum
+    {
+        _1,
+        _2,
+        _4,
+        _8,
+        _16,
+        _32,
+        _64,
+        _128
+    };
+    COMMON_ENUM;
 };
 
 enum ColorScheme
