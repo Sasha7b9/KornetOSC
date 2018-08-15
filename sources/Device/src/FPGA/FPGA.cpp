@@ -473,6 +473,7 @@ void FPGA::ReadData()
     Storage::AddData(dataA, dataB);
     
     free(dataA);
+    
     free(dataB);
 }
 
