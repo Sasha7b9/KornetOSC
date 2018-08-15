@@ -9,82 +9,93 @@
 
 static const Settings defaultSettings =
 {
-/* size                       */   0,
-/* crc32                      */   0,
+    0,                          /* size                       */
+    0,                          /* crc32                      */
 
-                                        // ÃÂÌ˛ ƒ»—œÀ≈…
+        // ÃÂÌ˛ ƒ»—œÀ≈…
 
-/* disp_modeDrawSignal;       */    ModeDrawSignal_Lines,
-/* disp_thickness;            */    Thickness_1,
-/* disp_background;           */    Background_Black,
-/* disp_showStringNavigation; */    ShowStrNavi_Temp,
-/* disp_ENumMinMax;           */    ENumMinMax_1,
-/* disp_modeAveraging;        */    ModeAveraging_Accurately,
-/* disp_ENumAverage;          */    ENumAverage_1,
-/* disp_ENumAccum;            */    ENumAccum_1,
-/* disp_modeAccumulation;     */    ModeAccumulation_NoReset,
-/* disp_ENumSmoothing;        */    ENumSmooth_Disable,
-/* disp_ENumSignalsInSec;     */    ENumSignalsInSec_25,
-/* disp_typeGrid;             */    TypeGrid_1,
-/* disp_brightnessGrid;       */    50,
-/* disp_linkingRShift;        */    LinkingRShift_Position,
-/* disp_brightness;           */    100,
-/* disp_timeShowLevels;       */    5,
-/* disp_timeMessages;         */    5,
-/* disp_altMarkers;           */    AltMarkers_AutoHide,
-/* disp_menuAutoHide;         */    MenuAutoHide_None,
-/* disp_shiftInMemory;        */    0,
-/* disp_lastAffectedChannel;  */    A,
+    ModeDrawSignal_Lines,       /* disp_modeDrawSignal;       */
+    Thickness_1,                /* disp_thickness;            */
+    Background_Black,           /* disp_background;           */
+    ShowStrNavi_Temp,           /* disp_showStringNavigation; */
+    ENumMinMax_1,               /* disp_ENumMinMax;           */
+    ModeAveraging_Accurately,   /* disp_modeAveraging;        */
+    ENumAverage_1,              /* disp_ENumAverage;          */
+    ENumAccum_1,                /* disp_ENumAccum;            */
+    ModeAccumulation_NoReset,   /* disp_modeAccumulation;     */
+    ENumSmooth_Disable,         /* disp_ENumSmoothing;        */
+    ENumSignalsInSec_25,        /* disp_ENumSignalsInSec;     */
+    TypeGrid_1,                 /* disp_typeGrid;             */
+    50,                         /* disp_brightnessGrid;       */
+    LinkingRShift_Position,     /* disp_linkingRShift;        */
+    100,                        /* disp_brightness;           */
+    5,                          /* disp_timeShowLevels;       */
+    5,                          /* disp_timeMessages;         */
+    AltMarkers_AutoHide,        /* disp_altMarkers;           */
+    MenuAutoHide_None,          /* disp_menuAutoHide;         */
+    0,                          /* disp_shiftInMemory;        */
+    A,                          /* disp_lastAffectedChannel;  */
 
-                                        // ÃÂÌ˛  ¿Õ¿À 1,  ¿Õ¿À 2
+        // ÃÂÌ˛  ¿Õ¿À 1,  ¿Õ¿À 2
 
-/* chan_shift[NumChannels];  */     { RShiftZero, RShiftZero },
-/* chan_range[NumChannels];  */     { Range::_500mV, Range::_500mV },
-/* chan_couple[NumChannels]; */     { ModeCouple_DC, ModeCouple_DC },
-/* chan_enable[NumChannels]; */     { true, true },
-/* chan_balanceShiftADC[2];  */     { 0, 0 },
-/* chan_bandwidth[2];        */     { Bandwidth_20MHz, Bandwidth_20MHz },
-/* chan_resistance[2];       */     { Resistance_1Mom, Resistance_1Mom },
-/* chan_inverse[2];          */     { false, false},
-/* chan_divider[2];          */     { Divider_1, Divider_1 },
-/* chan_calibrationMode[2];  */     { CalibrationMode_Disable, CalibrationMode_Disable },
+    { RShiftZero, RShiftZero },                             /* chan_shift[NumChannels];  */
+    { Range::_500mV, Range::_500mV },                       /* chan_range[NumChannels];  */
+    { ModeCouple_DC, ModeCouple_DC },                       /* chan_couple[NumChannels]; */
+    { true, true },                                         /* chan_enable[NumChannels]; */
+    { 0, 0 },                                               /* chan_balanceShiftADC[2];  */
+    { Bandwidth_20MHz, Bandwidth_20MHz },                   /* chan_bandwidth[2];        */
+    { Resistance_1Mom, Resistance_1Mom },                   /* chan_resistance[2];       */
+    { false, false },                                       /* chan_inverse[2];          */
+    { Divider_1, Divider_1 },                               /* chan_divider[2];          */
+    { CalibrationMode_Disable, CalibrationMode_Disable },   /* chan_calibrationMode[2];  */
 
-                                        // ÃÂÌ˛ —»Õ’–ŒÕ»«¿÷»ﬂ
+        // ÃÂÌ˛ —»Õ’–ŒÕ»«¿÷»ﬂ
 
-/* trig_source;              */     TrigSource::A,
-/* trig_input;               */     TrigInput::Full,
-/* trig_polarity;            */     TrigPolarity::Rising,
-/* trig_lev[NumChannels];    */     { TrigLevZero, TrigLevZero },
-/* trig_startMode;           */     StartMode_Auto,
-/* trig_modeFind;            */     TrigModeFind_Hand,
+    TrigSource::A,                  /* trig_source;              */
+    TrigInput::Full,                /* trig_input;               */
+    TrigPolarity::Rising,           /* trig_polarity;            */
+    { TrigLevZero, TrigLevZero },   /* trig_lev[NumChannels];    */
+    StartMode_Auto,                 /* trig_startMode;           */
+    TrigModeFind_Hand,              /* trig_modeFind;            */
 
-                                        // ÃÂÌ˛ –¿«¬®–“ ¿
+        // ÃÂÌ˛ –¿«¬®–“ ¿
 
-/* time_shift;               */     0,
-/* time_base;                */     TBase::_500us,
-/* time_peakDet;             */     PeakDet_Disabled,
-/* time_TPos;                */     TPos_Center,
-/* time_sampleType;          */     SampleType_Real,
-/* time_timeDivXPos;         */     FunctionTime_Time,
-/* time_linkingTShift;       */     LinkingTShift_Time,
-/* time_sampleTypeOld;       */     SampleType_Real,
+     0,                             /* time_shift;               */
+     TBase::_500us,                 /* time_base;                */
+     PeakDet_Disabled,              /* time_peakDet;             */
+     TPos_Center,                   /* time_TPos;                */
+     SampleType_Real,               /* time_sampleType;          */
+     FunctionTime_Time,             /* time_timeDivXPos;         */
+     LinkingTShift_Time,            /* time_linkingTShift;       */
+     SampleType_Real,               /* time_sampleTypeOld;       */
 
-                                        // ÃÂÌ˛  ”–—Œ–€
+        // ÃÂÌ˛  ”–—Œ–€
 
-/* curs_showCursors;             */ false,
-/* curs_lookMode[2];             */ { CursLookMode_None, CursLookMode_None },
-/* curs_showFreq;                */ true,
-/* curs_active;                  */ CursActive_None,
-/* curs_source;                  */ A,
-/* curs_cntrlU[NumChannels];     */ { CursCntrl_Disable, CursCntrl_Disable },
-/* curs_cntrlT[NumChannels];     */ { CursCntrl_Disable, CursCntrl_Disable },
-/* curs_movement;                */ CursMovement_Pixels,
-/* curs_deltaU100percents[2];    */ { 100, 100 },
-/* curs_deltaT100percents[2];    */ { 100, 100 },
-/* curs_posCurU[NumChannels][2]; */ { { 100, 100 }, { 100, 100 } },
-/* curs_posCurT[NumChannels][2]; */ { { 100, 100 }, { 100, 100 } },
+    false,                                      /* curs_showCursors;             */
+    { CursLookMode_None, CursLookMode_None },   /* curs_lookMode[2];             */
+    true,                                       /* curs_showFreq;                */
+    CursActive_None,                            /* curs_active;                  */
+    A,                                          /* curs_source;                  */
+    { CursCntrl_Disable, CursCntrl_Disable },   /* curs_cntrlU[NumChannels];     */
+    { CursCntrl_Disable, CursCntrl_Disable },   /* curs_cntrlT[NumChannels];     */
+    CursMovement_Pixels,                        /* curs_movement;                */
+    { 100, 100 },                               /* curs_deltaU100percents[2];    */
+    { 100, 100 },                               /* curs_deltaT100percents[2];    */
+    { { 100, 100 },{ 100, 100 } },              /* curs_posCurU[NumChannels][2]; */
+    { { 100, 100 },{ 100, 100 } },              /* curs_posCurT[NumChannels][2]; */
 
-    // ÃÂÌ˛ œ¿Ãﬂ“‹
+        // ÃÂÌ˛ œ¿Ãﬂ“‹
+
+    FNP_512,                /* mem_enumPoints;                             */
+    ModeBtnMemory_Menu,     /* mem_modeBtnMemory;                          */
+    ModeWork_Dir,           /* mem_modeWork;                               */
+    false,                  /* mem_flashAutoConnect;                       */
+    0,                      /* mem_indexCurSymbolNameMask;                 */
+    ModeSaveSignal_BMP,     /* mem_modeSaveSignal;                         */
+    {},                     /* mem_fileName[MAX_SYMBOLS_IN_FILE_NAME];     */
+    ModeShowIntMem_Saved,   /* mem_modeShowIntMem;                         */
+    FileNamingMode_Mask,    /* mem_fileNamingMode;                         */
+    {}                      /* mem_fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; */
 
     // ÃÂÌ˛ »«Ã≈–≈Õ»ﬂ
 
@@ -107,7 +118,6 @@ static const Settings defaultSettings =
     StepU_100mV,                    // test_stepU
     StepI_4mA,                      // test_stepI
     0,                              // test_smooth
-    FNP_512,                        // mem_enumPoints
     0,                              // menu_currentPage
     false                           // menu_show
     */
