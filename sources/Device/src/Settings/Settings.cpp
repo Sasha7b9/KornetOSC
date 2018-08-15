@@ -150,7 +150,7 @@ void Settings::Reset()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *NameRange(Range range)
 {
-    static const char *names[Range::Size][NumLanguages] =
+    static const char *names[Range::Size][Language::Num] =
     {
         {"2м¬",     "2mV"},
         {"5м¬",     "5mV"},
@@ -173,7 +173,7 @@ const char *NameRange(Range range)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *NameTBase(TBase tBase)
 {
-    static const char *names[TBase::Size][NumLanguages] =
+    static const char *names[TBase::Size][Language::Num] =
     {
         {"2нс",     "2ns"},
         {"5нс",     "5ns"},

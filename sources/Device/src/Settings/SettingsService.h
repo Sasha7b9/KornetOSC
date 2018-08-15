@@ -11,8 +11,8 @@
  */
  
 #define LANG                            (set.serv_lang)
-#define LANG_RU                         (LANG == RU)
-#define LANG_EN                         (LANG == EN)
+#define LANG_RU                         (LANG == Language::RU)
+#define LANG_EN                         (LANG == Language::EN)
 
 #define RECORDER_MODE                   (set.serv_Recorder)
 

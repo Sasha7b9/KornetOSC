@@ -134,11 +134,29 @@ struct TrigPolarity
     }
 };
 
+/*
 enum Language
 {
     RU,
     EN,
     NumLanguages
+};
+*/
+
+struct Language
+{
+    enum
+    {
+        RU,
+        EN,
+        Num
+    };
+    Language(uint8 v = RU) : value(v) {};
+    uint8 value;
+    operator uint8() const
+    {
+        return value;
+    }
 };
 
 enum ModeDrawSignal

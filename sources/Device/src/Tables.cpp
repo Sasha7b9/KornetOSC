@@ -110,7 +110,7 @@ const char *Tables_GetTBaseString(TBase tBase)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *Tables_GetTBaseStringEN(TBase tBase)
 {
-    return tBases[tBase].name[EN];
+    return tBases[tBase].name[Language::EN];
 }
 
 
