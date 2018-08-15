@@ -44,7 +44,8 @@ enum TypePress
 {
     Press,
     Repeat,
-    Release
+    Release,
+    Long
 };
 
 /// Хранит код органа управления и его дейстиве

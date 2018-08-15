@@ -31,7 +31,8 @@ private:
 
     static void Func();
     static void Arrow();
-    static void Enter();
+    static void EnterRelease();
+    static void EnterLong();
     static void ChannelA();
     static void ChannelB();
     static void Function();

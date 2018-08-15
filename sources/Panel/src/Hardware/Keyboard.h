@@ -29,6 +29,9 @@ private:
     static int pointer;
     /// При обнаружении нажатия кнопки сюда записывается время нажатия
     static uint timePress[NUM_RL][NUM_SL];
+    /// Установленное в true значение означает, что сохранять куда-либо информацию о её состоянии нельзя до отпускания (чтобы не было ложных
+    /// срабатываний типа Long
+    static bool alreadyLong[NUM_RL][NUM_SL];
 
     static bool init;
 };

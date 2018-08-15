@@ -62,6 +62,7 @@ int           Keyboard::pointer = 0;
 bool          Keyboard::init = false;
 StructControl Keyboard::commands[10];
 uint          Keyboard::timePress[NUM_RL][NUM_SL];
+bool          Keyboard::alreadyLong[NUM_RL][NUM_SL];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Keyboard::Init()
@@ -152,10 +153,14 @@ void Keyboard::Update()
                         if (!BUTTON_IS_PRESS(state))        // Если сейчас кнопка находится в отжатом состояини
                         {
                             timePress[rl][sl] = 0;
-                            FillCommand(controls[rl][sl], Release);
+                            if (!alreadyLong[rl][sl])
+                            {
+                                FillCommand(controls[rl][sl], Release);
+                            }
+                            alreadyLong[rl][sl] = false;
                             prevRepeat = 0;
                         }
-                        else if(IsRepeatable(control))      // А здесь она нходится в нажатом положении - отрабатываем автоповтор
+                        else if(IsRepeatable(control) && !alreadyLong[rl][sl])  // А здесь она нходится в нажатом положении - отрабатываем автоповтор
                         {
                             if (prevRepeat == 0)
                             {
@@ -170,9 +175,14 @@ void Keyboard::Update()
                                 FillCommand(controls[rl][sl], Repeat);
                             }
                         }
+                        else if(time - timePress[rl][sl] > 500 && !alreadyLong[rl][sl])
+                        {
+                            FillCommand(controls[rl][sl], Long);
+                            alreadyLong[rl][sl] = true;
+                        }
                     }
                 }
-                else if (BUTTON_IS_PRESS(state))
+                else if (BUTTON_IS_PRESS(state) && !alreadyLong[rl][sl])
                 {
                     timePress[rl][sl] = time;
                     FillCommand(controls[rl][sl], Press);

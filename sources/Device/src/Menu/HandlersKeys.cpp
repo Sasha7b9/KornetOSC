@@ -25,41 +25,41 @@ void Handlers::Process(KeyEvent e)
 
     static const pFuncVV func[Key::NumButtons][4] =
     {
-        /* None        */ {E,           E,           E,        E},
-        /* Function    */ {Function,    Function,    Function, Function},
-        /* Measures    */ {Measures,    Measures,    Measures, Measures},
-        /* Memory      */ {Memory,      Memory,      Memory,   Memory},
-        /* Service     */ {Service,     Service,     Service,  Service},
-        /* ChannelA    */ {ChannelA,    E,           E,        E},
-        /* ChannelB    */ {ChannelB,    E,           E,        E},
-        /* Time        */ {Time,        Time,        Time,     Time},
-        /* Start       */ {Start,       Start,       Start,    Start},
-        /* Trig        */ {Trig,        Trig,        Trig,     Trig},
-        /* Display     */ {Display,     Display,     Display,  Display},
-        /* RangeMoreA  */ {RangeMoreA,  E,           E,        E},
-        /* RangeLessA  */ {RangeLessA,  E,           E,        E},
-        /* RShiftMoreA */ {RShiftMoreA, RShiftMoreA, E,        E},
-        /* RShiftLessA */ {RShiftLessA, RShiftLessA, E,        E},
-        /* RangeMoreB  */ {RangeMoreB,  E,           E,        E},
-        /* RangeLessB  */ {RangeLessB,  E,           E,        E},
-        /* RShiftMoreB */ {RShiftMoreB, RShiftMoreB, E,        E},
-        /* RShiftLessB */ {RShiftLessB, RShiftLessB, E,        E},
-        /* TBaseMore   */ {TBaseMore,   E,           E,        E},
-        /* TBaseLess   */ {TBaseLess,   E,           E,        E},
-        /* TShiftMore  */ {TShiftMore,  TShiftMore,  E,        E},
-        /* TShiftLess  */ {TShiftLess,  TShiftLess,  E,        E},
-        /* TrigLevMore */ {TrigLevMore, TrigLevMore, E,        E},
-        /* TrigLevLess */ {TrigLevLess, TrigLevLess, E,        E},
-        /* Left        */ {Arrow,       Arrow,       Arrow,    Arrow},
-        /* Right       */ {Arrow,       Arrow,       Arrow,    Arrow},
-        /* Up          */ {Arrow,       Arrow,       Arrow,    Arrow},
-        /* Down        */ {Arrow,       Arrow,       Arrow,    Arrow},
-        /* Enter       */ {Enter,       E,           E,        E},
-        /* F1          */ {Func,        Func,        Func,     Func},
-        /* F2          */ {Func,        Func,        Func,     Func},
-        /* F3          */ {Func,        Func,        Func,     Func},
-        /* F4          */ {Func,        Func,        Func,     Func},
-        /* F5          */ {Func,        Func,        Func,     Func}
+        /* None        */ {E,           E,           E,             E},
+        /* Function    */ {Function,    Function,    Function,      Function},
+        /* Measures    */ {Measures,    Measures,    Measures,      Measures},
+        /* Memory      */ {Memory,      Memory,      Memory,        Memory},
+        /* Service     */ {Service,     Service,     Service,       Service},
+        /* ChannelA    */ {ChannelA,    E,           E,             E},
+        /* ChannelB    */ {ChannelB,    E,           E,             E},
+        /* Time        */ {Time,        Time,        Time,          Time},
+        /* Start       */ {Start,       Start,       Start,         Start},
+        /* Trig        */ {Trig,        Trig,        Trig,          Trig},
+        /* Display     */ {Display,     Display,     Display,       Display},
+        /* RangeMoreA  */ {RangeMoreA,  E,           E,             E},
+        /* RangeLessA  */ {RangeLessA,  E,           E,             E},
+        /* RShiftMoreA */ {RShiftMoreA, RShiftMoreA, E,             E},
+        /* RShiftLessA */ {RShiftLessA, RShiftLessA, E,             E},
+        /* RangeMoreB  */ {RangeMoreB,  E,           E,             E},
+        /* RangeLessB  */ {RangeLessB,  E,           E,             E},
+        /* RShiftMoreB */ {RShiftMoreB, RShiftMoreB, E,             E},
+        /* RShiftLessB */ {RShiftLessB, RShiftLessB, E,             E},
+        /* TBaseMore   */ {TBaseMore,   E,           E,             E},
+        /* TBaseLess   */ {TBaseLess,   E,           E,             E},
+        /* TShiftMore  */ {TShiftMore,  TShiftMore,  E,             E},
+        /* TShiftLess  */ {TShiftLess,  TShiftLess,  E,             E},
+        /* TrigLevMore */ {TrigLevMore, TrigLevMore, E,             E},
+        /* TrigLevLess */ {TrigLevLess, TrigLevLess, E,             E},
+        /* Left        */ {Arrow,       Arrow,       Arrow,         Arrow},
+        /* Right       */ {Arrow,       Arrow,       Arrow,         Arrow},
+        /* Up          */ {Arrow,       Arrow,       Arrow,         Arrow},
+        /* Down        */ {Arrow,       Arrow,       Arrow,         Arrow},
+        /* Enter       */ {E,           E,           EnterRelease,  EnterLong},
+        /* F1          */ {Func,        Func,        Func,          Func},
+        /* F2          */ {Func,        Func,        Func,          Func},
+        /* F3          */ {Func,        Func,        Func,          Func},
+        /* F4          */ {Func,        Func,        Func,          Func},
+        /* F5          */ {Func,        Func,        Func,          Func}
     };
 
     uint8 code = event.key.code;
@@ -206,25 +206,22 @@ void Handlers::Arrow()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Enter()
+void Handlers::EnterRelease()
 {
-    TypePress press = event.type;
+    if (!MENU_IS_SHOWN)
+    {
+        Menu::Show(true);
+    }
+    else
+    {
+        Menu::CloseOpenedItem();
+    }
+}
 
-    if (press.Is(TypePress::Press))
-    {
-        if (!MENU_IS_SHOWN)
-        {
-            Menu::Show(true);
-        }
-        else
-        {
-            Menu::CloseOpenedItem();
-        }
-    }
-    else if(press.Is(TypePress::Long))
-    {
-        Menu::Show(!MENU_IS_SHOWN);
-    }
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Handlers::EnterLong()
+{
+    Menu::Show(!MENU_IS_SHOWN);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
