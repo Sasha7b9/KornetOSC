@@ -218,6 +218,13 @@ void FSMC::ConfigureForFPGA()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+void FSMC::WriteToPanel2bytes(uint8 byte0, uint8 byte1)
+{
+    uint8 buffer[2] = {byte0, byte1};
+    WriteToPanel(buffer, 2);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void FSMC::WriteToPanel(uint8 *data, int length)
 {
     interchangeWithPanel = true;

@@ -13,6 +13,8 @@ public:
     static void Init();
 
     static void WriteToPanel(uint8 *data, int length);
+    /// Записать в панель команду, состоящую из двух байт
+    static void WriteToPanel2bytes(uint8 byte0, uint8 byte1);
 
     static void WriteToFPGA8(uint8 *address, uint8 value);
 
