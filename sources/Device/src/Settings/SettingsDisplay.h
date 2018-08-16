@@ -22,7 +22,7 @@
 #define ENUM_SIGNALS_IN_SEC         (set.disp_ENumSignalsInSec)
 #define NUM_SIGNALS_IN_SEC          (sDisplay_NumSignalsInS())
 #define LAST_AFFECTED_CH            (set.disp_lastAffectedChannel)
-#define LAST_AFFECTED_CH_IS_A       (LAST_AFFECTED_CH == A)
+#define LAST_AFFECTED_CH_IS_A       (LAST_AFFECTED_CH.IsA())
 #define DISPLAY_ORIENTATION         (set.dbg_Orientation)
 
 #define SHOW_STRING_NAVI            (set.disp_showStringNavigation)

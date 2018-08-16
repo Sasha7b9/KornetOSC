@@ -122,13 +122,57 @@ void PainterData::DrawChannel(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterData::DrawMemoryWindow()
 {
-    //Draw
+    uint8 *data[2];
+
+    Storage::GetData(&data[0], &data[1]);
+
+    Chan chans[2] = {LAST_AFFECTED_CH_IS_A ? Chan(Chan::B) : Chan(Chan::A), LAST_AFFECTED_CH_IS_A ? Chan(Chan::A) : Chan(Chan::B)};
+
+    for(int i = 0; i < 2; i++)
+    {
+        Chan chan = chans[i];
+        if(SET_ENABLED(chan))
+        {
+            Painter::SetColor(Color::Channel(chan));
+            DrawDataInRect(0, 0, 270, Grid::Top() - 2, OUT(chan), FPGA_NUM_POINTS);
+        }
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::DrawDataInRect(int x, int y, int width, int height, Chan ch)
+void PainterData::DrawDataInRect(int x, int y, int width, int height, uint8 *data, int length)
 {
+    float scaleX = (float)width / (float)(length - 1);  // Уменьшаем на один, потому что в расчётах масштаба нас интересует не колисество точек, 
+                                                        // а количество промежутков между ними
+    float scaleY = (float)height / (float)(MAX_VALUE - MIN_VALUE);
 
+    int yStart = y + height;
+
+    for(int i = 0; i < length; i++)
+    {
+        if(data[i] < MIN_VALUE)
+        {
+            data[i] = MIN_VALUE;
+        }
+        else if(data[i] > MAX_VALUE)
+        {
+            data[i] = MAX_VALUE;
+        }
+    }
+
+    float prevX = (float)x;
+    int prevY = yStart - (int)(data[0] * scaleY + 0.5f);
+
+    for(int i = 1; i < length; i++)
+    {
+        float x0 = prevX + scaleX;
+        int y0 = yStart - (int)(data[i] * scaleY + 0.5f);
+
+        Painter::DrawVLine((int)(x0 + 0.5f), prevY, y0);
+
+        prevX = x0;
+        prevY = y0;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,7 +1,9 @@
 #pragma once
 #include "defines.h"
 
+
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
+
 
 struct Range
 {
@@ -97,11 +99,6 @@ struct Chan
     Chan(uint8 v = 0) : value(v)
     {
     };
-    /*
-    Chan(const TrigSource &v) : value(v.value)
-    {
-    };
-    */
     bool IsA()
     {
         return value == A;

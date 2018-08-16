@@ -20,7 +20,7 @@ private:
 
     static void DrawMemoryWindow();
 
-    static void DrawDataInRect(int x, int y, int width, int height, Chan ch);
+    static void DrawDataInRect(int x, int y, int width, int height, uint8 *data, int length);
 
     static void DrawTPos(int leftX, int rightX);
 

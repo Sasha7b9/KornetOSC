@@ -49,7 +49,7 @@
 #define MEM_DATA_SCALE          (set.mem_DataScale)
 #define MEM_DATA_SCALE_RECALC   (MEM_DATA_SCALE == MemDataScale_Recalculated)
 
-#define NUM_BYTES_SET    sMemory_NumBytesInChannel_()
+#define NUM_BYTES_SET           sMemory_NumBytesInChannel_()
 #define SET_POINTS_IN_CHANNEL   sMemory_NumPointsInChannel_()
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
