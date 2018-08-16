@@ -198,6 +198,9 @@
     <ClInclude Include="..\common\libs\STM32Cube_F7\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_ltdc_ex.h">
       <Filter>libs\HAL</Filter>
     </ClInclude>
+    <ClInclude Include="..\common\libs\STM32Cube_F7\Drivers\CMSIS\Include\core_cm7.h">
+      <Filter>libs\CMSIS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">

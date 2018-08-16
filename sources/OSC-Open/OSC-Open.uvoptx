@@ -22,7 +22,7 @@
   </DaveTm>
 
   <Target>
-    <TargetName>Panel</TargetName>
+    <TargetName>OSC-Open</TargetName>
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
@@ -216,7 +216,7 @@
   </Target>
 
   <Group>
-    <GroupName>libs/CMSIS</GroupName>
+    <GroupName>Panel/libs/CMSIS</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -248,7 +248,7 @@
   </Group>
 
   <Group>
-    <GroupName>libs/HAL</GroupName>
+    <GroupName>Panel/libs/HAL</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -460,7 +460,7 @@
   </Group>
 
   <Group>
-    <GroupName>src</GroupName>
+    <GroupName>Panel/src</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -540,7 +540,7 @@
   </Group>
 
   <Group>
-    <GroupName>Display</GroupName>
+    <GroupName>Panel/Display</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -668,7 +668,7 @@
   </Group>
 
   <Group>
-    <GroupName>Display/font</GroupName>
+    <GroupName>Panel/Display/font</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -748,8 +748,8 @@
   </Group>
 
   <Group>
-    <GroupName>Hardware</GroupName>
-    <tvExp>1</tvExp>
+    <GroupName>Panel/Hardware</GroupName>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -876,7 +876,7 @@
   </Group>
 
   <Group>
-    <GroupName>Hardware/stm32</GroupName>
+    <GroupName>Panel/Hardware/stm32</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -956,7 +956,7 @@
   </Group>
 
   <Group>
-    <GroupName>Utils</GroupName>
+    <GroupName>Panel/Utils</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -1012,7 +1012,7 @@
   </Group>
 
   <Group>
-    <GroupName>Settings</GroupName>
+    <GroupName>Panel/Settings</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
