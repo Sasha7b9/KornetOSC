@@ -862,15 +862,35 @@ void Painter::DrawVLineArray(int x, int numLines, uint8 *y0y1, Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawMultiVPointLine(int numLines, int y, uint16 x[], int delta, int count, Color color)
+void Painter::DrawMultiVPointLine(int numLines, int y0, uint16 x0[], int delta, int count, Color color)
 {
     SetColor(color);
+
+    for(int i = 0; i < numLines; i++)
+    {
+        int x = x0[i];
+        for(int numPoint = 0; numPoint < count; numPoint++)
+        {
+            int y = y0 + numPoint * delta;
+            SetPoint(x, y);
+        }
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawMultiHPointLine(int numLines, int x, uint8 y[], int delta, int count, Color color)
+void Painter::DrawMultiHPointLine(int numLines, int x0, uint8 y0[], int delta, int count, Color color)
 {
     SetColor(color);
+
+    for(int i = 0; i < numLines; i++)
+    {
+        int y = y0[i];
+        for(int numPoint = 0; numPoint < count; numPoint++)
+        {
+            int x = x0 + numPoint * delta;
+            SetPoint(x, y);
+        }
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
