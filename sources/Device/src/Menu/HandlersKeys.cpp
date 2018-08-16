@@ -24,7 +24,7 @@ void Handlers::Process(KeyEvent e)
     event = e;
 
     static const pFuncVV func[Key::NumButtons][4] =
-    {
+    {                   // Press        Repead       Release        Long
         /* None        */ {E,           E,           E,             E},
         /* Function    */ {Function,    Function,    Function,      Function},
         /* Measures    */ {Measures,    Measures,    Measures,      Measures},
@@ -55,11 +55,11 @@ void Handlers::Process(KeyEvent e)
         /* Up          */ {Arrow,       Arrow,       Arrow,         Arrow},
         /* Down        */ {Arrow,       Arrow,       Arrow,         Arrow},
         /* Enter       */ {E,           E,           EnterRelease,  EnterLong},
-        /* F1          */ {Func,        Func,        Func,          Func},
-        /* F2          */ {Func,        Func,        Func,          Func},
-        /* F3          */ {Func,        Func,        Func,          Func},
-        /* F4          */ {Func,        Func,        Func,          Func},
-        /* F5          */ {Func,        Func,        Func,          Func}
+        /* F1          */ {E,           E,           FuncRelease,   FuncLong},
+        /* F2          */ {E,           E,           FuncRelease,   FuncLong},
+        /* F3          */ {E,           E,           FuncRelease,   FuncLong},
+        /* F4          */ {E,           E,           FuncRelease,   FuncLong},
+        /* F5          */ {E,           E,           FuncRelease,   FuncLong}
     };
 
     uint8 code = event.key.code;
@@ -154,19 +154,27 @@ void Handlers::TBaseMore()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Func()
+void Handlers::FuncRelease()
 {
-    TypePress press = event.type;
-
-    if(press.Is(TypePress::Press))
+    if (MENU_IS_SHOWN)
     {
-        if (MENU_IS_SHOWN)
+        Control *control = (Control *)Menu::itemUnderButton[event.key.code];
+        if (control)
         {
-            Control *control = (Control *)Menu::itemUnderButton[event.key.code];
-            if (control)
-            {
-                control->ShortPress();
-            }
+            control->ShortPress();
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Handlers::FuncLong()
+{
+    if (MENU_IS_SHOWN)
+    {
+        Control *control = (Control *)Menu::itemUnderButton[event.key.code];
+        if (control)
+        {
+            control->LongPress();
         }
     }
 }

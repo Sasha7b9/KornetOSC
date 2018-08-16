@@ -734,12 +734,10 @@ void FPGA::ResetPin(Pin pin)
 void FPGA::LoadTShift()
 {
     gPost = SET_TSHIFT;
-    gPred = (uint16)(512 - gPost);
+    gPred = (uint16)(FPGA_NUM_POINTS - gPost);
 
     gPost = (uint16)(~(gPost + 1));
     gPred = (uint16)(~(gPred + 3));
-
-    //LOG_WRITE("pred = %d, post = %d", gPred, gPost);
 
     FSMC::WriteToFPGA16(WR_PRED_LO, gPost);
     FSMC::WriteToFPGA16(WR_POST_LO, gPred);
