@@ -157,12 +157,12 @@ public:
 
     // Меню ИЗМЕРЕНИЯ
 
-    bool                meas_Show;                      ///< Показывать ли измерения.
-    MeasuresNumber      meas_Number;                    ///< Сколько измерений выводить.
-    MeasSource          meas_Source;                    ///< Для каких каналов выводить измерения.
-    ModeViewSignals     meas_ModeViewSignals;           ///< Сжимать ли сигналы при выводе измерений.
-    Meas                meas_Measures[15];              ///< Выбранные для индикации измерения.
-    Meas                meas_Marked;                    ///< Измерение, на которое нужно выводить маркеры.
+    bool                meas_show;                      ///< Показывать ли измерения.
+    MeasuresNumber      meas_number;                    ///< Сколько измерений выводить.
+    MeasSource          meas_source;                    ///< Для каких каналов выводить измерения.
+    ModeViewSignals     meas_modeViewSignals;           ///< Сжимать ли сигналы при выводе измерений.
+    Meas                meas_measures[15];              ///< Выбранные для индикации измерения.
+    Meas                meas_marked;                    ///< Измерение, на которое нужно выводить маркеры.
 
     // Меню СЕРВИС
 

@@ -649,18 +649,18 @@ struct MeasuresNumber
         _6_1,                     ///< 6 строк по 1 измерению.
         _6_2                      ///< 6 строк по 2 измерения.
     };
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
+    COMMON_ENUM;
 };
 
 /// Сжимать ли сигналы при выводе измерений.
-enum ModeViewSignals
+struct ModeViewSignals
 {
-    ModeViewSignals_AsIs,       ///< Показывать сигналы как есть.
-    ModeViewSignals_Compress    ///< Сжимать сетку с сигналами.
+    enum
+    {
+        AsIs,       ///< Показывать сигналы как есть.
+        Compress    ///< Сжимать сетку с сигналами.
+    };
+    COMMON_ENUM;
 };
 
 /// Тип выборки для режима рандомизатора.

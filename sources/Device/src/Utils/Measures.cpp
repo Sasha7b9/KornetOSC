@@ -20,7 +20,7 @@ typedef struct
 
 #define DEF_STRUCT_MEASURE(name, ugo) {name, ugo, 0, 0, 0}
 
-static const StructMeasure sMeas[NumMeasures] =
+static const StructMeasure sMeas[Meas::Num] =
 {
     DEF_STRUCT_MEASURE("",            '\x00'),
     DEF_STRUCT_MEASURE("U макс",      '\x20'),
@@ -186,7 +186,7 @@ void Measures::ShortPressOnSmallButonMarker()
 {
     if(MEASURE(posActive) == MEAS_MARKED)
     {
-        MEAS_MARKED = Meas_None;
+        MEAS_MARKED = Meas::None;
     }
     else
     {
@@ -208,13 +208,13 @@ void Measures::DrawPageChoice()
     int dY = 22;
     int maxRow = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 8 : 5;
     int maxCol = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 3 : 5;
-    Meas meas = Meas_None;
+    Meas meas = Meas::None;
     Painter::SetFont(TypeFont_UGO);
     for(int row = 0; row < maxRow; row++)
     {
         for(int col = 0; col < maxCol; col++)
         {
-            if(meas >= NumMeasures)
+            if(meas >= Meas::Num)
             {
                 break;
             }
@@ -225,7 +225,7 @@ void Measures::DrawPageChoice()
             Painter::FillRegion(x0 + 1, y0 + 1, dX - 2, dY - 2, (active ? Color::FLASH_10 : Color::BACK));
             Painter::SetColor(active ? Color::FLASH_01 : Color::FILL);
             Painter::Draw10SymbolsInRect(x0 + 2, y0 + 1, GetChar(meas));
-            if(meas < NumMeasures)
+            if(meas < Meas::Num)
             {
                 Painter::SetFont(TypeFont_5);
                 Painter::DrawTextRelativelyRight(x0 + dX, y0 + 12, sMeas[meas].name, active ? Color::FLASH_01 : Color::FILL);

@@ -11,32 +11,46 @@
  */
 
 // Виды измерений
-enum Meas
+struct Meas
 {
-    Meas_None,
-    VoltageMax,
-    VoltageMin,
-    VoltagePic,
-    VoltageMaxSteady,
-    VoltageMinSteady,
-    VoltageAmpl,
-    VoltageAverage,
-    VoltageRMS,
-    VoltageVybrosPlus,
-    VoltageVybrosMinus,
-    Period,
-    Freq,
-    TimeNarastaniya,
-    TimeSpada,
-    DurationPlus,
-    DurationMinus,
-    SkvaznostPlus,
-    SkvaznostMinus,
-    DelayPlus,
-    DelayMinus,
-    PhazaPlus,
-    PhazaMinus,
-    NumMeasures
+    enum
+    {
+        None,
+        VoltageMax,
+        VoltageMin,
+        VoltagePic,
+        VoltageMaxSteady,
+        VoltageMinSteady,
+        VoltageAmpl,
+        VoltageAverage,
+        VoltageRMS,
+        VoltageVybrosPlus,
+        VoltageVybrosMinus,
+        Period,
+        Freq,
+        TimeNarastaniya,
+        TimeSpada,
+        DurationPlus,
+        DurationMinus,
+        SkvaznostPlus,
+        SkvaznostMinus,
+        DelayPlus,
+        DelayMinus,
+        PhazaPlus,
+        PhazaMinus,
+        Num
+    };
+    uint8 value;
+    operator uint8() const
+    {
+        return value;
+    };
+    Meas(const Meas &meas) : value(meas)
+    {
+    };
+    Meas(int8 v = 0) : value((uint8)v)
+    {
+    };
 };
 
 

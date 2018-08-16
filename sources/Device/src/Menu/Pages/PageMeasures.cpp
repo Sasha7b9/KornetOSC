@@ -208,9 +208,9 @@ static void OnRegSet_Tune(int angle)
         Sound::RegulatorSwitchRotate();
         if (Measures::posOnPageChoice < 0)
         {
-            Measures::posOnPageChoice = NumMeasures - 1;
+            Measures::posOnPageChoice = Meas::Num - 1;
         }
-        else if (Measures::posOnPageChoice == NumMeasures)
+        else if (Measures::posOnPageChoice == Meas::Num)
         {
             Measures::posOnPageChoice = 0;
         }

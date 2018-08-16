@@ -9,95 +9,102 @@
 
 static const Settings defaultSettings =
 {
-    0,                          /* size                       */
-    0,                          /* crc32                      */
+    /* size                       */    0,
+    /* crc32                      */    0,
 
-        // ÃÂÌ˛ ƒ»—œÀ≈…
+                                            // ÃÂÌ˛ ƒ»—œÀ≈…
 
-    ModeDrawSignal::Lines,      /* disp_modeDrawSignal;       */
-    ThicknessSignal::_1,        /* disp_thickness;            */
-    Background::Black,          /* disp_background;           */
-    ShowStrNavi::Temp,          /* disp_showStringNavigation; */
-    ENumMinMax::_1,             /* disp_ENumMinMax;           */
-    ModeAveraging::Accurately,  /* disp_modeAveraging;        */
-    ENumAverage::_1,            /* disp_ENumAverage;          */
-    ENumAccum::_1,              /* disp_ENumAccum;            */
-    ModeAccumulation::NoReset,  /* disp_modeAccumulation;     */
-    ENumSmoothing::Disable,     /* disp_ENumSmoothing;        */
-    ENumSignalsInSec::_25,      /* disp_ENumSignalsInSec;     */
-    TypeGrid::_1,               /* disp_typeGrid;             */
-    50,                         /* disp_brightnessGrid;       */
-    LinkingRShift::Position,    /* disp_linkingRShift;        */
-    100,                        /* disp_brightness;           */
-    5,                          /* disp_timeShowLevels;       */
-    5,                          /* disp_timeMessages;         */
-    AltMarkers::AutoHide,       /* disp_altMarkers;           */
-    MenuAutoHide::None,         /* disp_menuAutoHide;         */
-    0,                          /* disp_shiftInMemory;        */
-    A,                          /* disp_lastAffectedChannel;  */
+    /* disp_modeDrawSignal;       */    ModeDrawSignal::Lines,
+    /* disp_thickness;            */    ThicknessSignal::_1,
+    /* disp_background;           */    Background::Black,
+    /* disp_showStringNavigation; */    ShowStrNavi::Temp,
+    /* disp_ENumMinMax;           */    ENumMinMax::_1,
+    /* disp_modeAveraging;        */    ModeAveraging::Accurately,
+    /* disp_ENumAverage;          */    ENumAverage::_1,
+    /* disp_ENumAccum;            */    ENumAccum::_1,
+    /* disp_modeAccumulation;     */    ModeAccumulation::NoReset,
+    /* disp_ENumSmoothing;        */    ENumSmoothing::Disable,
+    /* disp_ENumSignalsInSec;     */    ENumSignalsInSec::_25,
+    /* disp_typeGrid;             */    TypeGrid::_1,
+    /* disp_brightnessGrid;       */    50,
+    /* disp_linkingRShift;        */    LinkingRShift::Position,
+    /* disp_brightness;           */    100,
+    /* disp_timeShowLevels;       */    5,
+    /* disp_timeMessages;         */    5,
+    /* disp_altMarkers;           */    AltMarkers::AutoHide,
+    /* disp_menuAutoHide;         */    MenuAutoHide::None,
+    /* disp_shiftInMemory;        */    0,
+    /* disp_lastAffectedChannel;  */    A,
 
-        // ÃÂÌ˛  ¿Õ¿À 1,  ¿Õ¿À 2
+                                            // ÃÂÌ˛  ¿Õ¿À 1,  ¿Õ¿À 2
 
-    { RShiftZero, RShiftZero },                             /* chan_shift[NumChannels];  */
-    { Range::_500mV, Range::_500mV },                       /* chan_range[NumChannels];  */
-    { ModeCouple::DC, ModeCouple::DC },                     /* chan_couple[NumChannels]; */
-    { true, true },                                         /* chan_enable[NumChannels]; */
-    { 0, 0 },                                               /* chan_balanceShiftADC[2];  */
-    { Bandwidth::_20MHz, Bandwidth::_20MHz },               /* chan_bandwidth[2];        */
-    { Resistance::_1Mom, Resistance::_1Mom },               /* chan_resistance[2];       */
-    { false, false },                                       /* chan_inverse[2];          */
-    { Divider::_1, Divider::_1 },                           /* chan_divider[2];          */
-    { CalibrationMode::Disable, CalibrationMode::Disable },   /* chan_calibrationMode[2];  */
+    /* chan_shift[NumChannels];  */     { RShiftZero, RShiftZero },
+    /* chan_range[NumChannels];  */     { Range::_500mV, Range::_500mV },
+    /* chan_couple[NumChannels]; */     { ModeCouple::DC, ModeCouple::DC },
+    /* chan_enable[NumChannels]; */     { true, true },
+    /* chan_balanceShiftADC[2];  */     { 0, 0 },
+    /* chan_bandwidth[2];        */     { Bandwidth::_20MHz, Bandwidth::_20MHz },
+    /* chan_resistance[2];       */     { Resistance::_1Mom, Resistance::_1Mom },
+    /* chan_inverse[2];          */     { false, false },
+    /* chan_divider[2];          */     { Divider::_1, Divider::_1 },
+    /* chan_calibrationMode[2];  */     { CalibrationMode::Disable, CalibrationMode::Disable }, 
 
-        // ÃÂÌ˛ —»Õ’–ŒÕ»«¿÷»ﬂ
+                                            // ÃÂÌ˛ —»Õ’–ŒÕ»«¿÷»ﬂ
 
-    TrigSource::A,                  /* trig_source;              */
-    TrigInput::Full,                /* trig_input;               */
-    TrigPolarity::Rising,           /* trig_polarity;            */
-    { TrigLevZero, TrigLevZero },   /* trig_lev[NumChannels];    */
-    StartMode::Auto,                /* trig_startMode;           */
-    TrigModeFind::Hand,             /* trig_modeFind;            */
+    /* trig_source;             */      TrigSource::A,
+    /* trig_input;              */      TrigInput::Full,
+    /* trig_polarity;           */      TrigPolarity::Rising,
+    /* trig_lev[NumChannels];   */      { TrigLevZero, TrigLevZero },
+    /* trig_startMode;          */      StartMode::Auto,
+    /* trig_modeFind;           */      TrigModeFind::Hand,             
 
-        // ÃÂÌ˛ –¿«¬®–“ ¿
+                                            // ÃÂÌ˛ –¿«¬®–“ ¿
 
-     0,                             /* time_shift;               */
-     TBase::_500us,                 /* time_base;                */
-     PeakDetMode::Disabled,         /* time_peakDet;             */
-     TPos::Center,                  /* time_TPos;                */
-     SampleType::Real,              /* time_sampleType;          */
-     FunctionTime::Time,            /* time_timeDivXPos;         */
-     LinkingTShift::Time,           /* time_linkingTShift;       */
-     SampleType::Real,              /* time_sampleTypeOld;       */
+    /* time_shift;          */          0,
+    /* time_base;           */          TBase::_500us,
+    /* time_peakDet;        */          PeakDetMode::Disabled,
+    /* time_TPos;           */          TPos::Center,
+    /* time_sampleType;     */          SampleType::Real,
+    /* time_timeDivXPos;    */          FunctionTime::Time,
+    /* time_linkingTShift;  */          LinkingTShift::Time,
+    /* time_sampleTypeOld;  */          SampleType::Real,              
 
-        // ÃÂÌ˛  ”–—Œ–€
+                                            // ÃÂÌ˛  ”–—Œ–€
 
-    false,                                      /* curs_showCursors;             */
-    { CursLookMode::None, CursLookMode::None }, /* curs_lookMode[2];             */
-    true,                                       /* curs_showFreq;                */
-    CursActive::None,                           /* curs_active;                  */
-    A,                                          /* curs_source;                  */
-    { CursCntrl::Disable, CursCntrl::Disable }, /* curs_cntrlU[NumChannels];     */
-    { CursCntrl::Disable, CursCntrl::Disable }, /* curs_cntrlT[NumChannels];     */
-    CursMovement::Pixels,                       /* curs_movement;                */
-    { 100, 100 },                               /* curs_deltaU100percents[2];    */
-    { 100, 100 },                               /* curs_deltaT100percents[2];    */
-    { { 100, 100 },{ 100, 100 } },              /* curs_posCurU[NumChannels][2]; */
-    { { 100, 100 },{ 100, 100 } },              /* curs_posCurT[NumChannels][2]; */
+    /* curs_showCursors;             */ false,
+    /* curs_lookMode[2];             */ { CursLookMode::None, CursLookMode::None },
+    /* curs_showFreq;                */ true,
+    /* curs_active;                  */ CursActive::None,
+    /* curs_source;                  */ A,
+    /* curs_cntrlU[NumChannels];     */ { CursCntrl::Disable, CursCntrl::Disable },
+    /* curs_cntrlT[NumChannels];     */ { CursCntrl::Disable, CursCntrl::Disable },
+    /* curs_movement;                */ CursMovement::Pixels,
+    /* curs_deltaU100percents[2];    */ { 100, 100 },
+    /* curs_deltaT100percents[2];    */ { 100, 100 },
+    /* curs_posCurU[NumChannels][2]; */ { { 100, 100 },{ 100, 100 } },
+    /* curs_posCurT[NumChannels][2]; */ { { 100, 100 },{ 100, 100 } },
 
         // ÃÂÌ˛ œ¿Ãﬂ“‹
 
-    ENumPointsFPGA::_512,   /* mem_enumPoints;                             */
-    ModeBtnMemory::Menu,    /* mem_modeBtnMemory;                          */
-    ModeWork::Dir,          /* mem_modeWork;                               */
-    false,                  /* mem_flashAutoConnect;                       */
-    0,                      /* mem_indexCurSymbolNameMask;                 */
-    ModeSaveSignal::BMP,    /* mem_modeSaveSignal;                         */
-    {},                     /* mem_fileName[MAX_SYMBOLS_IN_FILE_NAME];     */
-    ModeShowIntMem::Saved,  /* mem_modeShowIntMem;                         */
-    FileNamingMode::Mask,   /* mem_fileNamingMode;                         */
-    {}                      /* mem_fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; */
+    /* mem_enumPoints;                             */   ENumPointsFPGA::_512,
+    /* mem_modeBtnMemory;                          */   ModeBtnMemory::Menu,
+    /* mem_modeWork;                               */   ModeWork::Dir,
+    /* mem_flashAutoConnect;                       */   false,
+    /* mem_indexCurSymbolNameMask;                 */   0,
+    /* mem_modeSaveSignal;                         */   ModeSaveSignal::BMP,
+    /* mem_fileName[MAX_SYMBOLS_IN_FILE_NAME];     */   {},
+    /* mem_modeShowIntMem;                         */   ModeShowIntMem::Saved,
+    /* mem_fileNamingMode;                         */   FileNamingMode::Mask,
+    /* mem_fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; */   {},
 
     // ÃÂÌ˛ »«Ã≈–≈Õ»ﬂ
+
+    /* meas_show;            */ false,
+    /* meas_number;          */ MeasuresNumber::_1_5,
+    /* meas_source;          */ MeasSource::A_B,
+    /* meas_modeViewSignals; */ ModeViewSignals::AsIs,
+    /* meas_measures[15];    */ {},
+    /* meas_marked;          */ Meas::Freq,
 
     // ÃÂÌ˛ —≈–¬»—
 
