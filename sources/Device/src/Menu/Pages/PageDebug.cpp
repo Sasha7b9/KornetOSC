@@ -321,8 +321,8 @@ void PageDebug::OnChanged_ADC_Stretch_Mode(bool)
 {
     if (NRST_STRETCH_ADC_TYPE_IS_DISABLE)
     {
-        stretchA = NRST_STRETCH_ADC_A(StretchADC_Disable) = 0;
-        stretchB = NRST_STRETCH_ADC_B(StretchADC_Disable) = 0;
+        stretchA = NRST_STRETCH_ADC_A(StretchADC::Disable) = 0;
+        stretchB = NRST_STRETCH_ADC_B(StretchADC::Disable) = 0;
     }
     else
     {

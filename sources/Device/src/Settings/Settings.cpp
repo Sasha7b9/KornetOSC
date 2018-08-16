@@ -36,20 +36,20 @@ static const Settings defaultSettings =
     /* disp_shiftInMemory;        */    0,
     /* disp_lastAffectedChannel;  */    A,
 
-                                        // Меню КАНАЛ 1, КАНАЛ 2
+                                            // Меню КАНАЛ 1, КАНАЛ 2
     
-    /* chan_shift[NumChannels];  */{RShiftZero, RShiftZero},
-    /* chan_range[NumChannels];  */{Range::_500mV, Range::_500mV},
-    /* chan_couple[NumChannels]; */{ModeCouple::DC, ModeCouple::DC},
-    /* chan_enable[NumChannels]; */{true, true},
-    /* chan_balanceShiftADC[2];  */{0, 0},
-    /* chan_bandwidth[2];        */{Bandwidth::_20MHz, Bandwidth::_20MHz},
-    /* chan_resistance[2];       */{Resistance::_1Mom, Resistance::_1Mom},
-    /* chan_inverse[2];          */{false, false},
-    /* chan_divider[2];          */{Divider::_1, Divider::_1},
-    /* chan_calibrationMode[2];  */{CalibrationMode::Disable, CalibrationMode::Disable},
+    /* chan_shift[NumChannels];  */     {RShiftZero, RShiftZero},
+    /* chan_range[NumChannels];  */     {Range::_500mV, Range::_500mV},
+    /* chan_couple[NumChannels]; */     {ModeCouple::DC, ModeCouple::DC},
+    /* chan_enable[NumChannels]; */     {true, true},
+    /* chan_balanceShiftADC[2];  */     {0, 0},
+    /* chan_bandwidth[2];        */     {Bandwidth::_20MHz, Bandwidth::_20MHz},
+    /* chan_resistance[2];       */     {Resistance::_1Mom, Resistance::_1Mom},
+    /* chan_inverse[2];          */     {false, false},
+    /* chan_divider[2];          */     {Divider::_1, Divider::_1},
+    /* chan_calibrationMode[2];  */     {CalibrationMode::Disable, CalibrationMode::Disable},
     
-    // Меню СИНХРОНИЗАЦИЯ
+                                            // Меню СИНХРОНИЗАЦИЯ
     
     /* trig_source;             */      TrigSource::A,
     /* trig_input;              */      TrigInput::Full,
@@ -58,7 +58,7 @@ static const Settings defaultSettings =
     /* trig_startMode;          */      StartMode::Auto,
     /* trig_modeFind;           */      TrigModeFind::Hand,
     
-    // Меню РАЗВЁРТКА
+                                            // Меню РАЗВЁРТКА
     
     /* time_shift;          */          0,
     /* time_base;           */          TBase::_500us,
@@ -69,22 +69,22 @@ static const Settings defaultSettings =
     /* time_linkingTShift;  */          LinkingTShift::Time,
     /* time_sampleTypeOld;  */          SampleType::Real,
 
-    // Меню КУРСОРЫ
+                                            // Меню КУРСОРЫ
     
     /* curs_showCursors;             */ false,
-    /* curs_lookMode[2];             */{CursLookMode::None, CursLookMode::None},
+    /* curs_lookMode[2];             */ {CursLookMode::None, CursLookMode::None},
     /* curs_showFreq;                */ true,
     /* curs_active;                  */ CursActive::None,
     /* curs_source;                  */ A,
-    /* curs_cntrlU[NumChannels];     */{CursCntrl::Disable, CursCntrl::Disable},
-    /* curs_cntrlT[NumChannels];     */{CursCntrl::Disable, CursCntrl::Disable},
+    /* curs_cntrlU[NumChannels];     */ {CursCntrl::Disable, CursCntrl::Disable},
+    /* curs_cntrlT[NumChannels];     */ {CursCntrl::Disable, CursCntrl::Disable},
     /* curs_movement;                */ CursMovement::Pixels,
-    /* curs_deltaU100percents[2];    */{100, 100},
-    /* curs_deltaT100percents[2];    */{100, 100},
-    /* curs_posCurU[NumChannels][2]; */{{ 100, 100 },{ 100, 100 }},
-    /* curs_posCurT[NumChannels][2]; */{{ 100, 100 },{ 100, 100 }},
+    /* curs_deltaU100percents[2];    */ {100, 100},
+    /* curs_deltaT100percents[2];    */ {100, 100},
+    /* curs_posCurU[NumChannels][2]; */ {{ 100, 100 },{ 100, 100 }},
+    /* curs_posCurT[NumChannels][2]; */ {{ 100, 100 },{ 100, 100 }},
     
-    // Меню ПАМЯТЬ
+                                            // Меню ПАМЯТЬ
     
     /* mem_enumPoints;                             */   ENumPointsFPGA::_512,
     /* mem_modeBtnMemory;                          */   ModeBtnMemory::Menu,
@@ -92,91 +92,101 @@ static const Settings defaultSettings =
     /* mem_flashAutoConnect;                       */   false,
     /* mem_indexCurSymbolNameMask;                 */   0,
     /* mem_modeSaveSignal;                         */   ModeSaveSignal::BMP,
-    /* mem_fileName[MAX_SYMBOLS_IN_FILE_NAME];     */{},
+    /* mem_fileName[MAX_SYMBOLS_IN_FILE_NAME];     */   {},
     /* mem_modeShowIntMem;                         */   ModeShowIntMem::Saved,
     /* mem_fileNamingMode;                         */   FileNamingMode::Mask,
-    /* mem_fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; */{},
+    /* mem_fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; */   {},
     
-    // Меню ИЗМЕРЕНИЯ
+                                            // Меню ИЗМЕРЕНИЯ
     
-    /* meas_show;            */ false,
-    /* meas_number;          */ MeasuresNumber::_1_5,
-    /* meas_source;          */ MeasSource::A_B,
-    /* meas_modeViewSignals; */ ModeViewSignals::AsIs,
-    /* meas_measures[15];    */{},
-    /* meas_marked;          */ Meas::Freq,
+    /* meas_show;            */         false,
+    /* meas_number;          */         MeasuresNumber::_1_5,
+    /* meas_source;          */         MeasSource::A_B,
+    /* meas_modeViewSignals; */         ModeViewSignals::AsIs,
+    /* meas_measures[15];    */         {},
+    /* meas_marked;          */         Meas::Freq,
     
-    // Меню СЕРВИС
+                                            // Меню СЕРВИС
     
-    /* serv_lang;           */ Language::RU,
-    /* serv_colorScheme;    */ ColorScheme::WhiteLetters,
-    /* serv_recorder;       */ false,
-    /* serv_calibratorMode; */ CalibratorMode::Freq,
-    /* serv_soundEnable;    */ true,
-    /* serv_soundVolume;    */ 100,
+    /* serv_lang;           */          Language::RU,
+    /* serv_colorScheme;    */          ColorScheme::WhiteLetters,
+    /* serv_recorder;       */          false,
+    /* serv_calibratorMode; */          CalibratorMode::Freq,
+    /* serv_soundEnable;    */          true,
+    /* serv_soundVolume;    */          100,
 
-    // Настройки математики
+                                            // Настройки математики
 
-    /* math_modeDraw;      */ FuncModeDraw::Disable,
-    /* math_enableFFT;     */ false,
-    /* math_scaleFFT;      */ ScaleFFT::Log,
-    /* math_sourceFFT;     */ SourceFFT::Both,
-    /* math_windowFFT;     */ WindowFFT::Hamming,
-    /* math_currentCursor; */ 0,
-    /* math_posCur[2];     */ { 50, 50 },
-    /* math_FFTmaxDB;      */ FFTmaxDB::_60,
-    /* math_function;      */ Function::Sum,
-    /* math_modeRegSet;    */ ModeRegSet::Range,
-    /* math_range;         */ Range::_1V,
-    /* math_divider;       */ Divider::_1,
-    /* math_rShift;        */ RShiftZero,
+    /* math_modeDraw;      */           FuncModeDraw::Disable,
+    /* math_enableFFT;     */           false,
+    /* math_scaleFFT;      */           ScaleFFT::Log,
+    /* math_sourceFFT;     */           SourceFFT::Both,
+    /* math_windowFFT;     */           WindowFFT::Hamming,
+    /* math_currentCursor; */           0,
+    /* math_posCur[2];     */           { 50, 50 },
+    /* math_FFTmaxDB;      */           FFTmaxDB::_60,
+    /* math_function;      */           Function::Sum,
+    /* math_modeRegSet;    */           ModeRegSet::Range,
+    /* math_range;         */           Range::_1V,
+    /* math_divider;       */           Divider::_1,
+    /* math_rShift;        */           RShiftZero,
 
-    // Настройки частотомера
+                                            // Настройки частотомера
 
-    /* freq_enable;        */ false,
-    /* freq_timeCounting;  */ TimeCounting::_1s,
-    /* freq_freqClc;       */ FreqClc::_1MHz,
-    /* freq_numberPeriods; */ NumberPeriods::_10,
+    /* freq_enable;        */           false,
+    /* freq_timeCounting;  */           TimeCounting::_1s,
+    /* freq_freqClc;       */           FreqClc::_1MHz,
+    /* freq_numberPeriods; */           NumberPeriods::_10,
 
-    // Меню ОТЛАДКА
+                                            // Меню ОТЛАДКА
 
-    /* dbg_numStrings;          */ 30,
-    /* dbg_sizeFont;            */ 8,
-    /* dbg_modePauseConsole;    */ false,
-    /* dbg_showAll;             */ false,
-    /* dbg_showFlag;            */ false,
-    /* dbg_showRShift[2];       */ { false, false },
-    /* dbg_showTrigLev;         */ false,
-    /* dbg_showRange[2];        */ { false, false },
-    /* dbg_showChanParam[2];    */ { false, false },
-    /* dbg_showTrigParam;       */ false,
-    /* dbg_showTShift;          */ false,
-    /* dbg_showTBase;           */ false,
-    /* dbg_numMeasuresForGates; */ 10,
-    /* dbg_showRandInfo;        */ false,
-    /* dbg_showRandStat;        */ false,
-    /* dbg_timeCompensation;    */ 0,
-    /* dbg_pretriggered;        */ 0,
-    /* dbg_bandwidth[2];        */{Bandwidth::_100MHz, Bandwidth::_100MHz},
-    /* dbg_ShowStats;           */ false,
-    /* dbg_Orientation;         */ DisplayOrientation::Direct,
+    /* dbg_numStrings;          */      30,
+    /* dbg_sizeFont;            */      8,
+    /* dbg_modePauseConsole;    */      false,
+    /* dbg_showAll;             */      false,
+    /* dbg_showFlag;            */      false,
+    /* dbg_showRShift[2];       */      { false, false },
+    /* dbg_showTrigLev;         */      false,
+    /* dbg_showRange[2];        */      { false, false },
+    /* dbg_showChanParam[2];    */      { false, false },
+    /* dbg_showTrigParam;       */      false,
+    /* dbg_showTShift;          */      false,
+    /* dbg_showTBase;           */      false,
+    /* dbg_numMeasuresForGates; */      10,
+    /* dbg_showRandInfo;        */      false,
+    /* dbg_showRandStat;        */      false,
+    /* dbg_timeCompensation;    */      0,
+    /* dbg_pretriggered;        */      0,
+    /* dbg_bandwidth[2];        */      {Bandwidth::_100MHz, Bandwidth::_100MHz},
+    /* dbg_ShowStats;           */      false,
+    /* dbg_Orientation;         */      DisplayOrientation::Direct,
 
-    // Настройки тестер-компонента
+                                            // Настройки тестер-компонента
 
-    /* test_control;  */ TesterControl::Voltage,
-    /* test_polarity; */ TesterPolarity::Positive,
-    /* test_stepU;    */ TesterStepU::_100mV,
-    /* test_stepI;    */ TesterStepI::_4mA,
-    /* test_smooth;   */ 0,
+    /* test_control;  */                TesterControl::Voltage,
+    /* test_polarity; */                TesterPolarity::Positive,
+    /* test_stepU;    */                TesterStepU::_100mV,
+    /* test_stepI;    */                TesterStepI::_4mA,
+    /* test_smooth;   */                0,
 
-    // Настройки меню
+                                            // Настройки меню
 
-    // Несбрасываемые настройки калибровки
+    /* menu_currentPage;                   */ 0,
+    /* menu_show;                          */ false,
+    /* menu_posActItem[Page_NumPages];     */ {},
+    /* menu_currentSubPage[Page_NumPages]; */ {},
 
-    /*
-    0,                              // menu_currentPage
-    false                           // menu_show
-    */
+                                            // Несбрасываемые настройки калибровки
+
+    /* nrst_balanceADC[NumChannels];                */ {},
+    /* nrst_balanceADCtype;                         */ BalanceADC::Disable,
+    /* nrst_stretchADCtype;                         */ StretchADC::Disable,
+    /* nrst_StretchADC[NumChannels][3];             */ {},
+    /* nrst_rShiftAddStable[NumChannels][3];        */ {},
+    /* nrst_numAveForRand;                          */ 0,
+    /* nrst_numSmoothForRand;                       */ 0,
+    /* nrst_rShiftAdd[NumChannels][Range::Size][2]; */ {},
+    /* nrst_correctionTime;                         */ 0
 };
 
 Settings set;

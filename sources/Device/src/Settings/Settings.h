@@ -239,16 +239,16 @@ public:
     // Несбрасываемые настройки калибровки
 
     int16               nrst_balanceADC[NumChannels];               ///< Значение дополнительного смещения АЦП для ручной балансировки.
-    BalanceADCtype      nrst_balanceADCtype;                        ///< Тип балансировки.
-    StretchADCtype      nrst_stretchADCtype;                        ///< Тип растяжки канала.
+    BalanceADC          nrst_balanceADCtype;                        ///< Тип балансировки.
+    StretchADC          nrst_stretchADCtype;                        ///< Тип растяжки канала.
     int16               nrst_StretchADC[NumChannels][3];            ///< \brief Поправочный коэффициент для ручного, калибровочного и
                         ///< отключенного режимов. Здесь хранится в целом виде, чтобы получить реальный коэффициент, нужно разделить на 1000 и
                         ///< прибавить единицу.
-    int16               nrst_RShiftAddStable[NumChannels][3];       ///< Добавочное смещение для трёх самых чувствительных диапазонов. Задаётся единожды при настройке
-    int16               nrst_NumAveForRand;                         ///< По скольким измерениям усреднять сигнал в режиме рандомизатора.
-    int16               nrst_NumSmoothForRand;                      ///< Число точек для скользящего фильта в рандомизаторе.
-    int16               nrst_RShiftAdd[NumChannels][Range::Size][2];///< Добавочное смещение, которое пишется сюда при калибровке и балансировке
-    int16               nrst_CorrectionTime;                        ///< Коэффициент коррекции времени.
+    int16               nrst_rShiftAddStable[NumChannels][3];       ///< Добавочное смещение для трёх самых чувствительных диапазонов. Задаётся единожды при настройке
+    int16               nrst_numAveForRand;                         ///< По скольким измерениям усреднять сигнал в режиме рандомизатора.
+    int16               nrst_numSmoothForRand;                      ///< Число точек для скользящего фильта в рандомизаторе.
+    int16               nrst_rShiftAdd[NumChannels][Range::Size][2];///< Добавочное смещение, которое пишется сюда при калибровке и балансировке
+    int16               nrst_correctionTime;                        ///< Коэффициент коррекции времени.
 };
 
 #pragma pack(pop)

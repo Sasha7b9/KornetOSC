@@ -374,19 +374,27 @@ struct FuncModeDraw
 
 /// \brief Тип балансировки АЦП каналов.
 /// Дело в том, что уровни АЦП не совпадают из-за отличия характеристик ( ? ), поэтому мы вводим дополнительное смещение для одного из АЦП канала.
-enum BalanceADCtype
+struct BalanceADC
 {
-    BalanceADC_Disable,     ///< Балансировка выключена.
-    BalanceADC_Settings,    ///< Используются значения балансировки, которые получены автоматически.
-    BalanceADC_Hand         ///< Используются значения балансировки, заданные вручную.
+    enum
+    {
+        Disable,     ///< Балансировка выключена.
+        Settings,    ///< Используются значения балансировки, которые получены автоматически.
+        Hand         ///< Используются значения балансировки, заданные вручную.
+    };
+    COMMON_ENUM;
 };
 
 /// Тип растяжки АЦП
-enum StretchADCtype
+struct StretchADC
 {
-    StretchADC_Disable,
-    StretchADC_Real,
-    StretchADC_Hand
+    enum
+    {
+        Disable,
+        Real,
+        Hand
+    };
+    COMMON_ENUM;
 };
 
 struct DisplayOrientation
