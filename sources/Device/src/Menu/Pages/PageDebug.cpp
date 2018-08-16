@@ -54,7 +54,7 @@ DEF_CHOICE_2(       cConsole_SizeFont,                                          
     "",
     "5", "5",
     "8", "8",
-    set.dbg__sizeFont, ppConsole, FuncActive, FuncChangedChoice, FuncDraw
+    set.dbg_sizeFont, ppConsole, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ DEF_CHOICE_2(       cConsole_Registers_RShiftA,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showRShift[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showRShift[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ DEF_CHOICE_2(       cConsole_Registers_RShiftB,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showRShift[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showRShift[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -119,7 +119,7 @@ DEF_CHOICE_2(       cConsole_Registers_TrigLev,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showTrigLev, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showTrigLev, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -129,7 +129,7 @@ DEF_CHOICE_2(       cConsole_Registers_RangeA,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showRange[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showRange[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -139,7 +139,7 @@ DEF_CHOICE_2(       cConsole_Registers_RangeB,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showRange[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showRange[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -149,7 +149,7 @@ DEF_CHOICE_2(       cConsole_Registers_TrigParam,                               
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showTrigParam, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showTrigParam, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -159,7 +159,7 @@ DEF_CHOICE_2(       cConsole_Registers_ChanParamA,                              
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showChanParam[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showChanParam[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ DEF_CHOICE_2(       cConsole_Registers_ChanParamB,                              
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showChanParam[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showChanParam[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ DEF_CHOICE_2(       cConsole_Registers_TBase,                                   
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showTBase, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showTBase, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -189,7 +189,7 @@ DEF_CHOICE_2(       cConsole_Registers_TShift,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg__showTShift, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showTShift, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

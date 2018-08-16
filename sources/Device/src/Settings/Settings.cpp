@@ -138,6 +138,27 @@ static const Settings defaultSettings =
     /* freq_freqClc;       */ FreqClc::_1MHz,
     /* freq_numberPeriods; */ NumberPeriods::_10,
 
+    // Меню ОТЛАДКА
+
+    /* dbg_numStrings;          */ 30,
+    /* dbg_sizeFont;            */ 8,
+    /* dbg_modePauseConsole;    */ false,
+    /* dbg_showAll;             */ false,
+    /* dbg_showFlag;            */ false,
+    /* dbg_showRShift[2];       */ { false, false },
+    /* dbg_showTrigLev;         */ false,
+    /* dbg_showRange[2];        */ { false, false },
+    /* dbg_showChanParam[2];    */ { false, false },
+    /* dbg_showTrigParam;       */ false,
+    /* dbg_showTShift;          */ false,
+    /* dbg_showTBase;           */ false,
+    /* dbg_numMeasuresForGates; */ 10,
+    /* dbg_showRandInfo;        */ false,
+    /* dbg_showRandStat;        */ false,
+    /* dbg_timeCompensation;    */ 0,
+    /* dbg_pretriggered;        */ 0,
+    /* dbg_bandwidth[2];        */ Bandwidth::_100MHz,
+
     // Настройки тестер-компонента
 
     // Настройки меню
