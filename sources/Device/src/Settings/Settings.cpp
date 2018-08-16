@@ -109,13 +109,27 @@ static const Settings defaultSettings =
     // Меню СЕРВИС
     
     /* serv_lang;           */ Language::RU,
-    /* serv_colorScheme;    */ ColorScheme_WhiteLetters,
+    /* serv_colorScheme;    */ ColorScheme::WhiteLetters,
     /* serv_recorder;       */ false,
     /* serv_calibratorMode; */ CalibratorMode::Freq,
     /* serv_soundEnable;    */ true,
     /* serv_soundVolume;    */ 100,
 
     // Настройки математики
+
+    /* math_modeDraw;      */ FuncModeDraw::Disable,
+    /* math_enableFFT;     */ false,
+    /* math_scaleFFT;      */ ScaleFFT::Log,
+    /* math_sourceFFT;     */ SourceFFT::Both,
+    /* math_windowFFT;     */ WindowFFT::Hamming,
+    /* math_currentCursor; */ 0,
+    /* math_posCur[2];     */ { 50, 50 },
+    /* math_FFTmaxDB;      */ FFTmaxDB::_60,
+    /* math_function;      */ Function::Sum,
+    /* math_modeRegSet;    */ ModeRegSet::Range,
+    /* math_range;         */ Range::_1V,
+    /* math_divider;       */ Divider::_1,
+    /* math_rShift;        */ RShiftZero,
 
     // Настройки частотомера
 

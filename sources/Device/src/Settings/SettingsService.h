@@ -29,7 +29,7 @@
 #define SOUND_VOLUME                    (set.serv_soundVolume)
 
 #define COLOR_SCHEME                    (set.serv_colorScheme)
-#define COLOR_SCHEME_IS_WHITE_LETTERS   (COLOR_SCHEME == ColorScheme_WhiteLetters)
+#define COLOR_SCHEME_IS_WHITE_LETTERS   (COLOR_SCHEME == ColorScheme::WhiteLetters)
 
 #define REC_PLACE_OF_SAVING             (set.rec_PlaceOfSaving)
 #define REC_NUM_CURSOR                  (set.rec_NumCursor)

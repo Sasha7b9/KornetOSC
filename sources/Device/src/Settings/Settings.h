@@ -176,18 +176,18 @@ public:
     // Настройки математики
 
     FuncModeDraw        math_modeDraw;                  ///< Раздельный или общий дисплей в режиме математической функции.
-    bool                math_EnableFFT;
-    ScaleFFT            math_ScaleFFT;
-    SourceFFT           math_SourceFFT;
-    WindowFFT           math_WindowFFT;
-    uint8               math_CurrentCursor;             ///< Определяет, каким курсором спектра управляет ручка УСТАНОВКА.
-    uint8               math_PosCur[2];                 ///< Позиция курсора спектра. Изменяется 0...256.
+    bool                math_enableFFT;
+    ScaleFFT            math_scaleFFT;
+    SourceFFT           math_sourceFFT;
+    WindowFFT           math_windowFFT;
+    uint8               math_currentCursor;             ///< Определяет, каким курсором спектра управляет ручка УСТАНОВКА.
+    uint8               math_posCur[2];                 ///< Позиция курсора спектра. Изменяется 0...256.
     FFTmaxDB            math_FFTmaxDB;
-    Function            math_Function;
-    ModeRegSet          math_ModeRegSet;                ///< Функция ручки УСТАНОВКА - масштаб по времени или смещение по вертикали.
-    Range               math_Range;
-    Divider             math_Divider;
-    uint16              math_RShift;
+    Function            math_function;
+    ModeRegSet          math_modeRegSet;                ///< Функция ручки УСТАНОВКА - масштаб по времени или смещение по вертикали.
+    Range               math_range;
+    Divider             math_divider;
+    uint16              math_rShift;
 
     // Настройки частотомера
 

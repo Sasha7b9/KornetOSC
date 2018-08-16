@@ -13,8 +13,8 @@
 #define SET_INVERSE(ch)         (set.chan_inverse[ch])
 #define SET_INVERSE_A           (SET_INVERSE(A))
 #define SET_INVERSE_B           (SET_INVERSE(B))
-#define SET_RSHIFT_MATH         (set.math_RShift)
-#define SET_RANGE_MATH          (set.math_Range)
+#define SET_RSHIFT_MATH         (set.math_rShift)
+#define SET_RANGE_MATH          (set.math_range)
 
 #define SET_RANGE(ch)           (set.chan_range[ch])
 #define SET_RANGE_A             (SET_RANGE(A))

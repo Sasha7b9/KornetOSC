@@ -334,18 +334,26 @@ struct ShowStrNavi
     COMMON_ENUM;
 };
 
-enum FFTmaxDB
+struct FFTmaxDB
 {
-    FFTmaxDB_40,
-    FFTmaxDB_60,
-    FFTmaxDB_80
+    enum
+    {
+        _40,
+        _60,
+        _80
+    };
+    COMMON_ENUM;
 };
 
-enum FuncModeDraw
+struct FuncModeDraw
 {
-    FuncModeDraw_Disable,
-    FuncModeDraw_Separate,
-    FuncModeDraw_Together
+    enum
+    {
+        Disable,
+        Separate,
+        Together
+    };
+    COMMON_ENUM;
 };
 
 /// \brief Тип балансировки АЦП каналов.
@@ -449,10 +457,14 @@ struct ENumMinMax
     COMMON_ENUM;
 };
 
-enum ColorScheme
+struct ColorScheme
 {
-    ColorScheme_WhiteLetters,   ///< В этом случае заголовки элементов меню пишутся белым - не очень хорошо видно снизу
-    ColorScheme_BlackLetters    ///< В этом случае заголовки элементов меню пишутся чёрным - не очень красиво выглядит
+    enum
+    {
+        WhiteLetters,   ///< В этом случае заголовки элементов меню пишутся белым - не очень хорошо видно снизу
+        BlackLetters    ///< В этом случае заголовки элементов меню пишутся чёрным - не очень красиво выглядит
+    };
+    COMMON_ENUM;
 };
 
 /// Количество усреднений по измерениям.
@@ -730,40 +742,57 @@ struct CalibrationMode
     COMMON_ENUM;
 };
 
-enum ScaleFFT
+struct ScaleFFT
 {
-    ScaleFFT_Log,           ///< Это значение означает логарифмическую шкалу вывода спектра.
-    ScaleFFT_Linear         ///< Это значение означает линейную шкалу вывода спектра.
+    enum
+    {
+        Log,           ///< Это значение означает логарифмическую шкалу вывода спектра.
+        Linear         ///< Это значение означает линейную шкалу вывода спектра.
+    };
+    COMMON_ENUM;
 };
 
 struct SourceFFT
 {
     enum
     {
-        ChannelA,
-        ChannelB,
+        A,
+        B,
         Both
     };
+    COMMON_ENUM;
 };
 
-enum WindowFFT
+struct WindowFFT
 {
-    WindowFFT_Rectangle,
-    WindowFFT_Hamming,
-    WindowFFT_Blackman,
-    WindowFFT_Hann
+    enum
+    {
+        Rectangle,
+        Hamming,
+        Blackman,
+        Hann
+    };
+    COMMON_ENUM;
 };
 
-enum Function
+struct Function
 {
-    Function_Sum,
-    Function_Mul
+    enum
+    {
+        Sum,
+        Mul
+    };
+    COMMON_ENUM;
 };
 
-enum ModeRegSet
+struct ModeRegSet
 {
-    ModeRegSet_Range,
-    ModeRegSet_RShift
+    enum
+    {
+        Range,
+        RShift
+    };
+    COMMON_ENUM;
 };
 
 /// Режим наименования файлов.
