@@ -36,30 +36,30 @@ static const Settings defaultSettings =
     /* disp_shiftInMemory;        */    0,
     /* disp_lastAffectedChannel;  */    A,
 
-                                            // Ìåíş ÊÀÍÀË 1, ÊÀÍÀË 2
-
-    /* chan_shift[NumChannels];  */     { RShiftZero, RShiftZero },
-    /* chan_range[NumChannels];  */     { Range::_500mV, Range::_500mV },
-    /* chan_couple[NumChannels]; */     { ModeCouple::DC, ModeCouple::DC },
-    /* chan_enable[NumChannels]; */     { true, true },
-    /* chan_balanceShiftADC[2];  */     { 0, 0 },
-    /* chan_bandwidth[2];        */     { Bandwidth::_20MHz, Bandwidth::_20MHz },
-    /* chan_resistance[2];       */     { Resistance::_1Mom, Resistance::_1Mom },
-    /* chan_inverse[2];          */     { false, false },
-    /* chan_divider[2];          */     { Divider::_1, Divider::_1 },
-    /* chan_calibrationMode[2];  */     { CalibrationMode::Disable, CalibrationMode::Disable }, 
-
-                                            // Ìåíş ÑÈÍÕĞÎÍÈÇÀÖÈß
-
+                                        // Ìåíş ÊÀÍÀË 1, ÊÀÍÀË 2
+    
+    /* chan_shift[NumChannels];  */{RShiftZero, RShiftZero},
+    /* chan_range[NumChannels];  */{Range::_500mV, Range::_500mV},
+    /* chan_couple[NumChannels]; */{ModeCouple::DC, ModeCouple::DC},
+    /* chan_enable[NumChannels]; */{true, true},
+    /* chan_balanceShiftADC[2];  */{0, 0},
+    /* chan_bandwidth[2];        */{Bandwidth::_20MHz, Bandwidth::_20MHz},
+    /* chan_resistance[2];       */{Resistance::_1Mom, Resistance::_1Mom},
+    /* chan_inverse[2];          */{false, false},
+    /* chan_divider[2];          */{Divider::_1, Divider::_1},
+    /* chan_calibrationMode[2];  */{CalibrationMode::Disable, CalibrationMode::Disable},
+    
+    // Ìåíş ÑÈÍÕĞÎÍÈÇÀÖÈß
+    
     /* trig_source;             */      TrigSource::A,
     /* trig_input;              */      TrigInput::Full,
     /* trig_polarity;           */      TrigPolarity::Rising,
-    /* trig_lev[NumChannels];   */      { TrigLevZero, TrigLevZero },
+    /* trig_lev[NumChannels];   */      {TrigLevZero, TrigLevZero},
     /* trig_startMode;          */      StartMode::Auto,
-    /* trig_modeFind;           */      TrigModeFind::Hand,             
-
-                                            // Ìåíş ĞÀÇÂ¨ĞÒÊÀ
-
+    /* trig_modeFind;           */      TrigModeFind::Hand,
+    
+    // Ìåíş ĞÀÇÂ¨ĞÒÊÀ
+    
     /* time_shift;          */          0,
     /* time_base;           */          TBase::_500us,
     /* time_peakDet;        */          PeakDetMode::Disabled,
@@ -67,46 +67,53 @@ static const Settings defaultSettings =
     /* time_sampleType;     */          SampleType::Real,
     /* time_timeDivXPos;    */          FunctionTime::Time,
     /* time_linkingTShift;  */          LinkingTShift::Time,
-    /* time_sampleTypeOld;  */          SampleType::Real,              
+    /* time_sampleTypeOld;  */          SampleType::Real,
 
-                                            // Ìåíş ÊÓĞÑÎĞÛ
-
+    // Ìåíş ÊÓĞÑÎĞÛ
+    
     /* curs_showCursors;             */ false,
-    /* curs_lookMode[2];             */ { CursLookMode::None, CursLookMode::None },
+    /* curs_lookMode[2];             */{CursLookMode::None, CursLookMode::None},
     /* curs_showFreq;                */ true,
     /* curs_active;                  */ CursActive::None,
     /* curs_source;                  */ A,
-    /* curs_cntrlU[NumChannels];     */ { CursCntrl::Disable, CursCntrl::Disable },
-    /* curs_cntrlT[NumChannels];     */ { CursCntrl::Disable, CursCntrl::Disable },
+    /* curs_cntrlU[NumChannels];     */{CursCntrl::Disable, CursCntrl::Disable},
+    /* curs_cntrlT[NumChannels];     */{CursCntrl::Disable, CursCntrl::Disable},
     /* curs_movement;                */ CursMovement::Pixels,
-    /* curs_deltaU100percents[2];    */ { 100, 100 },
-    /* curs_deltaT100percents[2];    */ { 100, 100 },
-    /* curs_posCurU[NumChannels][2]; */ { { 100, 100 },{ 100, 100 } },
-    /* curs_posCurT[NumChannels][2]; */ { { 100, 100 },{ 100, 100 } },
-
-        // Ìåíş ÏÀÌßÒÜ
-
+    /* curs_deltaU100percents[2];    */{100, 100},
+    /* curs_deltaT100percents[2];    */{100, 100},
+    /* curs_posCurU[NumChannels][2]; */{{ 100, 100 },{ 100, 100 }},
+    /* curs_posCurT[NumChannels][2]; */{{ 100, 100 },{ 100, 100 }},
+    
+    // Ìåíş ÏÀÌßÒÜ
+    
     /* mem_enumPoints;                             */   ENumPointsFPGA::_512,
     /* mem_modeBtnMemory;                          */   ModeBtnMemory::Menu,
     /* mem_modeWork;                               */   ModeWork::Dir,
     /* mem_flashAutoConnect;                       */   false,
     /* mem_indexCurSymbolNameMask;                 */   0,
     /* mem_modeSaveSignal;                         */   ModeSaveSignal::BMP,
-    /* mem_fileName[MAX_SYMBOLS_IN_FILE_NAME];     */   {},
+    /* mem_fileName[MAX_SYMBOLS_IN_FILE_NAME];     */{},
     /* mem_modeShowIntMem;                         */   ModeShowIntMem::Saved,
     /* mem_fileNamingMode;                         */   FileNamingMode::Mask,
-    /* mem_fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; */   {},
-
+    /* mem_fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; */{},
+    
     // Ìåíş ÈÇÌÅĞÅÍÈß
-
+    
     /* meas_show;            */ false,
     /* meas_number;          */ MeasuresNumber::_1_5,
     /* meas_source;          */ MeasSource::A_B,
     /* meas_modeViewSignals; */ ModeViewSignals::AsIs,
-    /* meas_measures[15];    */ {},
+    /* meas_measures[15];    */{},
     /* meas_marked;          */ Meas::Freq,
-
+    
     // Ìåíş ÑÅĞÂÈÑ
+    
+    /* serv_lang;           */ Language::RU,
+    /* serv_colorScheme;    */ ColorScheme_WhiteLetters,
+    /* serv_recorder;       */ false,
+    /* serv_calibratorMode; */ CalibratorMode::Freq,
+    /* serv_soundEnable;    */ true,
+    /* serv_soundVolume;    */ 100,
 
     // Íàñòğîéêè ìàòåìàòèêè
 
@@ -119,7 +126,6 @@ static const Settings defaultSettings =
     // Íåñáğàñûâàåìûå íàñòğîéêè êàëèáğîâêè
 
     /*
-    RU,                             // serv_lang
     Control_Voltage,                // test_control
     Polarity_Positive,              // test_polarity
     StepU_100mV,                    // test_stepU

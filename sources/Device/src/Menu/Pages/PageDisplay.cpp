@@ -48,7 +48,7 @@ DEF_CHOICE_2(       cSettings_Colors_Scheme,                                    
     "Changing the color scheme",
     "Ñץולא 1", "Scheme 1",
     "Ñץולא 2", "Scheme 2",
-    set.serv_ColorScheme, pppSettings_Colors, FuncActive, FuncChangedChoice, FuncDraw
+    set.serv_colorScheme, pppSettings_Colors, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

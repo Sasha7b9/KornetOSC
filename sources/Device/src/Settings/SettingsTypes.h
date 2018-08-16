@@ -707,11 +707,15 @@ struct TrigModeFind
     COMMON_ENUM;
 };
 
-enum CalibratorMode
+struct CalibratorMode
 {
-    Calibrator_Freq,
-    Calibrator_DC,
-    Calibrator_GND
+    enum
+    {
+        Freq,
+        DC,
+        GND
+    };
+    COMMON_ENUM;
 };
 
 /// Режим калибровки.

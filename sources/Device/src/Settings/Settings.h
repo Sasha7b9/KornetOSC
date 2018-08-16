@@ -167,11 +167,11 @@ public:
     // Меню СЕРВИС
 
     Language            serv_lang;
-    ColorScheme         serv_ColorScheme;
-    bool                serv_Recorder;                  ///< Включён ли режим регистратора.
-    CalibratorMode      serv_CalibratorMode;            ///< Режим работы калибратора.
-    bool                serv_SoundEnable;               ///< Включены ли звуки.
-    int16               serv_SoundVolume;               ///< Громкость звука [0...100].
+    ColorScheme         serv_colorScheme;
+    bool                serv_recorder;                  ///< Включён ли режим регистратора.
+    CalibratorMode      serv_calibratorMode;            ///< Режим работы калибратора.
+    bool                serv_soundEnable;               ///< Включены ли звуки.
+    int16               serv_soundVolume;               ///< Громкость звука [0...100].
 
     // Настройки математики
 
