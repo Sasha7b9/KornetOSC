@@ -156,27 +156,13 @@ void Handlers::TBaseMore()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::FuncRelease()
 {
-    if (MENU_IS_SHOWN)
-    {
-        Control *control = (Control *)Menu::itemUnderButton[event.key.code];
-        if (control)
-        {
-            control->ShortPress();
-        }
-    }
+    Menu::ReleaseFunctionalButton(event.key);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::FuncLong()
 {
-    if (MENU_IS_SHOWN)
-    {
-        Control *control = (Control *)Menu::itemUnderButton[event.key.code];
-        if (control)
-        {
-            control->LongPress();
-        }
-    }
+    Menu::LongFunctionalButton(event.key);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

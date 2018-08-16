@@ -845,3 +845,29 @@ void Menu::SaveSettings()
         }
     }
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::ReleaseFunctionalButton(Key key)
+{
+    if(MENU_IS_SHOWN)
+    {
+        Control *control = (Control *)itemUnderButton[key.code];
+        if(control)
+        {
+            control->ShortPress();
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::LongFunctionalButton(Key key)
+{
+    if(MENU_IS_SHOWN)
+    {
+        Control *control = (Control *)itemUnderButton[key.code];
+        if(control)
+        {
+            control->LongPress();
+        }
+    }
+}

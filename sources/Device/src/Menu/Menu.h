@@ -19,7 +19,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Menu
 {
-friend class Handlers;
+//friend class Handlers;
+friend class Page;
 
 public:
     /// Инициализация
@@ -72,11 +73,13 @@ public:
     static void SetItemForHint(void *item);
 
     static void SaveSettings();
+    /// Нужно вызывать при отпускании функциональной кнпоки
+    static void ReleaseFunctionalButton(Key key);
+    /// Нажно вызывать при "длинном" нажатии функциональной кнопки
+    static void LongFunctionalButton(Key key);
     ///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, 
     /// если ни одна кнопка не нажата.
     static Control *itemUnderKey;
-
-    static Control *itemUnderButton[Key::NumButtons];
     /// Строка подсказки, которую надо выводить в случае включённого режима подсказок.
     static const char *stringForHint;
     /// Item, подсказку для которого нужно выводить в случае включённого режима подсказок.
@@ -121,6 +124,8 @@ private:
     static pFuncVV funcAterUpdate;
     /// Время последнего нажатия кнопки. Нужно для того, чтобы периодически сохранять настройки
     static uint timeLastPressedButton;
+    /// Элементы управления, назначенные в данный момент соответствующим кнопкам
+    static Control *itemUnderButton[Key::NumButtons];
 };
 
 
