@@ -164,8 +164,8 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
 {
     static const Color colors[5] = {Color::FILL, Color::GRID, Color::RED, Color::GREEN, Color::BLUE};
 
-    uint8 *dataX = &dataTester[A][numStep][0];
-    uint8 *dataY = &dataTester[B][numStep][0];
+    uint8 *dataX = &dataTester[Chan::A][numStep][0];
+    uint8 *dataY = &dataTester[Chan::B][numStep][0];
 
     Painter::SetColor(colors[numStep]);
     

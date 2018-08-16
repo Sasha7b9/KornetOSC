@@ -33,13 +33,13 @@ public:
     /// Получить указатели на сохранённые данные. Данные хранятся в ОЗУ.
     static bool GetDataFromEnd_RAM(int fromEnd, DataSettings **ds, uint16 **dataA, uint16 **dataB);
     /// Возвращет указатель, который указывает на данные в памяти внешнего ОЗУ. Доступ к данным осуществляется по полусловам
-    static uint8 *GetData_RAM(Channel ch, int fromEnd);
+    static uint8 *GetData_RAM(Chan ch, int fromEnd);
     /// Получить усреднённые данные по нескольким измерениям
-    static uint8 *GetAverageData(Channel ch);
+    static uint8 *GetAverageData(Chan ch);
     /// Возвращает указатель на данные, отстоящие на indexFromEnd oт последнего сохранённого
     static DataSettings *DataSettingsFromEnd(int indexFromEnd);
     /// Получить ограничивающую линию сигнала 0 - снизу, 1 - сверху
-    static bool GetLimitation(Channel ch, uint8 *data, int direction);
+    static bool GetLimitation(Chan ch, uint8 *data, int direction);
     /// Сколько измерений может быть сохранено при такой же длине данных, как у последнего записанного
     static int NumberAvailableEntries();
 

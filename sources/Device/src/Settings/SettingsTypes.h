@@ -1,7 +1,7 @@
 #pragma once
 #include "defines.h"
 
-#define COMMON_ENUM     uint8 value; operator uint8() const { return value; }
+#define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 struct Range
 {
@@ -83,13 +83,52 @@ struct TrigInput
     COMMON_ENUM
 };
 
-enum Channel
+struct Chan
 {
-    A,
-    B,
-    Ext,
-    Math,
-    NumChannels
+    enum
+    {
+        A,
+        B,
+        Ext,
+        Math,
+        Num
+    };
+    COMMON_ENUM;
+    Chan(uint8 v = 0) : value(v)
+    {
+    };
+    /*
+    Chan(const TrigSource &v) : value(v.value)
+    {
+    };
+    */
+    bool IsA()
+    {
+        return value == A;
+    };
+    bool IsB()
+    {
+        return value == B;
+    }
+};
+
+/// Источник синхронизации
+struct TrigSource
+{
+    enum
+    {
+        A,    /// Канал 1
+        B,    /// Канал 2
+        Ext   /// Внешняя
+    };
+    TrigSource(uint8 v = A) : value(v)
+    {
+    };
+    operator Chan() const
+    {
+        return (Chan)value;
+    }
+    COMMON_ENUM;
 };
 
 
@@ -305,23 +344,6 @@ struct Divider
     };
     COMMON_ENUM;
     Divider(uint v = _1) : value((uint8)v) {};
-};
-
-/// Источник синхронизации
-struct TrigSource
-{
-    enum
-    {
-        A,    /// Канал 1
-        B,    /// Канал 2
-        Ext   /// Внешняя
-    };
-    TrigSource(uint8 v = A) : value(v) {};
-    operator Channel() const
-    {
-        return (Channel)value;
-    }
-    COMMON_ENUM;
 };
 
 /// Режим работы.

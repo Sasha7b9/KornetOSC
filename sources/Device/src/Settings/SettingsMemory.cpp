@@ -53,7 +53,7 @@ int ENumPoints_2_NumPoints(ENumPointsFPGA numPoints)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds)
+void *AllocMemForChannelFromHeap(Chan ch, DataSettings *ds)
 {
     int numBytes = RequestBytesForChannel(ch, ds);
     if (numBytes)
@@ -64,7 +64,7 @@ void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-int RequestBytesForChannel(Channel, DataSettings *ds)
+int RequestBytesForChannel(Chan, DataSettings *ds)
 {
     ENumPointsFPGA numBytes;
     PeakDetMode peakDet;

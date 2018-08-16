@@ -31,7 +31,7 @@ static const RangeStruct ranges[Range::Size] =
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void sChannel_SetRange(Channel ch, Range range)
+void sChannel_SetRange(Chan ch, Range range)
 {
     SET_RANGE(ch) = range;
 }
@@ -50,7 +50,7 @@ int sChannel_MultiplierRel2Abs(Divider divider)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void sChannel_SetEnabled(Channel ch, bool enabled)
+void sChannel_SetEnabled(Chan ch, bool enabled)
 {
     SET_ENABLED(ch) = enabled;
 }

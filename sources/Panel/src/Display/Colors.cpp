@@ -85,7 +85,7 @@ void Color::Log(Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Color Color::Cursors(Channel ch)
+Color Color::Cursors(Chan ch)
 {
     return CHAN[ch];
 }

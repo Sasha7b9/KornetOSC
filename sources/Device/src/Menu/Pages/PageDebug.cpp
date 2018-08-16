@@ -99,7 +99,7 @@ DEF_CHOICE_2(       cConsole_Registers_RShiftA,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_showRShift[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showRShift[Chan::A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ DEF_CHOICE_2(       cConsole_Registers_RShiftB,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_showRShift[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showRShift[Chan::B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -129,7 +129,7 @@ DEF_CHOICE_2(       cConsole_Registers_RangeA,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_showRange[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showRange[Chan::A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -139,7 +139,7 @@ DEF_CHOICE_2(       cConsole_Registers_RangeB,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_showRange[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showRange[Chan::B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -159,7 +159,7 @@ DEF_CHOICE_2(       cConsole_Registers_ChanParamA,                              
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_showChanParam[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showChanParam[Chan::A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ DEF_CHOICE_2(       cConsole_Registers_ChanParamB,                              
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_showChanParam[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_showChanParam[Chan::B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -252,8 +252,8 @@ static void Draw_ADC_Balance_Mode(int, int)
         {0, SET_BALANCE_ADC_B, (int8)NRST_BALANCE_ADC_B}
     };
 
-    shiftADCA = shift[A][NRST_BALANCE_ADC_TYPE];
-    shiftADCB = shift[B][NRST_BALANCE_ADC_TYPE];
+    shiftADCA = shift[Chan::A][NRST_BALANCE_ADC_TYPE];
+    shiftADCB = shift[Chan::B][NRST_BALANCE_ADC_TYPE];
 }
 
 static void OnChanged_ADC_Balance_Mode(bool)
@@ -475,8 +475,8 @@ static void OnPress_ADC_Shift_Reset()
             RSHIFT_ADD_STABLE(ch, range) = 0;
         }
     }
-    FPGA::SetRShift(A, SET_RSHIFT_A);
-    FPGA::SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(Chan::A, SET_RSHIFT_A);
+    FPGA::SetRShift(Chan::B, SET_RSHIFT_B);
 }
 
 DEF_BUTTON(         bADC_Shift_Reset,                                                                        //-- Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ - —·ÓÒ ---
@@ -489,7 +489,7 @@ DEF_BUTTON(         bADC_Shift_Reset,                                           
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Shift_A()
 {
-    FPGA::SetRShift(A, SET_RSHIFT_A);
+    FPGA::SetRShift(Chan::A, SET_RSHIFT_A);
 }
 
 DEF_GOVERNOR(       gADC_Shift_A2mV,                                                               //--- Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ - —Ï 1Í 2Ï¬ ÔÓÒÚ ---
@@ -502,7 +502,7 @@ DEF_GOVERNOR(       gADC_Shift_A2mV,                                            
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Shift_B()
 {
-    FPGA::SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(Chan::B, SET_RSHIFT_B);
 }
 
 DEF_GOVERNOR(       gADC_Shift_B2mV,                                                               //--- Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ - —Ï 2Í 2Ï¬ ÔÓÒÚ ---
@@ -678,7 +678,7 @@ DEF_PAGE_8(         ppRand,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Channels_BandwidthA(bool)
 {
-    FPGA::SetBandwidth(A);
+    FPGA::SetBandwidth(Chan::A);
 }
 
 DEF_CHOICE_7(       cChannels_BandwidthA,                                                                        //--- Œ“À¿ƒ ¿ -  ¿ÕÀ¿€ - œÓÎÓÒ‡ 1 ---
@@ -692,13 +692,13 @@ DEF_CHOICE_7(       cChannels_BandwidthA,                                       
     "350Ã√ˆ", "350MHz",
     "650Ã√ˆ", "650MHz",
     "750Ã√ˆ", "750MHz",
-    BANDWIDTH_DEBUG(A), ppChannels, FuncActive, OnChanged_Channels_BandwidthA, FuncDraw
+    BANDWIDTH_DEBUG(Chan::A), ppChannels, FuncActive, OnChanged_Channels_BandwidthA, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Channels_BandwidthB(bool)
 {
-    FPGA::SetBandwidth(B);
+    FPGA::SetBandwidth(Chan::B);
 }
 
 DEF_CHOICE_7(       cChannels_BandwidthB,                                                                        //--- Œ“À¿ƒ ¿ -  ¿ÕÀ¿€ - œÓÎÓÒ‡ 2 ---
@@ -712,7 +712,7 @@ DEF_CHOICE_7(       cChannels_BandwidthB,                                       
     "350Ã√ˆ", "350MHz",
     "650Ã√ˆ", "650MHz",
     "750Ã√ˆ", "750MHz",
-    BANDWIDTH_DEBUG(B), ppChannels, FuncActive, OnChanged_Channels_BandwidthB, FuncDraw
+    BANDWIDTH_DEBUG(Chan::B), ppChannels, FuncActive, OnChanged_Channels_BandwidthB, FuncDraw
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

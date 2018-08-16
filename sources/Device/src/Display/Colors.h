@@ -45,16 +45,16 @@ public:
     explicit Color(uint8 val) : value(val) { }
     Color(const Color &color) : value(color.value) { }
 
-    static Color Chan(Channel ch);
-    static Color Cursors(Channel ch);
+    static Color Channel(Chan ch);
+    static Color Cursors(Chan ch);
     static Color Trig();
-    static Color ChanAccum(Channel ch);     ///< Цвет канала в режиме накопления
+    static Color ChanAccum(Chan ch);     ///< Цвет канала в режиме накопления
     static Color MenuItem(bool shade);      ///< Цвет элемента меню.
     static Color MenuTitle(bool shade);     ///< Цвет заголовка страницы. inShade == true, если страница затенена
     static Color BorderMenu(bool shade);    ///< Цвет окантовки меню
     static Color LightShadingText();        ///< Светлый цвет в тени.
     static Color Contrast(Color color);     ///< Возвращает цвет, контрастный к color. Может быть белым или чёрным.
-    static Color ChanHalf(Channel ch);
+    static Color ChanHalf(Chan ch);
     
     uint8 value;
 

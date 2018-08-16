@@ -10,5 +10,5 @@ public:
 
 private:
 
-    static void DrawRShift(Channel ch);
+    static void DrawRShift(Chan ch);
 };

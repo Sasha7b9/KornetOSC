@@ -19,9 +19,9 @@
 /// Курсоры какого канала сейчас активны
 #define CURS_SOURCE                 (set.curs_source)
 /// Активны курсоры канала A
-#define CURS_SOURCE_A               (CURS_SOURCE == A)
+#define CURS_SOURCE_A               (CURS_SOURCE.IsA())
 /// Активны курсоры канала B
-#define CURS_SOURCE_B               (CURS_SOURCE == B)
+#define CURS_SOURCE_B               (CURS_SOURCE.IsB())
 
 #define CURsU_CNTRL_CH(ch)          (set.curs_cntrlU[ch])
 #define CURsU_CNTRL                 (CURsU_CNTRL_CH(CURS_SOURCE))
@@ -69,21 +69,21 @@
 
 
  /// Получить позицию курсора напряжения
-float sCursors_GetCursPosU(Channel ch, int numCur);
+float sCursors_GetCursPosU(Chan ch, int numCur);
 /// Возвращает true,если нужно рисовать курсоры
 bool  sCursors_NecessaryDrawCursors();
 /// Получить строку курсора напряжения
-const char *sCursors_GetCursVoltage(Channel source, int numCur, char buffer[20]);
+const char *sCursors_GetCursVoltage(Chan source, int numCur, char buffer[20]);
 /// Получить строку курсора времени
-const char *sCursors_GetCursorTime(Channel source, int numCur, char buffer[20]);
+const char *sCursors_GetCursorTime(Chan source, int numCur, char buffer[20]);
 /// Получить строку процентов курсоров напряжения
-const char *sCursors_GetCursorPercentsU(Channel source, char buffer[20]);
+const char *sCursors_GetCursorPercentsU(Chan source, char buffer[20]);
 /// Получить строку процентов курсоров времени
-const char *sCursors_GetCursorPercentsT(Channel source, char buffer[20]);
+const char *sCursors_GetCursorPercentsT(Chan source, char buffer[20]);
 /// Возвращает значение курсора времени
-float GetCursPosT(Channel ch, int num);
+float GetCursPosT(Chan ch, int num);
 
-void SetCursPosT_temp(Channel ch, int num, float value);
+void SetCursPosT_temp(Chan ch, int num, float value);
 
 /** @}  @}
  */

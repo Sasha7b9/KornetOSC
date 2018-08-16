@@ -20,21 +20,21 @@ extern const PageBase pCursors;
 extern const PageBase ppSet;
 
 /// Изменить значение позиции курсора напряжения на delta точек
-static void SetShiftCursPosU(Channel ch, int numCur, float delta);
+static void SetShiftCursPosU(Chan ch, int numCur, float delta);
 /// Изменить значение позиции курсора времени на delta точек
-static void SetShiftCursPosT(Channel ch, int numCurs, float delta);
+static void SetShiftCursPosT(Chan ch, int numCurs, float delta);
 /// Запомнить позиции курсоров, соответствующие 100%
-static void SetCursPos100(Channel ch);                                  
+static void SetCursPos100(Chan ch);                                  
 /// Установить источник курсорных измерений
-static void SetCursSource(Channel ch);
+static void SetCursSource(Chan ch);
 /// Выбрать следующий курсор
-static void IncCursCntrlU(Channel ch);
+static void IncCursCntrlU(Chan ch);
 /// Выбрать следующий курсор
-static void IncCursCntrlT(Channel ch);
+static void IncCursCntrlT(Chan ch);
 /// Установить позицию курсора напряжения
-static void SetCursorU(Channel ch, int numCur, float pos);
+static void SetCursorU(Chan ch, int numCur, float pos);
 /// Установить позицию курсора времени
-static void SetCursorT(Channel ch, int numCur, float pos);
+static void SetCursorT(Chan ch, int numCur, float pos);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,7 +68,7 @@ DEF_CHOICE_4(       cLookModeChanA,                                             
     "Напряжение",     "Voltage",
     "Время",          "Time",
     "Напряж и время", "Volt and time",
-    CURS_LOOK_MODE(A), pCursors, FuncActive, FuncChangedChoice, FuncDraw
+    CURS_LOOK_MODE(Chan::A), pCursors, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ DEF_CHOICE_4(       cLookModeChanB,                                             
     "Напряжение",      "Voltage",
     "Время",           "Time",
     "Напряж. и время", "Volt. and time",
-    CURS_LOOK_MODE(B), pCursors, FuncActive, FuncChangedChoice, FuncDraw
+    CURS_LOOK_MODE(Chan::B), pCursors, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ static void Draw_Set_ChannelB(int x, int y)
 
 static void OnPress_Set_Channel()
 {
-    Channel source = CURS_SOURCE_A ? B : A;
+    Chan source = CURS_SOURCE_A ? Chan(Chan::B) : Chan(Chan::A);
     SetCursSource(source);
 }
 
@@ -135,9 +135,9 @@ static void Draw_Set_Channel(int x, int y)
 }
 
 DEF_SMALL_BUTTON_HINTS_2(   bSet_Channel,                                                                       //--- КУРСОРЫ - УСТАНОВИТЬ - Канал ---
-    "Канал", "Channel",
+    "Канал", "Chan",
     "Выбор канала для курсорных измерений",
-    "Channel choice for measurements",
+    "Chan choice for measurements",
     ppSet, FuncActive, OnPress_Set_Channel, Draw_Set_Channel,
     Draw_Set_ChannelA, {"канал 1", "channel 1"},
     Draw_Set_ChannelB, {"канал 2", "channel 2"}
@@ -180,7 +180,7 @@ static void OnPress_Set_U()
 
 static void Draw_Set_U(int x, int y)
 {
-    Channel source = CURS_SOURCE;
+    Chan source = CURS_SOURCE;
     if (CURsU_DISABLED)
     {
         Draw_Set_U_disable(x, y);
@@ -279,7 +279,7 @@ static void Draw_Set_T(int x, int y)
         else
         {
             bool condLeft = false, condDown = false;
-            Channel source = CURS_SOURCE;
+            Chan source = CURS_SOURCE;
             CalculateConditions((int16)CURsT_POS(source, 0), (int16)CURsT_POS(source, 1), CURsT_CNTRL, &condLeft, &condDown);
             if (condLeft && condDown)
             {
@@ -443,7 +443,7 @@ DEF_PAGE_5(         pCursors,                                                   
 #define MAX_POS_U   200.0f
 #define MAX_POS_T   280.0f
 
-static void SetShiftCursPosU(Channel ch, int numCur, float delta)
+static void SetShiftCursPosU(Chan ch, int numCur, float delta)
 {
     CURsU_POS(ch, numCur) = LimitationRet(CURsU_POS(ch, numCur) - delta, 0.0f, MAX_POS_U);
 
@@ -453,7 +453,7 @@ static void SetShiftCursPosU(Channel ch, int numCur, float delta)
     }
 }
 
-void SetShiftCursPosT(Channel ch, int numCur, float delta)
+void SetShiftCursPosT(Chan ch, int numCur, float delta)
 {
     /// \todo одинаковые ветки
     // CURsT_POS(ch, numCur) = LimitationFloat(CURsT_POS(ch, numCur) + delta, 0, MAX_POS_T);   
@@ -465,55 +465,55 @@ void SetShiftCursPosT(Channel ch, int numCur, float delta)
     }
 }
 
-static void SetCursPos100(Channel ch)
+static void SetCursPos100(Chan ch)
 {
     dUperc(ch) = (float)fabsf(CURsU_POS(ch, 0) - CURsU_POS(ch, 1));
     dTperc(ch) = (float)fabsf(CURsT_POS(ch, 0) - CURsT_POS(ch, 1));
 }
 
-static void SetCursSource(Channel ch)
+static void SetCursSource(Chan ch)
 {
     CURS_SOURCE = ch;
 }
 
-static void IncCursCntrlU(Channel ch)
+static void IncCursCntrlU(Chan ch)
 {
     CircleIncrease<int8>((int8 *)&CURsU_CNTRL_CH(ch), 0, 3);
 }
 
-static void IncCursCntrlT(Channel ch)
+static void IncCursCntrlT(Chan ch)
 {
     CircleIncrease<int8>((int8 *)&CURsT_CNTRL_CH(ch), 0, 3);
 }
 
 void UpdateCursorsForLook()
 {
-    Channel source = CURS_SOURCE;
+    Chan source = CURS_SOURCE;
 
-    if(CURS_ACTIVE_T && (CURS_LOOK_U(A) || CURS_LOOK_BOTH(A)))
+    if(CURS_ACTIVE_T && (CURS_LOOK_U(Chan::A) || CURS_LOOK_BOTH(Chan::A)))
     {
         SetCursorU(source, 0, Processing::CalculateCursorU(source, CURsT_POS(source, 0)));
     }
-    if(CURS_ACTIVE_T && (CURS_LOOK_U(B) || CURS_LOOK_BOTH(B)))
+    if(CURS_ACTIVE_T && (CURS_LOOK_U(Chan::B) || CURS_LOOK_BOTH(Chan::B)))
     {
         SetCursorU(source, 1, Processing::CalculateCursorU(source, CURsT_POS(source, 1)));
     }
-    if(CURS_ACTIVE_U && (CURS_LOOK_T(A) || CURS_LOOK_BOTH(A)))
+    if(CURS_ACTIVE_U && (CURS_LOOK_T(Chan::A) || CURS_LOOK_BOTH(Chan::A)))
     {
         SetCursorT(source, 0, Processing::CalculateCursorT(source, CURsU_POS(source, 0), 0));
     }
-    if(CURS_ACTIVE_U && (CURS_LOOK_T(B) || CURS_LOOK_BOTH(B)))
+    if(CURS_ACTIVE_U && (CURS_LOOK_T(Chan::B) || CURS_LOOK_BOTH(Chan::B)))
     {
         SetCursorT(source, 1, Processing::CalculateCursorT(source, CURsU_POS(source, 1), 1));
     }
 }
 
-static void SetCursorU(Channel ch, int numCur, float pos)
+static void SetCursorU(Chan ch, int numCur, float pos)
 {
     CURsU_POS(ch, numCur) = LimitationRet(pos, 0.0f, MAX_POS_U);
 }
 
-void SetCursorT(Channel ch, int numCur, float pos)
+void SetCursorT(Chan ch, int numCur, float pos)
 {
     // CURsT_POS(ch, numCur) = LimitationFloat(pos, 0, MAX_POS_T);      /// \todo одинаковые ветки
     SetCursPosT_temp(ch, numCur, LimitationRet(pos, 0.0f, MAX_POS_T));

@@ -41,9 +41,9 @@ public:
     explicit Color(uint8 val = COLOR_BLACK) : value(val) { }
     Color(const Color &color) : value(color.value) { }
 
-    static Color Cursors(Channel ch);
+    static Color Cursors(Chan ch);
     static Color Trig();
-    static Color ChanAccum(Channel ch);     ///< ÷вет канала в режиме накоплени€
+    static Color ChanAccum(Chan ch);     ///< ÷вет канала в режиме накоплени€
     static Color MenuItem(bool shade);      ///< ÷вет элемента меню.
     static Color MenuTitle(bool shade);     ///< ÷вет заголовка страницы. inShade == true, если страница затенена
     static Color BorderMenu(bool shade);    ///< ÷вет окантовки меню

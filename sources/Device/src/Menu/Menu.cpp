@@ -357,11 +357,11 @@ void Menu::ProcessingLongPressureButton()
         }
         else if(button.Is(Key::ChannelA))
         {
-            FPGA::SetRShift(A, RShiftZero);
+            FPGA::SetRShift(Chan::A, RShiftZero);
         }
         else if(button.Is(Key::ChannelB))
         {
-            FPGA::SetRShift(B, RShiftZero);
+            FPGA::SetRShift(Chan::B, RShiftZero);
         }
         else if(button.Is(Key::Enter))
         {

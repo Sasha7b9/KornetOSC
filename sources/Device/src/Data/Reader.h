@@ -22,15 +22,15 @@
  *  @{
  */
 
-extern uint8 *dataIN[NumChannels];  ///< Считанные данные первого канала
-extern uint8 *dataOUT[NumChannels]; ///< Считанные данные второго канала
+extern uint8 *dataIN[Chan::Num];  ///< Считанные данные первого канала
+extern uint8 *dataOUT[Chan::Num]; ///< Считанные данные второго канала
 
 #define IN(ch)  (dataIN[ch])
-#define IN_A    IN(A)
-#define IN_B    IN(B)
+#define IN_A    IN(Chan::A)
+#define IN_B    IN(Chan::B)
 #define OUT(ch) (dataOUT[ch])
-#define OUT_A   OUT(A)
-#define OUT_B   OUT(B)
+#define OUT_A   OUT(Chan::A)
+#define OUT_B   OUT(Chan::B)
 
 /// \brief Это специальный указатель. Используется для выделения памяти переменным, которые не нужны всё время выполения программы, 
 /// но нужны болеее чем в одной функции. Перед использованием с помощью вызова malloc() выделяется необходимое количество памяти, 
@@ -61,14 +61,14 @@ EXTERN DataSettings *pDS;           ///< Указатель на настройки текущего рисуемо
 #define COUPLE_DS(ch)   (COUPLE(DS, ch))
 #define DIVIDER_DS(ch)  (DIVIDER(DS, ch))
 #define RANGE_DS(ch)    (RANGE(DS, ch))
-#define RANGE_DS_A      (RANGE(DS, A))
-#define RANGE_DS_B      (RANGE(DS, B))
+#define RANGE_DS_A      (RANGE(DS, Chan::A))
+#define RANGE_DS_B      (RANGE(DS, Chan::B))
 #define ENABLED_DS(ch)  (ENABLED(DS, ch))
-#define ENABLED_DS_A    (ENABLED(DS, A))
-#define ENABLED_DS_B    (ENABLED(DS, B))
+#define ENABLED_DS_A    (ENABLED(DS, Chan(Chan::A)))
+#define ENABLED_DS_B    (ENABLED(DS, Chan(Chan::B)))
 #define RSHIFT_DS(ch)   (RSHIFT(DS, ch))
-#define RSHIFT_DS_A     (RSHIFT(DS, A))
-#define RSHIFT_DS_B     (RSHIFT(DS, B))
+#define RSHIFT_DS_A     (RSHIFT(DS, Chan::A))
+#define RSHIFT_DS_B     (RSHIFT(DS, Chan::B))
 #define PEAKDET_DS      (PEAKDET(DS))
 #define TRIGLEV_DS(ch)  (TRIGLEV(DS))
 #define ENUM_POINTS_DS  (ENUM_POINTS(DS))
@@ -92,8 +92,8 @@ EXTERN DataSettings *pDS;           ///< Указатель на настройки текущего рисуемо
 /// В этой структуре будут храниться точки, подготовленные для вывода на экран
 typedef struct
 {
-    uint8    data[NumChannels][281 * 2];    ///< Данные обоих каналов. Точек в два раза больше, чем на экране, для пикового детектора
-    bool     needDraw[NumChannels];         ///< Если true, то канал 1 надо рисовать
+    uint8    data[Chan::Num][281 * 2];    ///< Данные обоих каналов. Точек в два раза больше, чем на экране, для пикового детектора
+    bool     needDraw[Chan::Num];         ///< Если true, то канал 1 надо рисовать
     uint8    notUsed0[2];
     int      posBreak;                      ///< Позиция в координатах сетки, на которой нужно рисовать линию разрыва поточечного вывода
     ModeWork forMode;                       ///< Для какого режима считываются данные

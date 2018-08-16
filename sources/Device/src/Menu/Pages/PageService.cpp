@@ -297,9 +297,9 @@ DEF_CHOICE_3(       cFFT_Source,                                                
     "Источник", "Source",
     "Выбор источника для расчёта спектра",
     "Selecting the source for the calculation of the spectrum",
-    "Канал 1",     "Channel 1",
-    "Канал 2",     "Channel 2",
-    "Канал 1 + 2", "Channel 1 + 2",
+    "Канал 1",     "Chan 1",
+    "Канал 2",     "Chan 2",
+    "Канал 1 + 2", "Chan 1 + 2",
     SOURCE_FFT, ppFFT, FuncActive, FuncChangedChoice, FuncDraw
 )
 

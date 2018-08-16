@@ -16,9 +16,9 @@
 #define TRIG_SOURCE_IS_EXT      (TRIG_SOURCE == TrigSource::Ext)
 
 #define SET_TRIGLEV(ch)         (set.trig_lev[(uint8)ch])
-#define SET_TRIGLEV_SOURCE      SET_TRIGLEV((Channel)TRIG_SOURCE)
-#define SET_TRIGLEV_A           (SET_TRIGLEV(A))
-#define SET_TRIGLEV_B           (SET_TRIGLEV(B))
+#define SET_TRIGLEV_SOURCE      SET_TRIGLEV(TRIG_SOURCE.value)
+#define SET_TRIGLEV_A           (SET_TRIGLEV(Chan::A))
+#define SET_TRIGLEV_B           (SET_TRIGLEV(Chan::B))
 
 #define TRIG_MODE_FIND          (set.trig_modeFind)
 #define TRIG_MODE_FIND_HAND     (TRIG_MODE_FIND == TrigModeFind::Hand)

@@ -81,15 +81,15 @@ public:
     MenuAutoHide        disp_menuAutoHide;                  ///< Через сколько времени после последнего нажатия клавиши прятать меню.
     int16               disp_shiftInMemory;                 ///< \brief Показывает смещение левого края стеки относительно нулевого байта памяти в байтах
                                                             ///< Т.е. для пикового детектора будет в два раза больше количества точек на экране.
-    Channel             disp_lastAffectedChannel;           ///< \brief Последний управляемый канал. Используется для правильного вывода сигналов
+    Chan             disp_lastAffectedChannel;           ///< \brief Последний управляемый канал. Используется для правильного вывода сигналов
                                                             ///< на экран с наложением один поверх другого
 
     // Меню КАНАЛ 1, КАНАЛ 2
 
-    uint16              chan_shift[NumChannels];            ///< Сдвиг канала по вертикали
-    Range               chan_range[NumChannels];            ///< Масштаб канала по вертикали
-    ModeCouple          chan_couple[NumChannels];           ///< Связь по входу
-    bool                chan_enable[NumChannels];           ///< Включен/выключен канал
+    uint16              chan_shift[Chan::Num];            ///< Сдвиг канала по вертикали
+    Range               chan_range[Chan::Num];            ///< Масштаб канала по вертикали
+    ModeCouple          chan_couple[Chan::Num];           ///< Связь по входу
+    bool                chan_enable[Chan::Num];           ///< Включен/выключен канал
     int8                chan_balanceShiftADC[2];            ///< Добавочное смещение для балансировки АЦП.
     Bandwidth           chan_bandwidth[2];                  ///< Ограничение полосы.
     Resistance          chan_resistance[2];                 ///< Сопротивление входа.
@@ -102,7 +102,7 @@ public:
     TrigSource          trig_source;
     TrigInput           trig_input;
     TrigPolarity        trig_polarity;
-    uint16              trig_lev[NumChannels];
+    uint16              trig_lev[Chan::Num];
     StartMode           trig_startMode;                     ///< Режим запуска.
     TrigModeFind        trig_modeFind;                      ///< Поиск синхронизации - вручную или автоматически.
 
@@ -123,14 +123,14 @@ public:
     CursLookMode        curs_lookMode[2];                   ///< Режимы слежения за курсорами для двух пар курсоров.
     bool                curs_showFreq;                      ///< Установленное в true значение, что нужно показывать на экране 1/dT между курсорами.
     CursActive          curs_active;                        ///< Какие курсоры сейас активны.
-    Channel             curs_source;                        ///< Источник - к какому каналу относятся курсоры.
-    CursCntrl           curs_cntrlU[NumChannels];           ///< Активные курсоры напряжения.
-    CursCntrl           curs_cntrlT[NumChannels];           ///< Активные курсоры времени.
+    Chan             curs_source;                        ///< Источник - к какому каналу относятся курсоры.
+    CursCntrl           curs_cntrlU[Chan::Num];           ///< Активные курсоры напряжения.
+    CursCntrl           curs_cntrlT[Chan::Num];           ///< Активные курсоры времени.
     CursMovement        curs_movement;                      ///< Как перемещаться курсорам - по точкам или процентам.
     float               curs_deltaU100percents[2];          ///< Расстояние между курсорами напряжения для 100%, для обоих каналов.
     float               curs_deltaT100percents[2];          ///< Расстояние между курсорами времени для 100%, для обоих каналов.
-    float               curs_posCurU[NumChannels][2];       ///< Текущие позиции курсоров напряжения обоих каналов.
-    float               curs_posCurT[NumChannels][2];       ///< Текущие позиции курсоров времени обоих каналов.
+    float               curs_posCurU[Chan::Num][2];       ///< Текущие позиции курсоров напряжения обоих каналов.
+    float               curs_posCurT[Chan::Num][2];       ///< Текущие позиции курсоров времени обоих каналов.
 
     // Меню ПАМЯТЬ
 
@@ -238,16 +238,16 @@ public:
 
     // Несбрасываемые настройки калибровки
 
-    int16               nrst_balanceADC[NumChannels];               ///< Значение дополнительного смещения АЦП для ручной балансировки.
+    int16               nrst_balanceADC[Chan::Num];               ///< Значение дополнительного смещения АЦП для ручной балансировки.
     BalanceADC          nrst_balanceADCtype;                        ///< Тип балансировки.
     StretchADC          nrst_stretchADCtype;                        ///< Тип растяжки канала.
-    int16               nrst_StretchADC[NumChannels][3];            ///< \brief Поправочный коэффициент для ручного, калибровочного и
+    int16               nrst_StretchADC[Chan::Num][3];            ///< \brief Поправочный коэффициент для ручного, калибровочного и
                         ///< отключенного режимов. Здесь хранится в целом виде, чтобы получить реальный коэффициент, нужно разделить на 1000 и
                         ///< прибавить единицу.
-    int16               nrst_rShiftAddStable[NumChannels][3];       ///< Добавочное смещение для трёх самых чувствительных диапазонов. Задаётся единожды при настройке
+    int16               nrst_rShiftAddStable[Chan::Num][3];       ///< Добавочное смещение для трёх самых чувствительных диапазонов. Задаётся единожды при настройке
     int16               nrst_numAveForRand;                         ///< По скольким измерениям усреднять сигнал в режиме рандомизатора.
     int16               nrst_numSmoothForRand;                      ///< Число точек для скользящего фильта в рандомизаторе.
-    int16               nrst_rShiftAdd[NumChannels][Range::Size][2];///< Добавочное смещение, которое пишется сюда при калибровке и балансировке
+    int16               nrst_rShiftAdd[Chan::Num][Range::Size][2];///< Добавочное смещение, которое пишется сюда при калибровке и балансировке
     int16               nrst_correctionTime;                        ///< Коэффициент коррекции времени.
 };
 

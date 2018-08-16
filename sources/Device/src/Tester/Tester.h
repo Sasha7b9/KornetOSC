@@ -37,4 +37,4 @@ private:
 
 #define NUM_STEPS       5
 
-extern uint8 dataTester[NumChannels][NUM_STEPS][TESTER_NUM_POINTS];
+extern uint8 dataTester[Chan::Num][NUM_STEPS][TESTER_NUM_POINTS];

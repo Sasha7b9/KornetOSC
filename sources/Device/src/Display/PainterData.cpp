@@ -34,14 +34,14 @@ void PainterData::DrawData_ModeDir()
 
     Storage::GetData(&dataA, &dataB);
 
-    DrawChannel(A, dataA);
-    DrawChannel(B, dataB);   
+    DrawChannel(Chan::A, dataA);
+    DrawChannel(Chan::B, dataB);   
 
     DrawMemoryWindow();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
+void PainterData::DrawChannel(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
 {
     int center = (Grid::Bottom() - Grid::Top()) / 2 + Grid::Top();
     int left = Grid::Left();
@@ -88,7 +88,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
             }
         }
 
-        Painter::SetColor(Color::Chan(ch));
+        Painter::SetColor(Color::Channel(ch));
 
         int x = left;
                
@@ -109,7 +109,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
     }
     else
     {
-        Painter::SetColor(Color::Chan(ch));
+        Painter::SetColor(Color::Channel(ch));
 
         for (int i = 0; i < 280; i++)
         {
@@ -126,7 +126,7 @@ void PainterData::DrawMemoryWindow()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::DrawDataInRect(int x, int y, int width, int height, Channel ch)
+void PainterData::DrawDataInRect(int x, int y, int width, int height, Chan ch)
 {
 
 }
@@ -192,7 +192,7 @@ int PainterData::Ordinate(uint8 x, float scale)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::SendToDisplayDataInRect(Channel ch, int x, int *min, int *max, int width)
+void PainterData::SendToDisplayDataInRect(Chan ch, int x, int *min, int *max, int width)
 {
     LIMIT_ABOVE(width, 255);
 
@@ -206,5 +206,5 @@ void PainterData::SendToDisplayDataInRect(Channel ch, int x, int *min, int *max,
         points[i * 2 + 1] = (uint8)(min[i] < 0 ? 0 : min[i]);
     }
 
-    Painter::DrawVLineArray(x, (int)width, points, Color::Chan(ch));
+    Painter::DrawVLineArray(x, (int)width, points, Color::Channel(ch));
 }

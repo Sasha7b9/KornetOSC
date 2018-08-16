@@ -12,7 +12,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Возвращает 0, если канал выключен
-//static uint8 *AddressChannel(DataSettings *ds, Channel ch);
+//static uint8 *AddressChannel(DataSettings *ds, Chan ch);
 static bool DataSettingsIsEquals(const DataSettings *ds1, const DataSettings *ds2);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,7 +32,7 @@ static int iLast = 0;           // Номер в массиве datas последнего сохранённого
 static float *aveDataA_RAM = 0; // В этих массивах хранятся усреднённые значения, подсчитанные по приблизительному алгоритму.
 static float *aveDataB_RAM = 0;
 
-static bool newSumCalculated[NumChannels] = {true, true};   // Если true, то новые суммы рассчитаны, и нужно повторить расчёт среднего
+static bool newSumCalculated[Chan::Num] = {true, true};   // Если true, то новые суммы рассчитаны, и нужно повторить расчёт среднего
 static int numElementsInStorage = 0;
 
 
@@ -44,7 +44,7 @@ static bool inFrameP2Pmode = false;     // Если true - сейчас поточечный режим
 
 #define NUM_DATAS 10
 static DataSettings datas[NUM_DATAS];
-static uint8 gDataAve[NumChannels][FPGA_MAX_NUM_POINTS];
+static uint8 gDataAve[Chan::Num][FPGA_MAX_NUM_POINTS];
 
 #define ADDRESS_DATA(ds)        ((ds)->addr)
 
@@ -401,8 +401,8 @@ void Storage::CalculateLimits(uint8 *dataA, uint8 *dataB, DataSettings *dss)
 
         for(int numData = 0; numData < allDatas; numData++)
         {
-            dataA = GetData_RAM(A, numData);
-            dataB = GetData_RAM(B, numData);
+            dataA = GetData_RAM(Chan::A, numData);
+            dataB = GetData_RAM(Chan::B, numData);
 
 //            uint8 data = 0;
 //            uint8 limitUp = 0;
@@ -508,7 +508,7 @@ void Storage::CalculateSums()
             }
         }
     }
-    newSumCalculated[A] = newSumCalculated[B] = true;
+    newSumCalculated[Chan::A] = newSumCalculated[Chan::B] = true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -588,7 +588,7 @@ int Storage::NumElementsInStorage()
 // Копирует данные канала ch из, определяемые ds, в одну из двух строк массива dataImportRel. Возвращаемое значение false означает, что данный канал 
 // выключен.
 /*
-static bool CopyData(DataSettings *ds, Channel ch, uint8 *)
+static bool CopyData(DataSettings *ds, Chan ch, uint8 *)
 {
     if((ch == A && !ENABLED_A(ds)) || (ch == B && !ENABLED_B(ds)))
     {
@@ -612,7 +612,7 @@ static bool CopyData(DataSettings *ds, Channel ch, uint8 *)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 *Storage::GetData_RAM(Channel, int)
+uint8 *Storage::GetData_RAM(Chan, int)
 {
     /*
     uint8 *dataImport = (ch == A) ? RAM8(DS_DATA_IMPORT_REL_A) : RAM8(DS_DATA_IMPORT_REL_B);
@@ -660,7 +660,7 @@ bool Storage::GetDataFromEnd(int fromEnd, DataSettings *ds, uint8 *, uint8 *)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Storage::GetLimitation(Channel ch, uint8 *, int direction)
+bool Storage::GetLimitation(Chan ch, uint8 *, int direction)
 {
     if (!MIN_MAX_ENABLED || NumElementsWithSameSettings() < 2)
     {
@@ -711,7 +711,7 @@ bool Storage::GetDataFromEnd_RAM(int fromEnd, DataSettings **, uint16 **, uint16
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 *Storage::GetAverageData(Channel ch)
+uint8 *Storage::GetAverageData(Chan ch)
 {
     if (newSumCalculated[ch] == false)
     {
@@ -734,7 +734,7 @@ uint8 *Storage::GetAverageData(Channel ch)
 
     if (sDisplay_GetModeAveraging() == ModeAveraging::Around)
     {
-        float *floatAveData = (ch == A) ? aveDataA_RAM : aveDataB_RAM;
+        float *floatAveData = ch.IsA() ? aveDataA_RAM : aveDataB_RAM;
         
         for (int i = 0; i < numPoints; i++)
         {
@@ -865,7 +865,7 @@ void Storage::GetData(uint8 **dataA, uint8 **dataB)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /*
-uint8 *AddressChannel(DataSettings *ds, Channel ch)
+uint8 *AddressChannel(DataSettings *ds, Chan ch)
 {
     if (ch == A && ENABLED_A(ds))
     {

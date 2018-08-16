@@ -8,14 +8,14 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void RShift::Draw()
 {
-    DrawRShift(A);
-    DrawRShift(B);
+    DrawRShift(Chan::A);
+    DrawRShift(Chan::B);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RShift::DrawRShift(Channel ch)
+void RShift::DrawRShift(Chan ch)
 {
-    Painter::SetColor(Color::Chan(ch));
+    Painter::SetColor(Color::Channel(ch));
 
     int delta = (SET_RSHIFT(ch) - RShiftZero) / STEP_RSHIFT;
 
@@ -25,7 +25,7 @@ void RShift::DrawRShift(Channel ch)
 
     Painter::SetFont(TypeFont_5);
 
-    Painter::DrawChar(Grid::Left() - 7, y - 6, ch == A ? '1' : '2', Color::BACK);
+    Painter::DrawChar(Grid::Left() - 7, y - 6, ch.IsA() ? '1' : '2', Color::BACK);
 
     Painter::SetFont(TypeFont_8);
 }

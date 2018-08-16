@@ -24,8 +24,8 @@ void BottomPart::Draw()
 
     Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2, Color::SEPARATOR);
     Painter::DrawHLine(Grid::FullBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2);
-    WriteTextVoltage(A, x + 2, y0);
-    WriteTextVoltage(B, x + 2, y1);
+    WriteTextVoltage(Chan::A, x + 2, y0);
+    WriteTextVoltage(Chan::B, x + 2, y1);
     Painter::DrawVLine(x + 95, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::SEPARATOR);
 
     x += 98;
@@ -167,9 +167,9 @@ void BottomPart::Draw()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int BottomPart::WriteChannel(Channel ch, int x, int y)
+int BottomPart::WriteChannel(Chan ch, int x, int y)
 {
-    Painter::DrawText(x, y, ch == A ? "1:" : "2:", Color::Chan(ch));
+    Painter::DrawText(x, y, ch.IsA() ? "1:" : "2:", Color::Channel(ch));
 
     x += 7;
 
@@ -201,7 +201,7 @@ void BottomPart::WriteTBase(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void BottomPart::WriteTextVoltage(Channel ch, int x, int y)
+void BottomPart::WriteTextVoltage(Chan ch, int x, int y)
 {
     if (!SET_ENABLED(ch))
     {
@@ -210,7 +210,7 @@ void BottomPart::WriteTextVoltage(Channel ch, int x, int y)
 
     static pString couple[] = {"\x92", "\x91", "\x90"};
 
-    Color color = Color::Chan(ch);
+    Color color = Color::Channel(ch);
 
     bool inverse = SET_INVERSE(ch);
     Divider divider = SET_DIVIDER(ch);
@@ -225,7 +225,7 @@ void BottomPart::WriteTextVoltage(Channel ch, int x, int y)
     }
     const int SIZE = 100;
     char buffer[SIZE];
-    snprintf(buffer, SIZE, "%s\xa5%s\xa5%s", (ch == A) ? DICT(D1ch) : DICT(D2ch), couple[SET_COUPLE(ch)], sChannel_Range2String(range, divider));
+    snprintf(buffer, SIZE, "%s\xa5%s\xa5%s", ch.IsA() ? DICT(D1ch) : DICT(D2ch), couple[SET_COUPLE(ch)], sChannel_Range2String(range, divider));
     Painter::DrawText(x + 1, y, buffer, colorDraw);
     char bufferTemp[SIZE];
     snprintf(bufferTemp, SIZE, "\xa5%s", sChannel_RShift2String((uint16)SET_RSHIFT(ch), range, divider, buffer));

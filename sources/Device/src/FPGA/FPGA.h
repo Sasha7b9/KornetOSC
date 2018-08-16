@@ -68,21 +68,21 @@ public:
 
     static void LoadSettings();
 
-    static void IncreaseRange(Channel ch);
+    static void IncreaseRange(Chan ch);
 
-    static void DecreaseRange(Channel ch);
+    static void DecreaseRange(Chan ch);
 
     static void IncreaseTBase();
 
     static void DecreaseTBase();
 
-    static void RShiftChange(Channel ch, int delta);
+    static void RShiftChange(Chan ch, int delta);
 
     static void TrigLevChange(int delta);
 
     static void TShiftChange(int delta);
 
-    static void SetRShift(Channel ch, uint16 rShift);
+    static void SetRShift(Chan ch, uint16 rShift);
 
     static void LoadTrigPolarity();
 
@@ -121,7 +121,7 @@ public:
 
     static pString GetTShiftString(int16 tShift, char buffer[20]);
 
-    static void SetModeCouple(Channel ch, ModeCouple couple);
+    static void SetModeCouple(Chan ch, ModeCouple couple);
 
     static float FreqMeter_GetFreq();
     /// Установить относительный уровень синхронизации
@@ -145,7 +145,7 @@ public:
     /// Установить добавочное смещение по времени для режима рандомизатора. В каждой развёртке это смещение должно быть разное
     static void SetDeltaTShift(int16 shift);
 
-    static void SetBandwidth(Channel ch);
+    static void SetBandwidth(Chan ch);
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -157,7 +157,7 @@ private:
 
     static void LoadTrigLev();
 
-    static void LoadRShift(Channel ch);
+    static void LoadRShift(Chan ch);
 
     static void WritePin(Pin pin, int enable);
 
@@ -177,15 +177,15 @@ private:
 
     static uint16 ReadLastRecord();
 
-    static void ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS]);
+    static void ReadDataChanenl(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS]);
     /// Установить в соотвествующие положения выводы, отвечающие за источник и вход синхронизации
     static void LoadTrigSourceInput();
     /// Читать канал в рандомизаторе с адреса address
-    static void ReadDataChanenlRand(Channel ch, uint8 *address, uint8 *data);
+    static void ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data);
 
     static bool CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax);
 
-    static int CalculateShift(Channel ch);
+    static int CalculateShift(Chan ch);
 
     static bool isRunning;
     /// True, если дан запуск

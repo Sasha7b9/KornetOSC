@@ -10,7 +10,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-float sCursors_GetCursPosU(Channel ch, int numCur)
+float sCursors_GetCursPosU(Chan ch, int numCur)
 {
     return CURsU_POS(ch, numCur) / (Grid::Bottom() == Grid::FullBottom() ? 1.0f : 2.0f);
 }
@@ -24,7 +24,7 @@ bool sCursors_NecessaryDrawCursors()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *sCursors_GetCursVoltage(Channel source, int numCur, char buffer[20])
+const char *sCursors_GetCursVoltage(Chan source, int numCur, char buffer[20])
 {
     float voltage = MathFPGA::VoltageCursor(sCursors_GetCursPosU(source, numCur), SET_RANGE(source), SET_RSHIFT(source));
     if (SET_DIVIDER_10(source))
@@ -36,7 +36,7 @@ const char *sCursors_GetCursVoltage(Channel source, int numCur, char buffer[20])
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *sCursors_GetCursorTime(Channel source, int numCur, char buffer[20])
+const char *sCursors_GetCursorTime(Chan source, int numCur, char buffer[20])
 {
 //    float pos = 0.0;
 
@@ -50,7 +50,7 @@ const char *sCursors_GetCursorTime(Channel source, int numCur, char buffer[20])
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *sCursors_GetCursorPercentsU(Channel source, char buffer[20])
+const char *sCursors_GetCursorPercentsU(Chan source, char buffer[20])
 {
     buffer[0] = 0;
     /** \todo Тут дикая дичь. Эта строчка вызывает HardFault. Возможно, из-за включенного выравнивания Settings.
@@ -70,7 +70,7 @@ const char *sCursors_GetCursorPercentsU(Channel source, char buffer[20])
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *sCursors_GetCursorPercentsT(Channel source, char buffer[20])
+const char *sCursors_GetCursorPercentsT(Chan source, char buffer[20])
 {
     buffer[0] = 0;
     
@@ -86,7 +86,7 @@ const char *sCursors_GetCursorPercentsT(Channel source, char buffer[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float GetCursPosT(Channel ch, int num)
+float GetCursPosT(Chan ch, int num)
 {
     float retValue = 0.0f;
     memcpy(&retValue, &set.curs_posCurT[ch][num], sizeof(float));
@@ -94,7 +94,7 @@ float GetCursPosT(Channel ch, int num)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SetCursPosT_temp(Channel ch, int num, float value)
+void SetCursPosT_temp(Chan ch, int num, float value)
 {
     memcpy(&set.curs_posCurT[ch][num], &value, sizeof(float));
 }

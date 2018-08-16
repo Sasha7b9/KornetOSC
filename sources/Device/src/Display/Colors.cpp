@@ -79,8 +79,8 @@ void Color::InitGlobalColors()
 {
     Color::BACK.value = BACKGROUND_BLACK ? Color::BLACK.value : Color::WHITE.value;
     Color::FILL.value = BACKGROUND_BLACK ? Color::WHITE.value : Color::BLACK.value;
-    Color::CHAN[A].value = BACKGROUND_BLACK ? Color::CHAN[A].value : Color::DATA_WHITE_ACCUM_A.value;
-    Color::CHAN[B].value = BACKGROUND_BLACK ? Color::CHAN[B].value : Color::DATA_WHITE_ACCUM_B.value;
+    Color::CHAN[Chan::A].value = BACKGROUND_BLACK ? Color::CHAN[Chan::A].value : Color::DATA_WHITE_ACCUM_A.value;
+    Color::CHAN[Chan::B].value = BACKGROUND_BLACK ? Color::CHAN[Chan::B].value : Color::DATA_WHITE_ACCUM_B.value;
     //Color::CHAN[A_B].value = Color::CHAN[MathCh].value = BACKGROUND_BLACK ? Color::WHITE.value : Color::BLACK.value;
 }
 
@@ -93,7 +93,7 @@ void Color::Log(Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Color Color::Cursors(Channel ch)
+Color Color::Cursors(Chan ch)
 {
     return CHAN[ch];
 }
@@ -290,15 +290,15 @@ Color& Color::operator=(const Color &color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Color Color::Chan(Channel ch)
+Color Color::Channel(Chan ch)
 {
     return Color::CHAN[ch];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Color Color::ChanHalf(Channel ch)
+Color Color::ChanHalf(Chan ch)
 {
-    return ch == A ? Color::DATA_HALF_A : Color::DATA_HALF_B;
+    return ch.IsA() ? Color::DATA_HALF_A : Color::DATA_HALF_B;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -306,17 +306,17 @@ Color Color::Trig()
 {
     if(TRIG_SOURCE == TrigSource::A)
     {
-        return Chan(A);
+        return Channel(Chan::A);
     }
     else if(TRIG_SOURCE == TrigSource::B)
     {
-        return Chan(B);
+        return Channel(Chan::B);
     }
     return Color::FILL;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Color Color::ChanAccum(Channel ch)
+Color Color::ChanAccum(Chan ch)
 {
-    return (ch == A) ? Color(COLOR_DATA_WHITE_ACCUM_A) : Color(COLOR_DATA_WHITE_ACCUM_B);
+    return ch.IsA() ? Color(COLOR_DATA_WHITE_ACCUM_A) : Color(COLOR_DATA_WHITE_ACCUM_B);
 }

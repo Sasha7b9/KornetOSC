@@ -52,51 +52,51 @@ struct DataSettings
 };
 
 #define RSHIFT(ds, ch)          ((ds)->rShift[ch])
-#define RSHIFT_A(ds)            (RSHIFT(ds, A))
-#define RSHIFT_B(ds)            (RSHIFT(ds, B))
+#define RSHIFT_A(ds)            (RSHIFT(ds, Chan::A))
+#define RSHIFT_B(ds)            (RSHIFT(ds, Chan::B))
 
 #define TRIGLEV(ds, ch)         ((ds)->trigLev[ch])
-#define TRIGLEV_A(ds)           (TRIGLEV(ds, A))
-#define TRIGLEV_B(ds)           (TRIGLEV(ds, B))
+#define TRIGLEV_A(ds)           (TRIGLEV(ds, Chan::A))
+#define TRIGLEV_B(ds)           (TRIGLEV(ds, Chan::B))
 
 #define TSHIFT(ds)              ((ds)->tShift)
 
 #define Lval_RANGE(ds, ch)      ((ds)->range[ch])
-#define Lval_RANGE_A(ds)        (Lval_RANGE(ds, A))
-#define Lval_RANGE_B(ds)        (Lval_RANGE(ds, B))
+#define Lval_RANGE_A(ds)        (Lval_RANGE(ds, Chan::A))
+#define Lval_RANGE_B(ds)        (Lval_RANGE(ds, Chan::B))
 #define RANGE(ds, ch)           (Lval_RANGE(ds, ch))
-#define RANGE_A(ds)             (RANGE(ds, A))
-#define RANGE_B(ds)             (RANGE(ds, B))
+#define RANGE_A(ds)             (RANGE(ds, Chan::A))
+#define RANGE_B(ds)             (RANGE(ds, Chan::B))
 
 #define Lval_TBASE(ds)          ((ds)->tBase)
 #define TBASE(ds)               (Lval_TBASE(ds))
 
 #define Lval_ENABLED_A(ds)      ((ds)->enableA)
 #define Lval_ENABLED_B(ds)      ((ds)->enableB)
-#define Lval_ENABLED(ds, ch)    ((ch == A) ? Lval_ENABLED_A(ds) : Lval_ENABLED_B(ds))
+#define Lval_ENABLED(ds, ch)    (ch.IsA() ? Lval_ENABLED_A(ds) : Lval_ENABLED_B(ds))
 #define ENABLED_A(ds)           ((bool)Lval_ENABLED_A(ds))
 #define ENABLED_B(ds)           ((bool)Lval_ENABLED_B(ds))
-#define ENABLED(ds, ch)         ((ch == A) ? ENABLED_A(ds) : ENABLED_B(ds))
+#define ENABLED(ds, ch)         (ch.IsA() ? ENABLED_A(ds) : ENABLED_B(ds))
 
 #define Lval_COUPLE_A(ds)       ((ds)->coupleA)
 #define Lval_COUPLE_B(ds)       ((ds)->coupleB)
 #define COUPLE_A(ds)            ((ModeCouple)Lval_COUPLE_A(ds))
 #define COUPLE_B(ds)            ((ModeCouple)Lval_COUPLE_B(ds))
-#define COUPLE(ds, ch)          ((ch == A) ? COUPLE_A(ds) : COUPLE_B(ds))
+#define COUPLE(ds, ch)          (ch.IsA() ? COUPLE_A(ds) : COUPLE_B(ds))
 
-#define Lval_PEAKDET(ds)       ((ds)->peackDet)
-#define PEAKDET(ds)            ((PeakDetMode)Lval_PEAKDET(ds))
+#define Lval_PEAKDET(ds)        ((ds)->peackDet)
+#define PEAKDET(ds)             ((PeakDetMode)Lval_PEAKDET(ds))
 
 #define INVERSE_A(ds)           ((ds)->inverseA)
 #define INVERSE_B(ds)           ((ds)->inverseB)
-#define INVERSE(ds, ch)         ((ch == A) ? INVERSE_A(ds) : INVERSE_B(ds))
+#define INVERSE(ds, ch)         (ch.IsA() ? INVERSE_A(ds) : INVERSE_B(ds))
 
 #define Lval_DIVIDER_A(ds)      ((ds)->multiplierA)
 #define Lval_DIVIDER_B(ds)      ((ds)->multiplierB)
 
 #define DIVIDER_A(ds)           ((Divider)Lval_DIVIDER_A(ds))
 #define DIVIDER_B(ds)           ((Divider)Lval_DIVIDER_B(ds))
-#define DIVIDER(ds, ch)         ((ch == A) ? DIVIDER_A(ds) : DIVIDER_B(ds))
+#define DIVIDER(ds, ch)         (ch.IsA() ? DIVIDER_A(ds) : DIVIDER_B(ds))
 
 #define TIME_TIME(ds)           ((ds)->time)
 #define TIME_DAY(ds)            ((ds)->time.day)

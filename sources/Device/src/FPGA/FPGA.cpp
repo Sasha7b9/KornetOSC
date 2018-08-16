@@ -60,13 +60,13 @@ static PinStruct pins[Num_Pins] =
 
 volatile static int numberMeasuresForGates = 1000;
 
-static uint8 dataRand[NumChannels][FPGA_MAX_NUM_POINTS];    ///< «десь будут данные рандомизатора
+static uint8 dataRand[Chan::Num][FPGA_MAX_NUM_POINTS];    ///< «десь будут данные рандомизатора
               //  2нс 5нс 10нс 20нс 50нс
 const int Kr[] = {50, 20, 10,  5,   2};
 /// «десь хранитс€ адрес, начина€ с которого будем читать данные по каналам. ≈сли addrRead == 0xffff, то адрес вначале нужно считать
 static uint16 addrRead = 0xffff;
 
-static uint8 ValueForRange(Channel ch);
+static uint8 ValueForRange(Chan ch);
 
 bool FPGA::isRunning = false;
 bool FPGA::givingStart = false;
@@ -302,7 +302,7 @@ void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
+void FPGA::ReadDataChanenl(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
 {
     if (addrRead == 0xffff)
     {
@@ -312,7 +312,7 @@ void FPGA::ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
     FSMC::WriteToFPGA16(WR_PRED_LO, addrRead);
     FSMC::WriteToFPGA8(WR_START_ADDR, 0xff);
     
-    uint8 *address = (ch == A) ? RD_DATA_A : RD_DATA_B;
+    uint8 *address = ch.IsA() ? RD_DATA_A : RD_DATA_B;
 
     if (IN_RANDOMIZE_MODE)
     {
@@ -333,7 +333,7 @@ void FPGA::ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::ReadDataChanenlRand(Channel ch, uint8 *address, uint8 *data)
+void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
 {
     int Tsm = CalculateShift(ch);
 
@@ -378,7 +378,7 @@ void FPGA::ReadDataChanenlRand(Channel ch, uint8 *address, uint8 *data)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int FPGA::CalculateShift(Channel)
+int FPGA::CalculateShift(Chan)
 {
     uint16 min = 0;
     uint16 max = 0;
@@ -467,8 +467,8 @@ void FPGA::ReadData()
     uint8 *dataA = (uint8 *)malloc((uint)FPGA_NUM_POINTS);
     uint8 *dataB = (uint8 *)malloc((uint)FPGA_NUM_POINTS);
 
-    ReadDataChanenl(A, dataA);
-    ReadDataChanenl(B, dataB);
+    ReadDataChanenl(Chan::A, dataA);
+    ReadDataChanenl(Chan::B, dataB);
 
     Storage::AddData(dataA, dataB);
     
@@ -503,8 +503,8 @@ void FPGA::GPIO_Init()
 void FPGA::LoadSettings()
 {
     LoadRanges();
-    LoadRShift(A);
-    LoadRShift(B);
+    LoadRShift(Chan::A);
+    LoadRShift(Chan::B);
     LoadTrigSourceInput();
     LoadTrigLev();
     LoadTBase();
@@ -514,14 +514,14 @@ void FPGA::LoadSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::IncreaseRange(Channel ch)
+void FPGA::IncreaseRange(Chan ch)
 {
     LimitationIncrease<uint8>((uint8 *)(&SET_RANGE(ch)), (uint8)(Range::Size - 1));
     LoadRanges();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::DecreaseRange(Channel ch)
+void FPGA::DecreaseRange(Chan ch)
 {
     LimitationDecrease<uint8>((uint8 *)(&SET_RANGE(ch)), 0);
     LoadRanges();
@@ -544,7 +544,7 @@ void FPGA::DecreaseTBase()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::RShiftChange(Channel ch, int delta)
+void FPGA::RShiftChange(Chan ch, int delta)
 {
     AddtionThisLimitation<uint16>(&SET_RSHIFT(ch), STEP_RSHIFT * delta, RShiftMin, RShiftMax);
 
@@ -585,7 +585,7 @@ GPIO_TypeDef *FPGA::GetPort(Pin pin)
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static uint8 ValueForRange(Channel ch)
+static uint8 ValueForRange(Chan ch)
 {
     static const uint8 datas[ModeCouple::Size] =
     {
@@ -599,7 +599,7 @@ static uint8 ValueForRange(Channel ch)
         return datas[ModeCouple::GND];
     }
 
-    static const uint16 values[Range::Size][NumChannels] =
+    static const uint16 values[Range::Size][Chan::Num] =
     {   //             A                    B
         { BIN_U8(00100101), BIN_U8(00100101) },   // 2mV
         { BIN_U8(00100101), BIN_U8(00100101) },   // 5mV
@@ -626,7 +626,7 @@ static uint8 ValueForRange(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadRanges()
 {
-    uint16 value = (uint16)(ValueForRange(B) + (ValueForRange(A) << 8));
+    uint16 value = (uint16)(ValueForRange(Chan::B) + (ValueForRange(Chan::A) << 8));
 
     WriteRegisters(SPI3_CS2, value);
 
@@ -692,7 +692,7 @@ void FPGA::WriteRegisters(Pin cs, uint16 value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::LoadRShift(Channel ch)
+void FPGA::LoadRShift(Chan ch)
 {
     static const uint16 mask[2] = {0x2000, 0x6000};
 
@@ -746,7 +746,7 @@ void FPGA::LoadTShift()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::SetRShift(Channel ch, uint16 rShift)
+void FPGA::SetRShift(Chan ch, uint16 rShift)
 {
     Limitation<uint16>(&rShift, RShiftMin, RShiftMax);
     SET_RSHIFT(ch) = rShift;
@@ -866,14 +866,14 @@ void FPGA::SetTShift(uint tShift)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::SetModeCouple(Channel ch, ModeCouple modeCoupe)
+void FPGA::SetModeCouple(Chan ch, ModeCouple modeCoupe)
 {
     SET_COUPLE(ch) = modeCoupe;
     LoadRanges();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::SetBandwidth(Channel ch)
+void FPGA::SetBandwidth(Chan ch)
 {
 }
 

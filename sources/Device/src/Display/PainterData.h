@@ -12,7 +12,7 @@ public:
     
     static void DrawData();
 
-    static void DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS]);
+    static void DrawChannel(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS]);
 
 private:
     
@@ -20,7 +20,7 @@ private:
 
     static void DrawMemoryWindow();
 
-    static void DrawDataInRect(int x, int y, int width, int height, Channel ch);
+    static void DrawDataInRect(int x, int y, int width, int height, Chan ch);
 
     static void DrawTPos(int leftX, int rightX);
 
@@ -29,7 +29,7 @@ private:
     static int Ordinate(uint8 x, float scale);
     /// \brief Возвращает точку в экранной координате. Если точка не считана (NONE_VALUE), возвращает -1.
     /// Процедура ограничивает width числом 255.
-    static void SendToDisplayDataInRect(Channel chan, int x, int *min, int *max, int width);
+    static void SendToDisplayDataInRect(Chan chan, int x, int *min, int *max, int width);
 
     static StructDataDrawing *dataStruct;
 };

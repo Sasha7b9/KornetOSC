@@ -29,7 +29,7 @@ static DAC_HandleTypeDef hDAC = {DAC};
 #define Pin_TEST_STR    GPIO_PIN_9
 
 
-uint8 dataTester[NumChannels][NUM_STEPS][TESTER_NUM_POINTS];
+uint8 dataTester[Chan::Num][NUM_STEPS][TESTER_NUM_POINTS];
 
 static Settings oldSet;
 
@@ -77,7 +77,7 @@ void Tester::Init()
 
     HAL_GPIO_WritePin(Port_TEST_ON, Pin_TEST_ON, GPIO_PIN_SET);    // Отключаем тестер-компонет
 
-    for (int i = 0; i < NumChannels; i++)
+    for (int i = 0; i < Chan::Num; i++)
     {
         for (int j = 0; j < NUM_STEPS; j++)
         {
@@ -228,7 +228,7 @@ void Tester::StartFPGA()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tester::ReadData()
 {
-    FPGA::ReadForTester(&dataTester[A][step / 2][0], &dataTester[B][step / 2][0]);
+    FPGA::ReadForTester(&dataTester[Chan::A][step / 2][0], &dataTester[Chan::B][step / 2][0]);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

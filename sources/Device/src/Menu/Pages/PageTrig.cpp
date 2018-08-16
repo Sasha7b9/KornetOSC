@@ -68,8 +68,8 @@ DEF_CHOICE_3(       cSource,                                                    
     "Источник", "Source",
     "Выбор источника сигнала синхронизации.",
     "Synchronization signal source choice.",
-    "Канал 1", "Channel 1",
-    "Канал 2", "Channel 2",
+    "Канал 1", "Chan 1",
+    "Канал 2", "Chan 2",
     "Внешний", "External",
     TRIG_SOURCE, pTrig, FuncActive, OnChanged_Source, FuncDraw
 )

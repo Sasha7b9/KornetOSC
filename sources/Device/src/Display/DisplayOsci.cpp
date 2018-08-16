@@ -48,7 +48,7 @@ void DisplayOsci::Update()
 void DisplayOsci::DrawCursorTrigLevel()
 {
     TrigSource ch = TRIG_SOURCE;
-    int trigLev = SET_TRIGLEV_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : (SET_RSHIFT((Channel)ch) - RShiftZero));
+    int trigLev = SET_TRIGLEV_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : (SET_RSHIFT(ch) - RShiftZero));
     float scale = 1.0f / ((TrigLevMax - TrigLevMin) / 2.4f / Grid::Height());
     int y0 = (Grid::Top() + Grid::Bottom()) / 2 + (int)(scale * (TrigLevZero - TrigLevMin));
     int y = y0 - (int)(scale * (trigLev - TrigLevMin));
@@ -92,7 +92,7 @@ void DisplayOsci::DrawCursorTrigLevel()
     int shiftFullMin = RShiftMin + TrigLevMin;
     int shiftFullMax = RShiftMax + TrigLevMax;
     scale = (float)height / (shiftFullMax - shiftFullMin);
-    int shiftFull = SET_TRIGLEV_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : SET_RSHIFT((Channel)ch));
+    int shiftFull = SET_TRIGLEV_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : SET_RSHIFT(ch));
     int yFull = Grid::Top() + DELTA + height - (int)(scale * (shiftFull - RShiftMin - TrigLevMin) + 4);
     Painter::FillRegion(left + 2, yFull + 1, 4, 6, Color::Trig());
     Painter::SetFont(TypeFont_5);

@@ -27,17 +27,17 @@
 #endif
 static uint8 buffer[4][16 * 1024] __attribute__((section("CCM_DATA")));
 
-uint8 *dataIN[NumChannels] = {buffer[0], buffer[1]};
+uint8 *dataIN[Chan::Num] = {buffer[0], buffer[1]};
 
-uint8 *dataOUT[NumChannels] = {buffer[2], buffer[3]};
+uint8 *dataOUT[Chan::Num] = {buffer[2], buffer[3]};
 
 void *extraMEM = 0;
 
 static void Clear();
 /// Заполняет структуру dataStruct данными для отрисовки
 static void PrepareDataForDraw(StructDataDrawing *dataStruct);
-static void FillDataP2P(StructDataDrawing *dataStruct, Channel ch);
-static void FillDataNormal(StructDataDrawing *dataStruct, Channel ch);
+static void FillDataP2P(StructDataDrawing *dataStruct, Chan ch);
+static void FillDataNormal(StructDataDrawing *dataStruct, Chan ch);
 static void ReadMinMax(StructDataDrawing *dataStruct, int direction);
 
 
@@ -85,11 +85,11 @@ void Reader::ReadFromRAM(int fromEnd, StructDataDrawing *dataStruct, bool forMem
         DS = &dataSettings;
         if (ENABLED_DS_A)
         {
-            memcpy(IN_A, Storage::GetAverageData(A), (uint)NUM_BYTES_DS);
+            memcpy(IN_A, Storage::GetAverageData(Chan::A), (uint)NUM_BYTES_DS);
         }
         if (ENABLED_DS_B)
         {
-            memcpy(IN_B, Storage::GetAverageData(B), (uint)NUM_BYTES_DS);
+            memcpy(IN_B, Storage::GetAverageData(Chan::B), (uint)NUM_BYTES_DS);
         }
         readed = true;
     }
@@ -165,9 +165,9 @@ void ReadMinMax(StructDataDrawing *dataStruct, int direction)
 
     dataSettings = *Storage::DataSettingsFromEnd(0);
     
-    dataStruct->needDraw[A] = dataStruct->needDraw[B] = false;
+    dataStruct->needDraw[Chan::A] = dataStruct->needDraw[Chan::B] = false;
 
-    if (Storage::GetLimitation(A, IN_A, direction) && Storage::GetLimitation(B, IN_B, direction))
+    if (Storage::GetLimitation(Chan::A, IN_A, direction) && Storage::GetLimitation(Chan::B, IN_B, direction))
     {
         DS = &dataSettings;
 
@@ -187,34 +187,34 @@ static void PrepareDataForDraw(StructDataDrawing *dataStruct)
 
     if (!DS)
     {
-        dataStruct->needDraw[A] = dataStruct->needDraw[B] = false;
+        dataStruct->needDraw[Chan::A] = dataStruct->needDraw[Chan::B] = false;
         return;
     }
 
-    dataStruct->needDraw[A] = ENABLED_DS_A && SET_ENABLED_A;
-    dataStruct->needDraw[B] = ENABLED_DS_B && SET_ENABLED_B;
+    dataStruct->needDraw[Chan::A] = ENABLED_DS_A && SET_ENABLED_A;
+    dataStruct->needDraw[Chan::B] = ENABLED_DS_B && SET_ENABLED_B;
 
     if ((IN_P2P_MODE && numPointsP2P < 2 && !STAND_P2P) || (PEAKDET_DS != SET_PEAKDET))
     {
-        dataStruct->needDraw[A] = dataStruct->needDraw[B] = false;
+        dataStruct->needDraw[Chan::A] = dataStruct->needDraw[Chan::B] = false;
         return;
     }
 
     if (((IN_P2P_MODE && FPGA::IsRunning() && !STAND_P2P) || (FPGA::InStateStop() && RECORDER_MODE)) && dataStruct->forMode != ModeWork::ROM)
                                                         // FPGA_IS_RUNNING - потому что в автоматическом режиме при считывании полного измерения 
     {                                                   // происходит остановка цикла считывания на некоторое время
-        FillDataP2P(dataStruct, A);
-        FillDataP2P(dataStruct, B);
+        FillDataP2P(dataStruct, Chan::A);
+        FillDataP2P(dataStruct, Chan::B);
     }
     else
     {
-        FillDataNormal(dataStruct, A);
-        FillDataNormal(dataStruct, B);
+        FillDataNormal(dataStruct, Chan::A);
+        FillDataNormal(dataStruct, Chan::B);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void FillDataP2P(StructDataDrawing *dataStruct, Channel ch)
+static void FillDataP2P(StructDataDrawing *dataStruct, Chan ch)
 {
     memset(dataStruct->data[ch], 0, 281 * 2);
 
@@ -274,7 +274,7 @@ static void FillDataP2P(StructDataDrawing *dataStruct, Channel ch)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void FillDataNormal(StructDataDrawing *dataStruct, Channel ch)
+static void FillDataNormal(StructDataDrawing *dataStruct, Chan ch)
 {
     if (!dataStruct->needDraw[ch])
     {
