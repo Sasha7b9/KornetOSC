@@ -1,4 +1,5 @@
 #include "defines.h"
+#include "Log.h"
 #include "Display/Grid.h"
 #include "Display/Colors.h"
 #include "Display/Painter.h"
@@ -405,8 +406,12 @@ void Choice::Draw(int x, int y, bool opened)
 void Choice::DrawOpened(int x, int y)
 {
     int height = HeightOpened();
+    
+    Painter::DrawRectangle(x - 2, y - 1, MP_TITLE_WIDTH + 3, height + 3, Color::FILL);
 
-    Painter::DrawRectangle(x - 2, y - 1, MP_TITLE_WIDTH + 3, height + 3, Color::BACK);
+    LOG_WRITE("%d %d %d %d", x - 2, y - 1, MP_TITLE_WIDTH + 3, height + 3);
+
+    return;
 
     DrawGovernorChoiceColorFormulaHiPart(this, x - 1, y - 1, IsPressed(), false, true);
     Painter::DrawRectangle(x - 1, y, MP_TITLE_WIDTH + 1, height + 1, Color::MenuTitle(false));
@@ -502,7 +507,7 @@ void Page::Draw(int x, int y, bool opened)
 {
     if(opened)
     {
-        DrawTitle(x, y - MP_TITLE_HEIGHT);
+        DrawTitle(x, y - Menu::Title::Height());
 
         DrawItems(x, y);
         if (CurrentItemIsOpened())
@@ -518,6 +523,9 @@ void Page::Draw(int x, int y, bool opened)
             }
             if (IS_CHOICE(item) || IS_CHOICE_REG(item))
             {
+                //int x = Menu::CalculateX();
+                //int y = ItemOpenedPosY(item);
+
                 ((Choice *)item)->Draw(Menu::CalculateX(), ItemOpenedPosY(item), true);
             }
             else if (IS_GOVERNOR(item))
@@ -564,25 +572,25 @@ void Page::DrawTitle(int x, int yTop)
 
     bool shade = CurrentItemIsOpened();
 
-    Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, MP_TITLE_HEIGHT + 2, Color::BACK);
+    Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, Menu::Title::Height() + 2, Color::BACK);
 
-    Painter::DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, MP_TITLE_HEIGHT + 1, Color::BorderMenu(shade));
+    Painter::DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, Menu::Title::Height() + 1, Color::BorderMenu(shade));
 
     if (shade)
     {
-        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, Color::MENU_TITLE_DARK);
-        Painter::FillRegion(x + 4, yTop + 4, MP_TITLE_WIDTH - 7, MP_TITLE_HEIGHT - 7, Color::MENU_TITLE_DARK);
+        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, Menu::Title::Height() - 1, Color::MENU_TITLE_DARK);
+        Painter::FillRegion(x + 4, yTop + 4, MP_TITLE_WIDTH - 7, Menu::Title::Height() - 7, Color::MENU_TITLE_DARK);
     }
     else
     {
-        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, Color::MenuTitle(false));
+        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, Menu::Title::Height() - 1, Color::MenuTitle(false));
     }
 
     bool condDrawRSet = NumSubPages() > 1 && NOT_CHOICE_REG(Menu::CurrentItem()) &&
         NOT_GOVERNOR(Menu::CurrentItem()) && IS_PAGE(Menu::OpenedItem());
     int delta = condDrawRSet ? -10 : 0;
     Color colorText = Color::FILL;
-    x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, Title(), colorText);
+    x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, Menu::Title::Height(), Title(), colorText);
     if (condDrawRSet)
     {
         //Painter::Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(CurrentSubPage()), colorText);
@@ -593,8 +601,8 @@ void Page::DrawTitle(int x, int yTop)
     delta = 0;
 
     Painter::SetColor(Color::GRAY_75);
-    DrawPagesUGO(eX + MP_TITLE_WIDTH - 3 + delta, yTop + MP_TITLE_HEIGHT - 2 + delta);
-    DrawNestingPage(eX + 5, yTop + MP_TITLE_HEIGHT - 8);
+    DrawPagesUGO(eX + MP_TITLE_WIDTH - 3 + delta, yTop + Menu::Title::Height() - 2 + delta);
+    DrawNestingPage(eX + 5, yTop + Menu::Title::Height() - 8);
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::DrawItems(int x, int y)
@@ -870,7 +878,7 @@ int Page::ItemOpenedPosY(Control *item)
 {
     Page *page = (Page *)KEEPER(item);
     int8 posCurItem = page->PosCurrentItem();
-    int y = Grid::Top() + (posCurItem % MENU_ITEMS_ON_DISPLAY) * MI_HEIGHT + MP_TITLE_HEIGHT;
+    int y = Grid::Top() + (posCurItem % MENU_ITEMS_ON_DISPLAY) * MI_HEIGHT + Menu::Title::Height();
     if (y + ((Control *)item)->HeightOpened() > Grid::Bottom())
     {
         y = Grid::Bottom() - ((Control *)item)->HeightOpened() - 2;

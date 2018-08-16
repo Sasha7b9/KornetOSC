@@ -4,7 +4,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define MI_HEIGHT               23
 #define MI_WIDTH                (320 / 5)
-#define MP_TITLE_HEIGHT         12
 #define MP_TITLE_WIDTH          (MI_WIDTH * 2 - 2)
 #define MOSI_HEIGHT             14
 #define MI_HEIGHT_VALUE         13
