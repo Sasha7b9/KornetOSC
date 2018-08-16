@@ -191,10 +191,10 @@ public:
 
     // Настройки частотомера
 
-    bool                freq_Enable;
-    TimeCounting        freq_TimeCounting;              ///< Время счёта частоты.
-    FreqClc             freq_FreqClc;                   ///< Частота заполнения.
-    NumberPeriods       freq_NumberPeriods;             ///< Количество периодов.
+    bool                freq_enable;
+    TimeCounting        freq_timeCounting;              ///< Время счёта частоты.
+    FreqClc             freq_freqClc;                   ///< Частота заполнения.
+    NumberPeriods       freq_numberPeriods;             ///< Количество периодов.
 
     // Меню ОТЛАДКА
 

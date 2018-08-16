@@ -404,28 +404,40 @@ struct Resistance
 };
 
 /// Время счёта периода.
-enum TimeCounting
+struct TimeCounting
 {
-    TimeCounting_100ms,
-    TimeCounting_1s,
-    TimeCounting_10s
+    enum
+    {
+        _100ms,
+        _1s,
+        _10s
+    };
+    COMMON_ENUM;
 };
 
 /// Частота заполняющих импульсов для счёта частоты.
-enum FreqClc
+struct FreqClc
 {
-    FreqClc_100kHz,
-    FreqClc_1MHz,
-    FreqClc_10MHz,
-    FreqClc_100MHz
+    enum
+    {
+        _100kHz,
+        _1MHz,
+        _10MHz,
+        _100MHz
+    };
+    COMMON_ENUM;
 };
 
 /// Количество периодов.
-enum NumberPeriods
+struct NumberPeriods
 {
-    NumberPeriods_1,
-    NumberPeriods_10,
-    NumberPeriods_100
+    enum
+    {
+        _1,
+        _10,
+        _100
+    };
+    COMMON_ENUM;
 };
 
 struct PeakDetMode

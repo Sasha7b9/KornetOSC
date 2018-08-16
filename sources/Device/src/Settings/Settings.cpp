@@ -133,6 +133,11 @@ static const Settings defaultSettings =
 
     // Настройки частотомера
 
+    /* freq_enable;        */ false,
+    /* freq_timeCounting;  */ TimeCounting::_1s,
+    /* freq_freqClc;       */ FreqClc::_1MHz,
+    /* freq_numberPeriods; */ NumberPeriods::_10,
+
     // Настройки тестер-компонента
 
     // Настройки меню
