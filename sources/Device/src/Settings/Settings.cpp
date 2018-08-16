@@ -38,10 +38,10 @@ static const Settings defaultSettings =
 
                                             // Меню КАНАЛ 1, КАНАЛ 2
     
-    /* chan_shift[Chan::Num];  */     {RShiftZero, RShiftZero},
-    /* chan_range[Chan::Num];  */     {Range::_500mV, Range::_500mV},
-    /* chan_couple[Chan::Num]; */     {ModeCouple::DC, ModeCouple::DC},
-    /* chan_enable[Chan::Num]; */     {true, true},
+    /* chan_shift[Chan::Num];    */     {RShiftZero, RShiftZero},
+    /* chan_range[Chan::Num];    */     {Range::_500mV, Range::_500mV},
+    /* chan_couple[Chan::Num];   */     {ModeCouple::DC, ModeCouple::DC},
+    /* chan_enable[Chan::Num];   */     {true, true},
     /* chan_balanceShiftADC[2];  */     {0, 0},
     /* chan_bandwidth[2];        */     {Bandwidth::_20MHz, Bandwidth::_20MHz},
     /* chan_resistance[2];       */     {Resistance::_1Mom, Resistance::_1Mom},
@@ -54,7 +54,7 @@ static const Settings defaultSettings =
     /* trig_source;             */      TrigSource::A,
     /* trig_input;              */      TrigInput::Full,
     /* trig_polarity;           */      TrigPolarity::Rising,
-    /* trig_lev[Chan::Num];   */      {TrigLevZero, TrigLevZero},
+    /* trig_lev[Chan::Num];     */      {TrigLevZero, TrigLevZero},
     /* trig_startMode;          */      StartMode::Auto,
     /* trig_modeFind;           */      TrigModeFind::Hand,
     
@@ -76,13 +76,13 @@ static const Settings defaultSettings =
     /* curs_showFreq;                */ true,
     /* curs_active;                  */ CursActive::None,
     /* curs_source;                  */ Chan::A,
-    /* curs_cntrlU[Chan::Num];     */ {CursCntrl::Disable, CursCntrl::Disable},
-    /* curs_cntrlT[Chan::Num];     */ {CursCntrl::Disable, CursCntrl::Disable},
+    /* curs_cntrlU[Chan::Num];       */ {CursCntrl::Disable, CursCntrl::Disable},
+    /* curs_cntrlT[Chan::Num];       */ {CursCntrl::Disable, CursCntrl::Disable},
     /* curs_movement;                */ CursMovement::Pixels,
     /* curs_deltaU100percents[2];    */ {100, 100},
     /* curs_deltaT100percents[2];    */ {100, 100},
-    /* curs_posCurU[Chan::Num][2]; */ {{ 100, 100 },{ 100, 100 }},
-    /* curs_posCurT[Chan::Num][2]; */ {{ 100, 100 },{ 100, 100 }},
+    /* curs_posCurU[Chan::Num][2];   */ {{ 100, 100 },{ 100, 100 }},
+    /* curs_posCurT[Chan::Num][2];   */ {{ 100, 100 },{ 100, 100 }},
     
                                             // Меню ПАМЯТЬ
     
@@ -179,14 +179,14 @@ static const Settings defaultSettings =
                                             // Несбрасываемые настройки калибровки
 
     /* nrst_balanceADC[Chan::Num];                */ {},
-    /* nrst_balanceADCtype;                         */ BalanceADC::Disable,
-    /* nrst_stretchADCtype;                         */ StretchADC::Disable,
+    /* nrst_balanceADCtype;                       */ BalanceADC::Disable,
+    /* nrst_stretchADCtype;                       */ StretchADC::Disable,
     /* nrst_StretchADC[Chan::Num][3];             */ {},
     /* nrst_rShiftAddStable[Chan::Num][3];        */ {},
-    /* nrst_numAveForRand;                          */ 0,
-    /* nrst_numSmoothForRand;                       */ 0,
+    /* nrst_numAveForRand;                        */ 0,
+    /* nrst_numSmoothForRand;                     */ 0,
     /* nrst_rShiftAdd[Chan::Num][Range::Size][2]; */ {},
-    /* nrst_correctionTime;                         */ 0
+    /* nrst_correctionTime;                       */ 0
 };
 
 Settings set;
