@@ -25,6 +25,8 @@ void DisplayOsci::Update()
     
     PainterData::DrawData();
 
+    Painter::DrawRectangle(Grid::Left(), Grid::Top(), Grid::Width(), Grid::Height(), Color::FILL);
+
     BottomPart::Draw();
 
     RShift::Draw();
