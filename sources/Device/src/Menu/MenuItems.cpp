@@ -110,7 +110,7 @@ int Control::HeightOpened() const
     }
     else if (type == Item_Choice || type == Item_ChoiceReg)
     {
-        return MOI_HEIGHT_TITLE + ((Choice *)this)->NumSubItems() * MOSI_HEIGHT - 1;
+        return MOI_HEIGHT_TITLE + ((Choice *)this)->NumSubItems() * MOSI_HEIGHT - 5;
     }
     return Menu::Item::HEIGHT;
 }
