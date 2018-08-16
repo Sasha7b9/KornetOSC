@@ -106,13 +106,13 @@ int Control::HeightOpened() const
     {
         int numItems = ((const Page *)this)->NumItems() - ((Page *)this)->CurrentSubPage() * MENU_ITEMS_ON_DISPLAY;
         LIMITATION(numItems, 0, MENU_ITEMS_ON_DISPLAY);
-        return Menu::Title::Height() + MI_HEIGHT * numItems;
+        return Menu::Title::Height() + Menu::Item::Height() * numItems;
     }
     else if (type == Item_Choice || type == Item_ChoiceReg)
     {
         return MOI_HEIGHT_TITLE + ((Choice *)this)->NumSubItems() * MOSI_HEIGHT - 1;
     }
-    return MI_HEIGHT;
+    return Menu::Item::Height();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

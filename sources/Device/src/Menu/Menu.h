@@ -23,12 +23,6 @@ friend class Page;
 
 public:
 
-    class Title
-    {
-    public:
-        static int Height();
-    };
-
     /// »нициализаци€
     static void Init();
 
@@ -132,6 +126,39 @@ private:
     static uint timeLastPressedButton;
     /// Ёлементы управлени€, назначенные в данный момент соответствующим кнопкам
     static Control *itemUnderButton[Key::NumButtons];
+
+public:
+
+    class Title
+    {
+    public:
+        static int Height()
+        {
+            return 12; 
+        }
+    };
+
+    class Item
+    {
+    public:
+        static int Height()
+        {
+            return 23;
+        }
+        static int Width()
+        {
+            return 320 / 5;
+        }
+
+        class Value
+        {
+        public:
+            static int Height()
+            {
+                return 13;
+            }
+        };
+    };
 };
 
 

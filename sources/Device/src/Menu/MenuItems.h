@@ -159,7 +159,7 @@ public:
 
     void DrawItems(int x, int y);
 
-    static int ItemOpenedPosY(Control *item);
+    static int ItemOpenedPosX(Control *item);
 
     void DrawPagesUGO(int right, int bottom);
 

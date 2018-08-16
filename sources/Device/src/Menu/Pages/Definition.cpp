@@ -1,4 +1,5 @@
 #include "defines.h"
+#include "Menu/Menu.h"
 #include "Definition.h"
 #include "Display/Painter.h"
 #include "Display/DisplayTypes.h"
@@ -83,14 +84,14 @@ void OnPressSB_Exit()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static int CalculateYforCurs(int y, bool top)
 {
-    return top ? y + MI_HEIGHT / 2 + 4 : y + MI_HEIGHT - 2;
+    return top ? y + Menu::Item::Height() / 2 + 4 : y + Menu::Item::Height() - 2;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static int CalculateXforCurs(int x, bool left)
 {
-    return left ? x + MI_WIDTH - 20 : x + MI_WIDTH - 5;
+    return left ? x + Menu::Item::Width() - 20 : x + Menu::Item::Width() - 5;
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------

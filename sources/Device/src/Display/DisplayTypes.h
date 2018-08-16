@@ -2,12 +2,9 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define MI_HEIGHT               23
-#define MI_WIDTH                (320 / 5)
-#define MP_TITLE_WIDTH          (MI_WIDTH * 2 - 2)
+#define MP_TITLE_WIDTH          (Menu::Item::Width() * 2 - 2)
 #define MOSI_HEIGHT             14
-#define MI_HEIGHT_VALUE         13
-#define MI_WIDTH_VALUE          ((MI_WIDTH) - 4)
+#define MI_WIDTH_VALUE          ((Menu::Item::Width()) - 4)
 #define MOI_HEIGHT_TITLE        19
 #define MOI_WIDTH               MP_TITLE_WIDTH
 #define MOI_WIDTH_D_IP          34      /* Увеличение ширины открытого ip-адреса в случае наличия порта */
