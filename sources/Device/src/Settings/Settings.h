@@ -28,9 +28,9 @@
 #define TRIG_MODE                       (set.trig_mode)
 
 #define TESTER_CONTROL                  (set.test_control)
-#define TESTER_CONTROL_IS_U             (TESTER_CONTROL == Control_Voltage)
+#define TESTER_CONTROL_IS_U             (TESTER_CONTROL == TesterControl::Voltage)
 #define TESTER_POLARITY                 (set.test_polarity)
-#define TESTER_POLARITY_IS_POSITITVE    (TESTER_POLARITY == Polarity_Positive)
+#define TESTER_POLARITY_IS_POSITITVE    (TESTER_POLARITY == TesterPolarity::Positive)
 #define TESTER_STEP_U                   (set.test_stepU)
 #define TESTER_STEP_I                   (set.test_stepI)
 #define TESTER_NUM_SMOOTH               (set.test_smooth)

@@ -157,20 +157,23 @@ static const Settings defaultSettings =
     /* dbg_showRandStat;        */ false,
     /* dbg_timeCompensation;    */ 0,
     /* dbg_pretriggered;        */ 0,
-    /* dbg_bandwidth[2];        */ Bandwidth::_100MHz,
+    /* dbg_bandwidth[2];        */{Bandwidth::_100MHz, Bandwidth::_100MHz},
+    /* dbg_ShowStats;           */ false,
+    /* dbg_Orientation;         */ DisplayOrientation::Direct,
 
     // Настройки тестер-компонента
+
+    /* test_control;  */ TesterControl::Voltage,
+    /* test_polarity; */ TesterPolarity::Positive,
+    /* test_stepU;    */ TesterStepU::_100mV,
+    /* test_stepI;    */ TesterStepI::_4mA,
+    /* test_smooth;   */ 0,
 
     // Настройки меню
 
     // Несбрасываемые настройки калибровки
 
     /*
-    Control_Voltage,                // test_control
-    Polarity_Positive,              // test_polarity
-    StepU_100mV,                    // test_stepU
-    StepI_4mA,                      // test_stepI
-    0,                              // test_smooth
     0,                              // menu_currentPage
     false                           // menu_show
     */

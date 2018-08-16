@@ -175,29 +175,45 @@ struct ModeTrig
 };
 
 /// Чем будем управлять в тестер-компоненте - напряжением или током
-enum TesterControl
+struct TesterControl
 {
-    Control_Voltage,
-    Control_Current
+    enum
+    {
+        Voltage,
+        Current
+    };
+    COMMON_ENUM;
 };
 
 
-enum TesterPolarity
+struct TesterPolarity
 {
-    Polarity_Positive,
-    Polarity_Negative
+    enum
+    {
+        Positive,
+        Negative
+    };
+    COMMON_ENUM;
 };
 
-enum TesterStepU
+struct TesterStepU
 {
-    StepU_100mV,
-    StepU_500mV
+    enum
+    {
+        _100mV,
+        _500mV
+    };
+    COMMON_ENUM;
 };
 
-enum TesterStepI
+struct TesterStepI
 {
-    StepI_4mA,
-    StepI_20mA
+    enum
+    {
+        _4mA,
+        _20mA
+    };
+    COMMON_ENUM
 };
 
 /// Каким курсором управлять
@@ -373,10 +389,14 @@ enum StretchADCtype
     StretchADC_Hand
 };
 
-enum DisplayOrientation
+struct DisplayOrientation
 {
-    Direct,
-    Back
+    enum
+    {
+        Direct,
+        Back
+    };
+    COMMON_ENUM;
 };
 
 /// Режим канала по входу.
