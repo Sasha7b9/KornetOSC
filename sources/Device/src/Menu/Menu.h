@@ -132,31 +132,22 @@ public:
     class Title
     {
     public:
-        static int Height()
-        {
-            return 12; 
-        }
+        static const int HEIGHT = 12;
+        static const int WIDTH = 320 / 5 * 2 - 2;
     };
 
     class Item
     {
     public:
-        static int Height()
-        {
-            return 23;
-        }
-        static int Width()
-        {
-            return 320 / 5;
-        }
+        static const int HEIGHT = 23;
+        static const int WIDTH = 320 / 5;
+        static const int WIDTH_OPENED = Menu::Title::WIDTH;
 
         class Value
         {
         public:
-            static int Height()
-            {
-                return 13;
-            }
+            static const int HEIGHT = 13;
+            static const int WIDTH = Menu::Item::WIDTH - 4;
         };
     };
 };

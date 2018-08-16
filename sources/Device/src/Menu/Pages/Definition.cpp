@@ -84,14 +84,14 @@ void OnPressSB_Exit()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static int CalculateYforCurs(int y, bool top)
 {
-    return top ? y + Menu::Item::Height() / 2 + 4 : y + Menu::Item::Height() - 2;
+    return top ? y + Menu::Item::HEIGHT / 2 + 4 : y + Menu::Item::HEIGHT - 2;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static int CalculateXforCurs(int x, bool left)
 {
-    return left ? x + Menu::Item::Width() - 20 : x + Menu::Item::Width() - 5;
+    return left ? x + Menu::Item::WIDTH - 20 : x + Menu::Item::WIDTH - 5;
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------

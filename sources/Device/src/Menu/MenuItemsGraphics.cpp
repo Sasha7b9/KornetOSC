@@ -63,12 +63,12 @@ void GovernorColor::DrawOpened(int x, int y)
     static const int delta = 43;
     x -= delta;
     ct->Init(false);
-    Painter::DrawRectangle(x - 1, y - 1, Menu::Item::Width() + delta + 2, Menu::Item::Height() + 2, Color::BLACK);
-    Painter::DrawRectangle(x, y, Menu::Item::Width() + delta, Menu::Item::Height(), Color::MenuTitle(false));
-    Painter::FillRegion(x + 1, y + 1, MI_WIDTH_VALUE + 2 + delta, Menu::Item::Value::Height() + 3, Color::MenuItem(false));
-    Painter::DrawHLine(y + Menu::Item::Height() / 2 + 2, x, x + Menu::Item::Width() + delta, Color::MenuTitle(false));
-    Painter::DrawStringInCenterRect(x + (IsPressed() ? 2 : 1), y + (IsPressed() ? 2 : 1), Menu::Item::Width() + delta, Menu::Item::Height() / 2 + 2, Title(),
-                                    Color::WHITE);
+    Painter::DrawRectangle(x - 1, y - 1, Menu::Item::HEIGHT + delta + 2, Menu::Item::HEIGHT + 2, Color::BLACK);
+    Painter::DrawRectangle(x, y, Menu::Item::WIDTH + delta, Menu::Item::HEIGHT, Color::MenuTitle(false));
+    Painter::FillRegion(x + 1, y + 1, Menu::Item::Value::WIDTH + 2 + delta, Menu::Item::Value::HEIGHT + 3, Color::MenuItem(false));
+    Painter::DrawHLine(y + Menu::Item::HEIGHT / 2 + 2, x, x + Menu::Item::WIDTH + delta, Color::MenuTitle(false));
+    Painter::DrawStringInCenterRect(x + (IsPressed() ? 2 : 1), y + (IsPressed() ? 2 : 1), Menu::Item::WIDTH + delta, Menu::Item::HEIGHT / 2 + 2, 
+                                    Title(), Color::WHITE);
     DrawValue(x + 1, y + 19, delta);
 }
 
@@ -77,7 +77,7 @@ void GovernorColor::DrawClosed(int x, int y)
 {
     ct->Init(false);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, IsPressed(), IsShade() || !IS_ACTIVE(this), true);
-    Painter::FillRegion(x + 2, y + 20, MI_WIDTH_VALUE, Menu::Item::Value::Height() - 1, ct->color);
+    Painter::FillRegion(x + 2, y + 20, Menu::Item::Value::WIDTH, Menu::Item::Value::HEIGHT - 1, ct->color);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -95,7 +95,7 @@ void GovernorColor::DrawValue(int x, int y, int delta)
     ct->Init(false);
     int16 vals[4] = {(int16)(ct->brightness * 100.0f), (int16)blue, (int16)green, (int16)red};
 
-    Painter::FillRegion(x, y, Menu::Item::Width() + delta - 2, Menu::Item::Height() / 2 - 3, Color::BLACK);
+    Painter::FillRegion(x, y, Menu::Item::WIDTH + delta - 2, Menu::Item::HEIGHT / 2 - 3, Color::BLACK);
     x += 92;
 
     for (int i = 0; i < 4; i++)
@@ -176,7 +176,7 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
 
     Color colorTextDown = Color::BLACK;
 
-    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, Menu::Item::Value::Height() + 3, Color::MENU_FIELD);
+    Painter::FillRegion(x + 1, y + 17, Menu::Item::Value::WIDTH + 2, Menu::Item::Value::HEIGHT + 3, Color::MENU_FIELD);
     if (shade)
     {
         colorTextDown = Color::MenuItem(false);
@@ -195,8 +195,8 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
             int drawX = x + 1;
             int limX = x + 1;
             int limY = y + 19;
-            int limWidth = MI_WIDTH_VALUE;
-            int limHeight = Menu::Item::Value::Height() - 1;
+            int limWidth = Menu::Item::Value::WIDTH;
+            int limHeight = Menu::Item::Value::HEIGHT - 1;
             Painter::SetColor(Color::BLACK);
             if (delta > 0)
             {
@@ -290,7 +290,7 @@ void IPaddress::DrawLowPart(int x, int y, bool, bool shade)
 
     Color colorTextDown = Color::BLACK;
 
-    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, Menu::Item::Value::Height() + 3, Color::MENU_FIELD);
+    Painter::FillRegion(x + 1, y + 17, Menu::Item::Value::WIDTH + 2, Menu::Item::Value::HEIGHT + 3, Color::MENU_FIELD);
     if (shade)
     {
         colorTextDown = Color::MenuItem(false);
@@ -345,7 +345,7 @@ void MACaddress::DrawValue(int x, int y)
         gCurDigit = 0;
     }
     uint8 *bytes = mac0;
-    x += MOI_WIDTH - 14;
+    x += Menu::Item::WIDTH_OPENED - 14;
     y++;
     for (int i = 5; i >= 0; --i)
     {
@@ -370,7 +370,7 @@ void MACaddress::DrawLowPart(int x, int y, bool, bool shade)
 
     Color colorTextDown = Color::BLACK;
 
-    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, Menu::Item::Value::Height() + 3, Color::MENU_FIELD);
+    Painter::FillRegion(x + 1, y + 17, Menu::Item::Value::WIDTH + 2, Menu::Item::Value::HEIGHT + 3, Color::MENU_FIELD);
     if (shade)
     {
         colorTextDown = Color::MenuItem(false);
@@ -407,17 +407,17 @@ void Choice::DrawOpened(int x, int y)
 {
     int height = HeightOpened();
     
-    Painter::DrawRectangle(x - 2, y - 1, MP_TITLE_WIDTH + 3, height + 3, Color::FILL);
+    Painter::DrawRectangle(x - 2, y - 1, Menu::Title::WIDTH + 3, height + 3, Color::FILL);
 
-    LOG_WRITE("%d %d %d %d", x - 2, y - 1, MP_TITLE_WIDTH + 3, height + 3);
+    LOG_WRITE("%d %d %d %d", x - 2, y - 1, Menu::Title::WIDTH + 3, height + 3);
 
     return;
 
     DrawGovernorChoiceColorFormulaHiPart(this, x - 1, y - 1, IsPressed(), false, true);
-    Painter::DrawRectangle(x - 1, y, MP_TITLE_WIDTH + 1, height + 1, Color::MenuTitle(false));
+    Painter::DrawRectangle(x - 1, y, Menu::Title::WIDTH + 1, height + 1, Color::MenuTitle(false));
 
-    Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH);
-    Painter::FillRegion(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1, height - MOI_HEIGHT_TITLE, Color::BLACK);
+    Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + Menu::Item::WIDTH_OPENED);
+    Painter::FillRegion(x, y + MOI_HEIGHT_TITLE, Menu::Item::WIDTH_OPENED - 1, height - MOI_HEIGHT_TITLE, Color::BLACK);
     int8 index = *cell;
     for (int i = 0; i < NumSubItems(); i++)
     {
@@ -425,7 +425,7 @@ void Choice::DrawOpened(int x, int y)
         bool pressed = i == index;
         if (pressed)
         {
-            Painter::FillRegion(x + 1, yItem, MOI_WIDTH - 2, MOSI_HEIGHT - 2, Color::MENU_FIELD);
+            Painter::FillRegion(x + 1, yItem, Menu::Item::WIDTH_OPENED - 2, MOSI_HEIGHT - 2, Color::MENU_FIELD);
         }
         Painter::DrawText(x + 4, yItem + 2, NameSubItem(i), pressed ? Color::BLACK : Color::MENU_FIELD);
     }
@@ -437,22 +437,22 @@ void Choice::DrawClosed(int x, int y)
     bool pressed = IsPressed();
     bool shade = IsShade() || !funcOfActive();
 
-    Painter::FillRegion(x + 1, y + Menu::Item::Value::Height(), MI_WIDTH_VALUE + 1, Menu::Item::Value::Height() - 3, Color::MENU_FIELD);
+    Painter::FillRegion(x + 1, y + Menu::Item::Value::HEIGHT, Menu::Item::Value::WIDTH + 1, Menu::Item::Value::HEIGHT - 3, Color::MENU_FIELD);
 
     int deltaY = (int)Step();
     Color colorText = shade ? Color::MenuItem(true) : Color::BLACK;
     Painter::SetColor(colorText);
     if (deltaY == 0)
     {
-        Painter::DrawText(x + 4, y + Menu::Item::Value::Height() + 1, NameCurrentSubItem());
+        Painter::DrawText(x + 4, y + Menu::Item::Value::HEIGHT + 1, NameCurrentSubItem());
     }
     else
     {
         Painter::SetColor(Color::BACK);
-        Painter::DrawTextWithLimitation(x + 4, y + Menu::Item::Value::Height() - deltaY + 1, NameCurrentSubItem(), x, y + 11, MI_WIDTH_VALUE, Menu::Item::Value::Height() - 1);
-        Painter::DrawHLine(y + (deltaY > 0 ? 24 : 19) - deltaY, x + 1, x + MI_WIDTH_VALUE + 2);
-        Painter::DrawTextWithLimitation(x + 4, y + (deltaY > 0 ? (Menu::Item::Value::Height() + 13) : 9) - deltaY, deltaY > 0 ? NameNextSubItem() : NamePrevSubItem(),
-                                        x, y + 11, MI_WIDTH_VALUE, Menu::Item::Value::Height() - 1);
+        Painter::DrawTextWithLimitation(x + 4, y + Menu::Item::Value::HEIGHT - deltaY + 1, NameCurrentSubItem(), x, y + 11, Menu::Item::Value::WIDTH, Menu::Item::Value::HEIGHT - 1);
+        Painter::DrawHLine(y + (deltaY > 0 ? 24 : 19) - deltaY, x + 1, x + Menu::Item::Value::WIDTH + 2);
+        Painter::DrawTextWithLimitation(x + 4, y + (deltaY > 0 ? (Menu::Item::Value::HEIGHT + 13) : 9) - deltaY, deltaY > 0 ? NameNextSubItem() : NamePrevSubItem(),
+                                        x, y + 11, Menu::Item::Value::WIDTH, Menu::Item::Value::HEIGHT - 1);
     }
   
     if (funcForDraw)
@@ -468,14 +468,14 @@ void Button::Draw(int x, int y)
     bool pressed = IsPressed();
     bool shade = IsShade() || !funcOfActive();
 
-    Painter::DrawHLine(y + 1, x, x + Menu::Item::Width(), Color::MenuTitle(shade));
+    Painter::DrawHLine(y + 1, x, x + Menu::Item::WIDTH, Color::MenuTitle(shade));
     Color color = shade ? Color::MenuItem(true) : Color::WHITE;
-    Painter::FillRegion(x + 1, y + 2, Menu::Item::Width() - 2, Menu::Item::Height() - 2, Color::MenuItem(false));
-    Painter::FillRegion(x + 3, y + 4, Menu::Item::Width() - 6, Menu::Item::Height() - 6, Color::MenuItem(false));
+    Painter::FillRegion(x + 1, y + 2, Menu::Item::WIDTH - 2, Menu::Item::HEIGHT - 2, Color::MenuItem(false));
+    Painter::FillRegion(x + 3, y + 4, Menu::Item::WIDTH - 6, Menu::Item::HEIGHT - 6, Color::MenuItem(false));
 
     int delta = (pressed && (!shade)) ? 2 : 1;
 
-    Painter::DrawStringInCenterRect(x + delta, y + delta, Menu::Item::Width(), Menu::Item::Height(), Title(), color);
+    Painter::DrawStringInCenterRect(x + delta, y + delta, Menu::Item::WIDTH, Menu::Item::HEIGHT, Title(), color);
 
     funcForDraw(x, y);
 }
@@ -507,7 +507,7 @@ void Page::Draw(int x, int y, bool opened)
 {
     if(opened)
     {
-        DrawTitle(x, y - Menu::Title::Height());
+        DrawTitle(x, y - Menu::Title::HEIGHT);
 
         DrawItems(x, y);
         if (CurrentItemIsOpened())
@@ -540,22 +540,14 @@ void Page::Draw(int x, int y, bool opened)
             {
                 ((Time *)item)->Draw(x, y, true);
             }
-            else if (IS_IP(item))
-            {
-                ((IPaddress *)item)->Draw(x, y, true);
-            }
-            else if (IS_MAC(item))
-            {
-                ((MACaddress *)item)->Draw(x, y, true);
-            }
         }
 
         funcOnDraw();
     }
     else
     {
-        Painter::FillRegion(x + 1, y + 2, Menu::Item::Width() - 3, Menu::Item::Height() - 2, Color::MenuItem(false));
-        Painter::DrawStringInCenterRect(x, y + 1, Menu::Item::Width(), Menu::Item::Height(), Title(), Color::FILL);
+        Painter::FillRegion(x + 1, y + 2, Menu::Item::WIDTH - 3, Menu::Item::HEIGHT - 2, Color::MenuItem(false));
+        Painter::DrawStringInCenterRect(x, y + 1, Menu::Item::WIDTH, Menu::Item::HEIGHT, Title(), Color::FILL);
     }
 }
 
@@ -572,25 +564,25 @@ void Page::DrawTitle(int x, int yTop)
 
     bool shade = CurrentItemIsOpened();
 
-    Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, Menu::Title::Height() + 2, Color::BACK);
+    Painter::FillRegion(x - 1, yTop, Menu::Title::WIDTH + 2, Menu::Title::HEIGHT + 2, Color::BACK);
 
-    Painter::DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, Menu::Title::Height() + 1, Color::BorderMenu(shade));
+    Painter::DrawRectangle(x, yTop, Menu::Title::WIDTH + 1, Menu::Title::HEIGHT + 1, Color::BorderMenu(shade));
 
     if (shade)
     {
-        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, Menu::Title::Height() - 1, Color::MENU_TITLE_DARK);
-        Painter::FillRegion(x + 4, yTop + 4, MP_TITLE_WIDTH - 7, Menu::Title::Height() - 7, Color::MENU_TITLE_DARK);
+        Painter::FillRegion(x + 1, yTop + 1, Menu::Title::WIDTH - 1, Menu::Title::HEIGHT - 1, Color::MENU_TITLE_DARK);
+        Painter::FillRegion(x + 4, yTop + 4, Menu::Title::WIDTH - 7, Menu::Title::HEIGHT - 7, Color::MENU_TITLE_DARK);
     }
     else
     {
-        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, Menu::Title::Height() - 1, Color::MenuTitle(false));
+        Painter::FillRegion(x + 1, yTop + 1, Menu::Title::WIDTH - 1, Menu::Title::HEIGHT - 1, Color::MenuTitle(false));
     }
 
     bool condDrawRSet = NumSubPages() > 1 && NOT_CHOICE_REG(Menu::CurrentItem()) &&
         NOT_GOVERNOR(Menu::CurrentItem()) && IS_PAGE(Menu::OpenedItem());
     int delta = condDrawRSet ? -10 : 0;
     Color colorText = Color::FILL;
-    x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, Menu::Title::Height(), Title(), colorText);
+    x = Painter::DrawStringInCenterRect(x, yTop, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT, Title(), colorText);
     if (condDrawRSet)
     {
         //Painter::Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(CurrentSubPage()), colorText);
@@ -601,8 +593,8 @@ void Page::DrawTitle(int x, int yTop)
     delta = 0;
 
     Painter::SetColor(Color::GRAY_75);
-    DrawPagesUGO(eX + MP_TITLE_WIDTH - 3 + delta, yTop + Menu::Title::Height() - 2 + delta);
-    DrawNestingPage(eX + 5, yTop + Menu::Title::Height() - 8);
+    DrawPagesUGO(eX + Menu::Title::WIDTH - 3 + delta, yTop + Menu::Title::HEIGHT - 2 + delta);
+    DrawNestingPage(eX + 5, yTop + Menu::Title::HEIGHT - 8);
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::DrawItems(int x, int y)
@@ -619,10 +611,10 @@ void Page::DrawItems(int x, int y)
         Control *item = Item(posItem);
         if (item)
         {
-            Painter::DrawRectangle(x, y + 1, Menu::Item::Width() - 1, Menu::Item::Height(), Color::FILL);
+            Painter::DrawRectangle(x, y + 1, Menu::Item::WIDTH - 1, Menu::Item::HEIGHT, Color::FILL);
             item->Draw(x, y, false);
             Menu::itemUnderButton[GetFuncButtonFromX(x).code] = item;
-            x += Menu::Item::Width();
+            x += Menu::Item::WIDTH;
         }
     }
 }
@@ -650,20 +642,12 @@ void Control::Draw(int x, int y, bool opened)
     {
         ((Time *)this)->Draw(x, y, opened);
     }
-    else if (type == Item_IP)
-    {
-        ((IPaddress *)this)->Draw(x, y, opened);
-    }
     else if (type == Item_GovernorColor)
     {
         ((GovernorColor *)this)->Draw(x, y, opened);
     }
     else if (type == Item_Formula)
     {
-    }
-    else if (type == Item_MAC)
-    {
-        ((MACaddress *)this)->Draw(x, y, opened);
     }
     else if (type == Item_SmallButton)
     {
@@ -693,7 +677,7 @@ void Time::DrawClosed(int x, int y)
     bool shade = IsShade();
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 
-    Painter::FillRegion(x + 1, y + 17, MI_WIDTH_VALUE + 2, Menu::Item::Value::Height() + 3, Color::MENU_FIELD);
+    Painter::FillRegion(x + 1, y + 17, Menu::Item::Value::WIDTH + 2, Menu::Item::Value::HEIGHT + 3, Color::MENU_FIELD);
 
     int deltaField = 10;
     int deltaSeparator = 2;
@@ -719,15 +703,15 @@ void Time::DrawOpened(int x, int y)
 {
     char buffer[20];
 
-    int width = MI_WIDTH_VALUE + 3;
+    int width = Menu::Item::Value::WIDTH + 3;
     int height = 61;
     Painter::DrawRectangle(x - 1, y - 1, width + 2, height + 3, Color::BACK);
     DrawGovernorChoiceColorFormulaHiPart(this, x - 1, y - 1, IsPressed(), false, true);
 
     Painter::DrawRectangle(x - 1, y, width + 1, height + 1, Color::MenuTitle(false));
 
-    Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH);
-    Painter::FillRegion(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1, height - MOI_HEIGHT_TITLE, Color::BLACK);
+    Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + Menu::Item::WIDTH_OPENED);
+    Painter::FillRegion(x, y + MOI_HEIGHT_TITLE, Menu::Item::WIDTH_OPENED - 1, height - MOI_HEIGHT_TITLE, Color::BLACK);
 
     int y0 = 21;
     int y1 = 31;
@@ -783,17 +767,12 @@ void Time::DrawOpened(int x, int y)
 static void DrawGovernorChoiceColorFormulaHiPart(Control *item, int x, int y, bool pressed, bool shade, bool opened)
 {
     int delta = pressed && !shade ? 1 : 0;
-    int width = MI_WIDTH_VALUE;
-
-    if (IS_IP(item) && opened && ((IPaddress*)item)->port != 0)
-    {
-        width += MOI_WIDTH_D_IP;
-    }
+    int width = Menu::Item::Value::WIDTH;
 
     Color color = shade ? Color::MENU_TITLE_DARK : Color::WHITE;
     Painter::DrawHLine(y + 1, x, x + width + 3, Color::BorderMenu(false));
 
-    Painter::FillRegion(x + 1, y + 2, width + 1, Menu::Item::Value::Height() - 3, Color::MenuItem(false));
+    Painter::FillRegion(x + 1, y + 2, width + 1, Menu::Item::Value::HEIGHT - 3, Color::MenuItem(false));
 
     Painter::DrawText(x + 6 + delta, y + 3 + delta, item->Title(), color);
     if(Menu::CurrentItem() == item)
@@ -827,7 +806,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(Control *item, int x, int y, bo
                }
            }
 
-          Painter::Draw4SymbolsInRect(x + Menu::Item::Width() - 13, y + 5 + (item->IsOpened() ? 0 : 15), symbol, shade ? color : Color::BLACK);
+          Painter::Draw4SymbolsInRect(x + Menu::Item::WIDTH - 13, y + 5 + (item->IsOpened() ? 0 : 15), symbol, shade ? color : Color::BLACK);
     }
 }
 
@@ -866,18 +845,18 @@ static void GovernorIpCommon_DrawOpened(Control *item, int x, int y, int dWidth)
 {
     int height = 34;
     Control *control = (Control *)item;
-    Painter::DrawRectangle(x - 2, y - 1, MP_TITLE_WIDTH + 3 + dWidth, height + 3, Color::BACK);
-    Painter::DrawRectangle(x - 1, y, MP_TITLE_WIDTH + 1 + dWidth, height + 1, Color::MenuTitle(false));
-    Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH + dWidth);
+    Painter::DrawRectangle(x - 2, y - 1, Menu::Title::WIDTH + 3 + dWidth, height + 3, Color::BACK);
+    Painter::DrawRectangle(x - 1, y, Menu::Title::WIDTH + 1 + dWidth, height + 1, Color::MenuTitle(false));
+    Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + Menu::Item::WIDTH_OPENED + dWidth);
     DrawGovernorChoiceColorFormulaHiPart(item, x - 1, y - 1, control->IsPressed(), false, true);
-    Painter::FillRegion(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1 + dWidth, height - MOI_HEIGHT_TITLE, Color::BLACK);
+    Painter::FillRegion(x, y + MOI_HEIGHT_TITLE, Menu::Item::WIDTH_OPENED - 1 + dWidth, height - MOI_HEIGHT_TITLE, Color::BLACK);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Page::ItemOpenedPosX(Control *item)
 {
     Page *page = (Page *)KEEPER(item);
-    return (page->PosCurrentItem() % MENU_ITEMS_ON_DISPLAY) * Menu::Item::Width();
+    return (page->PosCurrentItem() % MENU_ITEMS_ON_DISPLAY) * Menu::Item::WIDTH;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

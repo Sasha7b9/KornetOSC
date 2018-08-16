@@ -688,10 +688,8 @@ static void DrawHintItem(int x, int y, int width)
         {"Страница",    "Page"},    // Item_Page
         {"",            ""},        // Item_Governor
         {"",            ""},        // Item_Time
-        {"",            ""},        // Item_IP
         {"",            ""},        // Item_GovernorColor
         {"",            ""},        // Item_Formula
-        {"",            ""},        // Item_MAC
         {"",            ""},        // Item_ChoiceReg
         {"Кнопка",      "Button"}   // Item_SmallButton
     };
@@ -723,7 +721,7 @@ int Menu::CalculateX()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Menu::CalculateY()
 {
-    return Grid::Bottom() - Item::Height() - 1;
+    return Grid::Bottom() - Item::HEIGHT - 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

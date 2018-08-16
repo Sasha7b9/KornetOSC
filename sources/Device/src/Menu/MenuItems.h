@@ -27,10 +27,8 @@ enum TypeItem
     Item_Page,          ///< Страница.
     Item_Governor,      ///< Регулятор - позволяет выбрать любое целое числовое значение из заранее заданного диапазаона.
     Item_Time,          ///< Позволяет ввести время.
-    Item_IP,            ///< Позволяет ввести IP-адрес.
     Item_GovernorColor, ///< Позволяет выбрать цвет.
     Item_Formula,       ///< Позволяет выбрать знак и коэффициенты для математической формулы (умножение и сложение)
-    Item_MAC,           ///< MAC-адрес
     Item_ChoiceReg,     ///< Элемент выбора, в котором выбор осуществляется не кнопкой, а ручкой
     Item_SmallButton,   ///< Кнопка для режима малых кнопок
     Item_ChoiceParameter,
@@ -59,8 +57,6 @@ class PageBase;
 #define IS_GOVERNOR(item)       (item->type == Item_Governor)
 #define NOT_GOVERNOR(item)      (item->type != Item_Governor)
 #define IS_GOVERNOR_COLOR(item) (item->type == Item_GovernorColor)
-#define IS_IP(item)             (item->type == Item_IP)
-#define IS_MAC(item)            (item->type == Item_MAC)
 #define IS_TIME(item)           (item->type == Item_Time)
     
 #define KEEPER(item)            ((PageBase *)item->keeper)

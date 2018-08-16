@@ -106,13 +106,13 @@ int Control::HeightOpened() const
     {
         int numItems = ((const Page *)this)->NumItems() - ((Page *)this)->CurrentSubPage() * MENU_ITEMS_ON_DISPLAY;
         LIMITATION(numItems, 0, MENU_ITEMS_ON_DISPLAY);
-        return Menu::Title::Height() + Menu::Item::Height() * numItems;
+        return Menu::Title::HEIGHT + Menu::Item::HEIGHT * numItems;
     }
     else if (type == Item_Choice || type == Item_ChoiceReg)
     {
         return MOI_HEIGHT_TITLE + ((Choice *)this)->NumSubItems() * MOSI_HEIGHT - 1;
     }
-    return Menu::Item::Height();
+    return Menu::Item::HEIGHT;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -177,14 +177,6 @@ bool Control::ChangeOpened(int delta)
     if (type == Item_Page)
     {
         ((Page *)this)->ChangeSubPage(delta);
-    }
-    else if (type == Item_IP)
-    {
-        ((IPaddress *)this)->ChangeValue(delta);
-    }
-    else if (type == Item_MAC)
-    {
-        ((MACaddress *)this)->ChangeValue(delta);
     }
     else if (type == Item_ChoiceReg || type == Item_Choice)
     {
@@ -276,13 +268,6 @@ void Control::ShortPress()
             time->SelectNextPosition();
         }
     }
-    else if(type == Item_IP)
-    {
-        if(Menu::OpenedItem() == this)
-        {
-            ((IPaddress *)this)->NextPosition();
-        }
-    }
     else if(type == Item_GovernorColor)
     {
         if(IS_ACTIVE(this))
@@ -300,13 +285,6 @@ void Control::ShortPress()
                 }
                 Open(!IsOpened());
             }
-        }
-    }
-    else if(type == Item_MAC)
-    {
-        if(Menu::OpenedItem() == this)
-        {
-            CircleIncrease<int8>(&gCurDigit, 0, 5);
         }
     }
     else if(type == Item_ChoiceReg)
