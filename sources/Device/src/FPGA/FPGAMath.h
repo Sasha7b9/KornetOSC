@@ -8,7 +8,7 @@
 
 #define RSHIFT_2_REL(rShiftAbs, range) MathFPGA::RShift2Rel(rShiftAbs, range)
 
-#define RSHIFT_2_ABS(rShift, range) (-(RShiftZero - ((int)(rShift))) * absStepRShift[(uint)(range)])
+#define RSHIFT_2_ABS(rShift, range) (-(RShift::ZERO - ((int)(rShift))) * absStepRShift[(uint)(range)])
 
 #define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
 

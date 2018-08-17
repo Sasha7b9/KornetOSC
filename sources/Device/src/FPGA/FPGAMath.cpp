@@ -5,6 +5,7 @@
 #include "FPGA/FPGATypes.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
+#include "Display/RShift.h"
 #include <math.h>
 
 
@@ -124,14 +125,14 @@ float MathFPGA::VoltageCursor(float shiftCurU, Range range, uint16 rShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int MathFPGA::RShift2Rel(float rShiftAbs, Range range)
 {
-    int retValue = RShiftZero + (int)(rShiftAbs / absStepRShift[range]);
-    if (retValue < RShiftMin)
+    int retValue = RShift::ZERO + (int)(rShiftAbs / absStepRShift[range]);
+    if (retValue < RShift::MIN)
     {
-        retValue = RShiftMin;
+        retValue = RShift::MIN;
     }
-    else if (retValue > RShiftMax)
+    else if (retValue > RShift::MAX)
     {
-        retValue = RShiftMax;
+        retValue = RShift::MAX;
     }
     return retValue;
 }
@@ -443,5 +444,5 @@ void MathFPGA::Normalize(float *data, int)
 int MathFPGA::RShift2Pixels(uint16 rShift, int heightGrid)
 {
     float scale = (float)heightGrid / (STEP_RSHIFT * 200);
-    return (int)(scale * (rShift - RShiftZero));
+    return (int)(scale * (rShift - RShift::ZERO));
 }

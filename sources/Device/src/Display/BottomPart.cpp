@@ -12,6 +12,7 @@
 #include "Utils/Dictionary.h"
 #include "Hardware/CPU.h"
 #include "Data/Reader.h"
+#include "RShift.h"
 #include <string.h>
 
 

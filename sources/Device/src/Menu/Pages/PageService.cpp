@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include "Display/Symbols.h"
 #include "Display/Painter.h"
+#include "Display/RShift.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAMath.h"
 #include "Hardware/CPU.h"
@@ -595,13 +596,13 @@ static void OnRegSet_Function(int delta)
         uint16 rShift = prevRShift;
         if (delta > 0)
         {
-            if (rShift < RShiftMax)
+            if (rShift < RShift::MAX)
             {
                 rShift += 4 * STEP_RSHIFT;
-                LIMIT_ABOVE(rShift, RShiftMax);
-                if (prevRShift < RShiftZero && rShift > RShiftZero)
+                LIMIT_ABOVE(rShift, RShift::MAX);
+                if (prevRShift < RShift::ZERO && rShift > RShift::ZERO)
                 {
-                    rShift = RShiftZero;
+                    rShift = RShift::ZERO;
                 }
                 Sound::RegulatorShiftRotate();
                 SET_RSHIFT_MATH = rShift;
@@ -609,13 +610,13 @@ static void OnRegSet_Function(int delta)
         }
         else if (delta < 0)
         {
-            if (rShift > RShiftMin)
+            if (rShift > RShift::MIN)
             {
                 rShift -= 4 * STEP_RSHIFT;
-                LIMIT_BELOW(rShift, RShiftMin);
-                if (prevRShift > RShiftZero && rShift < RShiftZero)
+                LIMIT_BELOW(rShift, RShift::MIN);
+                if (prevRShift > RShift::ZERO && rShift < RShift::ZERO)
                 {
-                    rShift = RShiftZero;
+                    rShift = RShift::ZERO;
                 }
                 Sound::RegulatorShiftRotate();
                 SET_RSHIFT_MATH = rShift;

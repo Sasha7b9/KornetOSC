@@ -3,6 +3,7 @@
 #include "Hardware/EEPROM.h"
 #include "Hardware/AT25160N.h"
 #include "Display/Colors.h"
+#include "Display/RShift.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,7 +39,7 @@ static const Settings defaultSettings =
 
                                             // Меню КАНАЛ 1, КАНАЛ 2
     
-    /* chan_shift[Chan::Num];    */     {RShiftZero, RShiftZero},
+    /* chan_shift[Chan::Num];    */     {RShift::ZERO, RShift::ZERO},
     /* chan_range[Chan::Num];    */     {Range::_500mV, Range::_500mV},
     /* chan_couple[Chan::Num];   */     {ModeCouple::DC, ModeCouple::DC},
     /* chan_enable[Chan::Num];   */     {true, true},
@@ -54,7 +55,7 @@ static const Settings defaultSettings =
     /* trig_source;             */      TrigSource::A,
     /* trig_input;              */      TrigInput::Full,
     /* trig_polarity;           */      TrigPolarity::Rising,
-    /* trig_lev[Chan::Num];     */      {TrigLevZero, TrigLevZero},
+    /* trig_lev[Chan::Num];     */      {TrigLev::ZERO, TrigLev::ZERO},
     /* trig_startMode;          */      StartMode::Auto,
     /* trig_modeFind;           */      TrigModeFind::Hand,
     
@@ -129,7 +130,7 @@ static const Settings defaultSettings =
     /* math_modeRegSet;    */           ModeRegSet::Range,
     /* math_range;         */           Range::_1V,
     /* math_divider;       */           Divider::_1,
-    /* math_rShift;        */           RShiftZero,
+    /* math_rShift;        */           RShift::ZERO,
 
                                             // Настройки частотомера
 

@@ -5,19 +5,8 @@
 #include "Settings/SettingsTypes.h"
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define RShiftMin       20
-#define RShiftZero      500
-#define RShiftMax       980
-#define TrigLevZero     500
-#define TrigLevMax      980
-#define TrigLevMin      20
-#define TShiftZero      500
-#define TShiftMin       0
-#define TShiftMax       60000
-
 /// На столько единиц нужно изменить значение смещения, чтобы маркер смещения по напряжению передвинулся на одну точку.
-#define STEP_RSHIFT     (((RShiftMax - RShiftMin) / 24) / 20)
+#define STEP_RSHIFT     (((RShift::MAX - RShift::MIN) / 24) / 20)
 #define STEP_TRIGLEV    STEP_RSHIFT
 
 extern uint16 gPost;

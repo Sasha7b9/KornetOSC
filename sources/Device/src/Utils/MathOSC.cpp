@@ -1,6 +1,7 @@
 #include "MathOSC.h"
 #include "FPGA/FPGA.h"
 #include "Settings/Settings.h"
+#include "Display/RShift.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>

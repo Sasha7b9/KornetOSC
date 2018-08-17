@@ -1,5 +1,6 @@
 #include "Settings.h"
 #include "SettingsChannel.h"
+#include "Display/RShift.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAMath.h"
 #include "Keyboard/Keyboard.h"

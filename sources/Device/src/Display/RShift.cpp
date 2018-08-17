@@ -17,7 +17,7 @@ void RShift::DrawRShift(Chan ch)
 {
     Painter::SetColor(Color::Channel(ch));
 
-    int delta = (SET_RSHIFT(ch) - RShiftZero) / STEP_RSHIFT;
+    int delta = (SET_RSHIFT(ch) - RShift::ZERO) / STEP_RSHIFT;
 
     int y = (Grid::Bottom() - Grid::Top()) / 2 + Grid::Top() - delta;
 

@@ -5,6 +5,7 @@
 #include "Globals.h"
 #include "Display/Console.h"
 #include "Display/Grid.h"
+#include "Display/RShift.h"
 #include "Display/DisplayTypes.h"
 #include "Display/Painter.h"
 #include "FlashDrive/FlashDrive.h"
@@ -353,15 +354,15 @@ void Menu::ProcessingLongPressureButton()
         }
         else if(button.Is(Key::Trig))
         {
-            FPGA::SetTrigLev(TRIG_SOURCE, TrigLevZero);
+            FPGA::SetTrigLev(TRIG_SOURCE, TrigLev::ZERO);
         }
         else if(button.Is(Key::ChannelA))
         {
-            FPGA::SetRShift(Chan::A, RShiftZero);
+            FPGA::SetRShift(Chan::A, RShift::ZERO);
         }
         else if(button.Is(Key::ChannelB))
         {
-            FPGA::SetRShift(Chan::B, RShiftZero);
+            FPGA::SetRShift(Chan::B, RShift::ZERO);
         }
         else if(button.Is(Key::Enter))
         {

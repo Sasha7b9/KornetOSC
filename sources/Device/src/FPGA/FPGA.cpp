@@ -15,6 +15,7 @@
 #include "Settings/Settings.h"
 #include "Settings/SettingsTrig.h"
 #include "Data/Storage.h"
+#include "Display/RShift.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -546,7 +547,7 @@ void FPGA::DecreaseTBase()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::RShiftChange(Chan ch, int delta)
 {
-    AddtionThisLimitation<uint16>(&SET_RSHIFT(ch), STEP_RSHIFT * delta, RShiftMin, RShiftMax);
+    AddtionThisLimitation<uint16>(&SET_RSHIFT(ch), STEP_RSHIFT * delta, RShift::MIN, RShift::MAX);
 
     LoadRShift(ch);
 }
@@ -554,7 +555,7 @@ void FPGA::RShiftChange(Chan ch, int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TrigLevChange(int delta)
 {
-    AddtionThisLimitation<uint16>(&SET_TRIGLEV_SOURCE, STEP_TRIGLEV * delta, TrigLevMin, TrigLevMax);
+    AddtionThisLimitation<uint16>(&SET_TRIGLEV_SOURCE, STEP_TRIGLEV * delta, TrigLev::MIN, TrigLev::MAX);
 
     LoadTrigLev();
 }
@@ -562,7 +563,7 @@ void FPGA::TrigLevChange(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TShiftChange(int delta)
 {
-    AddtionThisLimitation<uint16>(&SET_TSHIFT, delta, TShiftMin, TShiftMax);
+    AddtionThisLimitation<uint16>(&SET_TSHIFT, delta, TShift::MIN, TShift::MAX);
 
     LoadTShift();
 }
@@ -746,7 +747,7 @@ void FPGA::LoadTShift()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetRShift(Chan ch, uint16 rShift)
 {
-    Limitation<uint16>(&rShift, RShiftMin, RShiftMax);
+    Limitation<uint16>(&rShift, RShift::MIN, RShift::MAX);
     SET_RSHIFT(ch) = rShift;
     LoadRShift(ch);
 }
