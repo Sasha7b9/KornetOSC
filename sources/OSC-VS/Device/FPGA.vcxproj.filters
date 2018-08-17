@@ -315,6 +315,9 @@
     <ClCompile Include="..\..\Device\src\Display\PainterMem.cpp">
       <Filter>Display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Display\MemoryWindow.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -696,6 +699,9 @@
       <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\PainterMem.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Display\MemoryWindow.h">
       <Filter>Display</Filter>
     </ClInclude>
   </ItemGroup>

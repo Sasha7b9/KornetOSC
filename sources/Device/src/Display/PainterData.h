@@ -18,10 +18,6 @@ private:
     
     static void DrawData_ModeDir();
 
-    static void DrawMemoryWindow();
-
-    static void DrawDataInRect(int x, int y, int width, int height, uint8 *data, int length);
-
     static void DrawTPos(int leftX, int rightX);
 
     static void DrawTShift(int leftX, int rightX, int numPoints);

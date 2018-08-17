@@ -1895,6 +1895,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\PainterMem.h</FilePath>
             </File>
+            <File>
+              <FileName>MemoryWindow.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\MemoryWindow.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MemoryWindow.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\MemoryWindow.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
