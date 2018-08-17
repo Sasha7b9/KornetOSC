@@ -2,7 +2,7 @@
 #include "AD9286.h"
 #include "FPGATypes.h"
 #include "Log.h"
-#include "FPGA/FPGA.h"
+#include "RShift.h"
 #include "Utils/MathOSC.h"
 #include "Display/Display.h"
 #include "Hardware/FSMC.h"
@@ -15,7 +15,6 @@
 #include "Settings/Settings.h"
 #include "Settings/SettingsTrig.h"
 #include "Data/Storage.h"
-#include "Display/RShift.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

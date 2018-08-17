@@ -3,13 +3,13 @@
 #include "Grid.h"
 #include "BottomPart.h"
 #include "HiPart.h"
-#include "RShift.h"
 #include "PainterData.h"
 #include "Console.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGATypes.h"
+#include "FPGA/RShift.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

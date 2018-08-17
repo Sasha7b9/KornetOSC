@@ -1,12 +1,12 @@
 #include "MathOSC.h"
 #include "FPGA/FPGA.h"
+#include "FPGA/RShift.h"
 #include "Settings/Settings.h"
-#include "Display/RShift.h"
+#include "Utils/Math.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Utils/Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

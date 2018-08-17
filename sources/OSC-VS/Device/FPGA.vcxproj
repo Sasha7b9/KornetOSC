@@ -37,12 +37,12 @@
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp" />
     <ClCompile Include="..\..\Device\src\Display\PainterData.cpp" />
     <ClCompile Include="..\..\Device\src\Display\PainterMem.cpp" />
-    <ClCompile Include="..\..\Device\src\Display\RShift.cpp" />
     <ClCompile Include="..\..\Device\src\FlashDrive\FileManager.cpp" />
     <ClCompile Include="..\..\Device\src\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\AD9286.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGA.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\FPGAMath.cpp" />
+    <ClCompile Include="..\..\Device\src\FPGA\RShift.cpp" />
     <ClCompile Include="..\..\Device\src\Globals.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\AT25160N.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp" />
@@ -159,7 +159,6 @@
     <ClInclude Include="..\..\Device\src\Display\Painter.h" />
     <ClInclude Include="..\..\Device\src\Display\PainterData.h" />
     <ClInclude Include="..\..\Device\src\Display\PainterMem.h" />
-    <ClInclude Include="..\..\Device\src\Display\RShift.h" />
     <ClInclude Include="..\..\Device\src\Display\Symbols.h" />
     <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h" />
     <ClInclude Include="..\..\Device\src\FlashDrive\FileManager.h" />
@@ -168,6 +167,7 @@
     <ClInclude Include="..\..\Device\src\FPGA\FPGA.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\Device\src\FPGA\FPGATypes.h" />
+    <ClInclude Include="..\..\Device\src\FPGA\RShift.h" />
     <ClInclude Include="..\..\Device\src\Globals.h" />
     <ClInclude Include="..\..\Device\src\Hardware\AT25160N.h" />
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />

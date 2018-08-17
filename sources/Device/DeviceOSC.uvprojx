@@ -1856,16 +1856,6 @@
               <FilePath>.\src\Display\BottomPart.h</FilePath>
             </File>
             <File>
-              <FileName>RShift.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\RShift.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RShift.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\RShift.h</FilePath>
-            </File>
-            <File>
               <FileName>DisplayOsci.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\DisplayOsci.cpp</FilePath>
@@ -1944,6 +1934,16 @@
               <FileName>FPGATypes.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\FPGA\FPGATypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>RShift.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FPGA\RShift.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RShift.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FPGA\RShift.h</FilePath>
             </File>
           </Files>
         </Group>

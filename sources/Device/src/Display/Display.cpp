@@ -16,7 +16,7 @@
 #include "FPGA/FPGAMath.h"
 #include "Console.h"
 #include "BottomPart.h"
-#include "RShift.h"
+#include "FPGA/RShift.h"
 #include <stdlib.h>
 #include <string.h>
 

@@ -276,9 +276,6 @@
     <ClCompile Include="..\..\Device\src\Display\BottomPart.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Display\RShift.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\MenuTriggers.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
@@ -317,6 +314,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\MemoryWindow.cpp">
       <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\FPGA\RShift.cpp">
+      <Filter>FPGA</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -659,9 +659,6 @@
     <ClInclude Include="..\..\Device\src\Display\BottomPart.h">
       <Filter>Display</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Display\RShift.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\MenuTriggers.h">
       <Filter>Menu</Filter>
     </ClInclude>
@@ -703,6 +700,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\MemoryWindow.h">
       <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FPGA\RShift.h">
+      <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

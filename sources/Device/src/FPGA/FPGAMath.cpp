@@ -3,9 +3,9 @@
 #include "Display/Grid.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGATypes.h"
+#include "FPGA/RShift.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
-#include "Display/RShift.h"
 #include <math.h>
 
 

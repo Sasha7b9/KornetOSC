@@ -4,6 +4,7 @@
 #include "Painter.h"
 #include "Utils/MathOSC.h"
 #include "FPGA/FPGAMath.h"
+#include "FPGA/RShift.h"
 #include "Tables.h"
 #include "FPGA/FPGA.h"
 #include "Display/Painter.h"
@@ -12,7 +13,6 @@
 #include "Utils/Dictionary.h"
 #include "Hardware/CPU.h"
 #include "Data/Reader.h"
-#include "RShift.h"
 #include <string.h>
 
 
