@@ -4,6 +4,7 @@
 #include "Grid.h"
 #include "Log.h"
 #include "Painter.h"
+#include "PainterMem.h"
 #include "Data/Storage.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
@@ -122,6 +123,9 @@ void PainterData::DrawChannel(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterData::DrawMemoryWindow()
 {
+    int width = 278;
+    int height = Grid::Top() - 2;
+
     uint8 *data[2];
 
     Storage::GetData(&data[0], &data[1]);
@@ -134,7 +138,7 @@ void PainterData::DrawMemoryWindow()
         if(SET_ENABLED(chan))
         {
             Painter::SetColor(Color::Channel(chan));
-            DrawDataInRect(0, 0, 270, Grid::Top() - 2, OUT(chan), FPGA_NUM_POINTS);
+            DrawDataInRect(0, 0, width, height, OUT(chan), FPGA_NUM_POINTS);
         }
     }
 }
@@ -142,36 +146,28 @@ void PainterData::DrawMemoryWindow()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterData::DrawDataInRect(int x, int y, int width, int height, uint8 *data, int length)
 {
-    float scaleX = (float)width / (float)(length - 1);  // ”меньшаем на один, потому что в расчЄтах масштаба нас интересует не колисество точек, 
-                                                        // а количество промежутков между ними
-    float scaleY = (float)height / (float)(MAX_VALUE - MIN_VALUE);
+    int numIntervals = width + 1;            //  оличество интервалов, в которых будем рисовать наш сигнал - фактически, количество вертикальных линий
+    float pointsInInterval = (float)length / numIntervals;   //  оличество точек, рисуемых в одном интервале.
 
-    int yStart = y + height;
+    float stepY = (float)height / (float)(MAX_VALUE - MIN_VALUE);
 
-    for(int i = 0; i < length; i++)
+    int y0 = y + height;
+
+    for(int i = 0; i < numIntervals - 1; i++)
     {
-        if(data[i] < MIN_VALUE)
+        int start = (int)(i * pointsInInterval + 0.5f);          // Ќачальна€ точка в интервале
+        int end = (int)((i + 1) * pointsInInterval + 0.5f) - 1;  //  онечна€ точка в интервале
+
+        int min = 255;
+        int max = 0;
+
+        for(int j = start; j <= end; j++)
         {
-            data[i] = MIN_VALUE;
+            if(data[j] < min) { min = data[j]; }
+            if(data[j] > max) { max = data[j]; }
         }
-        else if(data[i] > MAX_VALUE)
-        {
-            data[i] = MAX_VALUE;
-        }
-    }
 
-    float prevX = (float)x;
-    int prevY = yStart - (int)(data[0] * scaleY + 0.5f);
-
-    for(int i = 1; i < length; i++)
-    {
-        float x0 = prevX + scaleX;
-        int y0 = yStart - (int)(data[i] * scaleY + 0.5f);
-
-        Painter::DrawVLine((int)(x0 + 0.5f), prevY, y0);
-
-        prevX = x0;
-        prevY = y0;
+        Painter::DrawVLine(x + i, y0 - (int)(min * stepY + 0.5f), y0 - (int)(max * stepY + 0.5f));
     }
 }
 
