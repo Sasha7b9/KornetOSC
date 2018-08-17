@@ -86,7 +86,7 @@ static const Settings defaultSettings =
     
                                             // Μενώ ΟΐΜίÒά
     
-    /* mem_enumPoints;                             */   ENumPointsFPGA::_512,
+    /* mem_enumPoints;                             */   ENumPointsFPGA::_1k,
     /* mem_modeBtnMemory;                          */   ModeBtnMemory::Menu,
     /* mem_modeWork;                               */   ModeWork::Dir,
     /* mem_flashAutoConnect;                       */   false,
