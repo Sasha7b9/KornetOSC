@@ -33,7 +33,7 @@ static const Settings defaultSettings =
     /* disp_timeMessages;         */    5,
     /* disp_altMarkers;           */    AltMarkers::AutoHide,
     /* disp_menuAutoHide;         */    MenuAutoHide::None,
-    /* disp_shiftInMemory;        */    0,
+    /* disp_shiftInMemory;        */    370,                       // Это соответствует 
     /* disp_lastAffectedChannel;  */    Chan::A,
 
                                             // Меню КАНАЛ 1, КАНАЛ 2
