@@ -45,7 +45,7 @@
 #define RD_FLAG_HI          (ADDR_ALTERA + 25)
 
 
-#define FPGA_MAX_NUM_POINTS (8 * 1024)
+#define FPGA_MAX_NUM_POINTS (16 * 1024)
 
 #define AVE_VALUE           127
 #define MIN_VALUE           (AVE_VALUE - 125)

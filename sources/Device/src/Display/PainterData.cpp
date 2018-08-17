@@ -37,14 +37,17 @@ void PainterData::DrawData_ModeDir()
     Storage::GetData(&dataA, &dataB);
 
     DrawChannel(Chan::A, dataA);
-    DrawChannel(Chan::B, dataB);   
+    DrawChannel(Chan::B, dataB);
 
     MemoryWindow::Draw();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::DrawChannel(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
+void PainterData::DrawChannel(Chan ch, uint8 *data)
 {
+
+    data += SHIFT_IN_MEMORY;
+
     int center = (Grid::Bottom() - Grid::Top()) / 2 + Grid::Top();
     int left = Grid::Left();
 
