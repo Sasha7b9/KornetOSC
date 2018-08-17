@@ -39,6 +39,8 @@ private:
     /// Адрес начала области памяти, в которой хранится буфер для рисования. Если == 0, то буфер не создан.
     static uint8 *buffer;
 
+    static uint8 *endBuffer;
+
     static int width;
 
     static int height;

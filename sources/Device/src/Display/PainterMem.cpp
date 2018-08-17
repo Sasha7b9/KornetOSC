@@ -4,6 +4,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 uint8 *PainterMem::buffer = 0;
+uint8 *PainterMem::endBuffer = 0;
 int   PainterMem::width = 0;
 int   PainterMem::height = 0;
 Color PainterMem::color = Color::FILL;
@@ -11,8 +12,12 @@ Color PainterMem::color = Color::FILL;
 /// ¬озвращает адрес байта с координатами x, y.
 #define ADDRESS_BYTE(x, y) (buffer + (y * width + x))
 
-#define SET_POINT(x, y) *ADDRESS_BYTE(x, y) = color.value
-
+#define SET_POINT(x, y)                             \
+    uint8 *address = ADDRESS_BYTE(x, y);            \
+    if (address >= buffer && address < endBuffer)   \
+    {                                               \
+        *address = color.value;                     \
+    }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 uint8 *PainterMem::CreateBuffer(int w, int h)
@@ -22,6 +27,7 @@ uint8 *PainterMem::CreateBuffer(int w, int h)
         width = w;
         height = h;
         buffer = (uint8 *)malloc((uint)(width * height));
+        endBuffer = buffer + width * height;
     }
 
     return buffer;
@@ -39,13 +45,23 @@ void PainterMem::SetPoint(int x, int y, Color col)
 {
     color = col;
 
-    *ADDRESS_BYTE(x, y) = color.value;
+    uint8 *address = ADDRESS_BYTE(x, y);
+
+    if (address >= buffer && address < endBuffer)
+    {
+        *address = color.value;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterMem::SetPoint(int x, int y)
 {
-    *ADDRESS_BYTE(x, y) = color.value;
+    uint8 *address = ADDRESS_BYTE(x, y);
+
+    if(address >= buffer && address < endBuffer)
+    {
+        *address = color.value;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
