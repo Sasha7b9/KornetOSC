@@ -1945,6 +1945,26 @@
               <FileType>5</FileType>
               <FilePath>.\src\FPGA\RShift.h</FilePath>
             </File>
+            <File>
+              <FileName>TrigLev.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FPGA\TrigLev.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TrigLev.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FPGA\TrigLev.h</FilePath>
+            </File>
+            <File>
+              <FileName>TShift.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FPGA\TShift.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TShift.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FPGA\TShift.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

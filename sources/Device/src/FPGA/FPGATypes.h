@@ -1,5 +1,8 @@
 #pragma once
 #include "Settings/SettingsTypes.h"
+#include "RShift.h"
+#include "TShift.h"
+#include "TrigLev.h"
 
 
 #define ADDR_ALTERA         ((uint8*)NOR_MEMORY_ADRESS1)
@@ -57,20 +60,3 @@
 #define MIN_TBASE_P2P       TBase::_50ms
 /// Минимальный масштаб по времени, при котором возможно включение режима пикового детектора
 #define MIN_TBASE_PEC_DEAT  TBase::_500ns
-
-
-class TShift
-{
-public:
-    static const int MIN = 0;
-    static const int ZERO = 500;
-    static const int MAX = 60000;
-};
-
-class TrigLev
-{
-public:
-    static const int MIN = 20;
-    static const int MAX = 980;
-    static const int ZERO = 500;
-};

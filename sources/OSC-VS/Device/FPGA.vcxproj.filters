@@ -318,6 +318,12 @@
     <ClCompile Include="..\..\Device\src\FPGA\RShift.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\FPGA\TShift.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\FPGA\TrigLev.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -702,6 +708,12 @@
       <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\FPGA\RShift.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FPGA\TShift.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\FPGA\TrigLev.h">
       <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
