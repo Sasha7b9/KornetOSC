@@ -155,18 +155,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>529</LineNumber>
+          <LineNumber>168</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134281598</Address>
+          <Address>134268242</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;.\src\Menu\MenuItemsGraphics.cpp</Filename>
+          <Filename>&lt;1&gt;.\src\Display\PainterData.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\\src/Menu/MenuItemsGraphics.cpp\529</Expression>
+          <Expression>\\\src/Display/PainterData.cpp\168</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
