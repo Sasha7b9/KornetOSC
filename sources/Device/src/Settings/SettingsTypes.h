@@ -314,6 +314,7 @@ struct ENumPointsFPGA
         _2k,
         _4k,
         _8k,
+        _16k,
         Size
     };
     COMMON_ENUM;

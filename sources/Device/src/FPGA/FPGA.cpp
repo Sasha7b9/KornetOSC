@@ -562,7 +562,7 @@ void FPGA::TrigLevChange(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TShiftChange(int delta)
 {
-    AddtionThisLimitation<uint16>(&SET_TSHIFT, delta, TShift::MIN, TShift::MAX);
+    AddtionThisLimitation<int>(&SET_TSHIFT, delta, TShift::Min(), TShift::Max());
 
     LoadTShift();
 }
@@ -733,6 +733,7 @@ void FPGA::ResetPin(Pin pin)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTShift()
 {
+    /*
     gPost = SET_TSHIFT;
     gPred = (uint16)(FPGA_NUM_POINTS - gPost);
 
@@ -741,6 +742,9 @@ void FPGA::LoadTShift()
 
     FSMC::WriteToFPGA16(WR_PRED_LO, gPost);
     FSMC::WriteToFPGA16(WR_POST_LO, gPred);
+    */
+
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
