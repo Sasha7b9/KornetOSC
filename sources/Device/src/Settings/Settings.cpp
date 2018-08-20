@@ -44,7 +44,7 @@ static const Settings defaultSettings =
     /* chan_couple[Chan::Num];   */     {ModeCouple::DC, ModeCouple::DC},
     /* chan_enable[Chan::Num];   */     {true, true},
     /* chan_balanceShiftADC[2];  */     {0, 0},
-    /* chan_bandwidth[2];        */     {Bandwidth::_20MHz, Bandwidth::_20MHz},
+    /* chan_bandwidth[2];        */     {Bandwidth::Full, Bandwidth::Full},
     /* chan_resistance[2];       */     {Resistance::_1Mom, Resistance::_1Mom},
     /* chan_inverse[2];          */     {false, false},
     /* chan_divider[2];          */     {Divider::_1, Divider::_1},
@@ -158,7 +158,7 @@ static const Settings defaultSettings =
     /* dbg_showRandStat;        */      false,
     /* dbg_timeCompensation;    */      0,
     /* dbg_pretriggered;        */      0,
-    /* dbg_bandwidth[2];        */      {Bandwidth::_100MHz, Bandwidth::_100MHz},
+    /* dbg_bandwidth[2];        */      {Bandwidth::Full, Bandwidth::Full},
     /* dbg_ShowStats;           */      false,
     /* dbg_Orientation;         */      DisplayOrientation::Direct,
 

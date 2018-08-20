@@ -70,10 +70,9 @@ DEF_CHOICE_3(       cChanA_Couple,                                              
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
 static void OnChanged_ChanA_Bandwidth(bool)
 {
-    FPGA::SetBandwidth(A);
+    FPGA::SetBandwidth(Chan::A);
 }
 
 DEF_CHOICE_2(       cChanA_Bandwidth,                                                                                       //--- КАНАЛ 1 - Полоса ---
@@ -84,7 +83,6 @@ DEF_CHOICE_2(       cChanA_Bandwidth,                                           
     "20МГц",  "20MHz",
     SET_BANDWIDTH_A, pChanA, FuncActive, OnChanged_ChanA_Bandwidth, FuncDraw
 )
-*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -154,14 +152,14 @@ DEF_BUTTON(bChanA_Balance,                                                      
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageChannelA::pointer = &pChanA;
 
-DEF_PAGE_2(         pChanA,                                                                                                             // КАНАЛ 1 ///
+DEF_PAGE_3(         pChanA,                                                                                                             // КАНАЛ 1 ///
     "КАНАЛ 1", "CHANNEL 1",
     "Содержит настройки канала 1.",
     "Contains settings of the channel 1.",
     cChanA_Input,      // КАНАЛ 1 - Вход
     cChanA_Couple,     // КАНАЛ 1 - Связь
-           /*
     cChanA_Bandwidth,  // КАНАЛ 1 - Полоса
+    /*
     cChanA_Resistance, // КАНАЛ 1 - Вх сопр
     cChanA_Inverse,    // КАНАЛ 1 - Инверсия
     cChanA_Divider,    // КАНАЛ 1 - Делитель
@@ -206,10 +204,9 @@ DEF_CHOICE_3(       cChanB_Couple,                                              
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-static void OnChanged_ChanB_Bandwidth(bool)
+static void OnChanged_BandwidthB(bool)
 {
-    FPGA::SetBandwidth(B);
+    FPGA::SetBandwidth(Chan::B);
 }
 
 DEF_CHOICE_2(       cChanB_Bandwidth,                                                                                       //--- КАНАЛ 2 - Полоса ---
@@ -218,9 +215,8 @@ DEF_CHOICE_2(       cChanB_Bandwidth,                                           
     "",
     "Полная", "Full",
     "20МГц",  "20MHz",
-    SET_BANDWIDTH_B, pChanB, FuncActive, OnChanged_ChanB_Bandwidth, FuncDraw
+    SET_BANDWIDTH_B, pChanB, FuncActive, OnChanged_BandwidthB, FuncDraw
 )
-*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -289,14 +285,14 @@ DEF_BUTTON(bChanB_Balance,                                                      
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageChannelB::pointer = &pChanB;
 
-DEF_PAGE_2(         pChanB,                                                                                                             // КАНАЛ 2 ///
+DEF_PAGE_3(         pChanB,                                                                                                             // КАНАЛ 2 ///
     "КАНАЛ 2", "CHANNEL 2",
     "Содержит настройки канала 2.",
     "Contains settings of the channel 2.",
     cChanB_Input,       // КАНАЛ 2 - Вход
     cChanB_Couple,      // КАНАЛ 2 - Связь
-    /*
     cChanB_Bandwidth,   // КАНАЛ 2 - Полоса
+    /*
     cChanB_Resistance,  // КАНАЛ 2 - Сопротивление
     cChanB_Inverse,     // КАНАЛ 2 - Инверсия
     cChanB_Divider,     // КАНАЛ 2 - Делитель

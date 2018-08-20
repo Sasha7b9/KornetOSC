@@ -6,12 +6,12 @@
 */
 class AT25160N
 {
+friend class Settings;
 public:
     static void Init();
+private:
     static void Save(Settings &set);
     static void Load(Settings &set);
-    static void Test();
-private:
     /// Разрешить запись
     static void SetWriteLatch();
     /// Запретить запись
