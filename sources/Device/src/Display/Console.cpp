@@ -1,5 +1,6 @@
 #include "Console.h"
 #include "Display/Painter.h"
+#include "Font/Font.h"
 
 #include <string.h>
 
@@ -18,10 +19,12 @@ void Console::Draw()
 
     Painter::SetFont(TypeFont_5);
 
-    int y = 0;
+    int y = 1;
 
     for (int i = 0; i < stringInConsole; i++)
     {
+        int length = Font::GetLengthText(buffer[i]);
+        Painter::FillRegion(0, y + 3, length, 6, Color::BACK);
         Painter::DrawText(1, y, buffer[i], Color::FILL);
         y += 6;
     }
