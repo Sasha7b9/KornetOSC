@@ -343,6 +343,7 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
         return;
     }
 
+    /*
     if(Tsm > 43 && SET_TBASE == TBase::_2ns)
     {
         Tsm -= 50;
@@ -352,6 +353,7 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
     {
         Tsm -= 20;
     }
+    */
 
     int step = Kr[SET_TBASE];
 
@@ -367,7 +369,7 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
         dataRead += step;
     }
 
-    uint8 *last = &dataRand[ch][300];
+    uint8 *last = &dataRand[ch][FPGA_NUM_POINTS];
 
     while (dataRead < last)
     {
@@ -375,7 +377,7 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
         dataRead += step;
     }
 
-    memcpy(data, &dataRand[ch][0], 300u);
+    memcpy(data, &dataRand[ch][0], (uint)FPGA_NUM_POINTS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
