@@ -847,8 +847,8 @@ void FPGA::LoadTrigSourceInput()
     static const uint8 datas[3][2] =
     {//       A                 B
         {BIN_U8(00000010), BIN_U8(00000100)}, // ПС
-        {BIN_U8(00000000), BIN_U8(00000110)}, // ВЧ
-        {BIN_U8(00000011), BIN_U8(00000101)}  // НЧ
+        {BIN_U8(00000011), BIN_U8(00000101)}, // ВЧ
+        {BIN_U8(00000000), BIN_U8(00000110)}  // НЧ
     };
     
     WritePin(A1S, _GET_BIT(datas[TRIG_INPUT.value][TRIG_SOURCE.value], 2));
@@ -965,7 +965,12 @@ void ADC_IRQHandler(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
-    adcValueFPGA = (uint16)HAL_ADC_GetValue(hadc);
+    /// \todo временная затычка. Не в рандомизаторе эта функция вообще не должна вызываться
+    if (IN_RANDOM_MODE)
+    {
+        LOG_WRITE("%d", adcValueFPGA);
+        adcValueFPGA = (uint16)HAL_ADC_GetValue(hadc);
+    }
 }
 
 #ifdef __cplusplus
