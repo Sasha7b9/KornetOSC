@@ -28,6 +28,7 @@ extern const PageBase ppInformation;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 static void Draw_ResetSettings()
 {
     Painter::BeginScene(Color::BACK);
@@ -37,9 +38,12 @@ static void Draw_ResetSettings()
 
     Painter::EndScene();
 }
+*/
 
 static void OnPress_ResetSettings()
 {
+    Settings::Load(true);
+    /*
     Keyboard::Disable();
     Display::SetDrawMode(DrawMode_Hand, Draw_ResetSettings);
 
@@ -50,6 +54,7 @@ static void OnPress_ResetSettings()
 
     Display::SetDrawMode(DrawMode_Auto, 0);
     Keyboard::Enable();
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

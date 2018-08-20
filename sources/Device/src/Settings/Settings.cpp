@@ -5,6 +5,7 @@
 #include "Hardware/AT25160N.h"
 #include "Hardware/Hardware.h"
 #include "Display/Colors.h"
+#include "Menu/Menu.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -197,11 +198,14 @@ Settings set;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Settings::Load(bool)
+void Settings::Load(bool _default)
 {
-    if(!EEPROM::LoadSettings())
+    if(_default || !EEPROM::LoadSettings())
     {
         Reset();
+        FPGA::LoadSettings();
+        Menu::Init();
+        FPGA::OnPressStart();
     }
 
     /*
