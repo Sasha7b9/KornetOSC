@@ -65,14 +65,17 @@ void EEPROM::SaveSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EEPROM::LoadSettings()
+bool EEPROM::LoadSettings()
 {
     uint address = AddressSavedSettings(0);
 
     if (address && READ_DOUBLEWORD(address) == sizeof(set))
     {
         ReadBytes(address, &set, READ_DOUBLEWORD(address));
+        return true;
     }
+
+    return false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

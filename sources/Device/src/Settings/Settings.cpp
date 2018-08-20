@@ -3,7 +3,10 @@
 #include "FPGA/RShift.h"
 #include "Hardware/EEPROM.h"
 #include "Hardware/AT25160N.h"
+#include "Hardware/Hardware.h"
 #include "Display/Colors.h"
+#include <stdlib.h>
+#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -196,16 +199,51 @@ Settings set;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Settings::Load(bool)
 {
-    Reset();
-    //EEPROM::LoadSettings();
-}
+    if(!EEPROM::LoadSettings())
+    {
+        Reset();
+    }
 
+    /*
+    uint size = 0;
+    AT25160N::ReadData(0, (uint8 *)&size, 4);
+
+    if(size > 0 && size < 1024)
+    {
+        uint8 *data = (uint8 *)malloc(size);
+
+        AT25160N::ReadData(0, data, size);
+
+        uint crc32 = Hardware::CalculateCRC32((uint)data + 8, size - 8);
+
+        if(crc32 == *((uint *)(data + 4)))
+        {
+            memcpy(&set, data, size);
+        }
+        else
+        {
+            Reset();
+        }
+
+        free(data);
+    }
+    else
+    {
+        Reset();
+    }
+    */
+}
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Settings::Save()
 {
-    //EEPROM::SaveSettings();
+    EEPROM::SaveSettings();
 
-    //AT25160N::Save(set);
+    /*
+    SET_SIZE = sizeof(Settings);
+    SET_CRC32 = Hardware::CalculateCRC32((uint)((uint8 *)&set + 8), SET_SIZE - 8);
+
+    AT25160N::WriteData(0, (uint8 *)&set, SET_SIZE);
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

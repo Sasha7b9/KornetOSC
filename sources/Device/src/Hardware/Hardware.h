@@ -23,7 +23,7 @@ public:
 
     static void Init();
 
-    static uint CalculateCRC32();
+    static uint CalculateCRC32(uint address, uint size);
 
 private:
 

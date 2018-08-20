@@ -19,7 +19,7 @@ static UART_HandleTypeDef huart3;
 static PCD_HandleTypeDef hpcd_USB_OTG_FS;
 static PCD_HandleTypeDef hpcd_USB_OTG_HS;
 
-//static SRAM_HandleTypeDef hsram1;
+static CRC_HandleTypeDef handleCRC = {CRC};
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,6 +48,11 @@ void Hardware::Init()
     //MX_USART3_UART_Init();
     //MX_USB_OTG_FS_PCD_Init();
     //MX_USB_OTG_HS_PCD_Init();
+
+    if(HAL_CRC_Init(&handleCRC) != HAL_OK)
+    {
+        ERROR_HANDLER();
+    }
 }
 
 /** System Clock Configuration
@@ -354,8 +359,8 @@ void Hardware::MX_GPIO_Init(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint Hardware::CalculateCRC32()
+uint Hardware::CalculateCRC32(uint address, uint size)
 {
-    return 0;
+    return HAL_CRC_Calculate(&handleCRC, (uint *)address, size);
 }
 

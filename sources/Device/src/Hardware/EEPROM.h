@@ -15,7 +15,7 @@ public:
 
     static void SaveSettings();
 
-    static void LoadSettings();
+    static bool LoadSettings();
 
     static void DeleteAllData();
 

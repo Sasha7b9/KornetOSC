@@ -43,6 +43,8 @@ void Menu::Update()
 {
     while(!BufferButtons::IsEmpty())
     {
+        timeLastPressedButton = TIME_MS;
+
         KeyEvent event = BufferButtons::Extract();
 
         if (HINT_MODE_ENABLED)

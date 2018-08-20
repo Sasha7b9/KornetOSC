@@ -1690,6 +1690,16 @@
               <FileType>8</FileType>
               <FilePath>.\src\libs\HAL\stm32f4xx_it.cpp</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_hal_crc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_crc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_hal_crc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_crc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

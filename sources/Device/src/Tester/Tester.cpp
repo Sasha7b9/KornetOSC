@@ -162,7 +162,7 @@ void Tester::Disable()
     oldSet.test_stepI = TESTER_STEP_I;
 
     set = oldSet;
-    set.Save();
+    //set.Save();
 
     FPGA::LoadSettings();
 
