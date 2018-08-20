@@ -147,7 +147,7 @@ void HiPart::DrawRightPart()
 
         x += 2;
         y = 1;
-        if(FPGA_IN_STATE_WORK)       // Рабочий режим
+        if(FPGA::IsRunning())       // Рабочий режим
         {
             Painter::Draw4SymbolsInRect(x, 1, SYMBOL_PLAY);
         }
