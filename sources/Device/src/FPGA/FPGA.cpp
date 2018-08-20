@@ -71,6 +71,7 @@ static uint8 ValueForRange(Chan ch);
 bool FPGA::isRunning = false;
 bool FPGA::givingStart = false;
 StateWorkFPGA FPGA::fpgaStateWork = StateWorkFPGA_Stop;
+uint FPGA::timeStart = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void FPGA::Init()
@@ -158,6 +159,7 @@ void FPGA::GiveStart()
     value = (uint8)((value + 1) % 2);
     FSMC::WriteToFPGA8(WR_TRIG, value++);
     FSMC::WriteToFPGA8(WR_TRIG, (uint8)(value % 2));
+    TrigLev::timeSwitchingTrig = TIME_MS;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -202,7 +204,11 @@ void FPGA::Update()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 FPGA::ReadFlag()
 {
-    return FSMC::ReadFromFPGA(RD_FLAG_LO);
+    uint8 flag = FSMC::ReadFromFPGA(RD_FLAG_LO);
+
+    TrigLev::pulse = _GET_BIT(flag, BIT_FLAG_TRIG_READY) == 1 && timeStart > TrigLev::timeSwitchingTrig;
+
+    return flag;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -232,6 +238,8 @@ void FPGA::Start()
     FSMC::WriteToFPGA16(WR_PRED_LO, gPred);
     FSMC::WriteToFPGA16(WR_POST_LO, gPost);
     FSMC::WriteToFPGA8(WR_START, 0xff);
+
+    timeStart = TIME_MS;
 }
 
 
@@ -253,11 +261,11 @@ void FPGA::StartForTester(int)
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     uint8 flag = 0;
-    uint timeStart = TIME_US;
+    uint start = TIME_US;
     while (_GET_BIT(flag, BIT_FLAG_PRED) == 0)
     {
         flag = ReadFlag();
-        if(TIME_US - timeStart > 1000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
+        if(TIME_US - start > 1000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
         {                               /// нажатия кнопок
             return;
         }
@@ -271,11 +279,11 @@ void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 {
     uint8 flag = 0;
 
-    uint timeStart = TIME_US;
+    uint start = TIME_US;
     while (_GET_BIT(flag, BIT_FLAG_DATA_READY) == 0)    // Ждём флага готовности данных
     {
         flag = ReadFlag();
-        if(TIME_US - timeStart > 10000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
+        if(TIME_US - start > 10000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
         {                               /// нажатия кнопок
             return;
         }
@@ -866,7 +874,7 @@ void FPGA::SetTrigLev(TrigSource ch, uint16 trigLev)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::SetTShift(uint tShift)
+void FPGA::SetTShift(int tShift)
 {
 }
 

@@ -42,8 +42,9 @@
 #define RD_PERIOD_BYTE_1    (ADDR_ALTERA + 17)
 #define RD_PERIOD_BYTE_2    (ADDR_ALTERA + 20)
 #define RD_PERIOD_BYTE_3    (ADDR_ALTERA + 21)
-#define RD_FLAG_LO          (ADDR_ALTERA + 24)          ///< Флаг
+#define RD_FLAG_LO          (ADDR_ALTERA + 24)          ///< Флаги
 #define BIT_FLAG_DATA_READY 0                           ///< Данные готовы для считывания
+#define BIT_FLAG_TRIG_READY 1                           ///< Флаг синхроимпульса
 #define BIT_FLAG_PRED       2                           ///< Если 1, то предзапуск отсчитал, можно давать принудительный запуск
 #define RD_FLAG_HI          (ADDR_ALTERA + 25)
 

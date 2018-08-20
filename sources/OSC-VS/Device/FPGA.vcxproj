@@ -33,6 +33,7 @@
     <ClCompile Include="..\..\Device\src\Display\DisplayOsci.cpp" />
     <ClCompile Include="..\..\Device\src\Display\DisplayPrimitives.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Grid.cpp" />
+    <ClCompile Include="..\..\Device\src\Display\HiPart.cpp" />
     <ClCompile Include="..\..\Device\src\Display\MemoryWindow.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp" />
     <ClCompile Include="..\..\Device\src\Display\PainterData.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="..\..\Device\src\Display\DisplayPrimitives.h" />
     <ClInclude Include="..\..\Device\src\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\Device\src\Display\Grid.h" />
+    <ClInclude Include="..\..\Device\src\Display\HiPart.h" />
     <ClInclude Include="..\..\Device\src\Display\MemoryWindow.h" />
     <ClInclude Include="..\..\Device\src\Display\Painter.h" />
     <ClInclude Include="..\..\Device\src\Display\PainterData.h" />

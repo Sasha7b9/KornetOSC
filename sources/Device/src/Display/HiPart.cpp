@@ -7,10 +7,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool HiPart::trigLabel = false;
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void HiPart::Draw()
 {
     WriteCursors();
@@ -116,7 +112,7 @@ void HiPart::DrawRightPart()
 
         x += 2;
 
-        if(trigLabel)
+        if(TrigLev::SyncPulse())
         {
             Painter::FillRegion(x, 1 + y, Grid::Top() - 3, Grid::Top() - 7, Color::FILL);
             Painter::DrawText(x + 3, 3 + y, DICT(DTrig), Color::BACK);
@@ -169,10 +165,4 @@ void HiPart::DrawRightPart()
             Painter::FillRegion(x + w + delta, y + 1, w, h);
         }
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void HiPart::EnableTrigLabel(bool enable)
-{
-    trigLabel = enable;
 }

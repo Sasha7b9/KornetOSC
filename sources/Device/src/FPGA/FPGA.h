@@ -43,6 +43,7 @@ private:
 
 class FPGA
 {
+friend class TrigLev;
 public:
 
     static void Init();
@@ -104,7 +105,7 @@ public:
     static StateWorkFPGA GetStateWork();
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    static void SetTShift(uint tShift);
+    static void SetTShift(int tShift);
 
     static void Reset();
 
@@ -179,6 +180,8 @@ private:
     static bool isRunning;
     /// True, если дан запуск
     static bool givingStart;
+    /// Время подачи старта
+    static uint timeStart;
     
 public:
     static StateWorkFPGA fpgaStateWork;

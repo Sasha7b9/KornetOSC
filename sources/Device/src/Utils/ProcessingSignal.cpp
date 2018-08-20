@@ -1360,7 +1360,7 @@ void Processing::CountedTShift()
 {
     const int numBytes = NUM_BYTES_DS;
 
-    int16 dTShift = SET_TSHIFT - TSHIFT_DS;
+    int dTShift = SET_TSHIFT - TSHIFT_DS;
 
     if (dTShift)
     {
