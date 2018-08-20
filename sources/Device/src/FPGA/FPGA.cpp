@@ -367,6 +367,7 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
 
     int index = Tsm - step;
 
+    uint8 *data0 = &dataRand[ch][0];
     uint8 *dataRead = &dataRand[ch][index];
 
     while(index < 0)
@@ -376,6 +377,8 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
         index += step;
         dataRead += step;
     }
+
+    LOG_WRITE("%d %d", Tsm, dataRead - data0);
 
     uint8 *last = &dataRand[ch][FPGA_NUM_POINTS];
 

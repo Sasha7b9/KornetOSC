@@ -109,7 +109,7 @@ float Choice::Step()
 void Choice::ChangeIndex(int delta)
 {
     int index = *cell;
-    if (delta < 0)
+    if (delta > 0)
     {
         ++index;
         if (index == NumSubItems())

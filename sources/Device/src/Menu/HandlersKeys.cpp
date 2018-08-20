@@ -170,32 +170,46 @@ void Handlers::Arrow()
 {
     Control *item = Menu::OpenedItem();
 
-    Page *page = 0;
     TypePress type = event.type;
+
+    if(!type.Is(TypePress::Press))
+    {
+        return;
+    }
 
     if(IS_PAGE(item))
     {
-        page = (Page *)item;
-    }
+        Page *page = (Page *)item;
 
-    switch(event.key.code)
-    {
-        case Key::Left:
-            if(page && type.Is(TypePress::Press))
-            {
+        switch (event.key.code)
+        {
+            case Key::Left:
                 page->ChangeOpened(-1);
-            }
-            break;
-        case Key::Right:
-            if(page && type.Is(TypePress::Press))
-            {
+                break;
+            case Key::Right:
                 page->ChangeOpened(1);
-            }
-            break;
-        case Key::Up:
-            break;
-        case Key::Down:
-            break;
+                break;
+            case Key::Up:
+            case Key::Down:
+                break;
+        }
+    }
+    else if(IS_CHOICE(item))
+    {
+        Choice *choice = (Choice *)item;
+
+        switch(event.key.code)
+        {
+            case Key::Up:
+                choice->ChangeIndex(-1);
+                break;
+            case Key::Down:
+                choice->ChangeIndex(1);
+                break;
+            case Key::Left:
+            case Key::Right:
+                break;
+        }
     }
 }
 

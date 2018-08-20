@@ -222,7 +222,7 @@ void Control::ShortPress()
         }
         else
         {
-            choice->ChangeIndex(-1);
+            choice->ChangeIndex(1);
         }
     }
     else if(type == Item_Button)
