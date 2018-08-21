@@ -12,6 +12,8 @@ void MemoryWindow::Draw()
 {
     uint8 *data[2];
 
+    DrawScreenArea();
+
     Storage::GetData(&data[0], &data[1]);
 
     Chan chans[2] = {LAST_AFFECTED_CH_IS_A ? Chan(Chan::B) : Chan(Chan::A), LAST_AFFECTED_CH_IS_A ? Chan(Chan::A) : Chan(Chan::B)};
@@ -25,8 +27,6 @@ void MemoryWindow::Draw()
             DrawDataInRect(X(), Y(), Width(), Height(), OUT(chan), FPGA_NUM_POINTS);
         }
     }
-
-    DrawScreenArea();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -71,6 +71,8 @@ void MemoryWindow::DrawScreenArea()
 
     int begin = (int)(relBegin * Width() + 0.5f);   // Реальное начало экранной области относительно начала окна памяти
     int width = (int)(relWidth * Width() + 0.5f);   // Реальная ширина видимой области
+
+    Painter::FillRegion(X() + begin, Y(), width, Height(), Color::GRAY_20);
 
     Painter::DrawRectangle(X() + begin, Y(), width, Height(), Color::FILL);
 }

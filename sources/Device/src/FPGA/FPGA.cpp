@@ -438,12 +438,10 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
     if (rand < min)
     {
         min = rand;
-        retValue = false;
     }
     if (rand > max)
     {
         max = rand;
-        retValue = false;
     }
 
     if (minGate == 0.0f)
@@ -473,6 +471,11 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
 
     *eMin = (uint16)(minGate);
     *eMax = (uint16)(maxGate);
+
+    if(rand < *eMin || rand > *eMax)
+    {
+        return false;
+    }
 
     return retValue;
 }
