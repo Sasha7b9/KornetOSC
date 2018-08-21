@@ -29,8 +29,8 @@ static ADC_HandleTypeDef hADC;
 
 static uint16 adcValueFPGA = 0;
 
-uint16 gPost = (uint16)~(512);
-uint16 gPred = (uint16)~(512);
+uint16 FPGA::post = (uint16)~(512);
+uint16 FPGA::pred = (uint16)~(512);
 
 struct PinStruct
 {
@@ -235,8 +235,8 @@ void FPGA::Start()
     givingStart = false;
     addrRead = 0xffff;
 
-    FSMC::WriteToFPGA16(WR_PRED_LO, gPred);
-    FSMC::WriteToFPGA16(WR_POST_LO, gPost);
+    FSMC::WriteToFPGA16(WR_PRED_LO, pred);
+    FSMC::WriteToFPGA16(WR_POST_LO, post);
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     timeStart = TIME_MS;
@@ -256,8 +256,8 @@ void FPGA::StartForTester(int)
     //gPost = (uint16)(-TESTER_NUM_POINTS);
     //gPred = (uint16)(~3);
 
-    FSMC::WriteToFPGA16(WR_PRED_LO, gPred);
-    FSMC::WriteToFPGA16(WR_POST_LO, gPost);
+    FSMC::WriteToFPGA16(WR_PRED_LO, pred);
+    FSMC::WriteToFPGA16(WR_POST_LO, post);
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     uint8 flag = 0;
@@ -406,6 +406,9 @@ int FPGA::CalculateShift(Chan)
     {
         float tin = (float)(adcValueFPGA - min) / (max - min);
         int retValue = (int)(tin * Kr[SET_TBASE] + 0.5f);
+
+        LOG_WRITE("%d %d %d %d", adcValueFPGA, min, max, retValue);
+
         return retValue;
     }
 
@@ -576,9 +579,7 @@ void FPGA::TrigLevChange(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TShiftChange(int delta)
 {
-    AddtionThisLimitation<int>(&SET_TSHIFT, delta, TShift::Min(), TShift::Max());
-
-    LoadTShift();
+    SetTShift(SET_TSHIFT + delta);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -747,18 +748,23 @@ void FPGA::ResetPin(Pin pin)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTShift()
 {
-    /*
-    gPost = SET_TSHIFT;
-    gPred = (uint16)(FPGA_NUM_POINTS - gPost);
+    post = (uint16)(SET_TSHIFT - TShift::Min());
+    int Pred = (int)FPGA_NUM_POINTS - (int)post;
 
-    gPost = (uint16)(~(gPost + 1));
-    gPred = (uint16)(~(gPred + 3));
+    if(Pred < 0)
+    {
+        Pred = 0;
+    }
+    pred = (uint16)Pred;
 
-    FSMC::WriteToFPGA16(WR_PRED_LO, gPost);
-    FSMC::WriteToFPGA16(WR_POST_LO, gPred);
-    */
+    //LOG_WRITE("tShift = %d, tShiftMin = %d, post = %D", SET_TSHIFT, TShift::Min(), post);
+    //LOG_WRITE("NUM_POINTS = %d, pred = %d", FPGA_NUM_POINTS, pred);
 
+    post = (uint16)(~(post + 1));
+    pred = (uint16)(~(pred + 3));
 
+    FSMC::WriteToFPGA16(WR_PRED_LO, post);
+    FSMC::WriteToFPGA16(WR_POST_LO, pred);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -814,6 +820,8 @@ void FPGA::LoadTBase()
     memset(&dataRand[0][0], 0, FPGA_MAX_NUM_POINTS * 2);
 
     FSMC::WriteToFPGA8(WR_TBASE, values[SET_TBASE]);
+
+    LoadTShift();
 }
 
 #ifdef _WIN32
@@ -879,6 +887,10 @@ void FPGA::SetTrigLev(TrigSource ch, uint16 trigLev)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetTShift(int tShift)
 {
+    SET_TSHIFT = tShift;
+    LIMITATION(SET_TSHIFT, TShift::Min(), TShift::Max());
+
+    LoadTShift();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -973,8 +985,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
     /// \todo временная затычка. Не в рандомизаторе эта функция вообще не должна вызываться
     if (IN_RANDOM_MODE)
     {
-        LOG_WRITE("%d", adcValueFPGA);
         adcValueFPGA = (uint16)HAL_ADC_GetValue(hadc);
+        LOG_WRITE("читаю %d", adcValueFPGA);
     }
 }
 

@@ -9,9 +9,6 @@
 #define STEP_RSHIFT     (((RShift::MAX - RShift::MIN) / 24) / 20)
 #define STEP_TRIGLEV    STEP_RSHIFT
 
-extern uint16 gPost;
-extern uint16 gPred;
-
 enum Pin
 {
     SPI3_SCK,
@@ -185,4 +182,7 @@ private:
     
 public:
     static StateWorkFPGA fpgaStateWork;
+
+    static uint16 post;
+    static uint16 pred;
 };

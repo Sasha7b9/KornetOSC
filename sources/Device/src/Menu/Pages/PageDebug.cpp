@@ -756,7 +756,7 @@ static int16 pred;
 
 static void OnChanged_Pred()
 {
-    gPred = (uint16)(~pred);
+    FPGA::pred = (uint16)(~pred);
 }
 
 DEF_GOVERNOR(       mgPred,                                                                                             //--- ОТЛАДКА - Предзапуск ---
@@ -770,7 +770,7 @@ static int16 post;
 
 static void OnChanged_Post()
 {
-    gPost = (uint16)~post;
+    FPGA::post = (uint16)~post;
 }
 
 DEF_GOVERNOR(       mgPost,                                                                                            //--- ОТЛАДКА - Послезапуск ---
