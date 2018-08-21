@@ -405,7 +405,7 @@ int FPGA::CalculateShift(Chan)
     if (IN_RANDOMIZE_MODE)
     {
         float tin = (float)(adcValueFPGA - min) / (max - min);
-        int retValue = (int)(tin * Kr[SET_TBASE] + 0.5f);
+        int retValue = (int)(tin * Kr[SET_TBASE]);
 
         LOG_WRITE("%d %d %d %d", adcValueFPGA, min, max, retValue);
 
@@ -433,13 +433,17 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
 
     numElements++;
 
+    bool retValue = true;
+
     if (rand < min)
     {
         min = rand;
+        retValue = false;
     }
     if (rand > max)
     {
         max = rand;
+        retValue = false;
     }
 
     if (minGate == 0.0f)
@@ -459,13 +463,8 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
 
     if (numElements >= numberMeasuresForGates)
     {
-        //minGate = (9.0f * minGate + min) * 0.1f;
-        //maxGate = (9.0f * maxGate + max) * 0.1f;
-
         minGate = 0.8f * minGate + min * 0.2f;
         maxGate = 0.8f * maxGate + max * 0.2f;
-
-        //LOG_WRITE("%.1f %.1f", (double)minGate, (double)maxGate);
 
         numElements = 0;
         min = 0xffff;
@@ -475,7 +474,7 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
     *eMin = (uint16)(minGate);
     *eMax = (uint16)(maxGate);
 
-    return true;
+    return retValue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
