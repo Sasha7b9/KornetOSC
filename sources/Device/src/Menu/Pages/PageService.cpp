@@ -395,7 +395,7 @@ static void OnPress_FFT()
 {
     if (!IsActive_FFT())
     {
-        Display::ShowWarning(ImpossibleEnableFFT);
+        Display::ShowWarning(Warning::ImpossibleEnableFFT);
     }
 }
 
@@ -422,7 +422,7 @@ static void OnPress_Function_Screen()
 {
     if (FFT_ENABLED)
     {
-        Display::ShowWarning(ImpossibleEnableMathFunction);
+        Display::ShowWarning(Warning::ImpossibleEnableMathFunction);
     }
     else
     {
@@ -584,7 +584,7 @@ static void OnPress_Function()
 {
     if (FFT_ENABLED)
     {
-        Display::ShowWarning(ImpossibleEnableMathFunction);
+        Display::ShowWarning(Warning::ImpossibleEnableMathFunction);
     }
 }
 

@@ -344,7 +344,7 @@ void MACaddress::ChangeValue(int delta)
     uint8 *value = mac0 + gCurDigit;
     *value += delta > 0 ? 1 : -1;
     Sound::GovernorChangedValue();
-    DISPLAY_SHOW_WARNING(NeedRebootDevice);
+    DISPLAY_SHOW_WARNING(Warning::NeedRebootDevice);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -436,7 +436,7 @@ void IPaddress::ChangeValue(int delta)
             ip0[numByte] = (uint8)newValue;
         }
         Sound::GovernorChangedValue();
-        DISPLAY_SHOW_WARNING(NeedRebootDevice);
+        DISPLAY_SHOW_WARNING(Warning::NeedRebootDevice);
     }
 }
 

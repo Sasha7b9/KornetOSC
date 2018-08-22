@@ -173,7 +173,7 @@ void PageChannelB::OnChanged_Input(bool active)
 {
     if (!active)
     {
-        Display::ShowWarning(TooLongMemory);
+        Display::ShowWarning(Warning::TooLongMemory);
         return;
     }
 }

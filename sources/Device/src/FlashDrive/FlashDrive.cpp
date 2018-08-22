@@ -122,7 +122,7 @@ void FDrive::Update()
 
         if (f_mount(&USBDISKFatFs, (TCHAR const*)USBDISKPath, 1) != FR_OK)
         {
-            Display::ShowWarning(WrongFileSystem);
+            Display::ShowWarning(Warning::WrongFileSystem);
         }
         else
         {

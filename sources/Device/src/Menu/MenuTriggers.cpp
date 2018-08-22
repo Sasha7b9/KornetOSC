@@ -24,7 +24,7 @@ bool TriggerDebugConsole::Update(Key button)
         if (memcmp(bufferForButtons, sampleBufferForButtons, SIZE_BUFFER_FOR_BUTTONS) == 0)
         {
             SHOW_DEBUG_MENU = 1;
-            Display::ShowWarning(MenuDebugEnabled);
+            Display::ShowWarning(Warning::MenuDebugEnabled);
             return true;
         }
     }

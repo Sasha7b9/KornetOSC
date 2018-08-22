@@ -908,7 +908,7 @@ static void OnPress_SaveFirmware()
 
     Display::FuncOnWaitStop();
 
-    Display::ShowWarning(FirmwareSaved);
+    Display::ShowWarning(Warning::FirmwareSaved);
 }
 
 DEF_BUTTON(         bSaveFirmware,                                                                                  //--- ОТЛАДКА - Сохр. прошивку ---
@@ -963,7 +963,7 @@ static void OnPress_SerialNumber_Save()
 
     if (!OTPmem::SaveSerialNumber(stringSN))
     {
-        Display::ShowWarning(FullyCompletedOTP);
+        Display::ShowWarning(Warning::FullyCompletedOTP);
     }
 }
 

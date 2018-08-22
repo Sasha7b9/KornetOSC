@@ -492,7 +492,7 @@ void Menu::ChangeStateFlashDrive()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::OpenItemTime()
 {
-    Display::ShowWarning(TimeNotSet);
+    Display::ShowWarning(Warning::TimeNotSet);
     ShortPressureButton(Key::Service);
     Update();
     Display::Update();

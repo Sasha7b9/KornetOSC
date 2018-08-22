@@ -48,7 +48,7 @@ void PageMemory::OnChanged_Points(bool active)
     // Если включен пиковый детектор, то не можем переключать память
     if (SET_PEAKDET_EN && !active)
     {
-        Display::ShowWarning(WrongModePeackDet);
+        Display::ShowWarning(Warning::WrongModePeackDet);
         return;
     }
 
@@ -326,7 +326,7 @@ void PageMemory::OnPress_Drive_Manager()
     }
     else
     {
-        Display::ShowWarning(WarnNeedForFlashDrive);
+        Display::ShowWarning(Warning::WarnNeedForFlashDrive);
     }
 }
 
@@ -880,7 +880,7 @@ static void SaveSignalToIntMemory()
     if (DS)                                             // Если есть что сохранять
     {
         EEPROM::SaveData(NUM_ROM_SIGNAL, DS, IN_A, IN_B);   // То сохраняем данные из DS, DATA_A, DATA_B на место NUM_ROM_SIGNAL в ППЗУ
-        Display::ShowWarning(SignalIsSaved);
+        Display::ShowWarning(Warning::SignalIsSaved);
     }
 }
 

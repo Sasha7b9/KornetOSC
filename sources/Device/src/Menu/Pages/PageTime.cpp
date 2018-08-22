@@ -45,7 +45,7 @@ void PageTime::OnChanged_PeakDet(bool active)
     }
     else
     {
-        Display::ShowWarning(TooSmallSweepForPeakDet);
+        Display::ShowWarning(Warning::TooSmallSweepForPeakDet);
     }
 }
 
