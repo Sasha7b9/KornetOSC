@@ -8,7 +8,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const Font *fonts[TypeFont_Number] = {&font5, &font8, &fontUGO, &fontUGO2};
+const Font *fonts[Font::Type::Number] = {&font5, &font8, &fontUGO, &fontUGO2};
 const Font *font = &font8;
 
 
@@ -43,24 +43,24 @@ int Font::GetLengthSymbol(char symbol)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Font::SetFont(TypeFont typeFont)
+void Font::SetFont(Font::Type typeFont)
 {
     switch (typeFont)
     {
-        case TypeFont_5:
+        case Font::Type::_5:
             font = &font5;
             break;
-        case TypeFont_8:
+        case Font::Type::_8:
             font = &font8;
             break;
-        case TypeFont_UGO:
+        case Font::Type::_UGO:
             font = &fontUGO;
             break;
-        case TypeFont_UGO2:
+        case Font::Type::_UGO2:
             font = &fontUGO2;
             break;
-        case TypeFont_None:
-        case TypeFont_Number:
+        case Font::Type::None:
+        case Font::Type::Number:
             break;
     }
 }

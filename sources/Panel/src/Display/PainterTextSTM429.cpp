@@ -19,7 +19,7 @@ int Painter::DrawText(int x, int y, const char *text, Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetFont(TypeFont typeFont)
+void Painter::SetFont(Font::Type typeFont)
 {
     font = fonts[typeFont];
 }

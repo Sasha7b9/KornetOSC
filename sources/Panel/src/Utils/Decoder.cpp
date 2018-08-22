@@ -309,7 +309,7 @@ bool Decoder::SetFont(uint8 data)
     {
         return false;
     }
-    Painter::SetFont((TypeFont)data);
+    Painter::SetFont((Font::Type::E)data);
 
     return true;
 }

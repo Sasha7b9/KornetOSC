@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Display/Colors.h"
 #include "Display/DisplayTypes.h"
+#include "Display/Font/Font.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -55,7 +56,7 @@ public:
 
     static uint ReduceBrightness(uint colorValue, float newBrightness);
 
-    static void SetFont(TypeFont typeFont);
+    static void SetFont(Font::Type typeFont);
 
     static int DrawChar(int x, int y, char symbol, Color color = Color::NUMBER);
 
@@ -73,7 +74,7 @@ private:
 
     static Color currentColor;
 
-    static TypeFont currentTypeFont;
+    static Font::Type::E currentTypeFont;
 
     static bool ByteFontNotEmpty(int eChar, int byte);
 
