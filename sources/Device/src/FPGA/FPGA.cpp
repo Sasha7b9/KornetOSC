@@ -38,7 +38,7 @@ struct PinStruct
     uint            pin;
 };
 
-static PinStruct pins[Num_Pins] =
+static PinStruct pins[Pin::Number] =
 {
     {GPIOC, GPIO_PIN_10},   // SPI3_SCK
     {GPIOC, GPIO_PIN_12},   // SPI3_DAT
@@ -80,11 +80,11 @@ void FPGA::Init()
 
     GPIO_Init();
     
-    SetPin(SPI3_CS1);
-    SetPin(SPI3_CS2);
+    SetPin(Pin::SPI3_CS1);
+    SetPin(Pin::SPI3_CS2);
 
-    ResetPin(SPI3_SCK);
-    ResetPin(SPI3_DAT);
+    ResetPin(Pin::SPI3_SCK);
+    ResetPin(Pin::SPI3_DAT);
 
     AD9286::Init();
 
@@ -506,15 +506,15 @@ void FPGA::GPIO_Init()
         GPIO_PULLDOWN
     };
 
-    for (int i = 0; i < Num_Pins; i++)
+    for (int i = 0; i < Pin::Number; i++)
     {
-        isGPIO.Pin = GetPin((Pin)i);
-        HAL_GPIO_Init(GetPort((Pin)i), &isGPIO);
+        isGPIO.Pin = GetPin((Pin::E)i);
+        HAL_GPIO_Init(GetPort((Pin::E)i), &isGPIO);
     }
 
-    for (int i = 0; i < Num_Pins; i++)
+    for (int i = 0; i < Pin::Number; i++)
     {
-        gpio.SetOutputPP_PullDown(GetPort((Pin)i), (uint)MathOSC::LowSignedBit(GetPin((Pin)i)));
+        gpio.SetOutputPP_PullDown(GetPort((Pin::E)i), (uint)MathOSC::LowSignedBit(GetPin((Pin::E)i)));
     }
 }
 
@@ -645,11 +645,11 @@ void FPGA::LoadRanges()
 {
     uint16 value = (uint16)(ValueForRange(Chan::B) + (ValueForRange(Chan::A) << 8));
 
-    WriteRegisters(SPI3_CS2, value);
+    WriteRegisters(Pin::SPI3_CS2, value);
 
     PAUSE_ON_MS(10);                // Задержка нужна, чтобы импульсные реле успели отработать
 
-    WriteRegisters(SPI3_CS2, 0);    // Записываем ноль, чтобы реле не потребляли энергии
+    WriteRegisters(Pin::SPI3_CS2, 0);    // Записываем ноль, чтобы реле не потребляли энергии
 
     static const uint8 vals[Range::Size] =
     {
@@ -670,13 +670,13 @@ void FPGA::LoadRanges()
 
     uint8 valueA = vals[SET_RANGE_A];
 
-    WritePin(A1, _GET_BIT(valueA, 1));
-    WritePin(A2, _GET_BIT(valueA, 0));
+    WritePin(Pin::A1, _GET_BIT(valueA, 1));
+    WritePin(Pin::A2, _GET_BIT(valueA, 0));
 
     uint8 valueB = vals[SET_RANGE_B];
 
-    WritePin(A3, _GET_BIT(valueB, 1));
-    WritePin(A4, _GET_BIT(valueB, 0));
+    WritePin(Pin::A3, _GET_BIT(valueB, 1));
+    WritePin(Pin::A4, _GET_BIT(valueB, 0));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -684,24 +684,24 @@ void FPGA::WriteRegisters(Pin cs, uint16 value)
 {
     ResetPin(cs);
 
-    if (cs == SPI3_CS1)
+    if (cs == Pin::SPI3_CS1)
     {
         for (int i = 15; i >= 0; --i)
         {
-            WritePin(SPI3_DAT, _GET_BIT(value, i));
+            WritePin(Pin::SPI3_DAT, _GET_BIT(value, i));
             PAUSE_ON_TICKS(100);
-            SetPin(SPI3_SCK);
-            ResetPin(SPI3_SCK);
+            SetPin(Pin::SPI3_SCK);
+            ResetPin(Pin::SPI3_SCK);
         }
     }
-    else if (cs == SPI3_CS2)
+    else if (cs == Pin::SPI3_CS2)
     {
         for (int i = 0; i < 16; ++i)
         {
-            WritePin(SPI3_DAT, _GET_BIT(value, i));
+            WritePin(Pin::SPI3_DAT, _GET_BIT(value, i));
             PAUSE_ON_TICKS(100);
-            SetPin(SPI3_SCK);
-            ResetPin(SPI3_SCK);
+            SetPin(Pin::SPI3_SCK);
+            ResetPin(Pin::SPI3_SCK);
         }
     }
 
@@ -713,13 +713,13 @@ void FPGA::LoadRShift(Chan ch)
 {
     static const uint16 mask[2] = {0x2000, 0x6000};
 
-    WriteRegisters(SPI3_CS1, (uint16)(mask[ch] | (SET_RSHIFT(ch) << 2)));
+    WriteRegisters(Pin::SPI3_CS1, (uint16)(mask[ch] | (SET_RSHIFT(ch) << 2)));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTrigLev()
 {
-    WriteRegisters(SPI3_CS1, (uint16)(0xa000 | (SET_TRIGLEV_SOURCE << 2)));
+    WriteRegisters(Pin::SPI3_CS1, (uint16)(0xa000 | (SET_TRIGLEV_SOURCE << 2)));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -864,9 +864,9 @@ void FPGA::LoadTrigSourceInput()
         {BIN_U8(00000000), BIN_U8(00000110)}  // НЧ
     };
     
-    WritePin(A1S, _GET_BIT(datas[TRIG_INPUT.value][TRIG_SOURCE.value], 2));
-    WritePin(A0S, _GET_BIT(datas[TRIG_INPUT.value][TRIG_SOURCE.value], 1));
-    WritePin(LFS, _GET_BIT(datas[TRIG_INPUT.value][TRIG_SOURCE.value], 0));
+    WritePin(Pin::A1S, _GET_BIT(datas[TRIG_INPUT.value][TRIG_SOURCE.value], 2));
+    WritePin(Pin::A0S, _GET_BIT(datas[TRIG_INPUT.value][TRIG_SOURCE.value], 1));
+    WritePin(Pin::LFS, _GET_BIT(datas[TRIG_INPUT.value][TRIG_SOURCE.value], 0));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -905,7 +905,7 @@ void FPGA::SetModeCouple(Chan ch, ModeCouple modeCoupe)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetBandwidth(Chan ch)
 {
-    static const Pin pinsLF[2] = {LF1, LF2};
+    static const Pin pinsLF[2] = {Pin::LF1, Pin::LF2};
     WritePin(pinsLF[ch], SET_BANDWIDTH(ch) == Bandwidth::_20MHz);
 }
 

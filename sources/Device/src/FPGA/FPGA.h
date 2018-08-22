@@ -9,22 +9,27 @@
 #define STEP_RSHIFT     (((RShift::MAX - RShift::MIN) / 24) / 20)
 #define STEP_TRIGLEV    STEP_RSHIFT
 
-enum Pin
+struct Pin
 {
-    SPI3_SCK,
-    SPI3_DAT,
-    SPI3_CS1,
-    SPI3_CS2,
-    A1,
-    A2,
-    A3,
-    A4,
-    LF1,
-    LF2,
-    A1S,
-    A0S,
-    LFS,
-    Num_Pins
+    enum E
+    {
+        SPI3_SCK,
+        SPI3_DAT,
+        SPI3_CS1,
+        SPI3_CS2,
+        A1,
+        A2,
+        A3,
+        A4,
+        LF1,
+        LF2,
+        A1S,
+        A0S,
+        LFS,
+        Number
+    } value;
+    Pin(E v) : value(v) {};
+    operator uint8() const { return (uint8)value; };
 };
 
 #define FPGA_IN_STATE_STOP (FPGA::fpgaStateWork == StateWorkFPGA_Stop)
