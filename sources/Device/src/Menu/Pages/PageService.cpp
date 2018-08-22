@@ -639,7 +639,7 @@ static void OnRegSet_Function(int delta)
         {
             if (SET_RANGE_MATH < Range::Size - 1)
             {
-                SET_RANGE_MATH = (Range)((uint8)(SET_RANGE_MATH + 1));  // SET_RANGE_MATH++;
+                SET_RANGE_MATH = (Range::E)((uint8)(SET_RANGE_MATH + 1));  // SET_RANGE_MATH++;
                 SET_RSHIFT_MATH = (uint16)RSHIFT_2_REL(rShiftAbs, SET_RANGE_MATH);
                 Sound::RegulatorSwitchRotate();
             }
@@ -649,7 +649,7 @@ static void OnRegSet_Function(int delta)
         {
             if (SET_RANGE_MATH > 0)
             {
-                SET_RANGE_MATH = (Range)((uint8)(SET_RANGE_MATH - 1));  // SET_RANGE_MATH--;
+                SET_RANGE_MATH = (Range::E)((uint8)(SET_RANGE_MATH - 1));  // SET_RANGE_MATH--;
                 SET_RSHIFT_MATH = (uint16)RSHIFT_2_REL(rShiftAbs, SET_RANGE_MATH);
                 Sound::RegulatorSwitchRotate();
             }

@@ -7,7 +7,7 @@
 
 struct Range
 {
-    enum
+    enum E
     {
         _2mV,
         _5mV,
@@ -23,12 +23,12 @@ struct Range
         _10V,
         _20V,
         Size
-    };
-    Range(uint8 v = _2mV) : value(v) {};
-    COMMON_ENUM;
+    } value;
+    Range(E v = _2mV) : value(v) {};
+    operator uint8() const { return (uint8)value; };
     Range& operator++()
     {
-        ++value;
+        value = (E)((uint)value + 1);
         return *this;
     }
 };
