@@ -66,37 +66,27 @@ public:
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class TypePress
+struct TypePress
 {
-public:
-    TypePress(uint8 value = None) : type(value)
-    {
-    };
-
-    uint8 type;
-
-    bool Is(uint8 value)
-    {
-        return type == value;
-    }
-
-    pString ToString();
-
-    enum
+    enum E
     {
         Press,      ///< Нажатие кнопки
         Repeat,     ///< Автоматический повтор
         Release,    ///< Отпускание кнопки
         Long,       ///< "Длинное" нажатие кнопки
         None
-    };
+    } value;
+
+    TypePress(E v = None) : value(v)  { };
+    operator uint8() const { return (uint8)value; };
+    pString ToString();
 };
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 struct KeyEvent
 {
-    KeyEvent(Key k = Key::None, TypePress t = TypePress::None) : key(k), type(t)
+    KeyEvent(Key k = Key::None, TypePress::E t = TypePress::None) : key(k), type(t)
     {
     };
     Key key;

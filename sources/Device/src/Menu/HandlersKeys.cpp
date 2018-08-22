@@ -63,11 +63,11 @@ void Handlers::Process(KeyEvent e)
     };
 
     uint8 code = event.key.code;
-    uint8 type = event.type.type;
+    uint8 type = event.type;
 
     if (code < Key::NumButtons && type < TypePress::None)
     {
-        func[event.key.code][event.type.type]();
+        func[event.key.code][event.type.value]();
     }
     else
     {
@@ -172,7 +172,7 @@ void Handlers::Arrow()
 
     TypePress type = event.type;
 
-    if(!type.Is(TypePress::Press))
+    if(type != TypePress::Press)
     {
         return;
     }
@@ -292,7 +292,7 @@ void Handlers::Time()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Start()
 {
-    if (event.type.Is(TypePress::Press))
+    if (event.type == TypePress::Press)
     {
         FPGA::OnPressStart();
     }

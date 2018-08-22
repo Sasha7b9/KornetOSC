@@ -79,5 +79,5 @@ pString TypePress::ToString()
         "Пусто"
     };
 
-    return names[type];
+    return names[value];
 }

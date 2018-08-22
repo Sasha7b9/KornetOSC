@@ -55,7 +55,7 @@ void Menu::Update()
 
         if (!MENU_IS_SHOWN)
         {
-            if(event.type.Is(TypePress::Release) && TriggerDebugConsole::Update(event.key))
+            if(event.type == TypePress::Release && TriggerDebugConsole::Update(event.key))
             {
                 continue;
             }

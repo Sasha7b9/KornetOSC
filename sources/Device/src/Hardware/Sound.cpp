@@ -16,7 +16,7 @@ DAC_HandleTypeDef Sound::handleDAC = {DAC};
 static uint8 points[POINTS_IN_PERIOD_SOUND] = {0};
 static float frequency = 0.0f;
 static float amplitude = 0.0f;
-static TypeWave typeWave = TypeWave_Sine;
+static TypeWave typeWave = TypeWave::Sine;
 static bool soundWarnIsBeep = false;
 static bool buttonIsPressed = false;    ///< \brief Когда запускается звук нажатой кнопки, устанавливается этот флаг, чтобы знать, проигрывать ли знак 
                                         ///< отпускания
@@ -178,15 +178,15 @@ void Sound::SetWave()
 {
     ConfigTIM7(0, CalculatePeriodForTIM());
 
-    if(typeWave == TypeWave_Sine)
+    if(typeWave == TypeWave::Sine)
     {
         CalculateSine();
     }
-    else if(typeWave == TypeWave_Meandr)
+    else if(typeWave == TypeWave::Meandr)
     {
         CalculateMeandr();
     }
-    else if(typeWave == TypeWave_Triangle)
+    else if(typeWave == TypeWave::Triangle)
     {
         CalculateTriangle();
     }
@@ -204,7 +204,7 @@ void Sound::Beep(const TypeWave newTypeWave, const float newFreq, const float ne
     {
         //return;
     }
-    if (frequency != newFreq || amplitude != newAmpl || typeWave != newTypeWave)
+    if (frequency != newFreq || amplitude != newAmpl || typeWave != newTypeWave.value)
     {
         frequency = newFreq;
         amplitude = newAmpl * SOUND_VOLUME / 100.0f;
@@ -234,7 +234,7 @@ void Sound::WaitForCompletion()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::ButtonPress()
 {
-    Beep(TypeWave_Sine, 2000.0f, 0.75f, 50);
+    Beep(TypeWave::Sine, 2000.0f, 0.75f, 50);
     buttonIsPressed = true;
 }
 
@@ -243,7 +243,7 @@ void Sound::ButtonRelease()
 {
     if (buttonIsPressed)
     {
-        Beep(TypeWave_Sine, 1000.0f, 0.5f, 50);
+        Beep(TypeWave::Sine, 1000.0f, 0.5f, 50);
         buttonIsPressed = false;
     }
 }
@@ -252,7 +252,7 @@ void Sound::ButtonRelease()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::GovernorChangedValue()
 {
-    Beep(TypeWave_Sine, 1000.0f, 0.5f, 50);
+    Beep(TypeWave::Sine, 1000.0f, 0.5f, 50);
     buttonIsPressed = false;
 }
 
@@ -260,7 +260,7 @@ void Sound::GovernorChangedValue()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::RegulatorShiftRotate()
 {
-    Beep(TypeWave_Sine, 1.0f, 0.2f, 3);
+    Beep(TypeWave::Sine, 1.0f, 0.2f, 3);
     buttonIsPressed = false;
 }
 
@@ -268,7 +268,7 @@ void Sound::RegulatorShiftRotate()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::RegulatorSwitchRotate()
 {
-    Beep(TypeWave_Sine, 500.0f, 0.5f, 75);
+    Beep(TypeWave::Sine, 500.0f, 0.5f, 75);
     buttonIsPressed = false;
 }
 
@@ -276,7 +276,7 @@ void Sound::RegulatorSwitchRotate()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::WarnBeepBad()
 {
-    Beep(TypeWave_Meandr, 500.0f, 1.0f, 500);
+    Beep(TypeWave::Meandr, 500.0f, 1.0f, 500);
     soundWarnIsBeep = true;
     buttonIsPressed = false;
 }
@@ -284,7 +284,7 @@ void Sound::WarnBeepBad()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::WarnBeepGood()
 {
-    Beep(TypeWave_Triangle, 1000.0f, 1.0f, 500);
+    Beep(TypeWave::Triangle, 1000.0f, 1.0f, 500);
     buttonIsPressed = false;
 }
 
@@ -299,7 +299,7 @@ void Sound::Beep(TypePress type)
         EmptyFuncVV
     };
 
-    func[type.type]();
+    func[type]();
 
 }
 

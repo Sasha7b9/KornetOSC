@@ -59,5 +59,4 @@ struct Control
     Control(E v = K_None, Action::E a = Action::Press) : value(v), action(a) {};
     bool IsRepeatable() const;
     operator uint8() const { return (uint8)value; };
-    bool Is(E v) const { return v == value; };
 };

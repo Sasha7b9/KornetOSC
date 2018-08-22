@@ -13,12 +13,17 @@
  */
 
 
-typedef enum
+struct TypeWave
 {
-    TypeWave_Sine,
-    TypeWave_Meandr,
-    TypeWave_Triangle
-} TypeWave;
+    enum E
+    {
+        Sine,
+        Meandr,
+        Triangle
+    } value;
+    TypeWave(E v) : value(v) {};
+    operator uint8() const { return (uint8)value; };
+};
 
 
 class Sound

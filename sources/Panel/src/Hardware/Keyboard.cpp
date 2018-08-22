@@ -155,7 +155,7 @@ void Keyboard::Update()
 
             Control control = controls[rl][sl];
 
-            if (!control.Is(Control::K_None))
+            if (control != Control::K_None)
             {
                 if (timePress[rl][sl])                      // ≈сли клавиша находитс€ в нажатом положении
                 {
