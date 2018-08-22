@@ -120,9 +120,9 @@ static void OnPress_Last_Next()
 
 static void Draw_Last_Next(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 2, '\x64');
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bLast_Next,                                                                               //--- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - —ÎÂ‰Û˛˘ËÈ ---
@@ -140,9 +140,9 @@ static void OnPress_Last_Prev()
 
 static void Draw_Last_Prev(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_BACKSPACE);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bLast_Prev,                                                                              //--- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - œÂ‰˚‰Û˘ËÈ ---
@@ -166,9 +166,9 @@ static void OnPress_Last_SaveToROM()
 
 static void Draw_Last_SaveToROM(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_ROM);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bLast_SaveToROM,                                                                           //--- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - ¬ÌÛÚ «” ---
@@ -189,9 +189,9 @@ static void Draw_Last_SaveToDrive(int x, int y)
 {
     if (FDrive::IsConnected())
     {
-        Painter::SetFont(TypeFont_UGO2);
+        Painter::SetFont(Font::Type::_UGO2);
         Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
-        Painter::SetFont(TypeFont_8);
+        Painter::SetFont(Font::Type::_8);
     }
 }
 
@@ -257,7 +257,7 @@ DEF_PAGE_SB(        ppLast,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Drive_Manager_Exit()
 {
-    Display::SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode::Auto, 0);
     OnPressSB_Exit();
 }
 
@@ -268,9 +268,9 @@ DEF_SMALL_BUTTON_EXIT(  bDrive_Manager_Exit,                                    
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_Tab(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_TAB);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Manager_Tab,                                                                    //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - Tab ---
@@ -283,9 +283,9 @@ DEF_SMALL_BUTTON(   bDrive_Manager_Tab,                                         
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_LevelUp(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x48');
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Manager_LevelUp,                                                  //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - ¬˚ÈÚË ËÁ Í‡Ú‡ÎÓ„‡ ---
@@ -298,9 +298,9 @@ DEF_SMALL_BUTTON(   bDrive_Manager_LevelUp,                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_LevelDown(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 2, '\x4a');
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Manager_LevelDown,                                                  //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - ¬ÓÈÚË ‚ Í‡Ú‡ÎÓ„ ---
@@ -321,7 +321,7 @@ void PageMemory::OnPress_Drive_Manager()
     if (FDrive::IsConnected())
     {
         FDrive::Mount();
-        Display::SetDrawMode(DrawMode_Auto, FileManager::Draw);
+        Display::SetDrawMode(DrawMode::Auto, FileManager::Draw);
         FM_NEED_REDRAW = FM_REDRAW_FULL;
     }
     else
@@ -373,9 +373,9 @@ static void OnPress_Drive_Mask_Delete()
 
 static void Draw_Drive_Mask_Delete(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_DELETE);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Mask_Delete,                                                                  //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - ”‰‡ÎËÚ¸ ---
@@ -404,9 +404,9 @@ static void OnPress_Drive_Mask_Backspace()
 
 static void Draw_Drive_Mask_Backspace(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_BACKSPACE);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Mask_Backspace,                                                             //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - Backspace ---
@@ -455,9 +455,9 @@ static void OnPress_Drive_Mask_Insert()
 
 static void Draw_Drive_Mask_Insert(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_INSERT);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Mask_Insert,                                                                 //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - ¬ÒÚ‡‚ËÚ¸ ---
@@ -759,16 +759,16 @@ static void OnPress_Internal_ShowAlways()
 
 static void Draw_Internal_ShowAlways_Yes(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x66');
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 static void Draw_Internal_ShowAlways_No(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x68');
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 static void Draw_Internal_ShowAlways(int x, int y)
@@ -802,17 +802,17 @@ static void OnPress_Internal_ModeShow()
 
 static void Draw_Internal_ModeShow_Direct(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x6a');
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 
 static void Draw_Internal_ModeShow_Saved(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x6c');
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 static void Draw_Internal_ModeShow_Both(int x, int y)
@@ -858,9 +858,9 @@ static void OnPress_Internal_Delete()
 
 static void Draw_Internal_Delete(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_DELETE);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bInternal_Delete,                                                                            //--- œ¿Ãﬂ“‹ - ¬Õ”“– «” - ”‰‡ÎËÚ¸ ---
@@ -893,9 +893,9 @@ static void OnPress_Internal_SaveToMemory()
 
 static void Draw_Internal_SaveToMemory(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bInternal_SaveToMemory,                                                           //--- œ¿Ãﬂ“‹ - ¬Õ”“– «” - —Óı‡ÌËÚ¸ ‚ Ô‡ÏˇÚË ---
@@ -916,9 +916,9 @@ static void Draw_Internal_SaveToDrive(int x, int y)
 {
     if (FDrive::IsConnected())
     {
-        Painter::SetFont(TypeFont_UGO2);
+        Painter::SetFont(Font::Type::_UGO2);
         Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
-        Painter::SetFont(TypeFont_8);
+        Painter::SetFont(Font::Type::_8);
     }
 }
 
@@ -1032,9 +1032,9 @@ static void OnPress_SetName_Delete()
 
 static void Draw_SetName_Delete(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_DELETE);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bSetName_Delete,                                                                                     //--- »Ãﬂ ‘¿…À¿ - ”‰‡ÎËÚ¸ ---
@@ -1056,9 +1056,9 @@ static void OnPress_SetName_Backspace()
 
 static void Draw_SetName_Backspace(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_BACKSPACE);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bSetName_Backspace,                                                                                //--- »Ãﬂ ‘¿…À¿ - Backspace ---
@@ -1081,9 +1081,9 @@ static void OnPress_SetName_Insert()
 
 static void Draw_SetName_Insert(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 2, '\x26');
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bSetName_Insert,                                                                                    //--- »Ãﬂ ‘¿…À¿ - ¬ÒÚ‡‚ËÚ¸ ---
@@ -1107,9 +1107,9 @@ static void Draw_SetName_Save(int x, int y)
 {
     if (FDrive::IsConnected())
     {
-        Painter::SetFont(TypeFont_UGO2);
+        Painter::SetFont(Font::Type::_UGO2);
         Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
-        Painter::SetFont(TypeFont_8);
+        Painter::SetFont(Font::Type::_8);
     }
 }
 

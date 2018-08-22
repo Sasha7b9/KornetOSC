@@ -58,6 +58,9 @@
     <Filter Include="Keyboard">
       <UniqueIdentifier>{951b15f8-82d7-46c1-9900-310183ef7e32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Display\Font">
+      <UniqueIdentifier>{ee9cd6ab-4df3-4180-b83c-6873ef8dca50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
@@ -326,6 +329,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\HiPart.cpp">
       <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Display\Font\Font.cpp">
+      <Filter>Display\Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -722,6 +728,9 @@
     <ClInclude Include="..\..\Device\src\Display\HiPart.h">
       <Filter>Display</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Device\src\Display\Font\font.h">
+      <Filter>Display\Font</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Device\src\libs\CMSIS\startup_stm32f437xx.s">
@@ -738,6 +747,18 @@
     </None>
     <None Include="..\..\common\_VS\limits">
       <Filter>_VS</Filter>
+    </None>
+    <None Include="..\..\Device\src\Display\Font\fontUGO2.inc">
+      <Filter>Display\Font</Filter>
+    </None>
+    <None Include="..\..\Device\src\Display\Font\font5.inc">
+      <Filter>Display\Font</Filter>
+    </None>
+    <None Include="..\..\Device\src\Display\Font\font8.inc">
+      <Filter>Display\Font</Filter>
+    </None>
+    <None Include="..\..\Device\src\Display\Font\fontUGO.inc">
+      <Filter>Display\Font</Filter>
     </None>
   </ItemGroup>
 </Project>

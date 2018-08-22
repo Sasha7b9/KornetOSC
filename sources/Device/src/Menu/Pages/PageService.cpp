@@ -52,7 +52,7 @@ static void OnPress_ResetSettings()
         Settings::Load(true);
     }
 
-    Display::SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode::Auto, 0);
     Keyboard::Enable();
     */
 }
@@ -212,16 +212,16 @@ static void Draw_Recorder_SaveTo(int x, int y)
 
 static void Draw_Recorder_SaveTo_RAM(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_ROM);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 static void Draw_Recorder_SaveTo_EXT(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 // —≈–¬»— - –≈√»—“–¿“Œ– - ¬˚·Ó ----------------------------------------------------------------------------------------------------------------------
@@ -244,9 +244,9 @@ static void OnPress_Recorder_Choice()
 
 static void Draw_Recorder_Choice(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 1, y, SYMBOL_FOLDER);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 // —≈–¬»— - –≈√»—“–¿“Œ– -  ÛÒÓ ---------------------------------------------------------------------------------------------------------------------
@@ -485,9 +485,9 @@ static void Draw_Function_Type_Sum(int x, int y)
 
 static void Draw_Function_Type_Mul(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 4, y + 3, SYMBOL_MATH_FUNC_MUL);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 static void Draw_Function_Type(int x, int y)
@@ -793,12 +793,12 @@ static void Information_Draw()
 
 static void OnPress_Information()
 {
-    Display::SetDrawMode(DrawMode_Auto, Information_Draw);
+    Display::SetDrawMode(DrawMode::Auto, Information_Draw);
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Information_Exit()
 {
-    Display::SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode::Auto, 0);
 }
 
 DEF_SMALL_BUTTON_EXIT(bInformation_Exit,                                                                       //--- —≈–¬»— - »Õ‘Œ–Ã¿÷»ﬂ - ¬˚ıÓ‰ ---

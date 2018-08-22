@@ -32,6 +32,7 @@
     <ClCompile Include="..\..\Device\src\Display\Display.cpp" />
     <ClCompile Include="..\..\Device\src\Display\DisplayOsci.cpp" />
     <ClCompile Include="..\..\Device\src\Display\DisplayPrimitives.cpp" />
+    <ClCompile Include="..\..\Device\src\Display\Font\Font.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Grid.cpp" />
     <ClCompile Include="..\..\Device\src\Display\HiPart.cpp" />
     <ClCompile Include="..\..\Device\src\Display\MemoryWindow.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="..\..\Device\src\Display\DisplayOsci.h" />
     <ClInclude Include="..\..\Device\src\Display\DisplayPrimitives.h" />
     <ClInclude Include="..\..\Device\src\Display\DisplayTypes.h" />
+    <ClInclude Include="..\..\Device\src\Display\Font\font.h" />
     <ClInclude Include="..\..\Device\src\Display\Grid.h" />
     <ClInclude Include="..\..\Device\src\Display\HiPart.h" />
     <ClInclude Include="..\..\Device\src\Display\MemoryWindow.h" />
@@ -297,6 +299,10 @@
     <None Include="..\..\common\_VS\cstdlib" />
     <None Include="..\..\common\_VS\cstring" />
     <None Include="..\..\common\_VS\limits" />
+    <None Include="..\..\Device\src\Display\Font\font5.inc" />
+    <None Include="..\..\Device\src\Display\Font\font8.inc" />
+    <None Include="..\..\Device\src\Display\Font\fontUGO.inc" />
+    <None Include="..\..\Device\src\Display\Font\fontUGO2.inc" />
     <None Include="..\..\Device\src\libs\CMSIS\startup_stm32f437xx.s">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>

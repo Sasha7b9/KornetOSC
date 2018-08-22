@@ -170,7 +170,7 @@ void Painter::SetPoint(int x, int y, Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetFont(TypeFont typeFont)
+void Painter::SetFont(Font::Type::E typeFont)
 {
     Font::SetFont(typeFont);
     uint8 buffer[2] = {PAINT_SET_FONT, (uint8)typeFont};

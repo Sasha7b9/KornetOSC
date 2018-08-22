@@ -209,7 +209,7 @@ void Measures::DrawPageChoice()
     int maxRow = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 8 : 5;
     int maxCol = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 3 : 5;
     Meas meas = Meas::None;
-    Painter::SetFont(TypeFont_UGO);
+    Painter::SetFont(Font::Type::_UGO);
     for(int row = 0; row < maxRow; row++)
     {
         for(int col = 0; col < maxCol; col++)
@@ -227,12 +227,12 @@ void Measures::DrawPageChoice()
             Painter::Draw10SymbolsInRect(x0 + 2, y0 + 1, GetChar(meas));
             if(meas < Meas::Num)
             {
-                Painter::SetFont(TypeFont_5);
+                Painter::SetFont(Font::Type::_5);
                 Painter::DrawTextRelativelyRight(x0 + dX, y0 + 12, sMeas[meas].name, active ? Color::FLASH_01 : Color::FILL);
-                Painter::SetFont(TypeFont_UGO);
+                Painter::SetFont(Font::Type::_UGO);
             }
             meas = (Meas)((int)meas + 1);    // meas++;
         }
     }
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }

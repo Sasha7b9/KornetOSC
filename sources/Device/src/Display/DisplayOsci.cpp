@@ -78,13 +78,13 @@ void DisplayOsci::DrawCursorTrigLevel()
         Painter::DrawChar(x + 1, y - 4, SYMBOL_TRIG_LEV_NORMAL);
     }
 
-    Painter::SetFont(TypeFont_5);
+    Painter::SetFont(Font::Type::_5);
 
     const char symbols[3] = {'1', '2', 'Â'};
     int dY = 0;
 
     Painter::DrawChar(x + 5, y - 9 + dY, symbols[(uint8)TRIG_SOURCE], Color::BACK);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 
     DrawScaleLine(Display::WIDTH - 11, true);
     int left = Grid::Right() + 9;
@@ -95,9 +95,9 @@ void DisplayOsci::DrawCursorTrigLevel()
     int shiftFull = SET_TRIGLEV_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : SET_RSHIFT(ch));
     int yFull = Grid::Top() + DELTA + height - (int)(scale * (shiftFull - RShift::MIN - TrigLev::MIN) + 4);
     Painter::FillRegion(left + 2, yFull + 1, 4, 6, Color::Trig());
-    Painter::SetFont(TypeFont_5);
+    Painter::SetFont(Font::Type::_5);
     Painter::DrawChar(left + 3, yFull - 5 + dY, symbols[(uint8)TRIG_SOURCE], Color::BACK);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

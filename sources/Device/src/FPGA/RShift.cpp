@@ -23,9 +23,9 @@ void RShift::DrawRShift(Chan ch)
 
     Painter::DrawChar(Grid::Left() - 8, y - 4, (char)SYMBOL_RSHIFT_MARKER);
 
-    Painter::SetFont(TypeFont_5);
+    Painter::SetFont(Font::Type::_5);
 
     Painter::DrawChar(Grid::Left() - 7, y - 6, ch.IsA() ? '1' : '2', Color::BACK);
 
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }

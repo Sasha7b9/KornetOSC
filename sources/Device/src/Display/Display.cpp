@@ -325,7 +325,7 @@ void Display::ChangedRShiftMarkers(bool active)
 void Display::SetDrawMode(DrawMode mode, pFuncVV func)
 {
     funcOnHand = func;
-    if (mode == DrawMode_Hand)
+    if (mode == DrawMode::Hand)
     {
         Timer::SetAndEnable(kTimerDisplay, funcOnHand, 40);
     }
@@ -338,7 +338,7 @@ void Display::SetDrawMode(DrawMode mode, pFuncVV func)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::FuncOnWaitStop()
 {
-    Display::SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode::Auto, 0);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -381,7 +381,7 @@ void Display::FuncOnWaitStart(const char *text, bool eraseBackground)
     timeStart = TIME_MS;
     textWait = text;
     clearBackground = eraseBackground;
-    Display::SetDrawMode(DrawMode_Hand, FuncOnWait);
+    Display::SetDrawMode(DrawMode::Hand, FuncOnWait);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

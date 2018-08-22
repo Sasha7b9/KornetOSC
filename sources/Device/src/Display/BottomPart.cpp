@@ -103,7 +103,7 @@ void BottomPart::Draw()
     y0 = y0 - 3;
     y1 = y1 - 6;
     int y2 = y1 + 6;
-    Painter::SetFont(TypeFont_5);
+    Painter::SetFont(Font::Type::_5);
 
     if (MODE_WORK_IS_DIR)
     {
@@ -115,7 +115,7 @@ void BottomPart::Draw()
     x += 42;
     Painter::DrawVLine(x, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::SEPARATOR);
 
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 
     if (MODE_WORK_IS_DIR)
     {
@@ -136,7 +136,7 @@ void BottomPart::Draw()
 
     Painter::DrawVLine(x + 55, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::GRAY_50);
 
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
 
     // ‘ÎÂ¯Í‡
     if (FDrive::IsConnected())
@@ -161,9 +161,9 @@ void BottomPart::Draw()
 
     if (MODE_WORK_IS_DIR)
     {
-        Painter::SetFont(TypeFont_5);
+        Painter::SetFont(Font::Type::_5);
         WriteStringAndNumber("—√À¿∆.:", (int16)(x + 57), (int16)(Grid::Bottom() + 10), (int)ENUM_SMOOTHING + 1);
-        Painter::SetFont(TypeFont_8);
+        Painter::SetFont(Font::Type::_8);
     }
 }
 

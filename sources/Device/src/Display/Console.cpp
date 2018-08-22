@@ -17,7 +17,7 @@ void Console::Draw()
 {
     inProcessDrawConsole = true;
 
-    Painter::SetFont(TypeFont_5);
+    Painter::SetFont(Font::Type::_5);
 
     int y = 1;
 
@@ -29,7 +29,7 @@ void Console::Draw()
         y += 6;
     }
 
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 
     inProcessDrawConsole = false;
 }

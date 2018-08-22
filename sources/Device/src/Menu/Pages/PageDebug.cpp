@@ -782,7 +782,7 @@ DEF_GOVERNOR(       mgPost,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Settings_Exit()
 {
-    Display::SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode::Auto, 0);
 }
 
 DEF_SMALL_BUTTON_EXIT(  bSettings_Exit,                                                                          //--- Œ“À¿ƒ ¿ - Õ¿—“–Œ… » - ¬˚ıÓ‰ ---
@@ -863,7 +863,7 @@ static void DebugShowSetInfo_Draw()
 
 static void OnPress_Settings()
 {
-    Display::SetDrawMode(DrawMode_Auto, DebugShowSetInfo_Draw);
+    Display::SetDrawMode(DrawMode::Auto, DebugShowSetInfo_Draw);
 }
 
 DEF_PAGE_SB(        ppSettings,                                                                                             // Œ“À¿ƒ ¿ - Õ¿—“–Œ… » ///
@@ -940,9 +940,9 @@ static void OnPress_SerialNumber_Change()
 
 static void Draw_SerialNumber_Change(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_TAB);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bSerialNumber_Change,                                                                           //--- Œ“À¿ƒ ¿ - —/Õ - ¬ÒÚ‡‚ËÚ¸ ---
@@ -969,9 +969,9 @@ static void OnPress_SerialNumber_Save()
 
 static void Draw_SerialNumber_Save(int x, int y)
 {
-    Painter::SetFont(TypeFont_UGO2);
+    Painter::SetFont(Font::Type::_UGO2);
     Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 }
 
 DEF_SMALL_BUTTON(   bSerialNumber_Save,                                                                            //--- Œ“À¿ƒ ¿ - —/Õ - —Óı‡ÌËÚ¸ ---

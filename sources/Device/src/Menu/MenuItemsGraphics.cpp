@@ -155,11 +155,11 @@ void Governor::DrawValue(int x, int y)
     {
         value = -value;
     }
-    Painter::SetFont(TypeFont_5);
+    Painter::SetFont(Font::Type::_5);
     bool sign = minValue < 0;
     Painter::DrawText(x + 55, y - 5, Int2String(maxValue, sign, 1, buffer), Color::WHITE);
     Painter::DrawText(x + 55, y + 2, Int2String(minValue, sign, 1, buffer));
-    Painter::SetFont(TypeFont_8);
+    Painter::SetFont(Font::Type::_8);
 
     DrawValueWithSelectedPosition(startX, y, value, NumDigits(), gCurDigit, true, true);
 

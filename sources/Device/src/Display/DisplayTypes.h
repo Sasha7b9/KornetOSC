@@ -11,18 +11,13 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-enum TypeFont
+struct DrawMode
 {
-    TypeFont_5,
-    TypeFont_8,
-    TypeFont_UGO,
-    TypeFont_UGO2,
-    TypeFont_Number,
-    TypeFont_None
-};
-
-enum DrawMode
-{
-    DrawMode_Auto,
-    DrawMode_Hand
+    enum E
+    {
+        Auto,
+        Hand
+    } value;
+    DrawMode(E v) : value(v) {};
+    operator uint8() const { return (uint8)value; };
 };

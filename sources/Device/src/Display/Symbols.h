@@ -12,7 +12,7 @@
 
 
 
-// TypeFont_8
+// Font::Type::_8
 #define SYMBOL_GOVERNOR_SHIFT_3 '\x0e'  ///< Символ регулятора
 #define SYMBOL_TSHIFT_NORM_2    '\x84'  ///< 2-я часть символа смещения по времени нормального
 #define SYMBOL_TSHIFT_NORM_1    '\x85'  ///< 1-я часть символа смещения по времени нормального
@@ -35,7 +35,7 @@
 #define SYMBOL_TPOS_1           '\x8a'  ///< 2-я часть символа TPos
 
 
-// TypeFont_UGO2
+// Font::Type::_UGO2
 #define SYMBOL_BACKSPACE        '\x20'
 #define SYMBOL_DELETE           '\x22'  ///< ВНЕШН ЗУ-МАСКА-УДАЛИТЬ
 #define SYMBOL_INSERT           '\x26'  ///< ВНЕШН ЗУ-ИМЯ-ВСТАВИТЬ
