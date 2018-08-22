@@ -43,7 +43,7 @@ DEF_PAGE_11_GLOBAL(    mainPage,                                                
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const void *PageForButton(Key button)
 {
-    static const void *pages[Key::NumButtons] =
+    static const void *pages[Key::Number] =
     {  
         0,                  // K_None
         0,                  // K_Function
@@ -58,7 +58,7 @@ const void *PageForButton(Key button)
         (void *)&pDisplay   // K_Display  10
     };
 
-    return pages[button.code];
+    return pages[button];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

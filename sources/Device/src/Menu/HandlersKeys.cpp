@@ -23,7 +23,7 @@ void Handlers::Process(KeyEvent e)
 {
     event = e;
 
-    static const pFuncVV func[Key::NumButtons][4] =
+    static const pFuncVV func[Key::Number][4] =
     {                   // Press        Repead       Release        Long
         /* None        */ {E,           E,           E,             E},
         /* Function    */ {Function,    Function,    Function,      Function},
@@ -62,12 +62,12 @@ void Handlers::Process(KeyEvent e)
         /* F5          */ {E,           E,           FuncRelease,   FuncLong}
     };
 
-    uint8 code = event.key.code;
+    uint8 code = event.key;
     uint8 type = event.type;
 
-    if (code < Key::NumButtons && type < TypePress::None)
+    if (code < Key::Number && type < TypePress::None)
     {
-        func[event.key.code][event.type.value]();
+        func[event.key][event.type]();
     }
     else
     {
@@ -181,7 +181,7 @@ void Handlers::Arrow()
     {
         Page *page = (Page *)item;
 
-        switch (event.key.code)
+        switch (event.key)
         {
             case Key::Left:
                 page->ChangeOpened(-1);
@@ -198,7 +198,7 @@ void Handlers::Arrow()
     {
         Choice *choice = (Choice *)item;
 
-        switch(event.key.code)
+        switch(event.key)
         {
             case Key::Up:
                 choice->ChangeIndex(-1);

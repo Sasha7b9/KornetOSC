@@ -108,7 +108,7 @@ bool Decoder::ButtonPress(uint8 data)
     }
     else if (step == 1)
     {
-        button = (Key)data;
+        button = (Key::E)data;
         return false;
     }
     else
@@ -122,7 +122,7 @@ bool Decoder::ButtonPress(uint8 data)
             );
         }
         */
-        Menu::ButtonEvent(KeyEvent(button, (TypePress::E)data));
+        Menu::ButtonEvent(KeyEvent(button.value, (TypePress::E)data));
     }
 
     return true;

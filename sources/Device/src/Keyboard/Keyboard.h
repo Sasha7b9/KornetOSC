@@ -3,27 +3,9 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class Key
+struct Key
 {
-public:
-    Key(uint8 value = None) : code(value)
-    {
-    };
-    uint8 code;
-
-    bool Is(uint8 value)
-    {
-        return code == value;
-    }
-
-    bool IsFunctional()
-    {
-        return code >= F1 && code <= F5;
-    }
-
-    pString Name();
-
-    enum
+    enum E
     {
         None = 0,
         Function = 1,
@@ -60,8 +42,13 @@ public:
         F3 = 32,
         F4 = 33,
         F5 = 34,
-        NumButtons
-    };
+        Number
+    } value;
+
+    Key(E v = None) : value(v) {};
+    bool IsFunctional() const { return value >= F1 && value <= F5; };
+    operator uint8() const { return (uint8)value; };
+    pString Name();
 };
 
 
@@ -86,7 +73,7 @@ struct TypePress
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 struct KeyEvent
 {
-    KeyEvent(Key k = Key::None, TypePress::E t = TypePress::None) : key(k), type(t)
+    KeyEvent(Key::E k = Key::None, TypePress::E t = TypePress::None) : key(k), type(t)
     {
     };
     Key key;
@@ -98,8 +85,6 @@ struct KeyEvent
 class Keyboard
 {
 public:
-    /// Возвращает true, если button - функциональная клавиша [1..5]
-    static bool IsFunctionalButton(Key button);
     /// Отлючить панель управления
     /** Когда панель отключена, то происходит лишь обновление состояния переменной releasedButton */
     static void Disable();

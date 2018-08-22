@@ -38,7 +38,7 @@ static Key GetFuncButtonFromX(int _x)
         {
             return button;
         }
-        button = Key((uint8)((int)button.code + 1));    // button++;
+        button = Key((Key::E)((int)button + 1));    // button++;
         x += step;
     }
     return  Key::F5;
@@ -581,7 +581,7 @@ void Page::DrawTitle(int x, int yTop)
         //Painter::Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(CurrentSubPage()), colorText);
     }
 
-    Menu::itemUnderButton[GetFuncButtonFromX(yTop).code] = this;
+    Menu::itemUnderButton[GetFuncButtonFromX(yTop)] = this;
 
     delta = 0;
 
@@ -606,7 +606,7 @@ void Page::DrawItems(int x, int y)
         {
             Painter::DrawRectangle(x, y + 1, Menu::Item::WIDTH - 1, Menu::Item::HEIGHT, Color::FILL);
             item->Draw(x, y, false);
-            Menu::itemUnderButton[GetFuncButtonFromX(x).code] = item;
+            Menu::itemUnderButton[GetFuncButtonFromX(x)] = item;
             x += Menu::Item::WIDTH;
         }
     }

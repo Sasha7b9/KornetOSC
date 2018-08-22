@@ -125,7 +125,7 @@ private:
     /// Время последнего нажатия кнопки. Нужно для того, чтобы периодически сохранять настройки
     static uint timeLastPressedButton;
     /// Элементы управления, назначенные в данный момент соответствующим кнопкам
-    static Control *itemUnderButton[Key::NumButtons];
+    static Control *itemUnderButton[Key::Number];
 
 public:
 

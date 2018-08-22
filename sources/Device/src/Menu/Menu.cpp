@@ -33,7 +33,7 @@
         Key Menu::releaseButton = Key::None;
    Control *Menu::itemUnderKey = 0;
     pFuncVV Menu::funcAterUpdate = 0;
-   Control *Menu::itemUnderButton[Key::NumButtons] = {0};
+   Control *Menu::itemUnderButton[Key::Number] = {0};
 const char *Menu::stringForHint = 0;
    Control *Menu::itemHint = 0;
 
@@ -75,7 +75,7 @@ void Menu::ShortPressureButton(Key button)
 {
     if (!HINT_MODE_ENABLED)
     {
-        if (button.Is(Key::Memory) && FDrive::IsConnected() && MODE_BTN_MEMORY_IS_SAVE)
+        if (button == Key::Memory && FDrive::IsConnected() && MODE_BTN_MEMORY_IS_SAVE)
         {
             NEED_SAVE_TO_FLASHDRIVE = 1;
         }
@@ -97,7 +97,7 @@ void Menu::LongPressureButton(Key button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ProcessButtonForHint(Key button)
 {
-    if (button.Is(Key::Enter))
+    if (button == Key::Enter)
     {
         Menu::stringForHint = LANG_RU ?
             "Кнопка МЕНЮ выполняет следующие функции:\n"
@@ -119,14 +119,14 @@ void Menu::ProcessButtonForHint(Key button)
             "5. If the menu is in the mode of small buttons, pressing closes the page.";
 
     } 
-    else if (button.Is(Key::Display))
+    else if (button == Key::Display)
     {
         Menu::stringForHint = LANG_RU ?
             "Кнопка ДИСПЛЕЙ открывает меню настроек дисплея."
             :
             "ДИСПЛЕЙ button opens the display settings Menu::";
     }
-    else if (button.Is(Key::Memory))
+    else if (button == Key::Memory)
     {
         Menu::stringForHint = LANG_RU ?
             "1. При настройке \"ПАМЯТЬ\x99ВНЕШН ЗУ\x99Реж кн ПАМЯТЬ\x99Меню\" открывает меню работы с памятью.\n"
@@ -135,28 +135,28 @@ void Menu::ProcessButtonForHint(Key button)
             "1. When setting \"ПАМЯТЬ-EXT\x99STORAGE\x99Mode btn MEMORY\x99Menu\" opens a menu of memory\n"
             "2. When setting \"ПАМЯТЬ-EXT\x99STORAGE\x99Mode btn MEMORY\x99Save\" saves the signal to the flash drive";
     }
-    else if (button.Is(Key::Measures))
+    else if (button == Key::Measures)
     {
         Menu::stringForHint = LANG_RU ?
             "Кнопка ИЗМЕР открывает меню автоматических измерений."
             :
             "ИЗМЕР button opens a menu of automatic measurements.";
     }
-    else if (button.Is(Key::Service))
+    else if (button == Key::Service)
     {
         Menu::stringForHint = LANG_RU ?
             "Кнопка СЕРВИС открывает меню сервисных возможностей."
             :
             "СЕРВИС button opens a menu of service options.";
     }
-    else if (button.Is(Key::Start))
+    else if (button == Key::Start)
     {
         Menu::stringForHint = LANG_RU ?
             "Кнопка ПУСК/СTOП запускает и останавливает процесс сбора информации."
             :
             "ПУСК/СTOП button starts and stops the process of gathering information.";
     }
-    else if (button.Is(Key::ChannelA))
+    else if (button == Key::ChannelA)
     {
         Menu::stringForHint = LANG_RU ?
             "1. Кнопка КАНАЛ1 открывает меню настроек канала 1.\n"
@@ -165,7 +165,7 @@ void Menu::ProcessButtonForHint(Key button)
             "1. КАНАЛ1 button opens the settings menu of the channel 1.\n"
             "2. Pressing and holding the button КАНАЛ1 for 0.5c for the offset of the vertical channel 1 0V.";
     }
-    else if (button.Is(Key::ChannelB))
+    else if (button == Key::ChannelB)
     {
         Menu::stringForHint = LANG_RU ?
             "1. Кнопка КАНАЛ2 открывает меню настроек канала 2.\n"
@@ -174,7 +174,7 @@ void Menu::ProcessButtonForHint(Key button)
             "1. КАНАЛ2 button opens the settings menu of the channel 2.\n"
             "2. Pressing and holding the button КАНАЛ2 for 0.5c for the offset of the vertical channel 2 0V.";
     }
-    else if (button.Is(Key::Time))
+    else if (button == Key::Time)
     {
         Menu::stringForHint = LANG_RU ?
             "1. Кнопка РАЗВ открывает меню настроек развертки.\n"
@@ -183,7 +183,7 @@ void Menu::ProcessButtonForHint(Key button)
             "1. РАЗВ button open the settings menu sweep.\n"
             "2. Pressing and holding the button РАЗВ for 0.5s Is the offset horizontal 0s.";
     }
-    else if (button.Is(Key::Trig))
+    else if (button == Key::Trig)
     {
         Menu::stringForHint = LANG_RU ?
             "1. Кнопка СИНХР открывает меню настроек синхронизации.\n"
@@ -260,9 +260,9 @@ void Menu::OnTimerAutoHide()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ProcessingShortPressureButton()
 {
-    if(!shortPressureButton.Is(Key::None))
+    if(shortPressureButton != Key::None)
     {
-        if (shortPressureButton.Is(Key::Memory) && MODE_BTN_MEMORY_IS_SAVE && FDrive::IsConnected())
+        if (shortPressureButton == Key::Memory && MODE_BTN_MEMORY_IS_SAVE && FDrive::IsConnected())
         {
             EXIT_FROM_SETNAME_TO = (uint)(MENU_IS_SHOWN ? RETURN_TO_MAIN_MENU : RETURN_TO_DISABLE_MENU);
             PageMemory::SaveSignalToFlashDrive();
@@ -276,7 +276,7 @@ void Menu::ProcessingShortPressureButton()
 
         do
         {
-            if(button.Is(Key::Enter))                                   // Если нажата кнопка МЕНЮ и мы не находимся в режме настройки измерений.
+            if(button == Key::Enter)                                   // Если нажата кнопка МЕНЮ и мы не находимся в режме настройки измерений.
             {
                 if(!MENU_IS_SHOWN)
                 {
@@ -291,9 +291,9 @@ void Menu::ProcessingShortPressureButton()
                     Menu::CloseOpenedItem();
                 }
             }
-            else if (MENU_IS_SHOWN && Keyboard::IsFunctionalButton(button))       // Если меню показано и нажата функциональная клавиша
+            else if (MENU_IS_SHOWN && button.IsFunctional())       // Если меню показано и нажата функциональная клавиша
             {
-                void *item = itemUnderButton[button.code];
+                void *item = itemUnderButton[button];
                 if (HINT_MODE_ENABLED)
                 {
                     SetItemForHint(item);
@@ -309,13 +309,13 @@ void Menu::ProcessingShortPressureButton()
             else                                                        // Если меню не показано.
             {
                 NamePage name = ((const Page *)OpenedItem())->GetNamePage();
-                if(button.Is(Key::ChannelA) && name == Page_ChannelA && MENU_IS_SHOWN)
+                if(button == Key::ChannelA && name == Page_ChannelA && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
                     PageChannelA::OnChanged_Input(true);
                     break;
                 }
-                if(button.Is(Key::ChannelB) && name == Page_ChannelB && MENU_IS_SHOWN)
+                if(button == Key::ChannelB && name == Page_ChannelB && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_B = !SET_ENABLED_B;
                     PageChannelB::OnChanged_Input(true);
@@ -342,7 +342,7 @@ void Menu::ProcessingLongPressureButton()
 {
     Key button = longPressureButton;
 
-    if(!button.Is(Key::None))
+    if(button != Key::None)
     {
         Control *item = OpenedItem();
         
@@ -350,23 +350,23 @@ void Menu::ProcessingLongPressureButton()
         NEED_FINISH_DRAW = 1;
         SetAutoHide(true);
 
-        if(button.Is(Key::Time))
+        if(button == Key::Time)
         {
             FPGA::SetTShift(0);
         }
-        else if(button.Is(Key::Trig))
+        else if(button == Key::Trig)
         {
             FPGA::SetTrigLev(TRIG_SOURCE, TrigLev::ZERO);
         }
-        else if(button.Is(Key::ChannelA))
+        else if(button == Key::ChannelA)
         {
             FPGA::SetRShift(Chan::A, RShift::ZERO);
         }
-        else if(button.Is(Key::ChannelB))
+        else if(button == Key::ChannelB)
         {
             FPGA::SetRShift(Chan::B, RShift::ZERO);
         }
-        else if(button.Is(Key::Enter))
+        else if(button == (Key::Enter))
         {
             if (IS_PAGE_SB(OpenedItem()))
             {
@@ -381,9 +381,9 @@ void Menu::ProcessingLongPressureButton()
                 }
             }
         }
-        else if(MENU_IS_SHOWN && Keyboard::IsFunctionalButton(button))
+        else if(MENU_IS_SHOWN && button.IsFunctional())
         {
-            item = (Control *)itemUnderButton[button.code];
+            item = (Control *)itemUnderButton[button];
             if(item)
             {
                 item->LongPress();
@@ -400,14 +400,14 @@ void Menu::ProcessingLongPressureButton()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ProcessingPressButton()
 {
-    if ((pressButton.code >= Key::F1 && pressButton.code <= Key::F5) || pressButton.Is(Key::Enter))
+    if ((pressButton >= Key::F1 && pressButton <= Key::F5) || pressButton == Key::Enter)
     {
-        if (!pressButton.Is(Key::Enter))
+        if (pressButton != Key::Enter)
         {
-            itemUnderKey = itemUnderButton[pressButton.code];
+            itemUnderKey = itemUnderButton[pressButton];
         }
     }
-    if (pressButton.Is(Key::Start) && !MODE_WORK_IS_RAM)
+    if (pressButton == Key::Start && !MODE_WORK_IS_RAM)
     {
         FPGA::OnPressStart();
     }
@@ -417,7 +417,7 @@ void Menu::ProcessingPressButton()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ProcessingReleaseButton()
 {
-    if((releaseButton.code >= Key::F1 && releaseButton.code <= Key::F5) || pressButton.Is(Key::Enter))
+    if((releaseButton >= Key::F1 && releaseButton <= Key::F5) || pressButton == Key::Enter)
     {
         itemUnderKey = 0;
         releaseButton = Key::None;
@@ -795,7 +795,7 @@ void Menu::Draw()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ResetItemsUnderButton()
 {
-    for (int i = 0; i < Key::NumButtons; i++)
+    for (int i = 0; i < Key::Number; i++)
     {
         itemUnderButton[i] = 0;
     }
@@ -810,10 +810,10 @@ bool Menu::IsMinimize()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const SButton *Menu::GetSmallButton(Key button)
 {
-    if (Menu::IsMinimize() && button.code >= Key::Enter && button.code <= Key::F5)
+    if (Menu::IsMinimize() && button >= Key::Enter && button <= Key::F5)
     {
         Page *page = (Page *)OpenedItem();
-        SButton *sb = (SButton *)page->items[button.code - Key::Enter];
+        SButton *sb = (SButton *)page->items[button - Key::Enter];
         return sb;
     }
     return NULL;
@@ -852,7 +852,7 @@ void Menu::ReleaseFunctionalButton(Key key)
 {
     if(MENU_IS_SHOWN)
     {
-        Control *control = (Control *)itemUnderButton[key.code];
+        Control *control = (Control *)itemUnderButton[key];
         if(control)
         {
             control->ShortPress();
@@ -865,7 +865,7 @@ void Menu::LongFunctionalButton(Key key)
 {
     if(MENU_IS_SHOWN)
     {
-        Control *control = (Control *)itemUnderButton[key.code];
+        Control *control = (Control *)itemUnderButton[key];
         if(control)
         {
             control->LongPress();
