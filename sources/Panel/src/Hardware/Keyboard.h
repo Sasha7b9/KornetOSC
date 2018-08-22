@@ -20,11 +20,11 @@ public:
 
 private:
 
-    static void FillCommand(Control control, TypePress typePress);
+    static void FillCommand(Control control, Control::Action::E action);
 
     static uint TimeBetweenRepeats(uint time);
 
-    static StructControl commands[10];
+    static Control commands[10];
 
     static int pointer;
     /// При обнаружении нажатия кнопки сюда записывается время нажатия

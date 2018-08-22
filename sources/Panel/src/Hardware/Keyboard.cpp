@@ -29,13 +29,24 @@ static TIM_HandleTypeDef handleTIM4;
 
 
 static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
-{ // SL0         SL1        SL2            SL3            SL4            SL5            SL6            SL7
-    {K_None,     B_3,       B_Down,        K_None,        B_TrigLevLess, B_TrigLevMore, B_RangeLessB,  B_RShiftMoreB},  // RL0
-    {B_1,        B_4,       B_Right,       B_Enter,       K_Start,       K_Trig,        B_RangeMoreB,  B_RShiftLessB},  // RL1
-    {B_2,        B_5,       B_Up,          B_Left,        K_None,        K_None,        K_None,        K_ChannelB},     // RL2
-    {K_Function, K_Service, B_RangeLessA,  K_RangeMoreA,  K_None,        B_TShiftLess,  K_None,        K_None},         // RL3
-    {K_Measures, K_None,    K_ChannelA,    K_None,        B_TBaseMore,   B_TShiftMore,  K_None,        K_None},         // RL4
-    {K_Memory,   K_Display, B_RShiftMoreA, B_RShiftLessA, K_Time,        B_TBaseLess,   K_None,        K_None}          // RL5
+{ //          SL0/SL6                SL1/SL7                  SL2                     SL3                     SL4                     SL5              
+    {Control::K_None,       Control::B_3,            Control::B_Down,        Control::K_None,        Control::B_TrigLevLess, Control::B_TrigLevMore,
+     Control::B_RangeLessB, Control::B_RShiftMoreB},                                                                                            // RL0
+
+    {Control::B_1,          Control::B_4,            Control::B_Right,       Control::B_Enter,       Control::K_Start,       Control::K_Trig,
+     Control::B_RangeMoreB, Control::B_RShiftLessB},                                                                                            // RL1
+
+    {Control::B_2,          Control::B_5,            Control::B_Up,          Control::B_Left,        Control::K_None,        Control::K_None,
+     Control::K_None,       Control::K_ChannelB},                                                                                               // RL2
+
+    {Control::K_Function,   Control::K_Service,      Control::B_RangeLessA,  Control::K_RangeMoreA,  Control::K_None,        Control::B_TShiftLess,
+     Control::K_None,       Control::K_None},                                                                                                   // RL3
+                                                     
+    {Control::K_Measures,   Control::K_None,         Control::K_ChannelA,    Control::K_None,        Control::B_TBaseMore,   Control::B_TShiftMore,
+     Control::K_None,       Control::K_None},                                                                                                   // RL4
+                                                     
+    {Control::K_Memory,     Control::K_Display,      Control::B_RShiftMoreA, Control::B_RShiftLessA, Control::K_Time,        Control::B_TBaseLess,
+     Control::K_None,       Control::K_None}                                                                                                    // RL5
 };               
 
 
@@ -58,11 +69,11 @@ static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOD, GPIOA, GPIOA, GPIOD, G
 static uint prevRepeat = 0;
 static uint prevPause = 0;
 
-int           Keyboard::pointer = 0;
-bool          Keyboard::init = false;
-StructControl Keyboard::commands[10];
-uint          Keyboard::timePress[NUM_RL][NUM_SL];
-bool          Keyboard::alreadyLong[NUM_RL][NUM_SL];
+int     Keyboard::pointer = 0;
+bool    Keyboard::init = false;
+Control Keyboard::commands[10];
+uint    Keyboard::timePress[NUM_RL][NUM_SL];
+bool    Keyboard::alreadyLong[NUM_RL][NUM_SL];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Keyboard::Init()
@@ -142,9 +153,9 @@ void Keyboard::Update()
         {
             uint state = READ_RL(rl);
 
-            volatile Control control = controls[rl][sl];
+            Control control = controls[rl][sl];
 
-            if (control != K_None)
+            if (!control.Is(Control::K_None))
             {
                 if (timePress[rl][sl])                      // ≈сли клавиша находитс€ в нажатом положении
                 {
@@ -155,12 +166,12 @@ void Keyboard::Update()
                             timePress[rl][sl] = 0;
                             if (!alreadyLong[rl][sl])
                             {
-                                FillCommand(controls[rl][sl], Release);
+                                FillCommand(controls[rl][sl], Control::Action::Release);
                             }
                             alreadyLong[rl][sl] = false;
                             prevRepeat = 0;
                         }
-                        else if(IsRepeatable(control) && !alreadyLong[rl][sl])  // ј здесь она нходитс€ в нажатом положении - отрабатываем автоповтор
+                        else if(control.IsRepeatable() && !alreadyLong[rl][sl])  // ј здесь она нходитс€ в нажатом положении - отрабатываем автоповтор
                         {
                             if (prevRepeat == 0)
                             {
@@ -172,12 +183,12 @@ void Keyboard::Update()
                             {
                                 prevPause = TimeBetweenRepeats(prevPause);
                                 prevRepeat = time;
-                                FillCommand(controls[rl][sl], Repeat);
+                                FillCommand(controls[rl][sl], Control::Action::Repeat);
                             }
                         }
                         else if(time - timePress[rl][sl] > 500 && !alreadyLong[rl][sl])
                         {
-                            FillCommand(controls[rl][sl], Long);
+                            FillCommand(controls[rl][sl], Control::Action::Long);
                             alreadyLong[rl][sl] = true;
                         }
                     }
@@ -185,7 +196,7 @@ void Keyboard::Update()
                 else if (BUTTON_IS_PRESS(state) && !alreadyLong[rl][sl])
                 {
                     timePress[rl][sl] = time;
-                    FillCommand(controls[rl][sl], Press);
+                    FillCommand(controls[rl][sl], Control::Action::Press);
                     prevRepeat = 0;
                 }
             }
@@ -198,11 +209,11 @@ void Keyboard::Update()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Keyboard::FillCommand(Control control, TypePress typePress)
+void Keyboard::FillCommand(Control control, Control::Action::E action)
 {
-    commands[pointer].key = control;
-    commands[pointer++].typePress = typePress;
-    uint8 data[3] = {IN_BUTTON_PRESS, (uint8)control, (uint8)typePress};
+    commands[pointer] = control;
+    commands[pointer++].action = action;
+    uint8 data[3] = {IN_BUTTON_PRESS, (uint8)control, (uint8)action};
     FSMC::WriteBuffer(data, 3);  // ѕрерывание от клавиатуры имеет более низкий приоритет, чем чтени€ по шине, поэтому запись не запуститс€ до тех
                                  // пор, пока не закончитс€ чтение
 }   
@@ -210,7 +221,7 @@ void Keyboard::FillCommand(Control control, TypePress typePress)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *Keyboard::ControlName(Control control)
 {
-    static const char *names[NumButtons] =
+    static const char *names[Control::Number] =
     {
         "None",
         "‘ункци€",
@@ -253,16 +264,16 @@ const char *Keyboard::ControlName(Control control)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool IsRepeatable(Control control)
+bool Control::IsRepeatable() const
 {
-    return control == B_RShiftLessA ||
-        control == B_RShiftMoreA ||
-        control == B_RShiftLessB ||
-        control == B_RShiftMoreB ||
-        control == B_TShiftLess ||
-        control == B_TShiftMore ||
-        control == B_TrigLevLess ||
-        control == B_TrigLevMore;
+    return value == B_RShiftLessA ||
+        value == B_RShiftMoreA ||
+        value == B_RShiftLessB ||
+        value == B_RShiftMoreB ||
+        value == B_TShiftLess ||
+        value == B_TShiftMore ||
+        value == B_TrigLevLess ||
+        value == B_TrigLevMore;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
