@@ -3,8 +3,11 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-enum COMMAND
-{           //  смещение               0  |     1    |     2      |      3      |     4        |      5       |   6    |
+struct COMMAND
+{           
+    enum E
+    {
+            //  смещение               0  |     1    |     2      |      3      |     4        |      5       |   6    |
 /* 00 */    COMMAND_NONE,           //    |          |            |             |              |              |        |
 /* 01 */    IN_BUTTON_PRESS,        // 01 |  Control | TypePress  |             |              |              |        |
 /* 02 */    PAINT_BEGIN_SCENE,      // 02 |   Color  |            |             |              |              |        |
@@ -19,7 +22,8 @@ enum COMMAND
 /* 11 */    PAINT_SET_FONT,         // 11 | typeFont |            |             |              |              |        |
 /* 12 */    PAINT_SET_POINT,        // 12 |   x[0:7] |  x[8:15]   |      y      |              |              |        |
 /* 13 */    PAINT_DRAW_LINE,        // 13 |  x0[0:7] | x0[8:15]   |     y0      |   x1[0:7]    |   x1[8:15]   |   y1   |
-/* 14 */    NUM_COMMANDS
+/* 14 */    Number
+    } value;
 };
 
 
