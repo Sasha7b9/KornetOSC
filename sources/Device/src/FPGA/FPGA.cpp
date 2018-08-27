@@ -351,18 +351,6 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
         return;
     }
 
-    /*
-    if(Tsm > 43 && SET_TBASE == TBase::_2ns)
-    {
-        Tsm -= 50;
-    }
-
-    if(Tsm > 17 && SET_TBASE == TBase::_5ns)
-    {
-        Tsm -= 20;
-    }
-    */
-
     int step = Kr[SET_TBASE];
 
     int index = Tsm - step;
@@ -378,7 +366,10 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
         dataRead += step;
     }
 
-    LOG_WRITE("%d %d", Tsm, dataRead - data0);
+    if(ch == Chan::A)
+    {
+        LOG_WRITE("%d %d", Tsm, dataRead - data0);
+    }
 
     uint8 *last = &dataRand[ch][FPGA_NUM_POINTS];
 
@@ -392,7 +383,7 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int FPGA::CalculateShift(Chan)
+int FPGA::CalculateShift(Chan ch)
 {
     uint16 min = 0;
     uint16 max = 0;
@@ -407,7 +398,10 @@ int FPGA::CalculateShift(Chan)
         float tin = (float)(adcValueFPGA - min) / (max - min);
         int retValue = (int)(tin * Kr[SET_TBASE]);
 
-        LOG_WRITE("%d %d %d %d", adcValueFPGA, min, max, retValue);
+        if(ch == Chan::A)
+        {
+            LOG_WRITE("%d %d %d %d", adcValueFPGA, min, max, retValue);
+        }
 
         return retValue;
     }
@@ -470,7 +464,8 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
     }
 
     *eMin = (uint16)(minGate);
-    *eMax = (uint16)(maxGate);
+    //*eMax = (uint16)(maxGate);
+    *eMax = (uint16)(maxGate - 50);
 
     if(rand < *eMin || rand > *eMax)
     {
@@ -988,7 +983,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
     if (IN_RANDOM_MODE)
     {
         adcValueFPGA = (uint16)HAL_ADC_GetValue(hadc);
-        LOG_WRITE("читаю %d", adcValueFPGA);
+        //LOG_WRITE("читаю %d", adcValueFPGA);
     }
 }
 
