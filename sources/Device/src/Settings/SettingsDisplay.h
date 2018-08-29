@@ -35,6 +35,100 @@ struct ThicknessSignal
     operator uint8() const { return (uint8)value; };
 };
 
+/// Через какое время после последнего нажатия кнопки скрывать меню.
+struct MenuAutoHide
+{
+    enum E
+    {
+        None = 0,   ///< Никогда.
+        _5   = 5,   ///< Через 5 секунд.
+        _10  = 10,  ///< Через 10 секунд.
+        _15  = 15,  ///< Через 15 секунд.
+        _30  = 30,  ///< Через 30 секунд.
+        _60  = 60   ///< Через 60 секунд.
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Режим отображения дополнительных боковых маркеров смещения по напряжению.
+struct AltMarkers
+{
+    enum E
+    {
+        Hide,        /// Никода не выводить.
+        Show,        /// Всегда выводить.
+        AutoHide     /// Выводить и прятать через timeShowLevels.
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Тип привязки к смещению по вертикали
+struct LinkingRShift
+{
+    enum E
+    {
+        Voltage,      ///< Смещение привязано к напряжению
+        Position      ///< Смещение привязано к позиции
+    } value;
+};
+
+/// Тип сетки на экране.
+struct TypeGrid
+{
+    enum E
+    {
+        _1,
+        _2,
+        _3,
+        _4,
+        Size
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Ограничение FPS.
+struct ENumSignalsInSec
+{
+    enum E
+    {
+        _25,
+        _10,
+        _5,
+        _2,
+        _1
+    } value;
+    ENumSignalsInSec(E v = _25) : value(v) {};
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Количество точек для расчёта сглаживания.
+struct ENumSmoothing
+{
+    enum E
+    {
+        Disable,
+        _2points,
+        _3points,
+        _4points,
+        _5points,
+        _6points,
+        _7points,
+        _8points,
+        _9points,
+        _10points
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+struct ModeAccumulation
+{
+    enum E
+    {
+        NoReset,   /// В этом режиме показываются строго N последних.
+        Reset      /// В этом режиме набираются N последних и потом сбрасываются.
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
 
 
 #define THICKNESS_SIGNAL            (set.disp_thickness)
