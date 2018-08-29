@@ -28,8 +28,6 @@
 
 #define TRIG_MODE                       (set.trig_mode)
 
-#define TESTER_POLARITY                 (set.test_polarity)
-#define TESTER_POLARITY_IS_POSITITVE    (TESTER_POLARITY == TesterPolarity::Positive)
 #define TESTER_STEP_U                   (set.test_stepU)
 #define TESTER_STEP_I                   (set.test_stepI)
 #define TESTER_NUM_SMOOTH               (set.test_smooth)
@@ -224,7 +222,7 @@ public:
     // Настройки тестер-компонента
 
     Tester::Control     test_control;
-    TesterPolarity      test_polarity;
+    Tester::Polarity    test_polarity;
     TesterStepU         test_stepU;
     TesterStepI         test_stepI;
     uint8               test_smooth;                                ///< Количество сглаживаний

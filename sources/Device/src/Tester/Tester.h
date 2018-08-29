@@ -7,6 +7,9 @@
 #define TESTER_NUM_POINTS               (240)
 #define TESTER_CONTROL                  (set.test_control)
 #define TESTER_CONTROL_IS_U             (TESTER_CONTROL == Tester::Control::Voltage)
+#define TESTER_POLARITY                 (set.test_polarity)
+#define TESTER_POLARITY_IS_POSITITVE    (TESTER_POLARITY == Tester::Polarity::Positive)
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,6 +50,16 @@ public:
         {
             Voltage,
             Current
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
+    struct Polarity
+    {
+        enum E
+        {
+            Positive,
+            Negative
         } value;
         operator uint8() const { return (uint8)value; };
     };

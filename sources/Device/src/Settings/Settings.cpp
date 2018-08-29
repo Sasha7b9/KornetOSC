@@ -169,7 +169,7 @@ static const Settings defaultSettings =
                                             // Настройки тестер-компонента
 
     /* test_control;  */                Tester::Control::Voltage,
-    /* test_polarity; */                TesterPolarity::Positive,
+    /* test_polarity; */                Tester::Polarity::Positive,
     /* test_stepU;    */                TesterStepU::_100mV,
     /* test_stepI;    */                TesterStepI::_4mA,
     /* test_smooth;   */                0,
