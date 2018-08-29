@@ -10,18 +10,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const char *sCursors_GetCursVoltage(Chan source, int numCur, char buffer[20])
-{
-    float voltage = MathFPGA::VoltageCursor(Cursors::PosU(source, numCur), SET_RANGE(source), SET_RSHIFT(source));
-    if (SET_DIVIDER_10(source))
-    {
-        voltage *= 10.0f;
-    }
-    return Voltage2String(voltage, true, buffer);
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *sCursors_GetCursorTime(Chan source, int numCur, char buffer[20])
 {
 //    float pos = 0.0;

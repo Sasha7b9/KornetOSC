@@ -33,4 +33,6 @@ public:
     static float PosU(Chan ch, int numCur);
     /// ¬озвращает true,если нужно рисовать курсоры
     static bool  NecessaryDraw();
+    /// ѕолучить строку курсора напр€жени€
+    static pString Voltage(Chan source, int numCur, char buffer[20]);
 };

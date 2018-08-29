@@ -100,8 +100,7 @@ struct CursCntrl
 #define CURS_SHOW                   (set.curs_showCursors)
 
 
-/// Получить строку курсора напряжения
-const char *sCursors_GetCursVoltage(Chan source, int numCur, char buffer[20]);
+
 /// Получить строку курсора времени
 const char *sCursors_GetCursorTime(Chan source, int numCur, char buffer[20]);
 /// Получить строку процентов курсоров напряжения
