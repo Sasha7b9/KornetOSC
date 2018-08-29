@@ -102,7 +102,5 @@ private:
 
     static void DrawDataTester(int numStep, int x, int y);
 
-    static void UpdateMultimeter();
-
     static Key key;
 };

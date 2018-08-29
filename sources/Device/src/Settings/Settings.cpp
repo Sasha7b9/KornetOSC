@@ -191,7 +191,11 @@ static const Settings defaultSettings =
     /* nrst_numAveForRand;                        */ 0,
     /* nrst_numSmoothForRand;                     */ 0,
     /* nrst_rShiftAdd[Chan::Num][Range::Size][2]; */ {},
-    /* nrst_correctionTime;                       */ 0
+    /* nrst_correctionTime;                       */ 0,
+
+                                // Настройки мультиметра
+    /* multi_avp */         MultiAVP::Off,
+    /* multi_meas */        MultiMeasures::VariableVoltage
 };
 
 Settings set;

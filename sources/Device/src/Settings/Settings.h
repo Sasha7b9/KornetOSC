@@ -15,6 +15,8 @@
 #include "SettingsService.h"
 #include "SettingsMeasures.h"
 #include "SettingsCursors.h"
+#include "SettingsMultimeter.h"
+#include "Multimeter/Multimeter.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -252,6 +254,10 @@ public:
     int16               nrst_numSmoothForRand;                      ///< Число точек для скользящего фильта в рандомизаторе.
     int16               nrst_rShiftAdd[Chan::Num][Range::Size][2];  ///< Добавочное смещение, которое пишется сюда при калибровке и балансировке
     int16               nrst_correctionTime;                        ///< Коэффициент коррекции времени.
+
+    // Настройки мультиметра
+    MultiAVP        multi_avp;
+    MultiMeasures   multi_meas;
 };
 
 #pragma pack(pop)

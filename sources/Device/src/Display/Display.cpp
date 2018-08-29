@@ -17,6 +17,7 @@
 #include "Console.h"
 #include "BottomPart.h"
 #include "FPGA/RShift.h"
+#include "Multimeter/Multimeter.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -127,7 +128,7 @@ void Display::Update()
     {
         DisplayOsci::Update,
         Display::UpdateTester,
-        Display::UpdateMultimeter
+        Multimeter::Graphics::Update
     };
 
     pFuncDisplayVV func = funcs[Device::CurrentMode()];
@@ -198,16 +199,6 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
             }
         }
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::UpdateMultimeter()
-{
-    Painter::BeginScene(Color::BACK);
-
-    Painter::DrawText(10, 10, "Ìףכüעטלוענ", Color::RED);
-
-    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

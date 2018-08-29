@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "CPU.h"
 #include "Hardware/Timer.h"
+#include "Multimeter/Multimeter.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,11 +35,15 @@ static RTC_HandleTypeDef rtcHandle =
     }
 };
 
+UART_HandleTypeDef CPU::UART::handler;
+
+static uint8 bufferUART[CPU::UART::SIZE_BUFFER];
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CPU::Init()
 {
-
+    UART::Init();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -99,4 +104,42 @@ bool CPU::RTC_::SetTimeAndData(int8 day, int8 month, int8 year, int8 hours, int8
     };
 
     return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void CPU::UART::Init()
+{
+    handler.Instance = USART3;
+    handler.Init.BaudRate = 9600;
+    handler.Init.WordLength = UART_WORDLENGTH_8B;
+    handler.Init.StopBits = UART_STOPBITS_1;
+    handler.Init.Parity = UART_PARITY_NONE;
+    handler.Init.Mode = UART_MODE_TX_RX;
+    handler.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    handler.Init.OverSampling = UART_OVERSAMPLING_16;
+
+    if (HAL_UART_Init(&handler) != HAL_OK)
+    {
+        ERROR_HANDLER();
+    }
+
+    uint8 send[4] = {0x02, 'V', '0', 0x0a};
+
+    HAL_UART_Transmit(&handler, send, 4, 10);
+
+    if (HAL_UART_Receive_IT(&handler, bufferUART, SIZE_BUFFER) != HAL_OK)
+    {
+        ERROR_HANDLER();
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *handler)
+{
+    Multimeter::SetMeasure(bufferUART);
+
+    if(HAL_UART_Receive_IT(handler, bufferUART, CPU::UART::SIZE_BUFFER) != HAL_OK)
+    {
+        ERROR_HANDLER();
+    }
 }

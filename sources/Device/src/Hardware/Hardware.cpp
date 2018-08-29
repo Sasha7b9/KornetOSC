@@ -14,8 +14,6 @@ static DAC_HandleTypeDef hdac;
 
 static SPI_HandleTypeDef hspi4;
 
-static UART_HandleTypeDef huart3;
-
 static PCD_HandleTypeDef hpcd_USB_OTG_FS;
 static PCD_HandleTypeDef hpcd_USB_OTG_HS;
 
@@ -45,7 +43,6 @@ void Hardware::Init()
     //MX_ADC3_Init();
     MX_DAC_Init();
     //MX_SPI4_Init();
-    //MX_USART3_UART_Init();
     //MX_USB_OTG_FS_PCD_Init();
     //MX_USB_OTG_HS_PCD_Init();
 
@@ -202,22 +199,7 @@ void Hardware::MX_SPI4_Init(void)
 
 }
 
-void Hardware::MX_USART3_UART_Init(void)
-{
-    huart3.Instance = USART3;
-    huart3.Init.BaudRate = 115200;
-    huart3.Init.WordLength = UART_WORDLENGTH_8B;
-    huart3.Init.StopBits = UART_STOPBITS_1;
-    huart3.Init.Parity = UART_PARITY_NONE;
-    huart3.Init.Mode = UART_MODE_TX_RX;
-    huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-    huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-    if (HAL_UART_Init(&huart3) != HAL_OK)
-    {
-        ERROR_HANDLER();
-    }
-}
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Hardware::MX_USB_OTG_FS_PCD_Init(void)
 {
     hpcd_USB_OTG_FS.Instance = USB_OTG_FS;
@@ -238,7 +220,7 @@ void Hardware::MX_USB_OTG_FS_PCD_Init(void)
 
 }
 
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Hardware::MX_USB_OTG_HS_PCD_Init(void)
 {
     hpcd_USB_OTG_HS.Instance = USB_OTG_HS;

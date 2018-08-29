@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc.h" />
+    <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h" />
     <ClInclude Include="..\..\common\_VS\cmsis_armcc.h" />
     <ClInclude Include="..\..\common\_VS\cmsis_armcc_V6.h" />
     <ClInclude Include="..\..\common\_VS\core_cm4.h" />
@@ -225,6 +226,7 @@
     <ClInclude Include="..\..\Device\src\Settings\SettingsMath.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsMeasures.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsMemory.h" />
+    <ClInclude Include="..\..\Device\src\Settings\SettingsMultimeter.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsNRST.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsService.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsTime.h" />
@@ -360,7 +362,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\Device\src;..\..\Device\src\libs\HAL;..\..\libs\common;..\..\common\_VS;..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\Device\src\libs\FatFS;..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\..\Device\src\libs\USBH;..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc</IncludePath>
+    <IncludePath>..\..\common\_VS;..\..\Device\src;..\..\Device\src\libs\HAL;..\..\Device\src\libs\FatFS;..\..\Device\src\libs\USBH;..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc</IncludePath>
     <OutDir>.\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
