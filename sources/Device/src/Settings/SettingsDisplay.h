@@ -13,6 +13,18 @@
  *  @{
  */
 
+
+struct ModeDrawSignal
+{
+    enum E
+    {
+        Lines,
+        Points
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+
 #define THICKNESS_SIGNAL            (set.disp_thickness)
 #define THICKNESS_SIGNAL_IS_3       (THICKNESS_SIGNAL == ThicknessSignal::_3)
 

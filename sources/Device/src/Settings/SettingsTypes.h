@@ -6,17 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-struct ModeDrawSignal
-{
-    enum
-    {
-        Lines,
-        Points
-    };
-    COMMON_ENUM;
-};
-
-
 /// Тольщина рисуемого сигнала
 struct ThicknessSignal
 {
