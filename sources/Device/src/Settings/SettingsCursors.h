@@ -8,6 +8,44 @@
  *  @{
  */
 
+ /// Дискретность перемещения курсоров.
+struct CursMovement
+{
+    enum E
+    {
+        Pixels,    ///< По пикселям экрана
+        Percents   ///< По процентам
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Какие курсоры сейчас активны. Какие активны, те и будут перемещаться по вращению ручки УСТАНОВКА.
+struct CursActive
+{
+    enum E
+    {
+        U,
+        T,
+        None
+    } value;
+    CursActive(E v) : value(v) {};
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Режим слежения курсоров.
+struct CursLookMode
+{
+    enum E
+    {
+        None,      ///< Курсоры не следят.
+        Voltage,   ///< Курсоры следят за напряжением автоматически.
+        Time,      ///< Курсоры следят за временем автоматически.
+        Both       ///< Курсоры следят за временем и напряжением, в зависимости от того, какой курсоры вращали последним.
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+
 #define CURSORS_SHOW_FREQ           (set.curs_showFreq)
 /// Перемемещение курсоров при вращении ручки УСТАНОВКА - по точкам или процентам
 #define CURS_MOVEMENT               (set.curs_movement)

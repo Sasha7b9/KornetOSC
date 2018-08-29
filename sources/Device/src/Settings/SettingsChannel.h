@@ -90,6 +90,20 @@ struct CalibrationMode
     operator uint8() const { return (uint8)value; };
 };
 
+/// Режим канала по входу.
+struct ModeCouple
+{
+    enum E
+    {
+        DC,      ///< Закрытый вход
+        AC,      ///< Открытый вход
+        GND,     ///< Вход заземлён.
+        Size
+    } value;
+    ModeCouple(uint v = 0) : value((E)v) {};
+    operator uint8() const { return (uint8)value; };
+};
+
 
 #define SET_INVERSE(ch)         (set.chan_inverse[ch])
 #define SET_INVERSE_A           (SET_INVERSE(Chan::A))

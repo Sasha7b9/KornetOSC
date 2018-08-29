@@ -130,6 +130,90 @@ struct ModeAccumulation
     operator uint8() const { return (uint8)value; };
 };
 
+/// Количество накоплений.
+struct ENumAccum
+{
+    enum E
+    {
+        _1,
+        _2,
+        _4,
+        _8,
+        _16,
+        _32,
+        _64,
+        _128,
+        _Infinity
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Количество измерений для расчёта минимального и максимального значений.
+struct ENumMinMax
+{
+    enum E
+    {
+        _1,
+        _2,
+        _4,
+        _8,
+        _16,
+        _32,
+        _64,
+        _128
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Количество усреднений по измерениям.
+struct ENumAverage
+{
+    enum E
+    {
+        _1,
+        _2,
+        _4,
+        _8,
+        _16,
+        _32,
+        _64,
+        _128,
+        _256,
+        _512
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+struct ColorScheme
+{
+    enum E
+    {
+        WhiteLetters,   ///< В этом случае заголовки элементов меню пишутся белым - не очень хорошо видно снизу
+        BlackLetters    ///< В этом случае заголовки элементов меню пишутся чёрным - не очень красиво выглядит
+    } value;
+};
+
+struct DisplayOrientation
+{
+    enum E
+    {
+        Direct,
+        Back
+    } value;
+};
+
+/// Режим показа строки навигации
+struct ShowStrNavi
+{
+    enum E
+    {
+        Temp,   ///< Показывать на несколько секунд
+        All,    ///< Всегда показывать
+        None    ///< Никогда не показывать
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
 
 #define THICKNESS_SIGNAL            (set.disp_thickness)
 #define THICKNESS_SIGNAL_IS_3       (THICKNESS_SIGNAL == ThicknessSignal::_3)

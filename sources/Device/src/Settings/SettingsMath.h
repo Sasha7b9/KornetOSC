@@ -61,6 +61,17 @@ struct ScaleFFT
     operator uint8() const { return (uint8)value; };
 };
 
+struct FFTmaxDB
+{
+    enum E
+    {
+        _40,
+        _60,
+        _80
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
 #define SOURCE_FFT                  (set.math_sourceFFT)
 #define SOURCE_FFT_A                (SOURCE_FFT == SourceFFT_ChannelA)
 #define SOURCE_FFT_B                (SOURCE_FFT == SourceFFT_ChannelB)

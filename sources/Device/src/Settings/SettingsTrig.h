@@ -63,6 +63,18 @@ struct TrigModeFind
     operator uint8() const { return (uint8)value; };
 };
 
+/// Режим запуска.
+struct StartMode
+{
+    enum E
+    {
+        Auto,     ///< Автоматический.
+        Wait,     ///< Ждущий.
+        Single    ///< Однократный.
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
 
 #define TRIG_SOURCE             (set.trig_source)
 #define TRIG_SOURCE_IS_A        (TRIG_SOURCE == TrigSource::A)

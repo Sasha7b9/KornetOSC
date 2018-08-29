@@ -111,29 +111,6 @@ struct ModeBtnMemory
     COMMON_ENUM;
 };
 
-/// Режим показа строки навигации
-struct ShowStrNavi
-{
-    enum
-    {
-        Temp,   ///< Показывать на несколько секунд
-        All,    ///< Всегда показывать
-        None    ///< Никогда не показывать
-    };
-    COMMON_ENUM;
-};
-
-struct FFTmaxDB
-{
-    enum
-    {
-        _40,
-        _60,
-        _80
-    };
-    COMMON_ENUM;
-};
-
 struct FuncModeDraw
 {
     enum
@@ -168,30 +145,6 @@ struct StretchADC
         Hand
     };
     COMMON_ENUM;
-};
-
-struct DisplayOrientation
-{
-    enum
-    {
-        Direct,
-        Back
-    };
-    COMMON_ENUM;
-};
-
-/// Режим канала по входу.
-struct ModeCouple
-{
-    enum
-    {
-        DC,      ///< Закрытый вход
-        AC,      ///< Открытый вход
-        GND,     ///< Вход заземлён.
-        Size
-    };
-    COMMON_ENUM;
-    ModeCouple(uint v = 0) : value((uint8)v) {};
 };
 
 struct Resistance
@@ -237,119 +190,6 @@ struct NumberPeriods
         _1,
         _10,
         _100
-    };
-    COMMON_ENUM;
-};
-
-/// Количество измерений для расчёта минимального и максимального значений.
-struct ENumMinMax
-{
-    enum
-    {
-        _1,
-        _2,
-        _4,
-        _8,
-        _16,
-        _32,
-        _64,
-        _128
-    };
-    COMMON_ENUM;
-};
-
-struct ColorScheme
-{
-    enum
-    {
-        WhiteLetters,   ///< В этом случае заголовки элементов меню пишутся белым - не очень хорошо видно снизу
-        BlackLetters    ///< В этом случае заголовки элементов меню пишутся чёрным - не очень красиво выглядит
-    };
-    COMMON_ENUM;
-};
-
-/// Количество усреднений по измерениям.
-struct ENumAverage
-{
-    enum
-    {
-        _1,
-        _2,
-        _4,
-        _8,
-        _16,
-        _32,
-        _64,
-        _128,
-        _256,
-        _512
-    };
-    COMMON_ENUM;
-};
-
-/// Режим запуска.
-struct StartMode
-{
-    enum
-    {
-        Auto,     ///< Автоматический.
-        Wait,     ///< Ждущий.
-        Single    ///< Однократный.
-    };
-    COMMON_ENUM;
-};
-
-/// Режим слежения курсоров.
-struct CursLookMode
-{
-    enum
-    {
-        None,      ///< Курсоры не следят.
-        Voltage,   ///< Курсоры следят за напряжением автоматически.
-        Time,      ///< Курсоры следят за временем автоматически.
-        Both       ///< Курсоры следят за временем и напряжением, в зависимости от того, какой курсоры вращали последним.
-    };
-    COMMON_ENUM;
-};
-
-/// Какие курсоры сейчас активны. Какие активны, те и будут перемещаться по вращению ручки УСТАНОВКА.
-struct CursActive
-{
-    enum
-    {
-        U,
-        T,
-        None
-    };
-    COMMON_ENUM;
-    CursActive(uint8 v = None) : value(v) {};
-};
-
-/// Дискретность перемещения курсоров.
-struct CursMovement
-{
-    enum
-    {
-        Pixels,    ///< По пикселям экрана
-        Percents   ///< По процентам
-    };
-    COMMON_ENUM;
-};
-
-/// Количество накоплений.
-struct ENumAccum
-{
-    enum
-    {
-        _1,
-        _2,
-        _4,
-        _8,
-        _16,
-        _32,
-        _64,
-        _128,
-        _Infinity
     };
     COMMON_ENUM;
 };
