@@ -8,6 +8,7 @@
 #include "Utils/ProcessingSignal.h"
 #include "Hardware/EEPROM.h"
 #include "Utils/Math.h"
+#include "Settings/Settings.h"
 #include <string.h>
 
 

@@ -8,6 +8,7 @@
 #include "FileManager.h"
 #include "Utils/Dictionary.h"
 #include "usbh_diskio.h"
+#include "Settings/Settings.h"
 #include "Settings/SettingsService.h"
 #include <ff_gen_drv.h>
 

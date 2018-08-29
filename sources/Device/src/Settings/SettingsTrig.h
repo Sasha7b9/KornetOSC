@@ -35,6 +35,16 @@ struct TrigInput
     operator uint8() const { return (uint8)value; };
 };
 
+struct TrigPolarity
+{
+    enum E
+    {
+        Rising,
+        Falling
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
 
 #define TRIG_SOURCE             (set.trig_source)
 #define TRIG_SOURCE_IS_A        (TRIG_SOURCE == TrigSource::A)

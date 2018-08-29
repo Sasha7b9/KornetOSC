@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include "SettingsTypes.h"
 #include "defines.h"
 
 

@@ -6,38 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-struct MeasSource
-{
-    enum
-    {
-        A,
-        B,
-        A_B
-    };
-    COMMON_ENUM;
-};
-
-struct TrigPolarity
-{
-    enum
-    {
-        Rising,
-        Falling
-    };
-    COMMON_ENUM;
-};
-
-struct Language
-{
-    enum
-    {
-        RU,
-        EN,
-        Num
-    };
-    COMMON_ENUM;
-};
-
 struct ModeDrawSignal
 {
     enum

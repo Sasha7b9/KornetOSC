@@ -1,5 +1,4 @@
 #pragma once
-#include "Settings/Settings.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9,6 +8,17 @@
  *  @defgroup SettingsService Settings Service
  *  @{
  */
+
+struct Language
+{
+    enum E
+    {
+        RU,
+        EN,
+        Num
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
  
 #define LANG                            (set.serv_lang)
 #define LANG_RU                         (LANG == Language::RU)

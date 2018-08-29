@@ -9,6 +9,17 @@
  *  @{
  */
 
+struct MeasSource
+{
+    enum E
+    {
+        A,
+        B,
+        A_B
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
 #define MODE_VIEW_SIGNALS               (set.meas_modeViewSignals) 
 #define MODE_VIEW_SIGNALS_IS_COMPRESS   (MODE_VIEW_SIGNALS == ModeViewSignals::Compress)  // —жимать ли сетку при выводе измерений
 #define MEASURE(n)                      (set.meas_measures[n])
