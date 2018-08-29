@@ -122,7 +122,7 @@ public:
     bool                curs_showCursors;                   ///< Показывать ли курсоры.
     CursLookMode        curs_lookMode[2];                   ///< Режимы слежения за курсорами для двух пар курсоров.
     bool                curs_showFreq;                      ///< Установленное в true значение, что нужно показывать на экране 1/dT между курсорами.
-    CursActive          curs_active;                        ///< Какие курсоры сейас активны.
+    Cursors::Active     curs_active;                        ///< Какие курсоры сейас активны.
     Chan                curs_source;                        ///< Источник - к какому каналу относятся курсоры.
     CursCntrl           curs_cntrlU[Chan::Num];             ///< Активные курсоры напряжения.
     CursCntrl           curs_cntrlT[Chan::Num];             ///< Активные курсоры времени.

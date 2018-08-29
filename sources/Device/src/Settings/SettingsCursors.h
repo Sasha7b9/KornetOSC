@@ -8,20 +8,7 @@
  *  @{
  */
 
-/// Какие курсоры сейчас активны. Какие активны, те и будут перемещаться по вращению ручки УСТАНОВКА.
-struct CursActive
-{
-    enum E
-    {
-        U,
-        T,
-        None
-    } value;
-    CursActive(E v) : value(v) {};
-    operator uint8() const { return (uint8)value; };
-};
-
-/// Режим слежения курсоров.
+ /// Режим слежения курсоров.
 struct CursLookMode
 {
     enum E
@@ -73,20 +60,10 @@ struct CursCntrl
 #define CURsT_DISABLED              (CURsT_CNTRL == CursCntrl::Disable)
 #define CURsT_ENABLED               (!CURsT_DISABLED)
 
-/// Позиция куросра времени
-#define CURsT_POS(ch, num)          GetCursPosT(ch, num)
-
 /// Абсолютное значение напряжения, соответствующее 100%
 #define dUperc(ch)                  (set.curs_deltaU100percents[ch])
 /// Абсолютное значение времени, соотвествующее 100%
 #define dTperc(ch)                  (set.curs_deltaT100percents[ch])
-
-/// Какими курсорами управляет ручка УСТАНОВКА
-#define CURS_ACTIVE                 (set.curs_active)
-/// Ручка УСТАНОВКА управляет курсорами напряжения
-#define CURS_ACTIVE_U               (CURS_ACTIVE == CursActive::U)
-/// Ручка УСТАНОВКА управляет курсорами времени
-#define CURS_ACTIVE_T               (CURS_ACTIVE == CursActive::T)
 
 /// Режим слежения за курсорами
 #define CURS_LOOK_MODE(ch)          (set.curs_lookMode[ch])
@@ -102,13 +79,11 @@ struct CursCntrl
 
 
 /// Получить строку курсора времени
-const char *sCursors_GetCursorTime(Chan source, int numCur, char buffer[20]);
+//const char *sCursors_GetCursorTime(Chan source, int numCur, char buffer[20]);
 /// Получить строку процентов курсоров напряжения
-const char *sCursors_GetCursorPercentsU(Chan source, char buffer[20]);
+//const char *sCursors_GetCursorPercentsU(Chan source, char buffer[20]);
 /// Получить строку процентов курсоров времени
-const char *sCursors_GetCursorPercentsT(Chan source, char buffer[20]);
-/// Возвращает значение курсора времени
-float GetCursPosT(Chan ch, int num);
+//const char *sCursors_GetCursorPercentsT(Chan source, char buffer[20]);
 
 void SetCursPosT_temp(Chan ch, int num, float value);
 

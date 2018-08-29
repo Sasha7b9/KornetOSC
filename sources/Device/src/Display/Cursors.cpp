@@ -4,6 +4,7 @@
 #include "Menu/Menu.h"
 #include "FPGA/FPGAMath.h"
 #include "Utils/StringUtils.h"
+#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,4 +28,12 @@ pString Cursors::Voltage(Chan source, int numCur, char buffer[20])
         voltage *= 10.0f;
     }
     return Voltage2String(voltage, true, buffer);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+float Cursors::PosT(Chan ch, int num)
+{
+    float retValue = 0.0f;
+    memcpy(&retValue, &set.curs_posCurT[ch][num], sizeof(float));
+    return retValue;
 }

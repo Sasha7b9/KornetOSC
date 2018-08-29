@@ -42,7 +42,6 @@ const char *sCursors_GetCursorPercentsU(Chan source, char buffer[20])
     return buffer;
 }
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *sCursors_GetCursorPercentsT(Chan source, char buffer[20])
 {
@@ -57,14 +56,6 @@ const char *sCursors_GetCursorPercentsT(Chan source, char buffer[20])
     strcat(buffer, percents);
     strcat(buffer, "%");
     return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-float GetCursPosT(Chan ch, int num)
-{
-    float retValue = 0.0f;
-    memcpy(&retValue, &set.curs_posCurT[ch][num], sizeof(float));
-    return retValue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

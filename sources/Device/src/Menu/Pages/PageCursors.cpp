@@ -175,7 +175,7 @@ static void OnPress_Set_U()
     {
         IncCursCntrlU(CURS_SOURCE);
     }
-    CURS_ACTIVE = CursActive::U;
+    CURS_ACTIVE = Cursors::Active::U;
 }
 
 static void Draw_Set_U(int x, int y)
@@ -261,7 +261,7 @@ static void OnPress_Set_T()
     {
         IncCursCntrlT(CURS_SOURCE);
     }
-    CURS_ACTIVE = CursActive::T;
+    CURS_ACTIVE = Cursors::Active::T;
 }
 
 static void Draw_Set_T(int x, int y)

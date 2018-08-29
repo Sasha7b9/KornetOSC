@@ -79,7 +79,7 @@ static const Settings defaultSettings =
     /* curs_showCursors;             */ false,
     /* curs_lookMode[2];             */ {CursLookMode::None, CursLookMode::None},
     /* curs_showFreq;                */ true,
-    /* curs_active;                  */ CursActive::None,
+    /* curs_active;                  */ Cursors::Active::None,
     /* curs_source;                  */ Chan::A,
     /* curs_cntrlU[Chan::Num];       */ {CursCntrl::Disable, CursCntrl::Disable},
     /* curs_cntrlT[Chan::Num];       */ {CursCntrl::Disable, CursCntrl::Disable},
