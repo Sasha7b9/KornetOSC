@@ -1338,7 +1338,7 @@ char* Processing::GetStringMeasure(Meas measure, Chan ch, char* buffer, int lenB
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Processing::CountedToCurrentSettings()
 {
-    if ((ENumPointsFPGA)ENUM_POINTS_DS != FPGA_ENUM_POINTS)
+    if ((ENumPointsFPGA::E)ENUM_POINTS_DS != FPGA_ENUM_POINTS)
     {
         CountedEnumPoints();
     }

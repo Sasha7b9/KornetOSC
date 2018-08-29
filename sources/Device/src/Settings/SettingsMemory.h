@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "Data/DataSettings.h"
-#include "Settings.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -10,6 +9,36 @@
  *  @defgroup SettingsMemory Settings Memory
  *  @{
  */
+
+ /// Режим работы.
+struct ModeWork
+{
+    enum E
+    {
+        Dir,           ///< Основной режим.
+        RAM,           ///< В этом режиме можно просмотреть последние сохранённые измерения.
+        ROM,           ///< В этом режиме можно сохранять во flash-памяти измерения просматривать ранее сохранённые.
+        None           ///< Используется в модуле Data.c. Нужен, чтобы указать, что мудуль не настроен ни на какой режим.
+    } value;
+    ModeWork(E v = Dir) : value(v) {};
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Число точек сигнала, с которым идёт работа.
+struct ENumPointsFPGA
+{
+    enum E
+    {
+        _512,
+        _1k,
+        _2k,
+        _4k,
+        _8k,
+        Size
+    } value;
+    ENumPointsFPGA(E v = _512) : value(v) {};
+    operator uint8() const { return (uint8)value; };
+};
 
 #define FILE_NAME_MASK          (set.mem_fileNameMask)
 #define FILE_NAME               (set.mem_fileName)

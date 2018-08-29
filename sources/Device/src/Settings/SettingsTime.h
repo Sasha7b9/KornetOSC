@@ -11,6 +11,19 @@
  *  @{
  */
 
+struct PeakDetMode
+{
+    enum E
+    {
+        Disabled,
+        Enabled,
+        Average
+    } value;
+    PeakDetMode(E v = Disabled) : value(v) {};
+    PeakDetMode(uint v) : value((E)v) {};
+    operator  uint8() const { return (uint8)value; };
+};
+
 #define SET_TSHIFT          (set.time_shift)
 #define SET_TBASE           (set.time_base)
 #define TIME_DIV_XPOS       (set.time_timeDivXPos)

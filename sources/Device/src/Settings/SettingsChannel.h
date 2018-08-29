@@ -1,5 +1,5 @@
 #pragma once
-#include "Data/DataSettings.h"
+#include "defines.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9,6 +9,65 @@
  *  @defgroup SettingsChannel Settings Chan
  *  @{
  */
+
+struct Range
+{
+    enum E
+    {
+        _2mV,
+        _5mV,
+        _10mV,
+        _20mV,
+        _50mV,
+        _100mV,
+        _200mV,
+        _500mV,
+        _1V,
+        _2V,
+        _5V,
+        _10V,
+        _20V,
+        Size
+    } value;
+    Range(E v = _2mV) : value(v) {};
+    operator uint8() const { return (uint8)value; };
+    Range& operator++()
+    {
+        value = (E)((uint)value + 1);
+        return *this;
+    }
+    pString Name() const;
+};
+
+struct Chan
+{
+    enum E
+    {
+        A,
+        B,
+        Ext,
+        Math,
+        Num
+    } value;
+    Chan(E v = A) : value(v) { };
+    operator uint8() const { return (uint8)value; };
+    bool IsA() { return value == A; };
+    bool IsB() { return value == B; }
+};
+
+/// Делитель.
+struct Divider
+{
+    enum E
+    {
+        _1,
+        _10
+    } value;
+    Divider(E v = _1) : value(v) {};
+    Divider(uint v = _1) : value((E)v) {};
+    operator uint() const { return (uint)value; };
+};
+
 
 #define SET_INVERSE(ch)         (set.chan_inverse[ch])
 #define SET_INVERSE_A           (SET_INVERSE(Chan::A))

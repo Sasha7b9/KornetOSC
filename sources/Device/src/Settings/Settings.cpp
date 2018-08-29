@@ -1,4 +1,4 @@
-#include "Settings.h"
+#include "Settings/Settings.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/RShift.h"
 #include "Hardware/EEPROM.h"
@@ -198,7 +198,7 @@ static const Settings defaultSettings =
     /* multi_meas */        MultiMeasures::VariableVoltage
 };
 
-Settings set;
+Settings set = defaultSettings;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -334,4 +334,10 @@ float MaxDBforFFT(FFTmaxDB maxDB)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Settings::ResetColors()
 {
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+Settings &Settings::GetDefault()
+{
+    return (Settings &)defaultSettings;
 }

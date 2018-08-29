@@ -59,7 +59,7 @@ void sChannel_SetEnabled(Chan ch, bool enabled)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString sChannel_Range2String(Range range, Divider divider)
 {
-    return ranges[range].name[LANG][divider];
+    return ranges[range].name[LANG][(int)divider];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

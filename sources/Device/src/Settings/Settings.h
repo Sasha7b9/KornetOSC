@@ -1,8 +1,6 @@
 #pragma once
 #include "defines.h"
-#include "SettingsTypes.h"
 #include "Utils/Measures.h"
-#include "SettingsTypes.h"
 #include "Menu/MenuItems.h"
 #include "SettingsChannel.h"
 #include "SettingsDisplay.h"
@@ -16,7 +14,6 @@
 #include "SettingsMeasures.h"
 #include "SettingsCursors.h"
 #include "SettingsMultimeter.h"
-#include "Multimeter/Multimeter.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,6 +56,8 @@ public:
     static void Reset();
     /// Сбросить цвета на значения по умолчанию
     static void ResetColors();
+    /// Возвращает указатель на настройки по умолчанию
+    static Settings &GetDefault();
 
     uint                size;                               ///< Размер данной структуры в байтах
     uint                crc32;                              ///< \brief Контрольная сумма данной структуры с хранящимися в ней настройками

@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "Settings.h"
+#include "SettingsChannel.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9,6 +9,19 @@
  *  @defgroup SettingsTrig Settings Trig
  *  @{
  */
+
+ /// Источник синхронизации
+struct TrigSource
+{
+    enum E
+    {
+        A,    /// Канал 1
+        B,    /// Канал 2
+        Ext   /// Внешняя
+    } value;
+    TrigSource(E v = A) : value(v) {};
+    operator uint8() const { return (uint8)value; }
+};
 
 #define TRIG_SOURCE             (set.trig_source)
 #define TRIG_SOURCE_IS_A        (TRIG_SOURCE == TrigSource::A)

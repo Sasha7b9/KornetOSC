@@ -31,7 +31,7 @@ static DAC_HandleTypeDef hDAC = {DAC};
 
 uint8 dataTester[Chan::Num][NUM_STEPS][TESTER_NUM_POINTS];
 
-static Settings oldSet;
+static Settings oldSet = Settings::GetDefault();
 
 int   Tester::step = 0;
 float Tester::stepU = 0.0f;

@@ -3,6 +3,8 @@
 #include "Globals.h"
 #include "FPGATypes.h"
 #include "Settings/SettingsTypes.h"
+#include "Settings/SettingsTrig.h"
+#include "Settings/SettingsTime.h"
 
 
 /// На столько единиц нужно изменить значение смещения, чтобы маркер смещения по напряжению передвинулся на одну точку.

@@ -21,10 +21,10 @@ int TShift::Min()
 
     if (SET_PEAKDET_DIS)
     {
-        return m[FPGA_ENUM_POINTS][TPOS];
+        return m[(int)FPGA_ENUM_POINTS][TPOS];
     }
 
-    return m[FPGA_ENUM_POINTS][TPOS] * 2; // Для пикового детектора это значение должно быть в два раза больше
+    return m[(int)FPGA_ENUM_POINTS][TPOS] * 2; // Для пикового детектора это значение должно быть в два раза больше
 
 }
 

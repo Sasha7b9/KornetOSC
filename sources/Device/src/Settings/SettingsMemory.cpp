@@ -1,6 +1,7 @@
 #include "SettingsMemory.h"
 #include "Data/Reader.h"
 #include "FPGA/FPGATypes.h"
+#include "Settings/Settings.h"
 #include <stdlib.h>
 
 
@@ -16,7 +17,7 @@ int sMemory_NumPointsInChannel_()
         8192
     };
 
-    return numPoints[FPGA_ENUM_POINTS];
+    return numPoints[(int)FPGA_ENUM_POINTS];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -71,7 +72,7 @@ int RequestBytesForChannel(Chan, DataSettings *ds)
 
     if (ds)
     {
-        numBytes = (ENumPointsFPGA)(ENUM_BYTES(ds));
+        numBytes = (ENumPointsFPGA::E)(ENUM_BYTES(ds));
         peakDet = PEAKDET(ds);
     }
     else

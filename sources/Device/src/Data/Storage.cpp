@@ -1,12 +1,11 @@
 #include "defines.h"
-#include "Globals.h"
 #include "Storage.h"
-#include "Reader.h"
-#include "Log.h"
-#include "FPGA/FPGA.h"
-#include "Hardware/CPU.h"
-#include "Utils/Math.h"
+#include "DataSettings.h"
+#include "Settings/SettingsDisplay.h"
 #include "Settings/Settings.h"
+#include "Utils/Math.h"
+#include "Globals.h"
+#include "Reader.h"
 #include <string.h>
 
 
@@ -861,25 +860,6 @@ void Storage::GetData(uint8 **dataA, uint8 **dataB)
     *dataA = OUT_A;
     *dataB = OUT_B;
 }
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-uint8 *AddressChannel(DataSettings *ds, Chan ch)
-{
-    if (ch == A && ENABLED_A(ds))
-    {
-        return ADDRESS_DATA(ds);
-    }
-
-    if (ch == B && ENABLED_B(ds))
-    {
-        return ADDRESS_DATA(ds) + (ENABLED_A(ds) ? NUM_BYTES(ds) : 0);
-    }
-
-    return 0;
-}
-*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool DataSettingsIsEquals(const DataSettings *ds1, const DataSettings *ds2)

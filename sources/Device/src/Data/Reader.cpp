@@ -2,15 +2,12 @@
 #define _INCLUDE_DATA_
 #include "Reader.h"
 #undef _INCLUDE_DATA_
-#include "globals.h"
-#include "Log.h"
+#include "Settings/SettingsService.h"
 #include "FPGA/FPGA.h"
-#include "Hardware/CPU.h"
-#include "Hardware/EEPROM.h"
-#include "Hardware/FSMC.h"
-#include "Settings/SettingsMemory.h"
-#include "Utils/Math.h"
+#include "Storage.h"
 #include "Utils/ProcessingSignal.h"
+#include "Hardware/EEPROM.h"
+#include "Utils/Math.h"
 #include <string.h>
 
 

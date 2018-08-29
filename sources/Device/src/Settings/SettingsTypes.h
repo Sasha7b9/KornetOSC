@@ -1,38 +1,10 @@
 #pragma once
 #include "defines.h"
+#include "SettingsChannel.h"
 
 
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
-
-struct Range
-{
-    enum E
-    {
-        _2mV,
-        _5mV,
-        _10mV,
-        _20mV,
-        _50mV,
-        _100mV,
-        _200mV,
-        _500mV,
-        _1V,
-        _2V,
-        _5V,
-        _10V,
-        _20V,
-        Size
-    } value;
-    Range(E v = _2mV) : value(v) {};
-    operator uint8() const { return (uint8)value; };
-    Range& operator++()
-    {
-        value = (E)((uint)value + 1);
-        return *this;
-    }
-    pString Name() const;
-};
 
 struct TBase
 {
@@ -86,50 +58,6 @@ struct TrigInput
     TrigInput(uint8 v = Full) : value(v) {};
     COMMON_ENUM
 };
-
-struct Chan
-{
-    enum
-    {
-        A,
-        B,
-        Ext,
-        Math,
-        Num
-    };
-    COMMON_ENUM;
-    Chan(uint8 v = 0) : value(v)
-    {
-    };
-    bool IsA()
-    {
-        return value == A;
-    };
-    bool IsB()
-    {
-        return value == B;
-    }
-};
-
-/// Источник синхронизации
-struct TrigSource
-{
-    enum
-    {
-        A,    /// Канал 1
-        B,    /// Канал 2
-        Ext   /// Внешняя
-    };
-    TrigSource(uint8 v = A) : value(v)
-    {
-    };
-    operator Chan() const
-    {
-        return (Chan)value;
-    }
-    COMMON_ENUM;
-};
-
 
 struct MeasSource
 {
@@ -301,22 +229,6 @@ struct TPos
     COMMON_ENUM;
 };
 
-/// Число точек сигнала, с которым идёт работа.
-struct ENumPointsFPGA
-{
-    enum
-    {
-        _512,
-        _1k,
-        _2k,
-        _4k,
-        _8k,
-        Size
-    };
-    COMMON_ENUM;
-    ENumPointsFPGA(uint v = _512) : value((uint8)v) {};
-};
-
 /// Что делать при нажатии кнопки ПАМЯТЬ.
 struct ModeBtnMemory
 {
@@ -326,32 +238,6 @@ struct ModeBtnMemory
         Save      ///< Сохранение содержимого экрана на флешку.
     };
     COMMON_ENUM;
-};
-
-/// Делитель.
-struct Divider
-{
-    enum
-    {
-        _1,
-        _10
-    };
-    COMMON_ENUM;
-    Divider(uint v = _1) : value((uint8)v) {};
-};
-
-/// Режим работы.
-struct ModeWork
-{
-    enum
-    {
-        Dir,           ///< Основной режим.
-        RAM,           ///< В этом режиме можно просмотреть последние сохранённые измерения.
-        ROM,           ///< В этом режиме можно сохранять во flash-памяти измерения просматривать ранее сохранённые.
-        None           ///< Используется в модуле Data.c. Нужен, чтобы указать, что мудуль не настроен ни на какой режим.
-    };
-    COMMON_ENUM;
-    ModeWork(uint v = Dir) : value((uint8)v) {};
 };
 
 /// Режим показа строки навигации
@@ -482,18 +368,6 @@ struct NumberPeriods
         _100
     };
     COMMON_ENUM;
-};
-
-struct PeakDetMode
-{
-    enum
-    {
-        Disabled,
-        Enabled,
-        Average
-    };
-    COMMON_ENUM;
-    PeakDetMode(uint v = 0) : value((uint8)v) {};
 };
 
 /// Количество измерений для расчёта минимального и максимального значений.

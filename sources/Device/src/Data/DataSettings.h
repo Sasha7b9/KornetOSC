@@ -1,5 +1,4 @@
 #pragma once
-#include "Settings/SettingsTypes.h"
 #include "FPGA/FPGATypes.h"
 #include "defines.h"
 

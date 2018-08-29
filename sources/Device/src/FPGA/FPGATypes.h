@@ -1,5 +1,4 @@
 #pragma once
-#include "Settings/SettingsTypes.h"
 #include "RShift.h"
 #include "TShift.h"
 #include "TrigLev.h"
