@@ -8,17 +8,6 @@
  *  @{
  */
 
- /// Дискретность перемещения курсоров.
-struct CursMovement
-{
-    enum E
-    {
-        Pixels,    ///< По пикселям экрана
-        Percents   ///< По процентам
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 /// Какие курсоры сейчас активны. Какие активны, те и будут перемещаться по вращению ручки УСТАНОВКА.
 struct CursActive
 {
@@ -60,12 +49,6 @@ struct CursCntrl
 
 
 #define CURSORS_SHOW_FREQ           (set.curs_showFreq)
-/// Перемемещение курсоров при вращении ручки УСТАНОВКА - по точкам или процентам
-#define CURS_MOVEMENT               (set.curs_movement)
-/// Курсоры перемещаются при вращении ручка УСТАНОВКА с дискретностью 1%
-#define CURS_MOVEMENT_IN_PERCENTS   (CURS_MOVEMENT == CursMovement::Percents)
-/// Курсоры перемещаются при вращении ручка УСТАНОВКА с дискретностью 1 пиксель
-#define CURS_MOVEMENT_IN_PIXELS     (CURS_MOVEMENT == CursMovement::Pixels)
 
 /// Курсоры какого канала сейчас активны
 #define CURS_SOURCE                 (set.curs_source)
@@ -90,8 +73,6 @@ struct CursCntrl
 #define CURsT_DISABLED              (CURsT_CNTRL == CursCntrl::Disable)
 #define CURsT_ENABLED               (!CURsT_DISABLED)
 
-/// Позиция курсора напряжения
-#define CURsU_POS(ch, num)          (set.curs_posCurU[ch][num])
 /// Позиция куросра времени
 #define CURsT_POS(ch, num)          GetCursPosT(ch, num)
 
@@ -119,8 +100,6 @@ struct CursCntrl
 #define CURS_SHOW                   (set.curs_showCursors)
 
 
- /// Получить позицию курсора напряжения
-float sCursors_GetCursPosU(Chan ch, int numCur);
 /// Возвращает true,если нужно рисовать курсоры
 bool  sCursors_NecessaryDrawCursors();
 /// Получить строку курсора напряжения

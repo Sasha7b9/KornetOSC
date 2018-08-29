@@ -15,6 +15,7 @@
 #include "SettingsCursors.h"
 #include "SettingsMultimeter.h"
 #include "Tester/Tester.h"
+#include "Display/Cursors.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,7 +126,7 @@ public:
     Chan                curs_source;                        ///< »сточник - к какому каналу относ€тс€ курсоры.
     CursCntrl           curs_cntrlU[Chan::Num];             ///< јктивные курсоры напр€жени€.
     CursCntrl           curs_cntrlT[Chan::Num];             ///< јктивные курсоры времени.
-    CursMovement        curs_movement;                      ///<  ак перемещатьс€ курсорам - по точкам или процентам.
+    Cursors::Movement   curs_movement;                      ///<  ак перемещатьс€ курсорам - по точкам или процентам.
     float               curs_deltaU100percents[2];          ///< –ассто€ние между курсорами напр€жени€ дл€ 100%, дл€ обоих каналов.
     float               curs_deltaT100percents[2];          ///< –ассто€ние между курсорами времени дл€ 100%, дл€ обоих каналов.
     float               curs_posCurU[Chan::Num][2];         ///< “екущие позиции курсоров напр€жени€ обоих каналов.

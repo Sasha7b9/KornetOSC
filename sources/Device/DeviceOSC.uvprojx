@@ -1905,6 +1905,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\MemoryWindow.h</FilePath>
             </File>
+            <File>
+              <FileName>Cursors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Cursors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Cursors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Cursors.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

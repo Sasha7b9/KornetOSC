@@ -83,7 +83,7 @@ static const Settings defaultSettings =
     /* curs_source;                  */ Chan::A,
     /* curs_cntrlU[Chan::Num];       */ {CursCntrl::Disable, CursCntrl::Disable},
     /* curs_cntrlT[Chan::Num];       */ {CursCntrl::Disable, CursCntrl::Disable},
-    /* curs_movement;                */ CursMovement::Pixels,
+    /* curs_movement;                */ Cursors::Movement::Pixels,
     /* curs_deltaU100percents[2];    */ {100, 100},
     /* curs_deltaT100percents[2];    */ {100, 100},
     /* curs_posCurU[Chan::Num][2];   */ {{ 100, 100 },{ 100, 100 }},

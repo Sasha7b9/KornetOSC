@@ -10,13 +10,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-float sCursors_GetCursPosU(Chan ch, int numCur)
-{
-    return CURsU_POS(ch, numCur) / (Grid::Bottom() == Grid::FullBottom() ? 1.0f : 2.0f);
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool sCursors_NecessaryDrawCursors()
 {
     return (CURsU_ENABLED || CURsT_ENABLED) && (CURS_SHOW || Menu::GetNameOpenedPage() == PageSB_Cursors_Set);
@@ -26,7 +19,7 @@ bool sCursors_NecessaryDrawCursors()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *sCursors_GetCursVoltage(Chan source, int numCur, char buffer[20])
 {
-    float voltage = MathFPGA::VoltageCursor(sCursors_GetCursPosU(source, numCur), SET_RANGE(source), SET_RSHIFT(source));
+    float voltage = MathFPGA::VoltageCursor(Cursors::PosU(source, numCur), SET_RANGE(source), SET_RSHIFT(source));
     if (SET_DIVIDER_10(source))
     {
         voltage *= 10.0f;
@@ -60,7 +53,7 @@ const char *sCursors_GetCursorPercentsU(Chan source, char buffer[20])
     float dPerc = 100.0f;
     memcpy(&dPerc, &dUperc(source), sizeof(float));
 
-    float dValue = fabsf(sCursors_GetCursPosU(source, 0) - sCursors_GetCursPosU(source, 1));
+    float dValue = fabsf(Cursors::PosU(source, 0) - Cursors::PosU(source, 1));
     char bufferOut[20];
     char *percents = Float2String(dValue / dPerc * 100.0f, false, 5, bufferOut);
     strcat(buffer, percents);
