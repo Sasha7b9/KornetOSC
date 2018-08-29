@@ -6,47 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-struct TBase
-{
-    enum
-    {
-        _2ns,
-        _5ns,
-        _10ns,
-        _20ns,
-        _50ns,
-        _100ns,
-        _200ns,
-        _500ns,
-        _1us,
-        _2us,
-        _5us,
-        _10us,
-        _20us,
-        _50us,
-        _100us,
-        _200us,
-        _500us,
-        _1ms,
-        _2ms,
-        _5ms,
-        _10ms,
-        _20ms,
-        _50ms,
-        _100ms,
-        _200ms,
-        _500ms,
-        _1s,
-        _2s,
-        _5,
-        _10s,
-        Size
-    };
-    TBase(uint8 v = _2ns) : value(v) {};
-    COMMON_ENUM;
-    pString Name() const;
-};
-
 struct TrigInput
 {
     enum

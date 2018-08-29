@@ -24,6 +24,47 @@ struct PeakDetMode
     operator  uint8() const { return (uint8)value; };
 };
 
+struct TBase
+{
+    enum E
+    {
+        _2ns,
+        _5ns,
+        _10ns,
+        _20ns,
+        _50ns,
+        _100ns,
+        _200ns,
+        _500ns,
+        _1us,
+        _2us,
+        _5us,
+        _10us,
+        _20us,
+        _50us,
+        _100us,
+        _200us,
+        _500us,
+        _1ms,
+        _2ms,
+        _5ms,
+        _10ms,
+        _20ms,
+        _50ms,
+        _100ms,
+        _200ms,
+        _500ms,
+        _1s,
+        _2s,
+        _5,
+        _10s,
+        Size
+    } value;
+    TBase(E v = _2ns) : value(v) {};
+    operator uint8() const { return (uint8)value; };
+    pString Name() const;
+};
+
 #define SET_TSHIFT          (set.time_shift)
 #define SET_TBASE           (set.time_base)
 #define TIME_DIV_XPOS       (set.time_timeDivXPos)
