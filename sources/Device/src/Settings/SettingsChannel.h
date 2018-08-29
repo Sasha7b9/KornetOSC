@@ -68,6 +68,16 @@ struct Divider
     operator uint() const { return (uint)value; };
 };
 
+struct Bandwidth
+{
+    enum E
+    {
+        Full,     ///< Если это значение выбрано в меню КАНАЛ, то при этом положение устанавливается полоса из ОТЛАДКА-КАНАЛЫ-Полоса.
+        _20MHz,
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
 
 #define SET_INVERSE(ch)         (set.chan_inverse[ch])
 #define SET_INVERSE_A           (SET_INVERSE(Chan::A))

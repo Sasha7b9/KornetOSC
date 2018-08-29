@@ -24,6 +24,18 @@ struct ModeDrawSignal
     operator uint8() const { return (uint8)value; };
 };
 
+/// Толщина рисуемого сигнала
+struct ThicknessSignal
+{
+    enum E
+    {
+        _1,         ///< Сигнал рисуется линией толщиной одна точка
+        _3          ///< Сигнал рисуется линией толщиной три точки
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+
 
 #define THICKNESS_SIGNAL            (set.disp_thickness)
 #define THICKNESS_SIGNAL_IS_3       (THICKNESS_SIGNAL == ThicknessSignal::_3)

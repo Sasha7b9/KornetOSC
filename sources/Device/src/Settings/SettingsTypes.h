@@ -6,39 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-/// Тольщина рисуемого сигнала
-struct ThicknessSignal
-{
-    enum
-    {
-        _1,         ///< Сигнал рисуется линией толщиной одна точка
-        _3          ///< Сигнал рисуется линией толщиной три точки
-    };
-    COMMON_ENUM;
-};
-
-struct Bandwidth
-{
-    enum
-    {
-        Full,     ///< Если это значение выбрано в меню КАНАЛ, то при этом положение устанавливается полоса из ОТЛАДКА-КАНАЛЫ-Полоса.
-        _20MHz,
-    };
-    COMMON_ENUM;
-};
-
-struct ModeTrig
-{
-    enum
-    {
-        Auto,
-        Wait,
-        Once
-    };
-    ModeTrig(uint8 v = Auto) : value(v) {};
-    uint8 value;
-};
-
 /// Чем будем управлять в тестер-компоненте - напряжением или током
 struct TesterControl
 {

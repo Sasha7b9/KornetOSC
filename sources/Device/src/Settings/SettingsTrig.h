@@ -19,7 +19,6 @@ struct TrigSource
         B,    /// Канал 2
         Ext   /// Внешняя
     } value;
-    TrigSource(E v = A) : value(v) {};
     operator uint8() const { return (uint8)value; }
 };
 
@@ -31,7 +30,6 @@ struct TrigInput
         HF,
         LF
     } value;
-    TrigInput(E v = Full) : value(v) {};
     operator uint8() const { return (uint8)value; };
 };
 
@@ -43,6 +41,16 @@ struct TrigPolarity
         Falling
     } value;
     operator uint8() const { return (uint8)value; };
+};
+
+struct ModeTrig
+{
+    enum E
+    {
+        Auto,
+        Wait,
+        Once
+    } value;
 };
 
 
