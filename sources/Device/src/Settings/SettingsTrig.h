@@ -23,6 +23,19 @@ struct TrigSource
     operator uint8() const { return (uint8)value; }
 };
 
+struct TrigInput
+{
+    enum E
+    {
+        Full,
+        HF,
+        LF
+    } value;
+    TrigInput(E v = Full) : value(v) {};
+    operator uint8() const { return (uint8)value; };
+};
+
+
 #define TRIG_SOURCE             (set.trig_source)
 #define TRIG_SOURCE_IS_A        (TRIG_SOURCE == TrigSource::A)
 #define TRIG_SOURCE_IS_B        (TRIG_SOURCE == TrigSource::B)

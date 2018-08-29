@@ -6,18 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-struct TrigInput
-{
-    enum
-    {
-        Full,
-        HF,
-        LF
-    };
-    TrigInput(uint8 v = Full) : value(v) {};
-    COMMON_ENUM
-};
-
 struct MeasSource
 {
     enum
