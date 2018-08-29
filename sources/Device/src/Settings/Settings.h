@@ -14,11 +14,10 @@
 #include "SettingsMeasures.h"
 #include "SettingsCursors.h"
 #include "SettingsMultimeter.h"
+#include "Tester/Tester.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define TESTER_NUM_POINTS               (240)
-
 #define SET_SIZE                        (set.size)
 #define SET_CRC32                       (set.crc32)
 
@@ -29,8 +28,6 @@
 
 #define TRIG_MODE                       (set.trig_mode)
 
-#define TESTER_CONTROL                  (set.test_control)
-#define TESTER_CONTROL_IS_U             (TESTER_CONTROL == TesterControl::Voltage)
 #define TESTER_POLARITY                 (set.test_polarity)
 #define TESTER_POLARITY_IS_POSITITVE    (TESTER_POLARITY == TesterPolarity::Positive)
 #define TESTER_STEP_U                   (set.test_stepU)
@@ -226,7 +223,7 @@ public:
 
     // Настройки тестер-компонента
 
-    TesterControl       test_control;
+    Tester::Control     test_control;
     TesterPolarity      test_polarity;
     TesterStepU         test_stepU;
     TesterStepI         test_stepI;

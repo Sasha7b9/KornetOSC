@@ -1,7 +1,12 @@
 #pragma once
 #include "defines.h"
-#include "Settings/Settings.h"
-#include "Settings/SettingsTypes.h"
+#include "Settings/SettingsChannel.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define TESTER_NUM_POINTS               (240)
+#define TESTER_CONTROL                  (set.test_control)
+#define TESTER_CONTROL_IS_U             (TESTER_CONTROL == Tester::Control::Voltage)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,6 +38,18 @@ private:
     static int step;
     /// Шаг изменения напряжения
     static float stepU;
+
+public:
+    /// Чем будем управлять в тестер-компоненте - напряжением или током
+    struct Control
+    {
+        enum E
+        {
+            Voltage,
+            Current
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
 };
 
 #define NUM_STEPS       5

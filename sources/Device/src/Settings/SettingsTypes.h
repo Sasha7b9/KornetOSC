@@ -6,18 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-/// Чем будем управлять в тестер-компоненте - напряжением или током
-struct TesterControl
-{
-    enum
-    {
-        Voltage,
-        Current
-    };
-    COMMON_ENUM;
-};
-
-
 struct TesterPolarity
 {
     enum
