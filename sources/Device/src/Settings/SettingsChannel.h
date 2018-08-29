@@ -78,6 +78,18 @@ struct Bandwidth
     operator uint8() const { return (uint8)value; };
 };
 
+/// Режим калибровки.
+struct CalibrationMode
+{
+    enum E
+    {
+        x1,
+        x10,
+        Disable
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
 
 #define SET_INVERSE(ch)         (set.chan_inverse[ch])
 #define SET_INVERSE_A           (SET_INVERSE(Chan::A))

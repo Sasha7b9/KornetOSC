@@ -5,6 +5,7 @@
 #include "Settings/SettingsTypes.h"
 #include "Settings/SettingsTrig.h"
 #include "Settings/SettingsTime.h"
+#include "Settings/SettingsService.h"
 
 
 /// На столько единиц нужно изменить значение смещения, чтобы маркер смещения по напряжению передвинулся на одну точку.

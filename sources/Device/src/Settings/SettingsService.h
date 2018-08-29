@@ -19,6 +19,17 @@ struct Language
     } value;
     operator uint8() const { return (uint8)value; };
 };
+
+struct CalibratorMode
+{
+    enum E
+    {
+        Freq,
+        DC,
+        GND
+    } value;
+};
+
  
 #define LANG                            (set.serv_lang)
 #define LANG_RU                         (LANG == Language::RU)
