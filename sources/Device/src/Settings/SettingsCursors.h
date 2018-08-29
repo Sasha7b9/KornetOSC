@@ -45,6 +45,19 @@ struct CursLookMode
     operator uint8() const { return (uint8)value; };
 };
 
+/// Каким курсором управлять
+struct CursCntrl
+{
+    enum E
+    {
+        _1,        ///< первым
+        _2,        ///< вторым
+        _1_2,      ///< обоими
+        Disable    ///< никаким
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
 
 #define CURSORS_SHOW_FREQ           (set.curs_showFreq)
 /// Перемемещение курсоров при вращении ручки УСТАНОВКА - по точкам или процентам

@@ -6,19 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-///  аким курсором управл€ть
-struct CursCntrl
-{
-    enum
-    {
-        _1,        ///< первым
-        _2,        ///< вторым
-        _1_2,      ///< обоими
-        Disable    ///< никаким
-    };
-    COMMON_ENUM;
-};
-
 /// “ип усреднений по измерени€м
 struct ModeAveraging
 {
