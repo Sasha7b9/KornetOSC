@@ -223,8 +223,8 @@ public:
 
     Tester::Control     test_control;
     Tester::Polarity    test_polarity;
-    TesterStepU         test_stepU;
-    TesterStepI         test_stepI;
+    Tester::StepU       test_stepU;
+    Tester::StepI       test_stepI;
     uint8               test_smooth;                                ///< Количество сглаживаний
 
     // Настройки меню

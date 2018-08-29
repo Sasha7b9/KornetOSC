@@ -63,6 +63,26 @@ public:
         } value;
         operator uint8() const { return (uint8)value; };
     };
+
+    struct StepU
+    {
+        enum E
+        {
+            _100mV,
+            _500mV
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
+    struct StepI
+    {
+        enum E
+        {
+            _4mA,
+            _20mA
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
 };
 
 #define NUM_STEPS       5

@@ -6,26 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-struct TesterStepU
-{
-    enum
-    {
-        _100mV,
-        _500mV
-    };
-    COMMON_ENUM;
-};
-
-struct TesterStepI
-{
-    enum
-    {
-        _4mA,
-        _20mA
-    };
-    COMMON_ENUM
-};
-
 /// Каким курсором управлять
 struct CursCntrl
 {

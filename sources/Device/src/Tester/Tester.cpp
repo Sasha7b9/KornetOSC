@@ -256,10 +256,10 @@ void Tester::LoadStep()
 
     if (TESTER_CONTROL_IS_U)
     {
-        stepU =  255.0f / 3 * ((TESTER_STEP_U == TesterStepU::_500mV) ? 2 : 0.4f) / 5;
+        stepU =  255.0f / 3 * ((TESTER_STEP_U == Tester::StepU::_500mV) ? 2 : 0.4f) / 5;
     }
     else
     {
-        stepU = 255.0f / 3 * ((TESTER_STEP_I == TesterStepI::_20mA) ? 2 : 0.4f) / 5;
+        stepU = 255.0f / 3 * ((TESTER_STEP_I == Tester::StepI::_20mA) ? 2 : 0.4f) / 5;
     }
 }
