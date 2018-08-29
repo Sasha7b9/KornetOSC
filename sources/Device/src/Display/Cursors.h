@@ -31,4 +31,6 @@ public:
 
     /// ѕолучить позицию курсора напр€жени€
     static float PosU(Chan ch, int numCur);
+    /// ¬озвращает true,если нужно рисовать курсоры
+    static bool  NecessaryDraw();
 };

@@ -10,13 +10,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool sCursors_NecessaryDrawCursors()
-{
-    return (CURsU_ENABLED || CURsT_ENABLED) && (CURS_SHOW || Menu::GetNameOpenedPage() == PageSB_Cursors_Set);
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *sCursors_GetCursVoltage(Chan source, int numCur, char buffer[20])
 {
     float voltage = MathFPGA::VoltageCursor(Cursors::PosU(source, numCur), SET_RANGE(source), SET_RSHIFT(source));
