@@ -261,9 +261,9 @@ void Settings::Reset()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *NameRange(Range range)
+pString Range::Name() const
 {
-    static const char *names[Range::Size][Language::Num] =
+    static pString names[Range::Size][Language::Num] =
     {
         {"2м¬",     "2mV"},
         {"5м¬",     "5mV"},
@@ -280,13 +280,13 @@ const char *NameRange(Range range)
         {"20¬",     "20V"}
     };
 
-    return names[range][LANG];
+    return names[value][LANG];
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *NameTBase(TBase tBase)
+pString TBase::Name() const
 {
-    static const char *names[TBase::Size][Language::Num] =
+    static pString names[TBase::Size][Language::Num] =
     {
         {"2нс",     "2ns"},
         {"5нс",     "5ns"},
@@ -320,7 +320,7 @@ const char *NameTBase(TBase tBase)
         {"10с",     "10s"}
     };
 
-    return names[tBase][LANG];
+    return names[value][LANG];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

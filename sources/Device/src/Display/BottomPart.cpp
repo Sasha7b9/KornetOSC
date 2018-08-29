@@ -182,7 +182,7 @@ int BottomPart::WriteChannel(Chan ch, int x, int y)
 
     x += 8;
 
-    Painter::DrawText(x, y, NameRange(SET_RANGE(ch)));
+    Painter::DrawText(x, y, SET_RANGE(ch).Name());
 
     x += 22;
 
@@ -198,7 +198,7 @@ int BottomPart::WriteChannel(Chan ch, int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void BottomPart::WriteTBase(int x, int y)
 {
-    Painter::DrawText(x, y, NameTBase(SET_TBASE), Color::FILL);
+    Painter::DrawText(x, y, SET_TBASE.Name(), Color::FILL);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
