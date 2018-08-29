@@ -40,6 +40,41 @@ struct ENumPointsFPGA
     operator uint8() const { return (uint8)value; };
 };
 
+/// Что показывать в режиме Внутр ЗУ - считанный или записанный сигнал.
+struct ModeShowIntMem
+{
+    enum E
+    {
+        Direct,  ///< Показывать данные реального времени.
+        Saved,   ///< Показывать сохранённые данные.
+        Both     ///< Показывать оба сигнала.
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Как сохранять данные на флешку.
+struct ModeSaveSignal
+{
+    enum E
+    {
+        BMP,
+        TXT
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Режим наименования файлов.
+struct FileNamingMode
+{
+    enum E
+    {
+        Mask,        ///< Именовать по маске.
+        Manually     ///< Именовать вручную.
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+
 #define FILE_NAME_MASK          (set.mem_fileNameMask)
 #define FILE_NAME               (set.mem_fileName)
 #define INDEX_SYMBOL            (set.mem_indexCurSymbolNameMask)
