@@ -11,6 +11,7 @@
 #include "Menu/Pages/PageTime.h"
 #include "Menu/Pages/PageChannels.h"
 #include "Menu/Pages/PageTrig.h"
+#include "Device.h"
 #include "Log.h"
 
 
@@ -263,6 +264,10 @@ void Handlers::ChannelB()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Function()
 {
+    if(event.type == TypePress::Release)
+    {
+        Device::ChangeMode();
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

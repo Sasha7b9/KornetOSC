@@ -39,6 +39,8 @@ void Device::Init()
     Menu::Init();
 
     FPGA::OnPressStart();
+
+    Multimeter::Init();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -46,17 +48,24 @@ void Device::Update()
 {
     START_MULTI_MEASUREMENT();
 
+    if(currentMode == Mode_Multimeter)
+    {
+        Multimeter::Update();
+    }
+    else
+    {
+        Display::Update();
+
+        FPGA::Update();
+
+        Menu::SaveSettings();
+
+        Tester::Update();
+    }
+
     Menu::Update();
 
-    Display::Update();
-
     Decoder::Update();
-
-    FPGA::Update();
-
-    Menu::SaveSettings();
-
-    Tester::Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

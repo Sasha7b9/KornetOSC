@@ -1,4 +1,5 @@
 #pragma once
+#include "defines.h"
 
 /// Режим измерений мультиметра
 struct MultiMeasures
@@ -38,10 +39,12 @@ struct MultiRangeCV
         _20V,
         _500V
     } value;
+    MultiRangeCV(E v = _500V) : value(v) {};
+    operator uint8() const { return (uint8)value; };
 };
 
 /// Предел измерения переменного напряжения
-struct RangeVV
+struct MultiRangeVV
 {
     enum E
     {
@@ -49,10 +52,12 @@ struct RangeVV
         _20V,
         _400V
     } value;
+    MultiRangeVV(E v = _400V) : value(v) {};
+    operator uint8() const { return (uint8)value; };
 };
 
 /// Предел измерения сопротивленя постоянному току
-struct RangeResistance
+struct MultiRangeResistance
 {
     enum E
     {
@@ -61,6 +66,11 @@ struct RangeResistance
         _200k,
         _10M
     } value;
+    MultiRangeResistance(E v = _10M) : value(v) {};
+    operator uint8() const { return (uint8)value; };
 };
 
-#define MULTI_MEASURE (set.multi_meas)
+#define MULTI_MEASURE           (set.multi_meas)
+#define MULTI_RANGE_VV          (set.multi_rangeVV)
+#define MULTI_RANGE_CV          (set.multi_rangeCV)
+#define MULTI_RANGE_RESISTANCE  (set.multi_rangeResist)

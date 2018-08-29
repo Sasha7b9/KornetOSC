@@ -258,6 +258,9 @@ public:
     // Настройки мультиметра
     MultiAVP        multi_avp;
     MultiMeasures   multi_meas;
+    MultiRangeCV    multi_rangeCV;
+    MultiRangeVV    multi_rangeVV;
+    MultiRangeResistance multi_rangeResist;
 };
 
 #pragma pack(pop)

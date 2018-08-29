@@ -24,12 +24,4 @@ public:
         static bool SetTimeAndData(int8 day, int8 month, int8 year, int8 hours, int8 minutes, int8 seconds);
         static void SetCorrection(int8 correction);
     };
-
-    class UART
-    {
-    public:
-        static void Init();
-        static UART_HandleTypeDef handler;
-        static const int SIZE_BUFFER = 10;
-    };
 };
