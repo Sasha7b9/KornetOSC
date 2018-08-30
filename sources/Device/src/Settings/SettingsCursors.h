@@ -10,19 +10,6 @@
  *  @{
  */
 
- /// Режим слежения курсоров.
-struct CursLookMode
-{
-    enum E
-    {
-        None,      ///< Курсоры не следят.
-        Voltage,   ///< Курсоры следят за напряжением автоматически.
-        Time,      ///< Курсоры следят за временем автоматически.
-        Both       ///< Курсоры следят за временем и напряжением, в зависимости от того, какой курсоры вращали последним.
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 /// Каким курсором управлять
 struct CursCntrl
 {
@@ -66,15 +53,6 @@ struct CursCntrl
 #define dUperc(ch)                  (set.curs_deltaU100percents[ch])
 /// Абсолютное значение времени, соотвествующее 100%
 #define dTperc(ch)                  (set.curs_deltaT100percents[ch])
-
-/// Режим слежения за курсорами
-#define CURS_LOOK_MODE(ch)          (set.curs_lookMode[ch])
-/// Включено слежение за курсорами напряжения
-#define CURS_LOOK_U(ch)             (CURS_LOOK_MODE(ch) == CursLookMode::Voltage)
-/// Включено слежение за курсорами времени
-#define CURS_LOOK_T(ch)             (CURS_LOOK_MODE(ch) == CursLookMode::Time)
-/// Включено слежение за курсорами времени и напряжения
-#define CURS_LOOK_BOTH(ch)          (CURS_LOOK_MODE(ch) == CursLookMode::Both)
 
 #define CURS_SHOW                   (set.curs_showCursors)
 

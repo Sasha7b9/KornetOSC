@@ -17,11 +17,19 @@
 /// Ручка УСТАНОВКА управляет курсорами времени
 #define CURS_ACTIVE_T               (CURS_ACTIVE == Cursors::Active::T)
 
-
 /// Позиция курсора напряжения
 #define CURsU_POS(ch, num)          (set.curs_posCurU[ch][num])
 /// Позиция куросра времени
 #define CURsT_POS(ch, num)          Cursors::PosT(ch, num)
+
+/// Режим слежения за курсорами
+#define CURS_LOOK_MODE(ch)          (set.curs_lookMode[ch])
+/// Включено слежение за курсорами напряжения
+#define CURS_LOOK_U(ch)             (CURS_LOOK_MODE(ch) == Cursors::LookMode::Voltage)
+/// Включено слежение за курсорами времени
+#define CURS_LOOK_T(ch)             (CURS_LOOK_MODE(ch) == Cursors::LookMode::Time)
+/// Включено слежение за курсорами времени и напряжения
+#define CURS_LOOK_BOTH(ch)          (CURS_LOOK_MODE(ch) == Cursors::LookMode::Both)
 
 
 class Cursors
@@ -48,6 +56,19 @@ public:
             None
         } value;
         Active(E v) : value(v) {};
+        operator uint8() const { return (uint8)value; };
+    };
+
+    /// Режим слежения курсоров.
+    struct LookMode
+    {
+        enum E
+        {
+            None,      ///< Курсоры не следят.
+            Voltage,   ///< Курсоры следят за напряжением автоматически.
+            Time,      ///< Курсоры следят за временем автоматически.
+            Both       ///< Курсоры следят за временем и напряжением, в зависимости от того, какой курсоры вращали последним.
+        } value;
         operator uint8() const { return (uint8)value; };
     };
 
