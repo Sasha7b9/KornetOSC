@@ -6,13 +6,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int sDisplay_NumSignalsInS()
-{
-    return Tables_ENUMtoENumSignalsInSec(ENUM_SIGNALS_IN_SEC);
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void sDisplay_SetNumSignalsInS(int numSignalsInS)
 {
     ENUM_SIGNALS_IN_SEC = Tables_ENumSignalsInSecToENUM(numSignalsInS);

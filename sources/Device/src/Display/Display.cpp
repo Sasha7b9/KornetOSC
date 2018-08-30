@@ -18,6 +18,7 @@
 #include "BottomPart.h"
 #include "FPGA/RShift.h"
 #include "Multimeter/Multimeter.h"
+#include "Tables.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -408,4 +409,10 @@ Display::ModeAveraging Display::GetModeAveraging()
         return ModeAveraging::Accurately;
     }
     return MODE_AVE;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Display::NumSignalsInS()
+{
+    return Tables_ENUMtoENumSignalsInSec(ENUM_SIGNALS_IN_SEC);
 }
