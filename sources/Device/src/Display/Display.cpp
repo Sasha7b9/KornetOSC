@@ -416,3 +416,9 @@ int Display::NumSignalsInS()
 {
     return Tables_ENUMtoENumSignalsInSec(ENUM_SIGNALS_IN_SEC);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Display::SetNumSignalsInS(int numSignalsInS)
+{
+    ENUM_SIGNALS_IN_SEC = Tables_ENumSignalsInSecToENUM(numSignalsInS);
+}

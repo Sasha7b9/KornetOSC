@@ -354,4 +354,6 @@ public:
     static ModeAveraging GetModeAveraging();
     /// ¬озвращает ограничение частоты кадров
     static int NumSignalsInS();
+    /// ”станавливает ограничение частоты кадров
+    static void SetNumSignalsInS(int maxFPS);
 };
