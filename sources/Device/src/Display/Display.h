@@ -360,4 +360,6 @@ public:
     static int NumPointSmoothing();
     /// Возвращает адрес первой и последней точки на экране в координатах экрана
     static BitSet64 PointsOnDisplay();
+    /// \brief Возращает адрес первой и последней точки в координатах экрана
+    static BitSet64 BytesOnDisplay();
 };

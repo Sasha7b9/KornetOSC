@@ -279,7 +279,7 @@ static void FillDataNormal(StructDataDrawing *dataStruct, Chan ch)
         return;
     }
 
-    BitSet64 points = sDisplay_BytesOnDisplay();
+    BitSet64 points = Display::BytesOnDisplay();
 
     uint8 *dest = dataStruct->data[ch];
     uint8 *src = &OUT(ch)[points.word0];

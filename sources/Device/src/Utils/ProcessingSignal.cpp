@@ -1060,7 +1060,7 @@ void Processing::SetData(bool needSmoothing)
 {
     isSet = true;
 
-    BitSet64 points = sDisplay_BytesOnDisplay();
+    BitSet64 points = Display::BytesOnDisplay();
     firstByte = points.sword0;
     lastByte = points.sword1;
 

@@ -465,3 +465,14 @@ BitSet64 Display::PointsOnDisplay()
 
     return retValue;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+BitSet64 Display::BytesOnDisplay()
+{
+    BitSet64 retValue;
+
+    retValue.sword0 = SHIFT_IN_MEMORY;
+    retValue.sword1 = retValue.sword0 + (SET_PEAKDET_EN ? 281 * 2 : 281);
+
+    return retValue;
+}
