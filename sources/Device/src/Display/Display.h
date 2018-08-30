@@ -32,6 +32,11 @@
 #define MODE_ACCUM_RESET            (MODE_ACCUM == Display::ModeAccumulation::Reset)
 #define MODE_ACCUM_NO_RESET         (MODE_ACCUM == Display::ModeAccumulation::NoReset)
 
+#define ENUM_ACCUM                  (set.disp_ENumAccum)
+#define ENUM_ACCUM_INF              (ENUM_ACCUM == ENumAccum_Infinity)
+#define NUM_ACCUM                   (1 << (int)ENUM_ACCUM)                   /* Возвращает число накоплений */
+#define IN_ACCUM_MODE               (ENUM_ACCUM > ENumAccum_1)
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class LogEntity
@@ -275,6 +280,24 @@ public:
         {
             NoReset,   /// В этом режиме показываются строго N последних.
             Reset      /// В этом режиме набираются N последних и потом сбрасываются.
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
+    /// Количество накоплений.
+    struct ENumAccum
+    {
+        enum E
+        {
+            _1,
+            _2,
+            _4,
+            _8,
+            _16,
+            _32,
+            _64,
+            _128,
+            _Infinity
         } value;
         operator uint8() const { return (uint8)value; };
     };

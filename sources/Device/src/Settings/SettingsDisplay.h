@@ -14,24 +14,6 @@
  */
 
 
-/// Количество накоплений.
-struct ENumAccum
-{
-    enum E
-    {
-        _1,
-        _2,
-        _4,
-        _8,
-        _16,
-        _32,
-        _64,
-        _128,
-        _Infinity
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 /// Количество усреднений по измерениям.
 struct ENumAverage
 {
@@ -68,11 +50,6 @@ struct ColorScheme
 #define LAST_AFFECTED_CH            (set.disp_lastAffectedChannel)
 #define LAST_AFFECTED_CH_IS_A       (LAST_AFFECTED_CH.IsA())
 #define DISPLAY_ORIENTATION         (set.dbg_Orientation)
-
-#define ENUM_ACCUM                  (set.disp_ENumAccum)
-#define ENUM_ACCUM_INF              (ENUM_ACCUM == ENumAccum_Infinity)
-#define NUM_ACCUM                   (1 << (int)ENUM_ACCUM)                   /* Возвращает число накоплений */
-#define IN_ACCUM_MODE               (ENUM_ACCUM > ENumAccum_1)
 
 #define MODE_AVE                    (set.disp_modeAveraging)
 #define ENUM_AVE                    (set.disp_ENumAverage)

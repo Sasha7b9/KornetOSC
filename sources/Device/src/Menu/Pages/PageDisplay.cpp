@@ -186,7 +186,7 @@ DEF_CHOICE_2(       cAccum_Mode,                                                
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Accum_Clear()
 {
-    return ENUM_ACCUM != ENumAccum::_1 && !MODE_ACCUM_NO_RESET;
+    return ENUM_ACCUM != Display::ENumAccum::_1 && !MODE_ACCUM_NO_RESET;
 }
 
 void PageDisplay::OnPress_Accumulation_Clear()
