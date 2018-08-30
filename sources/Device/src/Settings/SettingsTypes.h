@@ -6,29 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-/// Положение точки синхронизация на сигнале.
-struct TPos
-{
-    enum
-    {
-        Left,          ///< Привязка к левому краю.
-        Center,        ///< Привязка к центру.
-        Right          ///< Привязка к правому краю.
-    };
-    COMMON_ENUM;
-};
-
-/// Что делать при нажатии кнопки ПАМЯТЬ.
-struct ModeBtnMemory
-{
-    enum
-    {
-        Menu,     ///< Будет открывааться соответствующая страница меню.
-        Save      ///< Сохранение содержимого экрана на флешку.
-    };
-    COMMON_ENUM;
-};
-
 struct FuncModeDraw
 {
     enum

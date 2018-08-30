@@ -10,6 +10,17 @@
  *  @{
  */
 
+ /// Что делать при нажатии кнопки ПАМЯТЬ.
+struct ModeBtnMemory
+{
+    enum E
+    {
+        Menu,     ///< Будет открывааться соответствующая страница меню.
+        Save      ///< Сохранение содержимого экрана на флешку.
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
  /// Режим работы.
 struct ModeWork
 {

@@ -195,7 +195,9 @@ static const Settings defaultSettings =
 
                                 // Настройки мультиметра
     /* multi_avp */         MultiAVP::Off,
-    /* multi_meas */        MultiMeasures::VariableVoltage
+    /* multi_meas */        MultiMeasures::VariableVoltage,
+    /* multi_rangeCV */     MultiRangeCV::_2V,
+    /* multi_rangeVV */     MultiRangeVV::_2V
 };
 
 Settings set = defaultSettings;
