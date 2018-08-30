@@ -25,7 +25,7 @@ static const Settings defaultSettings =
     /* disp_showStringNavigation; */    Display::ShowStrNavi::Temp,
     /* disp_ENumMinMax;           */    Display::ENumMinMax::_1,
     /* disp_modeAveraging;        */    Display::ModeAveraging::Accurately,
-    /* disp_ENumAverage;          */    ENumAverage::_1,
+    /* disp_ENumAverage;          */    Display::ENumAverage::_1,
     /* disp_ENumAccum;            */    Display::ENumAccum::_1,
     /* disp_modeAccumulation;     */    Display::ModeAccumulation::NoReset,
     /* disp_ENumSmoothing;        */    Display::ENumSmoothing::Disable,

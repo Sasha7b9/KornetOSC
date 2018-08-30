@@ -14,25 +14,6 @@
  */
 
 
-///  оличество усреднений по измерени€м.
-struct ENumAverage
-{
-    enum E
-    {
-        _1,
-        _2,
-        _4,
-        _8,
-        _16,
-        _32,
-        _64,
-        _128,
-        _256,
-        _512
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 struct ColorScheme
 {
     enum E
@@ -50,11 +31,6 @@ struct ColorScheme
 #define LAST_AFFECTED_CH            (set.disp_lastAffectedChannel)
 #define LAST_AFFECTED_CH_IS_A       (LAST_AFFECTED_CH.IsA())
 #define DISPLAY_ORIENTATION         (set.dbg_Orientation)
-
-#define MODE_AVE                    (set.disp_modeAveraging)
-#define ENUM_AVE                    (set.disp_ENumAverage)
-#define NUM_AVE                     (1 << (int)ENUM_AVE)
-#define IN_AVERAGING_MODE           (ENUM_AVE > ENumAverage::_1 && (!IN_P2P_MODE))
 
 #define ALT_MARKERS                 (set.disp_altMarkers)
 #define ALT_MARKERS_SHOW            (ALT_MARKERS == AltMarkers::Show)

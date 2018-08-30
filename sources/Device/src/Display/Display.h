@@ -37,6 +37,11 @@
 #define NUM_ACCUM                   (1 << (int)ENUM_ACCUM)                   /* Возвращает число накоплений */
 #define IN_ACCUM_MODE               (ENUM_ACCUM > ENumAccum_1)
 
+#define MODE_AVE                    (set.disp_modeAveraging)
+#define ENUM_AVE                    (set.disp_ENumAverage)
+#define NUM_AVE                     (1 << (int)ENUM_AVE)
+#define IN_AVERAGING_MODE           (ENUM_AVE > Display::ENumAverage::_1 && (!IN_P2P_MODE))
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class LogEntity
@@ -300,6 +305,25 @@ public:
             _Infinity
         } value;
         operator uint8() const { return (uint8)value; };
+    };
+
+    /// Количество усреднений по измерениям.
+    struct ENumAverage
+    {
+        enum E
+        {
+            _1,
+            _2,
+            _4,
+            _8,
+            _16,
+            _32,
+            _64,
+            _128,
+            _256,
+            _512
+        } value;
+        operator uint8() const  { return (uint8)value; };
     };
 
     static void SetOrientation(Orientation orientation);
