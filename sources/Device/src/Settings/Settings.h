@@ -18,6 +18,7 @@
 #include "Display/Cursors.h"
 #include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
+#include "Display/Grid.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,9 +74,9 @@ public:
     ModeAccumulation    disp_modeAccumulation;              ///< Режим накопления сигналов.
     ENumSmoothing       disp_ENumSmoothing;                 ///< Перечисление количества точек для скользящего фильтра.
     ENumSignalsInSec    disp_ENumSignalsInSec;              ///< Перечисление числа считываний сигнала в секунда.
-    TypeGrid            disp_typeGrid;                      ///< Тип сетки
+    Grid::Type                  disp_typeGrid;                      ///< Тип сетки
     int16               disp_brightnessGrid;                ///< Яркость сетки от 0 до 100.
-    Display::LinkingRShift       disp_linkingRShift;                 ///< Тип привязки к смещению по вертикали.
+    Display::LinkingRShift      disp_linkingRShift;                 ///< Тип привязки к смещению по вертикали.
     int16               disp_brightness;                    ///< Яркость дисплея.
     int16               disp_timeShowLevels;                ///< Время, в течение которого нужно показывать уровин смещения.
     int16               disp_timeMessages;                  ///< Время в секундах, на которое сообщение остаётся на экрне.

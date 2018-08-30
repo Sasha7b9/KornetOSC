@@ -14,20 +14,6 @@
  */
 
 
-/// Тип сетки на экране.
-struct TypeGrid
-{
-    enum E
-    {
-        _1,
-        _2,
-        _3,
-        _4,
-        Size
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 /// Ограничение FPS.
 struct ENumSignalsInSec
 {
@@ -126,12 +112,6 @@ struct ColorScheme
 #define LAST_AFFECTED_CH            (set.disp_lastAffectedChannel)
 #define LAST_AFFECTED_CH_IS_A       (LAST_AFFECTED_CH.IsA())
 #define DISPLAY_ORIENTATION         (set.dbg_Orientation)
-
-#define TYPE_GRID                   (set.disp_typeGrid)
-#define TYPE_GRID_1                 (TYPE_GRID == TypeGrid::_1)
-#define TYPE_GRID_2                 (TYPE_GRID == TypeGrid::_2)
-#define TYPE_GRID_3                 (TYPE_GRID == TypeGrid::_3)
-#define TYPE_GRID_4                 (TYPE_GRID == TypeGrid::_4)
 
 #define ENUM_ACCUM                  (set.disp_ENumAccum)
 #define ENUM_ACCUM_INF              (ENUM_ACCUM == ENumAccum_Infinity)
