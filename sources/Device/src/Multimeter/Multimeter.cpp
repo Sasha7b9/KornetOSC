@@ -15,6 +15,7 @@ static uint8 bufferUART[10];
 #define SIZE_OUT 15
 static char out[SIZE_OUT];
 
+static uint numMeasures = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Multimeter::SetMeasure(uint8 buf[10])
@@ -25,6 +26,8 @@ void Multimeter::SetMeasure(uint8 buf[10])
     buffer[4] |= 0x30;
     buffer[5] |= 0x30;
     buffer[6] |= 0x30;
+
+    numMeasures++;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -66,14 +69,9 @@ void Multimeter::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Multimeter::Update()
 {
-    static uint prevTime = 0;
-
-    if(TIME_MS - prevTime > 500)
-    {
-        uint8 send[4] = {0x02, 'V', '0', 0x0a};
-        HAL_UART_Transmit(&handlerUART, send, 4, 100);
-        prevTime = TIME_MS;
-    }
+    uint8 send[4] = {0x02, 'V', '0', 0x0a};
+    HAL_UART_Transmit(&handlerUART, send, 4, 100);
+    HAL_UART_Receive_IT(&handlerUART, bufferUART, 10);
 
     Graphics::Update();
 }
@@ -108,6 +106,10 @@ void Multimeter::Graphics::Update()
 
         Painter::DrawBigText(30, 30, 5, out, Color::FILL);
     }
+
+    Painter::SetColor(Color::FILL);
+
+    Painter::DrawFormatText(10, 200, "%d", numMeasures);
 
     Painter::EndScene();
 }
@@ -273,8 +275,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *)
 {
     Multimeter::SetMeasure(bufferUART);
 
-    if (HAL_UART_Receive_IT(&Multimeter::handlerUART, bufferUART, 10) != HAL_OK)
+    HAL_UART_Receive_IT(&Multimeter::handlerUART, bufferUART, 10);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+    if(huart == &Multimeter::handlerUART)
     {
-        ERROR_HANDLER();
+        huart = &Multimeter::handlerUART;
     }
 }
