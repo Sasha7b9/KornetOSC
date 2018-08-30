@@ -14,25 +14,6 @@
  */
 
 
-/// Количество точек для расчёта сглаживания.
-struct ENumSmoothing
-{
-    enum E
-    {
-        Disable,
-        _2points,
-        _3points,
-        _4points,
-        _5points,
-        _6points,
-        _7points,
-        _8points,
-        _9points,
-        _10points
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 struct ModeAccumulation
 {
     enum E
@@ -111,10 +92,6 @@ struct ColorScheme
 #define ENUM_AVE                    (set.disp_ENumAverage)
 #define NUM_AVE                     (1 << (int)ENUM_AVE)
 #define IN_AVERAGING_MODE           (ENUM_AVE > ENumAverage::_1 && (!IN_P2P_MODE))
-
-#define ENUM_SMOOTHING              (set.disp_ENumSmoothing)
-#define NUM_SMOOTHING               (sDisplay_NumPointSmoothing())
-#define SMOOTHING_ENABLED           (ENUM_SMOOTHING != ENumSmoothing::Disable)
 
 #define ALT_MARKERS                 (set.disp_altMarkers)
 #define ALT_MARKERS_SHOW            (ALT_MARKERS == AltMarkers::Show)

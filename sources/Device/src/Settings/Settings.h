@@ -72,7 +72,7 @@ public:
     ENumAverage         disp_ENumAverage;                   ///< Число усреднений сигнала.
     ENumAccum           disp_ENumAccum;                     ///< Число накоплений сигнала на экране.
     ModeAccumulation    disp_modeAccumulation;              ///< Режим накопления сигналов.
-    ENumSmoothing       disp_ENumSmoothing;                 ///< Перечисление количества точек для скользящего фильтра.
+    Display::ENumSmoothing       disp_ENumSmoothing;                 ///< Перечисление количества точек для скользящего фильтра.
     Display::ENumSignalsInSec   disp_ENumSignalsInSec;              ///< Перечисление числа считываний сигнала в секунда.
     Grid::Type                  disp_typeGrid;                      ///< Тип сетки
     int16               disp_brightnessGrid;                ///< Яркость сетки от 0 до 100.

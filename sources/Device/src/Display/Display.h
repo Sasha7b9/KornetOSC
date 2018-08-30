@@ -22,7 +22,12 @@
 
 #define ENUM_MIN_MAX                (set.disp_ENumMinMax)
 #define MIN_MAX_ENABLED             (ENUM_MIN_MAX != Display::ENumMinMax::_1)
-#define NUM_MIN_MAX                 (1 << (int)ENUM_MIN_MAX)                /* Возвращает количество измерений сигналов для расчёта минимумов и максимумов. */
+#define NUM_MIN_MAX                 (1 << (int)ENUM_MIN_MAX)        /* Возвращает количество измерений сигналов для расчёта минимумов и максимумов. */
+
+#define ENUM_SMOOTHING              (set.disp_ENumSmoothing)
+#define NUM_SMOOTHING               (sDisplay_NumPointSmoothing())
+#define SMOOTHING_ENABLED           (ENUM_SMOOTHING != Display::ENumSmoothing::Disable)
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -239,6 +244,25 @@ public:
             _1
         } value;
         ENumSignalsInSec(E v = _25) : value(v) { };
+        operator uint8() const { return (uint8)value; };
+    };
+
+    /// Количество точек для расчёта сглаживания.
+    struct ENumSmoothing
+    {
+        enum E
+        {
+            Disable,
+            _2points,
+            _3points,
+            _4points,
+            _5points,
+            _6points,
+            _7points,
+            _8points,
+            _9points,
+            _10points
+        } value;
         operator uint8() const { return (uint8)value; };
     };
 
