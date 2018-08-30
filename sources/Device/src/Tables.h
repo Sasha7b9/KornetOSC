@@ -11,9 +11,9 @@ typedef enum
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-ENumSignalsInSec Tables_ENumSignalsInSecToENUM(int numSignalsInSec);
+Display::ENumSignalsInSec Tables_ENumSignalsInSecToENUM(int numSignalsInSec);
 
-int Tables_ENUMtoENumSignalsInSec(ENumSignalsInSec numSignalsInSec);
+int Tables_ENUMtoENumSignalsInSec(Display::ENumSignalsInSec numSignalsInSec);
 
 const char *Tables_GetTBaseString(TBase tBase);
 

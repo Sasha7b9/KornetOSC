@@ -29,7 +29,7 @@ static const Settings defaultSettings =
     /* disp_ENumAccum;            */    ENumAccum::_1,
     /* disp_modeAccumulation;     */    ModeAccumulation::NoReset,
     /* disp_ENumSmoothing;        */    ENumSmoothing::Disable,
-    /* disp_ENumSignalsInSec;     */    ENumSignalsInSec::_25,
+    /* disp_ENumSignalsInSec;     */    Display::ENumSignalsInSec::_25,
     /* disp_typeGrid;             */    Grid::Type::_1,
     /* disp_brightnessGrid;       */    50,
     /* disp_linkingRShift;        */    Display::LinkingRShift::Position,

@@ -14,21 +14,6 @@
  */
 
 
-/// Ограничение FPS.
-struct ENumSignalsInSec
-{
-    enum E
-    {
-        _25,
-        _10,
-        _5,
-        _2,
-        _1
-    } value;
-    ENumSignalsInSec(E v = _25) : value(v) {};
-    operator uint8() const { return (uint8)value; };
-};
-
 /// Количество точек для расчёта сглаживания.
 struct ENumSmoothing
 {
