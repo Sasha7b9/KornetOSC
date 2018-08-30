@@ -27,7 +27,7 @@ static const Settings defaultSettings =
     /* disp_modeAveraging;        */    Display::ModeAveraging::Accurately,
     /* disp_ENumAverage;          */    ENumAverage::_1,
     /* disp_ENumAccum;            */    ENumAccum::_1,
-    /* disp_modeAccumulation;     */    ModeAccumulation::NoReset,
+    /* disp_modeAccumulation;     */    Display::ModeAccumulation::NoReset,
     /* disp_ENumSmoothing;        */    Display::ENumSmoothing::Disable,
     /* disp_ENumSignalsInSec;     */    Display::ENumSignalsInSec::_25,
     /* disp_typeGrid;             */    Grid::Type::_1,

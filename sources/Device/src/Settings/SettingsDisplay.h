@@ -14,16 +14,6 @@
  */
 
 
-struct ModeAccumulation
-{
-    enum E
-    {
-        NoReset,   /// В этом режиме показываются строго N последних.
-        Reset      /// В этом режиме набираются N последних и потом сбрасываются.
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 /// Количество накоплений.
 struct ENumAccum
 {
@@ -83,10 +73,6 @@ struct ColorScheme
 #define ENUM_ACCUM_INF              (ENUM_ACCUM == ENumAccum_Infinity)
 #define NUM_ACCUM                   (1 << (int)ENUM_ACCUM)                   /* Возвращает число накоплений */
 #define IN_ACCUM_MODE               (ENUM_ACCUM > ENumAccum_1)
-
-#define MODE_ACCUM                  (set.disp_modeAccumulation)
-#define MODE_ACCUM_RESET            (MODE_ACCUM == ModeAccumulation::Reset)
-#define MODE_ACCUM_NO_RESET         (MODE_ACCUM == ModeAccumulation::NoReset)
 
 #define MODE_AVE                    (set.disp_modeAveraging)
 #define ENUM_AVE                    (set.disp_ENumAverage)

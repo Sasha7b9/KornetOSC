@@ -28,6 +28,9 @@
 #define NUM_SMOOTHING               (sDisplay_NumPointSmoothing())
 #define SMOOTHING_ENABLED           (ENUM_SMOOTHING != Display::ENumSmoothing::Disable)
 
+#define MODE_ACCUM                  (set.disp_modeAccumulation)
+#define MODE_ACCUM_RESET            (MODE_ACCUM == Display::ModeAccumulation::Reset)
+#define MODE_ACCUM_NO_RESET         (MODE_ACCUM == Display::ModeAccumulation::NoReset)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -262,6 +265,16 @@ public:
             _8points,
             _9points,
             _10points
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
+    struct ModeAccumulation
+    {
+        enum E
+        {
+            NoReset,   /// В этом режиме показываются строго N последних.
+            Reset      /// В этом режиме набираются N последних и потом сбрасываются.
         } value;
         operator uint8() const { return (uint8)value; };
     };
