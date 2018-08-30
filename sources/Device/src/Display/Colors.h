@@ -103,6 +103,17 @@ private:
         COLOR_FLASH_01 = 34,
         COLOR_INVERSE = 35
     };
+
+public:
+
+    struct Scheme
+    {
+        enum E
+        {
+            WhiteLetters,   ///< В этом случае заголовки элементов меню пишутся белым - не очень хорошо видно снизу
+            BlackLetters    ///< В этом случае заголовки элементов меню пишутся чёрным - не очень красиво выглядит
+        } value;
+    };
 };
 
 bool operator!=(const Color &left, const Color &right);

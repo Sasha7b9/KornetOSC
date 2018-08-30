@@ -19,6 +19,7 @@
 #include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
 #include "Display/Grid.h"
+#include "Display/Colors.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -170,7 +171,7 @@ public:
     // Меню СЕРВИС
 
     Language            serv_lang;
-    ColorScheme         serv_colorScheme;
+    Color::Scheme       serv_colorScheme;
     bool                serv_recorder;                  ///< Включён ли режим регистратора.
     CalibratorMode      serv_calibratorMode;            ///< Режим работы калибратора.
     bool                serv_soundEnable;               ///< Включены ли звуки.

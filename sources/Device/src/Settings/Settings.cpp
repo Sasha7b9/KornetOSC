@@ -114,7 +114,7 @@ static const Settings defaultSettings =
                                             // Ìåíþ ÑÅÐÂÈÑ
     
     /* serv_lang;           */          Language::RU,
-    /* serv_colorScheme;    */          ColorScheme::WhiteLetters,
+    /* serv_colorScheme;    */          Color::Scheme::WhiteLetters,
     /* serv_recorder;       */          false,
     /* serv_calibratorMode; */          CalibratorMode::Freq,
     /* serv_soundEnable;    */          true,
