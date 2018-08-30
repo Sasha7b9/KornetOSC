@@ -62,7 +62,7 @@ public:
                                                             ///< вычисляется от первого байта, следующего за этим полем
     ModeDrawSignal      disp_modeDrawSignal;
     ThicknessSignal     disp_thickness;                     ///< Толщина линии, которой рисуется сигнал
-    Background          disp_background;                    ///< Цвет фона.
+    Display::Background disp_background;                    ///< Цвет фона.
     ShowStrNavi         disp_showStringNavigation;          ///< Режим показа строки навигации меню.
     ENumMinMax          disp_ENumMinMax;                    ///< Перечисление количества измерений для определения минимумов и масимумов.
     ModeAveraging       disp_modeAveraging;                 ///< Тип усреднений по измерениям.

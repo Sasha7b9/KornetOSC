@@ -21,7 +21,7 @@ static const Settings defaultSettings =
 
     /* disp_modeDrawSignal;       */    ModeDrawSignal::Lines,
     /* disp_thickness;            */    ThicknessSignal::_1,
-    /* disp_background;           */    Background::Black,
+    /* disp_background;           */    Display::Background::Black,
     /* disp_showStringNavigation; */    ShowStrNavi::Temp,
     /* disp_ENumMinMax;           */    ENumMinMax::_1,
     /* disp_modeAveraging;        */    ModeAveraging::Accurately,

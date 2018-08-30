@@ -7,6 +7,11 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define BACKGROUND                  (set.disp_background)
+#define BACKGROUND_BLACK            (BACKGROUND == Display::Background::Black)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class LogEntity
 {
     friend class Log;
@@ -104,4 +109,16 @@ private:
     static void DrawDataTester(int numStep, int x, int y);
 
     static Key key;
+
+public:
+    /// Выбор цвета фона.
+    struct Background
+    {
+        enum E
+        {
+            Black,
+            White
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
 };

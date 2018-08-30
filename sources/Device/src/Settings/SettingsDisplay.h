@@ -214,6 +214,18 @@ struct ShowStrNavi
     operator uint8() const { return (uint8)value; };
 };
 
+/// Тип усреднений по измерениям
+struct ModeAveraging
+{
+    enum E
+    {
+        Accurately,   ///< Усреднять точно.
+        Around        ///< Усреднять приблизительно.
+    } value;
+    ModeAveraging(E v) : value(v) {};
+    operator uint8() const { return (uint8)value; };
+};
+
 
 #define THICKNESS_SIGNAL            (set.disp_thickness)
 #define THICKNESS_SIGNAL_IS_3       (THICKNESS_SIGNAL == ThicknessSignal::_3)
@@ -269,9 +281,6 @@ struct ShowStrNavi
 #define ALT_MARKERS_AUTO            (ALT_MARKERS == AltMarkers::AutoHide)
 
 #define LINKING_RSHIFT              (set.disp_linkingRShift)
-
-#define BACKGROUND                  (set.disp_background)
-#define BACKGROUND_BLACK            (BACKGROUND == Background::Black)
 
 #define MENU_AUTO_HIDE              (set.disp_menuAutoHide)
 

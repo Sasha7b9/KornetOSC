@@ -6,33 +6,6 @@
 #define COMMON_ENUM     uint8 value; operator uint8() const { return value; }; operator uint8() { return value; }
 
 
-/// Тип усреднений по измерениям
-struct ModeAveraging
-{
-    enum
-    {
-        Accurately,   ///< Усреднять точно.
-        Around        ///< Усреднять приблизительно.
-    };
-    ModeAveraging(uint8 v = Accurately) : value(v) {};
-    COMMON_ENUM;
-};
-
-/// Выбор цвета фона.
-struct Background
-{
-    enum
-    {
-        Black,
-        White
-    };
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    }
-};
-
 /// Положение точки синхронизация на сигнале.
 struct TPos
 {
