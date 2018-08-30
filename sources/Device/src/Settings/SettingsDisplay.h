@@ -14,18 +14,6 @@
  */
 
 
-/// Режим отображения дополнительных боковых маркеров смещения по напряжению.
-struct AltMarkers
-{
-    enum E
-    {
-        Hide,        /// Никода не выводить.
-        Show,        /// Всегда выводить.
-        AutoHide     /// Выводить и прятать через timeShowLevels.
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 /// Тип привязки к смещению по вертикали
 struct LinkingRShift
 {

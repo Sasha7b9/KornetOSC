@@ -36,7 +36,7 @@ static const Settings defaultSettings =
     /* disp_brightness;           */    100,
     /* disp_timeShowLevels;       */    5,
     /* disp_timeMessages;         */    5,
-    /* disp_altMarkers;           */    AltMarkers::AutoHide,
+    /* disp_altMarkers;           */    Display::AltMarkers::AutoHide,
     /* disp_menuAutoHide;         */    Menu::AutoHide::None,
     /* disp_shiftInMemory;        */    370,                       // Это соответствует 
     /* disp_lastAffectedChannel;  */    Chan::A,
