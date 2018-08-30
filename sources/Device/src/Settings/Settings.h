@@ -16,6 +16,7 @@
 #include "SettingsMultimeter.h"
 #include "Tester/Tester.h"
 #include "Display/Cursors.h"
+#include "FPGA/FPGA.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -192,9 +193,9 @@ public:
     // Настройки частотомера
 
     bool                freq_enable;
-    TimeCounting        freq_timeCounting;              ///< Время счёта частоты.
-    FreqClc             freq_freqClc;                   ///< Частота заполнения.
-    NumberPeriods       freq_numberPeriods;             ///< Количество периодов.
+    FPGA::FreqMeter::TimeCounting  freq_timeCounting;              ///< Время счёта частоты.
+    FPGA::FreqMeter::FreqClc       freq_freqClc;                   ///< Частота заполнения.
+    FPGA::FreqMeter::NumberPeriods freq_numberPeriods;             ///< Количество периодов.
 
     // Меню ОТЛАДКА
 
