@@ -10,20 +10,6 @@
  *  @{
  */
 
-///  аким курсором управл€ть
-struct CursCntrl
-{
-    enum E
-    {
-        _1,        ///< первым
-        _2,        ///< вторым
-        _1_2,      ///< обоими
-        Disable    ///< никаким
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
-
 #define CURSORS_SHOW_FREQ           (set.curs_showFreq)
 
 ///  урсоры какого канала сейчас активны
@@ -32,22 +18,6 @@ struct CursCntrl
 #define CURS_SOURCE_A               (CURS_SOURCE.IsA())
 /// јктивны курсоры канала B
 #define CURS_SOURCE_B               (CURS_SOURCE.IsB())
-
-#define CURsU_CNTRL_CH(ch)          (set.curs_cntrlU[ch])
-#define CURsU_CNTRL                 (CURsU_CNTRL_CH(CURS_SOURCE))
-#define CURsU_CNTRL_1               (CURsU_CNTRL == CursCntrl::_1)
-#define CURsU_CNTRL_2               (CURsU_CNTRL == CursCntrl::_2)
-#define CURsU_CNTRL_1_2             (CURsU_CNTRL == CursCntrl::_1_2)
-#define CURsU_DISABLED              (CURsU_CNTRL == CursCntrl::Disable)
-#define CURsU_ENABLED               (!CURsU_DISABLED)
-
-#define CURsT_CNTRL_CH(ch)          (set.curs_cntrlT[ch])
-#define CURsT_CNTRL                 (CURsT_CNTRL_CH(CURS_SOURCE))
-#define CURsT_CNTRL_1               (CURsT_CNTRL == CursCntrl::_1)
-#define CURsT_CNTRL_2               (CURsT_CNTRL == CursCntrl::_2)
-#define CURsT_CNTRL_1_2             (CURsT_CNTRL == CursCntrl::_1_2)
-#define CURsT_DISABLED              (CURsT_CNTRL == CursCntrl::Disable)
-#define CURsT_ENABLED               (!CURsT_DISABLED)
 
 /// јбсолютное значение напр€жени€, соответствующее 100%
 #define dUperc(ch)                  (set.curs_deltaU100percents[ch])

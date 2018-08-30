@@ -2,6 +2,7 @@
 #include "Keyboard/Keyboard.h"
 #include "Menu/MenuItems.h"
 #include "Settings/SettingsCursors.h"
+#include "Display/Cursors.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,6 +19,6 @@ void DrawMenuCursVoltage(int x, int y, bool top, bool bottom);
 
 void DrawMenuCursTime(int x, int y, bool left, bool right);
 /// Рассчитывает условия отрисовки УГО малых кнопок управления выбором курсорами.
-void CalculateConditions(int16 pos0, int16 pos1, CursCntrl cursCntrl, bool *cond0, bool *cond1);
+void CalculateConditions(int16 pos0, int16 pos1, Cursors::Control cursCntrl, bool *cond0, bool *cond1);
 
 extern const PageBase mainPage;
