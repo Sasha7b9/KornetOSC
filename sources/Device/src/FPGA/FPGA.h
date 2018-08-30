@@ -118,11 +118,16 @@ public:
 
     static void SetModeCouple(Chan ch, ModeCouple couple);
 
-    static float FreqMeter_GetFreq();
+    class FreqMeter
+    {
+    public:
+        static float GetFreq();
+
+        static bool Init();
+    };
+
     /// Установить относительный уровень синхронизации
     static void SetTrigLev(TrigSource ch, uint16 trigLev);
-
-    static bool FreqMeter_Init();
     /// Установить количество считываемых сигналов в секунду
     static void SetENumSignalsInSec(int numSigInSec);
     /// Включить/выключить режим пикового детектора

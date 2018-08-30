@@ -104,6 +104,15 @@ struct ModeCouple
     operator uint8() const { return (uint8)value; };
 };
 
+struct Resistance
+{
+    enum E
+    {
+        _1Mom,
+        _50Om
+    } value;
+};
+
 
 #define SET_INVERSE(ch)         (set.chan_inverse[ch])
 #define SET_INVERSE_A           (SET_INVERSE(Chan::A))

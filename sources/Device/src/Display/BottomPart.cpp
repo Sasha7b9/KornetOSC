@@ -120,7 +120,7 @@ void BottomPart::Draw()
     if (MODE_WORK_IS_DIR)
     {
         char mesFreq[20] = "\x7c=";
-        float freq = FPGA::FreqMeter_GetFreq();
+        float freq = FPGA::FreqMeter::GetFreq();
         if (freq == -1.0f)
         {
             strcat(mesFreq, "******");

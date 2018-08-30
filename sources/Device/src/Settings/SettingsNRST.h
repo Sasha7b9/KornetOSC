@@ -1,4 +1,31 @@
 #pragma once
+//#include "defines.h"
+
+
+/// \brief Тип балансировки АЦП каналов.
+/// Дело в том, что уровни АЦП не совпадают из-за отличия характеристик ( ? ), поэтому мы вводим дополнительное смещение для одного из АЦП канала.
+struct BalanceADC
+{
+    enum E
+    {
+        Disable,     ///< Балансировка выключена.
+        Settings,    ///< Используются значения балансировки, которые получены автоматически.
+        Hand         ///< Используются значения балансировки, заданные вручную.
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
+/// Тип растяжки АЦП
+struct StretchADC
+{
+    enum E
+    {
+        Disable,
+        Real,
+        Hand
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
 
 
 #define NRST_RSHIFT_ADD(ch, range, mode)    (set.nrst_rShiftAdd[ch][range][mode])

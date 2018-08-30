@@ -9,6 +9,17 @@
  *  @{
  */
 
+struct FuncModeDraw
+{
+    enum E
+    {
+        Disable,
+        Separate,
+        Together
+    } value;
+    operator uint8() const { return (uint8)value; };
+};
+
 struct ModeRegSet
 {
     enum E

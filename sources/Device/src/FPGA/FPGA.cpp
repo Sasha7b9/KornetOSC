@@ -871,7 +871,7 @@ pString FPGA::GetTShiftString(int16 tShiftRel, char buffer[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float FPGA::FreqMeter_GetFreq()
+float FPGA::FreqMeter::GetFreq()
 {
     return 0.0f;
 }
@@ -920,7 +920,7 @@ void FPGA::SetENumSignalsInSec(int numSigInSec)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FPGA::FreqMeter_Init()
+bool FPGA::FreqMeter::Init()
 {
     return false;
 }
