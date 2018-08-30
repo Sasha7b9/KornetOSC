@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Globals.h"
 #include "FPGATypes.h"
-#include "Settings/SettingsTypes.h"
 #include "Settings/SettingsTrig.h"
 #include "Settings/SettingsTime.h"
 #include "Settings/SettingsService.h"
@@ -11,6 +10,12 @@
 /// На столько единиц нужно изменить значение смещения, чтобы маркер смещения по напряжению передвинулся на одну точку.
 #define STEP_RSHIFT     (((RShift::MAX - RShift::MIN) / 24) / 20)
 #define STEP_TRIGLEV    STEP_RSHIFT
+
+#define FREQ_METER_ENABLED              (set.freq_enabled)
+#define FREQ_METER_TIMECOUNTING         (set.freq_timeCounting)
+#define FREQ_METER_FREQ_CLC             (set.freq_freqClc)
+#define FREQ_METER_NUM_PERIODS          (set.freq_numberPeriods)
+
 
 struct Pin
 {
@@ -156,6 +161,15 @@ public:
                 _1,
                 _10,
                 _100
+            } value;
+        };
+
+        struct Enabled
+        {
+            enum E
+            {
+                On,
+                Off
             } value;
         };
     };

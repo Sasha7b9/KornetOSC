@@ -138,7 +138,7 @@ static const Settings defaultSettings =
 
                                             // Настройки частотомера
 
-    /* freq_enable;        */           false,
+    /* freq_enable;        */           FPGA::FreqMeter::Enabled::Off,
     /* freq_timeCounting;  */           FPGA::FreqMeter::TimeCounting::_1s,
     /* freq_freqClc;       */           FPGA::FreqMeter::FreqClc::_1MHz,
     /* freq_numberPeriods; */           FPGA::FreqMeter::NumberPeriods::_10,

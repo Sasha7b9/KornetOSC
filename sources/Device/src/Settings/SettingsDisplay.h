@@ -1,7 +1,6 @@
 #pragma once
 #include "defines.h"
 #include "structs.h"
-#include "SettingsTypes.h"
 #include "SettingsTime.h"
 
 

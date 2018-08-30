@@ -39,10 +39,6 @@ struct CalibratorMode
 
 #define TIME_SHOW_LEVELS                (set.disp_timeShowLevels)
 
-#define FREQ_METER_ENABLED              (set.freq_enable)
-#define FREQ_METER_TIMECOUNTING         (set.freq_timeCounting)
-#define FREQ_METER_FREQ_CLC             (set.freq_freqClc)
-#define FREQ_METER_NUM_PERIODS          (set.freq_numberPeriods)
 
 #define CALIBRATOR_MODE                 (set.serv_calibratorMode)
 

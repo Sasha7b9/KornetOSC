@@ -192,7 +192,7 @@ public:
 
     // Настройки частотомера
 
-    bool                freq_enable;
+    FPGA::FreqMeter::Enabled       freq_enabled;
     FPGA::FreqMeter::TimeCounting  freq_timeCounting;              ///< Время счёта частоты.
     FPGA::FreqMeter::FreqClc       freq_freqClc;                   ///< Частота заполнения.
     FPGA::FreqMeter::NumberPeriods freq_numberPeriods;             ///< Количество периодов.
