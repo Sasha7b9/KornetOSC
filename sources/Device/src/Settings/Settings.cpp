@@ -19,11 +19,11 @@ static const Settings defaultSettings =
 
                                             // Ìåíþ ÄÈÑÏËÅÉ
 
-    /* disp_modeDrawSignal;       */    ModeDrawSignal::Lines,
-    /* disp_thickness;            */    ThicknessSignal::_1,
+    /* disp_modeDrawSignal;       */    Display::ModeDrawSignal::Lines,
+    /* disp_thickness;            */    Display::ThicknessSignal::_1,
     /* disp_background;           */    Display::Background::Black,
-    /* disp_showStringNavigation; */    ShowStrNavi::Temp,
-    /* disp_ENumMinMax;           */    ENumMinMax::_1,
+    /* disp_showStringNavigation; */    Display::ShowStrNavi::Temp,
+    /* disp_ENumMinMax;           */    Display::ENumMinMax::_1,
     /* disp_modeAveraging;        */    ModeAveraging::Accurately,
     /* disp_ENumAverage;          */    ENumAverage::_1,
     /* disp_ENumAccum;            */    ENumAccum::_1,

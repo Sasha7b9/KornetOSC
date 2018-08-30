@@ -9,6 +9,21 @@
 #define BACKGROUND                  (set.disp_background)
 #define BACKGROUND_BLACK            (BACKGROUND == Display::Background::Black)
 
+#define SHOW_STRING_NAVI            (set.disp_showStringNavigation)
+#define SHOW_STRING_NAVI_TEMP       (SHOW_STRING_NAVI == Display::ShowStrNavi::Temp)
+#define SHOW_STRING_NAVI_ALL        (SHOW_STRING_NAVI == Display::ShowStrNavi::All)
+
+#define MODE_DRAW_SIGNAL            (set.disp_modeDrawSignal)
+#define MODE_DRAW_SIGNAL_IS_LINES   (MODE_DRAW_SIGNAL == Display::ModeDrawSignal::Lines)
+#define MODE_DRAW_SIGNAL_IS_POINTS  (MODE_DRAW_SIGNAL == Display::ModeDrawSignal::Points)
+
+#define THICKNESS_SIGNAL            (set.disp_thickness)
+#define THICKNESS_SIGNAL_IS_3       (THICKNESS_SIGNAL == Display::ThicknessSignal::_3)
+
+#define ENUM_MIN_MAX                (set.disp_ENumMinMax)
+#define MIN_MAX_ENABLED             (ENUM_MIN_MAX != Display::ENumMinMax::_1)
+#define NUM_MIN_MAX                 (1 << (int)ENUM_MIN_MAX)                /* Возвращает количество измерений сигналов для расчёта минимумов и максимумов. */
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class LogEntity
@@ -110,6 +125,7 @@ private:
     static Key key;
 
 public:
+
     /// Выбор цвета фона.
     struct Background
     {
@@ -117,6 +133,56 @@ public:
         {
             Black,
             White
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
+    struct ModeDrawSignal
+    {
+        enum E
+        {
+            Lines,
+            Points
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
+    /// Толщина рисуемого сигнала
+    struct ThicknessSignal
+    {
+        enum E
+        {
+            _1,         ///< Сигнал рисуется линией толщиной одна точка
+            _3          ///< Сигнал рисуется линией толщиной три точки
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
+    /// Режим показа строки навигации
+    struct ShowStrNavi
+    {
+        enum E
+        {
+            Temp,   ///< Показывать на несколько секунд
+            All,    ///< Всегда показывать
+            None    ///< Никогда не показывать
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
+    /// Количество измерений для расчёта минимального и максимального значений.
+    struct ENumMinMax
+    {
+        enum E
+        {
+            _1,
+            _2,
+            _4,
+            _8,
+            _16,
+            _32,
+            _64,
+            _128
         } value;
         operator uint8() const { return (uint8)value; };
     };

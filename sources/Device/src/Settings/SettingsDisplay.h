@@ -13,28 +13,7 @@
  */
 
 
-struct ModeDrawSignal
-{
-    enum E
-    {
-        Lines,
-        Points
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
-/// Толщина рисуемого сигнала
-struct ThicknessSignal
-{
-    enum E
-    {
-        _1,         ///< Сигнал рисуется линией толщиной одна точка
-        _3          ///< Сигнал рисуется линией толщиной три точки
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
-/// Через какое время после последнего нажатия кнопки скрывать меню.
+ /// Через какое время после последнего нажатия кнопки скрывать меню.
 struct MenuAutoHide
 {
     enum E
@@ -147,23 +126,6 @@ struct ENumAccum
     operator uint8() const { return (uint8)value; };
 };
 
-/// Количество измерений для расчёта минимального и максимального значений.
-struct ENumMinMax
-{
-    enum E
-    {
-        _1,
-        _2,
-        _4,
-        _8,
-        _16,
-        _32,
-        _64,
-        _128
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 /// Количество усреднений по измерениям.
 struct ENumAverage
 {
@@ -201,18 +163,6 @@ struct DisplayOrientation
     } value;
 };
 
-/// Режим показа строки навигации
-struct ShowStrNavi
-{
-    enum E
-    {
-        Temp,   ///< Показывать на несколько секунд
-        All,    ///< Всегда показывать
-        None    ///< Никогда не показывать
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 /// Тип усреднений по измерениям
 struct ModeAveraging
 {
@@ -226,10 +176,6 @@ struct ModeAveraging
 };
 
 
-#define THICKNESS_SIGNAL            (set.disp_thickness)
-#define THICKNESS_SIGNAL_IS_3       (THICKNESS_SIGNAL == ThicknessSignal::_3)
-
-
 #define SHIFT_IN_MEMORY             (set.disp_shiftInMemory)
 #define TIME_MESSAGES               (set.disp_timeMessages)
 #define ENUM_SIGNALS_IN_SEC         (set.disp_ENumSignalsInSec)
@@ -237,14 +183,6 @@ struct ModeAveraging
 #define LAST_AFFECTED_CH            (set.disp_lastAffectedChannel)
 #define LAST_AFFECTED_CH_IS_A       (LAST_AFFECTED_CH.IsA())
 #define DISPLAY_ORIENTATION         (set.dbg_Orientation)
-
-#define SHOW_STRING_NAVI            (set.disp_showStringNavigation)
-#define SHOW_STRING_NAVI_TEMP       (SHOW_STRING_NAVI == ShowStrNavi::Temp)
-#define SHOW_STRING_NAVI_ALL        (SHOW_STRING_NAVI == ShowStrNavi::All)
-
-#define MODE_DRAW_SIGNAL            (set.disp_modeDrawSignal)
-#define MODE_DRAW_SIGNAL_IS_LINES   (MODE_DRAW_SIGNAL == ModeDrawSignal::Lines)
-#define MODE_DRAW_SIGNAL_IS_POINTS  (MODE_DRAW_SIGNAL == ModeDrawSignal::Points)
 
 #define TYPE_GRID                   (set.disp_typeGrid)
 #define TYPE_GRID_1                 (TYPE_GRID == TypeGrid::_1)
@@ -260,10 +198,6 @@ struct ModeAveraging
 #define MODE_ACCUM                  (set.disp_modeAccumulation)
 #define MODE_ACCUM_RESET            (MODE_ACCUM == ModeAccumulation::Reset)
 #define MODE_ACCUM_NO_RESET         (MODE_ACCUM == ModeAccumulation::NoReset)
-
-#define ENUM_MIN_MAX                (set.disp_ENumMinMax)
-#define MIN_MAX_ENABLED             (ENUM_MIN_MAX != ENumMinMax::_1)
-#define NUM_MIN_MAX                 (1 << (int)ENUM_MIN_MAX)                /* Возвращает количество измерений сигналов для расчёта минимумов и максимумов. */
 
 #define MODE_AVE                    (set.disp_modeAveraging)
 #define ENUM_AVE                    (set.disp_ENumAverage)

@@ -61,11 +61,11 @@ public:
 
     // Меню ДИСПЛЕЙ
                                                             ///< вычисляется от первого байта, следующего за этим полем
-    ModeDrawSignal      disp_modeDrawSignal;
-    ThicknessSignal     disp_thickness;                     ///< Толщина линии, которой рисуется сигнал
-    Display::Background disp_background;                    ///< Цвет фона.
-    ShowStrNavi         disp_showStringNavigation;          ///< Режим показа строки навигации меню.
-    ENumMinMax          disp_ENumMinMax;                    ///< Перечисление количества измерений для определения минимумов и масимумов.
+    Display::ModeDrawSignal     disp_modeDrawSignal;
+    Display::ThicknessSignal    disp_thickness;                     ///< Толщина линии, которой рисуется сигнал
+    Display::Background         disp_background;                    ///< Цвет фона.
+    Display::ShowStrNavi        disp_showStringNavigation;          ///< Режим показа строки навигации меню.
+    Display::ENumMinMax         disp_ENumMinMax;                    ///< Перечисление количества измерений для определения минимумов и масимумов.
     ModeAveraging       disp_modeAveraging;                 ///< Тип усреднений по измерениям.
     ENumAverage         disp_ENumAverage;                   ///< Число усреднений сигнала.
     ENumAccum           disp_ENumAccum;                     ///< Число накоплений сигнала на экране.
