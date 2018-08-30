@@ -1109,7 +1109,7 @@ float Processing::CalculateCursorU(Chan ch, float posCurT)
         return 0;
     }
     
-    BitSet64 points = sDisplay_PointsOnDisplay();
+    BitSet64 points = Display::PointsOnDisplay();
 
     int rel = (int)(CHOICE_BUFFER)[(int)points.word0 + (int)ROUND(posCurT)] - MIN_VALUE;
 
@@ -1134,7 +1134,7 @@ float Processing::CalculateCursorT(Chan ch, float posCurU, int numCur)
 #define FIRST_POINT (points.sword0)
 #define LAST_POINT  (points.sword1)
     
-    BitSet64 points = sDisplay_PointsOnDisplay();
+    BitSet64 points = Display::PointsOnDisplay();
 
     int prevData = 200 - dataIn[FIRST_POINT] + MIN_VALUE;
 

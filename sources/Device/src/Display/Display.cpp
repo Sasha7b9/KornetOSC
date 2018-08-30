@@ -454,3 +454,14 @@ int Display::NumPointSmoothing()
 
     return retValue;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+BitSet64 Display::PointsOnDisplay()
+{
+    BitSet64 retValue;
+
+    retValue.sword0 = (SET_PEAKDET_EN ? (SHIFT_IN_MEMORY / 2) : SHIFT_IN_MEMORY);
+    retValue.sword1 = retValue.sword0 + 281;
+
+    return retValue;
+}

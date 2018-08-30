@@ -358,4 +358,6 @@ public:
     static void SetNumSignalsInS(int maxFPS);
     /// Возвращает число точек сглаживающего фильтра (режим ДИСПЛЕЙ - Сглаживание)
     static int NumPointSmoothing();
+    /// Возвращает адрес первой и последней точки на экране в координатах экрана
+    static BitSet64 PointsOnDisplay();
 };
