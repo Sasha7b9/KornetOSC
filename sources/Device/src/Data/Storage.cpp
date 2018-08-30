@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Storage.h"
 #include "DataSettings.h"
-#include "Settings/SettingsDisplay.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Globals.h"
@@ -120,7 +119,7 @@ void Storage::CalculateAroundAverage(uint8 *dataA, uint8 *dataB, DataSettings *d
     }
     else
     {
-        numAveData = sDisplay_NumAverage();
+        numAveData = Display::NumAverage();
 
         if(numAveData > NumElementsInStorage())
         {
@@ -433,7 +432,7 @@ void Storage::CalculateSums()
 
     int numPoints = NUM_BYTES(ds);
 
-    int numAveragings = sDisplay_NumAverage();
+    int numAveragings = Display::NumAverage();
 
     uint16 *sumA16 = (uint16 *)sumA_RAM;
     uint16 *sumB16 = (uint16 *)sumB_RAM;
@@ -742,7 +741,7 @@ uint8 *Storage::GetAverageData(Chan ch)
         return &gDataAve[ch][0];
     }
 
-    int numAveraging = sDisplay_NumAverage();
+    int numAveraging = Display::NumAverage();
 
     LIMIT_ABOVE(numAveraging, NumElementsWithSameSettings());
 

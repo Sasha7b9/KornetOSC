@@ -219,9 +219,6 @@
     <ClCompile Include="..\..\Device\src\Globals.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Settings\SettingsDisplay.cpp">
-      <Filter>Settings</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
@@ -425,9 +422,6 @@
     <ClInclude Include="..\..\Device\src\Settings\Settings.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Settings\SettingsTypes.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\defines.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -595,9 +589,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Globals.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Settings\SettingsDisplay.h">
-      <Filter>Settings</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Settings\SettingsTime.h">
       <Filter>Settings</Filter>

@@ -3,7 +3,6 @@
 #include "Display/Painter.h"
 #include "Menu/Pages/Definition.h"
 #include "Settings/Settings.h"
-#include "Settings/SettingsTypes.h"
 #include "Keyboard/Keyboard.h"
 #include "Utils/ProcessingSignal.h"
 #include "Log.h"

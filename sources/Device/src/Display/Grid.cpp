@@ -1,6 +1,5 @@
 #include "Grid.h"
 #include "Display/Painter.h"
-#include "Settings/SettingsDisplay.h"
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
 
@@ -86,7 +85,7 @@ int Grid::MathHeight()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::ChannelBottom()
 {
-    return (sDisplay_IsSeparate()) ? (Top() + Height() / 2) : FullBottom();
+    return (Display::IsSeparate()) ? (Top() + Height() / 2) : FullBottom();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -98,7 +97,7 @@ int Grid::ChannelCenterHeight()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Grid::Draw()
 {
-    if (sDisplay_IsSeparate())
+    if (Display::IsSeparate())
     {
         DrawGridSignal(Left(), Top(), Width(), Height() / 2);
         if (FFT_ENABLED)
@@ -206,7 +205,7 @@ void Grid::DrawGridSpectrum()
 float Grid::DeltaY()
 {
     float delta = (FullBottom() - Top()) / 10.0f;
-    return sDisplay_IsSeparate() ? (delta / 2.0f) : delta;
+    return Display::IsSeparate() ? (delta / 2.0f) : delta;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

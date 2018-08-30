@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "Measures.h"
-#include "Settings/SettingsTypes.h"
 #include "Settings/Settings.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"

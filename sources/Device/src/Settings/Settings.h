@@ -3,7 +3,6 @@
 #include "Utils/Measures.h"
 #include "Menu/MenuItems.h"
 #include "SettingsChannel.h"
-#include "SettingsDisplay.h"
 #include "SettingsTime.h"
 #include "SettingsMath.h"
 #include "SettingsMemory.h"

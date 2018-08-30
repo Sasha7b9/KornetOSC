@@ -3,7 +3,6 @@
 #include "Colors.h"
 #include "DisplayTypes.h"
 #include "Display/Font/Font.h"
-#include "Settings/SettingsTypes.h"
 #include "TypeSymbols.h"
 
 

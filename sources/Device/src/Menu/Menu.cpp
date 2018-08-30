@@ -211,13 +211,13 @@ void Menu::SetAutoHide(bool)
     {
         return;
     }
-    if(sDisplay_TimeMenuAutoHide() == 0)
+    if(Display::TimeMenuAutoHide() == 0)
     {
         Timer::Disable(kMenuAutoHide);
     }
     else
     {
-        Timer::SetAndStartOnce(kMenuAutoHide, OnTimerAutoHide, (uint)sDisplay_TimeMenuAutoHide());
+        Timer::SetAndStartOnce(kMenuAutoHide, OnTimerAutoHide, (uint)Display::TimeMenuAutoHide());
     }
 }
 

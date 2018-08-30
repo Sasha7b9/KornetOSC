@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "DisplayTypes.h"
 #include "Keyboard/Keyboard.h"
-#include "Settings/SettingsDisplay.h"
+#include "structs.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,6 +64,8 @@
 #define BRIGHTNESS_GRID             (set.disp_brightnessGrid)
 
 #define SET_NUM_BYTES_ON_DISPLAY    (SET_PEAKDET_EN ? 281 * 2 : 281)
+
+#define SHIFT_IN_MEMORY_IN_POINTS   Display::ShiftInMemoryInPoints()
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -362,4 +364,14 @@ public:
     static BitSet64 PointsOnDisplay();
     /// \brief Возращает адрес первой и последней точки в координатах экрана
     static BitSet64 BytesOnDisplay();
+    /// Возвращает время, через которое меню автоматически скрывается, если не было больше нажатий
+    static int TimeMenuAutoHide();
+    /// Если экран разделён на две части и основной сигнал выводится сверху - например, в режиме вывода спектра
+    static bool IsSeparate();
+    /// brightness = 1..100
+    static void SetBrightness(int16 brightness);
+
+    static int NumAverage();
+    /// Это смещение экрана по памяти в режиме пикового детектора оно будет в два раза меньше, чем байт, потому что каждая точка представлена двумя байтами
+    static int ShiftInMemoryInPoints();
 };

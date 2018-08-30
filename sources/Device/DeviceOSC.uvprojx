@@ -2386,16 +2386,6 @@
               <FilePath>.\src\Settings\SettingsDebug.h</FilePath>
             </File>
             <File>
-              <FileName>SettingsDisplay.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Settings\SettingsDisplay.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>SettingsDisplay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Settings\SettingsDisplay.h</FilePath>
-            </File>
-            <File>
               <FileName>SettingsMath.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Settings\SettingsMath.h</FilePath>
@@ -2439,11 +2429,6 @@
               <FileName>SettingsTrig.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Settings\SettingsTrig.h</FilePath>
-            </File>
-            <File>
-              <FileName>SettingsTypes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Settings\SettingsTypes.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -95,7 +95,6 @@
     <ClCompile Include="..\..\Device\src\Settings\SettingsChannel.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsCursors.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsDebug.cpp" />
-    <ClCompile Include="..\..\Device\src\Settings\SettingsDisplay.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsMemory.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\Device\src\Tables.cpp" />
@@ -224,7 +223,6 @@
     <ClInclude Include="..\..\Device\src\Settings\SettingsChannel.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsCursors.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsDebug.h" />
-    <ClInclude Include="..\..\Device\src\Settings\SettingsDisplay.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsMath.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsMeasures.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsMemory.h" />
@@ -233,7 +231,6 @@
     <ClInclude Include="..\..\Device\src\Settings\SettingsService.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsTime.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsTrig.h" />
-    <ClInclude Include="..\..\Device\src\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\Device\src\structs.h" />
     <ClInclude Include="..\..\Device\src\Tables.h" />
     <ClInclude Include="..\..\Device\src\Tester\Tester.h" />
