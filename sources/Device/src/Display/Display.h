@@ -25,7 +25,7 @@
 #define NUM_MIN_MAX                 (1 << (int)ENUM_MIN_MAX)        /* Возвращает количество измерений сигналов для расчёта минимумов и максимумов. */
 
 #define ENUM_SMOOTHING              (set.disp_ENumSmoothing)
-#define NUM_SMOOTHING               (sDisplay_NumPointSmoothing())
+#define NUM_SMOOTHING               (Display::NumPointSmoothing())
 #define SMOOTHING_ENABLED           (ENUM_SMOOTHING != Display::ENumSmoothing::Disable)
 
 #define MODE_ACCUM                  (set.disp_modeAccumulation)
@@ -356,4 +356,6 @@ public:
     static int NumSignalsInS();
     /// Устанавливает ограничение частоты кадров
     static void SetNumSignalsInS(int maxFPS);
+    /// Возвращает число точек сглаживающего фильтра (режим ДИСПЛЕЙ - Сглаживание)
+    static int NumPointSmoothing();
 };

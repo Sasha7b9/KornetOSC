@@ -5,36 +5,7 @@
 #include "Utils/Math.h"
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int sDisplay_NumPointSmoothing()
-{
-    /*
-    if(MODE_EMS && (ENUM_SMOOTHING < ENumSmooth_4points))
-    {
-        return 4;
-    }
-    */
 
-    int retValue = 0;
-    if (SMOOTHING_ENABLED)
-    {
-        retValue = ENUM_SMOOTHING + 1;
-    }
-
-    if (IN_RANDOM_MODE)
-    {
-        int numRand = 0;
-        if (NRST_NUM_SMOOTH_FOR_RAND > 1)
-        {
-            numRand = NRST_NUM_SMOOTH_FOR_RAND;
-        }
-
-        LIMIT_BELOW(retValue, numRand);
-    }
-
-
-    return retValue;
-}
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------

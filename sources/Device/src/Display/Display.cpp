@@ -13,6 +13,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Debug.h"
 #include "Utils/MathOSC.h"
+#include "Utils/Math.h"
 #include "FPGA/FPGAMath.h"
 #include "Console.h"
 #include "BottomPart.h"
@@ -421,4 +422,35 @@ int Display::NumSignalsInS()
 void Display::SetNumSignalsInS(int numSignalsInS)
 {
     ENUM_SIGNALS_IN_SEC = Tables_ENumSignalsInSecToENUM(numSignalsInS);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Display::NumPointSmoothing()
+{
+    /*
+    if(MODE_EMS && (ENUM_SMOOTHING < ENumSmooth_4points))
+    {
+        return 4;
+    }
+    */
+
+    int retValue = 0;
+    if (SMOOTHING_ENABLED)
+    {
+        retValue = ENUM_SMOOTHING + 1;
+    }
+
+    if (IN_RANDOM_MODE)
+    {
+        int numRand = 0;
+        if (NRST_NUM_SMOOTH_FOR_RAND > 1)
+        {
+            numRand = NRST_NUM_SMOOTH_FOR_RAND;
+        }
+
+        LIMIT_BELOW(retValue, numRand);
+    }
+
+
+    return retValue;
 }
