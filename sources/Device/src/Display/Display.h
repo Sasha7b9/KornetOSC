@@ -217,6 +217,16 @@ public:
         operator uint8() const { return (uint8)value; };
     };
 
+    /// Тип привязки к смещению по вертикали
+    struct LinkingRShift
+    {
+        enum E
+        {
+            Voltage,      ///< Смещение привязано к напряжению
+            Position      ///< Смещение привязано к позиции
+        } value;
+    };
+
 
     static void SetOrientation(Orientation orientation);
     /// Возвращает режим усреднения

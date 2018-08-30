@@ -32,7 +32,7 @@ static const Settings defaultSettings =
     /* disp_ENumSignalsInSec;     */    ENumSignalsInSec::_25,
     /* disp_typeGrid;             */    TypeGrid::_1,
     /* disp_brightnessGrid;       */    50,
-    /* disp_linkingRShift;        */    LinkingRShift::Position,
+    /* disp_linkingRShift;        */    Display::LinkingRShift::Position,
     /* disp_brightness;           */    100,
     /* disp_timeShowLevels;       */    5,
     /* disp_timeMessages;         */    5,
