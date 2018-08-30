@@ -456,7 +456,7 @@ void SetShiftCursPosT(Chan ch, int numCur, float delta)
 {
     /// \todo одинаковые ветки
     // CURsT_POS(ch, numCur) = LimitationFloat(CURsT_POS(ch, numCur) + delta, 0, MAX_POS_T);   
-    SetCursPosT_temp(ch, numCur, LimitationRet(CURsT_POS(ch, numCur) + delta, 0.0f, MAX_POS_T));
+    Cursors::SetCursPosT_temp(ch, numCur, LimitationRet(CURsT_POS(ch, numCur) + delta, 0.0f, MAX_POS_T));
 
     if (CURS_MOVEMENT_IN_PIXELS)                        // Если перемещение по пикселям, то нужно привести к пиксельной сетке экрана
     {
@@ -515,7 +515,7 @@ static void SetCursorU(Chan ch, int numCur, float pos)
 void SetCursorT(Chan ch, int numCur, float pos)
 {
     // CURsT_POS(ch, numCur) = LimitationFloat(pos, 0, MAX_POS_T);      /// \todo одинаковые ветки
-    SetCursPosT_temp(ch, numCur, LimitationRet(pos, 0.0f, MAX_POS_T));
+    Cursors::SetCursPosT_temp(ch, numCur, LimitationRet(pos, 0.0f, MAX_POS_T));
 }
 
 bool IsRegSetActiveOnCursors()

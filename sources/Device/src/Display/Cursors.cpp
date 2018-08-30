@@ -37,3 +37,9 @@ float Cursors::PosT(Chan ch, int num)
     memcpy(&retValue, &set.curs_posCurT[ch][num], sizeof(float));
     return retValue;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Cursors::SetCursPosT_temp(Chan ch, int num, float value)
+{
+    memcpy(&set.curs_posCurT[ch][num], &value, sizeof(float));
+}

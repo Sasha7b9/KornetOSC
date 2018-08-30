@@ -11,7 +11,6 @@
 #include "SettingsNRST.h"
 #include "SettingsService.h"
 #include "SettingsMeasures.h"
-#include "SettingsCursors.h"
 #include "SettingsMultimeter.h"
 #include "Tester/Tester.h"
 #include "Display/Cursors.h"

@@ -47,6 +47,22 @@
 #define CURsT_DISABLED              (CURsT_CNTRL == Cursors::Control::Disable)
 #define CURsT_ENABLED               (!CURsT_DISABLED)
 
+#define CURSORS_SHOW_FREQ           (set.curs_showFreq)
+
+///  урсоры какого канала сейчас активны
+#define CURS_SOURCE                 (set.curs_source)
+/// јктивны курсоры канала A
+#define CURS_SOURCE_A               (CURS_SOURCE.IsA())
+/// јктивны курсоры канала B
+#define CURS_SOURCE_B               (CURS_SOURCE.IsB())
+
+/// јбсолютное значение напр€жени€, соответствующее 100%
+#define dUperc(ch)                  (set.curs_deltaU100percents[ch])
+/// јбсолютное значение времени, соотвествующее 100%
+#define dTperc(ch)                  (set.curs_deltaT100percents[ch])
+
+#define CURS_SHOW                   (set.curs_showCursors)
+
 
 class Cursors
 {
@@ -109,4 +125,6 @@ public:
     static pString Voltage(Chan source, int numCur, char buffer[20]);
     /// ¬озвращает значение курсора времени
     static float PosT(Chan ch, int num);
+
+    static void SetCursPosT_temp(Chan ch, int num, float value);
 };
