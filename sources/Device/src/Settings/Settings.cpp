@@ -24,7 +24,7 @@ static const Settings defaultSettings =
     /* disp_background;           */    Display::Background::Black,
     /* disp_showStringNavigation; */    Display::ShowStrNavi::Temp,
     /* disp_ENumMinMax;           */    Display::ENumMinMax::_1,
-    /* disp_modeAveraging;        */    ModeAveraging::Accurately,
+    /* disp_modeAveraging;        */    Display::ModeAveraging::Accurately,
     /* disp_ENumAverage;          */    ENumAverage::_1,
     /* disp_ENumAccum;            */    ENumAccum::_1,
     /* disp_modeAccumulation;     */    ModeAccumulation::NoReset,
@@ -164,7 +164,7 @@ static const Settings defaultSettings =
     /* dbg_pretriggered;        */      0,
     /* dbg_bandwidth[2];        */      {Bandwidth::Full, Bandwidth::Full},
     /* dbg_ShowStats;           */      false,
-    /* dbg_Orientation;         */      DisplayOrientation::Direct,
+    /* dbg_Orientation;         */      Display::Orientation::Direct,
 
                                             // Настройки тестер-компонента
 

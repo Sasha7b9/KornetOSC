@@ -95,8 +95,6 @@ public:
     static void RemoveAddDrawFunction();
 
     static void ShowWarning(Warning::E warning);
-
-    static void SetOrientation(DisplayOrientation orientation);
     /// @brief Установить функцию и режим отрисовки экрана.
     /// @details Возможны три варианта.
     /// 1. DrawMode_Hand - в этом случае будет вызываться функция func(), определяемая пользователем, с частотой 25 раз в секунду.
@@ -186,4 +184,30 @@ public:
         } value;
         operator uint8() const { return (uint8)value; };
     };
+
+    /// Тип усреднений по измерениям
+    struct ModeAveraging
+    {
+        enum E
+        {
+            Accurately,   ///< Усреднять точно.
+            Around        ///< Усреднять приблизительно.
+        } value;
+        ModeAveraging(E v) : value(v) {};
+        operator uint8() const  { return (uint8)value; };
+    };
+
+    struct Orientation
+    {
+        enum E
+        {
+            Direct,
+            Back
+        } value;
+    };
+
+    static void SetOrientation(Orientation orientation);
+    /// Возвращает режим усреднения
+    static ModeAveraging GetModeAveraging();
+
 };

@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "structs.h"
 #include "SettingsTime.h"
+#include "Display/Display.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -154,27 +155,6 @@ struct ColorScheme
     } value;
 };
 
-struct DisplayOrientation
-{
-    enum E
-    {
-        Direct,
-        Back
-    } value;
-};
-
-/// “ип усреднений по измерени€м
-struct ModeAveraging
-{
-    enum E
-    {
-        Accurately,   ///< ”средн€ть точно.
-        Around        ///< ”средн€ть приблизительно.
-    } value;
-    ModeAveraging(E v) : value(v) {};
-    operator uint8() const { return (uint8)value; };
-};
-
 
 #define SHIFT_IN_MEMORY             (set.disp_shiftInMemory)
 #define TIME_MESSAGES               (set.disp_timeMessages)
@@ -240,8 +220,6 @@ int sDisplay_TimeMenuAutoHide();
 bool sDisplay_IsSeparate();
 /// brightness = 1..100
 void sDisplay_SetBrightness(int16 brightness);
-/// ¬озвращает режим усреднени€
-ModeAveraging sDisplay_GetModeAveraging();
 
 int sDisplay_NumAverage();
 /// Ёто смещение экрана по пам€ти в режиме пикового детектора оно будет в два раза меньше, чем байт, потому что кажда€ точка представлена двум€ байтами

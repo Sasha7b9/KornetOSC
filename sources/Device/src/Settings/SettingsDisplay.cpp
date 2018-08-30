@@ -132,13 +132,3 @@ void sDisplay_SetBrightness(int16 brightness)
     BRIGHTNESS_DISPLAY = brightness;
     Painter::SetBrightnessDisplay(brightness);
 }
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-ModeAveraging sDisplay_GetModeAveraging()
-{
-    if (IN_RANDOM_MODE)
-    {
-        return ModeAveraging::Accurately;
-    }
-    return MODE_AVE;
-}

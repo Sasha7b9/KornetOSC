@@ -731,7 +731,7 @@ uint8 *Storage::GetAverageData(Chan ch)
 
     int numPoints = NUM_BYTES(ds);
 
-    if (sDisplay_GetModeAveraging() == ModeAveraging::Around)
+    if (Display::GetModeAveraging() == Display::ModeAveraging::Around)
     {
         float *floatAveData = ch.IsA() ? aveDataA_RAM : aveDataB_RAM;
         

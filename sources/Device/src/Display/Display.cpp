@@ -388,7 +388,7 @@ void Display::RemoveAddDrawFunction()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::SetOrientation(DisplayOrientation orientation)
+void Display::SetOrientation(Orientation orientation)
 {
     DISPLAY_ORIENTATION = orientation;
 //    NEED_SET_ORIENTATION = 1;
@@ -398,4 +398,14 @@ void Display::SetOrientation(DisplayOrientation orientation)
 void Display::SetAddDrawFunction(pFuncVV func)
 {
     funcAdditionDraw = func;
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+Display::ModeAveraging Display::GetModeAveraging()
+{
+    if (IN_RANDOM_MODE)
+    {
+        return ModeAveraging::Accurately;
+    }
+    return MODE_AVE;
 }

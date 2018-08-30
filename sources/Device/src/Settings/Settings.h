@@ -66,7 +66,7 @@ public:
     Display::Background         disp_background;                    ///< Цвет фона.
     Display::ShowStrNavi        disp_showStringNavigation;          ///< Режим показа строки навигации меню.
     Display::ENumMinMax         disp_ENumMinMax;                    ///< Перечисление количества измерений для определения минимумов и масимумов.
-    ModeAveraging       disp_modeAveraging;                 ///< Тип усреднений по измерениям.
+    Display::ModeAveraging      disp_modeAveraging;                 ///< Тип усреднений по измерениям.
     ENumAverage         disp_ENumAverage;                   ///< Число усреднений сигнала.
     ENumAccum           disp_ENumAccum;                     ///< Число накоплений сигнала на экране.
     ModeAccumulation    disp_modeAccumulation;              ///< Режим накопления сигналов.
@@ -218,8 +218,8 @@ public:
     int16               dbg_pretriggered;               ///< Регулируемая величина предзапуска для исследования рандомизатора.
     Bandwidth           dbg_bandwidth[2];               ///< \brief Здесь задаётся полоса, которая будет включаться при выборе в "КАНАЛ-Полоса" 
                                                         ///< значения "Полная".
-    bool                dbg_ShowStats;                  ///< Показывать статистику на экране (fps, например).
-    DisplayOrientation  dbg_Orientation;
+    bool                  dbg_ShowStats;                  ///< Показывать статистику на экране (fps, например).
+    Display::Orientation  dbg_Orientation;
 
     // Настройки тестер-компонента
 
