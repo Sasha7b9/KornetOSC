@@ -101,11 +101,11 @@ public:
 
     // Меню СИНХРОНИЗАЦИЯ
 
-    TrigSource          trig_source;
+    Trig::Source        trig_source;
     TrigInput           trig_input;
     TrigPolarity        trig_polarity;
     uint16              trig_lev[Chan::Num];
-    StartMode           trig_startMode;                     ///< Режим запуска.
+    Trig::StartMode     trig_startMode;                     ///< Режим запуска.
     TrigModeFind        trig_modeFind;                      ///< Поиск синхронизации - вручную или автоматически.
 
     // Меню РАЗВЁРТКА

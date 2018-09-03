@@ -877,7 +877,7 @@ float FPGA::FreqMeter::GetFreq()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::SetTrigLev(TrigSource ch, uint16 trigLev)
+void FPGA::SetTrigLev(Trig::Source ch, uint16 trigLev)
 {
 }
 

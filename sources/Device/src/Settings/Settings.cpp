@@ -56,11 +56,11 @@ static const Settings defaultSettings =
     
                                             // Ìåíş ÑÈÍÕĞÎÍÈÇÀÖÈß
     
-    /* trig_source;             */      TrigSource::A,
+    /* trig_source;             */      Trig::Source::A,
     /* trig_input;              */      TrigInput::Full,
     /* trig_polarity;           */      TrigPolarity::Rising,
     /* trig_lev[Chan::Num];     */      {Trig::ZERO, Trig::ZERO},
-    /* trig_startMode;          */      StartMode::Auto,
+    /* trig_startMode;          */      Trig::StartMode::Auto,
     /* trig_modeFind;           */      TrigModeFind::Hand,
     
                                             // Ìåíş ĞÀÇÂ¨ĞÒÊÀ

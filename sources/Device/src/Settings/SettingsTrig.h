@@ -10,18 +10,6 @@
  *  @{
  */
 
- /// Источник синхронизации
-struct TrigSource
-{
-    enum E
-    {
-        A,    /// Канал 1
-        B,    /// Канал 2
-        Ext   /// Внешняя
-    } value;
-    operator uint8() const { return (uint8)value; }
-};
-
 struct TrigInput
 {
     enum E
@@ -63,23 +51,11 @@ struct TrigModeFind
     operator uint8() const { return (uint8)value; };
 };
 
-/// Режим запуска.
-struct StartMode
-{
-    enum E
-    {
-        Auto,     ///< Автоматический.
-        Wait,     ///< Ждущий.
-        Single    ///< Однократный.
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 
 #define TRIG_SOURCE             (set.trig_source)
-#define TRIG_SOURCE_IS_A        (TRIG_SOURCE == TrigSource::A)
-#define TRIG_SOURCE_IS_B        (TRIG_SOURCE == TrigSource::B)
-#define TRIG_SOURCE_IS_EXT      (TRIG_SOURCE == TrigSource::Ext)
+#define TRIG_SOURCE_IS_A        (TRIG_SOURCE == Trig::Source::A)
+#define TRIG_SOURCE_IS_B        (TRIG_SOURCE == Trig::Source::B)
+#define TRIG_SOURCE_IS_EXT      (TRIG_SOURCE == Trig::Source::Ext)
 
 #define SET_TRIGLEV(ch)         (set.trig_lev[(uint8)ch])
 #define SET_TRIGLEV_SOURCE      SET_TRIGLEV(TRIG_SOURCE.value)
@@ -91,9 +67,9 @@ struct StartMode
 #define TRIG_MODE_FIND_AUTO     (TRIG_MODE_FIND == TrigModeFind::Auto)
 
 #define START_MODE              (set.trig_startMode)
-#define START_MODE_IS_AUTO      (START_MODE == StartMode::Auto)
-#define START_MODE_IS_WAIT      (START_MODE == StartMode::Wait)
-#define START_MODE_IS_SINGLE    (START_MODE == StartMode::Single)
+#define START_MODE_IS_AUTO      (START_MODE == Trig::StartMode::Auto)
+#define START_MODE_IS_WAIT      (START_MODE == Trig::StartMode::Wait)
+#define START_MODE_IS_SINGLE    (START_MODE == Trig::StartMode::Single)
 
 #define TRIG_POLARITY           (set.trig_polarity)
 #define TRIG_POLARITY_FALLING   (TRIG_POLARITY == TrigPolarity::Falling)

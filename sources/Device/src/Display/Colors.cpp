@@ -303,11 +303,11 @@ Color Color::ChanHalf(Chan ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::Trig()
 {
-    if(TRIG_SOURCE == TrigSource::A)
+    if(TRIG_SOURCE == Trig::Source::A)
     {
         return Channel(Chan::A);
     }
-    else if(TRIG_SOURCE == TrigSource::B)
+    else if(TRIG_SOURCE == Trig::Source::B)
     {
         return Channel(Chan::B);
     }

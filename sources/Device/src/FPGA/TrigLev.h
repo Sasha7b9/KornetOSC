@@ -14,6 +14,30 @@ public:
     /// Возвращает true в случае наличия синхроимпульса
     static bool SyncPulse();
 
+    /// Источник синхронизации
+    struct Source
+    {
+        enum E
+        {
+            A,    /// Канал 1
+            B,    /// Канал 2
+            Ext   /// Внешняя
+        } value;
+        operator uint8() const { return (uint8)value; }
+    };
+
+    /// Режим запуска.
+    struct StartMode
+    {
+        enum E
+        {
+            Auto,     ///< Автоматический.
+            Wait,     ///< Ждущий.
+            Single    ///< Однократный.
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
 private:
     /// Установленное в true значение означает, что нужно выводить значок синхроимпульса
     static bool pulse;
