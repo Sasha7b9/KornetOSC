@@ -4,25 +4,23 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-typedef enum
+class Tables
 {
-    ExcessValues        // Превышение значения количества сигналов в "НАКОПЛЕНИЕ", "УСРЕДНЕНИЕ", "Мин Макс"
-} WarningWithNumber;
+public:
+    static Display::ENumSignalsInSec ENumSignalsInSecToENUM(int numSignalsInSec);
+    
+    static int ENUMtoENumSignalsInSec(Display::ENumSignalsInSec numSignalsInSec);
+    
+    static pString GetTBaseString(TBase tBase);
+    
+    static pString GetTBaseStringEN(TBase tBase);
+    
+    static pString RangeNameFromValue(Range range);
+    /// Возвращает номер канала от 1 до 2.
+    static int GetNumChannel(Chan ch);
+    
+    static pString symbolsAlphaBet[0x48];
+    /// Выводит строку из таблицы symbolsAlphaBet
+    static void DrawStr(int index, int x, int y);
+};
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Display::ENumSignalsInSec Tables_ENumSignalsInSecToENUM(int numSignalsInSec);
-
-int Tables_ENUMtoENumSignalsInSec(Display::ENumSignalsInSec numSignalsInSec);
-
-const char *Tables_GetTBaseString(TBase tBase);
-
-const char *Tables_GetTBaseStringEN(TBase tBase);
-
-const char *Tables_RangeNameFromValue(Range range);
-/// Возвращает номер канала от 1 до 2.
-int Tables_GetNumChannel(Chan ch);
-
-extern pString symbolsAlphaBet[0x48];
-/// Выводит строку из таблицы symbolsAlphaBet
-void DrawStr(int index, int x, int y);

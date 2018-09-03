@@ -427,7 +427,7 @@ static void OnPress_Drive_Mask_Insert()
     }
     if (index < 0x41)
     {
-        FILE_NAME_MASK[size] = symbolsAlphaBet[index][0];
+        FILE_NAME_MASK[size] = Tables::symbolsAlphaBet[index][0];
         FILE_NAME_MASK[size + 1] = '\0';
     }
     else
@@ -520,36 +520,36 @@ static void DrawSetMask()
     int deltaY = 12;
 
     // Рисуем большие буквы английского алфавита
-    while (symbolsAlphaBet[index][0] != ' ')
+    while (Tables::symbolsAlphaBet[index][0] != ' ')
     {
-        DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0);
+        Tables::DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0);
         index++;
         position++;
     }
 
     // Теперь рисуем цифры и пробел
     position = 0;
-    while (symbolsAlphaBet[index][0] != 'a')
+    while (Tables::symbolsAlphaBet[index][0] != 'a')
     {
-        DrawStr(index, x0 + deltaX + 50 + position * 7, y0 + deltaY0 + deltaY);
+        Tables::DrawStr(index, x0 + deltaX + 50 + position * 7, y0 + deltaY0 + deltaY);
         index++;
         position++;
     }
 
     // Теперь рисуем малые буквы алфавита
     position = 0;
-    while (symbolsAlphaBet[index][0] != '%')
+    while (Tables::symbolsAlphaBet[index][0] != '%')
     {
-        DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0 + deltaY * 2);
+        Tables::DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0 + deltaY * 2);
         index++;
         position++;
     }
 
     // Теперь рисуем спецсимволы
     position = 0;
-    while (index < ((int)sizeof(symbolsAlphaBet) / 4))
+    while (index < ((int)sizeof(Tables::symbolsAlphaBet) / 4))
     {
-        DrawStr(index, x0 + deltaX + 26 + position * 20, y0 + deltaY0 + deltaY * 3);
+        Tables::DrawStr(index, x0 + deltaX + 26 + position * 20, y0 + deltaY0 + deltaY * 3);
         index++;
         position++;
     }
@@ -594,7 +594,7 @@ static void DrawFileMask(int x, int y)
             }
             else
             {
-                x = Painter::DrawText(x, y, symbolsAlphaBet[*ch + 0x40]);
+                x = Painter::DrawText(x, y, Tables::symbolsAlphaBet[*ch + 0x40]);
             }
         }
         ch++;
@@ -604,7 +604,7 @@ static void DrawFileMask(int x, int y)
 
 static void OnRegSet_Drive_Mask(int angle)
 {
-    OnMemExtSetMaskNameRegSet(angle, sizeof(symbolsAlphaBet) / 4);
+    OnMemExtSetMaskNameRegSet(angle, sizeof(Tables::symbolsAlphaBet) / 4);
 }
 
 DEF_PAGE_SB(        pppDrive_Mask,                                                                                    // Память - ВНЕШН ЗУ - МАСКА ///
@@ -692,27 +692,27 @@ static void DrawSetName()
     int deltaY = 12;
 
     // Рисуем большие буквы английского алфавита
-    while (symbolsAlphaBet[index][0] != ' ')
+    while (Tables::symbolsAlphaBet[index][0] != ' ')
     {
-        DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0);
+        Tables::DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0);
         index++;
         position++;
     }
 
     // Теперь рисуем цифры и пробел
     position = 0;
-    while (symbolsAlphaBet[index][0] != 'a')
+    while (Tables::symbolsAlphaBet[index][0] != 'a')
     {
-        DrawStr(index, x0 + deltaX + 50 + position * 7, y0 + deltaY0 + deltaY);
+        Tables::DrawStr(index, x0 + deltaX + 50 + position * 7, y0 + deltaY0 + deltaY);
         index++;
         position++;
     }
 
     // Теперь рисуем малые буквы алфавита
     position = 0;
-    while (symbolsAlphaBet[index][0] != '%')
+    while (Tables::symbolsAlphaBet[index][0] != '%')
     {
-        DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0 + deltaY * 2);
+        Tables::DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0 + deltaY * 2);
         index++;
         position++;
     }
@@ -1074,7 +1074,7 @@ static void OnPress_SetName_Insert()
     int size = (int)strlen(FILE_NAME);
     if (size < MAX_SYMBOLS_IN_FILE_NAME - 1)
     {
-        FILE_NAME[size] = symbolsAlphaBet[INDEX_SYMBOL][0];
+        FILE_NAME[size] = Tables::symbolsAlphaBet[INDEX_SYMBOL][0];
         FILE_NAME[size + 1] = '\0';
     }
 }
@@ -1126,7 +1126,7 @@ const PageBase *PageMemory::pointer = &pMemory;
 
 static void OnRegSet_SetName(int angle)
 {
-    OnMemExtSetMaskNameRegSet(angle, sizeof(symbolsAlphaBet) / 4 - 7);
+    OnMemExtSetMaskNameRegSet(angle, sizeof(Tables::symbolsAlphaBet) / 4 - 7);
 }
 
 void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)

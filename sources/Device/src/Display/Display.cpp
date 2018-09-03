@@ -415,13 +415,13 @@ Display::ModeAveraging Display::GetModeAveraging()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Display::NumSignalsInS()
 {
-    return Tables_ENUMtoENumSignalsInSec(ENUM_SIGNALS_IN_SEC);
+    return Tables::ENUMtoENumSignalsInSec(ENUM_SIGNALS_IN_SEC);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::SetNumSignalsInS(int numSignalsInS)
 {
-    ENUM_SIGNALS_IN_SEC = Tables_ENumSignalsInSecToENUM(numSignalsInS);
+    ENUM_SIGNALS_IN_SEC = Tables::ENumSignalsInSecToENUM(numSignalsInS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

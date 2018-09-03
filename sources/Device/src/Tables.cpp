@@ -49,7 +49,7 @@ static const TBaseStruct tBases[TBase::Size] =
 };
 
 /// Таблица символов алфавита и спецсимволов для ввода текста
-pString symbolsAlphaBet[0x48] =
+pString Tables::symbolsAlphaBet[0x48] =
 {
     /* 0x00 */ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", /* 0x19 */
     /* 0x1a */ " ", "_", "-", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", /* 0x26 */
@@ -60,7 +60,7 @@ pString symbolsAlphaBet[0x48] =
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Display::ENumSignalsInSec Tables_ENumSignalsInSecToENUM(int numSignalsInSec)
+Display::ENumSignalsInSec Tables::ENumSignalsInSecToENUM(int numSignalsInSec)
 {
     if(numSignalsInSec == 1)
     {
@@ -82,37 +82,31 @@ Display::ENumSignalsInSec Tables_ENumSignalsInSecToENUM(int numSignalsInSec)
     {
         return Display::ENumSignalsInSec::_25;
     }
-//    LOG_ERROR_TRACE("Число сигналов в секунду равно %d", numSignalsInSec);
     return Display::ENumSignalsInSec::_1;
 }
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Tables_ENUMtoENumSignalsInSec(Display::ENumSignalsInSec numSignalsInSec)
+int Tables::ENUMtoENumSignalsInSec(Display::ENumSignalsInSec numSignalsInSec)
 {
     static const int fps[] = {25, 10, 5, 2, 1};
     if(numSignalsInSec <= Display::ENumSignalsInSec::_1)
     {
         return fps[numSignalsInSec];
     }
-//    LOG_ERROR_TRACE("Неправильный параметр %d", (int)numSignalsInSec);
     return 1;
 }
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *Tables_GetTBaseString(TBase tBase)
+pString Tables::GetTBaseString(TBase tBase)
 {
     return tBases[tBase].name[LANG];
 }
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *Tables_GetTBaseStringEN(TBase tBase)
 {
     return tBases[tBase].name[Language::EN];
 }
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *Tables_RangeNameFromValue(Range range)
@@ -134,16 +128,8 @@ const char *Tables_RangeNameFromValue(Range range)
     return names[range];
 }
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Tables_GetNumChannel(Chan ch)
-{
-    return ch.IsA() ? 1 : 2;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void DrawStr(int index, int x, int y)
+void Tables::DrawStr(int index, int x, int y)
 {
     const char *str = symbolsAlphaBet[index];
     if (index == INDEX_SYMBOL)
