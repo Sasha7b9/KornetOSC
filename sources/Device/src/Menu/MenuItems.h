@@ -210,6 +210,7 @@ public:
             Debug_Channels,            ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
             SB_Debug_Settings,         ///< ÎÒËÀÄÊÀ - ÍÀÑÒĞÎÉÊÈ
             SB_Debug_SerialNumber,     ///< ÎÒËÀÄÊÀ - Ñ/Í
+            Multimeter,
             Number,
             NoPage
         } value;

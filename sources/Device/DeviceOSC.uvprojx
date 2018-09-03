@@ -2156,11 +2156,6 @@
               <FilePath>.\src\Menu\MenuItemsLogic.cpp</FilePath>
             </File>
             <File>
-              <FileName>MenuPagesNames.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuPagesNames.h</FilePath>
-            </File>
-            <File>
               <FileName>MenuTriggers.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\MenuTriggers.cpp</FilePath>
