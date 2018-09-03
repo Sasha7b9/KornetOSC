@@ -159,7 +159,7 @@ void FPGA::GiveStart()
     value = (uint8)((value + 1) % 2);
     FSMC::WriteToFPGA8(WR_TRIG, value++);
     FSMC::WriteToFPGA8(WR_TRIG, (uint8)(value % 2));
-    TrigLev::timeSwitchingTrig = TIME_MS;
+    Trig::timeSwitchingTrig = TIME_MS;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -206,7 +206,7 @@ uint8 FPGA::ReadFlag()
 {
     uint8 flag = FSMC::ReadFromFPGA(RD_FLAG_LO);
 
-    TrigLev::pulse = _GET_BIT(flag, BIT_FLAG_TRIG_READY) == 1 && timeStart > TrigLev::timeSwitchingTrig;
+    Trig::pulse = _GET_BIT(flag, BIT_FLAG_TRIG_READY) == 1 && timeStart > Trig::timeSwitchingTrig;
 
     return flag;
 }
@@ -568,7 +568,7 @@ void FPGA::RShiftChange(Chan ch, int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TrigLevChange(int delta)
 {
-    AddtionThisLimitation<uint16>(&SET_TRIGLEV_SOURCE, STEP_TRIGLEV * delta, TrigLev::MIN, TrigLev::MAX);
+    AddtionThisLimitation<uint16>(&SET_TRIGLEV_SOURCE, STEP_TRIGLEV * delta, Trig::MIN, Trig::MAX);
 
     LoadTrigLev();
 }

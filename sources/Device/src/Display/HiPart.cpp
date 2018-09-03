@@ -112,7 +112,7 @@ void HiPart::DrawRightPart()
 
         x += 2;
 
-        if(TrigLev::SyncPulse())
+        if(Trig::SyncPulse())
         {
             Painter::FillRegion(x, 1 + y, Grid::Top() - 3, Grid::Top() - 7, Color::FILL);
             Painter::DrawText(x + 3, 3 + y, DICT(DTrig), Color::BACK);

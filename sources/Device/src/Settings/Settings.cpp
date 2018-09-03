@@ -59,7 +59,7 @@ static const Settings defaultSettings =
     /* trig_source;             */      TrigSource::A,
     /* trig_input;              */      TrigInput::Full,
     /* trig_polarity;           */      TrigPolarity::Rising,
-    /* trig_lev[Chan::Num];     */      {TrigLev::ZERO, TrigLev::ZERO},
+    /* trig_lev[Chan::Num];     */      {Trig::ZERO, Trig::ZERO},
     /* trig_startMode;          */      StartMode::Auto,
     /* trig_modeFind;           */      TrigModeFind::Hand,
     
@@ -109,7 +109,7 @@ static const Settings defaultSettings =
     /* meas_source;          */         MeasSource::A_B,
     /* meas_modeViewSignals; */         ModeViewSignals::AsIs,
     /* meas_measures[15];    */         {},
-    /* meas_marked;          */         Meas::Freq,
+    /* meas_marked;          */         Measures::Type::Freq,
     
                                             // Ìåíþ ÑÅÐÂÈÑ
     

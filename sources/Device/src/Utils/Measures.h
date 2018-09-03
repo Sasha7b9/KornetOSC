@@ -10,55 +10,45 @@
  *  @{
  */
 
-// Виды измерений
-struct Meas
-{
-    enum
-    {
-        None,
-        VoltageMax,
-        VoltageMin,
-        VoltagePic,
-        VoltageMaxSteady,
-        VoltageMinSteady,
-        VoltageAmpl,
-        VoltageAverage,
-        VoltageRMS,
-        VoltageVybrosPlus,
-        VoltageVybrosMinus,
-        Period,
-        Freq,
-        TimeNarastaniya,
-        TimeSpada,
-        DurationPlus,
-        DurationMinus,
-        SkvaznostPlus,
-        SkvaznostMinus,
-        DelayPlus,
-        DelayMinus,
-        PhazaPlus,
-        PhazaMinus,
-        Num
-    };
-    uint8 value;
-    operator uint8() const
-    {
-        return value;
-    };
-    Meas(const Meas &meas) : value(meas)
-    {
-    };
-    Meas(int8 v = 0) : value((uint8)v)
-    {
-    };
-};
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Measures
 {
 public:
-    static char GetChar(Meas measure);
+    // Виды измерений
+    struct Type
+    {
+        enum E
+        {
+            None,
+            VoltageMax,
+            VoltageMin,
+            VoltagePic,
+            VoltageMaxSteady,
+            VoltageMinSteady,
+            VoltageAmpl,
+            VoltageAverage,
+            VoltageRMS,
+            VoltageVybrosPlus,
+            VoltageVybrosMinus,
+            Period,
+            Freq,
+            TimeNarastaniya,
+            TimeSpada,
+            DurationPlus,
+            DurationMinus,
+            SkvaznostPlus,
+            SkvaznostMinus,
+            DelayPlus,
+            DelayMinus,
+            PhazaPlus,
+            PhazaMinus,
+            Number
+        } value;
+        Type(int8 v = 0) : value((E)v) {};
+        operator uint8() const { return (uint8)value; };
+    };
+
+    static char GetChar(Type measure);
 
     static bool IsActive(int row, int col);
 
@@ -72,7 +62,7 @@ public:
 
     static const char *Name(int row, int col);
 
-    static Meas Type(int row, int col);
+    static Type GetType(int row, int col);
 
     static int NumRows();
 

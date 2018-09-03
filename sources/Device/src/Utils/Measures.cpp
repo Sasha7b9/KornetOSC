@@ -19,7 +19,7 @@ typedef struct
 
 #define DEF_STRUCT_MEASURE(name, ugo) {name, ugo, 0, 0, 0}
 
-static const StructMeasure sMeas[Meas::Num] =
+static const StructMeasure sMeas[Measures::Type::Number] =
 {
     DEF_STRUCT_MEASURE("",            '\x00'),
     DEF_STRUCT_MEASURE("U макс",      '\x20'),
@@ -75,7 +75,7 @@ void Measures::SetActive(int row, int col)
     posActive = (int8)(row * NumCols() + col);
 }
 
-char Measures::GetChar(Meas measure)
+char Measures::GetChar(Measures::Type measure)
 {
     return sMeas[measure].UGO;
 }
@@ -107,7 +107,7 @@ const char *Measures::Name(int row, int col)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Meas Measures::Type(int row, int col)
+Measures::Type Measures::GetType(int row, int col)
 {
     return MEASURE(row * NumCols() + col);
 }
@@ -185,7 +185,7 @@ void Measures::ShortPressOnSmallButonMarker()
 {
     if(MEASURE(posActive) == MEAS_MARKED)
     {
-        MEAS_MARKED = Meas::None;
+        MEAS_MARKED = Measures::Type::None;
     }
     else
     {
@@ -207,13 +207,13 @@ void Measures::DrawPageChoice()
     int dY = 22;
     int maxRow = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 8 : 5;
     int maxCol = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 3 : 5;
-    Meas meas = Meas::None;
+    Measures::Type meas = Measures::Type::None;
     Painter::SetFont(Font::Type::_UGO);
     for(int row = 0; row < maxRow; row++)
     {
         for(int col = 0; col < maxCol; col++)
         {
-            if(meas >= Meas::Num)
+            if(meas >= Measures::Type::Number)
             {
                 break;
             }
@@ -224,13 +224,13 @@ void Measures::DrawPageChoice()
             Painter::FillRegion(x0 + 1, y0 + 1, dX - 2, dY - 2, (active ? Color::FLASH_10 : Color::BACK));
             Painter::SetColor(active ? Color::FLASH_01 : Color::FILL);
             Painter::Draw10SymbolsInRect(x0 + 2, y0 + 1, GetChar(meas));
-            if(meas < Meas::Num)
+            if(meas < Measures::Type::Number)
             {
                 Painter::SetFont(Font::Type::_5);
                 Painter::DrawTextRelativelyRight(x0 + dX, y0 + 12, sMeas[meas].name, active ? Color::FLASH_01 : Color::FILL);
                 Painter::SetFont(Font::Type::_UGO);
             }
-            meas = (Meas)((int)meas + 1);    // meas++;
+            meas = (Measures::Type)((int)meas + 1);    // meas++;
         }
     }
     Painter::SetFont(Font::Type::_8);

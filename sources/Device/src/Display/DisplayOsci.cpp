@@ -49,9 +49,9 @@ void DisplayOsci::DrawCursorTrigLevel()
 {
     TrigSource ch = TRIG_SOURCE;
     int trigLev = SET_TRIGLEV_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : (SET_RSHIFT(ch) - RShift::ZERO));
-    float scale = 1.0f / ((TrigLev::MAX - TrigLev::MIN) / 2.4f / Grid::Height());
-    int y0 = (Grid::Top() + Grid::Bottom()) / 2 + (int)(scale * (TrigLev::ZERO - TrigLev::MIN));
-    int y = y0 - (int)(scale * (trigLev - TrigLev::MIN));
+    float scale = 1.0f / ((Trig::MAX - Trig::MIN) / 2.4f / Grid::Height());
+    int y0 = (Grid::Top() + Grid::Bottom()) / 2 + (int)(scale * (Trig::ZERO - Trig::MIN));
+    int y = y0 - (int)(scale * (trigLev - Trig::MIN));
 
     if (!TRIG_SOURCE_IS_EXT)
     {
@@ -89,11 +89,11 @@ void DisplayOsci::DrawCursorTrigLevel()
     DrawScaleLine(Display::WIDTH - 11, true);
     int left = Grid::Right() + 9;
     int height = Grid::Height() - 2 * DELTA;
-    int shiftFullMin = RShift::MIN + TrigLev::MIN;
-    int shiftFullMax = RShift::MAX + TrigLev::MAX;
+    int shiftFullMin = RShift::MIN + Trig::MIN;
+    int shiftFullMax = RShift::MAX + Trig::MAX;
     scale = (float)height / (shiftFullMax - shiftFullMin);
     int shiftFull = SET_TRIGLEV_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : SET_RSHIFT(ch));
-    int yFull = Grid::Top() + DELTA + height - (int)(scale * (shiftFull - RShift::MIN - TrigLev::MIN) + 4);
+    int yFull = Grid::Top() + DELTA + height - (int)(scale * (shiftFull - RShift::MIN - Trig::MIN) + 4);
     Painter::FillRegion(left + 2, yFull + 1, 4, 6, Color::Trig());
     Painter::SetFont(Font::Type::_5);
     Painter::DrawChar(left + 3, yFull - 5 + dY, symbols[(uint8)TRIG_SOURCE], Color::BACK);

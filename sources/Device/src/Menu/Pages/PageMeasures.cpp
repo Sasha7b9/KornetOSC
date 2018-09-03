@@ -208,13 +208,13 @@ static void OnRegSet_Tune(int angle)
         Sound::RegulatorSwitchRotate();
         if (Measures::posOnPageChoice < 0)
         {
-            Measures::posOnPageChoice = Meas::Num - 1;
+            Measures::posOnPageChoice = Measures::Type::Number - 1;
         }
-        else if (Measures::posOnPageChoice == Meas::Num)
+        else if (Measures::posOnPageChoice == Measures::Type::Number)
         {
             Measures::posOnPageChoice = 0;
         }
-        MEASURE(Measures::posActive) = (Meas)Measures::posOnPageChoice;
+        MEASURE(Measures::posActive) = (Measures::Type)Measures::posOnPageChoice;
         Painter::ResetFlash();
     }
     else

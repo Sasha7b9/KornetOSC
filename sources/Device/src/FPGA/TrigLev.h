@@ -2,7 +2,7 @@
 #include "defines.h"
 
 
-class TrigLev
+class Trig
 {
 
 friend class FPGA;
