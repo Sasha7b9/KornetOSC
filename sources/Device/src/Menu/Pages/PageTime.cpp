@@ -120,5 +120,5 @@ DEF_PAGE_5(         pTime,                                                      
     cTPos,          // РАЗВЕРТКА - То
     cDivRole,       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ
     cShiftXtype,    // РАЗВЕРТКА - Смещение
-    Page_Time, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Time, &mainPage, FuncActive, EmptyPressPage
 )

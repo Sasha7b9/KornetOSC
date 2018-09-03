@@ -37,7 +37,7 @@ DEF_PAGE_11_GLOBAL(    mainPage,                                                
     pService,   // яепбхя
     pHelp,      // онлныэ
     pDebug,     // нркюдйю
-    Page_Main, 0, FuncActive, EmptyPressPage
+    Page::Name::Main, 0, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

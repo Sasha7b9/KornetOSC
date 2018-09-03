@@ -290,7 +290,7 @@ int Page::NumItems() const
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-NamePage Page::GetNamePage() const
+Page::Name Page::GetName() const
 {
     return name;
 }

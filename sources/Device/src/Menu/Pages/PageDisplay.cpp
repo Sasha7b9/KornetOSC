@@ -122,7 +122,7 @@ DEF_PAGE_6(         pppSettings_Colors,                                         
                                     //&mgcColorMathem,
                                     //&mgcColorFFT,
                                     //&mcServDisplInverse
-    Page_Display_Settings_Colors, &ppDisplaySettings, FuncActive, EmptyPressPage
+    Page::Name::Display_Settings_Colors, &ppDisplaySettings, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -214,7 +214,7 @@ DEF_PAGE_3(         ppAccum,                                                    
     cAccum_Num,     // ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ - Êîëè÷åñòâî
     cAccum_Mode,    // ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ - Ğåæèì
     bAccum_Clear,   // ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ - Î÷èñòèòü
-    Page_Display_Accum, &pDisplay, IsActive_Accum, EmptyPressPage
+    Page::Name::Display_Accum, &pDisplay, IsActive_Accum, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -264,7 +264,7 @@ DEF_PAGE_2(         ppAverage,                                                  
     "Settings of the mode of averaging on the last measurements.",
     cAverage_Num,   // ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ - Êîëè÷åñòâî
     cAverage_Mode,  // ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ - Ğåæèì
-    Page_Display_Average, &pDisplay, IsActive_Average, EmptyPressPage
+    Page::Name::Display_Average, &pDisplay, IsActive_Average, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -378,7 +378,7 @@ DEF_PAGE_2(         ppGrid,                                                     
     "Contains settings of display of a coordinate Grid::",
     cGrid_Type,         // ÄÈÑÏËÅÉ - ÑÅÒÊÀ - Òèï
     gGrid_Brightness,   // ÄÈÑÏËÅÉ - ÑÅÒÊÀ - ßğêîñòü
-    Page_Display_Grid, &pDisplay, FuncActive, EmptyPressPage
+    Page::Name::Display_Grid, &pDisplay, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -408,7 +408,7 @@ DEF_PAGE_10(         pDisplay,                                                  
     cScaleYtype,        // ÄÈÑÏËÅÉ - Ñìåùåíèå
     ppDisplaySettings,  // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ
     cThickness,         // ÄÈÑÏËÅÉ - Òîëùèíà
-    Page_Display, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Display, &mainPage, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -507,5 +507,5 @@ DEF_PAGE_7(         ppDisplaySettings,                                          
     cSettings_StringNavigation, // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - Ñòğîêà ìåíş
     cSettings_AltMarkers,       // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - Äîï. ìàğêåğû
     cSettings_AutoHide,         // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - Ñêğûâàòü
-    Page_Display_Settings, &pDisplay, FuncActive, EmptyPressPage
+    Page::Name::Display_Settings, &pDisplay, FuncActive, EmptyPressPage
 )

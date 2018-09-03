@@ -118,7 +118,7 @@ static const char *hintsSearch_Mode[] ={ "Ручной", "Hand", "Автоматический",  "A
 
 static const ChoiceBase cSearch_Mode =
 {
-    Item_Choice, 2, false, Page_NoPage, &ppSearch, FuncActive,
+    Item_Choice, 2, false, Page::Name::NoPage, &ppSearch, FuncActive,
     {
         "Режим", "Mode"
         ,
@@ -162,7 +162,7 @@ DEF_PAGE_2(ppSearch,                                                            
     "Office of the automatic search the trigger level.",
     cSearch_Mode,       // СИНХР - ПОИСК - Режим
     bSearch_Search,     // СИНХР - ПОИСК - Найти
-    Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage
+    Page::Name::Trig_Search, &pTrig, FuncActive, EmptyPressPage
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -177,5 +177,5 @@ DEF_PAGE_5(         pTrig,                                                      
     cPolarity,      // СИНХР - Полярность
     cInput,         // СИНХР - Вход
     ppSearch,       // СИНХР - ПОИСК
-    Page_Trig, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Trig, &mainPage, FuncActive, EmptyPressPage
 )

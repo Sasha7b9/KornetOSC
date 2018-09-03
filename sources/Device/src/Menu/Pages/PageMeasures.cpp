@@ -257,7 +257,7 @@ DEF_PAGE_SB(ppTune,                                                             
     0,
     &bTune_Markers,
     &bTune_Settings,
-    PageSB_Measures_Tune, &pMeasures, IsActive_Tune, EmptyPressPage, FuncDrawPage, OnRegSet_Tune
+    Page::Name::SB_Measures_Tune, &pMeasures, IsActive_Tune, EmptyPressPage, FuncDrawPage, OnRegSet_Tune
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -269,7 +269,7 @@ DEF_PAGE_4(ppFreqMeter,                                                         
     cFreqMeter_TimeF,       // ÈÇÌÅĞÅÍÈß - ×ÀÑÒÎÒÎÌÅĞ - Âğåìÿ ñ÷¸òà F
     cFreqMeter_FreqClc,     // ÈÇÌÅĞÅÍÈß - ×ÀÑÒÎÒÎÌÅĞ - Ìåòêè âğåìåíè
     cFreqMeter_NumPeriods,  // ÈÇÌÅĞÅÍÈß - ×ÀÑÒÎÒÎÌÅĞ - Êîë-âî ïåğèîäîâ
-    Page_Service_FreqMeter, &pMeasures, FuncActive, EmptyPressPage
+    Page::Name::Service_FreqMeter, &pMeasures, FuncActive, EmptyPressPage
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -285,7 +285,7 @@ DEF_PAGE_6(         pMeasures,                                                  
     cChannels,     // ÈÇÌÅĞÅÍÈß - Êàíàëû
     ppTune,        // ÈÇÌÅĞÅÍÈß - ÍÀÑÒĞÎÈÒÜ
     cMode,         // ÈÇÌÅĞÅÍÈß - Âèä
-    Page_Measures, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Measures, &mainPage, FuncActive, EmptyPressPage
 )
 
 //static const PageBase * pointerPageMeasures = &pMeasures;

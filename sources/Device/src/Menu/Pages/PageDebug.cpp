@@ -194,7 +194,7 @@ DEF_CHOICE_2(       cConsole_Registers_TShift,                                  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_12(        pppConsole_Registers,                                                                          // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ ///
-    Page_Debug_Console_Registers, &ppConsole, FuncActive, EmptyPressPage,
+    Page::Name::Debug_Console_Registers, &ppConsole, FuncActive, EmptyPressPage,
     "РЕГИСТРЫ", "REGISTERS",
     "",
     "",
@@ -237,7 +237,7 @@ DEF_PAGE_5(         ppConsole,                                                  
     cConsole_ModeStop,          // ОТЛАДКА - КОНСОЛЬ - Реж. останова
     pppConsole_Registers,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ
     bConsole_SizeSettings,      // ОТЛАДКА - КОНСОЛЬ - Размер настроек
-    Page_Debug_Console, &pDebug, FuncActive, EmptyPressPage
+    Page::Name::Debug_Console, &pDebug, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -310,7 +310,7 @@ DEF_PAGE_3(         pppADC_Balance,                                             
     cADC_Balance_Mode,      // ОТЛАДКА - АЦП - БАЛАНС - Режим
     gADC_Balance_ShiftA,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 1
     gADC_Balance_ShiftB,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
-    Page_Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage
+    Page::Name::Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -439,7 +439,7 @@ DEF_GOVERNOR(       gADC_Stretch_Bk2V,                                          
 */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//static const ChoiceBase emptyChoice = {Item_Choice, 0, false, Page_NoPage, 0, FuncActive, {}, 0, 0, 0, 0};
+//static const ChoiceBase emptyChoice = {Item_Choice, 0, false, Page::Name::NoPage, 0, FuncActive, {}, 0, 0, 0, 0};
 
 DEF_PAGE_3(        pppADC_Stretch,                                                                                    // ОТЛАДКА - АЦП - РАСТЯЖКА ///
     "РАСТЯЖКА", "STRETCH",
@@ -448,7 +448,7 @@ DEF_PAGE_3(        pppADC_Stretch,                                              
     cADC_Stretch_Mode,      // ОТЛАДКА - АЦП - РАСТЯЖКА - Режим
     gADC_Stretch_A,         // ОТЛАДКА - АЦП - РАСТЯЖКА - Растяжка 1к
     gADC_Stretch_B,
-    Page_Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage
+    Page::Name::Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage
            /*,         // ОТЛАДКА - АЦП - РАСТЯЖКА - Растяжка 2к
     emptyChoice,
     emptyChoice,
@@ -556,7 +556,7 @@ DEF_PAGE_7(         pppADC_Shift,                                               
     gADC_Shift_B5mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 5мВ пост
     gADC_Shift_A10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 10мВ пост
     gADC_Shift_B10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 10мВ пост
-    Page_Debug_ADC_Shift, &ppADC, FuncActive, EmptyPressPage
+    Page::Name::Debug_ADC_Shift, &ppADC, FuncActive, EmptyPressPage
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -567,7 +567,7 @@ DEF_PAGE_3(         ppADC,                                                      
     pppADC_Balance, // ОТЛАДКА - АЦП - БАЛАНС
     pppADC_Stretch, // ОТЛАДКА - АЦП - РАСТЯЖКА
     pppADC_Shift,   // ОТЛАДКА - АЦП - ДОП СМЕЩ
-    Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage
+    Page::Name::Debug_ADC, &pDebug, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -672,7 +672,7 @@ DEF_PAGE_8(         ppRand,                                                     
     gRand_TimeCompensation, // ОТЛАДКА - РАНД-ТОР - Компенсация задержки
     gRand_AddTimeShift,     // ОТЛАДКА - РАНД-ТОР - Смещение
     gRand_Pretriggered,     // ОТЛАДКА - РAНД-ТОР - Предзапуск
-    Page_Debug_Rand, &pDebug, FuncActive, EmptyPressPage
+    Page::Name::Debug_Rand, &pDebug, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -722,7 +722,7 @@ DEF_PAGE_2(         ppChannels,                                                 
     "",
     cChannels_BandwidthA,   // ОТЛАДКА - КАНАЛЫ - Полоса 1
     cChannels_BandwidthB,   // ОТЛАДКА - КАНАЛЫ - Полоса 2
-    Page_Debug_Channels, &pDebug, FuncActive, EmptyPressPage
+    Page::Name::Debug_Channels, &pDebug, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -876,7 +876,7 @@ DEF_PAGE_SB(        ppSettings,                                                 
     0,
     0,
     0,
-    PageSB_Debug_Settings, &pDebug, FuncActive, OnPress_Settings, FuncDrawPage, FuncRegSetPage
+    Page::Name::SB_Debug_Settings, &pDebug, FuncActive, OnPress_Settings, FuncDrawPage, FuncRegSetPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1074,7 +1074,7 @@ DEF_PAGE_SB(        ppSerialNumber,                                             
     0,
     0,
     &bSerialNumber_Save,            // ОТЛАДКА - С/Н - Сохранить
-    PageSB_Debug_SerialNumber, &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
+    Page::Name::SB_Debug_SerialNumber, &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1094,7 +1094,7 @@ DEF_BUTTON(         bEraseData,                                                 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_12(        pDebug,                                                                                                             // ОТЛАДКА ///
-    Page_Debug, &mainPage, FuncActive, EmptyPressPage,
+    Page::Name::Debug, &mainPage, FuncActive, EmptyPressPage,
     "ОТЛАДКА", "DEBUG",
     "",
     "",

@@ -38,7 +38,7 @@
 #define MENU_IS_SHOWN                   (set.menu_show)
 
 
-/// Возвращает позицию активного пункта на странице namePage.
+/// Возвращает позицию активного пункта на странице Page::Name.
 #define MENU_POS_ACT_ITEM(name)     (set.menu_posActItem[name])
 /// Текущая подстраница
 #define MENU_CURRENT_SUBPAGE(name)  (set.menu_currentSubPage[name])
@@ -219,7 +219,7 @@ public:
     int16               dbg_pretriggered;               ///< Регулируемая величина предзапуска для исследования рандомизатора.
     Bandwidth           dbg_bandwidth[2];               ///< \brief Здесь задаётся полоса, которая будет включаться при выборе в "КАНАЛ-Полоса" 
                                                         ///< значения "Полная".
-    bool                  dbg_ShowStats;                  ///< Показывать статистику на экране (fps, например).
+    bool                  dbg_ShowStats;                ///< Показывать статистику на экране (fps, например).
     Display::Orientation  dbg_Orientation;
 
     // Настройки тестер-компонента
@@ -234,9 +234,9 @@ public:
 
     const Page*         menu_currentPage;                           ///< Указатель на открытую страницу меню
     bool                menu_show;                                  ///< Если true, то нужно показывать текущую страницу
-    int8                menu_posActItem[Page_NumPages];             ///< \brief Позиция активного пункта. bit7 == 1 - item is opened, 0x7f - нет 
+    int8                menu_posActItem[Page::Name::Number];        ///< \brief Позиция активного пункта. bit7 == 1 - item is opened, 0x7f - нет 
                                                                     ///< активного пункта.
-    int8                menu_currentSubPage[Page_NumPages];         ///< Номер текущей подстраницы.
+    int8                menu_currentSubPage[Page::Name::Number];         ///< Номер текущей подстраницы.
 
     // Несбрасываемые настройки калибровки
 

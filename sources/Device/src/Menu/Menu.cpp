@@ -308,14 +308,14 @@ void Menu::ProcessingShortPressureButton()
             }
             else                                                        // Если меню не показано.
             {
-                NamePage name = ((const Page *)OpenedItem())->GetNamePage();
-                if(button == Key::ChannelA && name == Page_ChannelA && MENU_IS_SHOWN)
+                Page::Name name = ((const Page *)OpenedItem())->GetName();
+                if(button == Key::ChannelA && name == Page::Name::ChannelA && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
                     PageChannelA::OnChanged_Input(true);
                     break;
                 }
-                if(button == Key::ChannelB && name == Page_ChannelB && MENU_IS_SHOWN)
+                if(button == Key::ChannelB && name == Page::Name::ChannelB && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_B = !SET_ENABLED_B;
                     PageChannelB::OnChanged_Input(true);
@@ -478,7 +478,7 @@ void Menu::ChangeStateFlashDrive()
 {
     if(!FDrive::IsConnected())
     {
-        if(GetNameOpenedPage() == PageSB_Memory_Drive_Manager)
+        if(GetNameOpenedPage() == Page::Name::SB_Memory_Drive_Manager)
         {
             ((Page *)OpenedItem())->ShortPressOnItem(0);
         }
@@ -516,15 +516,15 @@ bool Menu::NeedForFireSetLED()
         return IS_CHOICE_REG(item) || IS_CHOICE(item) || IS_GOVERNOR(item);
     }
 
-    NamePage name = GetNameOpenedPage();
+    Page::Name name = GetNameOpenedPage();
     if (
-            name == PageSB_Debug_SerialNumber   ||
-            name == PageSB_Service_FFT_Cursors  || 
-            name == PageSB_Measures_Tune        || 
-            name == PageSB_Memory_Last          || 
-            name == PageSB_Memory_Internal      ||
+            name == Page::Name::SB_Debug_SerialNumber   ||
+            name == Page::Name::SB_Service_FFT_Cursors  || 
+            name == Page::Name::SB_Measures_Tune        || 
+            name == Page::Name::SB_Memory_Last          || 
+            name == Page::Name::SB_Memory_Internal      ||
             REG_SET_ACTIVE_ON_CURSORS           ||
-            (name == PageSB_Service_Function && FUNC_MODE_DRAW_IS_ENABLED)
+            (name == Page::Name::SB_Service_Function && FUNC_MODE_DRAW_IS_ENABLED)
         )
     {
         return true;
@@ -582,9 +582,9 @@ Control *Menu::OpenedItem()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-NamePage Menu::GetNameOpenedPage()
+Page::Name Menu::GetNameOpenedPage()
 {
-    return ((const Page *)OpenedItem())->GetNamePage();
+    return ((const Page *)OpenedItem())->GetName();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -631,7 +631,7 @@ void Menu::CloseOpenedItem()
             //((Page *)item)->SmallButonFromPage(0)->funcOnPress();
             SMALL_BUTTON_FROM_PAGE(item, 0)->funcOnPress();
         }
-        NamePage name = KEEPER(item)->name;
+        Page::Name name = KEEPER(item)->name;
         ((Page *)KEEPER(item))->SetPosActItem(MENU_POS_ACT_ITEM(name) & 0x7f);
         if (item == (Control *)&mainPage)
         {
@@ -670,7 +670,7 @@ void Menu::ChangeItem(Control *item, int delta)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Page *Menu::PagePointerFromName(NamePage)
+Page *Menu::PagePointerFromName(Page::Name)
 {
     return 0;
 }

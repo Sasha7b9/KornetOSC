@@ -119,7 +119,7 @@ DEF_PAGE_2(         ppCalibrator,                                               
     "Control of the calibrator and calibration of an oscillograph",
     cCalibrator_Calibrator,     // СЕРВИС - КАЛИБРАТОР - Калибратор
     bCalibrator_Calibrate,      // СЕРВИС - КАЛИБРАТОР - Калибровать
-    Page_Service_Calibrator, &pService, FuncActive, EmptyPressPage
+    Page::Name::Service_Calibrator, &pService, FuncActive, EmptyPressPage
 )
 
 #ifdef OLD_RECORDER
@@ -366,7 +366,7 @@ DEF_PAGE_SB(        pppFFT_Cursors,                                             
     0,
     0,
     0,
-    PageSB_Service_FFT_Cursors, &ppFFT, IsActive_FFT_Cursors, EmptyPressPage, FuncDrawPage, OnRegSet_FFT_Cursors
+    Page::Name::SB_Service_FFT_Cursors, &ppFFT, IsActive_FFT_Cursors, EmptyPressPage, FuncDrawPage, OnRegSet_FFT_Cursors
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -409,7 +409,7 @@ DEF_PAGE_6(         ppFFT,                                                      
     cFFT_Window,       // СЕРВИС - СПЕКТР - Окно 
     pppFFT_Cursors,    // СЕРВИС - СПЕКТР - КУРСОРЫ
     cFFT_Range,        // СЕРВИС - СПЕКТР - Диапазон
-    Page_Service_FFT, &pService, IsActive_FFT, OnPress_FFT
+    Page::Name::Service_FFT, &pService, IsActive_FFT, OnPress_FFT
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -668,7 +668,7 @@ DEF_PAGE_SB(        ppFunction,                                                 
     &bFunction_ModeRegSet,  // СЕРВИС - ФУНКЦИЯ - Режим ручки УСТАНОВКА
     &bFunction_RangeA,      // СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала
     &bFunction_RangeB,
-    PageSB_Service_Function, &pService, IsActive_Function, OnPress_Function, FuncDrawPage, OnRegSet_Function
+    Page::Name::SB_Service_Function, &pService, IsActive_Function, OnPress_Function, FuncDrawPage, OnRegSet_Function
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -696,7 +696,7 @@ DEF_PAGE_2(         ppSound,                                                    
     "In this menu, you can adjust the volume",
     cSound_Enable,  // СЕРВИС - ЗВУК - Звук
     gSound_Volume,  // СЕРВИС - ЗВУК - Громкость
-    Page_Service_Sound, &pService, FuncActive, EmptyPressPage
+    Page::Name::Service_Sound, &pService, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -742,7 +742,7 @@ DEF_PAGE_2(         ppRTC,                                                      
     "Set and setup time",
     tRTC_Time,          // СЕРВИС - ВРЕМЯ - Время
     tRTC_Correction,    // CЕРВИС - ВРЕМЯ - Коррекция
-    Page_Service_RTC, &pService, FuncActive, EmptyPressPage
+    Page::Name::Service_RTC, &pService, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -816,7 +816,7 @@ DEF_PAGE_SB(ppInformation,                                                      
     0,
     0,
     0,
-    PageSB_Service_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
+    Page::Name::SB_Service_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -836,7 +836,7 @@ DEF_PAGE_10_GLOBAL(pService,                                                    
     ppRTC,             // СЕРВИС - ВРЕМЯ
     cLanguage,         // СЕРВИС - Язык
     ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
-    Page_Service, &mainPage, FuncActive, FuncPress
+    Page::Name::Service, &mainPage, FuncActive, FuncPress
 )
 
 

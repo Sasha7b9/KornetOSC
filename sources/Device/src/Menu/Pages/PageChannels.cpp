@@ -163,7 +163,7 @@ DEF_PAGE_3(         pChanA,                                                     
     cChanA_Divider,    // КАНАЛ 1 - Делитель
     bChanA_Balance,    // КАНАЛ 1 - Балансировать
     */
-    Page_ChannelA, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::ChannelA, &mainPage, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -296,5 +296,5 @@ DEF_PAGE_3(         pChanB,                                                     
     cChanB_Divider,     // КАНАЛ 2 - Делитель
     bChanB_Balance,     // КАНАЛ 2 - Балансировать
     */
-    Page_ChannelB, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::ChannelB, &mainPage, FuncActive, EmptyPressPage
 )

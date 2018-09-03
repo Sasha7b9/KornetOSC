@@ -12,7 +12,7 @@
  *  @}
  */
 
-#define PAGE_IS_MAIN                   (name == Page_Main)
+#define PAGE_IS_MAIN                   (name == Page::Name::Main)
 #define MENU_TEMP_ENABLE_STRING_NAVI() Menu::TemporaryEnableStrNavi()
 
 
@@ -54,9 +54,9 @@ public:
     /// Если true - меню находится в дополнительном режиме.
     static bool IsMinimize();
 
-    static NamePage GetNameOpenedPage();
+    static Page::Name GetNameOpenedPage();
 
-    static Page *PagePointerFromName(NamePage namePage);
+    static Page *PagePointerFromName(Page::Name name);
     /// Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
     static Control *CurrentItem();
     /// Закрыть открытый элемент меню

@@ -1,7 +1,6 @@
 #pragma once
 #include "Display/Display.h"
 #include "MenuItemsDefs.h"
-#include "Menu/MenuPagesNames.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,7 +40,7 @@ enum TypeItem
     TypeItem        type;           /* Тип итема */                                                     \
     int8            num;            /* Число вариантов для Choice или число контролов для Page*/        \
     bool            isPageSB;       /* Если true, то это страница малых кнопок */                       \
-    NamePage        name;           /* Имя из перечисления NamePage */                                  \
+    uint8           name;           /* Имя из перечисления Page::Name */                                  \
     const PageBase  *keeper;        /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
     pFuncBV         funcOfActive;   /* Активен ли данный элемент */                                     \
     const char      *titleHint[4]   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
@@ -67,7 +66,7 @@ class Control
 {
 public:
     COMMON_PART_MENU_ITEM;
-    /// Возвращает высоту в пикселях открытого элемента Choice или NamePage
+    /// Возвращает высоту в пикселях открытого элемента Choice или Page::Name
     int HeightOpened() const;
     /// @brief Возвращает true, если элемент меню item затенён (находится не на самом верхнем слое. Как правило, это означает, что раскрыт 
     /// раскрывающийся элемент меню вроде Choice или Governor
@@ -128,8 +127,6 @@ public:
 
     int NumItems() const;           ///< Возвращает количество элементов в странице по адресу page
 
-    NamePage GetNamePage() const;   ///< Возвращает имя страницы page
-
     void SetCurrentPage();          ///< Установить текущей данную страницу.
 
     int8 CurrentSubPage() const;
@@ -160,6 +157,67 @@ public:
     void DrawPagesUGO(int right, int bottom);
 
     void DrawNestingPage(int left, int bottom);
+
+    struct Name
+    {
+        enum E
+        {
+            Main,                      ///< Главная страница меню
+            Display,                   ///< ДИСПЕЙ
+            Display_Accum,             ///< ДИСПЛЕЙ - НАКОПЛЕНИЕ
+            Display_Average,           ///< ДИСПЛЕЙ - УСРЕДНЕНИЕ
+            Display_Grid,              ///< ДИСПЛЕЙ - СЕТКА
+            Display_Settings,          ///< ДИСПЛЕЙ - НАСТРОЙКИ
+            Display_Settings_Colors,   ///< ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА
+            ChannelA,                  ///< КАНАЛ 1
+            ChannelB,                  ///< КАНАЛ 2
+            Trig,                      ///< СИНХР
+            Trig_Search,               ///< СИНХР - ПОИСК
+            Time,                      ///< РАЗВЕРТКА
+            Cursors,                   ///< КУРСОРЫ
+            SB_Cursors_Set,            ///< КУРСОРЫ - УСТАНОВИТЬ
+            Memory,                    ///< ПАМЯТЬ
+            SB_Memory_Last,            ///< ПАМЯТЬ - ПОСЛЕДНИЕ
+            SB_Memory_Internal,        ///< ПАМЯТЬ - ВНУТР ЗУ
+            Memory_Drive,              ///< ПАМЯТЬ - ВНЕШН ЗУ
+            SB_Memory_Drive_Manager,   ///< ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ
+            SB_Memory_Drive_Mask,      ///< ПАМЯТЬ - ВНЕШН ЗУ - МАСКА
+            SB_Memory_SetName,         ///< \brief Появляется перед сохранением файла на флешку для задания имени файла при соответствующей опции 
+                                       ///< ВНЕШН ЗУ - Имя файла
+            Measures,                  ///< ИЗМЕРЕНИЯ
+            SB_Measures_Tune,          ///< ИЗМЕРЕНИЯ - НАСТРОИТЬ
+            Service,                   ///< СЕРВИС
+            Service_Calibrator,        ///< СЕРВИС - КАЛИБРАТОР
+            Service_Ethernet,          ///< СЕРВИС - ETHERNET
+            Service_FreqMeter,         ///< СЕРВИС - ЧАСТОТОМЕР
+            Service_Sound,             ///< СЕРВИС - ЗВУК
+            Service_RTC,               ///< СЕРВИС - ВРЕМЯ
+            Service_FFT,               ///< СЕРВИС - СПЕКТР
+            SB_Service_FFT_Cursors,    ///< СЕРВИС - СПЕКТР - КУРСОРЫ
+            SB_Service_Function,       ///< СЕРВИС - ФУНКЦИЯ
+            SB_Service_Information,    ///< СЕРВИС - ИНФОРМАЦИЯ
+            SB_Service_Recorder,       ///< СЕРВИС - РЕГИСТРАТОР
+            SB_Help,                   ///< ПОМОЩЬ
+            Debug,                     ///< ОТЛАДКА
+            Debug_Console,             ///< ОТЛАДКА - КОНСОЛЬ
+            Debug_Console_Registers,   ///< ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ
+            Debug_ADC,                 ///< ОТЛАДКА - АЦП
+            Debug_ADC_Balance,         ///< ОТЛАДКА - АЦП - БАЛАНС
+            Debug_ADC_Stretch,         ///< ОТЛАДКА - АЦП - РАСТЯЖКА
+            Debug_ADC_Shift,           ///< ОТЛАДКА - АЦП - ДОП СМЕЩ
+            Debug_ADC_AltShift,        ///< ОТЛАДКА - АЦП - ДОП СМЕЩ ПАМ
+            Debug_Rand,                ///< ОТЛАДКА - РАНД-ТОР
+            Debug_Channels,            ///< ОТЛАДКА - КАНАЛЫ
+            SB_Debug_Settings,         ///< ОТЛАДКА - НАСТРОЙКИ
+            SB_Debug_SerialNumber,     ///< ОТЛАДКА - С/Н
+            Number,
+            NoPage
+        } value;
+        Name(uint8 v) : value((E)v) {};
+        operator uint8() const { return (uint8)value; };
+    };
+
+    Page::Name GetName() const;     ///< Возвращает имя страницы page
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Button ///
