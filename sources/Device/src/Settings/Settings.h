@@ -6,7 +6,6 @@
 #include "SettingsTime.h"
 #include "SettingsMath.h"
 #include "SettingsMemory.h"
-#include "SettingsTrig.h"
 #include "SettingsDebug.h"
 #include "SettingsNRST.h"
 #include "SettingsService.h"
@@ -102,8 +101,8 @@ public:
     // Меню СИНХРОНИЗАЦИЯ
 
     Trig::Source        trig_source;
-    TrigInput           trig_input;
-    TrigPolarity        trig_polarity;
+    Trig::Input         trig_input;
+    Trig::Polarity      trig_polarity;
     uint16              trig_lev[Chan::Num];
     Trig::StartMode     trig_startMode;                     ///< Режим запуска.
     Trig::ModeFind      trig_modeFind;                      ///< Поиск синхронизации - вручную или автоматически.

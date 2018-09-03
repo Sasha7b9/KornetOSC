@@ -13,7 +13,6 @@
 #include "Utils/MathOSC.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
-#include "Settings/SettingsTrig.h"
 #include "Data/Storage.h"
 #include <stdio.h>
 #include <stdlib.h>

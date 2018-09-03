@@ -602,9 +602,6 @@
     <ClInclude Include="..\..\Device\src\Settings\SettingsMath.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Settings\SettingsTrig.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Settings\SettingsDebug.h">
       <Filter>Settings</Filter>
     </ClInclude>
