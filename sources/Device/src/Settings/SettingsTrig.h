@@ -41,16 +41,6 @@ struct ModeTrig
     } value;
 };
 
-struct TrigModeFind
-{
-    enum E
-    {
-        Hand,      ///< Уровень синхронизации устанавливается вручную или автоматически - однократным нажажтием кнопки.
-        Auto       ///< Подстройки уровня синхронизации производится автоматически после каждого нового считанного сигнала.
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 
 #define TRIG_SOURCE             (set.trig_source)
 #define TRIG_SOURCE_IS_A        (TRIG_SOURCE == Trig::Source::A)
@@ -63,8 +53,8 @@ struct TrigModeFind
 #define SET_TRIGLEV_B           (SET_TRIGLEV(Chan::B))
 
 #define TRIG_MODE_FIND          (set.trig_modeFind)
-#define TRIG_MODE_FIND_HAND     (TRIG_MODE_FIND == TrigModeFind::Hand)
-#define TRIG_MODE_FIND_AUTO     (TRIG_MODE_FIND == TrigModeFind::Auto)
+#define TRIG_MODE_FIND_HAND     (TRIG_MODE_FIND == Trig::ModeFind::Hand)
+#define TRIG_MODE_FIND_AUTO     (TRIG_MODE_FIND == Trig::ModeFind::Auto)
 
 #define START_MODE              (set.trig_startMode)
 #define START_MODE_IS_AUTO      (START_MODE == Trig::StartMode::Auto)

@@ -61,7 +61,7 @@ static const Settings defaultSettings =
     /* trig_polarity;           */      TrigPolarity::Rising,
     /* trig_lev[Chan::Num];     */      {Trig::ZERO, Trig::ZERO},
     /* trig_startMode;          */      Trig::StartMode::Auto,
-    /* trig_modeFind;           */      TrigModeFind::Hand,
+    /* trig_modeFind;           */      Trig::ModeFind::Hand,
     
                                             // Ìåíþ ÐÀÇÂ¨ÐÒÊÀ
     

@@ -106,7 +106,7 @@ public:
     TrigPolarity        trig_polarity;
     uint16              trig_lev[Chan::Num];
     Trig::StartMode     trig_startMode;                     ///< Режим запуска.
-    TrigModeFind        trig_modeFind;                      ///< Поиск синхронизации - вручную или автоматически.
+    Trig::ModeFind      trig_modeFind;                      ///< Поиск синхронизации - вручную или автоматически.
 
     // Меню РАЗВЁРТКА
 
