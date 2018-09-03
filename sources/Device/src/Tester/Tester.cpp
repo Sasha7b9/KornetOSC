@@ -119,7 +119,7 @@ void Tester::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tester::Update()
 {
-    if (Device::CurrentMode() != Mode_Tester)
+    if (Device::CurrentMode() != Device::Mode::Tester)
     {
         return;
     }

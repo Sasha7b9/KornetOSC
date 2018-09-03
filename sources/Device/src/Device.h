@@ -6,25 +6,33 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-enum DeviceMode
-{
-    Mode_Osci,
-    Mode_Tester,
-    Mode_Multimeter,
-    NumDeviceModes
-};
-
 class Device
 {
 public:
+
+    struct Mode
+    {
+        enum E
+        {
+            Osci,
+            Tester,
+            Multimeter,
+            Number
+        } value;
+
+        Mode(E v) : value(v) {};
+
+        operator uint8() const { return (uint8)value; };
+    };
 
     static void Init();
 
     static void Update();
 
-    static DeviceMode CurrentMode();
+    static Mode CurrentMode();
     /// Функция вызывается при нажатии на кнопку "Функция". Переключает устройство в следующий режим
     static void ChangeMode();
+
 private:
-    static DeviceMode currentMode;
+    static Mode currentMode;
 };

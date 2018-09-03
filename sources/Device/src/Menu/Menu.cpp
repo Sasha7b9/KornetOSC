@@ -840,7 +840,7 @@ void Menu::SaveSettings()
     if((timeLastPressedButton != MAX_UINT) && (TIME_MS - timeLastPressedButton > 5000))
     {
         timeLastPressedButton = MAX_UINT;
-        if(Device::CurrentMode() != Mode_Tester)
+        if(Device::CurrentMode() != Device::Mode::Tester)
         {
             Settings::Save();
         }

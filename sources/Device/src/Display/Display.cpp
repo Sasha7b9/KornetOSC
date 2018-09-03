@@ -126,7 +126,7 @@ void Display::Update()
 {
     typedef void (*pFuncDisplayVV)();
 
-    static const pFuncDisplayVV funcs[NumDeviceModes] =
+    static const pFuncDisplayVV funcs[Device::Mode::Number] =
     {
         DisplayOsci::Update,
         Display::UpdateTester,

@@ -16,7 +16,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DeviceMode Device::currentMode = Mode_Osci;
+Device::Mode Device::currentMode = Device::Mode::Osci;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,7 +48,7 @@ void Device::Update()
 {
     START_MULTI_MEASUREMENT();
 
-    if(currentMode == Mode_Multimeter)
+    if(currentMode == Mode::Multimeter)
     {
         Multimeter::Update();
     }
@@ -69,7 +69,7 @@ void Device::Update()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DeviceMode Device::CurrentMode()
+Device::Mode Device::CurrentMode()
 {
     return currentMode;
 }
@@ -77,9 +77,9 @@ DeviceMode Device::CurrentMode()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Device::ChangeMode()
 {
-    MathOSC::CircleIncrease<uint8>((uint8 &)currentMode, 0, NumDeviceModes - 1);
+    MathOSC::CircleIncrease<uint8>((uint8 &)currentMode, 0, Mode::Number - 1);
 
-    if (currentMode == Mode_Tester)
+    if (currentMode == Mode::Tester)
     {
         Tester::Enable();
     }
