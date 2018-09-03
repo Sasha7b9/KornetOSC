@@ -54,39 +54,7 @@ DEF_CHOICE_4(   cRangesResistance,                                              
     MULTI_RANGE_RESISTANCE, pMultimeter, FuncActive_RangesReistance, FuncChangedChoice, FuncDraw
 )
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncActive_Ranges()
-{
-    return MULTI_MEASURE == Multimeter::Measures::Resistance;
-}
-
-DEF_CHOICE_4(cRanges,                                                                                                    //--- ћультиметр - ѕредел ---
-    "ѕредел", "Range",
-    "ƒиапазон измерени€", "Measurement range",
-    "2 кќм", "2 kOhm",
-    "20 кќм", "20 kOhm",
-    "200 кќм", "200 kOhm",
-    "10 ћќм", "10 MOhm",
-    MULTI_RANGE_RESISTANCE, pMultimeter, FuncActive_Ranges, FuncChangedChoice, FuncDraw
-)
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Mode(bool)
-{
-    if(MULTI_MEASURE == Multimeter::Measures::VoltageDC)
-    {
-        (ChoiceBase)cRanges = cRangesVoltageDC;
-    }
-    else if(MULTI_MEASURE == Multimeter::Measures::VoltageAC)
-    {
-        (ChoiceBase)cRanges = cRangesVoltageAC;
-    }
-    else if(MULTI_MEASURE == Multimeter::Measures::Resistance)
-    {
-        (ChoiceBase)cRanges = cRangesResistance;
-    }
-}
+static void OnChanged_Mode(bool);
 
 DEF_CHOICE_7(   cMode,
     "–ежим", "Mode"
@@ -119,6 +87,27 @@ DEF_CHOICE_7(   cMode,
     MULTI_MEASURE, pMultimeter, FuncActive, OnChanged_Mode, FuncDraw
 )
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_Mode(bool)
+{
+    const Control *const itemsDC[] = { (Control *)&cMode, (Control *)&cRangesVoltageDC };
+    const Control *const itemsAC[] = { (Control *)&cMode, (Control *)&cRangesVoltageAC };
+    const Control *const itemsResist[] = { (Control *)&cMode, (Control *)&cRangesResistance };
+
+    if(MULTI_MEASURE == Multimeter::Measures::VoltageDC)
+    {
+        pMultimeter.items = (const Control * const *)&itemsDC;
+    }
+    else if(MULTI_MEASURE == Multimeter::Measures::VoltageAC)
+    {
+        items = itemsAC;
+    }
+    else if(MULTI_MEASURE == Multimeter::Measures::Resistance)
+    {
+        items = itemsResist;
+    }
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageMultimeter::pointer = &pMultimeter;
@@ -129,6 +118,6 @@ DEF_PAGE_2( pMultimeter,
     "”правление прибором в режиме мультиметра",
     "Instrument control in multimeter mode",
     cMode,
-    cRanges,
+    cRangesVoltageDC,
     Page::Name::Multimeter, Menu::pageMain, FuncActive, EmptyPressPage
 )
