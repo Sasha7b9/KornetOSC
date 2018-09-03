@@ -4,8 +4,8 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define MULTI_MEASURE           (set.multi_meas)
-#define MULTI_RANGE_VV          (set.multi_rangeVV)
-#define MULTI_RANGE_CV          (set.multi_rangeCV)
+#define MULTI_RANGE_AC          (set.multi_rangeAC)
+#define MULTI_RANGE_DC          (set.multi_rangeDC)
 #define MULTI_RANGE_RESISTANCE  (set.multi_rangeResist)
 
 

@@ -8,6 +8,53 @@ extern const PageBase pMultimeter;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static bool FuncActive_RangesVoltageDC()
+{
+    return MULTI_MEASURE == Multimeter::Measures::VoltageDC;
+}
+
+DEF_CHOICE_3(   cRangesVoltageDC,                                                                                        //--- МУЛЬТИМЕТР - Предел ---
+    "Предел", "Range",
+    "Диапазон измерения", "Мeasurement range",
+    "2 В",   "2 V",
+    "20 В",  "20 V",
+    "500 В", "500 V",
+    MULTI_RANGE_DC, pMultimeter, FuncActive_RangesVoltageDC, FuncChangedChoice, FuncDraw
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static bool FuncActive_RnagesVoltageAC()
+{
+    return MULTI_MEASURE == Multimeter::Measures::VoltageAC;
+}
+
+DEF_CHOICE_3(   cRangesVoltageAC,                                                                                        //--- МУЛЬТИМЕТР - Предел ---
+    "Предел", "Range",
+    "Диапазон измерения", "Measurement range",
+    "2 В",   "2 V",
+    "20 В",  "20 V",
+    "400 В", "400 V",
+    MULTI_RANGE_AC, pMultimeter, FuncActive_RnagesVoltageAC, FuncChangedChoice, FuncDraw
+)
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static bool FuncActive_RangesReistance()
+{
+    return MULTI_MEASURE == Multimeter::Measures::Resistance;
+}
+
+DEF_CHOICE_4(   cRangesResistance,                                                                                       //--- Мультиметр - Предел ---
+    "Предел", "Range",
+    "Диапазон измерения", "Measurement range",
+    "2 кОм", "2 kOhm",
+    "20 кОм", "20 kOhm",
+    "200 кОм", "200 kOhm",
+    "10 МОм", "10 MOhm",
+    MULTI_RANGE_RESISTANCE, pMultimeter, FuncActive_RangesReistance, FuncChangedChoice, FuncDraw
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Mode(bool)
 {
 
@@ -47,6 +94,9 @@ DEF_CHOICE_7(   cMode,
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageMultimeter::pointer = &pMultimeter;
+
+
+
 
 
 DEF_PAGE_1( pMultimeter,

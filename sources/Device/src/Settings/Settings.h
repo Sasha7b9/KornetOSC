@@ -254,8 +254,8 @@ public:
     // Настройки мультиметра
     Multimeter::AVP             multi_avp;
     Multimeter::Measures        multi_meas;
-    Multimeter::RangeDC         multi_rangeCV;
-    Multimeter::RangeAC         multi_rangeVV;
+    Multimeter::RangeDC         multi_rangeDC;
+    Multimeter::RangeAC         multi_rangeAC;
     Multimeter::RangeResistance multi_rangeResist;
 };
 

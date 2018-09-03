@@ -127,7 +127,7 @@ void Multimeter::Graphics::PrepareConstantVoltage()
     out[8] = 'V';
     out[9] = '=';
 
-    switch(MULTI_RANGE_CV)
+    switch(MULTI_RANGE_DC)
     {
         case Multimeter::RangeDC::_2V:
             out[2] = '.';
@@ -157,7 +157,7 @@ void Multimeter::Graphics::PrepareVariableVoltage()
     out[7] = 'V';
     out[8] = '~';
 
-    switch (MULTI_RANGE_VV)
+    switch (MULTI_RANGE_AC)
     {
         case Multimeter::RangeAC::_2V:
             out[1] = '.';
