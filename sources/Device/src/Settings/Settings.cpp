@@ -194,10 +194,11 @@ static const Settings defaultSettings =
     /* nrst_correctionTime;                       */ 0,
 
                                 // Настройки мультиметра
-    /* multi_avp */         MultiAVP::Off,
-    /* multi_meas */        MultiMeasures::VariableVoltage,
-    /* multi_rangeCV */     MultiRangeCV::_2V,
-    /* multi_rangeVV */     MultiRangeVV::_2V
+    /* multi_avp */         Multimeter::AVP::Off,
+    /* multi_meas */        Multimeter::Measures::VoltageAC,
+    /* multi_rangeCV */     Multimeter::RangeCV::_2V,
+    /* multi_rangeVV */     Multimeter::RangeVV::_2V,
+    /* multi_rangeResist */ Multimeter::RangeResistance::_10M
 };
 
 Settings set = defaultSettings;

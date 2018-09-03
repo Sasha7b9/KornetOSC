@@ -11,13 +11,13 @@
 #include "SettingsNRST.h"
 #include "SettingsService.h"
 #include "SettingsMeasures.h"
-#include "SettingsMultimeter.h"
 #include "Tester/Tester.h"
 #include "Display/Cursors.h"
 #include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
 #include "Display/Grid.h"
 #include "Display/Colors.h"
+#include "Multimeter/Multimeter.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -253,11 +253,11 @@ public:
     int16               nrst_correctionTime;                        ///< Коэффициент коррекции времени.
 
     // Настройки мультиметра
-    MultiAVP        multi_avp;
-    MultiMeasures   multi_meas;
-    MultiRangeCV    multi_rangeCV;
-    MultiRangeVV    multi_rangeVV;
-    MultiRangeResistance multi_rangeResist;
+    Multimeter::AVP             multi_avp;
+    Multimeter::Measures        multi_meas;
+    Multimeter::RangeCV         multi_rangeCV;
+    Multimeter::RangeVV         multi_rangeVV;
+    Multimeter::RangeResistance multi_rangeResist;
 };
 
 #pragma pack(pop)

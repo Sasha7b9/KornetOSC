@@ -1,6 +1,5 @@
 #include "PageMultimeter.h"
 #include "Settings/Settings.h"
-#include "Settings/SettingsMultimeter.h"
 #include "Menu/Pages/Definition.h"
 
 

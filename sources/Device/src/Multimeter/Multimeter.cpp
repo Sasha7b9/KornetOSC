@@ -85,7 +85,7 @@ void Multimeter::Graphics::Update()
         Func(pFuncVV f) : func(f) {};
     };
 
-    static const Func funcs[MultiMeasures::Number] =
+    static const Func funcs[Multimeter::Measures::Number] =
     {
         PrepareConstantVoltage,
         PrepareVariableVoltage,
@@ -129,17 +129,17 @@ void Multimeter::Graphics::PrepareConstantVoltage()
 
     switch(MULTI_RANGE_CV)
     {
-        case MultiRangeCV::_2V:
+        case Multimeter::RangeCV::_2V:
             out[2] = '.';
             out[3] = buffer[3];
             out[4] = buffer[4];
             break;
-        case MultiRangeCV::_20V:
+        case Multimeter::RangeCV::_20V:
             out[2] = buffer[3];
             out[3] = '.';
             out[4] = buffer[4];
             break;
-        case MultiRangeCV::_500V:
+        case Multimeter::RangeCV::_500V:
             out[2] = buffer[3];
             out[3] = buffer[4];
             out[4] = '.';
@@ -159,17 +159,17 @@ void Multimeter::Graphics::PrepareVariableVoltage()
 
     switch (MULTI_RANGE_VV)
     {
-        case MultiRangeVV::_2V:
+        case Multimeter::RangeVV::_2V:
             out[1] = '.';
             out[2] = buffer[3];
             out[3] = buffer[4];
             break;
-        case MultiRangeVV::_20V:
+        case Multimeter::RangeVV::_20V:
             out[1] = buffer[3];
             out[2] = '.';
             out[3] = buffer[4];
             break;
-        case MultiRangeVV::_400V:
+        case Multimeter::RangeVV::_400V:
             out[1] = buffer[3];
             out[2] = buffer[4];
             out[3] = '.';
@@ -219,22 +219,22 @@ void Multimeter::Graphics::PrepareResistance()
 
     switch(MULTI_RANGE_RESISTANCE)
     {
-        case MultiRangeResistance::_2k:
+        case Multimeter::RangeResistance::_2k:
             out[1] = '.';
             out[2] = buffer[3];
             out[3] = buffer[4];
             break;
-        case MultiRangeResistance::_20k:
+        case Multimeter::RangeResistance::_20k:
             out[1] = buffer[3];
             out[2] = '.';
             out[3] = buffer[4];
             break;
-        case MultiRangeResistance::_200k:
+        case Multimeter::RangeResistance::_200k:
             out[1] = buffer[3];
             out[2] = buffer[4];
             out[3] = '.';
             break;
-        case MultiRangeResistance::_10M:
+        case Multimeter::RangeResistance::_10M:
             out[1] = buffer[3];
             out[2] = '.';
             out[3] = buffer[4];
