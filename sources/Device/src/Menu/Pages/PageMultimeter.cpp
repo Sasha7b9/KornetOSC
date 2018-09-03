@@ -55,9 +55,37 @@ DEF_CHOICE_4(   cRangesResistance,                                              
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+static bool FuncActive_Ranges()
+{
+    return MULTI_MEASURE == Multimeter::Measures::Resistance;
+}
+
+DEF_CHOICE_4(cRanges,                                                                                                    //--- ћультиметр - ѕредел ---
+    "ѕредел", "Range",
+    "ƒиапазон измерени€", "Measurement range",
+    "2 кќм", "2 kOhm",
+    "20 кќм", "20 kOhm",
+    "200 кќм", "200 kOhm",
+    "10 ћќм", "10 MOhm",
+    MULTI_RANGE_RESISTANCE, pMultimeter, FuncActive_Ranges, FuncChangedChoice, FuncDraw
+)
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Mode(bool)
 {
-
+    if(MULTI_MEASURE == Multimeter::Measures::VoltageDC)
+    {
+        (ChoiceBase)cRanges = cRangesVoltageDC;
+    }
+    else if(MULTI_MEASURE == Multimeter::Measures::VoltageAC)
+    {
+        (ChoiceBase)cRanges = cRangesVoltageAC;
+    }
+    else if(MULTI_MEASURE == Multimeter::Measures::Resistance)
+    {
+        (ChoiceBase)cRanges = cRangesResistance;
+    }
 }
 
 DEF_CHOICE_7(   cMode,
@@ -96,13 +124,11 @@ DEF_CHOICE_7(   cMode,
 const PageBase *PageMultimeter::pointer = &pMultimeter;
 
 
-
-
-
-DEF_PAGE_1( pMultimeter,
+DEF_PAGE_2( pMultimeter,
     "ћ”Ћ№“»ћ≈“–", "MULTIMETER",
     "”правление прибором в режиме мультиметра",
     "Instrument control in multimeter mode",
     cMode,
+    cRanges,
     Page::Name::Multimeter, Menu::pageMain, FuncActive, EmptyPressPage
 )
