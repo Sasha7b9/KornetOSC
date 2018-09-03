@@ -69,7 +69,7 @@ public:
     };
 
     /// Предел имзерения постоянного напряжения
-    struct RangeCV
+    struct RangeDC
     {
         enum E
         {
@@ -77,12 +77,12 @@ public:
             _20V,
             _500V
         } value;
-        RangeCV(E v) : value(v) { };
+        RangeDC(E v) : value(v) { };
         operator uint8() const { return (uint8)value; };
     };
 
     /// Предел измерения переменного напряжения
-    struct RangeVV
+    struct RangeAC
     {
         enum E
         {
@@ -90,7 +90,7 @@ public:
             _20V,
             _400V
         } value;
-        RangeVV(E v) : value(v) { };
+        RangeAC(E v) : value(v) { };
         operator uint8() const { return (uint8)value; };
     };
 

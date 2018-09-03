@@ -129,17 +129,17 @@ void Multimeter::Graphics::PrepareConstantVoltage()
 
     switch(MULTI_RANGE_CV)
     {
-        case Multimeter::RangeCV::_2V:
+        case Multimeter::RangeDC::_2V:
             out[2] = '.';
             out[3] = buffer[3];
             out[4] = buffer[4];
             break;
-        case Multimeter::RangeCV::_20V:
+        case Multimeter::RangeDC::_20V:
             out[2] = buffer[3];
             out[3] = '.';
             out[4] = buffer[4];
             break;
-        case Multimeter::RangeCV::_500V:
+        case Multimeter::RangeDC::_500V:
             out[2] = buffer[3];
             out[3] = buffer[4];
             out[4] = '.';
@@ -159,17 +159,17 @@ void Multimeter::Graphics::PrepareVariableVoltage()
 
     switch (MULTI_RANGE_VV)
     {
-        case Multimeter::RangeVV::_2V:
+        case Multimeter::RangeAC::_2V:
             out[1] = '.';
             out[2] = buffer[3];
             out[3] = buffer[4];
             break;
-        case Multimeter::RangeVV::_20V:
+        case Multimeter::RangeAC::_20V:
             out[1] = buffer[3];
             out[2] = '.';
             out[3] = buffer[4];
             break;
-        case Multimeter::RangeVV::_400V:
+        case Multimeter::RangeAC::_400V:
             out[1] = buffer[3];
             out[2] = buffer[4];
             out[3] = '.';
