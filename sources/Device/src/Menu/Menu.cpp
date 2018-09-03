@@ -716,12 +716,6 @@ static void DrawHintItem(int x, int y, int width)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Menu::CalculateX()
-{
-    return 0;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 int Menu::CalculateY()
 {
     if(Device::CurrentMode() == Device::Mode::Multimeter)
@@ -742,28 +736,28 @@ void Menu::Draw()
         {
             if (IS_PAGE(item))
             {
-                item->Draw(CalculateX(), CalculateY(), true);
+                item->Draw(0, CalculateY(), true);
             }
             else
             {
-                ((Page *)KEEPER(item))->Draw(CalculateX(), CalculateY(), true);
+                ((Page *)KEEPER(item))->Draw(0, CalculateY(), true);
             }
         }
         else
         {
             if (IS_CHOICE(item) || IS_CHOICE_REG(item))
             {
-                ((Choice *)item)->Draw(CalculateX(), Grid::Top(), false);
-                Painter::DrawVLine(CalculateX(), Grid::Top() + 1, Grid::Top() + 34, Color::BorderMenu(false));
-                Painter::DrawVLine(CalculateX() + 1, Grid::Top() + 1, Grid::Top() + 34);
+                ((Choice *)item)->Draw(0, Grid::Top(), false);
+                Painter::DrawVLine(0, Grid::Top() + 1, Grid::Top() + 34, Color::BorderMenu(false));
+                Painter::DrawVLine(0 + 1, Grid::Top() + 1, Grid::Top() + 34);
                 Painter::DrawVLine(Grid::Right(), Grid::Top() + 30, Grid::Top() + 40, Color::FILL);
-                Painter::DrawVLine(CalculateX() - 1, Grid::Top() + 1, Grid::Top() + 35, Color::BACK);
-                Painter::DrawHLine(Grid::Top() + 35, CalculateX() - 1, Grid::Right() - 1);
+                Painter::DrawVLine(0 - 1, Grid::Top() + 1, Grid::Top() + 35, Color::BACK);
+                Painter::DrawHLine(Grid::Top() + 35, 0 - 1, Grid::Right() - 1);
             }
             else if (IS_GOVERNOR(item))
             {
-                ((Governor *)item)->Draw(CalculateX(), Grid::Top(), true);
-                Painter::DrawHLine(Grid::Top(), CalculateX() - 2, Grid::Right(), Color::FILL);
+                ((Governor *)item)->Draw(0, Grid::Top(), true);
+                Painter::DrawHLine(Grid::Top(), 0 - 2, Grid::Right(), Color::FILL);
                 Painter::DrawVLine(Grid::Right(), Grid::Top(), Grid::Top() + 40);
             }
         }

@@ -69,8 +69,6 @@ public:
     static void CloseOpenedItem();
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
     static void ChangeItem(Control *item, int delta);
-    /// С какой позиции X рисовать меню
-    static int CalculateX();
     /// С какоей позиции Y рисовать меню. Позиция берётся без учёта заголовка
     static int CalculateY();
     /// Вернуть указатель на малую кнопку, соответствующую данной кнопки панели.
