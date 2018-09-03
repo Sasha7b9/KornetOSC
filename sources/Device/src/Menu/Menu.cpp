@@ -577,7 +577,7 @@ void Menu::RunAfterUpdate(pFuncVV func)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Control *Menu::OpenedItem()
 {
-    TypeItem type = Item_None;
+    Control::Type type = Control::Type::None;
     return (Control *)RetLastOpened((Page *)pageMain, &type);
 }
 
@@ -588,7 +588,7 @@ Page::Name Menu::GetNameOpenedPage()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void *Menu::RetLastOpened(Page *page, TypeItem *type)
+void *Menu::RetLastOpened(Page *page, Control::Type *type)
 {
     if (page->CurrentItemIsOpened())
     {
@@ -603,17 +603,17 @@ void *Menu::RetLastOpened(Page *page, TypeItem *type)
             return item;
         }
     }
-    *type = Item_Page;
+    *type = Control::Type::Page;
     return page;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Control *Menu::CurrentItem()
 {
-    TypeItem type = Item_None;
+    Control::Type type = Control::Type::None;
     void *lastOpened = RetLastOpened((Page *)pageMain, &type);
     int8 pos = ((const Page *)lastOpened)->PosCurrentItem();
-    if (type == Item_Page && pos != 0x7f)
+    if (type == Control::Type::Page && pos != 0x7f)
     {
         return ((const Page *)lastOpened)->Item(pos);
     }
@@ -683,18 +683,18 @@ static void DrawHintItem(int x, int y, int width)
         return;
     }
 
-    pString names[Item_NumberItems][2] =
+    pString names[Control::Type::Number][2] =
     {
         {"",            ""},        // Item_None
-        {"",            ""},        // Item_Choice
-        {"Кнопка",      "Button"},  // Item_Button
-        {"Страница",    "Page"},    // Item_Page
-        {"",            ""},        // Item_Governor
-        {"",            ""},        // Item_Time
-        {"",            ""},        // Item_GovernorColor
-        {"",            ""},        // Item_Formula
-        {"",            ""},        // Item_ChoiceReg
-        {"Кнопка",      "Button"}   // Item_SmallButton
+        {"",            ""},        // Control::Type::Choice
+        {"Кнопка",      "Button"},  // Control::Type::Button
+        {"Страница",    "Page"},    // Control::Type::Page
+        {"",            ""},        // Control::Type::Governor
+        {"",            ""},        // Control::Type::Time
+        {"",            ""},        // Control::Type::GovernorColor
+        {"",            ""},        // Control::Type::Formula
+        {"",            ""},        // Control::Type::ChoiceReg
+        {"Кнопка",      "Button"}   // Control::Type::SmallButton
     };
     Language lang = LANG;
     Page *item = (Page *)Menu::itemHint;
@@ -703,13 +703,13 @@ static void DrawHintItem(int x, int y, int width)
     char title[SIZE];
     snprintf(title, SIZE, "%s \"%s\"", names[Menu::itemHint->type][lang], item->titleHint[lang]);
 
-    if (item->type == Item_SmallButton)
+    if (item->type == Control::Type::SmallButton)
     {
         y -= 9;
     }
     Painter::DrawStringInCenterRectAndBoundItC(x, y, width, 15, title, Color::BACK, Color::FILL);
     y = Painter::DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->titleHint[2 + lang], Color::BACK, Color::FILL);
-    if (item->type == Item_SmallButton)
+    if (item->type == Control::Type::SmallButton)
     {
         ((SButton*)item)->DrawHints(x, y, width);
     }

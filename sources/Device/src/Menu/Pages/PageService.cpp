@@ -144,7 +144,7 @@ DEF_CHOICE_2(       cRecorder,                                                  
 // CЕРВИС - РЕГИСТРАТОР //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static const Page ppRecorder =
 {
-    Item_Page, &pService, 0,
+    Control::Type::Page, &pService, 0,
     {
         "РЕГИСТРАТОР", "RECORDER",
         "Запись и воспроизведение входных сигналов",
@@ -163,7 +163,7 @@ static const Page ppRecorder =
 // СЕРВИС - РЕГИСТРАТОР - Выход ----------------------------------------------------------------------------------------------------------------------
 static const SButton bRecorder_Exit =
 {
-    Item_SmallButton, &ppRecorder, 0,
+    Control::Type::SmallButton, &ppRecorder, 0,
     {
         "Выход", "Exit",
         "Выход из режима регистратора",
@@ -176,7 +176,7 @@ static const SButton bRecorder_Exit =
 // СЕРВИС - РЕГИСТРАТОР - Сохранять в ... ------------------------------------------------------------------------------------------------------------
 static const SButton bRecorder_SaveTo =
 {
-    Item_SmallButton, &ppRecorder, IsActive_Recorder_SaveTo,
+    Control::Type::SmallButton, &ppRecorder, IsActive_Recorder_SaveTo,
     {
         "Сохранять в ...", "Save in ...",
         "Выбор места хранения данных",
@@ -227,7 +227,7 @@ static void Draw_Recorder_SaveTo_EXT(int x, int y)
 // СЕРВИС - РЕГИСТРАТОР - Выбор ----------------------------------------------------------------------------------------------------------------------
 static const SButton bRecorder_Choice =
 {
-    Item_SmallButton, &ppRecorder, 0,
+    Control::Type::SmallButton, &ppRecorder, 0,
     {
         "Выбор", "Choice",
         "Выбор сигнала для просмотра",
@@ -252,7 +252,7 @@ static void Draw_Recorder_Choice(int x, int y)
 // СЕРВИС - РЕГИСТРАТОР - Курсор ---------------------------------------------------------------------------------------------------------------------
 static const SButton bRecorder_Cursor =
 {
-    Item_SmallButton, &ppRecorder, 0,
+    Control::Type::SmallButton, &ppRecorder, 0,
     {
         "Курсор", "Cursors",
         "Выбор курсора",
@@ -899,7 +899,7 @@ extern const PageBase pService;
 // СЕРВИС - Откат настроек
 const Button mbServicePreviousSettings =
 {
-    Item_Button, &pService, 0,
+    Control::Type::Button, &pService, 0,
     {
         "Откат настроек", "Return settings",
         "Возвращает настройки осциллографа, которые были в момент нажатия \"Поиск сигнала\"",
@@ -921,7 +921,7 @@ static void ChangeF_MathFormula()
 static int8 curDigit = 0;
 const Formula mfMathFormula =
 {
-    Item_Formula, &ppFunction, ActiveF_MathFormula,
+    Control::Type::Formula, &ppFunction, ActiveF_MathFormula,
     {
         "Формула", "Formulf",
         "Здесь задаются коэффициенты и знаки в математической формуле",

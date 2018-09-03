@@ -17,27 +17,9 @@ extern int8 gCurDigit;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Разные виды пунктов меню
-enum TypeItem
-{
-    Item_None,           
-    Item_Choice,        ///< Пункт выбора - позволяет выбрать одно из нескольких заданных значений.
-    Item_Button,        ///< Кнопка.
-    Item_Page,          ///< Страница.
-    Item_Governor,      ///< Регулятор - позволяет выбрать любое целое числовое значение из заранее заданного диапазаона.
-    Item_Time,          ///< Позволяет ввести время.
-    Item_GovernorColor, ///< Позволяет выбрать цвет.
-    Item_Formula,       ///< Позволяет выбрать знак и коэффициенты для математической формулы (умножение и сложение)
-    Item_ChoiceReg,     ///< Элемент выбора, в котором выбор осуществляется не кнопкой, а ручкой
-    Item_SmallButton,   ///< Кнопка для режима малых кнопок
-    Item_ChoiceParameter,
-    Item_NumberItems
-};
-
-
 /// Общая часть для всех типов элементов меню
 #define COMMON_PART_MENU_ITEM                                                                           \
-    TypeItem        type;           /* Тип итема */                                                     \
+    uint8           type;           /* Тип итема */                                                     \
     int8            num;            /* Число вариантов для Choice или число контролов для Page*/        \
     bool            isPageSB;       /* Если true, то это страница малых кнопок */                       \
     uint8           name;           /* Имя из перечисления Page::Name */                                  \
@@ -47,16 +29,16 @@ enum TypeItem
 
 class PageBase;
 
-#define IS_PAGE(item)           (item->type == Item_Page)
-#define NOT_PAGE(item)          (item->type != Item_Page)
+#define IS_PAGE(item)           (item->type == Control::Type::Page)
+#define NOT_PAGE(item)          (item->type != Control::Type::Page)
 #define IS_PAGE_SB(item)        (item->isPageSB)
-#define IS_CHOICE(item)         (item->type == Item_Choice)
-#define IS_CHOICE_REG(item)     (item->type == Item_ChoiceReg)
-#define NOT_CHOICE_REG(item)    (item->type != Item_ChoiceReg)
-#define IS_GOVERNOR(item)       (item->type == Item_Governor)
-#define NOT_GOVERNOR(item)      (item->type != Item_Governor)
-#define IS_GOVERNOR_COLOR(item) (item->type == Item_GovernorColor)
-#define IS_TIME(item)           (item->type == Item_Time)
+#define IS_CHOICE(item)         (item->type == Control::Type::Choice)
+#define IS_CHOICE_REG(item)     (item->type == Control::Type::ChoiceReg)
+#define NOT_CHOICE_REG(item)    (item->type != Control::Type::ChoiceReg)
+#define IS_GOVERNOR(item)       (item->type == Control::Type::Governor)
+#define NOT_GOVERNOR(item)      (item->type != Control::Type::Governor)
+#define IS_GOVERNOR_COLOR(item) (item->type == Control::Type::GovernorColor)
+#define IS_TIME(item)           (item->type == Control::Type::Time)
     
 #define KEEPER(item)            ((PageBase *)item->keeper)
 #define IS_ACTIVE(item)         (item->funcOfActive())
@@ -89,6 +71,29 @@ public:
     void LongPress();
 
     void Draw(int x, int y, bool opened);
+
+    /// Разные виды пунктов меню
+    struct Type
+    {
+        enum E
+        {
+            None,
+            Choice,        ///< Пункт выбора - позволяет выбрать одно из нескольких заданных значений.
+            Button,        ///< Кнопка.
+            Page,          ///< Страница.
+            Governor,      ///< Регулятор - позволяет выбрать любое целое числовое значение из заранее заданного диапазаона.
+            Time,          ///< Позволяет ввести время.
+            GovernorColor, ///< Позволяет выбрать цвет.
+            Formula,       ///< Позволяет выбрать знак и коэффициенты для математической формулы (умножение и сложение)
+            ChoiceReg,     ///< Элемент выбора, в котором выбор осуществляется не кнопкой, а ручкой
+            SmallButton,   ///< Кнопка для режима малых кнопок
+            ChoiceParameter,
+            Number
+        } value;
+
+        Type(E v) : value(v) {};
+        operator uint8() const { return (uint8)value; };
+    };
 };
 
 

@@ -615,34 +615,34 @@ void Page::DrawItems(int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Control::Draw(int x, int y, bool opened)
 {
-    if (type == Item_Choice || type == Item_ChoiceReg)
+    if (type == Control::Type::Choice || type == Control::Type::ChoiceReg)
     {
         ((Choice *)this)->Draw(x, y, opened);
     }
-    else if (type == Item_Button)
+    else if (type == Control::Type::Button)
     {
         ((Button *)this)->Draw(x, y);
     }
-    else if (type == Item_Page)
+    else if (type == Control::Type::Page)
     {
         ((Page *)this)->Draw(x, y, opened);
     }
-    else if (type == Item_Governor)
+    else if (type == Control::Type::Governor)
     {
         ((Governor *)this)->Draw(x, y, opened);
     }
-    else if (type == Item_Time)
+    else if (type == Control::Type::Time)
     {
         ((Time *)this)->Draw(x, y, opened);
     }
-    else if (type == Item_GovernorColor)
+    else if (type == Control::Type::GovernorColor)
     {
         ((GovernorColor *)this)->Draw(x, y, opened);
     }
-    else if (type == Item_Formula)
+    else if (type == Control::Type::Formula)
     {
     }
-    else if (type == Item_SmallButton)
+    else if (type == Control::Type::SmallButton)
     {
         ((SButton *)this)->Draw(x, y);
     }

@@ -118,7 +118,7 @@ static const char *hintsSearch_Mode[] ={ "Ручной", "Hand", "Автоматический",  "A
 
 static const ChoiceBase cSearch_Mode =
 {
-    Item_Choice, 2, false, Page::Name::NoPage, &ppSearch, FuncActive,
+    Control::Type::Choice, 2, false, Page::Name::NoPage, &ppSearch, FuncActive,
     {
         "Режим", "Mode"
         ,

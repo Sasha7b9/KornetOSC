@@ -91,7 +91,7 @@ public:
 
 private:
 
-    static void *RetLastOpened(Page *_page, TypeItem *_type);
+    static void *RetLastOpened(Page *_page, Control::Type *_type);
     /// Обработка короткого нажатия кнопки
     static void ProcessingShortPressureButton();
     /// Обработка длинного нажатия кнопки
