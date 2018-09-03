@@ -5,7 +5,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const PageBase mainPage;
 extern const PageBase pMultimeter;
 
 
@@ -56,5 +55,5 @@ DEF_PAGE_1( pMultimeter,
     "”правление прибором в режиме мультиметра",
     "Instrument control in multimeter mode",
     cMode,
-    Page::Name::Multimeter, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Multimeter, Menu::pageMain, FuncActive, EmptyPressPage
 )

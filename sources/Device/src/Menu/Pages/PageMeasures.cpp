@@ -285,7 +285,7 @@ DEF_PAGE_6(         pMeasures,                                                  
     cChannels,     // »«Ã≈–≈Õ»ﬂ -  ‡Ì‡Î˚
     ppTune,        // »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹
     cMode,         // »«Ã≈–≈Õ»ﬂ - ¬Ë‰
-    Page::Name::Measures, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Measures, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
 //static const PageBase * pointerPageMeasures = &pMeasures;

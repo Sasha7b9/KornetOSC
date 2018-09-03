@@ -2305,6 +2305,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\PageTrig.h</FilePath>
             </File>
+            <File>
+              <FileName>PageMultimeter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMultimeter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMultimeter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageMultimeter.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

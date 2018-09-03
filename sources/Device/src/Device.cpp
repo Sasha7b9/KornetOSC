@@ -87,4 +87,6 @@ void Device::ChangeMode()
     {
         Tester::Disable();
     }
+
+    Menu::ChangeMode();
 }

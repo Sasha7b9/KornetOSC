@@ -653,7 +653,7 @@ DEF_PAGE_4(         pMemory,                                                    
     ppLast,         // ÏÀÌ‗ÒÜ - Ïמסכוהםטו
     ppInternal,     // ÏÀÌ‗ÒÜ - ÂÍÓÒÐ ÇÓ
     ppDrive,        // ÏÀÌ‗ÒÜ - ÂÍÅØÍ ÇÓ
-    Page::Name::Memory, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Memory, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
 void PageMemory::SaveSignalToFlashDrive()

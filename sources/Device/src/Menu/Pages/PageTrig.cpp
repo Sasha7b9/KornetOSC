@@ -177,5 +177,5 @@ DEF_PAGE_5(         pTrig,                                                      
     cPolarity,      // ÑÈÍÕĞ - Ïîëÿğíîñòü
     cInput,         // ÑÈÍÕĞ - Âõîä
     ppSearch,       // ÑÈÍÕĞ - ÏÎÈÑÊ
-    Page::Name::Trig, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Trig, Menu::pageMain, FuncActive, EmptyPressPage
 )

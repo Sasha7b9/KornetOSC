@@ -836,7 +836,7 @@ DEF_PAGE_10_GLOBAL(pService,                                                    
     ppRTC,             // яепбхя - бпелъ
     cLanguage,         // яепбхя - ъГШЙ
     ppInformation,     // яепбхя - хмтнплюжхъ
-    Page::Name::Service, &mainPage, FuncActive, FuncPress
+    Page::Name::Service, Menu::pageMain, FuncActive, FuncPress
 )
 
 

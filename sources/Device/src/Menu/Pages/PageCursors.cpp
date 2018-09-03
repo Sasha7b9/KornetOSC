@@ -433,7 +433,7 @@ DEF_PAGE_5(         pCursors,                                                   
     cLookModeChanB,     // йспянпш - яКЕФЕМХЕ ЙЮМЮК 2
     cShowFreq,          // йспняпш - 1/dT
     ppSet,              // йспянпш - сярюмнбхрэ
-    Page::Name::Cursors, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Cursors, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
 //static const PageBase * pointerPageCursors = &pCursors;

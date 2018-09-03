@@ -10,7 +10,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const PageBase mainPage;
 extern const PageBase pppSettings_Colors;
 extern const PageBase ppDisplaySettings;
 extern const PageBase pDisplay;
@@ -408,7 +407,7 @@ DEF_PAGE_10(         pDisplay,                                                  
     cScaleYtype,        // ÄÈÑÏËÅÉ - Ñìåùåíèå
     ppDisplaySettings,  // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ
     cThickness,         // ÄÈÑÏËÅÉ - Òîëùèíà
-    Page::Name::Display, &mainPage, FuncActive, EmptyPressPage
+    Page::Name::Display, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

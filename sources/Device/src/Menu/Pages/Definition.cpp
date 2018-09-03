@@ -5,6 +5,7 @@
 #include "Display/DisplayTypes.h"
 #include "Settings/Settings.h"
 #include "Utils/CommonFunctions.h"
+#include "Device.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -19,11 +20,17 @@ extern const PageBase pMeasures;
 extern const PageBase pService;
 extern const PageBase pHelp;
 extern const PageBase pDebug;
-extern const PageBase mainPage;
+extern const PageBase pMultimeter;
+
+extern const PageBase pageMulti;
+extern const PageBase pageOsci;
+
+
+PageBase *Menu::pageMain = (PageBase *)&pageOsci;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_11_GLOBAL(    mainPage,                                                                                                           // Ã≈Õﬁ ///
+DEF_PAGE_11_GLOBAL(pageOsci,                                                                                                           // Ã≈Õﬁ ///
     "Ã≈Õﬁ", "MENU",
     "", "",
     pDisplay,   // ƒ»—œÀ≈…
@@ -40,8 +47,17 @@ DEF_PAGE_11_GLOBAL(    mainPage,                                                
     Page::Name::Main, 0, FuncActive, EmptyPressPage
 )
 
+DEF_PAGE_2 (pageMulti,
+    "Ã”À‹“»Ã≈“–", "MULTIMETER",
+    "", "",
+    pMultimeter,
+    pMultimeter,
+    Page::Name::Main, 0, FuncActive, EmptyPressPage
+)
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const void *PageForButton(Key button)
+const void *Menu::PageForButton(Key button)
 {
     static const void *pages[Key::Number] =
     {  
@@ -62,9 +78,9 @@ const void *PageForButton(Key button)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool IsMainPage(const void *item)
+bool Menu::IsMainPage(const void *item)
 {
-    return item == &mainPage;
+    return item == pageMain;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -142,5 +158,18 @@ void DrawMenuCursTime(int x, int y, bool left, bool right)
     for (int i = 0; i < (right ? 3 : 1); i++)
     {
         Painter::DrawVLine(x1 - i, y0, y1);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::ChangeMode()
+{
+    if(Device::CurrentMode() == Device::Mode::Multimeter)
+    {
+        pageMain = (PageBase *)&pMultimeter;
+    }
+    else
+    {
+        pageMain = (PageBase *)&pageOsci;
     }
 }

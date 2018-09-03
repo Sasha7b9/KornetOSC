@@ -578,7 +578,7 @@ void Menu::RunAfterUpdate(pFuncVV func)
 Control *Menu::OpenedItem()
 {
     TypeItem type = Item_None;
-    return (Control *)RetLastOpened((Page *)&mainPage, &type);
+    return (Control *)RetLastOpened((Page *)pageMain, &type);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -611,7 +611,7 @@ void *Menu::RetLastOpened(Page *page, TypeItem *type)
 Control *Menu::CurrentItem()
 {
     TypeItem type = Item_None;
-    void *lastOpened = RetLastOpened((Page *)&mainPage, &type);
+    void *lastOpened = RetLastOpened((Page *)pageMain, &type);
     int8 pos = ((const Page *)lastOpened)->PosCurrentItem();
     if (type == Item_Page && pos != 0x7f)
     {
@@ -633,7 +633,7 @@ void Menu::CloseOpenedItem()
         }
         Page::Name name = KEEPER(item)->name;
         ((Page *)KEEPER(item))->SetPosActItem(MENU_POS_ACT_ITEM(name) & 0x7f);
-        if (item == (Control *)&mainPage)
+        if (item == (Control *)pageMain)
         {
             Menu::Show(false);
         }
@@ -724,6 +724,10 @@ int Menu::CalculateX()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Menu::CalculateY()
 {
+    if(Device::CurrentMode() == Device::Mode::Multimeter)
+    {
+        return Display::HEIGHT - Item::HEIGHT - 2;
+    }
     return Grid::Bottom() - Item::HEIGHT - 1;
 }
 

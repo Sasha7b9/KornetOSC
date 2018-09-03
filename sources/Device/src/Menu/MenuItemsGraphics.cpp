@@ -886,7 +886,7 @@ void Page::DrawPagesUGO(int right, int bottom)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::DrawNestingPage(int left, int bottom)
 {
-    if (this != (Page *)&mainPage)
+    if (this != (Page *)Menu::pageMain)
     {
         int nesting = 0;
 
@@ -894,7 +894,7 @@ void Page::DrawNestingPage(int left, int bottom)
 
         PageBase *parent = KEEPER(page);
 
-        while (parent != &mainPage)
+        while (parent != Menu::pageMain)
         {
             page = (Page *)parent;
             parent = KEEPER(page);

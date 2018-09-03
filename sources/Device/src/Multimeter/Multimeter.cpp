@@ -111,6 +111,8 @@ void Multimeter::Graphics::Update()
 
     Painter::DrawFormatText(10, 200, "%d", numMeasures);
 
+    Menu::Draw();
+
     Painter::EndScene();
 }
 

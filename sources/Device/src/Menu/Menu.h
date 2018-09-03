@@ -22,9 +22,15 @@ class Menu
 friend class Page;
 
 public:
+    
+    static PageBase *pageMain;
 
     /// Инициализация
     static void Init();
+    /// Нужно вызывать после изменения режима работы
+    static void ChangeMode();
+    /// Возвращает true, если item - адрес главной страницы меню.
+    static bool IsMainPage(const void *item);
 
     static void ChangeStateFlashDrive();
     /// Функция должна вызываться в главном цикле.
@@ -112,6 +118,8 @@ private:
     static void ShortPress_MAC(void *item);
     
     static void ResetItemsUnderButton();
+    /// Возвращает страницу меню, которая должна открываться по нажатию кнопки button.
+    static const void *PageForButton(Key button);
     /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
     static Key shortPressureButton;
     /// Если произошло длинное нажатие кнопки, то здесь хранится имя этой кнопки до обработки этого нажатия.
