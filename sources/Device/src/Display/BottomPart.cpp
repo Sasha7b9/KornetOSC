@@ -34,7 +34,7 @@ void BottomPart::Draw()
     char buffer[SIZE] = {0};
 
     TBase tBase = SET_TBASE;
-    int16 tShift = (int16)SET_TSHIFT.Value();
+    int16 tShift = (int16)SET_TSHIFT;
 
     snprintf(buffer, SIZE, "ð\xa5%s", Tables::GetTBaseString(tBase));
     Painter::DrawText(x, y0, buffer, Color::FILL);

@@ -11,9 +11,9 @@ public:
 
     int InPoints();
 
-    int Value() { return value; };
-
     void Set(int tShift);
+
+    operator int() const { return value; };
 
 private:
     int value;

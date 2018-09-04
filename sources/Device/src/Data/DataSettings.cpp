@@ -34,7 +34,7 @@ void DataSettings::Fill()
     RSHIFT_A(this) = SET_RSHIFT_A;
     RSHIFT_B(this) = SET_RSHIFT_B;
     Lval_TBASE(this) = SET_TBASE;
-    TSHIFT(this) = (int16)SET_TSHIFT.Value();
+    TSHIFT(this) = (int16)SET_TSHIFT;
     Lval_COUPLE_A(this) = SET_COUPLE_A;
     Lval_COUPLE_B(this) = SET_COUPLE_B;
     TRIGLEV_A(this) = SET_TRIGLEV_A;
