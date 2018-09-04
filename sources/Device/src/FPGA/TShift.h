@@ -1,8 +1,9 @@
 #pragma once
 #include "defines.h"
+#include "Settings/SettingsTime.h"
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class TShift
 {
 public:
@@ -18,7 +19,7 @@ public:
 
     operator int() const { return value; };
 
-    char *ToString(char buffer[20]) const;
+    char *ToString(TBase tBase, char buffer[20]) const;
 
 private:
     int value;
