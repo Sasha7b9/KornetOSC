@@ -8,13 +8,13 @@
 #include "Device.h"
 #include "PageMultimeter.h"
 #include "PageChannels.h"
+#include "PageTrig.h"
+#include "PageTime.h"
+#include "PageCursors.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const PageBase pTrig;
-extern const PageBase pTime;
 extern const PageBase pDisplay;
-extern const PageBase pCursors;
 extern const PageBase pMemory;
 extern const PageBase pMeasures;
 extern const PageBase pService;
@@ -33,9 +33,9 @@ DEF_PAGE_11_GLOBAL(pageOsci,                                                    
     pDisplay,                   // ƒ»—œÀ≈…
     *PageChannelA::pointer,     //  ¿Õ¿À 1
     *PageChannelB::pointer,     //  ¿Õ¿À 2
-    pTrig,                      // —»Õ’–
-    pTime,                      // –¿«¬≈–“ ¿
-    pCursors,                   //  ”–—Œ–€
+    *PageTrig::pointer,         // —»Õ’–
+    *PageTime::pointer,         // –¿«¬≈–“ ¿
+    *PageCursors::pointer,      //  ”–—Œ–€
     pMemory,                    // œ¿Ãﬂ“‹
     pMeasures,                  // »«Ã≈–≈Õ»ﬂ
     pService,                   // —≈–¬»—
@@ -56,9 +56,9 @@ const void *Menu::PageForButton(Key button)
         (void *)&pService,              // K_Service   4
         (void *)PageChannelA::pointer,  // K_ChannelA  5
         (void *)PageChannelB::pointer,  // K_ChannelB  6
-        (void *)&pTime,                 // K_Time      7
+        (void *)PageTime::pointer,      // K_Time      7
         0,                              // K_Start     
-        (void *)&pTrig,                 // K_Trig      9
+        (void *)PageTrig::pointer,      // K_Trig      9
         (void *)&pDisplay               // K_Display  10
     };
 
