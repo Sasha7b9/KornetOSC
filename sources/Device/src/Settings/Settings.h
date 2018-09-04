@@ -109,7 +109,7 @@ public:
 
     // Μενώ ΠΐΗΒ¨ΠÒΚΐ
 
-    int                 time_shift;
+    TShift              time_shift;
     TBase               time_base;
     PeakDetMode         time_peakDet;
     TPos                time_TPos;

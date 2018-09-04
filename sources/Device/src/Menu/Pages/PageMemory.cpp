@@ -74,7 +74,7 @@ void PageMemory::OnChanged_Points(bool active)
     }
 
     FPGA::Reset();
-    FPGA::SetTShift(SET_TSHIFT);
+    FPGA::SetTShift(SET_TSHIFT.Value());
     FPGA::Reset();
 }
 

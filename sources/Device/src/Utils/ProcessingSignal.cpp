@@ -1360,7 +1360,7 @@ void Processing::CountedTShift()
 {
     const int numBytes = NUM_BYTES_DS;
 
-    int dTShift = SET_TSHIFT - TSHIFT_DS;
+    int dTShift = SET_TSHIFT.Value() - TSHIFT_DS;
 
     if (dTShift)
     {
@@ -1465,7 +1465,7 @@ void Processing::CountedTBase()
         memset(OUT_A, NONE_VALUE, (uint)numBytes);
         memset(OUT_B, NONE_VALUE, (uint)numBytes);
 
-        const int index0 = TPOS.InBytes() - TShift::InPoints();
+        const int index0 = TPOS.InBytes() - SET_TSHIFT.InPoints();
 
         for (int i = 0; i < numBytes; ++i)
         {

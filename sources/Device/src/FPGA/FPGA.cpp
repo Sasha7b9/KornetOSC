@@ -575,7 +575,7 @@ void FPGA::TrigLevChange(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TShiftChange(int delta)
 {
-    SetTShift(SET_TSHIFT + delta);
+    SetTShift(SET_TSHIFT.Value() + delta);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -744,7 +744,7 @@ void FPGA::ResetPin(Pin pin)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTShift()
 {
-    post = (uint16)(SET_TSHIFT - TShift::Min());
+    post = (uint16)(SET_TSHIFT.Value() - TShift::Min());
     int Pred = (int)FPGA_NUM_POINTS - (int)post;
 
     if(Pred < 0)
@@ -883,8 +883,7 @@ void FPGA::SetTrigLev(Trig::Source ch, uint16 trigLev)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetTShift(int tShift)
 {
-    SET_TSHIFT = tShift;
-    LIMITATION(SET_TSHIFT, TShift::Min(), TShift::Max());
+    SET_TSHIFT.Set(tShift);
 
     LoadTShift();
 }

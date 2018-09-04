@@ -61,7 +61,7 @@ DEF_CHOICE_2(       cPeakDet,                                                   
 void PageTime::OnChanged_TPos(bool active)
 {
     PageMemory::OnChanged_Points(active);
-    FPGA::SetTShift(SET_TSHIFT);
+    FPGA::SetTShift(SET_TSHIFT.Value());
 }
 
 DEF_CHOICE_3(cTPos,                                                                                                    //--- –¿«¬≈–“ ¿ - “Ó ---

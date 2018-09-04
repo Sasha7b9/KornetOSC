@@ -7,5 +7,14 @@ public:
     static int Zero();
     static int Max();
 
-    static int InPoints();
+    TShift(int tshift);
+
+    int InPoints();
+
+    int Value() { return value; };
+
+    void Set(int tShift);
+
+private:
+    int value;
 };
