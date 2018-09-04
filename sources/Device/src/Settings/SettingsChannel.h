@@ -10,6 +10,26 @@
  *  @{
  */
 
+ /// Делитель.
+struct Divider
+{
+    enum E
+    {
+        _1,
+        _10
+    } value;
+    Divider(E v = _1) : value(v)
+    {
+    };
+    Divider(uint v = _1) : value((E)v)
+    {
+    };
+    operator uint() const
+    {
+        return (uint)value;
+    };
+};
+
 struct Range
 {
     enum E
@@ -37,6 +57,7 @@ struct Range
         return *this;
     }
     pString Name() const;
+    pString ToString(Divider divider);
 };
 
 struct Chan
@@ -53,19 +74,6 @@ struct Chan
     operator uint8() const { return (uint8)value; };
     bool IsA() { return value == A; };
     bool IsB() { return value == B; }
-};
-
-/// Делитель.
-struct Divider
-{
-    enum E
-    {
-        _1,
-        _10
-    } value;
-    Divider(E v = _1) : value(v) {};
-    Divider(uint v = _1) : value((E)v) {};
-    operator uint() const { return (uint)value; };
 };
 
 struct Bandwidth
@@ -162,11 +170,9 @@ struct Resistance
 #define CALIBR_MODE_B           (SET_CALIBR_MODE(Chan::B))
 
 
-void sChannel_SetRange(Chan ch, Range range);           // Установить масштаб по напряжению канала ch.
-int sChannel_MultiplierRel2Abs(Divider divider);
+//int sChannel_MultiplierRel2Abs(Divider divider);
 void sChannel_SetEnabled(Chan ch, bool enabled);
 
-pString sChannel_Range2String(Range range, Divider divider);
 const char *sChannel_RShift2String(uint16 rShiftRel, Range range, Divider divider, char buffer[20]);
 
 /** @}  @}

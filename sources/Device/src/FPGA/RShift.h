@@ -14,5 +14,5 @@ public:
 
 private:
 
-    static void DrawRShift(Chan ch);
+    static void Draw(Chan ch);
 };
