@@ -5,7 +5,9 @@
 class PageMultimeter
 {
 public:
-    static const PageBase *pointer;
+    static void Init();
 
     static void OnChanged_Mode(bool);
+
+    static const PageBase *pointer;
 };

@@ -36,7 +36,7 @@ DEF_CHOICE_3(   cRangesVoltageAC,                                               
     "2 Â",   "2 V",
     "20 Â",  "20 V",
     "400 Â", "400 V",
-    MULTI_RANGE_AC, pMultimeterDC, FuncActive_RnagesVoltageAC, FuncChangedChoice, FuncDraw
+    MULTI_RANGE_AC, pMultimeterAC, FuncActive_RnagesVoltageAC, FuncChangedChoice, FuncDraw
 )
 
 
@@ -53,7 +53,7 @@ DEF_CHOICE_4(   cRangesResistance,                                              
     "20 êÎì", "20 kOhm",
     "200 êÎì", "200 kOhm",
     "10 ÌÎì", "10 MOhm",
-    MULTI_RANGE_RESISTANCE, pMultimeterDC, FuncActive_RangesReistance, FuncChangedChoice, FuncDraw
+    MULTI_RANGE_RESISTANCE, pMultimeterResistance, FuncActive_RangesReistance, FuncChangedChoice, FuncDraw
 )
 
 DEF_CHOICE_7(   cMode,
@@ -107,6 +107,13 @@ void PageMultimeter::OnChanged_Mode(bool)
     }
 
     Menu::ChangeMode();
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void PageMultimeter::Init()
+{
+    OnChanged_Mode(true);
 }
 
 

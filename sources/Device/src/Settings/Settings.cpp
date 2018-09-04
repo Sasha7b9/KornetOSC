@@ -195,7 +195,7 @@ static const Settings defaultSettings =
 
                                 // Настройки мультиметра
     /* multi_avp */         Multimeter::AVP::Off,
-    /* multi_meas */        Multimeter::Measures::VoltageAC,
+    /* multi_meas */        Multimeter::Measures::VoltageDC,
     /* multi_rangeCV */     Multimeter::RangeDC::_2V,
     /* multi_rangeVV */     Multimeter::RangeAC::_2V,
     /* multi_rangeResist */ Multimeter::RangeResistance::_10M
