@@ -164,7 +164,5 @@ struct Resistance
 #define CALIBR_MODE_B           (SET_CALIBR_MODE(Chan::B))
 
 
-//void sChannel_SetEnabled(Chan ch, bool enabled);
-
 /** @}  @}
  */

@@ -106,6 +106,9 @@ struct TPos
         Right          ///< Привязка к правому краю.
     } value;
     operator uint8() const { return (uint8)value; };
+    /// Узнать привязку отсительно уровня синхронизации в байтах
+    //int sTime_TPosInBytes();
+    int InBytes();
 };
 
 #define SET_TSHIFT          (set.time_shift)
@@ -130,17 +133,12 @@ struct TPos
 
 #define TPOS_IN_POINTS      sTime_TPosInPoints()
 #define TSHIFT_IN_POINTS    sTime_TShiftInPoints()
-#define TPOS_IN_BYTES       sTime_TPosInBytes()
 
 #define LINKING_TSHIFT      (set.time_linkingTShift)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Сохранить масштаб по времени
-void sTime_SetTBase(TBase tBase);
 /// Сохранить смещение по времени в относительных единицах
-void sTime_SetTShift(int16 shift);
-/// Узнать привязку отсительно уровня синхронизации в байтах
-int sTime_TPosInBytes();
+//void sTime_SetTShift(int16 shift);
 /// Минимальное смещение по времени, которое может быть записано в аппаратную часть
 int16 sTime_TShiftMin();
 /// Смещение по времени, соответствующее позиции TPos
