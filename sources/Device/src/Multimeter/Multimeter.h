@@ -7,6 +7,7 @@
 #define MULTI_RANGE_AC          (set.multi_rangeAC)
 #define MULTI_RANGE_DC          (set.multi_rangeDC)
 #define MULTI_RANGE_RESISTANCE  (set.multi_rangeResist)
+#define MULTI_AVP               (set.multi_avp)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,6 +35,8 @@ public:
     static void Update();
     /// Сообщает мультиметру, что произошло изменение режима и нужно дождаться результата измерения перед выводом
     static void ChangeMode();
+
+    static void ChangeAVP();
     /// Через эту функцию поступает измерение от прибора
     static void SetMeasure(uint8 buffer[10]);
 
@@ -84,6 +87,7 @@ public:
             On
         } value;
         AVP(E v) : value(v) { };
+        operator uint8() const { return (uint8)value; };
     };
 
     /// Предел имзерения постоянного напряжения

@@ -63,6 +63,15 @@ void Multimeter::Init()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+void Multimeter::ChangeAVP()
+{
+    ChangeMode();
+    char send[4] = {0x02, 'Z', MULTI_AVP == AVP::On ? '1' : '0', 0x0a};
+    HAL_UART_Transmit(&handlerUART, (uint8*)send, 4, 100);
+    HAL_UART_Receive_IT(&handlerUART, bufferUART, 10);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Multimeter::Update()
 {
     uint8 range = 0;

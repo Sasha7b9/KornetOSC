@@ -156,6 +156,7 @@ void Menu::ChangeMode()
     if(Device::CurrentMode() == Device::Mode::Multimeter)
     {
         pageMain = (PageBase *)PageMultimeter::pointer;
+        Menu::Show(true);
     }
     else
     {

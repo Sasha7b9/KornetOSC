@@ -111,6 +111,21 @@ DEF_CHOICE_7(   cMode,
     MULTI_MEASURE, pMultimeterDC, FuncActive, PageMultimeter::OnChanged_Mode, FuncDraw
 )
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_AVP(bool)
+{
+    Multimeter::ChangeAVP();
+}
+
+DEF_CHOICE_2 (cAVP,
+    "ј¬ѕ", "ASL",
+    "јвтовыбор предела",
+    "Auto-select limit",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU, ENABLE_EN,
+    MULTI_AVP, pMultimeterDC, FuncActive, OnChanged_AVP, FuncDraw
+)
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageMultimeter::pointer = &pMultimeterDC;
 
@@ -143,29 +158,32 @@ void PageMultimeter::Init()
 }
 
 
-DEF_PAGE_2( pMultimeterDC,
+DEF_PAGE_3( pMultimeterDC,
     "ћ”Ћ№“»ћ≈“–", "MULTIMETER",
     "”правление прибором в режиме мультиметра",
     "Instrument control in multimeter mode",
     cMode,
     cRangesVoltageDC,
+    cAVP,
     Page::Name::Multimeter, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
-DEF_PAGE_2(pMultimeterAC,
+DEF_PAGE_3(pMultimeterAC,
     "ћ”Ћ№“»ћ≈“–", "MULTIMETER",
     "”правление прибором в режиме мультиметра",
     "Instrument control in multimeter mode",
     cMode,
     cRangesVoltageAC,
+    cAVP,
     Page::Name::Multimeter, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
-DEF_PAGE_2(pMultimeterResistance,
+DEF_PAGE_3(pMultimeterResistance,
     "ћ”Ћ№“»ћ≈“–", "MULTIMETER",
     "”правление прибором в режиме мультиметра",
     "Instrument control in multimeter mode",
     cMode,
     cRangesResistance,
+    cAVP,
     Page::Name::Multimeter, Menu::pageMain, FuncActive, EmptyPressPage
 )
