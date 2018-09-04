@@ -15,8 +15,6 @@ static uint8 bufferUART[10];
 #define SIZE_OUT 15
 static char out[SIZE_OUT];
 
-static uint numMeasures = 0;
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Multimeter::SetMeasure(uint8 buf[10])
 {
@@ -26,14 +24,12 @@ void Multimeter::SetMeasure(uint8 buf[10])
     buffer[4] |= 0x30;
     buffer[5] |= 0x30;
     buffer[6] |= 0x30;
-
-    numMeasures++;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Multimeter::Clear()
+void Multimeter::ChangeMode()
 {
-    buffer[0] = 0;
+    memset(buffer, '8', 10);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -69,7 +65,12 @@ void Multimeter::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Multimeter::Update()
 {
-    uint8 send[4] = {0x02, 'V', '0', 0x0a};
+    uint8 range = 0;
+    if(MULTI_MEASURE == Measures::VoltageDC)        { range = MULTI_RANGE_DC; }
+    else if(MULTI_MEASURE == Measures::VoltageAC)   { range = MULTI_RANGE_AC; }
+    else if(MULTI_MEASURE == Measures::Resistance)  { range = MULTI_RANGE_RESISTANCE; }
+
+    uint8 send[4] = {0x02, (uint8)MULTI_MEASURE.Symbol(), range, 0x0a};
     HAL_UART_Transmit(&handlerUART, send, 4, 100);
     HAL_UART_Receive_IT(&handlerUART, bufferUART, 10);
 
@@ -96,20 +97,30 @@ void Multimeter::Graphics::Update()
         PrepareRing
     };
 
+    Measures mes = Measures::VoltageDC;
+
+    switch(buffer[7])
+    {
+        case 'V':   mes = Measures::VoltageAC;  break;
+        case 'I':   mes = Measures::CurrentDC;  break;
+        case 'J':   mes = Measures::CurrentAC;  break;
+        case 'R':   mes = Measures::Resistance; break;
+        case 'Y':   mes = Measures::TestDiode;  break;
+        case 'W':   mes = Measures::Bell;       break;
+    }
+
     Painter::BeginScene(Color::BACK);
 
     if(buffer[0])
     {
         memset(out, 0, SIZE_OUT);
 
-        funcs[MULTI_MEASURE].func();
+        funcs[mes].func();
 
-        Painter::DrawBigText(30, 30, 5, out, Color::FILL);
+        Painter::DrawBigText(30, 30, 5, out, buffer[0] == '8' ? Color::GRAY_50 : Color::FILL);
     }
 
     Painter::SetColor(Color::FILL);
-
-    Painter::DrawFormatText(10, 200, "%d", numMeasures);
 
     Menu::Draw();
 

@@ -32,8 +32,8 @@ public:
     static void Init();
 
     static void Update();
-    /// Функция обнуляет измерения - устанавливает признак того, что измерения ещё не пришли и ничего выводить не нужно
-    static void Clear();
+    /// Сообщает мультиметру, что произошло изменение режима и нужно дождаться результата измерения перед выводом
+    static void ChangeMode();
     /// Через эту функцию поступает измерение от прибора
     static void SetMeasure(uint8 buffer[10]);
 
@@ -50,11 +50,16 @@ public:
             CurrentAC,
             Resistance,
             TestDiode,
-            Ring,
+            Bell,
             Number
         } value;
         Measures(E v) : value(v) { };
         operator uint8() const { return (uint8)value; };
+        char Symbol() const
+        {
+            static const char symbols[Number] = {'U', 'V', 'I', 'J', 'R', 'Y', 'W' };
+            return symbols[value];
+        }
     };
 
     /// АВП - автовыбор предела

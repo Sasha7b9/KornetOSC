@@ -15,13 +15,21 @@ static bool FuncActive_RangesVoltageDC()
     return MULTI_MEASURE == Multimeter::Measures::VoltageDC;
 }
 
+static void OnChange_VoltageDC(bool active)
+{
+    if(active)
+    {
+        Multimeter::ChangeMode();
+    }
+}
+
 DEF_CHOICE_3(   cRangesVoltageDC,                                                                                        //--- МУЛЬТИМЕТР - Предел ---
     "Предел", "Range",
     "Диапазон измерения", "Мeasurement range",
     "2 В",   "2 V",
     "20 В",  "20 V",
     "500 В", "500 V",
-    MULTI_RANGE_DC, pMultimeterDC, FuncActive_RangesVoltageDC, FuncChangedChoice, FuncDraw
+    MULTI_RANGE_DC, pMultimeterDC, FuncActive_RangesVoltageDC, OnChange_VoltageDC, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -30,13 +38,21 @@ static bool FuncActive_RnagesVoltageAC()
     return MULTI_MEASURE == Multimeter::Measures::VoltageAC;
 }
 
+static void OnChange_VoltageAC(bool active)
+{
+    if(active)
+    {
+        Multimeter::ChangeMode();
+    }
+}
+
 DEF_CHOICE_3(   cRangesVoltageAC,                                                                                        //--- МУЛЬТИМЕТР - Предел ---
     "Предел", "Range",
     "Диапазон измерения", "Measurement range",
     "2 В",   "2 V",
     "20 В",  "20 V",
     "400 В", "400 V",
-    MULTI_RANGE_AC, pMultimeterAC, FuncActive_RnagesVoltageAC, FuncChangedChoice, FuncDraw
+    MULTI_RANGE_AC, pMultimeterAC, FuncActive_RnagesVoltageAC, OnChange_VoltageAC, FuncDraw
 )
 
 
@@ -46,6 +62,14 @@ static bool FuncActive_RangesReistance()
     return MULTI_MEASURE == Multimeter::Measures::Resistance;
 }
 
+static void OnChange_Resistance(bool active)
+{
+    if(active)
+    {
+        Multimeter::ChangeMode();
+    }
+}
+
 DEF_CHOICE_4(   cRangesResistance,                                                                                       //--- Мультиметр - Предел ---
     "Предел", "Range",
     "Диапазон измерения", "Measurement range",
@@ -53,7 +77,7 @@ DEF_CHOICE_4(   cRangesResistance,                                              
     "20 кОм", "20 kOhm",
     "200 кОм", "200 kOhm",
     "10 МОм", "10 MOhm",
-    MULTI_RANGE_RESISTANCE, pMultimeterResistance, FuncActive_RangesReistance, FuncChangedChoice, FuncDraw
+    MULTI_RANGE_RESISTANCE, pMultimeterResistance, FuncActive_RangesReistance, OnChange_Resistance, FuncDraw
 )
 
 DEF_CHOICE_7(   cMode,
@@ -95,7 +119,7 @@ void PageMultimeter::OnChanged_Mode(bool)
 {
     if(MULTI_MEASURE == Multimeter::Measures::VoltageDC)
     {
-        pointer = &pMultimeterDC;
+        pointer = &pMultimeterDC ;
     }
     else if(MULTI_MEASURE == Multimeter::Measures::VoltageAC)
     {
@@ -107,6 +131,8 @@ void PageMultimeter::OnChanged_Mode(bool)
     }
 
     Menu::ChangeMode();
+
+    Multimeter::ChangeMode();
 }
 
 
