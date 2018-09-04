@@ -45,17 +45,6 @@ Display::ENumSignalsInSec Tables::ENumSignalsInSecToENUM(int numSignalsInSec)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Tables::ENUMtoENumSignalsInSec(Display::ENumSignalsInSec numSignalsInSec)
-{
-    static const int fps[] = {25, 10, 5, 2, 1};
-    if(numSignalsInSec <= Display::ENumSignalsInSec::_1)
-    {
-        return fps[numSignalsInSec];
-    }
-    return 1;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *Tables_RangeNameFromValue(Range range)
 {
     static pString names[Range::Size] =

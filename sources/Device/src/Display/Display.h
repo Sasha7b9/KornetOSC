@@ -45,7 +45,6 @@
 #define SHIFT_IN_MEMORY             (set.disp_shiftInMemory)
 #define TIME_MESSAGES               (set.disp_timeMessages)
 #define ENUM_SIGNALS_IN_SEC         (set.disp_ENumSignalsInSec)
-#define NUM_SIGNALS_IN_SEC          (Display::NumSignalsInS())
 #define LAST_AFFECTED_CH            (set.disp_lastAffectedChannel)
 #define LAST_AFFECTED_CH_IS_A       (LAST_AFFECTED_CH.IsA())
 #define DISPLAY_ORIENTATION         (set.dbg_Orientation)
@@ -283,6 +282,8 @@ public:
         } value;
         ENumSignalsInSec(E v = _25) : value(v) { };
         operator uint8() const { return (uint8)value; };
+        /// Возвращает количество кадров в секунду
+        int ToFPS() const;
     };
 
     /// Количество точек для расчёта сглаживания.
@@ -354,8 +355,6 @@ public:
     static void SetOrientation(Orientation orientation);
     /// Возвращает режим усреднения
     static ModeAveraging GetModeAveraging();
-    /// Возвращает ограничение частоты кадров
-    static int NumSignalsInS();
     /// Устанавливает ограничение частоты кадров
     static void SetNumSignalsInS(int maxFPS);
     /// Возвращает число точек сглаживающего фильтра (режим ДИСПЛЕЙ - Сглаживание)

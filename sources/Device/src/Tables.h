@@ -9,8 +9,6 @@ class Tables
 public:
     static Display::ENumSignalsInSec ENumSignalsInSecToENUM(int numSignalsInSec);
     
-    static int ENUMtoENumSignalsInSec(Display::ENumSignalsInSec numSignalsInSec);
-    
     static pString symbolsAlphaBet[0x48];
     /// Выводит строку из таблицы symbolsAlphaBet
     static void DrawStr(int index, int x, int y);

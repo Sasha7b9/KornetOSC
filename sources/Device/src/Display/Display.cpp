@@ -413,12 +413,6 @@ Display::ModeAveraging Display::GetModeAveraging()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Display::NumSignalsInS()
-{
-    return Tables::ENUMtoENumSignalsInSec(ENUM_SIGNALS_IN_SEC);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::SetNumSignalsInS(int numSignalsInS)
 {
     ENUM_SIGNALS_IN_SEC = Tables::ENumSignalsInSecToENUM(numSignalsInS);
@@ -530,4 +524,15 @@ int Display::ShiftInMemoryInPoints()
         return SHIFT_IN_MEMORY;
     }
     return SHIFT_IN_MEMORY / 2;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Display::ENumSignalsInSec::ToFPS() const
+{
+    static const int fps[] = {25, 10, 5, 2, 1};
+    if (value <= Display::ENumSignalsInSec::_1)
+    {
+        return fps[value];
+    }
+    return 1;
 }
