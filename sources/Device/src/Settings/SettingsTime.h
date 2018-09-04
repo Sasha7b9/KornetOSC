@@ -131,19 +131,7 @@ struct TPos
 #define SAMPLE_TYPE_IS_REAL (SAMPLE_TYPE == SampleType::Real)
 #define SAMPLE_TYPE_OLD     (set.time_sampleTypeOld)
 
-#define TPOS_IN_POINTS      sTime_TPosInPoints()
-
 #define LINKING_TSHIFT      (set.time_linkingTShift)
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// Сохранить смещение по времени в относительных единицах
-//void sTime_SetTShift(int16 shift);
-/// Минимальное смещение по времени, которое может быть записано в аппаратную часть
-//int16 sTime_TShiftMin();
-/// Смещение по времени, соответствующее позиции TPos
-//int16 sTime_TShiftZero();
-
-int sTime_TPosInPoints();
 
 
 /** @}  @}
