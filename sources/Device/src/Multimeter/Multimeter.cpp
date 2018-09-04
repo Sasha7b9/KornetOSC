@@ -97,28 +97,19 @@ void Multimeter::Graphics::Update()
         PrepareRing
     };
 
-    Measures mes = Measures::VoltageDC;
-
-    switch(buffer[7])
-    {
-        case 'V':   mes = Measures::VoltageAC;  break;
-        case 'I':   mes = Measures::CurrentDC;  break;
-        case 'J':   mes = Measures::CurrentAC;  break;
-        case 'R':   mes = Measures::Resistance; break;
-        case 'Y':   mes = Measures::TestDiode;  break;
-        case 'W':   mes = Measures::Bell;       break;
-    }
-
     Painter::BeginScene(Color::BACK);
 
-    if(buffer[0])
+    memset(out, 0, SIZE_OUT);
+
+    Measures meas = Measures::ForSymbol(buffer[7]);
+    if(meas == Measures::Number)
     {
-        memset(out, 0, SIZE_OUT);
-
-        funcs[mes].func();
-
-        Painter::DrawBigText(30, 30, 5, out, buffer[0] == '8' ? Color::GRAY_50 : Color::FILL);
+        meas = MULTI_MEASURE;
     }
+
+    funcs[meas].func();
+
+    Painter::DrawBigText(30, 30, 5, out, buffer[0] == '8' ? Color::GRAY_50 : Color::FILL);
 
     Painter::SetColor(Color::FILL);
 

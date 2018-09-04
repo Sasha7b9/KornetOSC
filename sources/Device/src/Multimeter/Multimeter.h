@@ -60,6 +60,19 @@ public:
             static const char symbols[Number] = {'U', 'V', 'I', 'J', 'R', 'Y', 'W' };
             return symbols[value];
         }
+        static Measures ForSymbol(char symbol)
+        {
+            switch(symbol)
+            {
+                case 'V':   return Measures::VoltageAC;
+                case 'I':   return Measures::CurrentDC;  
+                case 'J':   return Measures::CurrentAC;  
+                case 'R':   return Measures::Resistance; 
+                case 'Y':   return Measures::TestDiode;  
+                case 'W':   return Measures::Bell;       
+            }
+            return Measures::Number;
+        }
     };
 
     /// АВП - автовыбор предела
