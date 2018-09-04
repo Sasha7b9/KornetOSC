@@ -34,14 +34,13 @@ void BottomPart::Draw()
     char buffer[SIZE] = {0};
 
     TBase tBase = SET_TBASE;
-    int16 tShift = (int16)SET_TSHIFT;
 
     snprintf(buffer, SIZE, "ð\xa5%s", Tables::GetTBaseString(tBase));
     Painter::DrawText(x, y0, buffer, Color::FILL);
 
     buffer[0] = 0;
     char bufForVal[20];
-    snprintf(buffer, SIZE, "\xa5%s", FPGA::GetTShiftString(tShift, bufForVal));
+    snprintf(buffer, SIZE, "\xa5%s", SET_TSHIFT.ToString(bufForVal));
     Painter::DrawText(x + 35, y0, buffer);
 
     buffer[0] = 0;

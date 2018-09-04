@@ -118,8 +118,6 @@ public:
 
     static void Reset();
 
-    static pString GetTShiftString(int16 tShift, char buffer[20]);
-
     static void SetModeCouple(Chan ch, ModeCouple couple);
 
     class FreqMeter

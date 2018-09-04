@@ -1,4 +1,7 @@
 #pragma once
+#include "defines.h"
+
+
 
 class TShift
 {
@@ -14,6 +17,8 @@ public:
     void Set(int tShift);
 
     operator int() const { return value; };
+
+    char *ToString(char buffer[20]) const;
 
 private:
     int value;
