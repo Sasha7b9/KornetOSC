@@ -90,6 +90,7 @@ DEF_CHOICE_7(   cMode,
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Mode(bool)
 {
+    /*
     const Control *const itemsDC[] = { (Control *)&cMode, (Control *)&cRangesVoltageDC };
     const Control *const itemsAC[] = { (Control *)&cMode, (Control *)&cRangesVoltageAC };
     const Control *const itemsResist[] = { (Control *)&cMode, (Control *)&cRangesResistance };
@@ -106,6 +107,7 @@ static void OnChanged_Mode(bool)
     {
         items = itemsResist;
     }
+    */
 }
 
 

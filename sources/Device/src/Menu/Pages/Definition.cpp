@@ -6,6 +6,7 @@
 #include "Settings/Settings.h"
 #include "Utils/CommonFunctions.h"
 #include "Device.h"
+#include "PageMultimeter.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,9 +21,6 @@ extern const PageBase pMeasures;
 extern const PageBase pService;
 extern const PageBase pHelp;
 extern const PageBase pDebug;
-extern const PageBase pMultimeter;
-
-extern const PageBase pageMulti;
 extern const PageBase pageOsci;
 
 
@@ -46,15 +44,6 @@ DEF_PAGE_11_GLOBAL(pageOsci,                                                    
     pDebug,     // Œ“À¿ƒ ¿
     Page::Name::Main, 0, FuncActive, EmptyPressPage
 )
-
-DEF_PAGE_2 (pageMulti,
-    "Ã”À‹“»Ã≈“–", "MULTIMETER",
-    "", "",
-    pMultimeter,
-    pMultimeter,
-    Page::Name::Main, 0, FuncActive, EmptyPressPage
-)
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const void *Menu::PageForButton(Key button)
@@ -166,7 +155,7 @@ void Menu::ChangeMode()
 {
     if(Device::CurrentMode() == Device::Mode::Multimeter)
     {
-        pageMain = (PageBase *)&pMultimeter;
+        pageMain = (PageBase *)PageMultimeter::pointer;
     }
     else
     {
