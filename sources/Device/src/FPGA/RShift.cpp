@@ -3,6 +3,8 @@
 #include "Display/Painter.h"
 #include "Display/Grid.h"
 #include "FPGA/FPGA.h"
+#include "FPGA/FPGAMath.h"
+#include "Utils/StringUtils.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,4 +30,11 @@ void RShift::Draw(Chan ch)
     Painter::DrawChar(Grid::Left() - 7, y - 6, ch.IsA() ? '1' : '2', Color::BACK);
 
     Painter::SetFont(Font::Type::_8);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+pString RShift::ToString(uint16 rShiftRel, Range range ,Divider divider, char buffer[20])
+{
+    float rShiftVal = RSHIFT_2_ABS(rShiftRel, range) * divider.ToAbs();
+    return Voltage2String(rShiftVal, true, buffer);
 }

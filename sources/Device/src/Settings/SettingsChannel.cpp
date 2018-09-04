@@ -32,41 +32,13 @@ static const RangeStruct ranges[Range::Size] =
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int sChannel_MultiplierRel2Abs(Divider divider)
-{
-    switch (divider)
-    {
-        case Divider::_1:
-            return 1;
-        case Divider::_10:
-            return 10;
-    }
-    return 1;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void sChannel_SetEnabled(Chan ch, bool enabled)
 {
     SET_ENABLED(ch) = enabled;
 }
 
-/*
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-pString sChannel_Range2String(Range range, Divider divider)
-{
-    return ranges[range].name[LANG][(int)divider];
-}
-*/
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString Range::ToString(Divider divider)
 {
     return ranges[value].name[LANG][(int)divider];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *sChannel_RShift2String(uint16 rShiftRel, Range range, Divider divider, char buffer[20])
-{
-    float rShiftVal = RSHIFT_2_ABS(rShiftRel, range) * sChannel_MultiplierRel2Abs(divider);
-    return Voltage2String(rShiftVal, true, buffer);
 }

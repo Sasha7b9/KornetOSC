@@ -12,6 +12,8 @@ public:
 
     static void Draw();
 
+    static pString ToString(uint16 rShiftRel, Range range ,Divider divider, char buffer[20]);
+
 private:
 
     static void Draw(Chan ch);

@@ -18,16 +18,10 @@ struct Divider
         _1,
         _10
     } value;
-    Divider(E v = _1) : value(v)
-    {
-    };
-    Divider(uint v = _1) : value((E)v)
-    {
-    };
-    operator uint() const
-    {
-        return (uint)value;
-    };
+    Divider(E v = _1) : value(v) { };
+    Divider(uint v = _1) : value((E)v) { };
+    operator uint() const  { return (uint)value; };
+    int ToAbs() const { return (value == _1) ? 1 : 10; };
 };
 
 struct Range
@@ -170,10 +164,7 @@ struct Resistance
 #define CALIBR_MODE_B           (SET_CALIBR_MODE(Chan::B))
 
 
-//int sChannel_MultiplierRel2Abs(Divider divider);
-void sChannel_SetEnabled(Chan ch, bool enabled);
-
-const char *sChannel_RShift2String(uint16 rShiftRel, Range range, Divider divider, char buffer[20]);
+//void sChannel_SetEnabled(Chan ch, bool enabled);
 
 /** @}  @}
  */

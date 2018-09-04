@@ -229,7 +229,7 @@ void BottomPart::WriteTextVoltage(Chan ch, int x, int y)
     snprintf(buffer, SIZE, "%s\xa5%s\xa5%s", ch.IsA() ? DICT(D1ch) : DICT(D2ch), couple[SET_COUPLE(ch)], range.ToString(divider));
     Painter::DrawText(x + 1, y, buffer, colorDraw);
     char bufferTemp[SIZE];
-    snprintf(bufferTemp, SIZE, "\xa5%s", sChannel_RShift2String((uint16)SET_RSHIFT(ch), range, divider, buffer));
+    snprintf(bufferTemp, SIZE, "\xa5%s", RShift::ToString((uint16)SET_RSHIFT(ch), range, divider, buffer));
     Painter::DrawText(x + 46, y, bufferTemp);
 }
 
