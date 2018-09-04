@@ -96,7 +96,7 @@ char *TShift::ToString(TBase tBase, char buffer[20]) const
         /* 10 с    */   10.0f / 20,
     };
 
-    int val = value;
+    int val = value;    /// \todo ¬ этом месте страшенный глюк - без этого промежуточного присваивани€ вылетает
     
     return Time2String(timeInPoint[tBase] * val, true, buffer);
 }

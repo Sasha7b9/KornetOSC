@@ -33,9 +33,7 @@ void BottomPart::Draw()
     const int SIZE = 100;
     char buffer[SIZE] = {0};
 
-    TBase tBase = SET_TBASE;
-
-    snprintf(buffer, SIZE, "ð\xa5%s", Tables::GetTBaseString(tBase));
+    snprintf(buffer, SIZE, "ð\xa5%s", SET_TBASE.ToString());
     Painter::DrawText(x, y0, buffer, Color::FILL);
 
     buffer[0] = 'a';

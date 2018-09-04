@@ -68,6 +68,7 @@ struct Chan
     operator uint8() const { return (uint8)value; };
     bool IsA() { return value == A; };
     bool IsB() { return value == B; }
+    int Number() const { return (int)value; };
 };
 
 struct Bandwidth

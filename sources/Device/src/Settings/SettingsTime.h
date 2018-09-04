@@ -62,6 +62,7 @@ struct TBase
     TBase(E v = _2ns) : value(v) {};
     operator uint8() const { return (uint8)value; };
     pString Name() const;
+    pString ToString() const;
 };
 
 /// Тип привязки к смещению по горизонтали
