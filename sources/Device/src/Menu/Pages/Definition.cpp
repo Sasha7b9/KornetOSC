@@ -7,11 +7,10 @@
 #include "Utils/CommonFunctions.h"
 #include "Device.h"
 #include "PageMultimeter.h"
+#include "PageChannels.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const PageBase pChanA;
-extern const PageBase pChanB;
 extern const PageBase pTrig;
 extern const PageBase pTime;
 extern const PageBase pDisplay;
@@ -31,17 +30,17 @@ PageBase *Menu::pageMain = (PageBase *)&pageOsci;
 DEF_PAGE_11_GLOBAL(pageOsci,                                                                                                           // Ã≈Õﬁ ///
     "Ã≈Õﬁ", "MENU",
     "", "",
-    pDisplay,   // ƒ»—œÀ≈…
-    pChanA,     //  ¿Õ¿À 1
-    pChanB,     //  ¿Õ¿À 2
-    pTrig,      // —»Õ’–
-    pTime,      // –¿«¬≈–“ ¿
-    pCursors,   //  ”–—Œ–€
-    pMemory,    // œ¿Ãﬂ“‹
-    pMeasures,  // »«Ã≈–≈Õ»ﬂ
-    pService,   // —≈–¬»—
-    pHelp,      // œŒÃŒŸ‹
-    pDebug,     // Œ“À¿ƒ ¿
+    pDisplay,                   // ƒ»—œÀ≈…
+    *PageChannelA::pointer,     //  ¿Õ¿À 1
+    *PageChannelB::pointer,     //  ¿Õ¿À 2
+    pTrig,                      // —»Õ’–
+    pTime,                      // –¿«¬≈–“ ¿
+    pCursors,                   //  ”–—Œ–€
+    pMemory,                    // œ¿Ãﬂ“‹
+    pMeasures,                  // »«Ã≈–≈Õ»ﬂ
+    pService,                   // —≈–¬»—
+    pHelp,                      // œŒÃŒŸ‹
+    pDebug,                     // Œ“À¿ƒ ¿
     Page::Name::Main, 0, FuncActive, EmptyPressPage
 )
 
@@ -50,17 +49,17 @@ const void *Menu::PageForButton(Key button)
 {
     static const void *pages[Key::Number] =
     {  
-        0,                  // K_None
-        0,                  // K_Function
-        (void *)&pMeasures, // K_Measures  2
-        (void *)&pMemory,   // K_Memory    3
-        (void *)&pService,  // K_Service   4
-        (void *)&pChanA,    // K_ChannelA  5
-        (void *)&pChanB,    // K_ChannelB  6
-        (void *)&pTime,     // K_Time      7
-        0,                  // K_Start     
-        (void *)&pTrig,     // K_Trig      9
-        (void *)&pDisplay   // K_Display  10
+        0,                              // K_None
+        0,                              // K_Function
+        (void *)&pMeasures,             // K_Measures  2
+        (void *)&pMemory,               // K_Memory    3
+        (void *)&pService,              // K_Service   4
+        (void *)PageChannelA::pointer,  // K_ChannelA  5
+        (void *)PageChannelB::pointer,  // K_ChannelB  6
+        (void *)&pTime,                 // K_Time      7
+        0,                              // K_Start     
+        (void *)&pTrig,                 // K_Trig      9
+        (void *)&pDisplay               // K_Display  10
     };
 
     return pages[button];

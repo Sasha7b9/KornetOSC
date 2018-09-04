@@ -82,71 +82,6 @@ DEF_CHOICE_2(       cChanA_Bandwidth,                                           
     SET_BANDWIDTH_A, pChanA, FuncActive, OnChanged_ChanA_Bandwidth, FuncDraw
 )
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-static void OnChanged_ChanA_Resistance(bool)
-{
-    FPGA::SetResistance(A, SET_RESISTANCE_A);
-    if (SET_RESISTANCE_A == Resistance_50Om)
-    {
-        Display::ShowWarning(Warn50Ohms);
-    }
-}
-
-DEF_CHOICE_2(       cChanA_Resistance,                                                                               //--- КАНАЛ 1 - Сопротивление ---
-    "Вх сопр", "Resistance",
-    "",
-    "",
-    "1 МОм", "1 Mohm",
-    "50 Ом", "50 Ohm",
-    SET_RESISTANCE_A, pChanA, FuncActive, OnChanged_ChanA_Resistance, FuncDraw
-)
-*/
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-static void OnChanged_ChanA_Inverse(bool)
-{
-    FPGA::SetRShift(A, SET_RSHIFT_A);
-}
-
-DEF_CHOICE_2(       cChanA_Inverse,                                                                                       //--- КАНАЛ 1 - Инверсия ---
-    "Инверсия", "Inverse",
-    chanInverseRu,
-    chanInverseEn,
-    DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN,
-    SET_INVERSE_A, pChanA, FuncActive, OnChanged_ChanA_Inverse, FuncDraw
-)
-*/
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-DEF_CHOICE_2(       cChanA_Divider,                                                                                       //--- КАНАЛ 1 - Делитель ---
-    "Делитель", "Divider",
-    chanDividerRu,
-    chanDividerEn,
-    "Выкл", "Off",
-    "1/10", "1/10",
-    SET_DIVIDER_A, pChanA, FuncActive, FuncChangedChoice, FuncDraw
-)
-*/
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-static void OnPress_ChanA_Balance()
-{
-    FPGA::BalanceChannel(A);
-}
-
-DEF_BUTTON(bChanA_Balance,                                                                                  //--- КАНАЛ 1 - Балансировать ---
-    "Балансировать", "Balance",
-    "Балансировать канал",
-    "Balancing channel",
-    pChanA, EmptyFuncBV, OnPress_ChanA_Balance, EmptyFuncVII
-)
-*/
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageChannelA::pointer = &pChanA;
 
@@ -216,70 +151,6 @@ DEF_CHOICE_2(       cChanB_Bandwidth,                                           
     SET_BANDWIDTH_B, pChanB, FuncActive, OnChanged_BandwidthB, FuncDraw
 )
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-static void OnChanged_ChanB_Resistance(bool)
-{
-    FPGA::SetResistance(B, SET_RESISTANCE_B);
-    if (SET_RESISTANCE_B == Resistance_50Om)
-    {
-        Display::ShowWarning(Warn50Ohms);
-    }
-}
-
-DEF_CHOICE_2(       cChanB_Resistance,                                                                               //--- КАНАЛ 2 - Сопротивление ---
-    "Вх сопр", "Resistance",
-    "", "",
-    "1 МОм", "1 Mohm",
-    "50 Ом", "50 Ohm",
-    SET_RESISTANCE_B, pChanB, FuncActive, OnChanged_ChanB_Resistance, FuncDraw
-)
-*/
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-static void OnChanged_ChanB_Inverse(bool)
-{
-    FPGA::SetRShift(B, SET_RSHIFT_B);
-}
-
-DEF_CHOICE_2(       cChanB_Inverse,                                                                                       //--- КАНАЛ 2 - Инверсия ---
-    "Инверсия", "Inverse",
-    chanInverseRu,
-    chanInverseEn,
-    DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN,
-    SET_INVERSE_B, pChanB, FuncActive, OnChanged_ChanB_Inverse, FuncDraw
-)
-*/
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-DEF_CHOICE_2(       cChanB_Divider,                                                                                       //--- КАНАЛ 2 - Делитель ---
-    "Делитель", "Divider",
-    chanDividerRu,
-    chanDividerEn,
-    "Выкл", "Jff",
-    "1/10", "1/10",
-    SET_DIVIDER_B, pChanB, FuncActive, FuncChangedChoice, FuncDraw
-)
-*/
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-static void OnPress_ChanB_Balance()
-{
-    FPGA::BalanceChannel(B);
-}
-
-DEF_BUTTON(bChanB_Balance,                                                                                  //--- КАНАЛ 2 - Балансировать ---
-    "Балансировать", "Balance",
-    "Балансировать канал",
-    "Balancing channel",
-    pChanB, EmptyFuncBV, OnPress_ChanB_Balance, EmptyFuncVII
-)
-*/
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageChannelB::pointer = &pChanB;
 
@@ -290,11 +161,5 @@ DEF_PAGE_3(         pChanB,                                                     
     cChanB_Input,       // КАНАЛ 2 - Вход
     cChanB_Couple,      // КАНАЛ 2 - Связь
     cChanB_Bandwidth,   // КАНАЛ 2 - Полоса
-    /*
-    cChanB_Resistance,  // КАНАЛ 2 - Сопротивление
-    cChanB_Inverse,     // КАНАЛ 2 - Инверсия
-    cChanB_Divider,     // КАНАЛ 2 - Делитель
-    bChanB_Balance,     // КАНАЛ 2 - Балансировать
-    */
     Page::Name::ChannelB, Menu::pageMain, FuncActive, EmptyPressPage
 )
