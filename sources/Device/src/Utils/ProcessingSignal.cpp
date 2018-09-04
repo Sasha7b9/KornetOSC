@@ -1465,7 +1465,7 @@ void Processing::CountedTBase()
         memset(OUT_A, NONE_VALUE, (uint)numBytes);
         memset(OUT_B, NONE_VALUE, (uint)numBytes);
 
-        const int index0 = TPOS.InBytes() - TSHIFT_IN_POINTS;
+        const int index0 = TPOS.InBytes() - TShift::InPoints();
 
         for (int i = 0; i < numBytes; ++i)
         {

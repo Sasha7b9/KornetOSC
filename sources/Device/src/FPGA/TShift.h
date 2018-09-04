@@ -6,4 +6,6 @@ public:
     static int Min();
     static int Zero();
     static int Max();
+
+    static int InPoints();
 };
