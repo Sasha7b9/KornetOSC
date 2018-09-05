@@ -15,6 +15,9 @@ static uint8 bufferUART[10];
 #define SIZE_OUT 15
 static char out[SIZE_OUT];
 
+//static char recv[11] = {0};
+//static char trans[11] = {0};
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Multimeter::SetMeasure(uint8 buf[10])
 {
@@ -79,7 +82,10 @@ void Multimeter::Update()
     else if(MULTI_MEASURE == Measures::VoltageAC)   { range = MULTI_RANGE_AC; }
     else if(MULTI_MEASURE == Measures::Resistance)  { range = MULTI_RANGE_RESISTANCE; }
 
-    uint8 send[4] = {0x02, (uint8)MULTI_MEASURE.Symbol(), range, 0x0a};
+    uint8 send[4] = {0x02, (uint8)MULTI_MEASURE.Symbol(), (uint8)(range + 0x30), 0x0a};
+  //  trans[0] = (char)send[1];
+  //  trans[1] = (char)send[2];
+  //  trans[2] = '\0';
     HAL_UART_Transmit(&handlerUART, send, 4, 100);
     HAL_UART_Receive_IT(&handlerUART, bufferUART, 10);
 
@@ -121,6 +127,11 @@ void Multimeter::Graphics::Update()
     Painter::DrawBigText(30, 30, 5, out, buffer[0] == '8' ? Color::GRAY_50 : Color::FILL);
 
     Painter::SetColor(Color::FILL);
+
+    //Painter::DrawFormatText(20, 150, "послано %s", trans);
+
+//    Painter::DrawFormatText(20, 170, "принято %s", recv);
+
 
     Menu::Draw();
 
@@ -286,6 +297,9 @@ void Multimeter::Graphics::PrepareRing()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *)
 {
+  //  memcpy(recv, bufferUART + 1, 8);
+  //  recv[9] = '\0';
+
     Multimeter::SetMeasure(bufferUART);
 
     HAL_UART_Receive_IT(&Multimeter::handlerUART, bufferUART, 10);
