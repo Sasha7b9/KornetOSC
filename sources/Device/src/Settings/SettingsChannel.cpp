@@ -9,16 +9,14 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Структура для описания диапазона масштаба по напряжению.
-struct RangeStruct
+// Массив структур описаний масштабов по напряжению.
+static const struct RangeStruct
 {
     pString nameRU;     // Название диапазона в текстовом виде, пригодном для вывода на экран.
     pString nameEN;
     RangeStruct(pString nRU, pString nEN) : nameRU(nRU), nameEN(nEN) {};
-};
-
-// Массив структур описаний масштабов по напряжению.
-static const RangeStruct ranges[Range::Size][2] =
+}
+ranges[Range::Size][2] =
 {
     {RangeStruct("2\x10мВ",  "20\x10мВ"), RangeStruct("2\x10мV",  "20\x10мV")},
     {RangeStruct("5\x10мВ",  "50\x10мВ"), RangeStruct("5\x10mV",  "50\x10mV")},
