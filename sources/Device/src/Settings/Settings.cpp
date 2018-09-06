@@ -266,24 +266,32 @@ void Settings::Reset()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString Range::Name() const
 {
-    static pString names[Range::Size][Language::Number] =
+    static const struct StructRange
     {
-        {"2ìÂ",     "2mV"},
-        {"5ìÂ",     "5mV"},
-        {"10ìÂ",    "10mV"},
-        {"20ìÂ",    "20mV"},
-        {"50ìÂ",    "50mV"},
-        {"0.1Â",    "0.1V"},
-        {"0.2Â",    "0.2V"},
-        {"0.5Â",    "0.5V"},
-        {"1Â",      "1V"},
-        {"2Â",      "2V"},
-        {"5Â",      "5V"},
-        {"10Â",     "10V"},
-        {"20Â",     "20V"}
+        const char * names[Language::Number];
+        StructRange(pString nRU, pString nEN)
+        {
+            names[Language::RU] = nRU;
+            names[Language::EN] = nEN;
+        }
+    } names[Range::Size] =
+    {
+        StructRange("2ìÂ",  "2mV"),
+        StructRange("5ìÂ",  "5mV"),
+        StructRange("10ìÂ", "10mV"),
+        StructRange("20ìÂ", "20mV"),
+        StructRange("50ìÂ", "50mV"),
+        StructRange("0.1Â", "0.1V"),
+        StructRange("0.2Â", "0.2V"),
+        StructRange("0.5Â", "0.5V"),
+        StructRange("1Â",   "1V"),
+        StructRange("2Â",   "2V"),
+        StructRange("5Â",   "5V"),
+        StructRange("10Â",  "10V"),
+        StructRange("20Â",  "20V")
     };
 
-    return names[value][LANG];
+    return names[value].names[LANG];
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

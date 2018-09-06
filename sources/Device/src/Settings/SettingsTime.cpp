@@ -26,11 +26,11 @@ pString TBase::ToString() const
     /// Структура для описания диапазона масштаба по времени.
     static const struct StructTBase
     {
-        const char *name[2];    // Название диапазона в текстовом виде, пригодном для вывода на экран.
-        StructTBase(pString nRU, pString nEN)
+        const char *name[Language::Number];    // Название диапазона в текстовом виде, пригодном для вывода на экран.
+        StructTBase(pString nRU, pString nEN) 
         {
-            name[0] = nRU;
-            name[1] = nEN;
+            name[Language::RU] = nRU;
+            name[Language::EN] = nEN;
         };
     }
     tBases[TBase::Size] =
