@@ -266,7 +266,7 @@ void Settings::Reset()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString Range::Name() const
 {
-    static pString names[Range::Size][Language::Num] =
+    static pString names[Range::Size][Language::Number] =
     {
         {"2м¬",     "2mV"},
         {"5м¬",     "5mV"},
@@ -289,7 +289,7 @@ pString Range::Name() const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString TBase::Name() const
 {
-    static pString names[TBase::Size][Language::Num] =
+    static pString names[TBase::Size][Language::Number] =
     {
         {"2нс",     "2ns"},
         {"5нс",     "5ns"},

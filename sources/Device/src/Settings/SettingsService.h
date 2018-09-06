@@ -15,7 +15,7 @@ struct Language
     {
         RU,
         EN,
-        Num
+        Number
     } value;
     operator uint8() const { return (uint8)value; };
 };

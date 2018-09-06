@@ -47,21 +47,27 @@ Display::ENumSignalsInSec Tables::ENumSignalsInSecToENUM(int numSignalsInSec)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *Tables_RangeNameFromValue(Range range)
 {
-    static pString names[Range::Size] =
+    static struct StructName
     {
-        "Range_2mV",
-        "Range_5mV",
-        "Range_10mV",
-        "Range_20mV",
-        "Range_50mV",
-        "Range_100mV",
-        "Range_200mV",
-        "Range_500mV",
-        "Range_1V",
-        "Range_2V",
-        "Range_5V"
+        pString name;
+        StructName(pString n) : name(n) {};
+    } names[Range::Size] =
+    {
+        StructName("Range_2mV"),
+        StructName("Range_5mV"),
+        StructName("Range_10mV"),
+        StructName("Range_20mV"),
+        StructName("Range_50mV"),
+        StructName("Range_100mV"),
+        StructName("Range_200mV"),
+        StructName("Range_500mV"),
+        StructName("Range_1V"),
+        StructName("Range_2V"),
+        StructName("Range_5V"),
+        StructName("Range_10V"),
+        StructName("Range_20V")
     };
-    return names[range];
+    return names[range].name;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

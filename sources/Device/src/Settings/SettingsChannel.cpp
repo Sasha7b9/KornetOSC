@@ -12,27 +12,31 @@
 // Структура для описания диапазона масштаба по напряжению.
 struct RangeStruct
 {
-    const char *name[2][2];     // Название диапазона в текстовом виде, пригодном для вывода на экран.
+    pString nameRU;     // Название диапазона в текстовом виде, пригодном для вывода на экран.
+    pString nameEN;
+    RangeStruct(pString nRU, pString nEN) : nameRU(nRU), nameEN(nEN) {};
 };
 
 // Массив структур описаний масштабов по напряжению.
-static const RangeStruct ranges[Range::Size] =
+static const RangeStruct ranges[Range::Size][2] =
 {
-    {{{"2\x10мВ",  "20\x10мВ"}, {"2\x10мV",  "20\x10мV"}}},
-    {{{"5\x10мВ",  "50\x10мВ"}, {"5\x10mV",  "50\x10mV"}}},
-    {{{"10\x10мВ", "0.1\x10В"}, {"10\x10mV", "0.1\x10V"}}},
-    {{{"20\x10мВ", "0.2\x10В"}, {"20\x10mV", "0.2\x10V"}}},
-    {{{"50\x10мВ", "0.5\x10В"}, {"50\x10mV", "0.5\x10V"}}},
-    {{{"0.1\x10В", "1\x10В"},   {"0.1\x10V", "1\x10V"}}},
-    {{{"0.2\x10В", "2\x10В"},   {"0.2\x10V", "2\x10V"}}},
-    {{{"0.5\x10В", "5\x10В"},   {"0.5\x10V", "5\x10V"}}},
-    {{{"1\x10В",   "10\x10В"},  {"1\x10V",   "10\x10V"}}},
-    {{{"2\x10В",   "20\x10В"},  {"2\x10V",   "20\x10V"}}},
-    {{{"5\x10В",   "50\x10В"},  {"5\x10V",   "50\x10V"}}}
+    {RangeStruct("2\x10мВ",  "20\x10мВ"), RangeStruct("2\x10мV",  "20\x10мV")},
+    {RangeStruct("5\x10мВ",  "50\x10мВ"), RangeStruct("5\x10mV",  "50\x10mV")},
+    {RangeStruct("10\x10мВ", "0.1\x10В"), RangeStruct("10\x10mV", "0.1\x10V")},
+    {RangeStruct("20\x10мВ", "0.2\x10В"), RangeStruct("20\x10mV", "0.2\x10V")},
+    {RangeStruct("50\x10мВ", "0.5\x10В"), RangeStruct("50\x10mV", "0.5\x10V")},
+    {RangeStruct("0.1\x10В", "1\x10В"),   RangeStruct("0.1\x10V", "1\x10V")},
+    {RangeStruct("0.2\x10В", "2\x10В"),   RangeStruct("0.2\x10V", "2\x10V")},
+    {RangeStruct("0.5\x10В", "5\x10В"),   RangeStruct("0.5\x10V", "5\x10V")},
+    {RangeStruct("1\x10В",   "10\x10В"),  RangeStruct("1\x10V",   "10\x10V")},
+    {RangeStruct("2\x10В",   "20\x10В"),  RangeStruct("2\x10V",   "20\x10V")},
+    {RangeStruct("5\x10В",   "50\x10В"),  RangeStruct("5\x10V",   "50\x10V")},
+    {RangeStruct("10\x10В",  "100\x10В"), RangeStruct("10\x10V",  "100\x10V")},
+    {RangeStruct("20\x10В",  "200\x10В"), RangeStruct("20\x10V",  "200\x10V")}
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 pString Range::ToString(Divider divider)
 {
-    return ranges[value].name[LANG][(int)divider];
+    return (LANG == Language::RU) ? ranges[value][divider].nameRU : ranges[value][divider].nameEN;
 }

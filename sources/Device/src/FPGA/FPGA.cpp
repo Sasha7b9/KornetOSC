@@ -645,29 +645,33 @@ void FPGA::LoadRanges()
 
     WriteRegisters(Pin::SPI3_CS2, 0);    // Записываем ноль, чтобы реле не потребляли энергии
 
-    static const uint8 vals[Range::Size] =
+    static struct StructRange
     {
-        BIN_U8(00000000),  // 2mV
-        BIN_U8(00000001),  // 5mV
-        BIN_U8(00000010),  // 10mV
-        BIN_U8(00000011),  // 20mV
-        BIN_U8(00000001),  // 50mV
-        BIN_U8(00000010),  // 100mV
-        BIN_U8(00000011),  // 200mV
-        BIN_U8(00000001),  // 500mV
-        BIN_U8(00000010),  // 1V
-        BIN_U8(00000011),  // 2V
-        BIN_U8(00000001),  // 5V
-        BIN_U8(00000010),  // 10V
-        BIN_U8(00000011)   // 20V
+        uint8 value;
+        StructRange(uint8 v) : value(v) {};
+    } vals[Range::Size] =
+    {
+        StructRange(BIN_U8(00000000)),  // 2mV
+        StructRange(BIN_U8(00000001)),  // 5mV
+        StructRange(BIN_U8(00000010)),  // 10mV
+        StructRange(BIN_U8(00000011)),  // 20mV
+        StructRange(BIN_U8(00000001)),  // 50mV
+        StructRange(BIN_U8(00000010)),  // 100mV
+        StructRange(BIN_U8(00000011)),  // 200mV
+        StructRange(BIN_U8(00000001)),  // 500mV
+        StructRange(BIN_U8(00000010)),  // 1V
+        StructRange(BIN_U8(00000011)),  // 2V
+        StructRange(BIN_U8(00000001)),  // 5V
+        StructRange(BIN_U8(00000010)),  // 10V
+        StructRange(BIN_U8(00000011))   // 20V
     };
 
-    uint8 valueA = vals[SET_RANGE_A];
+    uint8 valueA = vals[SET_RANGE_A].value;
 
     WritePin(Pin::A1, _GET_BIT(valueA, 1));
     WritePin(Pin::A2, _GET_BIT(valueA, 0));
 
-    uint8 valueB = vals[SET_RANGE_B];
+    uint8 valueB = vals[SET_RANGE_B].value;
 
     WritePin(Pin::A3, _GET_BIT(valueB, 1));
     WritePin(Pin::A4, _GET_BIT(valueB, 0));
