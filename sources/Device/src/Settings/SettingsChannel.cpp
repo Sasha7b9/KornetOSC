@@ -38,3 +38,23 @@ pString Range::ToString(Divider divider)
 {
     return (LANG == Language::RU) ? ranges[value][divider].nameRU : ranges[value][divider].nameEN;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Chan::PointsInChannel() const
+{
+    static const struct StructNumPoints
+    {
+        int value;
+        StructNumPoints(int v) : value(v) {};
+    }
+    numPoints[ENumPointsFPGA::Size] =
+    {
+        512,
+        1024,
+        2048,
+        4096,
+        8192
+    };
+
+    return numPoints[(int)FPGA_ENUM_POINTS].value;
+}

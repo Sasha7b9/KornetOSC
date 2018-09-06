@@ -69,6 +69,7 @@ struct Chan
     bool IsA() { return value == A; };
     bool IsB() { return value == B; }
     int Number() const { return (int)value; };
+    int PointsInChannel() const;
 };
 
 struct Bandwidth
