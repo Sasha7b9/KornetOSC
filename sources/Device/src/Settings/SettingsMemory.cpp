@@ -41,30 +41,10 @@ int ENumPoints_2_NumPoints(ENumPointsFPGA numPoints)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void *AllocMemForChannelFromHeap(Chan ch, DataSettings *ds)
 {
-    int numBytes = RequestBytesForChannel(ch, ds);
+    int numBytes = ch.RequestBytes(ds);
     if (numBytes)
     {
         return malloc((uint)numBytes);
     }
     return 0;
-}
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-int RequestBytesForChannel(Chan, DataSettings *ds)
-{
-    ENumPointsFPGA numBytes;
-    PeakDetMode peakDet;
-
-    if (ds)
-    {
-        numBytes = (ENumPointsFPGA::E)(ENUM_BYTES(ds));
-        peakDet = PEAKDET(ds);
-    }
-    else
-    {
-        numBytes = NumPoints_2_ENumPoints(NUM_BYTES(ds));
-        peakDet = SET_PEAKDET;
-    }
-
-    return FPGA_MAX_NUM_POINTS;
 }

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "Data/DataSettings.h"
 
 
@@ -137,8 +137,7 @@ int ENumPoints_2_NumPoints(ENumPointsFPGA numPoints);
 
 /// Выделяет память из кучи для канала. Настройки длины памяти берёт из ds или set (если ds == 0)
 void *AllocMemForChannelFromHeap(Chan ch, DataSettings *ds);
-/// Возвращает количество памяти, требуемой для сохранения данных одного канала
-int RequestBytesForChannel(Chan ch, DataSettings *ds);
+
 
 /** @}  @}
  */

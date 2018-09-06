@@ -30,7 +30,7 @@ static int iLast = 0;           // Номер в массиве datas последнего сохранённого
 static float *aveDataA_RAM = 0; // В этих массивах хранятся усреднённые значения, подсчитанные по приблизительному алгоритму.
 static float *aveDataB_RAM = 0;
 
-static bool newSumCalculated[Chan::Num] = {true, true};   // Если true, то новые суммы рассчитаны, и нужно повторить расчёт среднего
+static bool newSumCalculated[Chan::Number] = {true, true};   // Если true, то новые суммы рассчитаны, и нужно повторить расчёт среднего
 static int numElementsInStorage = 0;
 
 
@@ -42,7 +42,7 @@ static bool inFrameP2Pmode = false;     // Если true - сейчас поточечный режим
 
 #define NUM_DATAS 10
 static DataSettings datas[NUM_DATAS];
-static uint8 gDataAve[Chan::Num][FPGA_MAX_NUM_POINTS];
+static uint8 gDataAve[Chan::Number][FPGA_MAX_NUM_POINTS];
 
 #define ADDRESS_DATA(ds)        ((ds)->addr)
 

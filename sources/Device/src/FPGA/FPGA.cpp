@@ -59,7 +59,7 @@ static PinStruct pins[Pin::Number] =
 
 volatile static int numberMeasuresForGates = 1000;
 
-static uint8 dataRand[Chan::Num][FPGA_MAX_NUM_POINTS];    ///< «десь будут данные рандомизатора
+static uint8 dataRand[Chan::Number][FPGA_MAX_NUM_POINTS];    ///< «десь будут данные рандомизатора
               //  2нс 5нс 10нс 20нс 50нс
 const int Kr[] = {50, 20, 10,  5,   2};
 /// «десь хранитс€ адрес, начина€ с которого будем читать данные по каналам. ≈сли addrRead == 0xffff, то адрес вначале нужно считать
@@ -610,7 +610,7 @@ static uint8 ValueForRange(Chan ch)
         return datas[ModeCouple::GND];
     }
 
-    static const uint16 values[Range::Size][Chan::Num] =
+    static const uint16 values[Range::Size][Chan::Number] =
     {   //             A                    B
         { BIN_U8(00100101), BIN_U8(00100101) },   // 2mV
         { BIN_U8(00100101), BIN_U8(00100101) },   // 5mV

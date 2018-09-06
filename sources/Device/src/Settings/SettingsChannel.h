@@ -54,6 +54,8 @@ struct Range
     pString ToString(Divider divider);
 };
 
+struct DataSettings;
+
 struct Chan
 {
     enum E
@@ -62,14 +64,15 @@ struct Chan
         B,
         Ext,
         Math,
-        Num
+        Number
     } value;
     Chan(E v = A) : value(v) { };
     operator uint8() const { return (uint8)value; };
     bool IsA() { return value == A; };
     bool IsB() { return value == B; }
-    int Number() const { return (int)value; };
     int PointsInChannel() const;
+    /// Возвращает количество памяти, требуемой для сохранения данных одного канала
+    int RequestBytes(DataSettings *ds) const;
 };
 
 struct Bandwidth

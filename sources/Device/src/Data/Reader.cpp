@@ -25,9 +25,9 @@
 #endif
 static uint8 buffer[4][16 * 1024] __attribute__((section("CCM_DATA")));
 
-uint8 *dataIN[Chan::Num] = {buffer[0], buffer[1]};
+uint8 *dataIN[Chan::Number] = {buffer[0], buffer[1]};
 
-uint8 *dataOUT[Chan::Num] = {buffer[2], buffer[3]};
+uint8 *dataOUT[Chan::Number] = {buffer[2], buffer[3]};
 
 void *extraMEM = 0;
 
