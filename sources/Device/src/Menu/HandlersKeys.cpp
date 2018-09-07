@@ -27,14 +27,14 @@ void Handlers::Process(KeyEvent e)
     static const pFuncVV func[Key::Number][4] =
     {                   // Press        Repead       Release        Long
         /* None        */ {E,           E,           E,             E},
-        /* Function    */ {Function,    Function,    Function,      Function},
+        /* Function    */ {E,           E,           Function,      E},
         /* Measures    */ {Measures,    Measures,    Measures,      Measures},
         /* Memory      */ {Memory,      Memory,      Memory,        Memory},
         /* Service     */ {Service,     Service,     Service,       Service},
         /* ChannelA    */ {ChannelA,    E,           E,             E},
         /* ChannelB    */ {ChannelB,    E,           E,             E},
         /* Time        */ {Time,        Time,        Time,          Time},
-        /* Start       */ {Start,       Start,       Start,         Start},
+        /* Start       */ {Start,       E,           E,             E},
         /* Trig        */ {Trig,        Trig,        Trig,          Trig},
         /* Display     */ {Display,     Display,     Display,       Display},
         /* RangeMoreA  */ {RangeMoreA,  E,           E,             E},
@@ -217,7 +217,7 @@ void Handlers::Arrow()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::EnterRelease()
 {
-    if (!MENU_IS_SHOWN)
+    if (!Menu::IsShown())
     {
         Menu::Show(true);
     }
@@ -230,7 +230,7 @@ void Handlers::EnterRelease()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::EnterLong()
 {
-    Menu::Show(!MENU_IS_SHOWN);
+    Menu::Show(!Menu::IsShown());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -264,10 +264,7 @@ void Handlers::ChannelB()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Function()
 {
-    if(event.type == TypePress::Release)
-    {
-        Device::ChangeMode();
-    }
+    Device::ChangeMode();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -297,10 +294,7 @@ void Handlers::Time()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Start()
 {
-    if (event.type == TypePress::Press)
-    {
-        FPGA::OnPressStart();
-    }
+    FPGA::OnPressStart();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

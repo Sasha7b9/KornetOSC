@@ -172,7 +172,8 @@ static const Settings defaultSettings =
     /* test_polarity; */                Tester::Polarity::Positive,
     /* test_stepU;    */                Tester::StepU::_100mV,
     /* test_stepI;    */                Tester::StepI::_4mA,
-    /* test_smooth;   */                0,
+    /* test_smooth;   */                Tester::Smoothing::_1,
+    /* test_viewMode  */                Tester::ViewMode::Lines,
 
                                             // Настройки меню
 

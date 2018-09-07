@@ -180,7 +180,7 @@ bool Control::ChangeOpened(int delta)
     }
     else if (type == Control::Type::ChoiceReg || type == Control::Type::Choice)
     {
-        ((Choice *)this)->ChangeIndex(MENU_IS_SHOWN ? delta : -delta);
+        ((Choice *)this)->ChangeIndex(Menu::IsShown() ? delta : -delta);
     }
     else if (type == Control::Type::Governor)
     {

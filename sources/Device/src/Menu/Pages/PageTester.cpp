@@ -1,0 +1,128 @@
+#include "PageTester.h"
+#include "Tester/Tester.h"
+#include "Settings/Settings.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+extern const PageBase pTesterU;
+extern const PageBase pTesterI;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static void OnChanged_Polarity(bool)
+{
+    Tester::LoadPolarity();
+}
+
+
+DEF_CHOICE_2(   cPolarity,                                                                                     //--- ТЕСТЕР-КОМПОНЕНТ - Полярность ---
+    "Полярность", "Polarity",
+    "Полярность испытательного воздействия",
+    "Polarity of the test exposure",
+    "+", "+",
+    "-", "-",
+    TESTER_POLARITY, pTesterU, FuncActive, OnChanged_Polarity, FuncDraw
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void PageTester::OnChanged_Control(bool)
+{
+    if(TESTER_CONTROL_IS_U)
+    {
+        pointer = &pTesterU;
+    }
+    else
+    {
+        pointer = &pTesterI;
+    }
+
+    Menu::ChangeMode();
+}
+
+
+DEF_CHOICE_2(   cControl,                                                                                      //--- ТЕСТЕР-КОМПОНЕНТ - Управление ---
+    "Управление", "Control",
+    "Тип испытательного воздействия",
+    "Type of test exposure",
+    "Напряжение", "Voltage",
+    "Ток", "Current",
+    TESTER_CONTROL, pTesterU, FuncActive, PageTester::OnChanged_Control, FuncDraw
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_Step(bool)
+{
+    Tester::LoadStep();
+}
+
+DEF_CHOICE_2(   cStepU,                                                                                                 //--- ТЕСТЕР-КОМПОНЕНТ - Шаг ---
+    "Шаг", "Step",
+    "Шаг испытательного напряжения",
+    "Test voltage step",
+    "100 мВ", "100 mV",
+    "500 мВ", "500 mV",
+    TESTER_STEP_U, pTesterU, FuncActive, OnChanged_Step, FuncDraw
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(   cStepI,
+    "Шаг", "Step",
+    "Шаг исптытательного тока",
+    "Step test current",
+    "4 мА",  "4 mA",
+    "20 мА", "20 mA",
+    TESTER_STEP_I, pTesterI, FuncActive, OnChanged_Step, FuncDraw
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(   cViewMode,
+    "Рисование", "Paint",
+    "", "",
+    "Линии", "Lines",
+    "Точки", "Points",
+    TESTER_VIEW_MODE, pTesterU, FuncActive, FuncChangedChoice, FuncDraw
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_5(   cSmoothing,
+    "Сглаживание", "Smoothing",
+    "", "",
+    "1", "1",
+    "2", "2",
+    "3", "3",
+    "4", "4",
+    "5", "5",
+    TESTER_NUM_SMOOTH, pTesterU, FuncActive, FuncChangedChoice, FuncDraw
+)
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+const PageBase *PageTester::pointer = &pTesterU;
+
+void PageTester::Init()
+{
+    OnChanged_Control(true);
+}
+
+
+DEF_PAGE_5( pTesterU,
+    "ТЕСТЕР-КОМПОНЕНТ", "KOMPONENT-TESTER",
+    "", "",
+    cControl,
+    cStepU,
+    cPolarity,
+    cViewMode,
+    cSmoothing,
+    Page::Name::Tester, Menu::pageMain, FuncActive, EmptyPressPage
+)
+
+DEF_PAGE_5(pTesterI,
+    "ТЕСТЕР-КОМПОНЕНТ", "KOMPONENT-TESTER",
+    "", "",
+    cControl,
+    cStepI,
+    cPolarity,
+    cViewMode,
+    cSmoothing,
+    Page::Name::Tester, Menu::pageMain, FuncActive, EmptyPressPage
+)

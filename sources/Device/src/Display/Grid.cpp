@@ -129,7 +129,7 @@ void Grid::DrawGridSignal(int left, int top, int width, int height)
         Painter::DrawHLine(top, 1, left - 2);
         Painter::DrawHLine(top, right + 2, Display::WIDTH - 2);
 
-        if (!Menu::IsMinimize() || !MENU_IS_SHOWN)
+        if (!Menu::IsMinimize() || !Menu::IsShown())
         {
             Painter::DrawVLine(1, top + 2, bottom - 2);
             Painter::DrawVLine(318, top + 2, bottom - 2);

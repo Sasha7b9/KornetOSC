@@ -54,7 +54,7 @@ void Menu::Update()
             continue;
         }
 
-        if (!MENU_IS_SHOWN)
+        if (!Menu::IsShown())
         {
             if(event.type == TypePress::Release && TriggerDebugConsole::Update(event.key))
             {
@@ -208,7 +208,7 @@ void Menu::ProcessButtonForHint(Key button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::SetAutoHide(bool)
 {
-    if(!MENU_IS_SHOWN)
+    if(!Menu::IsShown())
     {
         return;
     }
@@ -265,7 +265,7 @@ void Menu::ProcessingShortPressureButton()
     {
         if (shortPressureButton == Key::Memory && MODE_BTN_MEMORY_IS_SAVE && FDrive::IsConnected())
         {
-            EXIT_FROM_SETNAME_TO = (uint)(MENU_IS_SHOWN ? RETURN_TO_MAIN_MENU : RETURN_TO_DISABLE_MENU);
+            EXIT_FROM_SETNAME_TO = (uint)(Menu::IsShown() ? RETURN_TO_MAIN_MENU : RETURN_TO_DISABLE_MENU);
             PageMemory::SaveSignalToFlashDrive();
             shortPressureButton = Key::None;
             return;
@@ -279,7 +279,7 @@ void Menu::ProcessingShortPressureButton()
         {
             if(button == Key::Enter)                                   // Если нажата кнопка МЕНЮ и мы не находимся в режме настройки измерений.
             {
-                if(!MENU_IS_SHOWN)
+                if(!Menu::IsShown())
                 {
                     Menu::Show(true);
                 }
@@ -292,7 +292,7 @@ void Menu::ProcessingShortPressureButton()
                     Menu::CloseOpenedItem();
                 }
             }
-            else if (MENU_IS_SHOWN && button.IsFunctional())       // Если меню показано и нажата функциональная клавиша
+            else if (Menu::IsShown() && button.IsFunctional())       // Если меню показано и нажата функциональная клавиша
             {
                 void *item = itemUnderButton[button];
                 if (HINT_MODE_ENABLED)
@@ -310,13 +310,13 @@ void Menu::ProcessingShortPressureButton()
             else                                                        // Если меню не показано.
             {
                 Page::Name name = ((const Page *)OpenedItem())->GetName();
-                if(button == Key::ChannelA && name == Page::Name::ChannelA && MENU_IS_SHOWN)
+                if(button == Key::ChannelA && name == Page::Name::ChannelA && Menu::IsShown())
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
                     PageChannelA::OnChanged_Input(true);
                     break;
                 }
-                if(button == Key::ChannelB && name == Page::Name::ChannelB && MENU_IS_SHOWN)
+                if(button == Key::ChannelB && name == Page::Name::ChannelB && Menu::IsShown())
                 {
                     SET_ENABLED_B = !SET_ENABLED_B;
                     PageChannelB::OnChanged_Input(true);
@@ -375,14 +375,14 @@ void Menu::ProcessingLongPressureButton()
             }
             else
             {
-                Show(!MENU_IS_SHOWN);
+                Show(!Menu::IsShown());
                 if (NOT_PAGE(item))
                 {
                     TemporaryEnableStrNavi();
                 }
             }
         }
-        else if(MENU_IS_SHOWN && button.IsFunctional())
+        else if(Menu::IsShown() && button.IsFunctional())
         {
             item = (Control *)itemUnderButton[button];
             if(item)
@@ -512,7 +512,7 @@ bool Menu::NeedForFireSetLED()
 {
     Control *item = OpenedItem();
     
-    if (!MENU_IS_SHOWN)
+    if (!Menu::IsShown())
     {
         return IS_CHOICE_REG(item) || IS_CHOICE(item) || IS_GOVERNOR(item);
     }
@@ -555,12 +555,18 @@ bool Menu::NeedForFireSetLED()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::Show(bool show)
 {
-    MENU_IS_SHOWN = show;
+    set.menu_show = show;
     if (show)
     {
         Menu::TemporaryEnableStrNavi();
     }
     Menu::SetAutoHide(true);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Menu::IsShown()
+{
+    return set.menu_show;
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -720,21 +726,21 @@ static void DrawHintItem(int x, int y, int width)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Menu::CalculateY()
 {
-    if(Device::CurrentMode() == Device::Mode::Multimeter)
+    if(Device::CurrentMode() == Device::Mode::Osci)
     {
-        return Display::HEIGHT - Item::HEIGHT - 2;
+        return Grid::Bottom() - Item::HEIGHT - 1;
     }
-    return Grid::Bottom() - Item::HEIGHT - 1;
+    return Display::HEIGHT - Item::HEIGHT - 2;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::Draw()
 {
-    if (MENU_IS_SHOWN || NOT_PAGE(OpenedItem()))
+    if (Menu::IsShown() || NOT_PAGE(OpenedItem()))
     {
         ResetItemsUnderButton();
         Control *item = OpenedItem();
-        if (MENU_IS_SHOWN)
+        if (Menu::IsShown())
         {
             if (IS_PAGE(item))
             {
@@ -770,7 +776,7 @@ void Menu::Draw()
         int x = 1;
         int y = 0;
         int width = 318;
-        if (MENU_IS_SHOWN)
+        if (Menu::IsShown())
         {
             width = Menu::IsMinimize() ? 289 : 220;
         }
@@ -850,7 +856,7 @@ void Menu::SaveSettings()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ReleaseFunctionalButton(Key key)
 {
-    if(MENU_IS_SHOWN)
+    if(Menu::IsShown())
     {
         Control *control = (Control *)itemUnderButton[key];
         if(control)
@@ -863,7 +869,7 @@ void Menu::ReleaseFunctionalButton(Key key)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::LongFunctionalButton(Key key)
 {
-    if(MENU_IS_SHOWN)
+    if(Menu::IsShown())
     {
         Control *control = (Control *)itemUnderButton[key];
         if(control)

@@ -216,6 +216,7 @@ public:
             SB_Debug_Settings,         ///< ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ
             SB_Debug_SerialNumber,     ///< ÎÒËÀÄÊÀ - Ñ/Í
             Multimeter,
+            Tester,
             Number,
             NoPage
         } value;

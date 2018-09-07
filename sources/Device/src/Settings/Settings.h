@@ -30,13 +30,6 @@
 
 #define TRIG_MODE                       (set.trig_mode)
 
-#define TESTER_STEP_U                   (set.test_stepU)
-#define TESTER_STEP_I                   (set.test_stepI)
-#define TESTER_NUM_SMOOTH               (set.test_smooth)
-
-#define MENU_IS_SHOWN                   (set.menu_show)
-
-
 /// Возвращает позицию активного пункта на странице Page::Name.
 #define MENU_POS_ACT_ITEM(name)     (set.menu_posActItem[name])
 /// Текущая подстраница
@@ -227,7 +220,8 @@ public:
     Tester::Polarity    test_polarity;
     Tester::StepU       test_stepU;
     Tester::StepI       test_stepI;
-    uint8               test_smooth;                                ///< Количество сглаживаний
+    Tester::Smoothing   test_smooth;                                ///< Количество сглаживаний
+    Tester::ViewMode    test_viewMode;
 
     // Настройки меню
 

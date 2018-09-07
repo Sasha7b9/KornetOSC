@@ -2315,6 +2315,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\PageMultimeter.h</FilePath>
             </File>
+            <File>
+              <FileName>PageTester.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageTester.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageTester.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageTester.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

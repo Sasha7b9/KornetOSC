@@ -45,8 +45,10 @@ public:
     static void SetAutoHide(bool active);
     /// Возвращает путь к текущему пункту меню в текстовом виде, готовом к выводу на экран.
     static char *StringNavigation(char buffer[100]);
-
+    /// Показать/скрыть меню.
     static void Show(bool show);
+    /// Возвращает true, если меню отображается на экране
+    static bool IsShown();
 
     static void OpenItemTime();
     /// Функция временно включает отображение строки навигации меню, если задано настройками.

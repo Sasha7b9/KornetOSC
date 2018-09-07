@@ -9,6 +9,11 @@
 #define TESTER_CONTROL_IS_U             (TESTER_CONTROL == Tester::Control::Voltage)
 #define TESTER_POLARITY                 (set.test_polarity)
 #define TESTER_POLARITY_IS_POSITITVE    (TESTER_POLARITY == Tester::Polarity::Positive)
+#define TESTER_STEP_U                   (set.test_stepU)
+#define TESTER_STEP_I                   (set.test_stepI)
+#define TESTER_NUM_SMOOTH               (set.test_smooth)
+#define TESTER_VIEW_MODE                (set.test_viewMode)
+
 
 
 
@@ -82,6 +87,28 @@ public:
             _20mA
         } value;
         operator uint8() const { return (uint8)value; };
+    };
+
+    struct Smoothing
+    {
+        enum E
+        {
+            _1,
+            _2,
+            _3,
+            _4,
+            _5
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
+    struct ViewMode
+    {
+        enum
+        {
+            Lines,
+            Points
+        } value;
     };
 };
 

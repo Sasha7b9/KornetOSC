@@ -20,7 +20,7 @@ struct Divider
     } value;
     Divider(E v = _1) : value(v) { };
     Divider(uint v = _1) : value((E)v) { };
-    operator uint() const  { return (uint)value; };
+    operator uint8() const  { return (uint8)value; };
     int ToAbs() const { return (value == _1) ? 1 : 10; };
 };
 

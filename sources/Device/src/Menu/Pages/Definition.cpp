@@ -11,6 +11,7 @@
 #include "PageTrig.h"
 #include "PageTime.h"
 #include "PageCursors.h"
+#include "PageTester.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -152,13 +153,22 @@ void DrawMenuCursTime(int x, int y, bool left, bool right)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ChangeMode()
 {
-    if(Device::CurrentMode() == Device::Mode::Multimeter)
+    static bool menuIsShown = false;
+
+    switch(Device::CurrentMode())
     {
-        pageMain = (PageBase *)PageMultimeter::pointer;
-        Menu::Show(true);
-    }
-    else
-    {
-        pageMain = (PageBase *)&pageOsci;
+        case Device::Mode::Osci:
+            pageMain = (PageBase *)&pageOsci;
+            Show(menuIsShown);
+            break;
+        case Device::Mode::Tester:
+            menuIsShown = IsShown();
+            pageMain = (PageBase *)PageTester::pointer;
+            Show(true);
+            break;
+        case Device::Mode::Multimeter:
+            pageMain = (PageBase *)PageMultimeter::pointer;
+            Show(true);
+            break;
     }
 }
