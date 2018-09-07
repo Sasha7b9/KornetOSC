@@ -211,14 +211,14 @@ void Painter::DrawTesterData(uint8 mode, Color color, uint8 x[240], uint8 y[240]
 
     if(mode == 1)
     {
-        for(int i = 0; i < 240; i++)
+        for(int i = 1; i < 240; i++)
         {
             *(Display::GetBuffer() + y[i] * BUFFER_WIDTH + x[i]) = currentColor.value;
         }
     }
     else
     {
-        for(int i = 0; i < 239; i++)
+        for(int i = 1; i < 239; i++)
         {
             DrawLine(x[i], y[i], x[i + 1], y[i + 1]);
         }

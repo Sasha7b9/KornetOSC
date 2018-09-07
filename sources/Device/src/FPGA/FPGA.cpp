@@ -252,8 +252,11 @@ void FPGA::StartForTester(int)
 
     LoadTBase();
 
-    FSMC::WriteToFPGA16(WR_PRED_LO, (uint16)(~3));
-    FSMC::WriteToFPGA16(WR_POST_LO, (uint16)(-TESTER_NUM_POINTS - 20));
+    uint16 post = 256;
+    int pred = 240 - 240;
+
+    FSMC::WriteToFPGA16(WR_PRED_LO, (~(post + 1)));
+    FSMC::WriteToFPGA16(WR_POST_LO, (~(pred + 3)));
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     uint8 flag = 0;
@@ -273,8 +276,14 @@ void FPGA::StartForTester(int)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 {
-    uint8 flag = 0;
+    /*
+    if(_GET_BIT(ReadFlag(), BIT_FLAG_DATA_READY) == 0)
+    {
+        return false;
+    }
+    */
 
+    uint8 flag = 0;
     uint start = TIME_MS;
     while (_GET_BIT(flag, BIT_FLAG_DATA_READY) == 0)    // ∆дЄм флага готовности данных
     {
