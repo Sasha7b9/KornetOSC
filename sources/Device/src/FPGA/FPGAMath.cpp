@@ -1,6 +1,6 @@
 #include "FPGAMath.h"
 #include "Display/DisplayTypes.h"
-#include "Display/Grid.h"
+#include "Osci/Grid.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGATypes.h"
 #include "FPGA/RShift.h"

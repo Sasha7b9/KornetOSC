@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "Settings/Settings.h"
-#include "Display/Grid.h"
+#include "Osci/Grid.h"
 #include "Display/Font/Font.h"
 #include "Display/Painter.h"
 #include "HelpContentPages.h"

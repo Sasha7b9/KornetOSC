@@ -2,10 +2,9 @@
 #include "Colors.h"
 #include "Globals.h"
 #include "Display.h"
-#include "DisplayOsci.h"
-#include "Grid.h"
+#include "Osci/Grid.h"
 #include "Painter.h"
-#include "PainterData.h"
+#include "Osci/PainterData.h"
 #include "Log.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Sound.h"
@@ -17,9 +16,10 @@
 #include "Utils/Math.h"
 #include "FPGA/FPGAMath.h"
 #include "Console.h"
-#include "BottomPart.h"
+#include "Osci/BottomPart.h"
 #include "FPGA/RShift.h"
 #include "Multimeter/Multimeter.h"
+#include "Osci/Osci.h"
 #include "Tables.h"
 #include <stdlib.h>
 #include <string.h>
@@ -129,7 +129,7 @@ void Display::Update()
 
     static const pFuncDisplayVV funcs[Device::Mode::Number] =
     {
-        DisplayOsci::Update,
+        Osci::Graphics::Update,
         Tester::Graphics::Update,
         Multimeter::Graphics::Update
     };

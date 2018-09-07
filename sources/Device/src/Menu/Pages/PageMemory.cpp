@@ -3,7 +3,7 @@
 #include "Globals.h"
 #include "Data/Reader.h"
 #include "Data/Storage.h"
-#include "Display/Grid.h"
+#include "Osci/Grid.h"
 #include "Display/Symbols.h"
 #include "Display/Painter.h"
 #include "FlashDrive/FlashDrive.h"

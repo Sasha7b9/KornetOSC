@@ -2,7 +2,7 @@
 #include "Display/Painter.h"
 #include "FileManager.h"
 #include "Hardware/FSMC.h"
-#include "Display/Grid.h"
+#include "Osci/Grid.h"
 #include "Display/Colors.h"
 #include "Display/Font/Font.h"
 #include "FlashDrive/FlashDrive.h"

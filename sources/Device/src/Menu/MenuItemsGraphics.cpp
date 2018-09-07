@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "Log.h"
-#include "Display/Grid.h"
+#include "Osci/Grid.h"
 #include "Display/Colors.h"
 #include "Display/Painter.h"
 #include "Display/DisplayTypes.h"

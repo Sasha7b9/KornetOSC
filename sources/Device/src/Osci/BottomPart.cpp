@@ -1,7 +1,7 @@
 #include "BottomPart.h"
 #include "Settings/Settings.h"
 #include "Grid.h"
-#include "Painter.h"
+#include "Display/Painter.h"
 #include "Utils/MathOSC.h"
 #include "FPGA/FPGAMath.h"
 #include "FPGA/RShift.h"

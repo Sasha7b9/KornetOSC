@@ -1,6 +1,6 @@
 #include "Cursors.h"
 #include "Settings/Settings.h"
-#include "Display/Grid.h"
+#include "Osci/Grid.h"
 #include "Menu/Menu.h"
 #include "FPGA/FPGAMath.h"
 #include "Utils/StringUtils.h"

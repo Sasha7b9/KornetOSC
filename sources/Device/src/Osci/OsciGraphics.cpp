@@ -1,10 +1,10 @@
-#include "DisplayOsci.h"
-#include "Painter.h"
+#include "Osci.h"
+#include "Display/Painter.h"
 #include "Grid.h"
 #include "BottomPart.h"
 #include "HiPart.h"
 #include "PainterData.h"
-#include "Console.h"
+#include "Display/Console.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
 #include "FPGA/FPGA.h"
@@ -17,7 +17,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void DisplayOsci::Update()
+void Osci::Graphics::Update()
 {
     Painter::BeginScene(Color::BACK);
 
@@ -45,7 +45,7 @@ void DisplayOsci::Update()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DisplayOsci::DrawCursorTrigLevel()
+void Osci::Graphics::DrawCursorTrigLevel()
 {
     Trig::Source ch = TRIG_SOURCE;
     int trigLev = SET_TRIGLEV_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : (SET_RSHIFT(ch) - RShift::ZERO));
@@ -101,7 +101,7 @@ void DisplayOsci::DrawCursorTrigLevel()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DisplayOsci::DrawScaleLine(int x, bool forTrigLev)
+void Osci::Graphics::DrawScaleLine(int x, bool forTrigLev)
 {
     int width = 6;
     int topY = Grid::Top() + DELTA;

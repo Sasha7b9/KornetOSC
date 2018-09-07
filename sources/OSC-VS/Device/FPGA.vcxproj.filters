@@ -78,13 +78,7 @@
     <ClCompile Include="..\..\Device\src\Display\Display.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Display\Grid.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Display\PainterData.cpp">
       <Filter>Display</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\FSMC.cpp">
@@ -270,9 +264,6 @@
     <ClCompile Include="..\..\Device\src\Display\Console.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Display\BottomPart.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\MenuTriggers.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
@@ -303,13 +294,7 @@
     <ClCompile Include="..\..\Device\src\FPGA\FPGAMath.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Display\DisplayOsci.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\PainterMem.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Display\MemoryWindow.cpp">
       <Filter>Display</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\FPGA\RShift.cpp">
@@ -321,14 +306,8 @@
     <ClCompile Include="..\..\Device\src\FPGA\TrigLev.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Display\HiPart.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Font\Font.cpp">
       <Filter>Display\Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Display\Cursors.cpp">
-      <Filter>Display</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMultimeter.cpp">
       <Filter>Menu\Pages</Filter>
@@ -338,6 +317,27 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Tester\TesterGraphics.cpp">
       <Filter>Tester</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Osci\OsciGraphics.cpp">
+      <Filter>Osci</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Osci\Grid.cpp">
+      <Filter>Osci</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Osci\BottomPart.cpp">
+      <Filter>Osci</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Osci\Cursors.cpp">
+      <Filter>Osci</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Osci\HiPart.cpp">
+      <Filter>Osci</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Osci\PainterData.cpp">
+      <Filter>Osci</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Osci\MemoryWindow.cpp">
+      <Filter>Osci</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -395,13 +395,7 @@
     <ClInclude Include="..\..\Device\src\Display\Display.h">
       <Filter>Display</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Display\Grid.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\Painter.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Display\PainterData.h">
       <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\TypeSymbols.h">
@@ -665,9 +659,6 @@
     <ClInclude Include="..\..\Device\src\Display\Console.h">
       <Filter>Display</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Display\BottomPart.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\MenuTriggers.h">
       <Filter>Menu</Filter>
     </ClInclude>
@@ -701,13 +692,7 @@
     <ClInclude Include="..\..\Device\src\FPGA\FPGAMath.h">
       <Filter>FPGA</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Display\DisplayOsci.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\PainterMem.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Display\MemoryWindow.h">
       <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\FPGA\RShift.h">
@@ -719,9 +704,6 @@
     <ClInclude Include="..\..\Device\src\FPGA\TrigLev.h">
       <Filter>FPGA</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Display\HiPart.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\Font\font.h">
       <Filter>Display\Font</Filter>
     </ClInclude>
@@ -731,14 +713,29 @@
     <ClInclude Include="..\..\Device\src\Settings\SettingsMultimeter.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Display\Cursors.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageMultimeter.h">
       <Filter>Menu\Pages</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageTester.h">
       <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Osci\Grid.h">
+      <Filter>Osci</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Osci\BottomPart.h">
+      <Filter>Osci</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Osci\Cursors.h">
+      <Filter>Osci</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Osci\HiPart.h">
+      <Filter>Osci</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Osci\PainterData.h">
+      <Filter>Osci</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Osci\MemoryWindow.h">
+      <Filter>Osci</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

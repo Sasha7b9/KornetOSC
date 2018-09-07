@@ -4,7 +4,7 @@
 #include "BufferButtons.h"
 #include "Globals.h"
 #include "Display/Console.h"
-#include "Display/Grid.h"
+#include "Osci/Grid.h"
 #include "Display/DisplayTypes.h"
 #include "Display/Painter.h"
 #include "FlashDrive/FlashDrive.h"

@@ -11,10 +11,10 @@
 #include "SettingsService.h"
 #include "SettingsMeasures.h"
 #include "Tester/Tester.h"
-#include "Display/Cursors.h"
+#include "Osci/Cursors.h"
 #include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
-#include "Display/Grid.h"
+#include "Osci/Grid.h"
 #include "Display/Colors.h"
 #include "Multimeter/Multimeter.h"
 

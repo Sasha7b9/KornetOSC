@@ -1,6 +1,6 @@
 #include "HiPart.h"
 #include "Settings/Settings.h"
-#include "Painter.h"
+#include "Display/Painter.h"
 #include "Grid.h"
 #include "Utils/Dictionary.h"
 #include "FPGA/FPGA.h"

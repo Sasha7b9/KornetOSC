@@ -3,7 +3,7 @@
 #include "Settings/Settings.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
-#include "Display/Grid.h"
+#include "Osci/Grid.h"
 #include "Hardware/Sound.h"
 
 
