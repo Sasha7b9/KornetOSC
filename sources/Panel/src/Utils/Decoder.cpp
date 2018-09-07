@@ -35,7 +35,8 @@ void Decoder::AddData(uint8 data)
         &Decoder::DrawHLine,
         &Decoder::SetFont,
         &Decoder::SetPoint,
-        &Decoder::DrawLine
+        &Decoder::DrawLine,
+        &Decoder::DrawTesterPoints
     };
 
     if (step == 0)
@@ -90,6 +91,41 @@ bool Decoder::BeginScene(uint8 data)
         Painter::BeginScene((Color)data);
     }
     return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Decoder::DrawTesterPoints(uint8 data)
+{
+    // Здесь хранится текущий принимаемый байт. Всего их будет 2400
+    static int numPoint = 0;
+    static Color color = Color::FILL;
+    static uint8 mode = 0;
+
+    static uint8 buffer[480];
+
+    if(step == 0)
+    {
+        numPoint = 0;
+    }
+    else if(step == 1)
+    {
+        mode = data;
+    }
+    else if(step == 2)
+    {
+        color = Color(data);
+    }
+    else
+    {
+        buffer[numPoint++] = data;
+
+        if(numPoint == 480)
+        {
+            Painter::DrawTesterData(mode, color, buffer, buffer + 240);
+            return true;
+        }
+    }
+    return false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

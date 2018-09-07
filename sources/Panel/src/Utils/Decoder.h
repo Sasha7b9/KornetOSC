@@ -40,6 +40,8 @@ private:
     static bool DrawLine(uint8);
 
     static bool DrawHLine(uint8);
+
+    static bool DrawTesterPoints(uint8);
     /// Эту функцию надо вызывать после выполнения последнего шага
     static void FinishCommand();
 };

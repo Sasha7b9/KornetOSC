@@ -11,7 +11,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-typedef int array[Chan::Number][Tester::NUM_STEPS][TESTER_NUM_POINTS];
+typedef uint8 array[Chan::Number][Tester::NUM_STEPS][TESTER_NUM_POINTS];
 
 static bool ready[Tester::NUM_STEPS] = {false, false, false, false, false};
 
@@ -43,28 +43,13 @@ void Tester::Graphics::DrawData(int numStep, int x0, int y0)
     {
         static const Color colors[5] = {Color::FILL, Color::GRID, Color::RED, Color::GREEN, Color::BLUE};
         
-        Painter::SetColor(colors[numStep]);
-
-        int *x = &(*dat)[Chan::A][numStep][0];
-        int *y = &(*dat)[Chan::B][numStep][0];
+        uint8 *x = &(*dat)[Chan::A][numStep][0];
+        uint8 *y = &(*dat)[Chan::B][numStep][0];
 
         MathOSC::Smoothing(x, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
         MathOSC::Smoothing(x, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
 
-        if (TESTER_VIEW_MODE_IS_LINES)
-        {
-            for (int i = 1; i < TESTER_NUM_POINTS - 1; i++)
-            {
-                Painter::DrawLine(x[i], y[i], x[i + 1], y[i + 1]);
-            }
-        }
-        else
-        {
-            for (int i = 1; i < TESTER_NUM_POINTS; i++)
-            {
-                Painter::SetPoint(x[i], y[i]);
-            }
-        }
+        Painter::DrawTesterData(TESTER_VIEW_MODE, colors[numStep], x, y);
     }
 }
 
@@ -73,14 +58,18 @@ void Tester::Graphics::SetPoints(int numStep, uint8 dx[TESTER_NUM_POINTS], uint8
 {
     ready[numStep] = true;
 
-    int *x = &(*dat)[Chan::A][numStep][0];
-    int *y = &(*dat)[Chan::B][numStep][0];
+    uint8 *x = &(*dat)[Chan::A][numStep][0];
+    uint8 *y = &(*dat)[Chan::B][numStep][0];
 
     for(int i = 0; i < TESTER_NUM_POINTS; i++)
     {
-        x[i] = TESTER_NUM_POINTS - (dx[i] - MIN_VALUE);
-        y[i] = dy[i] - MIN_VALUE;
-        LIMITATION(x[i], 0, TESTER_NUM_POINTS - 1);
-        LIMITATION(y[i], 0, TESTER_NUM_POINTS - 1);
+        int X = TESTER_NUM_POINTS - (dx[i] - MIN_VALUE);
+        int Y = dy[i] - MIN_VALUE;
+
+        LIMITATION(X, 0, TESTER_NUM_POINTS - 1);
+        LIMITATION(Y, 0, TESTER_NUM_POINTS - 1);
+
+        x[i] = (uint8)X;
+        y[i] = (uint8)Y;
     }
 }

@@ -6,6 +6,7 @@
 #include "Hardware/Timer.h"
 #include <string.h>
 #include <stdarg.h>
+#include <stdlib.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,6 +49,27 @@ void Painter::FillRegion(int x, int y, int width, int height, Color color)
     SET_COLOR(color);
     uint8 buffer[7] = {Command::Paint_FillRegion, (uint8)x, (uint8)(x >> 8), (uint8)y, (uint8)width, (uint8)(width >> 8), (uint8)height};
     FSMC::WriteToPanel(buffer, 7);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::DrawTesterData(uint8 mode, Color color, uint8 x[240], uint8 y[240])
+{
+    uint8 *buffer = (uint8 *)malloc(483);
+    buffer[0] = Command::Paint_TesterLines;
+    buffer[1] = mode;
+    buffer[2] = color.value;
+    uint8 *pointer = buffer + 3;
+    for(int i = 0; i < 240; i++)
+    {
+        *pointer++ = x[i];
+    }
+    for(int i = 0; i < 240; i++)
+    {
+        *pointer++ = y[i];
+    }
+    FSMC::WriteToPanel(buffer, 483);
+
+    free(buffer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

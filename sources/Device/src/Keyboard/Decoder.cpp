@@ -55,20 +55,21 @@ void Decoder::RunStep(uint8 data)
     }
     commands[Command::Number] =
     {
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::ButtonPress),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc),
-        StructFunc(&Decoder::EmptyFunc)
+        &Decoder::EmptyFunc,
+        &Decoder::ButtonPress,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc,
+        &Decoder::EmptyFunc
     };
 
     if (step == 0)

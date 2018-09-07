@@ -205,6 +205,27 @@ void Painter::SetColor(Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::DrawTesterData(uint8 mode, Color color, uint8 x[240], uint8 y[240])
+{
+    SetColor(color);
+
+    if(mode == 1)
+    {
+        for(int i = 1; i < 240; i++)
+        {
+            SetPoint(x[i], y[i]);
+        }
+    }
+    else
+    {
+        for(int i = 1; i < 239; i++)
+        {
+            DrawLine(x[i], y[i], x[i + 1], y[i + 1]);
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::SetPoint(int x, int y)
 {
     if (x >= 0 && x < BUFFER_WIDTH && y >= 0 && y < BUFFER_HEIGHT)

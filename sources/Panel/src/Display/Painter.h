@@ -29,6 +29,8 @@ public:
     static void SetColorValue(Color color, uint value);
     /// Загружает в дисплей все цвета
     static void LoadPalette();
+
+    static void DrawTesterData(uint8 mode, Color color, uint8 x[240], uint8 y[240]);
     /// Установить цвет рисования
     /// Нарисовать точку текущим цветом
     static void SetPoint(int x, int y);
