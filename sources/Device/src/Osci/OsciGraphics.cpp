@@ -4,7 +4,6 @@
 #include "BottomPart.h"
 #include "HiPart.h"
 #include "PainterData.h"
-#include "Display/Console.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
 #include "FPGA/FPGA.h"
@@ -37,11 +36,7 @@ void Osci::Graphics::Update()
 
     HiPart::Draw();
 
-    Console::Draw();
-
     Menu::Draw();
-
-    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

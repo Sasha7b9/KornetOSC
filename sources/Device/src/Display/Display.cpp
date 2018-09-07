@@ -6,6 +6,7 @@
 #include "Utils/Math.h"
 #include "Multimeter/Multimeter.h"
 #include "Osci/Osci.h"
+#include "Console.h"
 #include "Tables.h"
 #include <stdlib.h>
 #include <string.h>
@@ -123,6 +124,10 @@ void Display::Update()
     pFuncDisplayVV func = funcs[Device::CurrentMode()];
 
     func();
+
+    Console::Draw();
+
+    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -3,6 +3,7 @@
 #include "Settings/Settings.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/Timer.h"
+#include "Device.h"
 #include <string.h>
 
 
@@ -77,6 +78,11 @@ void Multimeter::ChangeAVP()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Multimeter::Update()
 {
+    if(Device::CurrentMode() != Device::Mode::Multimeter)
+    {
+        return;
+    }
+    
     uint8 range = 0;
     if(MULTI_MEASURE == Measures::VoltageDC)        { range = MULTI_RANGE_DC; }
     else if(MULTI_MEASURE == Measures::VoltageAC)   { range = MULTI_RANGE_AC; }
@@ -88,8 +94,6 @@ void Multimeter::Update()
   //  trans[2] = '\0';
     HAL_UART_Transmit(&handlerUART, send, 4, 100);
     HAL_UART_Receive_IT(&handlerUART, bufferUART, 10);
-
-    Graphics::Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -128,14 +132,7 @@ void Multimeter::Graphics::Update()
 
     Painter::SetColor(Color::FILL);
 
-    //Painter::DrawFormatText(20, 150, "послано %s", trans);
-
-//    Painter::DrawFormatText(20, 170, "принято %s", recv);
-
-
     Menu::Draw();
-
-    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -22,6 +22,7 @@
 class Tester
 {
 public:
+    /// Инициализация аппаратной части
     static void Init();
 
     static void Enable();

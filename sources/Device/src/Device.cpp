@@ -48,20 +48,15 @@ void Device::Update()
 {
     START_MULTI_MEASUREMENT();
 
-    if(currentMode == Mode::Multimeter)
-    {
-        Multimeter::Update();
-    }
-    else
-    {
-        Display::Update();
+    Display::Update();
 
-        FPGA::Update();
+    FPGA::Update();
 
-        Menu::SaveSettings();
+    Menu::SaveSettings();
 
-        Tester::Update();
-    }
+    Tester::Update();
+    
+    Multimeter::Update();
 
     Menu::Update();
 

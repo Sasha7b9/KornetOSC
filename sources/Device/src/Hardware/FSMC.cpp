@@ -2,7 +2,6 @@
 #include "Keyboard/Decoder.h"
 #include "FSMC.h"
 #include "GPIO.h"
-#include "Display/Console.h"
 #include "Log.h"
 #include "Timer.h"
 #include "Hardware.h"

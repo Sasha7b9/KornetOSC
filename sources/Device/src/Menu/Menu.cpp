@@ -3,7 +3,6 @@
 #include "Device.h"
 #include "BufferButtons.h"
 #include "Globals.h"
-#include "Display/Console.h"
 #include "Osci/Grid.h"
 #include "Display/DisplayTypes.h"
 #include "Display/Painter.h"

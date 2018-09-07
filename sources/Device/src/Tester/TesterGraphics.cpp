@@ -2,7 +2,6 @@
 #include "Display/Painter.h"
 #include "Display/Display.h"
 #include "Menu/Menu.h"
-#include "Display/Console.h"
 #include "Utils/MathOSC.h"
 #include "Settings/Settings.h"
 
@@ -23,10 +22,6 @@ void Tester::Graphics::Update()
     }
 
     Menu::Draw();
-
-    Console::Draw();
-
-    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
