@@ -158,10 +158,6 @@ public:
 
 private:
 
-    static void UpdateTester();
-
-    static void DrawDataTester(int numStep, int x, int y);
-
     static Key key;
 
 public:

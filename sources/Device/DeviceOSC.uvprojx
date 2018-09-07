@@ -2445,6 +2445,11 @@
               <FileType>5</FileType>
               <FilePath>.\src\Tester\Tester.h</FilePath>
             </File>
+            <File>
+              <FileName>TesterGraphics.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Tester\TesterGraphics.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -100,6 +100,7 @@
     <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\Device\src\Tables.cpp" />
     <ClCompile Include="..\..\Device\src\Tester\Tester.cpp" />
+    <ClCompile Include="..\..\Device\src\Tester\TesterGraphics.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Dictionary.cpp" />

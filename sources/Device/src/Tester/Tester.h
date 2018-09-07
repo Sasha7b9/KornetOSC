@@ -35,6 +35,15 @@ public:
     /// Устанавливает шаг изменения напряжения в соотвествии с настройками Settings
     static void LoadStep();
 
+    class Graphics
+    {
+    public:
+        static void Update();
+
+    private:
+        static void DrawData(int numStep, int x0, int y0);
+    };
+
 private:
     /// Загрузить FPGA в соответствии с установленными настройками
     static void LoadFPGA();
