@@ -252,11 +252,13 @@ void FPGA::StartForTester(int)
 
     LoadTBase();
 
-    uint16 post = 256;
-    int pred = 240 - 240;
-
-    FSMC::WriteToFPGA16(WR_PRED_LO, (~(post + 1)));
-    FSMC::WriteToFPGA16(WR_POST_LO, (~(pred + 3)));
+    //uint16 post = 256;
+    //int pred = 240 - 240;
+    //
+    //FSMC::WriteToFPGA16(WR_POST_LO, (~(post + 1)));
+    //FSMC::WriteToFPGA16(WR_PRED_LO, (~(pred + 3)));
+    FSMC::WriteToFPGA16(WR_PRED_LO, pred);
+    FSMC::WriteToFPGA16(WR_POST_LO, post);
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     uint8 flag = 0;

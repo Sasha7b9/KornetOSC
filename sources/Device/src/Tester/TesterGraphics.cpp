@@ -30,8 +30,8 @@ void Tester::Graphics::Update()
         DrawData(i, 0, 0);
     }
 
-    Painter::DrawRectangle(0, 0, size, size, Color::FILL);
-    Painter::DrawRectangle(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
+    //Painter::DrawRectangle(0, 0, size, size, Color::FILL);
+    //Painter::DrawRectangle(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
 
     Menu::Draw();
 }
@@ -51,7 +51,18 @@ void Tester::Graphics::DrawData(int numStep, int x0, int y0)
     //MathOSC::Smoothing(x, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
     //MathOSC::Smoothing(x, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
 
-    Painter::DrawTesterData(TESTER_VIEW_MODE, colors[numStep], x, y);
+    if(TESTER_VIEW_MODE_IS_LINES)
+    {
+        Painter::DrawTesterData(TESTER_VIEW_MODE, colors[numStep], x, y);
+    }
+    else
+    {
+        Painter::SetColor(colors[numStep]);
+        for(int i = 1; i < 240; i++)
+        {
+            Painter::SetPoint(x[i], y[i]);
+        }
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
