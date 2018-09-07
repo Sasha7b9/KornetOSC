@@ -14,6 +14,8 @@ int main(void)
 
     AT25160N::Init();
 
+    Device::ChangeMode();
+
     while (1)
     {
         Device::Update();

@@ -278,11 +278,12 @@ void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 {
     uint8 flag = 0;
 
-    uint start = TIME_US;
+    uint start = TIME_MS;
     while (_GET_BIT(flag, BIT_FLAG_DATA_READY) == 0)    // Ждём флага готовности данных
     {
         flag = ReadFlag();
-        if(TIME_US - start > 10000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
+
+        if(TIME_MS - start > 20)        /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
         {                               /// нажатия кнопок
             return;
         }

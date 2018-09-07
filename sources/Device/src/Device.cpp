@@ -55,7 +55,7 @@ void Device::Update()
     Menu::SaveSettings();
 
     Tester::Update();
-    
+
     Multimeter::Update();
 
     Menu::Update();

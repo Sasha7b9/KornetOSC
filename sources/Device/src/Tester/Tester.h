@@ -37,10 +37,6 @@ public:
     /// Устанавливает шаг изменения напряжения в соотвествии с настройками Settings
     static void LoadStep();
 
-    static const int NUM_STEPS = 5;
-
-    static uint8 data[Chan::Number][NUM_STEPS][TESTER_NUM_POINTS];
-
     class Graphics
     {
     public:
@@ -61,6 +57,10 @@ private:
     static int step;
     /// Шаг изменения напряжения
     static float stepU;
+
+    static const int NUM_STEPS = 5;
+
+    static uint8 data[Chan::Number][NUM_STEPS][TESTER_NUM_POINTS];
 
 public:
     /// Чем будем управлять в тестер-компоненте - напряжением или током
