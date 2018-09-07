@@ -1,5 +1,6 @@
 #include "Device.h"
 #include "Painter.h"
+#include "Log.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Sound.h"
 #include "Tester/Tester.h"
