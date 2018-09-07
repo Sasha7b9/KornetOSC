@@ -23,7 +23,6 @@ typedef unsigned short int  uint16;
 typedef unsigned int        uint;
 typedef uint64_t            uint64;
 
-
 typedef void (*pFuncVV)();
 typedef void (*pFuncVB)(bool);
 typedef bool (*pFuncBV)();

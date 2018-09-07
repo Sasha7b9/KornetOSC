@@ -184,8 +184,6 @@ void Tester::ProcessStep()
        |<--------->|<--------->|<--------->|<--------->|<--------->|<--------->|<--------->|<--------->|<--------->|<--------->|                  */
 
 
-    uint time = TIME_MS;
-
     static int success = 0;
     static int fail = 0;
 
@@ -214,8 +212,6 @@ void Tester::ProcessStep()
         ++fail;
         FSMC::RunFunctionAfterInteractionWitchPanel(&Tester::ProcessStep);
     }
-
-    //LOG_WRITE("step = %d ms", TIME_MS - time);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -228,7 +224,13 @@ void Tester::StartFPGA()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tester::ReadData()
 {
-    FPGA::ReadForTester(&Tester::data[Chan::A][step / 2][0], &Tester::data[Chan::B][step / 2][0]);
+    uint8 *x = &Tester::data[Chan::A][step / 2][0];
+    uint8 *y = &Tester::data[Chan::B][step / 2][0];
+
+    if(FPGA::ReadForTester(x, y))
+    {
+        Graphics::SetPoints(step / 2, x, y);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

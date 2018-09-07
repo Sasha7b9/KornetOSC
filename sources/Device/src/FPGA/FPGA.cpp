@@ -274,7 +274,7 @@ void FPGA::StartForTester(int)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
+bool FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 {
     uint8 flag = 0;
 
@@ -285,7 +285,7 @@ void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 
         if(TIME_MS - start > 20)        /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
         {                               /// нажатия кнопок
-            return;
+            return false;
         }
     }
 
@@ -308,6 +308,8 @@ void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
     {
         *dataB++ = *addrB;
     }
+
+    return true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

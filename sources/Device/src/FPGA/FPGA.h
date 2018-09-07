@@ -97,7 +97,7 @@ public:
     /// Запустить цикл чтения для тестер-компонента. В течение time секунд должно быть считано numPoints точек
     static void StartForTester(int numPoints);
 
-    static void ReadForTester(uint8 *dataA, uint8 *dataB);
+    static bool ReadForTester(uint8 *dataA, uint8 *dataB);
 
     static bool IsRunning()
     {

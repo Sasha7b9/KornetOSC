@@ -197,37 +197,3 @@ char *MathOSC::Bin2String(uint8 value, char buffer[9])
     buffer[8] = '\0';
     return buffer;
 }
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void MathOSC::Smoothing(uint8 *data, int numPoints, int numSmooth)
-{
-    if (numSmooth == 0 || numSmooth == 1)
-    {
-        return;
-    }
-
-    static float buffer[TESTER_NUM_POINTS];
-    
-    int num[TESTER_NUM_POINTS];
-
-    for (int i = 1; i < numPoints; i++)
-    {
-        buffer[i] = 0.0f;
-
-        num[i] = 0;
-        for (int j = -numSmooth / 2; j < numSmooth / 2; j++)
-        {
-            int index = i + j;
-            if (index >= 1 && index < numPoints)
-            {
-                buffer[i] += data[index];
-                ++num[i];
-            }
-        }
-    }
-    
-    for (int i = 1; i < numPoints; i++)
-    {
-        data[i] = (uint8)(buffer[i] / num[i] + 0.5f);
-    }
-}
