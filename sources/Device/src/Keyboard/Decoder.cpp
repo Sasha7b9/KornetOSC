@@ -48,30 +48,35 @@ void Decoder::Update()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Decoder::RunStep(uint8 data)
 {
-    static const pFuncBU8 commands[NUM_COMMANDS] =
+    static const struct StructFunc
     {
-        &Decoder::EmptyFunc,
-        &Decoder::ButtonPress,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc,
-        &Decoder::EmptyFunc
+        pFuncBU8 func;
+        StructFunc(pFuncBU8 f) : func(f) {};
+    }
+    commands[Command::Number] =
+    {
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::ButtonPress),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc),
+        StructFunc(&Decoder::EmptyFunc)
     };
 
     if (step == 0)
     {
 
-        if (data < NUM_COMMANDS)
+        if (data < Command::Number)
         {
-            curFunc = commands[data];
+            curFunc = commands[data].func;
         }
         else
         {
