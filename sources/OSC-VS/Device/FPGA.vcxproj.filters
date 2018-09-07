@@ -61,6 +61,9 @@
     <Filter Include="Display\Font">
       <UniqueIdentifier>{ee9cd6ab-4df3-4180-b83c-6873ef8dca50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{faa07a93-ccf5-4b60-a3b3-0477f9f0ec75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
@@ -736,6 +739,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Osci\MemoryWindow.h">
       <Filter>Osci</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\Command.h">
+      <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

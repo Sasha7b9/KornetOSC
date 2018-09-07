@@ -213,7 +213,7 @@ void Keyboard::FillCommand(Control control, Control::Action::E action)
 {
     commands[pointer] = control;
     commands[pointer++].action = action;
-    uint8 data[3] = {COMMAND::IN_BUTTON_PRESS, (uint8)control, (uint8)action};
+    uint8 data[3] = {Command::ButtonPress, (uint8)control, (uint8)action};
     FSMC::WriteBuffer(data, 3);  // Прерывание от клавиатуры имеет более низкий приоритет, чем чтения по шине, поэтому запись не запустится до тех
                                  // пор, пока не закончится чтение
 }   

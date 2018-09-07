@@ -15,7 +15,12 @@ int      Decoder::step = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Decoder::AddData(uint8 data)
 {
-    static const pFuncBU8 command[COMMAND::Number] =
+    static const struct StructFunc
+    {
+        pFuncBU8 func;
+        StructFunc(pFuncBU8 f) : func(f) {};
+    }
+    command[Command::Number] =
     {
         &Decoder::EmptyFunc,
         &Decoder::InButtonPress,
@@ -35,9 +40,9 @@ void Decoder::AddData(uint8 data)
 
     if (step == 0)
     {
-        if (data < COMMAND::Number)
+        if (data < Command::Number)
         {
-            curFunc = command[data];
+            curFunc = command[data].func;
         }
         else
         {

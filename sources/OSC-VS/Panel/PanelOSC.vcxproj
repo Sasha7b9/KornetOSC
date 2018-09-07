@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\Panel\src;..\..\Panel\src\libs\HAL;..\..\libs\common;..\..\common\_VS;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include</IncludePath>
+    <IncludePath>..\..\Panel\src;..\..\Panel\src\libs\HAL;..\..\libs\common;..\..\common\_VS;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\..\common</IncludePath>
     <OutDir>.\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\common\Command.h" />
     <ClInclude Include="..\..\common\_VS\cmsis_armcc.h" />
     <ClInclude Include="..\..\common\_VS\cmsis_armcc_V6.h" />
     <ClInclude Include="..\..\common\_VS\core_cm4.h" />

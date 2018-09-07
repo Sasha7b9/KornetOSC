@@ -34,6 +34,9 @@
     <Filter Include="Display\Font">
       <UniqueIdentifier>{d6659ae3-6ed5-4e18-a5f3-de24af9008fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{2e30e652-f2a4-4b9f-8f24-58ee4362d9a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -191,6 +194,9 @@
     </ClInclude>
     <ClInclude Include="..\..\OSC-Open\src\Hardware\LTDC.h">
       <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\Command.h">
+      <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
