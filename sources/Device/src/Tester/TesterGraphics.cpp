@@ -34,15 +34,15 @@ void Tester::Graphics::DrawData(int numStep, int x0, int y0)
 {
     static const Color colors[5] = {Color::FILL, Color::GRID, Color::RED, Color::GREEN, Color::BLUE};
 
-    uint8 *dataX = &dataTester[Chan::A][numStep][0];
-    uint8 *dataY = &dataTester[Chan::B][numStep][0];
+    uint8 *dataX = &Tester::data[Chan::A][numStep][0];
+    uint8 *dataY = &Tester::data[Chan::B][numStep][0];
 
     Painter::SetColor(colors[numStep]);
 
     MathOSC::Smoothing(dataX, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
     MathOSC::Smoothing(dataY, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
 
-    if (MODE_DRAW_SIGNAL_IS_LINES)
+    if (TESTER_VIEW_MODE_IS_LINES)
     {
         int x1 = x0 + TESTER_NUM_POINTS - (dataX[1] - MIN_VALUE);
         int y1 = y0 + dataY[1] - MIN_VALUE;

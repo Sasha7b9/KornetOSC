@@ -13,6 +13,7 @@
 #define TESTER_STEP_I                   (set.test_stepI)
 #define TESTER_NUM_SMOOTH               (set.test_smooth)
 #define TESTER_VIEW_MODE                (set.test_viewMode)
+#define TESTER_VIEW_MODE_IS_LINES       (TESTER_VIEW_MODE == Tester::ViewMode::Lines)
 
 
 
@@ -34,6 +35,10 @@ public:
     static void LoadPolarity();
     /// Устанавливает шаг изменения напряжения в соотвествии с настройками Settings
     static void LoadStep();
+
+    static const int NUM_STEPS = 5;
+
+    static uint8 data[Chan::Number][NUM_STEPS][TESTER_NUM_POINTS];
 
     class Graphics
     {
@@ -118,9 +123,6 @@ public:
             Lines,
             Points
         } value;
+        operator uint8() const { return (uint8)value; };
     };
 };
-
-#define NUM_STEPS       5
-
-extern uint8 dataTester[Chan::Number][NUM_STEPS][TESTER_NUM_POINTS];
