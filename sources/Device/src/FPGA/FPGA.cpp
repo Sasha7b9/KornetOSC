@@ -251,14 +251,31 @@ void FPGA::StartForTester(int)
     SET_TBASE = TBase::_500us;
 
     LoadTBase();
+    
+    /*
+        post = (uint16)(SET_TSHIFT - TShift::Min());
+        int Pred = (int)FPGA_NUM_POINTS - (int)post;
+    
+        if(Pred < 0)
+        {
+            Pred = 0;
+        }
+        pred = (uint16)Pred;
+    
+        //LOG_WRITE("tShift = %d, tShiftMin = %d, post = %D", SET_TSHIFT, TShift::Min(), post);
+        //LOG_WRITE("NUM_POINTS = %d, pred = %d", FPGA_NUM_POINTS, pred);
+    
+        post = (uint16)(~(post + 1));
+        pred = (uint16)(~(pred + 3));
+    */
 
-    //uint16 post = 256;
-    //int pred = 240 - 240;
-    //
-    //FSMC::WriteToFPGA16(WR_POST_LO, (~(post + 1)));
-    //FSMC::WriteToFPGA16(WR_PRED_LO, (~(pred + 3)));
-    FSMC::WriteToFPGA16(WR_PRED_LO, pred);
-    FSMC::WriteToFPGA16(WR_POST_LO, post);
+    uint16 post = 400;
+    int pred = 0;
+    
+    FSMC::WriteToFPGA16(WR_POST_LO, (~(post + 1)));
+    FSMC::WriteToFPGA16(WR_PRED_LO, (~(pred + 3)));
+    //FSMC::WriteToFPGA16(WR_PRED_LO, pred);
+    //FSMC::WriteToFPGA16(WR_POST_LO, post);
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     uint8 flag = 0;
