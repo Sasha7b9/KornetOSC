@@ -395,7 +395,7 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
 
     if(ch == Chan::A)
     {
-        LOG_WRITE("%d %d", Tsm, dataRead - data0);
+        //LOG_WRITE("%d %d", Tsm, dataRead - data0);
     }
 
     uint8 *last = &dataRand[ch][FPGA_NUM_POINTS];
@@ -427,7 +427,7 @@ int FPGA::CalculateShift(Chan ch)
 
         if(ch == Chan::A)
         {
-            LOG_WRITE("%d %d %d %d", adcValueFPGA, min, max, retValue);
+            //LOG_WRITE("%d %d %d %d", adcValueFPGA, min, max, retValue);
         }
 
         return retValue;

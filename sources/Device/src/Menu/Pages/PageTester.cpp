@@ -37,6 +37,7 @@ void PageTester::OnChanged_Control(bool)
     }
 
     Menu::ChangeMode();
+    Tester::LoadStep();
 }
 
 

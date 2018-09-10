@@ -232,7 +232,7 @@ void Tester::ReadData()
 
         if(x[0] == x[1] == x[2])
         {
-            LOG_WRITE("%d, %d, %d", x[0], x[1], x[2]);
+            //LOG_WRITE("%d, %d, %d", x[0], x[1], x[2]);
         }
 
         Graphics::SetPoints(step / 2, x, y);
