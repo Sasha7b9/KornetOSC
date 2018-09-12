@@ -367,6 +367,9 @@ void FPGA::ReadDataChanenl(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
                 *p++ = *addr0;
                 *p++ = *addr1;
             }
+
+            
+            LOG_WRITE("%d %d - %d %d - %d %d - %d %d", data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
         }
         else
         {

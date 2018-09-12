@@ -110,11 +110,11 @@ void PainterData::DrawChannel(Chan ch, uint8 *data)
          
         if(SET_PEAKDET_EN)
         {
-            for(int i = 1; i < 281 * 2; i += 2)
+            for(int i = 0; i < 281 * 2; i += 2)
             {
                 int min = (int)(center - (data[i] - AVE_VALUE) * scale + 0.5f);
                 int max = (int)(center - (data[i + 1] - AVE_VALUE) * scale + 0.5f);
-                Painter::DrawVLine(x++, min, max);
+                Painter::DrawVLine(x++, max, min);
             }
         }
         else
