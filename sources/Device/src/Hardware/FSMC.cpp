@@ -145,12 +145,12 @@ void FSMC::Init()
     {
         0,                 // FSMC_AddressSetupTime
         0,                 // FSMC_AddressHoldTime
-        128,                // FSMC_DataSetupTime   При значении 9 32кБ записываются в RAM за 1000мкс. Уменьшение
-                            // на одну единцу уменьшает этот параметр на 90 мкс. Если 3 - 32кБ запишутся за 460 мкс.
+        128,               // FSMC_DataSetupTime   При значении 9 32кБ записываются в RAM за 1000мкс. Уменьшение
+                           // на одну единцу уменьшает этот параметр на 90 мкс. Если 3 - 32кБ запишутся за 460 мкс.
         0,                 // FSMC_BusTurnAroundDuration
         0,                 // FSMC_CLKDivision
         0,                 // FSMC_DataLatency
-        FMC_ACCESS_MODE_C   // FSMC_AccessMode
+        FMC_ACCESS_MODE_C  // FSMC_AccessMode
     };
 
     SRAM_HandleTypeDef *hsram = &gSramHandle;
@@ -208,12 +208,9 @@ void FSMC::ConfigureForFPGA()
     GPIOE->MODER &= HEX_FROM_2(ffc0, 3fff);
     GPIOE->MODER |= HEX_FROM_2(002a, 8fff);     // Alternate function mode
 
-    mode = ModeFPGA;
 
-    /*
-    uint time = TIME_TICKS;
-    LOG_WRITE("время переключения %d тиков", time - startTime);
-    */
+
+    mode = ModeFPGA;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

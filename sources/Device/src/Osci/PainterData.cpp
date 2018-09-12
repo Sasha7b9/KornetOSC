@@ -36,8 +36,16 @@ void PainterData::DrawData_ModeDir()
 
     Storage::GetData(&dataA, &dataB);
 
-    DrawChannel(Chan::A, dataA);
-    DrawChannel(Chan::B, dataB);
+    if(LAST_AFFECTED_CH_IS_A)
+    {
+        DrawChannel(Chan::B, dataB);
+        DrawChannel(Chan::A, dataA);
+    }
+    else
+    {
+        DrawChannel(Chan::A, dataA);
+        DrawChannel(Chan::B, dataB);
+    }
 
     MemoryWindow::Draw();
 }
@@ -46,7 +54,10 @@ void PainterData::DrawData_ModeDir()
 void PainterData::DrawChannel(Chan ch, uint8 *data)
 {
 
-    data += SHIFT_IN_MEMORY;
+    if(SET_PEAKDET_DIS)
+    {
+        data += SHIFT_IN_MEMORY;
+    }
 
     int center = (Grid::Bottom() - Grid::Top()) / 2 + Grid::Top();
     int left = Grid::Left();
@@ -96,19 +107,31 @@ void PainterData::DrawChannel(Chan ch, uint8 *data)
         Painter::SetColor(Color::Channel(ch));
 
         int x = left;
-               
-        for (int i = 1; i < 281; i++)
+         
+        if(SET_PEAKDET_EN)
         {
-            int value = (int)(center - (data[i] - AVE_VALUE) * scale + 0.5f);
-            int valuePrev = (int)(center - (data[i - 1] - AVE_VALUE) * scale + 0.5f);
-
-            if(value == valuePrev)
+            for(int i = 1; i < 281 * 2; i += 2)
             {
-                Painter::SetPoint(x++, valuePrev);
+                int min = (int)(center - (data[i] - AVE_VALUE) * scale + 0.5f);
+                int max = (int)(center - (data[i + 1] - AVE_VALUE) * scale + 0.5f);
+                Painter::DrawVLine(x++, min, max);
             }
-            else
+        }
+        else
+        {
+            for (int i = 1; i < 281; i++)
             {
-                Painter::DrawVLine(x++, valuePrev, valuePrev > value ? (value + 1) : (value - 1));
+                int value = (int)(center - (data[i] - AVE_VALUE) * scale + 0.5f);
+                int valuePrev = (int)(center - (data[i - 1] - AVE_VALUE) * scale + 0.5f);
+
+                if(value == valuePrev)
+                {
+                    Painter::SetPoint(x++, valuePrev);
+                }
+                else
+                {
+                    Painter::DrawVLine(x++, valuePrev, valuePrev > value ? (value + 1) : (value - 1));
+                }
             }
         }
     }

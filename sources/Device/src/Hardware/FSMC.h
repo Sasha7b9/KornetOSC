@@ -25,7 +25,6 @@ public:
     static bool InterchangeWithPanel();
     /// Установить функцию, которую нужно выполнить единоразово после завершения обмена с панелью
     static void RunFunctionAfterInteractionWitchPanel(pFuncTester func);
-
 private:
 
     enum ModeFSMC

@@ -347,23 +347,36 @@ void FPGA::ReadDataChanenl(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
     
     FSMC::WriteToFPGA16(WR_PRED_LO, addrRead);
     FSMC::WriteToFPGA8(WR_START_ADDR, 0xff);
-    
-    uint8 *address = ch.IsA() ? RD_DATA_A : RD_DATA_B;
+
+
+    uint8 *addr0 = ch.IsA() ? RD_DATA_A : RD_DATA_B;
+    uint8 *addr1 = addr0 + 1;
 
     if (IN_RANDOMIZE_MODE)
     {
-        ReadDataChanenlRand(ch, address, data);
+        ReadDataChanenlRand(ch, addr0, data);
     }
     else
     {
         uint8 *p = data;
 
-        for (int i = 0; i < FPGA_NUM_POINTS / 4; ++i)
+        if(SET_PEAKDET_EN)
         {
-            *p++ = *address;
-            *p++ = *address;
-            *p++ = *address;
-            *p++ = *address;
+            for(int i = 0; i < FPGA_NUM_POINTS; i++)
+            {
+                *p++ = *addr0;
+                *p++ = *addr1;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < FPGA_NUM_POINTS / 4; ++i)
+            {
+                *p++ = *addr1;
+                *p++ = *addr1;
+                *p++ = *addr1;
+                *p++ = *addr1;
+            }
         }
     }
 }
@@ -737,6 +750,8 @@ void FPGA::WriteRegisters(Pin cs, uint16 value)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadRShift(Chan ch)
 {
+    LAST_AFFECTED_CH = ch;
+
     static const uint16 mask[2] = {0x2000, 0x6000};
 
     WriteRegisters(Pin::SPI3_CS1, (uint16)(mask[ch] | (SET_RSHIFT(ch) << 2)));
@@ -953,6 +968,15 @@ bool FPGA::FreqMeter::Init()
 void FPGA::Reset()
 {
     LoadTShift();
+
+    if(SET_PEAKDET_EN)
+    {
+        FSMC::WriteToFPGA8(WR_UPR, 1 << BIT_UPR_PEAK);
+    }
+    else
+    {
+        FSMC::WriteToFPGA8(WR_UPR, 0);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
