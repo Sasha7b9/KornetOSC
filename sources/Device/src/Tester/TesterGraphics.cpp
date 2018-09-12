@@ -30,8 +30,8 @@ void Tester::Graphics::Update()
         DrawData(i, 0, 0);
     }
 
-    //Painter::DrawRectangle(0, 0, size, size, Color::FILL);
-    //Painter::DrawRectangle(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
+    Painter::DrawRectangle(0, 0, size, size, Color::FILL);
+    Painter::DrawRectangle(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
 
     Menu::Draw();
 }

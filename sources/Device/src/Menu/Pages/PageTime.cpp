@@ -38,8 +38,6 @@ void PageTime::OnChanged_PeakDet(bool active)
 {
     if (active)
     {
-        FPGA::SetPeackDetMode(SET_PEAKDET);
-        FPGA::SetTBase(SET_TBASE);
         PageMemory::OnChanged_Points(true);
     }
     else

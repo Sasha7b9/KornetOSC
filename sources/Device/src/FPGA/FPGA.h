@@ -175,8 +175,6 @@ public:
     static void SetTrigLev(Trig::Source ch, uint16 trigLev);
     /// Установить количество считываемых сигналов в секунду
     static void SetENumSignalsInSec(int numSigInSec);
-    /// Включить/выключить режим пикового детектора
-    static void SetPeackDetMode(PeakDetMode peackDetMode);
     /// Установить количество измерений, по которым будут рассчитываться ворота в режиме рандомизатора
     static void SetNumberMeasuresForGates(int number);
     /// Установить масштаб по времени

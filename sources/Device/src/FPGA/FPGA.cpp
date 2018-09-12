@@ -269,11 +269,11 @@ void FPGA::StartForTester(int)
         pred = (uint16)(~(pred + 3));
     */
 
-    uint16 post = 400;
-    int pred = 0;
+    //uint16 post = 400;
+    //int pred = 0;
     
-    FSMC::WriteToFPGA16(WR_POST_LO, (~(post + 1)));
-    FSMC::WriteToFPGA16(WR_PRED_LO, (~(pred + 3)));
+    FSMC::WriteToFPGA16(WR_POST_LO, (uint16)(~(400 + 1)));
+    FSMC::WriteToFPGA16(WR_PRED_LO, (uint16)(~(0+ 3)));
     //FSMC::WriteToFPGA16(WR_PRED_LO, pred);
     //FSMC::WriteToFPGA16(WR_POST_LO, post);
     FSMC::WriteToFPGA8(WR_START, 0xff);
@@ -382,8 +382,8 @@ void FPGA::ReadDataChanenlRand(Chan ch, uint8 *address, uint8 *data)
 
     int index = Tsm - step;
 
-    uint8 *data0 = &dataRand[ch][0];
-    uint8 *dataRead = &dataRand[ch][index];
+    uint8 *dataRead = &dataRand[ch][0];
+    dataRead = &dataRand[ch][index];
 
     while(index < 0)
     {
@@ -962,11 +962,6 @@ void FPGA::SetCalibratorMode(CalibratorMode)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::EnableRecorderMode(bool)
-{
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::SetPeackDetMode(PeakDetMode peackDetMode)
 {
 }
 
