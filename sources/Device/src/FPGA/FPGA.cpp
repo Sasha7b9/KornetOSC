@@ -354,7 +354,7 @@ void FPGA::ReadDataChanenl(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
 
     if (IN_RANDOMIZE_MODE)
     {
-        ReadDataChanenlRand(ch, addr0, data);
+        ReadDataChanenlRand(ch, addr1, data);
     }
     else
     {
