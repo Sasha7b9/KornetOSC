@@ -139,10 +139,23 @@ void PainterData::DrawChannel(Chan ch, uint8 *data)
     {
         Painter::SetColor(Color::Channel(ch));
 
-        for (int i = 0; i < 280; i++)
+        if(SET_PEAKDET_EN)
         {
-            float value = center - (data[i] - AVE_VALUE) * scale;
-            Painter::SetPoint(left + i, (uint8)ROUND(value));
+            int x = left;
+            for(int i = 0; i < 281 * 2; i += 2)
+            {
+                Painter::SetPoint(x, (int)(center - (data[i] - AVE_VALUE) * scale + 0.5f));
+                Painter::SetPoint(x, (int)(center - (data[i + 1] - AVE_VALUE) * scale + 0.5f));
+                x++;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 280; i++)
+            {
+                float value = center - (data[i] - AVE_VALUE) * scale;
+                Painter::SetPoint(left + i, (uint8)ROUND(value));
+            }
         }
     }
 }
