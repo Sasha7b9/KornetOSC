@@ -527,7 +527,7 @@ void Storage::AddData(uint8 *dataA, uint8 *dataB, DataSettings dss)
 
     CalculateSums();
 
-    CalculateAroundAverage(dataA, dataB, &dss);
+    //CalculateAroundAverage(dataA, dataB, &dss);
 }
 
 

@@ -15,6 +15,8 @@ static CHAR_BUF2(buffer, SIZE_CONSOLE, 100);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Console::Draw()
 {
+    int x0 = 200;
+
     inProcessDrawConsole = true;
 
     Painter::SetFont(Font::Type::_5);
@@ -24,8 +26,8 @@ void Console::Draw()
     for (int i = 0; i < stringInConsole; i++)
     {
         int length = Font::GetLengthText(buffer[i]);
-        Painter::FillRegion(0, y + 3, length, 6, Color::BACK);
-        Painter::DrawText(1, y, buffer[i], Color::FILL);
+        Painter::FillRegion(x0, y + 3, length, 6, Color::BACK);
+        Painter::DrawText(x0 + 1, y, buffer[i], Color::FILL);
         y += 6;
     }
 

@@ -345,7 +345,7 @@ void FPGA::ReadDataChanenl(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
         addrRead = (uint16)(ReadLastRecord() - FPGA_NUM_POINTS);
     }
     
-    FSMC::WriteToFPGA16(WR_PRED_LO, addrRead);
+    FSMC::WriteToFPGA16(WR_PRED_LO, (uint16)(addrRead));
     FSMC::WriteToFPGA8(WR_START_ADDR, 0xff);
 
 
@@ -359,6 +359,9 @@ void FPGA::ReadDataChanenl(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
     else
     {
         uint8 *p = data;
+
+        *p = *addr0;    // Первая точка почему-то неправильная читается. Просто откидываем её.
+        *p = *addr1;
 
         if(SET_PEAKDET_EN)
         {
