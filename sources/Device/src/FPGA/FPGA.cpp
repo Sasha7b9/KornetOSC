@@ -320,6 +320,7 @@ bool FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
     FSMC::WriteToFPGA8(WR_START_ADDR, 0xff);            // И даём команду ПЛИС, чтобы чтение начиналось с него
 
     uint8 *addrA = RD_DATA_A;
+    addrA++;
     for (int i = 0; i < TESTER_NUM_POINTS; i++)         // Читаем данные первого канала
     {
         *dataA++ = *addrA;
@@ -329,6 +330,7 @@ bool FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
     FSMC::WriteToFPGA8(WR_START_ADDR, 0xff);            // И даём команду ПЛИС, чтобы чтение начиналось с него
 
     uint8 *addrB = RD_DATA_B;
+    addrB++;
     for (int i = 0; i < TESTER_NUM_POINTS; i++)         // Читаем данные второго канала
     {
         *dataB++ = *addrB;
