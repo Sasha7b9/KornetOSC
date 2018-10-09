@@ -145,7 +145,7 @@ void FSMC::Init()
     {
         0,                 // FSMC_AddressSetupTime
         0,                 // FSMC_AddressHoldTime
-        128,               // FSMC_DataSetupTime   При значении 9 32кБ записываются в RAM за 1000мкс. Уменьшение
+        4,                 // FSMC_DataSetupTime   При значении 9 32кБ записываются в RAM за 1000мкс. Уменьшение
                            // на одну единцу уменьшает этот параметр на 90 мкс. Если 3 - 32кБ запишутся за 460 мкс.
         0,                 // FSMC_BusTurnAroundDuration
         0,                 // FSMC_CLKDivision
