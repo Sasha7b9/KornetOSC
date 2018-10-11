@@ -20,15 +20,15 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define SET_SIZE                        (set.size)
-#define SET_CRC32                       (set.crc32)
+#define SET_SIZE                    (set.size)
+#define SET_CRC32                   (set.crc32)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define IN_RANDOMIZE_MODE               (SET_TBASE < TBase::_100ns)
-#define CURRENT_PAGE                    (set.menu_currentPage)
+#define IN_RANDOMIZE_MODE           (SET_TBASE < TBase::_100ns)
+#define CURRENT_PAGE                (set.menu_currentPage)
 
-#define TRIG_MODE                       (set.trig_mode)
+#define TRIG_MODE                   (set.trig_mode)
 
 /// Возвращает позицию активного пункта на странице Page::Name.
 #define MENU_POS_ACT_ITEM(name)     (set.menu_posActItem[name])
@@ -55,27 +55,27 @@ public:
     // Меню ДИСПЛЕЙ
                                                             ///< вычисляется от первого байта, следующего за этим полем
     Display::ModeDrawSignal     disp_modeDrawSignal;
-    Display::ThicknessSignal    disp_thickness;                     ///< Толщина линии, которой рисуется сигнал
-    Display::Background         disp_background;                    ///< Цвет фона.
-    Display::ShowStrNavi        disp_showStringNavigation;          ///< Режим показа строки навигации меню.
-    Display::ENumMinMax         disp_ENumMinMax;                    ///< Перечисление количества измерений для определения минимумов и масимумов.
-    Display::ModeAveraging      disp_modeAveraging;                 ///< Тип усреднений по измерениям.
-    Display::ENumAverage        disp_ENumAverage;                   ///< Число усреднений сигнала.
-    Display::ENumAccum          disp_ENumAccum;                     ///< Число накоплений сигнала на экране.
-    Display::ModeAccumulation   disp_modeAccumulation;              ///< Режим накопления сигналов.
-    Display::ENumSmoothing      disp_ENumSmoothing;                 ///< Перечисление количества точек для скользящего фильтра.
-    Display::ENumSignalsInSec   disp_ENumSignalsInSec;              ///< Перечисление числа считываний сигнала в секунда.
-    Grid::Type                  disp_typeGrid;                      ///< Тип сетки
-    int16               disp_brightnessGrid;                ///< Яркость сетки от 0 до 100.
-    Display::LinkingRShift      disp_linkingRShift;                 ///< Тип привязки к смещению по вертикали.
-    int16               disp_brightness;                    ///< Яркость дисплея.
-    int16               disp_timeShowLevels;                ///< Время, в течение которого нужно показывать уровин смещения.
-    int16               disp_timeMessages;                  ///< Время в секундах, на которое сообщение остаётся на экрне.
-    Display::AltMarkers disp_altMarkers;                    ///< Режим отображения дополнительных боковых маркеров смещений.
-    Menu::AutoHide      disp_menuAutoHide;                  ///< Через сколько времени после последнего нажатия клавиши прятать меню.
-    int16               disp_shiftInMemory;                 ///< \brief Показывает смещение левого края стеки относительно нулевого байта памяти в 
+    Display::ThicknessSignal    disp_thickness;             ///< Толщина линии, которой рисуется сигнал
+    Display::Background         disp_background;            ///< Цвет фона.
+    Display::ShowStrNavi        disp_showStringNavigation;  ///< Режим показа строки навигации меню.
+    Display::ENumMinMax         disp_ENumMinMax;            ///< Перечисление количества измерений для определения минимумов и масимумов.
+    Display::ModeAveraging      disp_modeAveraging;         ///< Тип усреднений по измерениям.
+    Display::ENumAverage        disp_ENumAverage;           ///< Число усреднений сигнала.
+    Display::ENumAccum          disp_ENumAccum;             ///< Число накоплений сигнала на экране.
+    Display::ModeAccumulation   disp_modeAccumulation;      ///< Режим накопления сигналов.
+    Display::ENumSmoothing      disp_ENumSmoothing;         ///< Перечисление количества точек для скользящего фильтра.
+    Display::ENumSignalsInSec   disp_ENumSignalsInSec;      ///< Перечисление числа считываний сигнала в секунда.
+    Grid::Type                  disp_typeGrid;              ///< Тип сетки
+    int16                       disp_brightnessGrid;        ///< Яркость сетки от 0 до 100.
+    Display::LinkingRShift      disp_linkingRShift;         ///< Тип привязки к смещению по вертикали.
+    int16                       disp_brightness;            ///< Яркость дисплея.
+    int16                       disp_timeShowLevels;        ///< Время, в течение которого нужно показывать уровин смещения.
+    int16                       disp_timeMessages;          ///< Время в секундах, на которое сообщение остаётся на экрне.
+    Display::AltMarkers         disp_altMarkers;            ///< Режим отображения дополнительных боковых маркеров смещений.
+    Menu::AutoHide              disp_menuAutoHide;          ///< Через сколько времени после последнего нажатия клавиши прятать меню.
+    int16                       disp_shiftInMemory;         ///< \brief Показывает смещение левого края стеки относительно нулевого байта памяти в 
                                                             ///< байтах. Т.е. для пикового детектора будет в два раза больше количества точек на экране.
-    Chan                disp_lastAffectedChannel;           ///< \brief Последний управляемый канал. Используется для правильного вывода сигналов
+    Chan                        disp_lastAffectedChannel;   ///< \brief Последний управляемый канал. Используется для правильного вывода сигналов
                                                             ///< на экран с наложением один поверх другого
 
     // Меню КАНАЛ 1, КАНАЛ 2
@@ -186,9 +186,9 @@ public:
     // Настройки частотомера
 
     FPGA::FreqMeter::Enabled       freq_enabled;
-    FPGA::FreqMeter::TimeCounting  freq_timeCounting;              ///< Время счёта частоты.
-    FPGA::FreqMeter::FreqClc       freq_freqClc;                   ///< Частота заполнения.
-    FPGA::FreqMeter::NumberPeriods freq_numberPeriods;             ///< Количество периодов.
+    FPGA::FreqMeter::TimeCounting  freq_timeCounting;   ///< Время счёта частоты.
+    FPGA::FreqMeter::FreqClc       freq_freqClc;        ///< Частота заполнения.
+    FPGA::FreqMeter::NumberPeriods freq_numberPeriods;  ///< Количество периодов.
 
     // Меню ОТЛАДКА
 
@@ -220,30 +220,30 @@ public:
     Tester::Polarity    test_polarity;
     Tester::StepU       test_stepU;
     Tester::StepI       test_stepI;
-    Tester::Smoothing   test_smooth;                                ///< Количество сглаживаний
+    Tester::Smoothing   test_smooth;                    ///< Количество сглаживаний
     Tester::ViewMode    test_viewMode;
 
     // Настройки меню
 
-    const Page*         menu_currentPage;                           ///< Указатель на открытую страницу меню
-    bool                menu_show;                                  ///< Если true, то нужно показывать текущую страницу
-    int8                menu_posActItem[Page::Name::Number];        ///< \brief Позиция активного пункта. bit7 == 1 - item is opened, 0x7f - нет 
-                                                                    ///< активного пункта.
-    int8                menu_currentSubPage[Page::Name::Number];         ///< Номер текущей подстраницы.
+    const Page*         menu_currentPage;                               ///< Указатель на открытую страницу меню
+    bool                menu_show;                                      ///< Если true, то нужно показывать текущую страницу
+    int8                menu_posActItem[Page::Name::Number];            ///< \brief Позиция активного пункта. bit7 == 1 - item is opened, 0x7f - нет 
+                                                                        ///< активного пункта.
+    int8                menu_currentSubPage[Page::Name::Number];        ///< Номер текущей подстраницы.
 
     // Несбрасываемые настройки калибровки
 
-    int16               nrst_balanceADC[Chan::Number];                 ///< Значение дополнительного смещения АЦП для ручной балансировки.
-    BalanceADC          nrst_balanceADCtype;                        ///< Тип балансировки.
-    StretchADC          nrst_stretchADCtype;                        ///< Тип растяжки канала.
-    int16               nrst_StretchADC[Chan::Number][3];              ///< \brief Поправочный коэффициент для ручного, калибровочного и
+    int16               nrst_balanceADC[Chan::Number];                  ///< Значение дополнительного смещения АЦП для ручной балансировки.
+    BalanceADC          nrst_balanceADCtype;                            ///< Тип балансировки.
+    StretchADC          nrst_stretchADCtype;                            ///< Тип растяжки канала.
+    int16               nrst_StretchADC[Chan::Number][3];               ///< \brief Поправочный коэффициент для ручного, калибровочного и
                         ///< отключенного режимов. Здесь хранится в целом виде, чтобы получить реальный коэффициент, нужно разделить на 1000 и
                         ///< прибавить единицу.
-    int16               nrst_rShiftAddStable[Chan::Number][3];         ///< Добавочное смещение для трёх самых чувствительных диапазонов. Задаётся единожды при настройке
-    int16               nrst_numAveForRand;                         ///< По скольким измерениям усреднять сигнал в режиме рандомизатора.
-    int16               nrst_numSmoothForRand;                      ///< Число точек для скользящего фильта в рандомизаторе.
-    int16               nrst_rShiftAdd[Chan::Number][Range::Size][2];  ///< Добавочное смещение, которое пишется сюда при калибровке и балансировке
-    int16               nrst_correctionTime;                        ///< Коэффициент коррекции времени.
+    int16               nrst_rShiftAddStable[Chan::Number][3];          ///< Добавочное смещение для трёх самых чувствительных диапазонов. Задаётся единожды при настройке
+    int16               nrst_numAveForRand;                             ///< По скольким измерениям усреднять сигнал в режиме рандомизатора.
+    int16               nrst_numSmoothForRand;                          ///< Число точек для скользящего фильта в рандомизаторе.
+    int16               nrst_rShiftAdd[Chan::Number][Range::Size][2];   ///< Добавочное смещение, которое пишется сюда при калибровке и балансировке
+    int16               nrst_correctionTime;                            ///< Коэффициент коррекции времени.
 
     // Настройки мультиметра
     Multimeter::AVP             multi_avp;
