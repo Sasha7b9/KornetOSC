@@ -251,7 +251,7 @@ void Settings::Load(bool _default)
 void Settings::Save()
 {
     uint8 data[1024];
-    TransformForSave(data);
+    set.TransformForSave(data);
     EEPROM::SaveSettings();
 
     /*
