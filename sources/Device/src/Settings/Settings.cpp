@@ -212,6 +212,8 @@ void Settings::Load(bool _default)
     {
         Reset();
         FPGA::LoadSettings();
+        uint8 data[1024];
+        TransformFromLoad(data);
         Menu::Init();
         FPGA::OnPressStart();
     }
@@ -248,6 +250,8 @@ void Settings::Load(bool _default)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Settings::Save()
 {
+    uint8 data[1024];
+    TransformForSave(data);
     EEPROM::SaveSettings();
 
     /*

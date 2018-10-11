@@ -342,6 +342,9 @@
     <ClCompile Include="..\..\Device\src\Osci\MemoryWindow.cpp">
       <Filter>Osci</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Settings\SettingsTransformation.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
