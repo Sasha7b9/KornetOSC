@@ -251,6 +251,8 @@ public:
     Multimeter::RangeDC         multi_rangeDC;
     Multimeter::RangeAC         multi_rangeAC;
     Multimeter::RangeResistance multi_rangeResist;
+
+
 };
 
 #pragma pack(pop)

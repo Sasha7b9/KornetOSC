@@ -24,7 +24,7 @@ void Osci::Graphics::Update()
     
     PainterData::DrawData();
 
-    //Painter::DrawRectangle(Grid::Left(), Grid::Top(), Grid::Width(), Grid::Height(), Color::FILL);
+    Painter::DrawRectangle(Grid::Left(), Grid::Top(), Grid::Width(), Grid::Height(), Color::FILL);
 
     BottomPart::Draw();
 
