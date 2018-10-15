@@ -1751,11 +1751,6 @@
               <FilePath>.\src\Globals.h</FilePath>
             </File>
             <File>
-              <FileName>structs.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\structs.h</FilePath>
-            </File>
-            <File>
               <FileName>Tables.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Tables.cpp</FilePath>

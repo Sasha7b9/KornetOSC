@@ -1,6 +1,4 @@
 #pragma once
-#include "defines.h"
-#include "structs.h"
 
 
 #define FREQ_METER_ENABLED              (set.freq_enabled)

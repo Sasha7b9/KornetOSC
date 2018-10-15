@@ -638,9 +638,6 @@
     <ClInclude Include="..\..\Device\src\Settings\SettingsService.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\structs.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Tables.h">
       <Filter>src</Filter>
     </ClInclude>

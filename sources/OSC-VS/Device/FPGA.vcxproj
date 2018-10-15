@@ -236,7 +236,6 @@
     <ClInclude Include="..\..\Device\src\Settings\SettingsNRST.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsService.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsTime.h" />
-    <ClInclude Include="..\..\Device\src\structs.h" />
     <ClInclude Include="..\..\Device\src\Tables.h" />
     <ClInclude Include="..\..\Device\src\Tester\Tester.h" />
     <ClInclude Include="..\..\Device\src\Utils\CommonFunctions.h" />
