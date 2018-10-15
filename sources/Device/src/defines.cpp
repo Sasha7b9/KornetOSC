@@ -23,10 +23,3 @@ volatile BitField gBF =
     0,  // runningFPGAbeforeSmallButtons
     0   // exitFromROMtoRAM
 };
-
-StateFPGA gStateFPGA =
-{
-    false,
-    StateWorkFPGA_Stop,
-    StateCalibration_None
-};

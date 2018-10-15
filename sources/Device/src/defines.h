@@ -251,13 +251,3 @@ enum StateWorkFPGA
     StateWorkFPGA_Work,     ///< Идёт работа.
     StateWorkFPGA_Pause     ///< Это состояние, когда временно приостановлен прибор, например, для чтения данных или для записи значений регистров.
 };
-
-struct StateFPGA
-{
-    bool needCalibration;                       ///< Установленное в true значение означает, что необходимо произвести калибровку.
-    StateWorkFPGA stateWorkBeforeCalibration;
-    StateCalibration stateCalibration;          ///< Текущее состояние калибровки. Используется в процессе калибровки.
-};
-
-
-extern StateFPGA gStateFPGA;

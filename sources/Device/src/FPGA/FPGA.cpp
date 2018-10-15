@@ -69,10 +69,12 @@ static uint16 addrRead = 0xffff;
 
 static uint8 ValueForRange(Chan ch);
 
-bool FPGA::isRunning = false;
-bool FPGA::givingStart = false;
+bool          FPGA::isRunning = false;
+bool          FPGA::givingStart = false;
+uint          FPGA::timeStart = 0;
 StateWorkFPGA FPGA::fpgaStateWork = StateWorkFPGA_Stop;
-uint FPGA::timeStart = 0;
+FPGA::State   FPGA::state = {false, StateWorkFPGA_Stop, StateCalibration_None};
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void FPGA::Init()

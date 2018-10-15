@@ -102,6 +102,13 @@ public:
     }
 
     static void LoadTShift();
+
+    static struct State
+    {
+        bool needCalibration;                       ///< Установленное в true значение означает, что необходимо произвести калибровку.
+        StateWorkFPGA stateWorkBeforeCalibration;
+        StateCalibration stateCalibration;          ///< Текущее состояние калибровки. Используется в процессе калибровки.
+    } state;
     
     static StateWorkFPGA GetStateWork();
 
