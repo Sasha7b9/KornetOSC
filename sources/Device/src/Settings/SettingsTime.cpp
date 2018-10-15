@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "SettingsTime.h"
 #include "Settings.h"
 #include "Log.h"

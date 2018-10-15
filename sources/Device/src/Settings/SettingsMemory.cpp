@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "SettingsMemory.h"
 #include "Data/Reader.h"
 #include "FPGA/FPGATypes.h"

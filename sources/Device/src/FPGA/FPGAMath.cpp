@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "FPGAMath.h"
 #include "Display/DisplayTypes.h"
 #include "Osci/Grid.h"

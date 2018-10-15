@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "MathOSC.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/RShift.h"

@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Settings/Settings.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/RShift.h"

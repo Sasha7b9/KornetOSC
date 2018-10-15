@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Sound.h"
 #include "Multimeter/Multimeter.h"
 

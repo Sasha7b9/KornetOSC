@@ -1,6 +1,5 @@
 #pragma once
 #include "Utils/Measures.h"
-#include "defines.h"
 #include "Data/Storage.h"
 #include "FPGA/FPGATypes.h"
 #include "Settings/SettingsTime.h"

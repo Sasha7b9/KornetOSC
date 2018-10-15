@@ -1,5 +1,5 @@
-#include "PainterData.h"
 #include "defines.h"
+#include "PainterData.h"
 #include "Display/Colors.h"
 #include "Grid.h"
 #include "Log.h"

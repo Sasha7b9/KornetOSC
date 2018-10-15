@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Osci.h"
 #include "Display/Painter.h"
 #include "Grid.h"

@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Painter.h"
 #include "Display/Font/Font.h"
 #include "Keyboard/Decoder.h"

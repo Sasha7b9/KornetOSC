@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "BottomPart.h"
 #include "Utils/MathOSC.h"
 #include "FPGA/FPGAMath.h"

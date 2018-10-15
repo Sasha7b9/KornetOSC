@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Cursors.h"
 #include "Settings/Settings.h"
 #include "Osci/Grid.h"

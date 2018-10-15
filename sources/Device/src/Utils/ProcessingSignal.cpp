@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "ProcessingSignal.h"
 #include "Log.h"
 #include "Data/Reader.h"

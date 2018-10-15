@@ -1,5 +1,4 @@
-
-
+#include "defines.h"
 #include "Settings.h"
 #include "SettingsDebug.h"
 

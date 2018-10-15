@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Settings/SettingsChannel.h"
 #include "DataSettings.h"
 #include "globals.h"

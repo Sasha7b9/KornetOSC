@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Log.h"
 #include "PageDebug.h"
 #include "Data/Reader.h"

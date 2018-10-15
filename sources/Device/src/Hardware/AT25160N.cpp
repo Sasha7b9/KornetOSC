@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "AT25160N.h"
 #include "Log.h"
 #include "Hardware/Timer.h"

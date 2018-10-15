@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "RShift.h"
 #include "Settings/Settings.h"
 #include "Display/Painter.h"
