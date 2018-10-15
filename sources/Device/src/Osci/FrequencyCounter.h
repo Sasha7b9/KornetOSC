@@ -16,6 +16,8 @@ class FrequencyCounter
 public:
     static void Update(uint8 flag);
 
+    static float GetFreq();
+
     /// Время счёта периода.
     struct TimeCounting
     {

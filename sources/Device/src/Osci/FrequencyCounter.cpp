@@ -109,3 +109,9 @@ float FrequencyCounter::PeriodSetToFreq(const BitSet32 *period_)
 
     return FREQ_METER_ENABLED ? (k[FREQ_METER_FREQ_CLC] * kP[FREQ_METER_NUM_PERIODS] / (float)period_->word) : (10e5f / (float)period_->word);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+float FrequencyCounter::GetFreq()
+{
+    return 0.0f;
+}

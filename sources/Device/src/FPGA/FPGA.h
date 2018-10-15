@@ -118,8 +118,6 @@ public:
     {
     public:
         static float GetFreq();
-
-        static bool Init();
     };
 
     /// Установить относительный уровень синхронизации

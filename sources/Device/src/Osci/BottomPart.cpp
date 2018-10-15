@@ -1,19 +1,13 @@
 #include "BottomPart.h"
-#include "Settings/Settings.h"
-#include "Grid.h"
-#include "Display/Painter.h"
 #include "Utils/MathOSC.h"
 #include "FPGA/FPGAMath.h"
-#include "FPGA/RShift.h"
 #include "Tables.h"
-#include "FPGA/FPGA.h"
 #include "Display/Painter.h"
 #include "Utils/StringUtils.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Utils/Dictionary.h"
 #include "Hardware/CPU.h"
 #include "Data/Reader.h"
-#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -118,7 +112,7 @@ void BottomPart::Draw()
     if (MODE_WORK_IS_DIR)
     {
         char mesFreq[20] = "\x7c=";
-        float freq = FPGA::FreqMeter::GetFreq();
+        float freq = FrequencyCounter::GetFreq();
         if (freq == -1.0f)
         {
             strcat(mesFreq, "******");
