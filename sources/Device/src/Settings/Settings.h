@@ -1,9 +1,5 @@
 #pragma once
-#include "defines.h"
 #include "Utils/Measures.h"
-#include "Menu/MenuItems.h"
-#include "SettingsChannel.h"
-#include "SettingsTime.h"
 #include "SettingsMath.h"
 #include "SettingsMemory.h"
 #include "SettingsDebug.h"
