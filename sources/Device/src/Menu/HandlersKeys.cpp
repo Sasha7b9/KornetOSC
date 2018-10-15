@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "HandlersKeys.h"
 #include "Menu.h"
 #include "Settings/Settings.h"

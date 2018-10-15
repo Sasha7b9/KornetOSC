@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Menu/Menu.h"
 #include "Globals.h"
 #include "Display/Display.h"
