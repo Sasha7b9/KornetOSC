@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "FPGA/FPGA.h"
 #include "Osci/FrequencyCounter.h"
 #include "Display/Painter.h"

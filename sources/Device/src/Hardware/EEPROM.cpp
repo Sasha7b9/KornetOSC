@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "EEPROM.h"
 #include "Hardware.h"
 #include "Display/Display.h"

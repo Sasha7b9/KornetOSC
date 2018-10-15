@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "FPGA.h"
 #include "AD9286.h"
 #include "FPGATypes.h"
