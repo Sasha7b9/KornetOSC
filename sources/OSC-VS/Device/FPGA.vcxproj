@@ -22,6 +22,27 @@
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rtc.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_bot.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_scsi.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_core.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ctlreq.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ioreq.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_pipes.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\Device\src\Data\DataSettings.cpp" />
     <ClCompile Include="..\..\Device\src\Data\Reader.cpp" />
     <ClCompile Include="..\..\Device\src\Data\Storage.cpp" />
@@ -61,6 +82,8 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\Device\src\libs\HAL\stm32f4xx_it.cpp" />
+    <ClCompile Include="..\..\Device\src\libs\USBH\usbh_conf.cpp" />
+    <ClCompile Include="..\..\Device\src\libs\USBH\usbh_diskio.cpp" />
     <ClCompile Include="..\..\Device\src\Log.cpp" />
     <ClCompile Include="..\..\Device\src\main.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\BufferButtons.cpp" />
@@ -134,6 +157,27 @@
     <ClInclude Include="..\..\common\Command.h" />
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc.h" />
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h" />
+    <ClInclude Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_scsi.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="..\..\common\_VS\cmsis_armcc.h" />
     <ClInclude Include="..\..\common\_VS\cmsis_armcc_V6.h" />
     <ClInclude Include="..\..\common\_VS\core_cm4.h" />
@@ -192,6 +236,8 @@
     <ClInclude Include="..\..\Device\src\Keyboard\Keyboard.h" />
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_it.h" />
+    <ClInclude Include="..\..\Device\src\libs\USBH\usbh_conf.h" />
+    <ClInclude Include="..\..\Device\src\libs\USBH\usbh_diskio.h" />
     <ClInclude Include="..\..\Device\src\Log.h" />
     <ClInclude Include="..\..\Device\src\main.h" />
     <ClInclude Include="..\..\Device\src\Menu\BufferButtons.h" />

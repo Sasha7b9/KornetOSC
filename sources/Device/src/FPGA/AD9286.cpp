@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "AD9286.h"
 #include "Hardware/Timer.h"
 

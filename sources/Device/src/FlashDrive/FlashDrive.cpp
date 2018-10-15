@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "FlashDrive.h"
 #include "Log.h"
 #include "globals.h"
