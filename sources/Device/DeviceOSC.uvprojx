@@ -1741,16 +1741,6 @@
               <FilePath>.\src\Device.h</FilePath>
             </File>
             <File>
-              <FileName>Globals.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Globals.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Globals.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Globals.h</FilePath>
-            </File>
-            <File>
               <FileName>Tables.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Tables.cpp</FilePath>
@@ -1759,6 +1749,11 @@
               <FileName>Tables.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Tables.h</FilePath>
+            </File>
+            <File>
+              <FileName>defines.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\defines.cpp</FilePath>
             </File>
           </Files>
         </Group>

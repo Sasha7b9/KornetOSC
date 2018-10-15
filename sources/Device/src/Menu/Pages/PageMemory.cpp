@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "PageMemory.h"
 #include "Tables.h"
-#include "Globals.h"
 #include "Data/Reader.h"
 #include "Data/Storage.h"
 #include "Osci/Grid.h"

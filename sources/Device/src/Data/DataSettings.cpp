@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Settings/SettingsChannel.h"
 #include "DataSettings.h"
-#include "globals.h"
 #include "Hardware/EEPROM.h"
 #include "Settings/SettingsMemory.h"
 #include "Settings/SettingsTime.h"

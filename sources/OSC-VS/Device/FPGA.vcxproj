@@ -46,6 +46,7 @@
     <ClCompile Include="..\..\Device\src\Data\DataSettings.cpp" />
     <ClCompile Include="..\..\Device\src\Data\Reader.cpp" />
     <ClCompile Include="..\..\Device\src\Data\Storage.cpp" />
+    <ClCompile Include="..\..\Device\src\defines.cpp" />
     <ClCompile Include="..\..\Device\src\Device.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Colors.cpp" />
     <ClCompile Include="..\..\Device\src\Display\Console.cpp" />
@@ -62,7 +63,6 @@
     <ClCompile Include="..\..\Device\src\FPGA\RShift.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\TrigLev.cpp" />
     <ClCompile Include="..\..\Device\src\FPGA\TShift.cpp" />
-    <ClCompile Include="..\..\Device\src\Globals.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\AT25160N.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\CPU.cpp" />
     <ClCompile Include="..\..\Device\src\Hardware\CPU_IT.cpp" />
@@ -220,7 +220,6 @@
     <ClInclude Include="..\..\Device\src\FPGA\RShift.h" />
     <ClInclude Include="..\..\Device\src\FPGA\TrigLev.h" />
     <ClInclude Include="..\..\Device\src\FPGA\TShift.h" />
-    <ClInclude Include="..\..\Device\src\Globals.h" />
     <ClInclude Include="..\..\Device\src\Hardware\AT25160N.h" />
     <ClInclude Include="..\..\Device\src\Hardware\CPU.h" />
     <ClInclude Include="..\..\Device\src\Hardware\EEPROM.h" />

@@ -3,7 +3,6 @@
 #include "DataSettings.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
-#include "Globals.h"
 #include "Reader.h"
 #include <string.h>
 

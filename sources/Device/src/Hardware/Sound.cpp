@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "globals.h"
 #include "Log.h"
 #include "Sound.h"
 #include "Settings/Settings.h"

@@ -1,5 +1,4 @@
 #pragma once
-#include "Globals.h"
 #include "FPGATypes.h"
 #include "Settings/SettingsTime.h"
 #include "Settings/SettingsService.h"

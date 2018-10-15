@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "MenuTriggers.h"
-#include "Globals.h"
 #include "Display/Display.h"
 #include <string.h>
 

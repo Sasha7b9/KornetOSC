@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "globals.h"
 #include "Display/Painter.h"
 #include "FileManager.h"
 #include "Hardware/FSMC.h"

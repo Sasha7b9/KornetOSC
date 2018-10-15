@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "FlashDrive.h"
 #include "Log.h"
-#include "globals.h"
 #include "Display/Display.h"
 #include "Hardware/CPU.h"
 #include "Hardware/Timer.h"

@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "main.h"
-#include "Globals.h"
 #include "Display/Symbols.h"
 #include "Display/Painter.h"
 #include "FPGA/FPGA.h"
