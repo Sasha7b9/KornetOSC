@@ -4,7 +4,7 @@
 #include "TrigLev.h"
 
 
-#define ADDR_ALTERA         ((uint8*)NOR_MEMORY_ADRESS1)
+#define ADDR_ALTERA             ((uint8*)NOR_MEMORY_ADRESS1)
 
 
 // Адреса альтеры
@@ -41,13 +41,15 @@
 #define RD_PERIOD_BYTE_1        (ADDR_ALTERA + 17)
 #define RD_PERIOD_BYTE_2        (ADDR_ALTERA + 20)
 #define RD_PERIOD_BYTE_3        (ADDR_ALTERA + 21)
-#define RD_FLAG_LO              (ADDR_ALTERA + 24)          ///< Флаги
-#define BIT_FLAG_DATA_READY     0                           ///< Данные готовы для считывания
-#define BIT_FLAG_TRIG_READY     1                           ///< Флаг синхроимпульса
-#define BIT_FLAG_PRED           2                           ///< Если 1, то предзапуск отсчитал, можно давать принудительный запуск
-#define BIT_FLAG_FREQ_READY     4                           ///< Флаг готовности измерения частоты
-#define BIT_FLAG_PERIOD_READY   5                           ///< Флаг готовности измерения частоты
-#define RD_FLAG_HI              (ADDR_ALTERA + 25)
+#define RD_FLAG_LO              (ADDR_ALTERA + 24)          ///< Младший байт флага
+#define RD_FLAG_HI              (ADDR_ALTERA + 25)          ///< Старший байт флага
+#define FL_DATA_READY           0                           ///< Данные готовы для считывания
+#define FL_TRIG_READY           1                           ///< Флаг синхроимпульса
+#define FL_PRED                 2                           ///< Если 1, то предзапуск отсчитал, можно давать принудительный запуск
+#define FL_FREQ_READY           4                           ///< Флаг готовности измерения частоты
+#define FL_PERIOD_READY         5                           ///< Флаг готовности измерения частоты
+#define FL_OVERFLOW_FREQ        6                           ///< Признак переполнения счётчика частоты
+#define FL_OVERFLOW_PERIOD      7                           ///< Признак переполнения счётчика периода
 
 
 #define FPGA_MAX_NUM_POINTS     (16 * 1024)

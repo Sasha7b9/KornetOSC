@@ -14,12 +14,14 @@
 class FrequencyCounter
 {
 public:
-
+    /// Инициализация. Должна производиться при каждом изменении настроек
     static void Init();
 
-    static void Update(uint8 flag);
-
+    static void Update(uint16 flag);
+    /// Возвращает измеренное значение частоты
     static float GetFreq();
+    /// Отрисовка значения
+    static void Draw(int x, int y);
 
     /// Время счёта периода.
     struct TimeCounting
@@ -109,4 +111,6 @@ private:
     static float frequency;
 
     static float period;
+
+    static uint16 flag;
 };

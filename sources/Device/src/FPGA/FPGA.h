@@ -165,7 +165,7 @@ private:
 
     static void ReadData();
 
-    static uint8 ReadFlag();
+    static uint16 ReadFlag();
 
     static uint16 ReadLastRecord();
 

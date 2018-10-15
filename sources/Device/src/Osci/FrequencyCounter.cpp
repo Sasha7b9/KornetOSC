@@ -1,6 +1,8 @@
 #include "FrequencyCounter.h"
 #include "FPGA/FPGATypes.h"
 #include "Settings/Settings.h"
+#include "Display/Painter.h"
+#include "Utils/StringUtils.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -13,6 +15,7 @@ bool     FrequencyCounter::drawPeriod;
 bool     FrequencyCounter::readPeriod;
 float    FrequencyCounter::prevFreq;
 float    FrequencyCounter::frequency;
+uint16   FrequencyCounter::flag;
 
 
 
@@ -43,10 +46,12 @@ void FrequencyCounter::Init()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FrequencyCounter::Update(uint8 flag)
+void FrequencyCounter::Update(uint16 flag_)
 {
-    bool freqReady = _GET_BIT(flag, BIT_FLAG_FREQ_READY) == 1;
-    bool periodReady = _GET_BIT(flag, BIT_FLAG_PERIOD_READY) == 1;
+    flag = flag_;
+
+    bool freqReady = _GET_BIT(flag, FL_FREQ_READY) == 1;
+    bool periodReady = _GET_BIT(flag, FL_PERIOD_READY) == 1;
 
     if (freqReady)
     {
@@ -140,4 +145,42 @@ float FrequencyCounter::PeriodSetToFreq(const BitSet32 *period_)
 float FrequencyCounter::GetFreq()
 {
     return frequency;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FrequencyCounter::Draw(int x, int y)
+{
+    if (!FREQ_METER_ENABLED)
+    {
+        return;
+    }
+
+#define EMPTY_STRING "---.---"
+
+    int width = 68;
+    int height = 19;
+
+    Painter::FillRegion(x + 1, y + 1, width - 2, height - 2, Color::BACK);
+    Painter::DrawRectangle(x, y, width, height, Color::Trig());
+
+    Painter::DrawText(x + 2, y + 1, "F =");
+    Painter::DrawText(x + 2, y + 10, "T");
+    Painter::DrawText(x + 10, y + 10, "=");
+
+    char buffer[30];
+    float freq = FreqSetToFreq(&freqActual);
+
+    bool condFreq = _SET_BIT(flag, FL_OVERFLOW_FREQ) == 1 || drawFreq == false || freq == 0.0f;
+
+    Painter::DrawText(x + 17, y + 1, condFreq ? EMPTY_STRING : Freq2StringAccuracy(freq, buffer, 6));
+
+    freq = PeriodSetToFreq(&periodActual);
+
+    bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
+
+    Painter::SetColor(Color::Trig());
+    Painter::DrawText(x + 17, y + 10, condPeriod ? EMPTY_STRING : Time2StringAccuracy(1.0f / freq, false, buffer, 6));
+
+    /** @todo Последняя страка оставлена, потому что без неё получается артефакт изображения */
+    Painter::DrawText(x + 71, y + 10, "");
 }

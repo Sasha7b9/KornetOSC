@@ -9,6 +9,7 @@
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGATypes.h"
 #include "FPGA/RShift.h"
+#include "FrequencyCounter.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +36,8 @@ void Osci::Graphics::Update()
     HiPart::Draw();
 
     Menu::Draw();
+
+    FrequencyCounter::Draw(10, 10);
 
     Measures::Draw();
 }
