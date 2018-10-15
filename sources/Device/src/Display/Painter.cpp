@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "Painter.h"
-#include "Display/Font/Font.h"
 #include "Keyboard/Decoder.h"
 #include "Utils/Math.h"
 #include "Hardware/FSMC.h"

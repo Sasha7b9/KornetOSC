@@ -3,14 +3,9 @@
 #include "Painter.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Sound.h"
-#include "Tester/Tester.h"
 #include "Utils/Math.h"
-#include "Multimeter/Multimeter.h"
-#include "Osci/Osci.h"
 #include "Console.h"
 #include "Tables.h"
-#include "FPGA/FPGA.h"
-#include <stdlib.h>
 #include <string.h>
 
 
