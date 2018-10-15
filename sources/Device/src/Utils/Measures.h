@@ -47,6 +47,10 @@ public:
         Type(int8 v = 0) : value((E)v) {};
         operator uint8() const { return (uint8)value; };
     };
+    /// Возвращает координату x верхнего левого угла таблицы выводимых измерений
+    static int Top();
+
+    static void Draw();
 
     static char GetChar(Type measure);
 

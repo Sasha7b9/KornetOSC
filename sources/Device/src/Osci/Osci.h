@@ -16,6 +16,8 @@ public:
         static void DrawCursorTrigLevel();
 
         static void DrawScaleLine(int x, bool forTrigLev);
+
+        static void DrawMeasures();
     };
 private:
 };

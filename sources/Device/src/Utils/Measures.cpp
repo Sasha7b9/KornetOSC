@@ -235,3 +235,96 @@ void Measures::DrawPageChoice()
     }
     Painter::SetFont(Font::Type::_8);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Measures::Draw()
+{
+    /*
+    TOP_MEASURES = GRID_BOTTOM;
+
+    if (!SHOW_MEASURES)
+    {
+        return;
+    }
+
+    Processing::CalculateMeasures();
+
+    if (MEAS_ZONE_HAND)
+    {
+        int x0 = POS_MEAS_CUR_T_0 - SHIFT_IN_MEMORY + Grid::Left();
+        int y0 = POS_MEAS_CUR_U_0 + GRID_TOP;
+        int x1 = POS_MEAS_CUR_T_1 - SHIFT_IN_MEMORY + Grid::Left();
+        int y1 = POS_MEAS_CUR_U_1 + GRID_TOP;
+        Sort(&x0, &x1);
+        Sort(&y0, &y1);
+        Painter::DrawRectangle(x0, y0, x1 - x0, y1 - y0, Color::FILL);
+    }
+
+    int x0 = Grid::Left() - Measures::GetDeltaGridLeft();
+    int dX = Measures::GetDX();
+    int dY = Measures::GetDY();
+    int y0 = Measures::GetTopTable();
+
+    int numRows = Measures::NumRows();
+    int numCols = Measures::NumCols();
+
+    for (int str = 0; str < numRows; str++)
+    {
+        for (int elem = 0; elem < numCols; elem++)
+        {
+            int x = x0 + dX * elem;
+            int y = y0 + str * dY;
+            bool active = Measures::IsActive(str, elem) && Menu::GetNameOpenedPage() == PageSB_Measures_Tune;
+            Color color = active ? Color::BACK : Color::FILL;
+            Meas measure = Measures::Type(str, elem);
+            if (measure != Meas_None)
+            {
+                Painter::FillRegion(x, y, dX, dY, Color::BACK);
+                Painter::DrawRectangle(x, y, dX, dY, Color::FILL);
+                TOP_MEASURES = Min(TOP_MEASURES, y);
+            }
+            if (active)
+            {
+                Painter::FillRegion(x + 2, y + 2, dX - 4, dY - 4, Color::FILL);
+            }
+            if (measure != Meas_None)
+            {
+#define SIZE_BUFFER 20
+                char buffer[SIZE_BUFFER];
+
+                Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), color);
+                if (measure == MEAS_MARKED)
+                {
+                    Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::BACK : Color::FILL);
+                    Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), active ? Color::FILL : Color::BACK);
+                }
+                if (SOURCE_MEASURE_IS_A && SET_ENABLED_A)
+                {
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, A, buffer, SIZE_BUFFER), Color::CHAN[A]);
+                }
+                else if (SOURCE_MEASURE_IS_B && SET_ENABLED_B)
+                {
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, B, buffer, SIZE_BUFFER), Color::CHAN[B]);
+                }
+                else
+                {
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, A, buffer, SIZE_BUFFER), Color::CHAN[A]);
+                    Painter::DrawText(x + 2, y + (SET_ENABLED_A ? 20 : 11), Processing::GetStringMeasure(measure, B, buffer, SIZE_BUFFER),
+                                      Color::CHAN[B]);
+                }
+            }
+        }
+    }
+
+    if (Menu::GetNameOpenedPage() == PageSB_Measures_Tune)
+    {
+        Measures::DrawPageChoice();
+    }
+    */
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Measures::Top()
+{
+    return 10;
+}
