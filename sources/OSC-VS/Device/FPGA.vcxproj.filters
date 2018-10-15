@@ -345,6 +345,9 @@
     <ClCompile Include="..\..\Device\src\Settings\SettingsTransformation.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Osci\FrequencyCounter.cpp">
+      <Filter>Osci</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -745,6 +748,9 @@
     </ClInclude>
     <ClInclude Include="..\..\common\Command.h">
       <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Osci\FrequencyCounter.h">
+      <Filter>Osci</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

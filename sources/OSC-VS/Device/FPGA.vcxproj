@@ -87,6 +87,7 @@
     <ClCompile Include="..\..\Device\src\Multimeter\Multimeter.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\BottomPart.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\Cursors.cpp" />
+    <ClCompile Include="..\..\Device\src\Osci\FrequencyCounter.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\Grid.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\HiPart.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\MemoryWindow.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="..\..\Device\src\Multimeter\Multimeter.h" />
     <ClInclude Include="..\..\Device\src\Osci\BottomPart.h" />
     <ClInclude Include="..\..\Device\src\Osci\Cursors.h" />
+    <ClInclude Include="..\..\Device\src\Osci\FrequencyCounter.h" />
     <ClInclude Include="..\..\Device\src\Osci\Grid.h" />
     <ClInclude Include="..\..\Device\src\Osci\HiPart.h" />
     <ClInclude Include="..\..\Device\src\Osci\MemoryWindow.h" />

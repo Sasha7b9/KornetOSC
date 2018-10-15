@@ -1,4 +1,5 @@
 #include "FPGA/FPGA.h"
+#include "Osci/FrequencyCounter.h"
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"
 #include "Menu/Pages/Definition.h"
@@ -24,7 +25,7 @@ DEF_CHOICE_2(       cFreqMeter_Enable,                                          
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU, ENABLE_EN,
-    FREQ_METER_ENABLED, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
+    (FREQ_METER_ENABLED.value), ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

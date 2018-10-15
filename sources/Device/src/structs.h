@@ -30,6 +30,13 @@ union BitSet32
         uint8 byte2;
         uint8 byte3;
     };
+    void Set(uint8 _byte3, uint8 _byte2, uint8 _byte1, uint8 _byte0)
+    {
+        byte[0] = _byte0;
+        byte[1] = _byte1;
+        byte[2] = _byte2;
+        byte[3] = _byte3;
+    }
 };
 
 union BitSet64

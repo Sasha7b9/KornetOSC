@@ -2,6 +2,7 @@
 #include "AD9286.h"
 #include "FPGATypes.h"
 #include "Log.h"
+#include "Osci/FrequencyCounter.h"
 #include "RShift.h"
 #include "Utils/MathOSC.h"
 #include "Display/Display.h"
@@ -206,6 +207,8 @@ uint8 FPGA::ReadFlag()
     uint8 flag = FSMC::ReadFromFPGA(RD_FLAG_LO);
 
     Trig::pulse = _GET_BIT(flag, BIT_FLAG_TRIG_READY) == 1 && timeStart > Trig::timeSwitchingTrig;
+
+    FrequencyCounter::Update(flag);
 
     return flag;
 }
