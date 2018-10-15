@@ -1,22 +1,12 @@
 #include "defines.h"
-#include "FPGA.h"
 #include "AD9286.h"
-#include "FPGATypes.h"
-#include "Osci/FrequencyCounter.h"
-#include "RShift.h"
-#include "Utils/MathOSC.h"
-#include "Display/Display.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/GPIO.h"
-#include "Hardware/Hardware.h"
 #include "Hardware/Timer.h"
-#include "Utils/CommonFunctions.h"
 #include "Utils/MathOSC.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include "Data/Storage.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 

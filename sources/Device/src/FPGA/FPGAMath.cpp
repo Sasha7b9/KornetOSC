@@ -1,12 +1,8 @@
 #include "defines.h"
-#include "FPGAMath.h"
-#include "Display/DisplayTypes.h"
-#include "Osci/Grid.h"
-#include "FPGA/FPGA.h"
-#include "FPGA/FPGATypes.h"
-#include "FPGA/RShift.h"
-#include "Utils/Math.h"
 #include "Settings/Settings.h"
+#include "FPGAMath.h"
+#include "FPGA/FPGA.h"
+#include "Utils/Math.h"
 #include <math.h>
 
 

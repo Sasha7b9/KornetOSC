@@ -1,8 +1,6 @@
 #include "defines.h"
-#include "RShift.h"
 #include "Settings/Settings.h"
 #include "Display/Painter.h"
-#include "Osci/Grid.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAMath.h"
 #include "Utils/StringUtils.h"
