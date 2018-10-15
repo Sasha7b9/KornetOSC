@@ -1,6 +1,4 @@
 #pragma once
-#include "Settings/SettingsChannel.h"
-#include "Data/DataSettings.h"
 #include "Settings/SettingsMemory.h"
 
 

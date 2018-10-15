@@ -1,4 +1,5 @@
 #include "defines.h"
+#include "FPGA/FPGATypes.h"
 #include "Log.h"
 #include "Display/Colors.h"
 #include "Display/Painter.h"

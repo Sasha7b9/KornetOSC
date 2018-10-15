@@ -2,9 +2,7 @@
 #define _INCLUDE_DATA_
 #include "Reader.h"
 #undef _INCLUDE_DATA_
-#include "Settings/SettingsService.h"
 #include "FPGA/FPGA.h"
-#include "Storage.h"
 #include "Utils/ProcessingSignal.h"
 #include "Hardware/EEPROM.h"
 #include "Utils/Math.h"
