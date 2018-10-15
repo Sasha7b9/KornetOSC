@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "PageMultimeter.h"
 #include "Settings/Settings.h"
 #include "Menu/Pages/Definition.h"

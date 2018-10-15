@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "PageTester.h"
 #include "Tester/Tester.h"
 #include "Settings/Settings.h"

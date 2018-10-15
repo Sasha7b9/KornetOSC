@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "MenuItems.h"
 #include "Display/Colors.h"
 #include "Display/DisplayTypes.h"

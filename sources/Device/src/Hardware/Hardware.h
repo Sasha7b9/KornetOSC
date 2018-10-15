@@ -1,5 +1,4 @@
 #pragma once
-#include "defines.h"
 #include "Hardware/stm32/stm32.h"
 
 

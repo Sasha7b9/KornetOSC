@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Decoder.h"
 #include "Hardware/FSMC.h"
 #include "Menu/Menu.h"

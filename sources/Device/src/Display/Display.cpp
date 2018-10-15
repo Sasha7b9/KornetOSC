@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Device.h"
 #include "Painter.h"
 #include "Log.h"
