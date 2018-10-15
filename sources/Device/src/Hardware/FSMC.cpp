@@ -1,10 +1,8 @@
 #include "defines.h"
 #include "Keyboard/Decoder.h"
 #include "FSMC.h"
-#include "GPIO.h"
 #include "Timer.h"
-#include "Hardware.h"
-#include <string.h>
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define ADDR_ALTERA1    ((uint8 *)NOR_MEMORY_ADRESS1)

@@ -1,9 +1,7 @@
 #include "defines.h"
 #include "Hardware.h"
-#include "main.h"
 #include "FSMC.h"
 #include "Timer.h"
-#include "stm32/stm32.h"
 #include "Sound.h"
 
 

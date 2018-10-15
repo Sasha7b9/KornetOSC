@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "Sound.h"
-#include "Settings/Settings.h"
 #include "Timer.h"
 #include "Hardware.h"
 #include "Utils/Math.h"

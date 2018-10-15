@@ -1,6 +1,7 @@
 #pragma once
 #include "Settings/Settings.h"
 
+
 /*
     Работа с микросхемой EEPROM AT25160N, предназначенной для хранения настроек.
 */

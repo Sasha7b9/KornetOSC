@@ -1,9 +1,8 @@
 #include "defines.h"
 #include "Timer.h"
-#include <stm32f4xx.h>
 #include "stm32/Timer4XX.h"
 #include <limits.h>
-#include "Hardware/CPU.h"
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #if defined(STM32F437xx) || defined(STM32F407xx) || defined(STM32F429xx)
