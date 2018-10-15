@@ -17,6 +17,32 @@ float    FrequencyCounter::frequency;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void FrequencyCounter::Init()
+{
+    drawFreq = false;
+    drawPeriod = false;
+
+    uint8 data = 0;
+
+    if (FREQ_METER_ENABLED)
+    {
+        const uint16 maskTime[3] = {0, 1, 2};
+        const uint16 maskFreqClc[4] = {0, (1 << 2), (1 << 3), ((1 << 3) + (1 << 2))};
+        const uint16 maskPeriods[3] = {0, (1 << 4), (1 << 5)};
+
+        data |= maskTime[FREQ_METER_TIMECOUNTING];
+        data |= maskFreqClc[FREQ_METER_FREQ_CLC];
+        data |= maskPeriods[FREQ_METER_NUM_PERIODS];
+    }
+    else
+    {
+        _SET_BIT(data, 2);
+    }
+
+    *WR_FREQMETER = data;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::Update(uint8 flag)
 {
     bool freqReady = _GET_BIT(flag, BIT_FLAG_FREQ_READY) == 1;
@@ -113,5 +139,5 @@ float FrequencyCounter::PeriodSetToFreq(const BitSet32 *period_)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float FrequencyCounter::GetFreq()
 {
-    return 0.0f;
+    return frequency;
 }

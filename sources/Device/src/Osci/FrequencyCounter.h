@@ -14,6 +14,9 @@
 class FrequencyCounter
 {
 public:
+
+    static void Init();
+
     static void Update(uint8 flag);
 
     static float GetFreq();

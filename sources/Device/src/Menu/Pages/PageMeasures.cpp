@@ -16,6 +16,7 @@ extern const PageBase ppTune;
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_FreqMeter_Enable(bool)
 {
+    FrequencyCounter::Init();
 }
 
 DEF_CHOICE_2(       cFreqMeter_Enable,                                                                   //--- ÈÇÌÅĞÅÍÈß - ×ÀÑÒÎÒÎÌÅĞ - ×àñòîòîìåğ ---
