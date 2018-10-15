@@ -12,6 +12,7 @@
 #include "SettingsMeasures.h"
 #include "Tester/Tester.h"
 #include "Osci/Cursors.h"
+#include "Osci/FrequencyCounter.h"
 #include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
 #include "Osci/Grid.h"
@@ -193,10 +194,10 @@ public:
 
     // Настройки частотомера
 
-    FPGA::FreqMeter::Enabled       freq_enabled;
-    FPGA::FreqMeter::TimeCounting  freq_timeCounting;   ///< Время счёта частоты.
-    FPGA::FreqMeter::FreqClc       freq_freqClc;        ///< Частота заполнения.
-    FPGA::FreqMeter::NumberPeriods freq_numberPeriods;  ///< Количество периодов.
+    FrequencyCounter::Enabled       freq_enabled;
+    FrequencyCounter::TimeCounting  freq_timeCounting;   ///< Время счёта частоты.
+    FrequencyCounter::FreqClc       freq_freqClc;        ///< Частота заполнения.
+    FrequencyCounter::NumberPeriods freq_numberPeriods;  ///< Количество периодов.
 
     // Меню ОТЛАДКА
 

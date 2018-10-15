@@ -120,53 +120,6 @@ public:
         static float GetFreq();
 
         static bool Init();
-
-        /// Время счёта периода.
-        struct TimeCounting
-        {
-            enum E
-            {
-                _100ms,
-                _1s,
-                _10s
-            } value;
-            operator uint8() const { return (uint8)value; }
-        };
-
-        /// Частота заполняющих импульсов для счёта частоты.
-        struct FreqClc
-        {
-            enum E
-            {
-                _100kHz,
-                _1MHz,
-                _10MHz,
-                _100MHz
-            } value;
-            operator uint8() const { return (uint8)value; }
-        };
-
-        /// Количество периодов.
-        struct NumberPeriods
-        {
-            enum E
-            {
-                _1,
-                _10,
-                _100
-            } value;
-            operator uint8() const { return (uint8)value; }
-        };
-
-        struct Enabled
-        {
-            enum E
-            {
-                On,
-                Off
-            } value;
-            operator uint8() const { return (uint8)value; }
-        };
     };
 
     /// Установить относительный уровень синхронизации
