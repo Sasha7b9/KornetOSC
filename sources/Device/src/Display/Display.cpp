@@ -9,6 +9,7 @@
 #include "Osci/Osci.h"
 #include "Console.h"
 #include "Tables.h"
+#include "FPGA/FPGA.h"
 #include <stdlib.h>
 #include <string.h>
 

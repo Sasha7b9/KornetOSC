@@ -13,7 +13,6 @@
 #include "Tester/Tester.h"
 #include "Osci/Cursors.h"
 #include "Osci/FrequencyCounter.h"
-#include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
 #include "Osci/Grid.h"
 #include "Display/Colors.h"
