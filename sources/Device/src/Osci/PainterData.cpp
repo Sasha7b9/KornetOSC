@@ -2,7 +2,6 @@
 #include "PainterData.h"
 #include "Display/Colors.h"
 #include "Grid.h"
-#include "Log.h"
 #include "Display/Painter.h"
 #include "Display/PainterMem.h"
 #include "Data/Storage.h"

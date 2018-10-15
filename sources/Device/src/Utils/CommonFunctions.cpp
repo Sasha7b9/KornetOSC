@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "CommonFunctions.h"
-#include "Log.h"
 #include <stdlib.h>
 #include <string.h>
 #include <algorithm>

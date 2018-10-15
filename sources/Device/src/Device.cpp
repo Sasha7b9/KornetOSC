@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "Device.h"
-#include "Log.h"
 #include "Display/Display.h"
 #include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
@@ -11,7 +10,6 @@
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
 #include "Utils/MathOSC.h"
-#include "Utils/Debug.h"
 #include <stdlib.h>
 #include <math.h>
 

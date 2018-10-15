@@ -5,7 +5,6 @@
 #include "Settings/Settings.h"
 #include "Keyboard/Keyboard.h"
 #include "Utils/ProcessingSignal.h"
-#include "Log.h"
 #include "Hardware/Sound.h"
 #include "Menu/Menu.h"
 #include "Utils/Math.h"

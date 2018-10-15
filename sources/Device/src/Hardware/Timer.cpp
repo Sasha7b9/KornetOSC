@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "Timer.h"
-#include "Log.h"
 #include <stm32f4xx.h>
 #include "stm32/Timer4XX.h"
 #include <limits.h>

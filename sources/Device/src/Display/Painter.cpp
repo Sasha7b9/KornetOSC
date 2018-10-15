@@ -5,7 +5,6 @@
 #include "Utils/Math.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/Timer.h"
-#include "Log.h"
 #include <string.h>
 #include <stdarg.h>
 #include <stdlib.h>

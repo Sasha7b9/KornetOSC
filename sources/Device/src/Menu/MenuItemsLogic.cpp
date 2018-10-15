@@ -4,7 +4,6 @@
 #include "Display/Painter.h"
 #include "Display/Symbols.h"
 #include "Hardware/Timer.h"
-#include "Log.h"
 #include "Settings/Settings.h"
 #include "Hardware/CPU.h"
 #include "Hardware/Sound.h"

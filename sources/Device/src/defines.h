@@ -251,3 +251,6 @@ enum StateWorkFPGA
     StateWorkFPGA_Work,     ///< Идёт работа.
     StateWorkFPGA_Pause     ///< Это состояние, когда временно приостановлен прибор, например, для чтения данных или для записи значений регистров.
 };
+
+#include "Log.h"
+#include "Utils/Debug.h"

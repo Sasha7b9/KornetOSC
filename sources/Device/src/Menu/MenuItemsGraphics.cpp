@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "Log.h"
 #include "Osci/Grid.h"
 #include "Display/Colors.h"
 #include "Display/Painter.h"

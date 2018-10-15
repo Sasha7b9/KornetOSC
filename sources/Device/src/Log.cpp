@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "Log.h"
 #include "Display/Console.h"
 #include <stdarg.h>
 #include <string.h>

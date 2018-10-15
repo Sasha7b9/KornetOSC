@@ -3,7 +3,6 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 #include "Hardware/Sound.h"
-#include "Utils/Debug.h"
 
 
 #ifdef MSVC

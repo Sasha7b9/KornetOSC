@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Device.h"
 #include "Tester.h"
-#include "Log.h"
 #include "Display/Display.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/FSMC.h"

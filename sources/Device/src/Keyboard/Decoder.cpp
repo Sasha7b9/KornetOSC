@@ -2,8 +2,6 @@
 #include "Decoder.h"
 #include "Hardware/FSMC.h"
 #include "Menu/Menu.h"
-#include "Log.h"
-#include "Utils/Debug.h"
 #include "Hardware/Timer.h"
 
 

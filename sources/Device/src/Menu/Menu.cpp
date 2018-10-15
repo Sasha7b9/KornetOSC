@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "Menu.h"
-#include "Log.h"
 #include "Device.h"
 #include "BufferButtons.h"
 #include "Osci/Grid.h"
@@ -20,7 +19,6 @@
 #include "Menu/Pages/PageMultimeter.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
-#include "Utils/Debug.h"
 #include "MenuTriggers.h"
 #include "HandlersKeys.h"
 

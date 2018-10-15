@@ -1,12 +1,10 @@
 #pragma once
-#include "Display/DisplayTypes.h"
 
-
-typedef struct
+struct Symbol
 {
     uchar width;
     uchar bytes[8];
-} Symbol;
+};
 
 
 struct Font

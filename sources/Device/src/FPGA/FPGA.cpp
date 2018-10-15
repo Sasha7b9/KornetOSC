@@ -2,7 +2,6 @@
 #include "FPGA.h"
 #include "AD9286.h"
 #include "FPGATypes.h"
-#include "Log.h"
 #include "Osci/FrequencyCounter.h"
 #include "RShift.h"
 #include "Utils/MathOSC.h"
