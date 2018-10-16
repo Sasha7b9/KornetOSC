@@ -4,6 +4,8 @@
 #include "Settings/Settings.h"
 #include "Display/Painter.h"
 #include "Utils/StringUtils.h"
+#include "Hardware/FSMC.h"
+#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,7 +45,7 @@ void FrequencyCounter::Init()
         _SET_BIT(data, 2);
     }
 
-    *WR_FREQMETER = data;
+    FSMC::WriteToFPGA8(WR_FREQMETER, data);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -57,7 +59,7 @@ void FrequencyCounter::Update(uint16 flag_)
     if (freqReady)
     {
         freqActual.Set(*RD_FREQ_BYTE_3, *RD_FREQ_BYTE_2, *RD_FREQ_BYTE_1, *RD_FREQ_BYTE_0);
-
+        
         drawFreq = true;
 
         if (!readPeriod)
@@ -185,7 +187,7 @@ void FrequencyCounter::Draw()
 
     dX = SIZE * 12;
 
-    Painter::DrawBigText(x + dX, y + 1, SIZE, condFreq ? EMPTY_STRING : Freq2StringAccuracy(freq, buffer, 6));
+    Painter::DrawBigText(x + dX, y + 1, SIZE, condFreq ? EMPTY_STRING : FreqSetToString(&freqActual));
 
     freq = PeriodSetToFreq(&periodActual);
 
@@ -193,4 +195,64 @@ void FrequencyCounter::Draw()
 
     Painter::SetColor(Color::Trig());
     Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : Time2StringAccuracy(1.0f / freq, false, buffer, 6));
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
+{
+    uint value = fr->word;
+
+    //LOG_WRITE("%d", value);
+
+    switch (FREQ_METER_TIMECOUNTING)
+    {
+        case FrequencyCounter::TimeCounting::_100ms:    value *= 100;   break;
+        case FrequencyCounter::TimeCounting::_1s:       value *= 10;    break;
+        case FrequencyCounter::TimeCounting::_10s:                      break;
+        default:                                                        break;
+    }
+
+    // ¬ этой точке в value хранитс€ завышенное в 10 раз значение частоты
+    /// \todo сделать локализацию
+
+    //                         0    1    2    3    4    5    6 
+    static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0'};
+
+    for (int i = 0; i < 11; i++)
+    {
+        buffer[i] = '0';
+    }
+    buffer[10] = '\0';  
+
+    if (value < 10)                                                              // «начение меньше 1 √ц
+    {
+        buffer[5] = '.';
+        buffer[6] = SU::DigitInPosition(value, 0);
+        strcpy(buffer + 7, "√ц");
+    }
+    else if (value < 10000)                                                      // «начение меньше 1к√ц
+    {
+        buffer[6] = '.';
+        buffer[5] = SU::DigitInPosition(value, 1);
+        buffer[4] = SU::DigitInPosition(value, 2);
+        buffer[3] = SU::DigitInPosition(value, 3);
+        strcpy(buffer + 7, "√ц");
+    }
+    else if (value < 1000 * 10000)                                               // «начение меньше 1ћ√ц
+    {
+        buffer[6] = SU::DigitInPosition(value, 1);
+        buffer[5] = SU::DigitInPosition(value, 2);
+        buffer[4] = SU::DigitInPosition(value, 3);
+        buffer[3] = '.';
+        buffer[2] = SU::DigitInPosition(value, 4);
+        buffer[1] = SU::DigitInPosition(value, 5);
+        buffer[0] = SU::DigitInPosition(value, 6);
+        strcpy(buffer + 7, "к√ц");
+    }
+    else
+    {
+        Freq2StringAccuracy((float)(value / 10), buffer, 6);
+    }
+
+    return buffer;
 }

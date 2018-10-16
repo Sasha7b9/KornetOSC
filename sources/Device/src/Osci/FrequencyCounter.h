@@ -88,6 +88,8 @@ private:
 
     static float FreqSetToFreq(const BitSet32 *fr);
 
+    static pString FreqSetToString(const BitSet32 *fr);
+
     static float PeriodSetToFreq(const BitSet32 *period);
     /// «десь хранитс€ последнее действительное значение частоты. ƒл€ вывода в режиме частотомера
     static BitSet32 freqActual;

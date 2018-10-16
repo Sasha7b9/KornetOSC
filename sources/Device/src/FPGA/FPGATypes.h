@@ -20,7 +20,7 @@
 #define BIT_UPR_PEAK            1                           ///< Пиковый детектор
 #define BIT_UPR_CALIBR          2                           ///< Калибратор
 
-#define WR_FREQMETER            (ADDR_ALTERA + 7)           ///< Управление частотомером
+#define WR_FREQMETER            (ADDR_ALTERA + 8)           ///< Управление частотомером
 #define WR_TRIG                 (ADDR_ALTERA + 9)           ///< Управление синхронизацией/запуском
 #define WR_START_ADDR           (ADDR_ALTERA + 11)          ///< \brief Старт адреса. Нужно записываеть по этому адресу, чтобы начать чтение с 
                                                             ///  произвольного адреса (который мы записываем в предзапуск)

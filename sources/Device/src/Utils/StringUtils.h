@@ -65,12 +65,16 @@ public:
     static char *GetWord(char *string, int n, char *out, int size);
     /// Вычисляет число разрядов в целом типа int.
     static int NumDigitsInNumber(int value);
+
+    static int NumDigitsInNumber(uint value);
     /// Эта команда сразу преобразует к верхенму регистру слово.
     static bool GetWord(const char *string, Word *word, const int numWord);
 
     static bool WordEqualZeroString(Word *word, char* string);
 
     static int FindSymbol(const char *string, char symbol);
+    /// Возвращает символ в позиции pos от последнего (младшего)
+    static char DigitInPosition(uint value, int pos);
 private:
     /// Возвращает false, если выбор невозможен - строка кончилась.
     static bool ChooseSymbols(const char **string);
