@@ -19,7 +19,7 @@ public:
     /// Возвращает измеренное значение частоты
     static float GetFreq();
     /// Отрисовка значения
-    static void Draw(int x, int y);
+    static void Draw();
 
     /// Время счёта периода.
     struct TimeCounting

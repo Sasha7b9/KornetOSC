@@ -149,36 +149,48 @@ float FrequencyCounter::GetFreq()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FrequencyCounter::Draw(int x, int y)
+void FrequencyCounter::Draw()
 {
+#define EMPTY_STRING "---.---"
+#define SIZE 4
+
+
     if (!FREQ_METER_ENABLED)
     {
         return;
     }
 
-#define EMPTY_STRING "---.---"
+    int width = 241;
+    int height = 74;
+    int x = Grid::Left() + (Grid::Width() - width) / 2;
+    int y = Grid::Top() + (Grid::Height() / 2 - height) / 2;
 
-    int width = 68;
-    int height = 19;
     
-    Painter::FillRegion(x + 1, y + 1, width - 2, height - 2, Color::BACK);
-    Painter::DrawRectangle(x, y, width, height, Color::Trig());
+    Painter::FillRegion(x + 1,   y + 1, width - 2, height - 2, Color::BACK);
+    Painter::DrawRectangle(x,    y,     width,     height,     Color::Trig());
 
-    Painter::DrawText(x + 2, y + 1, "F =");
-    Painter::DrawText(x + 2, y + 10, "T");
-    Painter::DrawText(x + 10, y + 10, "=");
+    x += 2;
+    y += 2;
+
+    Painter::DrawBigText(x + 2,  y + 1,         SIZE, "F");
+    Painter::DrawBigText(x + 2,  y + 10 * SIZE, SIZE, "T");
+    int dX = 7 * SIZE;
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=");
+    Painter::DrawBigText(x + dX, y + 1,         SIZE, "=");
     
     char buffer[30];
     float freq = FreqSetToFreq(&freqActual);
 
     bool condFreq = _SET_BIT(flag, FL_OVERFLOW_FREQ) == 1 || drawFreq == false || freq == 0.0f;
 
-    Painter::DrawText(x + 17, y + 1, condFreq ? EMPTY_STRING : Freq2StringAccuracy(freq, buffer, 6));
+    dX = SIZE * 12;
+
+    Painter::DrawBigText(x + dX, y + 1, SIZE, condFreq ? EMPTY_STRING : Freq2StringAccuracy(freq, buffer, 6));
 
     freq = PeriodSetToFreq(&periodActual);
 
     bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
 
     Painter::SetColor(Color::Trig());
-    Painter::DrawText(x + 17, y + 10, condPeriod ? EMPTY_STRING : Time2StringAccuracy(1.0f / freq, false, buffer, 6));
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : Time2StringAccuracy(1.0f / freq, false, buffer, 6));
 }

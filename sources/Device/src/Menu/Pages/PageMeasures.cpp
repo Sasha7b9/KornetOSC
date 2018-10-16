@@ -54,7 +54,7 @@ DEF_CHOICE_4(       cFreqMeter_FreqClc,                                         
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_3(       cFreqMeter_NumPeriods,                                                          //--- ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Кол-во периодов ---
-    "Кол-во периодов", "Num periods",
+    "Кол периодов", "Num periods",
     "Позволяет выбрать точность измерения периода - чем больше время, тем больше точность и больше время измерения",
     "Allows to choose the accuracy of measurement of period - the more time, the accuracy more time of measurement is more",
     "1",   "1",

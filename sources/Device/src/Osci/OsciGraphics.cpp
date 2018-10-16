@@ -36,9 +36,9 @@ void Osci::Graphics::Update()
 
     HiPart::Draw();
 
-    Menu::Draw();
+    FrequencyCounter::Draw();
 
-    FrequencyCounter::Draw(Grid::Left(), Grid::Top());
+    Menu::Draw();
 
     Measures::Draw();
 }

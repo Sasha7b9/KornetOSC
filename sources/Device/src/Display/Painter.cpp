@@ -626,6 +626,8 @@ void Painter::DrawBigText(int eX, int eY, int size, const char *text, Color colo
 
     int x = eX;
 
+    /// \todo Здесь явно неправильно вычисляется ширина символа
+
     for (uint i = 0; i < numSymbols; i++)
     {
         x = DrawBigChar(x, eY, size, text[i]);
