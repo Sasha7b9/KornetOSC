@@ -75,6 +75,13 @@ void Painter::DrawTesterData(uint8 mode, Color color, uint8 x[240], uint8 y[240]
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Painter::DrawText(int x, int y, const char *text, Color color)
 {
+    /// \todo Такую проверку нужно сделать и на приёмной стороне и тогда здесь убрать
+
+    if(*text == 0)
+    {
+        return x;
+    }
+
     #define MAX_SIZE_BUFFER 100
     
     if(strlen(text) + 1 > MAX_SIZE_BUFFER)
@@ -88,10 +95,10 @@ int Painter::DrawText(int x, int y, const char *text, Color color)
 
     uint8 *pointer = &buffer[5];
 
-    for (uint i = 0; i < strlen(text); i++)
+    while(*text)
     {
-        *pointer++ = (uint8)text[i];
-    }
+        *pointer++ = (uint8)*text++;
+    } 
 
     FSMC::WriteToPanel(buffer, (int)size);
 

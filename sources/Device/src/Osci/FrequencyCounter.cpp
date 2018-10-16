@@ -160,14 +160,14 @@ void FrequencyCounter::Draw(int x, int y)
 
     int width = 68;
     int height = 19;
-
+    
     Painter::FillRegion(x + 1, y + 1, width - 2, height - 2, Color::BACK);
     Painter::DrawRectangle(x, y, width, height, Color::Trig());
 
     Painter::DrawText(x + 2, y + 1, "F =");
     Painter::DrawText(x + 2, y + 10, "T");
     Painter::DrawText(x + 10, y + 10, "=");
-
+    
     char buffer[30];
     float freq = FreqSetToFreq(&freqActual);
 
@@ -181,7 +181,4 @@ void FrequencyCounter::Draw(int x, int y)
 
     Painter::SetColor(Color::Trig());
     Painter::DrawText(x + 17, y + 10, condPeriod ? EMPTY_STRING : Time2StringAccuracy(1.0f / freq, false, buffer, 6));
-
-    /** @todo Последняя страка оставлена, потому что без неё получается артефакт изображения */
-    Painter::DrawText(x + 71, y + 10, "");
 }
