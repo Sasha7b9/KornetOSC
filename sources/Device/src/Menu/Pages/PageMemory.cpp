@@ -220,9 +220,9 @@ static void OnDraw_Last()
     int height = 10;
     Painter::FillRegion(Grid::Right() - width, Grid::Top(), width, height, Color::BACK);
     Painter::DrawRectangle(Grid::Right() - width, Grid::Top(), width, height, Color::FILL);
-    Painter::DrawText(Grid::Right() - width + 2, Grid::Top() + 1, Int2String(NUM_RAM_SIGNAL + 1, false, 3, buffer));
+    Painter::DrawText(Grid::Right() - width + 2, Grid::Top() + 1, SU::Int2String(NUM_RAM_SIGNAL + 1, false, 3, buffer));
     Painter::DrawText(Grid::Right() - width + 17, Grid::Top() + 1, "/");
-    Painter::DrawText(Grid::Right() - width + 23, Grid::Top() + 1, Int2String(Storage::NumElementsInStorage(), false, 3, buffer));
+    Painter::DrawText(Grid::Right() - width + 23, Grid::Top() + 1, SU::Int2String(Storage::NumElementsInStorage(), false, 3, buffer));
 }
 
 static void OnRegSet_Last(int angle)
@@ -961,7 +961,7 @@ static void DrawMemoryWave(int num, bool exist)
     Painter::SetColor(num == NUM_ROM_SIGNAL ? Color::FLASH_01 : Color::FILL);
     if (exist)
     {
-        Painter::DrawText(x + 2, y + 1, Int2String(num + 1, false, 2, buffer));
+        Painter::DrawText(x + 2, y + 1, SU::Int2String(num + 1, false, 2, buffer));
     }
     else
     {

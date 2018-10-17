@@ -28,7 +28,7 @@ pString Cursors::Voltage(Chan source, int numCur, char buffer[20])
     {
         voltage *= 10.0f;
     }
-    return Voltage2String(voltage, true, buffer);
+    return SU::Voltage2String(voltage, true, buffer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

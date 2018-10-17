@@ -15,7 +15,7 @@
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *Voltage2String(float voltage, bool alwaysSign, char buffer[20])
+char *SU::Voltage2String(float voltage, bool alwaysSign, char buffer[20])
 {
     if (Math::IsEquals(voltage, ERROR_VALUE_FLOAT))
     {
@@ -41,7 +41,7 @@ char *Voltage2String(float voltage, bool alwaysSign, char buffer[20])
 
     CHAR_BUF(bufferOut, 20);
 
-    Float2String(voltage * factor[num], alwaysSign, 4, bufferOut);
+    SU::Float2String(voltage * factor[num], alwaysSign, 4, bufferOut);
 
     strcpy(buffer, bufferOut);
     strcat(buffer, suf[LANG][num]);
@@ -49,7 +49,7 @@ char *Voltage2String(float voltage, bool alwaysSign, char buffer[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
+char *SU::Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
 {
     if (Math::IsEquals(value, ERROR_VALUE_FLOAT))
     {
@@ -108,7 +108,7 @@ char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[2
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Time2String(float time, bool alwaysSign, char buffer[20])
+char *SU::Time2String(float time, bool alwaysSign, char buffer[20])
 {
     if (Math::IsEquals(time, ERROR_VALUE_FLOAT))
     {
@@ -140,7 +140,7 @@ char *Time2String(float time, bool alwaysSign, char buffer[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Freq2String(float freq, bool, char bufferOut[20])
+char *SU::Freq2String(float freq, bool, char bufferOut[20])
 {
     bufferOut[0] = 0;
     const char *suffix = 0;
@@ -170,13 +170,13 @@ char *Freq2String(float freq, bool, char bufferOut[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
+char *SU::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
 {
     return Float2String(value, alwaysSign, 4, bufferOut);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Phase2String(float phase, bool, char bufferOut[20])
+char *SU::Phase2String(float phase, bool, char bufferOut[20])
 {
     char buffer[20];
     sprintf(bufferOut, "%s\xa8", Float2String(phase, false, 4, buffer));
@@ -184,7 +184,7 @@ char *Phase2String(float phase, bool, char bufferOut[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
+char *SU::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
 {
     bufferOut[0] = 0;
     const char *suffix = LANG_RU ? "Ãö" : "Hz";
@@ -253,7 +253,7 @@ char *Hex32toString(uint value, char buffer[9], bool upper)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
+char *SU::Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
 {
     const int SIZE = 20;
     char format[SIZE] = "%";
@@ -344,7 +344,7 @@ char *SU::Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int 
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Db2String(float value, int numDigits, char bufferOut[20])
+char *SU::Db2String(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char buffer[20];

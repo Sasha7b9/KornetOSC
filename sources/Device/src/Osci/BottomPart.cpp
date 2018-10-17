@@ -120,7 +120,7 @@ void BottomPart::Draw()
         }
         else
         {
-            strcat(mesFreq, Freq2String(freq, false, buffer));
+            strcat(mesFreq, SU::Freq2String(freq, false, buffer));
         }
         Painter::DrawText(x + 3, Grid::Bottom() + 2, mesFreq, Color::FILL);
     }
@@ -181,7 +181,7 @@ int BottomPart::WriteChannel(Chan ch, int x, int y)
 
     CHAR_BUF(buf, 20);
 
-    Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buf);
+    SU::Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buf);
 
     Painter::DrawText(x, y, buf);
 
@@ -266,11 +266,11 @@ void BottomPart::DrawTime(int x, int y)
             time.seconds = TIME_SECONDS_DS;
             time.month = TIME_MONTH_DS;
             time.year = TIME_YEAR_DS;
-            Painter::DrawText(x, y, Int2String((int)time.day, false, 2, buffer));
+            Painter::DrawText(x, y, SU::Int2String((int)time.day, false, 2, buffer));
             Painter::DrawText(x + dField, y, ":");
-            Painter::DrawText(x + dField + dSeparator, y, Int2String((int)time.month, false, 2, buffer));
+            Painter::DrawText(x + dField + dSeparator, y, SU::Int2String((int)time.month, false, 2, buffer));
             Painter::DrawText(x + 2 * dField + dSeparator, y, ":");
-            Painter::DrawText(x + 2 * dField + 2 * dSeparator, y, Int2String((int)time.year + 2000, false, 4, buffer));
+            Painter::DrawText(x + 2 * dField + 2 * dSeparator, y, SU::Int2String((int)time.year + 2000, false, 4, buffer));
             y += 9;
         }
         else
@@ -279,9 +279,9 @@ void BottomPart::DrawTime(int x, int y)
         }
     }
 
-    Painter::DrawText(x, y, Int2String((int)time.hours, false, 2, buffer));
+    Painter::DrawText(x, y, SU::Int2String((int)time.hours, false, 2, buffer));
     Painter::DrawText(x + dField, y, ":");
-    Painter::DrawText(x + dField + dSeparator, y, Int2String((int)time.minutes, false, 2, buffer));
+    Painter::DrawText(x + dField + dSeparator, y, SU::Int2String((int)time.minutes, false, 2, buffer));
     Painter::DrawText(x + 2 * dField + dSeparator, y, ":");
-    Painter::DrawText(x + 2 * dField + 2 * dSeparator, y, Int2String((int)time.seconds, false, 2, buffer));
+    Painter::DrawText(x + 2 * dField + 2 * dSeparator, y, SU::Int2String((int)time.seconds, false, 2, buffer));
 }

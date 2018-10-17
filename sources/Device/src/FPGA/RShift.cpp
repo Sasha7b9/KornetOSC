@@ -35,5 +35,5 @@ void RShift::Draw(Chan ch)
 pString RShift::ToString(uint16 rShiftRel, Range range ,Divider divider, char buffer[20])
 {
     float rShiftVal = RSHIFT_2_ABS(rShiftRel, range) * divider.ToAbs();
-    return Voltage2String(rShiftVal, true, buffer);
+    return SU::Voltage2String(rShiftVal, true, buffer);
 }
