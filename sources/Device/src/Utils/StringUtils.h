@@ -15,10 +15,6 @@ struct Word
 class SU
 {
 public:
-    /// Возвращает число слов в строке string
-    static int NumWords(const char *string);
-    /// Возвращает указатель на n слово в строке. Если char == 0 - слова нет, если ret value == 0xffffffff - выходной буфер слишком мал
-    static char *GetWord(char *string, int n, char *out, int size);
     /// Вычисляет число разрядов в целом типа int.
     static int NumDigitsInNumber(int value);
 
