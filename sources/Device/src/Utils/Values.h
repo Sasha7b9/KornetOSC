@@ -6,13 +6,8 @@ template<class T>
 class Value
 {
 public:
-    Value(T v) : value(v)
-    {
-    };
-    virtual char* ToString(int depth, char *bufferOut) const
-    {
-        return "";
-    };
+    Value(T v) : value(v) {};
+    virtual char* ToString(int depth, char *bufferOut) const = 0;
 protected:
     T value;
 };
@@ -22,9 +17,7 @@ protected:
 class Hex : public Value<uint>
 {
 public:
-    Hex(uint v) : Value(v)
-    {
-    };
+    Hex(uint v) : Value(v) {};
     /// Преобразует значение в текстовую строку в шестнадцатиричном виде. depth задаёт разрядность числа - 8, 16 или 32
     virtual char* ToString(int depth, char bufferOut[9]) const;
 };
@@ -34,9 +27,7 @@ public:
 class Bin : public Value<uint>
 {
 public:
-    Bin(uint v) : Value(v)
-    {
-    };
+    Bin(uint v) : Value(v) {};
 
     virtual char* ToString(int depth, char bufferOut[36]) const;
 
@@ -48,9 +39,7 @@ private:
 class Frequency
 {
 public:
-    Frequency(float v) : value(v)
-    {
-    };
+    Frequency(float v) : value(v) {};
 
     char* ToString(char bufferOut[20]) const;
     /// Преобразует freq герц в текстовую строку. При этом число количество цифр в строке равно numDigits
@@ -59,3 +48,17 @@ public:
 private:
     float value;
 };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+class Time
+{
+public:
+
+    Time(float v) : value(v) {};
+
+private:
+
+    float value;
+};
+*/

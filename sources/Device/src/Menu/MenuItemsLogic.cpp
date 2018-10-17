@@ -295,7 +295,7 @@ Page::Name Page::GetName() const
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Time::SetOpened()
+void TimeControl::SetOpened()
 {
     PackedTime time = RTC_GET_PACKED_TIME();
     *(seconds) = (int8)time.seconds;
@@ -307,7 +307,7 @@ void Time::SetOpened()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Time::IncCurrentPosition()
+void TimeControl::IncCurrentPosition()
 {
     Sound::GovernorChangedValue();
     int8 *value[] = { 0, day, month, year, hours, minutes, seconds };
@@ -325,13 +325,13 @@ void Time::IncCurrentPosition()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Time::SetNewTime()
+void TimeControl::SetNewTime()
 {
     RTC_SET_TIME_AND_DATA(*day, *month, *year, *hours, *minutes, *seconds);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Time::SelectNextPosition()
+void TimeControl::SelectNextPosition()
 {
     Math::CircleIncrease<int8>(curField, 0, 7);
     Painter::ResetFlash();
@@ -347,7 +347,7 @@ void MACaddress::ChangeValue(int delta)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Time::DecCurrentPosition()
+void TimeControl::DecCurrentPosition()
 {
     Sound::GovernorChangedValue();
     static const int8 max[] = {0, 31, 12, 99, 23, 59, 59};

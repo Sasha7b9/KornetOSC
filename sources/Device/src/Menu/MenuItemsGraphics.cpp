@@ -530,7 +530,7 @@ void Page::Draw(int x, int y, bool opened)
             }
             else if (IS_TIME(item))
             {
-                ((Time *)item)->Draw(x, y, true);
+                ((TimeControl *)item)->Draw(x, y, true);
             }
         }
 
@@ -632,7 +632,7 @@ void Control::Draw(int x, int y, bool opened)
     }
     else if (type == Control::Type::Time)
     {
-        ((Time *)this)->Draw(x, y, opened);
+        ((TimeControl *)this)->Draw(x, y, opened);
     }
     else if (type == Control::Type::GovernorColor)
     {
@@ -648,7 +648,7 @@ void Control::Draw(int x, int y, bool opened)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Time::Draw(int x, int y, bool opened)
+void TimeControl::Draw(int x, int y, bool opened)
 {
     if (opened)
     {
@@ -661,7 +661,7 @@ void Time::Draw(int x, int y, bool opened)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Time::DrawClosed(int x, int y)
+void TimeControl::DrawClosed(int x, int y)
 {
     char buffer[20];
 
@@ -691,7 +691,7 @@ void Time::DrawClosed(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Time::DrawOpened(int x, int y)
+void TimeControl::DrawOpened(int x, int y)
 {
     char buffer[20];
 
@@ -786,7 +786,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(Control *item, int x, int y, bo
            }
            else if (IS_TIME(item))
            {
-               Time *time = (Time*)item;
+               TimeControl* time = (TimeControl*)item;
                if ((Menu::OpenedItem() == item) && (*time->curField != iEXIT) && (*time->curField != iSET))
                {
                    int8 values[7] =

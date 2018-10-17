@@ -256,7 +256,7 @@ void Control::ShortPress()
     }
     else if(type == Control::Type::Time)
     {
-        Time *time = (Time *)this;
+        TimeControl *time = (TimeControl *)this;
         if(!IsOpened())
         {
             SetCurrent(true);
@@ -320,7 +320,7 @@ void Control::LongPress()
         {
             SetCurrent(true);
         }
-        Time *time = (Time *)this;
+        TimeControl *time = (TimeControl *)this;
         if(IsOpened() && (*time->curField == iSET))
         {
             time->SetNewTime();
