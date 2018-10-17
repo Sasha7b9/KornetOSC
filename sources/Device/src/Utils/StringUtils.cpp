@@ -331,19 +331,3 @@ bool SU::EqualsStrings(char *str1, char *str2)
     }
     return true;
 }
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int SU::FindSymbol(const char *string, char symbol)
-{
-    int pos = 0;
-    while(*string)
-    {
-        if(*string == symbol)
-        {
-            return pos;
-        }
-        ++pos;
-        ++string;
-    }
-    return -1;
-}

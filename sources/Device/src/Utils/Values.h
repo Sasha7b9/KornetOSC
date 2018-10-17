@@ -16,6 +16,7 @@ public:
     void Set(uint v) { value = v; };
 
     operator uint() const { return value; };
+
 private:
 
     char *BinToString8(uint8 value, char buffer[9]) const;

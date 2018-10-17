@@ -28,8 +28,6 @@ public:
 
     static bool WordEqualZeroString(Word *word, char* string);
 
-    static int FindSymbol(const char *string, char symbol);
-
     static char *Db2String(float value, int numDigits, char bufferOut[20]);
     /// \brief Преобразует value в текстовую строку
     /// \attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
