@@ -30,68 +30,6 @@ volatile const float absStepRShift[] =
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *MathOSC::Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
-{
-    bufferOut[0] = 0;
-    char *pBuffer = bufferOut;
-
-    if (IsEquals(value, ERROR_VALUE_FLOAT))
-    {
-        strcat(bufferOut, ERROR_STRING_VALUE);
-        return bufferOut;
-    }
-
-    if (!alwaysSign)
-    {
-        if (value < 0)
-        {
-            *pBuffer = '-';
-            pBuffer++;
-        }
-    }
-    else
-    {
-        *pBuffer = value < 0 ? '-' : '+';
-        pBuffer++;
-    }
-
-    char format[] = "%4.2f\0\0";
-
-    format[1] = (char)numDigits + 0x30;
-
-    int numDigitsInInt = NumDigitsInIntPart(value);
-
-    format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
-    if (numDigits == numDigitsInInt)
-    {
-        format[5] = '.';
-    }
-
-    snprintf(pBuffer, 19, format, (double)fabsf(value));
-
-    float val = (float)atof(pBuffer);
-
-    if (NumDigitsInIntPart(val) != numDigitsInInt)
-    {
-        numDigitsInInt = NumDigitsInIntPart(val);
-        format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
-        if (numDigits == numDigitsInInt)
-        {
-            format[5] = '.';
-        }
-        sprintf(pBuffer, format, (double)value);
-    }
-
-    bool signExist = alwaysSign || value < 0;
-    while ((int)strlen(bufferOut) < numDigits + (signExist ? 2 : 1))
-    {
-        strcat(bufferOut, "0");
-    }
-
-    return bufferOut;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 int MathOSC::NumDigitsInIntPart(float value)
 {
     float fabsValue = fabsf(value);

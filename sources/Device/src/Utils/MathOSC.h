@@ -16,22 +16,6 @@ class MathOSC
 {
 public:
 
-    /// Переводит число с плавающей точкой в текстовый вид. numDigits - число цифровых знакомест
-    static char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20]);
-
-    template<class T>
-    static void Limitation(T *value, T min, T max)
-    {
-        if (*value < min)
-        {
-            *value = min;
-        }
-        else if (*value > max)
-        {
-            *value = max;
-        }
-    }
-
     static int LowSignedBit(uint value);
 
     char *Bin2String16(uint16 value, char valBuffer[19]);

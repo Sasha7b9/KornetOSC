@@ -103,11 +103,7 @@ template<class T> void  LimitationIncrease(T *value, T max);
 /// Декрементировать *value, но не меньше, чем min
 template<class T> static void LimitationDecrease(T *value, T min) { if (*value > min) { --(*value); } }
 
-template<class T> static void Limitation(T *value, T min, T max)
-{
-    if (*value < min)      { *value = min; }
-    else if (*value > max) { *value = max; }
-}
+template<class T> void Limitation(T *value, T min, T max);
 
 template<class T> static T LimitationRet(T value, T min, T max)
 {
