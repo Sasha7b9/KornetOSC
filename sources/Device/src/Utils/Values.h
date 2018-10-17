@@ -14,6 +14,8 @@ public:
     char DigitInPosition(int pos) const;
 
     void Set(uint v) { value = v; };
+    /// ¬озвращает число дес€тичных разр€дов.
+    int NumDigits() const;
 
     operator uint() const { return value; };
 

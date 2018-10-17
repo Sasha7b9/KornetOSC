@@ -15,10 +15,8 @@ struct Word
 class SU
 {
 public:
-    /// Вычисляет число разрядов в целом типа int.
-    static int NumDigitsInNumber(int value);
 
-    static int NumDigitsInNumber(uint value);
+    static int NumDigitsInNumber(int value);
     /// Эта команда сразу преобразует к верхенму регистру слово.
     static bool GetWord(const char *string, Word *word, const int numWord);
 

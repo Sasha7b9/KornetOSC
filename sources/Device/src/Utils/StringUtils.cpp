@@ -109,16 +109,6 @@ int SU::NumDigitsInNumber(int value)
     return num;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int SU::NumDigitsInNumber(uint value)
-{
-    int num = 1;
-    while ((value /= 10) > 0)
-    {
-        num++;
-    }
-    return num;
-}
 
 #define  SYMBOL(x) (*(*(x)))
 

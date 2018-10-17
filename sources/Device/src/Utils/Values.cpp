@@ -332,3 +332,16 @@ char *Float::ToString(bool alwaysSign, int numDigits, char bufferOut[20]) const
     
     return bufferOut;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Hex::NumDigits() const
+{
+    uint val = value;
+
+    int num = 1;
+    while ((val /= 10) > 0)
+    {
+        num++;
+    }
+    return num;
+}
