@@ -1,4 +1,6 @@
 #include "defines.h"
+#include "Utils/Measure.h"
+#include "Data/Storage.h"
 #include "ProcessingSignal.h"
 #include "Data/Reader.h"
 #include "FPGA/FPGAMath.h"
