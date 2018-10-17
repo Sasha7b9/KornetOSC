@@ -132,9 +132,6 @@
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Utils\MathOSC.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\libs\CMSIS\system_stm32f4xx.c">
       <Filter>libs\CMSIS</Filter>
     </ClCompile>
@@ -480,9 +477,6 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Utils\Debug.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Utils\MathOSC.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_conf.h">

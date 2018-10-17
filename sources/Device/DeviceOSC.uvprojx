@@ -2476,16 +2476,6 @@
               <FilePath>.\src\Utils\Debug.h</FilePath>
             </File>
             <File>
-              <FileName>MathOSC.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\MathOSC.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MathOSC.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\MathOSC.h</FilePath>
-            </File>
-            <File>
               <FileName>StringUtils.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Utils\StringUtils.cpp</FilePath>

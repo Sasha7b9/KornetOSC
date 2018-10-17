@@ -1,13 +1,14 @@
 #include "defines.h"
+#include "FPGA.h"
 #include "AD9286.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/GPIO.h"
 #include "Hardware/Timer.h"
-#include "Utils/MathOSC.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include "Data/Storage.h"
 #include <string.h>
+#include <stdlib.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

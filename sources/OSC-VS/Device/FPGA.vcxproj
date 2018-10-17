@@ -130,7 +130,6 @@
     <ClCompile Include="..\..\Device\src\Utils\Debug.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Math.cpp" />
-    <ClCompile Include="..\..\Device\src\Utils\MathOSC.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Measure.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\ProcessingSignal.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\StringUtils.cpp" />
@@ -287,7 +286,6 @@
     <ClInclude Include="..\..\Device\src\Utils\Debug.h" />
     <ClInclude Include="..\..\Device\src\Utils\Dictionary.h" />
     <ClInclude Include="..\..\Device\src\Utils\Math.h" />
-    <ClInclude Include="..\..\Device\src\Utils\MathOSC.h" />
     <ClInclude Include="..\..\Device\src\Utils\Measure.h" />
     <ClInclude Include="..\..\Device\src\Utils\ProcessingSignal.h" />
     <ClInclude Include="..\..\Device\src\Utils\StringUtils.h" />

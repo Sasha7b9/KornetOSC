@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "BottomPart.h"
-#include "Utils/MathOSC.h"
+#include "Settings/SettingsTime.h"
 #include "FPGA/FPGAMath.h"
 #include "Tables.h"
 #include "Display/Painter.h"
