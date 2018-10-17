@@ -16,49 +16,6 @@ class MathOSC
 {
 public:
 
-    template<class T>
-    static void LimitationIncrease(T *value, T max)
-    {
-        if ((*value) < max) { ++(*value); }
-    }
-
-    /// Инкрементировать *value, но не больше, чем max
-    template<class T>
-    static void LimitationDecrease(T *value, T min)
-    {
-        if (*value > min)  { --(*value); }
-    }
-
-    /// Прибавить к *value term и ограничить, если результат выходит за границы [min, max]
-    template<class T>
-    static void AddtionThisLimitation(T *value, int term, T min, T max)
-    {
-        if (term > 0)
-        {
-            if (max - term >= *value)
-            {
-                *value += term;
-            }
-            else
-            {
-                *value = max;
-            }
-        }
-        else
-        {
-            if (min - term <= *value)
-            {
-                *value += term;
-            }
-            else
-            {
-                *value = min;
-            }
-        }
-    }
-
-    /// Переводит значение voltage в тествоый вид в готовом для вывода на экран виде
-    static char *Voltage2String(float voltage, bool alwaysSign, char buffer[20]);
     /// Переводит число с плавающей точкой в текстовый вид. numDigits - число цифровых знакомест
     static char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20]);
 

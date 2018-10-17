@@ -30,44 +30,6 @@ volatile const float absStepRShift[] =
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *MathOSC::Voltage2String(float voltage, bool alwaysSign, char buffer[20])
-{
-    buffer[0] = 0;
-    const char *suffix;
-    if (IsEquals(voltage, ERROR_VALUE_FLOAT))
-    {
-        strcat(buffer, ERROR_STRING_VALUE);
-        return buffer;
-    }
-    else if (fabsf(voltage) + 0.5e-4f < 1e-3f)
-    {
-        suffix = LANG_RU ? "\x10ìêÂ" : "\x10uV";
-        voltage *= 1e6f;
-    }
-    else if (fabsf(voltage) + 0.5e-4f < 1.0f)
-    {
-        suffix = LANG_RU ? "\x10ìÂ" : "\x10mV";
-        voltage *= 1e3f;
-    }
-    else if (fabsf(voltage) + 0.5e-4f < 1000.0f)
-    {
-        suffix = LANG_RU ? "\x10Â" : "\x10V";
-    }
-    else
-    {
-        suffix = LANG_RU ? "\x10êÂ" : "\x10kV";
-        voltage *= 1e-3f;
-    }
-
-    CHAR_BUF(bufferOut, 20);
-
-    Float2String(voltage, alwaysSign, 4, bufferOut);
-    strcat(buffer, bufferOut);
-    strcat(buffer, suffix);
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *MathOSC::Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
