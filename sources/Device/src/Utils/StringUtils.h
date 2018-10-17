@@ -53,8 +53,6 @@ public:
                       bool alwaysSign,      ///< если true, знак показываетс€ даже если time > 0
                       char buffer[20]       ///< сюда записываетс€ возвращаемое значение
     );
-    /// ѕреобразует freq герц в текстовую строку.
-    static char* Freq2String(float freq, bool, char bufferOut[20]);
 
     static char* FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);
     /// ѕреобразует градусы в строку.
@@ -85,13 +83,48 @@ private:
 };
 
 
-class Hex
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template<class T>
+class Value
 {
 public:
-    Hex(uint v) : value(v) {};
+    Value(T v) : value(v) {};
+    virtual char* ToString(int depth, char *bufferOut) const { return ""; };
+protected:
+    T value;
+};
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Hex : public Value<uint>
+{
+public:
+    Hex(uint v) : Value(v) {};
     /// ѕреобразует значение в текстовую строку в шестнадцатиричном виде. depth задаЄт разр€дность числа - 8, 16 или 32
-    char* ToString(int depth, char bufferOut[9]) const;
+    virtual char* ToString(int depth, char bufferOut[9]) const;
+};
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Bin : public Value<uint>
+{
+public:
+    Bin(uint v) : Value(v) {};
+
+    virtual char* ToString(int depth, char bufferOut[36]) const;
 
 private:
-    uint value;
+    char* BinToString8(uint8 value, char buffer[9]) const;
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Frequency
+{
+public:
+    Frequency(float v) : value(v) {};
+
+    char* ToString(char bufferOut[20]) const;
+
+private:
+    float value;
 };

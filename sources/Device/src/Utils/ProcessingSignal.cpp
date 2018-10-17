@@ -70,6 +70,7 @@ typedef struct
     uint8       notUsed0[3];
 } MeasureCalculate;
 
+static char* Freq2String(float, bool, char buffer[20]);
 
 static const MeasureCalculate sMeas[Measure::Type::Number] =
 {
@@ -85,7 +86,7 @@ static const MeasureCalculate sMeas[Measure::Type::Number] =
     {"CalculateVoltageVybrosPlus",  CalculateVoltageVybrosPlus,     SU::Voltage2String, false, {}},
     {"CalculateVoltageVybrosMinus", CalculateVoltageVybrosMinus,    SU::Voltage2String, false, {}},
     {"CalculatePeriod",             CalculatePeriod,                SU::Time2String, false, {}},
-    {"CalculateFreq",               CalculateFreq,                  SU::Freq2String, false, {}},
+    {"CalculateFreq",               CalculateFreq,                  Freq2String, false, {}},
     {"CalculateTimeNarastaniya",    CalculateTimeNarastaniya,       SU::Time2String, false, {}},
     {"CalculateTimeSpada",          CalculateTimeSpada,             SU::Time2String, false, {}},
     {"CalculateDurationPlus",       CalculateDurationPlus,          SU::Time2String, false, {}},
@@ -1565,4 +1566,10 @@ void Processing::CountedEnumPoints()
 
     memcpy(IN_A, OUT_A, (uint)numBytes);
     memcpy(IN_B, OUT_B, (uint)numBytes);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* Freq2String(float freq, bool, char buffer[20])
+{
+    return Frequency(freq).ToString(buffer);
 }

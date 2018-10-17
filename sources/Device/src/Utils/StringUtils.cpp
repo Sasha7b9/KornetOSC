@@ -140,8 +140,10 @@ char *SU::Time2String(float time, bool alwaysSign, char buffer[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *SU::Freq2String(float freq, bool, char bufferOut[20])
+char *Frequency::ToString(char bufferOut[20]) const
 {
+    float freq = value;
+
     bufferOut[0] = 0;
     const char *suffix = 0;
     if (Math::IsEquals(freq, ERROR_VALUE_FLOAT))
@@ -164,7 +166,7 @@ char *SU::Freq2String(float freq, bool, char bufferOut[20])
         suffix = LANG_RU ? "Гц" : "Hz";
     }
     char buffer[20];
-    strcat(bufferOut, Float2String(freq, false, 4, buffer));
+    strcat(bufferOut, SU::Float2String(freq, false, 4, buffer));
     strcat(bufferOut, suffix);
     return bufferOut;
 }
@@ -207,28 +209,6 @@ char *SU::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
     strcat(bufferOut, Float2String(freq, false, numDigits, buffer));
     strcat(bufferOut, suffix);
     return bufferOut;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Bin2String(uint8 value, char buffer[9])
-{
-    for (int bit = 0; bit < 8; bit++)
-    {
-        buffer[7 - bit] = _GET_BIT(value, bit) ? '1' : '0';
-    }
-    buffer[8] = '\0';
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Bin2String16(uint16 value, char valBuffer[19])
-{
-    char buffer[9];
-    strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));
-    valBuffer[8] = ' ';
-    strcpy(valBuffer + 9, Bin2String((uint8)value, buffer));
-    valBuffer[18] = '\0';
-    return valBuffer;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -624,5 +604,43 @@ char* Hex::ToString(int depth, char buffer[9]) const
         default:                                    break;
     }
 
+    return buffer;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* Bin::ToString(int depth, char buffer[36]) const
+{
+    int byte = 3;       /// С этого байта начинаем вывод. Т.к. в начале строки - старший байт, в конце - младший
+
+    switch(depth)
+    {
+        case 8: byte = 0;  break;
+        case 16: byte = 1; break;
+    }
+
+    char *pointer = buffer;
+
+    while(byte >= 0)
+    {
+        BinToString8((uint8)(value >> (byte * 8)), pointer);
+        if(byte > 0)
+        {
+            *(pointer + 8) = ' ';
+        }
+        pointer += 9;
+        byte--;
+    }
+
+    return buffer;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* Bin::BinToString8(uint8 val, char buffer[9]) const
+{
+    for(int bit = 0; bit < 8; bit++)
+    {
+        buffer[7 - bit] = _GET_BIT(val, bit) ? '1' : '0';
+    }
+    buffer[8] = '\0';
     return buffer;
 }

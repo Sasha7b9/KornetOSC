@@ -120,7 +120,7 @@ void BottomPart::Draw()
         }
         else
         {
-            strcat(mesFreq, SU::Freq2String(freq, false, buffer));
+            strcat(mesFreq, Frequency(freq).ToString(buffer));
         }
         Painter::DrawText(x + 3, Grid::Bottom() + 2, mesFreq, Color::FILL);
     }
