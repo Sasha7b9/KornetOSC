@@ -27,6 +27,9 @@ template void LimitationDecrease<uint8>(uint8 *, uint8);
 template void Limitation<float>(float *, float, float);
 template void Limitation<uint16>(uint16 *, uint16, uint16);
 template void Limitation<int>(int *, int, int);
+template float LimitationRet<float>(float, float, float);
+template uint8 LimitationRet<uint8>(uint8, uint8, uint8);
+template void AdditionThisLimitation<uint16>(uint16 *, int, uint16, uint16);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -557,5 +560,48 @@ void LimitationDecrease(T *value, T min)
     if (*value > min)
     {
         --(*value);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+template<class T>
+T LimitationRet(T value, T min, T max)
+{
+    if (value < min)
+    {
+        return min;
+    }
+    if (value > max)
+    {
+        return max;
+    }
+    return value;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+template<class T>
+void AdditionThisLimitation(T *value, int term, T min, T max)
+{
+    if (term > 0)
+    {
+        if (max - term >= *value)
+        {
+            *value += (T)term;
+        }
+        else
+        {
+            *value = max;
+        }
+    }
+    else
+    {
+        if (min - term <= *value)
+        {
+            *value += (T)term;
+        }
+        else
+        {
+            *value = min;
+        }
     }
 }

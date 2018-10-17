@@ -105,22 +105,9 @@ template<class T> void LimitationDecrease(T *value, T min);
 
 template<class T> void Limitation(T *value, T min, T max);
 
-template<class T> static T LimitationRet(T value, T min, T max)
-{
-    if (value < min) { return min; }
-    if (value > max) { return max; }
-    return value;
-}
+template<class T> T LimitationRet(T value, T min, T max);
 /// Прибавить к *value term и ограничить, если результат выходит за границы [min, max]
-template<class T> static void AddtionThisLimitation(T *value, int term, T min, T max)
-{
-    if (term > 0){
-        if (max - term >= *value) { *value += (T)term; }
-        else                      { *value = max; } }
-    else         {
-        if (min - term <= *value) { *value += (T)term; }
-        else                      { *value = min; } }
-}
+template<class T> void AdditionThisLimitation(T *value, int term, T min, T max);
 
 #define _bitset(bits)                               \
   ((uint8)(                                         \
