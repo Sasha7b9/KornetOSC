@@ -186,8 +186,10 @@ char *SU::Phase2String(float phase, bool, char bufferOut[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *SU::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
+char *Frequency::ToStringAccuracy(char bufferOut[20], int numDigits) const
 {
+    float freq = value;
+
     bufferOut[0] = 0;
     const char *suffix = LANG_RU ? "Ãö" : "Hz";
     if (Math::IsEquals(freq, ERROR_VALUE_FLOAT))
@@ -206,7 +208,7 @@ char *SU::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
         freq /= 1e3f;
     }
     char buffer[20];
-    strcat(bufferOut, Float2String(freq, false, numDigits, buffer));
+    strcat(bufferOut, SU::Float2String(freq, false, numDigits, buffer));
     strcat(bufferOut, suffix);
     return bufferOut;
 }

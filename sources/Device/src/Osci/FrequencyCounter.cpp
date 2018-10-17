@@ -251,7 +251,7 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
     }
     else
     {
-        SU::Freq2StringAccuracy((float)(value / 10), buffer, 6);
+        Frequency((float)(value / 10)).ToStringAccuracy(buffer, 6);
     }
 
     return buffer;
