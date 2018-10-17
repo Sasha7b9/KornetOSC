@@ -345,3 +345,15 @@ int Hex::NumDigits() const
     }
     return num;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Integer::NumDigits() const
+{
+    int val = Math::Abs(value);
+    int num = 1;
+    while ((val /= 10) > 0)
+    {
+        num++;
+    }
+    return num;
+}

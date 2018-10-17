@@ -97,18 +97,6 @@ int BCD2Int(uint bcd)
     return value;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int SU::NumDigitsInNumber(int value)
-{
-    value = Math::Abs(value);
-    int num = 1;
-    while ((value /= 10) > 0)
-    {
-        num++;
-    }
-    return num;
-}
-
 
 #define  SYMBOL(x) (*(*(x)))
 

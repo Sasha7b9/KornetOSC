@@ -9,6 +9,7 @@
 #include "Hardware/Sound.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
+#include "Utils/Values.h"
 #include "Menu/Pages/PageDisplay.h"
 #include "Data/DataSettings.h"
 
@@ -246,8 +247,8 @@ void Governor::NextPosition()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Governor::NumDigits()
 {
-    int min = SU::NumDigitsInNumber(Math::Abs(minValue));
-    int max = SU::NumDigitsInNumber(Math::Abs(maxValue));
+    int min = Integer(Math::Abs(minValue)).NumDigits();
+    int max = Integer(Math::Abs(maxValue)).NumDigits();
     if (min > max)
     {
         max = min;
