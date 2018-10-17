@@ -82,24 +82,20 @@ public:
 int Pow10(int pow);
 
 /// Обменивает местами содержимое памяти по адресам value0 и value1
-template<class T> void Swap(T *value0, T *value1) { T temp = *value0; *value0 = *value1; *value1 = temp; }
+template<class T> void Swap(T *value0, T *value1);
 
 /// Размещает переменные value0 и value1 в порядке возрастания
-template<class T> void Sort(T *value0, T *value1) { if (*value1 < *value0) { Swap<T>(value0, value1); } }
+template<class T> void Sort(T *value0, T *value1);
 
-template<class T> int Sign(T x) { if (x > (T)(0)) { return 1; } if (x < (T)(0)) { return -1; } return 0; }
+template<class T> int Sign(T x);
 
-template<class T> T Abs(T x) { if (x < (T)0)   { return -x; }  return x; }
+template<class T> T Abs(T x);
 
-template<class T> T Min(T x1, T x2) { return x1 < x2 ? x1 : x2; }
+template<class T> T Min(T x1, T x2);
 
-template<class T> T Max(T x1, T x2) { return x1 > x2 ? x1 : x2; }
+template<class T> T Max(T x1, T x2);
 
-template<class T> void CircleIncrease(T *value, T min, T max)
-{
-    if (*value < max) { ++(*value); }
-    else              { *value = (T)min; }
-}
+template<class T> void CircleIncrease(T *value, T min, T max);
 
 template<class T> void CircleDecrease(T *value, T min, T max)
 {
