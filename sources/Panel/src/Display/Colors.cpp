@@ -169,9 +169,9 @@ void ColorType::Init(bool forced)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ColorType::SetBrightness(float bright)
 {
-    if (IsEquals(bright, -1.0f))
+    if (Math::IsEquals(bright, -1.0f))
     {
-        brightness = MaxFloat(red / 31.0f, green / 63.0f, blue / 31.0f);
+        brightness = Math::MaxFloat(red / 31.0f, green / 63.0f, blue / 31.0f);
 
         CalcSteps();
     }
@@ -216,7 +216,7 @@ void ColorType::BrightnessChange(int delta)
         return;
     }
 
-    int sign = Sign(delta);
+    int sign = Math::Sign(delta);
 
     brightness += sign * 0.01f;
     LIMITATION(brightness, 0.0f, 1.0f);
@@ -258,8 +258,8 @@ void ColorType::ComponentChange(int delta)
 
     if (index >= 1 && index <= 3)
     {
-        *(pointers[index]) += (float)Sign(delta);
-        Limitation<float>(pointers[index], 0.0f, maxs[index]);
+        *(pointers[index]) += (float)Math::Sign(delta);
+        Math::Limitation<float>(pointers[index], 0.0f, maxs[index]);
     }
 
     SetColor();

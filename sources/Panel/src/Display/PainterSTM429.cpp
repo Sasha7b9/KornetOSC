@@ -57,7 +57,7 @@ void Painter::DrawHLine(int y, int x0, int x1, Color col)
 
     if(x0 > x1)
     {
-        Swap(&x0, &x1);
+        Math::Swap(&x0, &x1);
     }
 
     uint8 *address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH;
@@ -97,8 +97,8 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2, Color col)
     int y = y1;
     int dx = (int)fabsf((float)(x2 - x1));
     int dy = (int)fabsf((float)(y2 - y1));
-    int s1 = Sign(x2 - x1);
-    int s2 = Sign(y2 - y1);
+    int s1 = Math::Sign(x2 - x1);
+    int s2 = Math::Sign(y2 - y1);
     int temp;
     int exchange = 0;
     if (dy > dx)
@@ -161,7 +161,7 @@ void Painter::DrawVLine(int x, int y0, int y1, Color col)
 
     if(y0 > y1)
     {
-        Swap(&y0, &y1);
+        Math::Swap(&y0, &y1);
     }
 
     uint8 *address = Display::GetBuffer() + x + y0 * BUFFER_WIDTH;
