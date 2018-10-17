@@ -73,20 +73,21 @@ typedef struct
 
 static char* Freq2String(float, bool, char buffer[20]);
 static char* Time2String(float, bool, char buffer[20]);
+static char* Voltage2String(float, bool, char buffer[20]);
 
 static const MeasureCalculate sMeas[Measure::Type::Number] =
 {
     {"", 0, 0, false, {}},
-    {"CalculateVoltageMax",         CalculateVoltageMax,         SU::Voltage2String,    true,  {}},
-    {"CalculateVoltageMin",         CalculateVoltageMin,         SU::Voltage2String,    true,  {}},
-    {"CalculateVoltagePic",         CalculateVoltagePic,         SU::Voltage2String,    false, {}},
-    {"CalculateVoltageMaxSteady",   CalculateVoltageMaxSteady,   SU::Voltage2String,    true,  {}},
-    {"CalculateVoltageMinSteady",   CalculateVoltageMinSteady,   SU::Voltage2String,    true,  {}},
-    {"CalculateVoltageAmpl",        CalculateVoltageAmpl,        SU::Voltage2String,    false, {}},
-    {"CalculateVoltageAverage",     CalculateVoltageAverage,     SU::Voltage2String,    true,  {}},
-    {"CalculateVoltageRMS",         CalculateVoltageRMS,         SU::Voltage2String,    false, {}},
-    {"CalculateVoltageVybrosPlus",  CalculateVoltageVybrosPlus,  SU::Voltage2String,    false, {}},
-    {"CalculateVoltageVybrosMinus", CalculateVoltageVybrosMinus, SU::Voltage2String,    false, {}},
+    {"CalculateVoltageMax",         CalculateVoltageMax,         Voltage2String,        true,  {}},
+    {"CalculateVoltageMin",         CalculateVoltageMin,         Voltage2String,        true,  {}},
+    {"CalculateVoltagePic",         CalculateVoltagePic,         Voltage2String,        false, {}},
+    {"CalculateVoltageMaxSteady",   CalculateVoltageMaxSteady,   Voltage2String,        true,  {}},
+    {"CalculateVoltageMinSteady",   CalculateVoltageMinSteady,   Voltage2String,        true,  {}},
+    {"CalculateVoltageAmpl",        CalculateVoltageAmpl,        Voltage2String,        false, {}},
+    {"CalculateVoltageAverage",     CalculateVoltageAverage,     Voltage2String,        true,  {}},
+    {"CalculateVoltageRMS",         CalculateVoltageRMS,         Voltage2String,        false, {}},
+    {"CalculateVoltageVybrosPlus",  CalculateVoltageVybrosPlus,  Voltage2String,        false, {}},
+    {"CalculateVoltageVybrosMinus", CalculateVoltageVybrosMinus, Voltage2String,        false, {}},
     {"CalculatePeriod",             CalculatePeriod,             Time2String,           false, {}},
     {"CalculateFreq",               CalculateFreq,               Freq2String,           false, {}},
     {"CalculateTimeNarastaniya",    CalculateTimeNarastaniya,    Time2String,           false, {}},
@@ -1315,7 +1316,7 @@ char* Processing::GetStringMeasure(Measure::Type measure, Chan ch, char* buffer,
         char bufferForFunc[20];
         pFuncPCFBPC func = sMeas[measure].FucnConvertate;
         float value = values[measure].value[ch];
-        if (SET_DIVIDER_10(ch) && func == SU::Voltage2String)
+        if (SET_DIVIDER_10(ch) && func == Voltage2String)
         {
             value *= 10.0f;                         // Домножаем, если включён делитель
         }
@@ -1580,4 +1581,10 @@ char* Freq2String(float freq, bool, char buffer[20])
 char* Time2String(float time, bool always, char buffer[20])
 {
     return Time(time).ToString(always, buffer);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* Voltage2String(float voltage, bool always, char buffer[20])
+{
+    return Voltage(voltage).ToString(always, buffer);
 }

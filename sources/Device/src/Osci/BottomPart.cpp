@@ -182,7 +182,7 @@ int BottomPart::WriteChannel(Chan ch, int x, int y)
 
     CHAR_BUF(buf, 20);
 
-    SU::Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buf);
+    Voltage(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch))).ToString(true, buf);
 
     Painter::DrawText(x, y, buf);
 

@@ -55,16 +55,15 @@ class Time
 public:
 
     Time(float v) : value(v) {};
-
     /// Преобразует время в текстовую строку
     char* ToString(bool alwaysSign,      ///< если true, знак показывается даже если time > 0
                    char buffer[20]       ///< сюда записывается возвращаемое значение
-    );
+    ) const;
     /// Преобразует time секунд в текстовую строку
     char* ToStringAccuracy(bool alwaysSign,      ///< если true, знак показывается даже если time > 0
                            char bufferOut[20],   ///< сюда записывается возвращаемое значение
                            int numDigits         ///< количество цифр в строке
-    );
+    ) const;
 
 private:
 
@@ -72,4 +71,13 @@ private:
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+class Voltage
+{
+public:
+    Voltage(float v) : value(v) {};
 
+    char* ToString(bool alwaysSign, char buffer[20]) const;
+private:
+
+    float value;
+};

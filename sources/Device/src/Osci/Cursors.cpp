@@ -5,6 +5,7 @@
 #include "Menu/Menu.h"
 #include "FPGA/FPGAMath.h"
 #include "Utils/StringUtils.h"
+#include "Utils/Values.h"
 #include <string.h>
 
 
@@ -28,7 +29,7 @@ pString Cursors::Voltage(Chan source, int numCur, char buffer[20])
     {
         voltage *= 10.0f;
     }
-    return SU::Voltage2String(voltage, true, buffer);
+    return ::Voltage(voltage).ToString(true, buffer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

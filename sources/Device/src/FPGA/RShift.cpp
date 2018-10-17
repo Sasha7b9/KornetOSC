@@ -4,6 +4,7 @@
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAMath.h"
 #include "Utils/StringUtils.h"
+#include "Utils/Values.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,5 +36,5 @@ void RShift::Draw(Chan ch)
 pString RShift::ToString(uint16 rShiftRel, Range range ,Divider divider, char buffer[20])
 {
     float rShiftVal = RSHIFT_2_ABS(rShiftRel, range) * divider.ToAbs();
-    return SU::Voltage2String(rShiftVal, true, buffer);
+    return Voltage(rShiftVal).ToString(true, buffer);
 }

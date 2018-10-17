@@ -15,40 +15,6 @@
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *SU::Voltage2String(float voltage, bool alwaysSign, char buffer[20])
-{
-    if (Math::IsEquals(voltage, ERROR_VALUE_FLOAT))
-    {
-        strcpy(buffer, ERROR_STRING_VALUE);
-        return buffer;
-    }
-
-    pString suf[2][4] =
-    {
-        {"\x10ìêÂ", "\x10ìÂ", "\x10Â", "\x10êÂ"},
-        {"\x10uV",  "\x10mV", "\x10V", "\x10kV"}
-    };
-
-    static const float factor[4] = {1e6f, 1e3f, 1.0f, 1e-3f};
-
-    int num = 0;
-    float absValue = fabsf(voltage) + 0.5e-4f;
-
-    if      (absValue < 1e-3f) { num = 0; }
-    else if (absValue < 1.0f)  { num = 1; }
-    else if (absValue < 1e3f)  { num = 2; }
-    else                       { num = 3; }
-
-    CHAR_BUF(bufferOut, 20);
-
-    SU::Float2String(voltage * factor[num], alwaysSign, 4, bufferOut);
-
-    strcpy(buffer, bufferOut);
-    strcat(buffer, suf[LANG][num]);
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *SU::Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
 {
     if (Math::IsEquals(value, ERROR_VALUE_FLOAT))
