@@ -1,13 +1,7 @@
 #include "defines.h"
 #include "Utils/StringUtils.h"
-#include "Utils/Dictionary.h"
-#include "Utils/Math.h"
-#include "Settings/Settings.h"
 #include "Values.h"
-#include <math.h>
-#include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <ctype.h>
 
 #ifndef LANG

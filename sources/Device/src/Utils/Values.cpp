@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Values.h"
 #include "Math.h"
-#include "StringUtils.h"
 #include "Settings/Settings.h"
 #include <string.h>
 #include <math.h>

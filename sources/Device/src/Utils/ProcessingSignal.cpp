@@ -5,7 +5,6 @@
 #include "Data/Reader.h"
 #include "FPGA/FPGAMath.h"
 #include "Settings/Settings.h"
-#include "Utils/StringUtils.h"
 #include "Utils/Values.h"
 #include "Utils/Math.h"
 #include <math.h>

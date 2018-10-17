@@ -1,9 +1,5 @@
 #include "defines.h"
-#include "Measure.h"
-#include "Settings/Settings.h"
-#include "Display/Display.h"
 #include "Display/Painter.h"
-#include "Osci/Grid.h"
 #include "Hardware/Sound.h"
 
 
