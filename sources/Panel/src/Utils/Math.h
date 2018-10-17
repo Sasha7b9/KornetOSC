@@ -3,28 +3,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define PI 3.141592653589793f
-
-#define LIMIT_BELOW(x, min)                 if((x) < (min)) { x = (min); }
-
-#define LIMIT_ABOVE(x, max)                 if((x) > (max)) { x = (max); }
-
-#define SET_MIN_IF_LESS(x, min)             if((x) < (min)) { (min) = (x); }
-
-#define SET_MAX_IF_LARGER(x, max)           if((x) > (max)) { (max) = (x); }
-
-#define LIMITATION_BOUND(var, min, max)     if((var) < (min)) { (min) = (var); }; if((var) > (max)) { (max) = (var); };
-
-#define ROUND(x) ((x) += 0.5f, (x))
-
-#define SET_IF_LARGER(x, max, newValue)     if((x) > (max)) { (x) = (newValue); }
-
-#define LIMITATION_ABOVE(var, value, max)   var = (value); if((var) > (max)) { (var) = (max); }
-
 #define LIMITATION(var, min, max)           if(var < (min)) { (var) = (min); } else if(var > (max)) { var = (max); };
-
-#define IN_RANGE(x, min, max)               ((x) >= (min) && (x) <= (max))
-
 
 /// Возвращает true, если value входит в диапазон [min; max]
 bool IntInRange(int value, int min, int max);
