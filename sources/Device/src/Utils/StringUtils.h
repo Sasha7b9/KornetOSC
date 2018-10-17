@@ -31,13 +31,6 @@ public:
     static int FindSymbol(const char *string, char symbol);
     /// Возвращает символ в позиции pos от последнего (младшего)
     static char DigitInPosition(uint value, int pos);
-
-    /// @brief Преобразует time секунд в текстовую строку
-    static char* Time2StringAccuracy(   float time,           ///< время в секундах. Может быть отрицательным
-                                        bool alwaysSign,      ///< если true, знак показывается даже если time > 0
-                                        char bufferOut[20],   ///< сюда записывается возвращаемое значение
-                                        int numDigits         ///< количество цифр в строке
-    );
     /// @brief Преобразует voltage вольт в текстовую строку
     /// @attention Страка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопитровать себе
     static char *Voltage2String(float voltage,     ///< значение напряжения в вольтах

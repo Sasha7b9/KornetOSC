@@ -177,42 +177,6 @@ bool String2Int(char *str, int *value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *SU::Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits)
-{
-    buffer[0] = 0;
-    const char *suffix = LANG_RU ? "с" : "s";
-
-    float fabsTime = fabsf(time);
-
-    if (Math::IsEquals(time, ERROR_VALUE_FLOAT))
-    {
-        strcat(buffer, ERROR_STRING_VALUE);
-        return buffer;
-    }
-    else if (fabsTime + 0.5e-10f < 1e-6f)
-    {
-        suffix = LANG_RU ? "нс" : "ns";
-        time *= 1e9f;
-    }
-    else if (fabsTime + 0.5e-7f < 1e-3f)
-    {
-        suffix = LANG_RU ? "мкс" : "us";
-        time *= 1e6f;
-    }
-    else if (fabsTime + 0.5e-3f < 1.0f)
-    {
-        suffix = LANG_RU ? "мс" : "ms";
-        time *= 1e3f;
-    }
-
-    char bufferOut[20];
-    strcat(buffer, Float2String(time, alwaysSign, numDigits, bufferOut));
-    strcat(buffer, suffix);
-
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *SU::Db2String(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
