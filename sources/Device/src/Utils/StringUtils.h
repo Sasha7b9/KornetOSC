@@ -31,10 +31,6 @@ public:
     static int FindSymbol(const char *string, char symbol);
     /// Возвращает символ в позиции pos от последнего (младшего)
     static char DigitInPosition(uint value, int pos);
-    /// \brief Переводит число с плавающей точкой в текстовый вид. numDigits - число цифровых знакомест
-    /// \attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопироавать себе.
-    /// \retval указатель на строку с числом.
-    static char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20]);
 
     static char* FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);
 

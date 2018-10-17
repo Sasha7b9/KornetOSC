@@ -5,6 +5,7 @@
 #include "Settings/Settings.h"
 #include <string.h>
 #include <math.h>
+#include <stdlib.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +87,7 @@ char *Frequency::ToString(char bufferOut[20]) const
         suffix = LANG_RU ? "Ãö" : "Hz";
     }
     char buffer[20];
-    strcat(bufferOut, SU::Float2String(freq, false, 4, buffer));
+    strcat(bufferOut, Float(freq).ToString(false, 4, buffer));
     strcat(bufferOut, suffix);
     return bufferOut;
 }
@@ -114,7 +115,7 @@ char *Frequency::ToStringAccuracy(char bufferOut[20], int numDigits) const
         freq /= 1e3f;
     }
     char buffer[20];
-    strcat(bufferOut, SU::Float2String(freq, false, numDigits, buffer));
+    strcat(bufferOut, Float(freq).ToString(false, numDigits, buffer));
     strcat(bufferOut, suffix);
     return bufferOut;
 }
@@ -159,7 +160,7 @@ char *Time::ToString(bool alwaysSign, char buffer[20]) const
     }
 
     char bufferOut[20];
-    strcpy(buffer, SU::Float2String(time * factor[num], alwaysSign, 4, bufferOut));
+    strcpy(buffer, Float(time * factor[num]).ToString(alwaysSign, 4, bufferOut));
     strcat(buffer, suffix[LANG][num]);
     return buffer;
 }
@@ -196,7 +197,7 @@ char* Time::ToStringAccuracy(bool alwaysSign, char buffer[20], int numDigits) co
     }
 
     char bufferOut[20];
-    strcat(buffer, SU::Float2String(time, alwaysSign, numDigits, bufferOut));
+    strcat(buffer, Float(time).ToString(alwaysSign, numDigits, bufferOut));
     strcat(buffer, suffix);
 
     return buffer;
@@ -242,7 +243,7 @@ char* Voltage::ToString(bool alwaysSign, char buffer[20]) const
 
     CHAR_BUF(bufferOut, 20);
 
-    SU::Float2String(voltage * factor[num], alwaysSign, 4, bufferOut);
+    Float(voltage * factor[num]).ToString(alwaysSign, 4, bufferOut);
 
     strcpy(buffer, bufferOut);
     strcat(buffer, suf[LANG][num]);
@@ -253,6 +254,67 @@ char* Voltage::ToString(bool alwaysSign, char buffer[20]) const
 char* Phase::ToString(char bufferOut[20]) const
 {
     char buffer[20];
-    sprintf(bufferOut, "%s\xa8", SU::Float2String(value, false, 4, buffer));
+    sprintf(bufferOut, "%s\xa8", Float(value).ToString(false, 4, buffer));
+    return bufferOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *Float::ToString(bool alwaysSign, int numDigits, char bufferOut[20]) const
+{
+    float _value = m_val;
+
+    if (Math::IsEquals(_value, ERROR_VALUE_FLOAT))
+    {
+        strcpy(bufferOut, ERROR_STRING_VALUE);
+        return bufferOut;
+    }
+    
+    _value = Math::RoundFloat(_value, numDigits);
+    
+    char *pBuffer = bufferOut;
+    
+    if (_value < 0)
+    {
+        *pBuffer++ = '-';
+    }
+    else if (alwaysSign)
+    {
+        *pBuffer++ = '+';
+    }
+    
+    char format[10] = "%4.2f\0\0";
+    
+    format[1] = (char)numDigits + 0x30;
+    
+    int numDigitsInInt = Math::DigitsInIntPart(_value);
+    
+    format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
+    if (numDigits == numDigitsInInt)
+    {
+        format[5] = '.';
+    }
+    
+    float absValue = fabsf(_value);
+    sprintf(pBuffer, (char *)format, (double)absValue);
+    
+    float val = (float)atof(pBuffer);
+    
+    if (Math::DigitsInIntPart(val) != numDigitsInInt)
+    {
+        numDigitsInInt = Math::DigitsInIntPart(val);
+        format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
+        if (numDigits == numDigitsInInt)
+        {
+            format[5] = '.';
+        }
+        sprintf(pBuffer, format, (double)_value);
+    }
+    
+    bool signExist = alwaysSign || _value < 0;
+    while (strlen(bufferOut) < (size_t)(numDigits + (signExist ? 2 : 1)))
+    {
+        strcat(bufferOut, "0");
+    }
+    
     return bufferOut;
 }

@@ -7,7 +7,6 @@ unsigned int  strlen(const char *);
 int     strcmp(char *, char *);
 char    toupper(char);
 char    tolower(char);
-float   atof(char *);
 void    memcpy(void *dest, const void *src, unsigned int size);
 void    memset(void *, int, unsigned int);
 int     memcmp(void *, const void *, int);

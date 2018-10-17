@@ -3,6 +3,7 @@
 #include "Utils/Dictionary.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
+#include "Values.h"
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,68 +16,9 @@
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *SU::Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
-{
-    if (Math::IsEquals(value, ERROR_VALUE_FLOAT))
-    {
-        strcpy(bufferOut, ERROR_STRING_VALUE);
-        return bufferOut;
-    }
-
-    value = Math::RoundFloat(value, numDigits);
-    
-    char *pBuffer = bufferOut;
-
-    if (value < 0)
-    {
-        *pBuffer++ = '-';
-    }
-    else if (alwaysSign)
-    {
-        *pBuffer++ = '+';
-    }
-
-    char format[10] = "%4.2f\0\0";
-
-    format[1] = (char)numDigits + 0x30;
-
-    int numDigitsInInt = Math::DigitsInIntPart(value);
-
-    format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
-    if (numDigits == numDigitsInInt)
-    {
-        format[5] = '.';
-    }
-
-    float absValue = fabsf(value);
-    sprintf(pBuffer, (char *)format, (double)absValue);
-
-    float val = (float)atof(pBuffer);
-
-    if (Math::DigitsInIntPart(val) != numDigitsInInt)
-    {
-        numDigitsInInt = Math::DigitsInIntPart(val);
-        format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
-        if (numDigits == numDigitsInInt)
-        {
-            format[5] = '.';
-        }
-        sprintf(pBuffer, format, (double)value);
-    }
-
-    bool signExist = alwaysSign || value < 0;
-    while (strlen(bufferOut) < (size_t)(numDigits + (signExist ? 2 : 1)))
-    {
-        strcat(bufferOut, "0");
-    }
-
-    return bufferOut;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *SU::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
 {
-    return Float2String(value, alwaysSign, 4, bufferOut);
+    return Float(value).ToString(alwaysSign, 4, bufferOut);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -139,7 +81,7 @@ char *SU::Db2String(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char buffer[20];
-    strcat(bufferOut, Float2String(value, false, numDigits, buffer));
+    strcat(bufferOut, Float(value).ToString(false, numDigits, buffer));
     strcat(bufferOut, "Да");
     return bufferOut;
 }
