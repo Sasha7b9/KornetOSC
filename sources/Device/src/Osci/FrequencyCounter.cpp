@@ -194,7 +194,7 @@ void FrequencyCounter::Draw()
     bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
 
     Painter::SetColor(Color::Trig());
-    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : Time2StringAccuracy(1.0f / freq, false, buffer, 6));
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : SU::Time2StringAccuracy(1.0f / freq, false, buffer, 6));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

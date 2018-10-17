@@ -75,27 +75,18 @@ public:
     static int FindSymbol(const char *string, char symbol);
     /// Возвращает символ в позиции pos от последнего (младшего)
     static char DigitInPosition(uint value, int pos);
+
 private:
     /// Возвращает false, если выбор невозможен - строка кончилась.
     static bool ChooseSymbols(const char **string);
     /// Возвращает false, если выбор невозможен - строка кончилась.
     static bool ChooseSpaces(const char **string);
+
+public:
+    /// @brief Преобразует time секунд в текстовую строку
+    static char* Time2StringAccuracy(   float time,           ///< время в секундах. Может быть отрицательным
+                                        bool alwaysSign,      ///< если true, знак показывается даже если time > 0
+                                        char bufferOut[20],   ///< сюда записывается возвращаемое значение
+                                        int numDigits         ///< количество цифр в строке
+    );
 };
-
-bool String2Int(char *str, int *value);
-/// @brief Преобразует time секунд в текстовую строку
-char* Time2StringAccuracy(float time,           ///< время в секундах. Может быть отрицательным
-                          bool alwaysSign,      ///< если true, знак показывается даже если time > 0
-                          char bufferOut[20],   ///< сюда записывается возвращаемое значение
-                          int numDigits         ///< количество цифр в строке
-);
-/// Преобразует децибелы в текстовую строку
-char* Db2String(float value, int numDigits, char bufferOut[20]);
-
-int BCD2Int(uint bcd);
-/// @brief Преобразует value в текстовую строку. При этом выводятся все 8 разрядов
-/// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
-char* Bin2String(uint8 value, char bufferOut[9]);
-/// @brief Преобразует value в текстовую строку
-/// @attention Строка будте храниться до следующего вызова функции. Если рузультат нужен большее количество времени, то его нужно скопировать себе
-char* Bin2String16(uint16 value, char bufferOut[19]);

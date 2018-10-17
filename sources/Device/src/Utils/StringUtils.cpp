@@ -308,7 +308,7 @@ bool String2Int(char *str, int *value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits)
+char *SU::Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits)
 {
     buffer[0] = 0;
     const char *suffix = LANG_RU ? "ñ" : "s";
