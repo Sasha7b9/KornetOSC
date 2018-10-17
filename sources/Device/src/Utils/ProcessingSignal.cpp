@@ -949,7 +949,7 @@ float CalculateDelayPlus(Chan ch)
     float periodB = CalculatePeriod(Chan::B);
 
     EXIT_IF_ERRORS_FLOAT(periodA, periodB);
-    if(!FloatsIsEquals(periodA, periodB, 1.05f))
+    if(!Math::FloatsIsEquals(periodA, periodB, 1.05f))
     {
         return ERROR_VALUE_FLOAT;
     }
@@ -988,7 +988,7 @@ float CalculateDelayMinus(Chan ch)
 
     EXIT_IF_ERRORS_FLOAT(period0, period1);
 
-    if(!FloatsIsEquals(period0, period1, 1.05f))
+    if(!Math::FloatsIsEquals(period0, period1, 1.05f))
     {
         return ERROR_VALUE_FLOAT;
     }

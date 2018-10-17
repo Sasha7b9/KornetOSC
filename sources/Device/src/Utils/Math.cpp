@@ -33,7 +33,7 @@ template void  Math::AdditionThisLimitation<uint16>(uint16 *, int, uint16, uint1
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int LowSignedBit(uint value)
+int Math::LowSignedBit(uint value)
 {
     int verValue = 1;
 
@@ -87,13 +87,7 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool IntInRange(int value, int min, int max)
-{
-    return (value >= min) && (value <= max);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-float MaxFloat(float val1, float val2, float val3)
+float Math::MaxFloat(float val1, float val2, float val3)
 {
     float retValue = val1;
     if (val2 > retValue)
@@ -178,13 +172,6 @@ uint8 Math::MinFromArray(const uint8 *data, int firstPoint, int lastPoint)
     }
 
     return min;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-float RandFloat(float min, float max)
-{
-    float delta = max - min;
-    return min + ((rand() / (float)RAND_MAX) * delta);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -429,13 +416,13 @@ float Math::RoundFloat(float value, int numDigits)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool IsEquals(float x, float y)
+bool Math::IsEquals(float x, float y)
 {
     return fabsf(x - y) < std::numeric_limits<float>::epsilon();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FloatsIsEquals(float value0, float value1, float epsilonPart)
+bool Math::FloatsIsEquals(float value0, float value1, float epsilonPart)
 {
     float max = fabsf(value0) > fabsf(value1) ? fabsf(value0) : fabsf(value1);
 
@@ -485,20 +472,6 @@ T Math::Abs(T x)
          return -x; 
      }
      return x; 
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-template<class T>
-T Min(T x1, T x2)
-{ 
-    return x1 < x2 ? x1 : x2;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-template<class T>
-T Max(T x1, T x2)
-{
-    return x1 > x2 ? x1 : x2;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
