@@ -9,7 +9,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char* Bin::ToString(int depth, char buffer[36]) const
+char* Hex::ToBin(int depth, char buffer[36]) const
 {
     int byte = 3;       /// С этого байта начинаем вывод. Т.к. в начале строки - старший байт, в конце - младший
 
@@ -36,7 +36,7 @@ char* Bin::ToString(int depth, char buffer[36]) const
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* Bin::BinToString8(uint8 val, char buffer[9]) const
+char* Hex::BinToString8(uint8 val, char buffer[9]) const
 {
     for (int bit = 0; bit < 8; bit++)
     {
@@ -47,7 +47,7 @@ char* Bin::BinToString8(uint8 val, char buffer[9]) const
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* Hex::ToString(int depth, char buffer[9]) const
+char* Hex::ToHex(int depth, char buffer[9]) const
 {
     switch (depth)
     {
@@ -58,6 +58,20 @@ char* Hex::ToString(int depth, char buffer[9]) const
     }
 
     return buffer;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char Hex::DigitInPosition(int pos) const
+{
+    uint val = value;
+
+    while (pos > 0)
+    {
+        val /= 10;
+        pos--;
+    }
+
+    return (char)((val % 10) | 0x30);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

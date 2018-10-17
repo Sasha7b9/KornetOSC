@@ -29,8 +29,6 @@ public:
     static bool WordEqualZeroString(Word *word, char* string);
 
     static int FindSymbol(const char *string, char symbol);
-    /// Возвращает символ в позиции pos от последнего (младшего)
-    static char DigitInPosition(uint value, int pos);
 
     static char *Db2String(float value, int numDigits, char bufferOut[20]);
     /// \brief Преобразует value в текстовую строку

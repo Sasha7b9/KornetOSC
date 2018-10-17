@@ -201,16 +201,14 @@ void FrequencyCounter::Draw()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 {
-    uint value = fr->word;
-
-    //LOG_WRITE("%d", value);
+    Hex value(fr->word);
 
     switch (FREQ_METER_TIMECOUNTING)
     {
-        case FrequencyCounter::TimeCounting::_100ms:    value *= 100;   break;
-        case FrequencyCounter::TimeCounting::_1s:       value *= 10;    break;
-        case FrequencyCounter::TimeCounting::_10s:                      break;
-        default:                                                        break;
+        case FrequencyCounter::TimeCounting::_100ms: value.Set(value * 100); break;
+        case FrequencyCounter::TimeCounting::_1s:    value.Set(value * 10);  break;
+        case FrequencyCounter::TimeCounting::_10s:                           break;
+        default:                                                             break;
     }
 
     // ¬ этой точке в value хранитс€ завышенное в 10 раз значение частоты
@@ -223,31 +221,31 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
     {
         buffer[i] = '0';
     }
-    buffer[10] = '\0';  
+    buffer[10] = '\0';
 
     if (value < 10)                                                              // «начение меньше 1 √ц
     {
         buffer[5] = '.';
-        buffer[6] = SU::DigitInPosition(value, 0);
+        buffer[6] = value.DigitInPosition(0);
         strcpy(buffer + 7, "√ц");
     }
     else if (value < 10000)                                                      // «начение меньше 1к√ц
     {
         buffer[6] = '.';
-        buffer[5] = SU::DigitInPosition(value, 1);
-        buffer[4] = SU::DigitInPosition(value, 2);
-        buffer[3] = SU::DigitInPosition(value, 3);
+        buffer[5] = value.DigitInPosition(1);
+        buffer[4] = value.DigitInPosition(2);
+        buffer[3] = value.DigitInPosition(3);
         strcpy(buffer + 7, "√ц");
     }
     else if (value < 1000 * 10000)                                               // «начение меньше 1ћ√ц
     {
-        buffer[6] = SU::DigitInPosition(value, 1);
-        buffer[5] = SU::DigitInPosition(value, 2);
-        buffer[4] = SU::DigitInPosition(value, 3);
+        buffer[6] = value.DigitInPosition(1);
+        buffer[5] = value.DigitInPosition(2);
+        buffer[4] = value.DigitInPosition(3);
         buffer[3] = '.';
-        buffer[2] = SU::DigitInPosition(value, 4);
-        buffer[1] = SU::DigitInPosition(value, 5);
-        buffer[0] = SU::DigitInPosition(value, 6);
+        buffer[2] = value.DigitInPosition(4);
+        buffer[1] = value.DigitInPosition(5);
+        buffer[0] = value.DigitInPosition(6);
         strcpy(buffer + 7, "к√ц");
     }
     else

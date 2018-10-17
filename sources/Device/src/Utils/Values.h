@@ -2,37 +2,25 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template<class T>
-class Value
+class Hex
 {
 public:
-    Value(T v) : value(v) {};
-    virtual char* ToString(int depth, char *bufferOut) const = 0;
-protected:
-    T value;
-};
+    Hex(uint v) : value(v) {};
+    /// ѕреобразует значение в текстовую строку в шестнадцатиричном виде. depth задаЄт разр€дность числа - 8, 16 или 32 бит.
+    char* ToHex(int depth, char bufferOut[9]) const;
+    /// ѕреобразует значение в текстовую строку в двоичном виде. depth задаЄт разр€дность числа - 8, 16 или 32 бит.
+    char* ToBin(int depth, char bufferOut[36]) const;
+    /// ¬озвращает символ в позиции pos от последнего (младшего)
+    char DigitInPosition(int pos) const;
 
+    void Set(uint v) { value = v; };
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class Hex : public Value<uint>
-{
-public:
-    Hex(uint v) : Value(v) {};
-    /// ѕреобразует значение в текстовую строку в шестнадцатиричном виде. depth задаЄт разр€дность числа - 8, 16 или 32
-    virtual char* ToString(int depth, char bufferOut[9]) const;
-};
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class Bin : public Value<uint>
-{
-public:
-    Bin(uint v) : Value(v) {};
-
-    virtual char* ToString(int depth, char bufferOut[36]) const;
-
+    operator uint() const { return value; };
 private:
-    char* BinToString8(uint8 value, char buffer[9]) const;
+
+    char *BinToString8(uint8 value, char buffer[9]) const;
+
+    uint value;
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
