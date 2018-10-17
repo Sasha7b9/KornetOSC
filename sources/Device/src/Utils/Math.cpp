@@ -23,6 +23,7 @@ template void CircleDecrease<int16>(int16 *, int16, int16);
 template int16 Abs<int16>(int16);
 template int Abs<int>(int);
 template void LimitationIncrease<uint8>(uint8 *, uint8);
+template void LimitationDecrease<uint8>(uint8 *, uint8);
 template void Limitation<float>(float *, float, float);
 template void Limitation<uint16>(uint16 *, uint16, uint16);
 template void Limitation<int>(int *, int, int);
@@ -546,5 +547,15 @@ void Limitation(T *value, T min, T max)
     else if (*value > max)
     {
         *value = max;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+template<class T>
+void LimitationDecrease(T *value, T min)
+{
+    if (*value > min)
+    {
+        --(*value);
     }
 }

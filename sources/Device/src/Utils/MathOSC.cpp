@@ -60,35 +60,6 @@ int MathOSC::NumDigitsInIntPart(float value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int MathOSC::LowSignedBit(uint value)
-{
-    int verValue = 1;
-
-    for (int i = 0; i < 32; i++)
-    {
-        if ((uint)verValue & value)
-        {
-            return i;
-        }
-
-        verValue <<= 1;
-    }
-
-    return -1;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *MathOSC::Bin2String16(uint16 value, char valBuffer[19])
-{
-    char buffer[9];
-    strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));
-    valBuffer[8] = ' ';
-    strcpy(valBuffer + 9, Bin2String((uint8)value, buffer));
-    valBuffer[18] = '\0';
-    return valBuffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *MathOSC::Bin2String(uint8 value, char buffer[9])
 {
     for (int bit = 0; bit < 8; bit++)

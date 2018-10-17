@@ -101,7 +101,7 @@ template<class T> void CircleDecrease(T *value, T min, T max);
 /// Инкрементировать *value, но не больше, чем max
 template<class T> void  LimitationIncrease(T *value, T max);
 /// Декрементировать *value, но не меньше, чем min
-template<class T> static void LimitationDecrease(T *value, T min) { if (*value > min) { --(*value); } }
+template<class T> void LimitationDecrease(T *value, T min);
 
 template<class T> void Limitation(T *value, T min, T max);
 
