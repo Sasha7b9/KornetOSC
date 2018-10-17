@@ -29,12 +29,8 @@
 class Math
 {
 public:
-    /// Возвращает true, если value входит в диапазон [min; max]
-    static bool IntInRange(int value, int min, int max);
     /// Возвращает номер младшего бита, равного единице
     static int LowSignedBit(uint value);
-    /// Возвращает максимальное значение из трёх
-    static float MaxFloat(float val1, float val2, float val3);
     /// \brief Сравнивает два числа. Возвращает true, если числа отличаются друг от друга не более, чем на epsilonPart. При этом для расчёта epsilonPart 
     /// используется большее в смысле модуля число.
     static bool FloatsIsEquals(float value0, float value1, float epsilonPart);
@@ -88,6 +84,8 @@ public:
     template<class T> static T    Min(T x1, T x2);
 
     template<class T> static T    Max(T x1, T x2);
+    /// Возвращает максимальное значение из трёх
+    template<class T> static T    MaxFloat(T val1, T val2, T val3);
 
     template<class T> static void CircleIncrease(T *value, T min, T max);
 
