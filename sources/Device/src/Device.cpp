@@ -10,6 +10,7 @@
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
 #include "Utils/MathOSC.h"
+#include "Utils/Math.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -71,7 +72,7 @@ Device::Mode Device::CurrentMode()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Device::ChangeMode()
 {
-    MathOSC::CircleIncrease<uint8>((uint8 &)currentMode, 0, Mode::Number - 1);
+    CircleIncrease<uint8>((uint8 *)&currentMode, 0, Mode::Number - 1);
 
     if (currentMode == Mode::Tester)
     {

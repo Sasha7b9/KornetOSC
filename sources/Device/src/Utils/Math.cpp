@@ -13,6 +13,7 @@ template void Swap<int>(int *, int *);
 template int Sign<int>(int);
 template int Sign<int8>(int8);
 template void CircleIncrease<int8>(int8 *, int8, int8);
+template void CircleIncrease<uint8>(uint8 *, uint8, uint8);
 template void CircleIncrease<int16>(int16 *, int16, int16);
 template void CircleIncrease<int>(int *, int, int);
 template int16 Abs<int16>(int16);

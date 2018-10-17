@@ -17,9 +17,6 @@ class MathOSC
 public:
 
     template<class T>
-    static void CircleIncrease(T &value, int min, int max);
-
-    template<class T>
     static void LimitationIncrease(T *value, T max)
     {
         if ((*value) < max) { ++(*value); }
