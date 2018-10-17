@@ -37,8 +37,6 @@ public:
     static char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20]);
 
     static char* FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);
-    /// Преобразует градусы в строку.
-    static char* Phase2String(float phase, bool, char bufferOut[20]);
 
     static char *Db2String(float value, int numDigits, char bufferOut[20]);
     /// \brief Преобразует value в текстовую строку

@@ -248,3 +248,11 @@ char* Voltage::ToString(bool alwaysSign, char buffer[20]) const
     strcat(buffer, suf[LANG][num]);
     return buffer;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* Phase::ToString(char bufferOut[20]) const
+{
+    char buffer[20];
+    sprintf(bufferOut, "%s\xa8", SU::Float2String(value, false, 4, buffer));
+    return bufferOut;
+}

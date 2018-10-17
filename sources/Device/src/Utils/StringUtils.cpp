@@ -80,14 +80,6 @@ char *SU::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *SU::Phase2String(float phase, bool, char bufferOut[20])
-{
-    char buffer[20];
-    sprintf(bufferOut, "%s\xa8", Float2String(phase, false, 4, buffer));
-    return bufferOut;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *SU::Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
 {
     const int SIZE = 20;

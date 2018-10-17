@@ -74,6 +74,7 @@ typedef struct
 static char* Freq2String(float, bool, char buffer[20]);
 static char* Time2String(float, bool, char buffer[20]);
 static char* Voltage2String(float, bool, char buffer[20]);
+static char* Phase2String(float, bool, char buffer[20]);
 
 static const MeasureCalculate sMeas[Measure::Type::Number] =
 {
@@ -98,8 +99,8 @@ static const MeasureCalculate sMeas[Measure::Type::Number] =
     {"CalculateSkvaznostMinus",     CalculateSkvaznostMinus,     SU::FloatFract2String, false, {}},
     {"CalculateDelayPlus",          CalculateDelayPlus,          Time2String,           false, {}},
     {"CalculateDelayMinus",         CalculateDelayMinus,         Time2String,           false, {}},
-    {"CalculatePhazaPlus",          CalculatePhazaPlus,          SU::Phase2String,      false, {}},
-    {"CalculatePhazaMinus",         CalculatePhazaMinus,         SU::Phase2String,      false, {}}
+    {"CalculatePhazaPlus",          CalculatePhazaPlus,          Phase2String,          false, {}},
+    {"CalculatePhazaMinus",         CalculatePhazaMinus,         Phase2String,          false, {}}
 };
 
 
@@ -1587,4 +1588,10 @@ char* Time2String(float time, bool always, char buffer[20])
 char* Voltage2String(float voltage, bool always, char buffer[20])
 {
     return Voltage(voltage).ToString(always, buffer);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* Phase2String(float phase, bool, char buffer[20])
+{
+    return Phase(phase).ToString(buffer);
 }
