@@ -75,39 +75,35 @@ public:
     /// \brief Округляет число с плавающей точкой. numDigits - полное число знаков, по которым производится округление.
     /// Например, RoundFloat(12.37137, 4) округлит до 12.40)
     static float RoundFloat(float value, int numDigits);
+    /// Вычисление 10**pow.
+    static int Pow10(int pow);
+    /// Обменивает местами содержимое памяти по адресам value0 и value1
+    template<class T> static void Swap(T *value0, T *value1);
+    /// Размещает переменные value0 и value1 в порядке возрастания
+    template<class T> static void Sort(T *value0, T *value1);
+
+    template<class T> static int  Sign(T x);
+
+    template<class T> static T    Abs(T x);
+
+    template<class T> static T    Min(T x1, T x2);
+
+    template<class T> static T    Max(T x1, T x2);
+
+    template<class T> static void CircleIncrease(T *value, T min, T max);
+
+    template<class T> static void CircleDecrease(T *value, T min, T max);
+    /// Инкрементировать *value, но не больше, чем max
+    template<class T> static void LimitationIncrease(T *value, T max);
+    /// Декрементировать *value, но не меньше, чем min
+    template<class T> static void LimitationDecrease(T *value, T min);
+
+    template<class T> static void Limitation(T *value, T min, T max);
+
+    template<class T> static T    LimitationRet(T value, T min, T max);
+    /// Прибавить к *value term и ограничить, если результат выходит за границы [min, max]
+    template<class T> static void AdditionThisLimitation(T *value, int term, T min, T max);
 };
-
-
-/// Вычисление 10**pow.
-int Pow10(int pow);
-
-/// Обменивает местами содержимое памяти по адресам value0 и value1
-template<class T> void Swap(T *value0, T *value1);
-
-/// Размещает переменные value0 и value1 в порядке возрастания
-template<class T> void Sort(T *value0, T *value1);
-
-template<class T> int Sign(T x);
-
-template<class T> T Abs(T x);
-
-template<class T> T Min(T x1, T x2);
-
-template<class T> T Max(T x1, T x2);
-
-template<class T> void CircleIncrease(T *value, T min, T max);
-
-template<class T> void CircleDecrease(T *value, T min, T max);
-/// Инкрементировать *value, но не больше, чем max
-template<class T> void  LimitationIncrease(T *value, T max);
-/// Декрементировать *value, но не меньше, чем min
-template<class T> void LimitationDecrease(T *value, T min);
-
-template<class T> void Limitation(T *value, T min, T max);
-
-template<class T> T LimitationRet(T value, T min, T max);
-/// Прибавить к *value term и ограничить, если результат выходит за границы [min, max]
-template<class T> void AdditionThisLimitation(T *value, int term, T min, T max);
 
 #define _bitset(bits)                               \
   ((uint8)(                                         \

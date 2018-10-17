@@ -467,7 +467,7 @@ void Menu::ShortPress_MAC(void *item)
 {
     if (OpenedItem() == item)
     {
-        CircleIncrease<int8>(&gCurDigit, 0, 5);
+        Math::CircleIncrease<int8>(&gCurDigit, 0, 5);
     }
 }
 

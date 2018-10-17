@@ -426,7 +426,7 @@ static void OnPress_Function_Screen()
     }
     else
     {
-        CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
+        Math::CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
     }
 }
 
@@ -474,7 +474,7 @@ DEF_SMALL_BUTTON_HINTS_3(   bFunction_Screen,                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Function_Type()
 {
-    CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
+    Math::CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
 }
 
 static void Draw_Function_Type_Sum(int x, int y)
@@ -508,7 +508,7 @@ DEF_SMALL_BUTTON_HINTS_2(   bFunction_Type,                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Function_ModeRegSet()
 {
-    CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
+    Math::CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
 }
 
 static void Draw_Function_ModeRegSet_Range(int x, int y)

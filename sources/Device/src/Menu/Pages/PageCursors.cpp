@@ -343,7 +343,7 @@ static void Draw_Set_Movement_Points(int x, int y)
 
 static void OnPress_Set_Movement()
 {
-    CircleIncrease<int8>((int8 *)&CURS_MOVEMENT, 0, 1);
+    Math::CircleIncrease<int8>((int8 *)&CURS_MOVEMENT, 0, 1);
 }
 
 static void Draw_Set_Movement(int x, int y)
@@ -445,7 +445,7 @@ DEF_PAGE_5(         pCursors,                                                   
 
 static void SetShiftCursPosU(Chan ch, int numCur, float delta)
 {
-    CURsU_POS(ch, numCur) = LimitationRet(CURsU_POS(ch, numCur) - delta, 0.0f, MAX_POS_U);
+    CURsU_POS(ch, numCur) = Math::LimitationRet(CURsU_POS(ch, numCur) - delta, 0.0f, MAX_POS_U);
 
     if (CURS_MOVEMENT_IN_PIXELS)                        // ≈сли перемещение по пиксел€м, то нужно привести к пиксельной сетке экрана
     {
@@ -457,7 +457,7 @@ void SetShiftCursPosT(Chan ch, int numCur, float delta)
 {
     /// \todo одинаковые ветки
     // CURsT_POS(ch, numCur) = LimitationFloat(CURsT_POS(ch, numCur) + delta, 0, MAX_POS_T);   
-    Cursors::SetCursPosT_temp(ch, numCur, LimitationRet(CURsT_POS(ch, numCur) + delta, 0.0f, MAX_POS_T));
+    Cursors::SetCursPosT_temp(ch, numCur, Math::LimitationRet(CURsT_POS(ch, numCur) + delta, 0.0f, MAX_POS_T));
 
     if (CURS_MOVEMENT_IN_PIXELS)                        // ≈сли перемещение по пиксел€м, то нужно привести к пиксельной сетке экрана
     {
@@ -478,12 +478,12 @@ static void SetCursSource(Chan ch)
 
 static void IncCursCntrlU(Chan ch)
 {
-    CircleIncrease<int8>((int8 *)&CURsU_CNTRL_CH(ch), 0, 3);
+    Math::CircleIncrease<int8>((int8 *)&CURsU_CNTRL_CH(ch), 0, 3);
 }
 
 static void IncCursCntrlT(Chan ch)
 {
-    CircleIncrease<int8>((int8 *)&CURsT_CNTRL_CH(ch), 0, 3);
+    Math::CircleIncrease<int8>((int8 *)&CURsT_CNTRL_CH(ch), 0, 3);
 }
 
 void UpdateCursorsForLook()
@@ -510,13 +510,13 @@ void UpdateCursorsForLook()
 
 static void SetCursorU(Chan ch, int numCur, float pos)
 {
-    CURsU_POS(ch, numCur) = LimitationRet(pos, 0.0f, MAX_POS_U);
+    CURsU_POS(ch, numCur) = Math::LimitationRet(pos, 0.0f, MAX_POS_U);
 }
 
 void SetCursorT(Chan ch, int numCur, float pos)
 {
     // CURsT_POS(ch, numCur) = LimitationFloat(pos, 0, MAX_POS_T);      /// \todo одинаковые ветки
-    Cursors::SetCursPosT_temp(ch, numCur, LimitationRet(pos, 0.0f, MAX_POS_T));
+    Cursors::SetCursPosT_temp(ch, numCur, Math::LimitationRet(pos, 0.0f, MAX_POS_T));
 }
 
 bool IsRegSetActiveOnCursors()

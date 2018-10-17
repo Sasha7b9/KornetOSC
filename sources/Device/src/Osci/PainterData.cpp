@@ -92,7 +92,7 @@ void PainterData::DrawChannel(Chan ch, uint8 *data)
 
                     if(valuePrev < value)
                     {
-                        Swap(&valuePrev, &value);
+                        Math::Swap(&valuePrev, &value);
                     }
 
                     Painter::DrawVLine(x - 1, value, valuePrev);
@@ -213,7 +213,7 @@ int PainterData::Ordinate(uint8 x, float scale)
         return -1;
     }
 
-    LimitationRet<uint8>((uint8)(x - MIN_VALUE), 0, (MAX_VALUE - MIN_VALUE));
+    Math::LimitationRet<uint8>((uint8)(x - MIN_VALUE), 0, (MAX_VALUE - MIN_VALUE));
 
     return (int)((17.0f - scale * x) + 0.5f);
 }

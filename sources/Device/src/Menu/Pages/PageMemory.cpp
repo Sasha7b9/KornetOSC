@@ -115,7 +115,7 @@ DEF_SMALL_BUTTON_EXIT(  bLast_Exit,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Next()
 {
-    CircleIncrease<int16>((int16 *)&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
+    Math::CircleIncrease<int16>((int16 *)&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
 }
 
 static void Draw_Last_Next(int x, int y)
@@ -135,7 +135,7 @@ DEF_SMALL_BUTTON(   bLast_Next,                                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Prev()
 {
-    CircleDecrease<int16>((int16 *)&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
+    Math::CircleDecrease<int16>((int16 *)&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
 }
 
 static void Draw_Last_Prev(int x, int y)
@@ -231,7 +231,7 @@ static void OnRegSet_Last(int angle)
     {
         Sound::RegulatorSwitchRotate();
     }
-    if (Sign(angle) > 0)
+    if (Math::Sign(angle) > 0)
     {
         OnPress_Last_Next();
     }
@@ -797,7 +797,7 @@ DEF_SMALL_BUTTON_HINTS_2(   bInternal_ShowAlways,                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Internal_ModeShow()
 {
-    CircleIncrease<int8>((int8 *)&SHOW_IN_INT, 0, 2);
+    Math::CircleIncrease<int8>((int8 *)&SHOW_IN_INT, 0, 2);
 }
 
 static void Draw_Internal_ModeShow_Direct(int x, int y)
@@ -974,11 +974,11 @@ static void OnRegSet_Internal(int delta)
     Sound::RegulatorSwitchRotate();
     if (delta < 0)
     {
-        CircleDecrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
+        Math::CircleDecrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
     }
     else if (delta > 0)
     {
-        CircleIncrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
+        Math::CircleIncrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
     }
     Painter::ResetFlash();
 }
@@ -1133,9 +1133,9 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 {
     static pFuncVpI8I8I8 func[3] =
     {
-        CircleDecrease<int8>,
-        CircleDecrease<int8>,
-        CircleIncrease<int8>
+        Math::CircleDecrease<int8>,
+        Math::CircleDecrease<int8>,
+        Math::CircleIncrease<int8>
     };
 
     Painter::ResetFlash();
@@ -1143,7 +1143,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     {
         INDEX_SYMBOL = (int8)(maxIndex - 1);
     }
-    func[Sign(angle) + 1](&INDEX_SYMBOL, 0, (int8)(maxIndex - 1));
+    func[Math::Sign(angle) + 1](&INDEX_SYMBOL, 0, (int8)(maxIndex - 1));
     Sound::RegulatorSwitchRotate();
 
 }

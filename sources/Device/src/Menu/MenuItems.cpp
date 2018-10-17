@@ -275,7 +275,7 @@ void Control::ShortPress()
             GovernorColor *governor = (GovernorColor *)this;
             if(Menu::OpenedItem() == this)
             {
-                CircleIncrease<int8>(&governor->ct->currentField, 0, 3);
+                Math::CircleIncrease<int8>(&governor->ct->currentField, 0, 3);
             }
             else
             {

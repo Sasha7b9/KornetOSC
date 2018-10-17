@@ -453,7 +453,7 @@ char *SU::GetWord(char *string, int n, char *out, int size)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int SU::NumDigitsInNumber(int value)
 {
-    value = Abs(value);
+    value = Math::Abs(value);
     int num = 1;
     while ((value /= 10) > 0)
     {

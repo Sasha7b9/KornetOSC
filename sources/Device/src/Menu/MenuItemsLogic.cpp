@@ -82,7 +82,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            CircleIncrease<int8>(&index, 0, (int8)NumSubItems() - 1);
+            Math::CircleIncrease<int8>(&index, 0, (int8)NumSubItems() - 1);
         }
         else if (tsChoice.dir == DECREASE)
         {
@@ -92,7 +92,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            CircleDecrease<int8>(&index, 0, (int8)NumSubItems() - 1);
+            Math::CircleDecrease<int8>(&index, 0, (int8)NumSubItems() - 1);
         }
         *cell = index;
         tsChoice.address = 0;
@@ -222,7 +222,7 @@ float Governor::Step()
 void Governor::ChangeValue(int delta)
 {
     int16 oldValue = *cell;
-    *cell += (int16)(Sign(delta) * Pow10(gCurDigit));
+    *cell += (int16)(Math::Sign(delta) * Math::Pow10(gCurDigit));
     LIMITATION(*cell, minValue, maxValue);
     if (*cell != oldValue)
     {
@@ -239,15 +239,15 @@ void Governor::NextPosition()
 {
     if (Menu::OpenedItem() == this)
     {
-        CircleIncrease<int8>(&gCurDigit, 0, (int8)(NumDigits() - 1));
+        Math::CircleIncrease<int8>(&gCurDigit, 0, (int8)(NumDigits() - 1));
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Governor::NumDigits()
 {
-    int min = SU::NumDigitsInNumber(Abs(minValue));
-    int max = SU::NumDigitsInNumber(Abs(maxValue));
+    int min = SU::NumDigitsInNumber(Math::Abs(minValue));
+    int max = SU::NumDigitsInNumber(Math::Abs(maxValue));
     if (min > max)
     {
         max = min;
@@ -333,7 +333,7 @@ void Time::SetNewTime()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Time::SelectNextPosition()
 {
-    CircleIncrease<int8>(curField, 0, 7);
+    Math::CircleIncrease<int8>(curField, 0, 7);
     Painter::ResetFlash();
 }
 
@@ -398,7 +398,7 @@ void GovernorColor::ChangeValue(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void IPaddress::NextPosition()
 {
-    CircleIncrease<int8>(&gCurDigit, 0, port == 0 ? 11 : 16);
+    Math::CircleIncrease<int8>(&gCurDigit, 0, port == 0 ? 11 : 16);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -421,7 +421,7 @@ void IPaddress::ChangeValue(int delta)
         oldValue = *port;
     }
 
-    int newValue = oldValue + Sign(delta) * Pow10(numPos);
+    int newValue = oldValue + Math::Sign(delta) * Math::Pow10(numPos);
     LIMITATION(newValue, 0, numByte == 4 ? 65535 : 255);
 
     if (oldValue != newValue)

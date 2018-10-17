@@ -1049,7 +1049,7 @@ static void OnPress_SerialNumber()
 
 static void OnRegSet_SerialNumber(int angle)
 {
-    pFuncVpIII p = (angle > 0) ? (CircleIncrease<int>) : (CircleDecrease<int>);
+    pFuncVpIII p = (angle > 0) ? (Math::CircleIncrease<int>) : (Math::CircleDecrease<int>);
 
     ACCESS_EXTRAMEM(StructForSN, s);
 

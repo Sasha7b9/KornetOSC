@@ -206,7 +206,7 @@ static void OnRegSet_Tune(int angle)
     }
     if (Measure::pageChoiceIsActive)
     {
-        Measure::posOnPageChoice += (int8)Sign(currentAngle);
+        Measure::posOnPageChoice += (int8)Math::Sign(currentAngle);
         Sound::RegulatorSwitchRotate();
         if (Measure::posOnPageChoice < 0)
         {
@@ -224,7 +224,7 @@ static void OnRegSet_Tune(int angle)
         int row = 0;
         int col = 0;
         Measure::GetActive(&row, &col);
-        col += Sign(currentAngle);
+        col += Math::Sign(currentAngle);
         if (col < 0)
         {
             col = Measure::NumCols() - 1;

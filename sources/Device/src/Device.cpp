@@ -71,7 +71,7 @@ Device::Mode Device::CurrentMode()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Device::ChangeMode()
 {
-    CircleIncrease<uint8>((uint8 *)&currentMode, 0, Mode::Number - 1);
+    Math::CircleIncrease<uint8>((uint8 *)&currentMode, 0, Mode::Number - 1);
 
     if (currentMode == Mode::Tester)
     {

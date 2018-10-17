@@ -9,27 +9,27 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-template void Swap<int>(int *, int *);
-template int Sign<int>(int);
-template int Sign<int8>(int8);
-template void CircleIncrease<int8>(int8 *, int8, int8);
-template void CircleIncrease<uint8>(uint8 *, uint8, uint8);
-template void CircleIncrease<int16>(int16 *, int16, int16);
-template void CircleIncrease<int>(int *, int, int);
-template void CircleDecrease<int8>(int8 *, int8, int8);
-template void CircleDecrease<uint8>(uint8 *, uint8, uint8);
-template void CircleDecrease<int>(int *, int, int);
-template void CircleDecrease<int16>(int16 *, int16, int16);
-template int16 Abs<int16>(int16);
-template int Abs<int>(int);
-template void LimitationIncrease<uint8>(uint8 *, uint8);
-template void LimitationDecrease<uint8>(uint8 *, uint8);
-template void Limitation<float>(float *, float, float);
-template void Limitation<uint16>(uint16 *, uint16, uint16);
-template void Limitation<int>(int *, int, int);
-template float LimitationRet<float>(float, float, float);
-template uint8 LimitationRet<uint8>(uint8, uint8, uint8);
-template void AdditionThisLimitation<uint16>(uint16 *, int, uint16, uint16);
+template void  Math::Swap<int>(int *, int *);
+template int   Math::Sign<int>(int);
+template int   Math::Sign<int8>(int8);
+template void  Math::CircleIncrease<int8>(int8 *, int8, int8);
+template void  Math::CircleIncrease<uint8>(uint8 *, uint8, uint8);
+template void  Math::CircleIncrease<int16>(int16 *, int16, int16);
+template void  Math::CircleIncrease<int>(int *, int, int);
+template void  Math::CircleDecrease<int8>(int8 *, int8, int8);
+template void  Math::CircleDecrease<uint8>(uint8 *, uint8, uint8);
+template void  Math::CircleDecrease<int>(int *, int, int);
+template void  Math::CircleDecrease<int16>(int16 *, int16, int16);
+template int16 Math::Abs<int16>(int16);
+template int   Math::Abs<int>(int);
+template void  Math::LimitationIncrease<uint8>(uint8 *, uint8);
+template void  Math::LimitationDecrease<uint8>(uint8 *, uint8);
+template void  Math::Limitation<float>(float *, float, float);
+template void  Math::Limitation<uint16>(uint16 *, uint16, uint16);
+template void  Math::Limitation<int>(int *, int, int);
+template float Math::LimitationRet<float>(float, float, float);
+template uint8 Math::LimitationRet<uint8>(uint8, uint8, uint8);
+template void  Math::AdditionThisLimitation<uint16>(uint16 *, int, uint16, uint16);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -118,7 +118,7 @@ int Math::MinFrom2Int(int val0, int val1)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Pow10(int pow)
+int Math::Pow10(int pow)
 {
     int retValue = 1;
 
@@ -446,14 +446,14 @@ bool FloatsIsEquals(float value0, float value1, float epsilonPart)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-void Swap(T *value0, T *value1)
+void Math::Swap(T *value0, T *value1)
 {
      T temp = *value0; *value0 = *value1; *value1 = temp;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-void Sort(T *value0, T *value1)
+void Math::Sort(T *value0, T *value1)
 {
      if (*value1 < *value0)
      {
@@ -463,7 +463,7 @@ void Sort(T *value0, T *value1)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-int Sign(T x)
+int Math::Sign(T x)
 {
      if (x > (T)(0))
      {
@@ -478,7 +478,7 @@ int Sign(T x)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-T Abs(T x)
+T Math::Abs(T x)
 {
      if (x < (T)0)
      {
@@ -503,7 +503,7 @@ T Max(T x1, T x2)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-void CircleIncrease(T *value, T min, T max)
+void Math::CircleIncrease(T *value, T min, T max)
 {
     if (*value < max)
     {
@@ -517,7 +517,7 @@ void CircleIncrease(T *value, T min, T max)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-void CircleDecrease(T *value, T min, T max)
+void Math::CircleDecrease(T *value, T min, T max)
 {
     if (*value > min)
     {
@@ -531,7 +531,7 @@ void CircleDecrease(T *value, T min, T max)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-void LimitationIncrease(T *value, T max)
+void Math::LimitationIncrease(T *value, T max)
 {
     if ((*value) < max)
     {
@@ -541,7 +541,7 @@ void LimitationIncrease(T *value, T max)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-void Limitation(T *value, T min, T max)
+void Math::Limitation(T *value, T min, T max)
 {
     if (*value < min)
     {
@@ -555,7 +555,7 @@ void Limitation(T *value, T min, T max)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-void LimitationDecrease(T *value, T min)
+void Math::LimitationDecrease(T *value, T min)
 {
     if (*value > min)
     {
@@ -565,7 +565,7 @@ void LimitationDecrease(T *value, T min)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-T LimitationRet(T value, T min, T max)
+T Math::LimitationRet(T value, T min, T max)
 {
     if (value < min)
     {
@@ -580,7 +580,7 @@ T LimitationRet(T value, T min, T max)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-void AdditionThisLimitation(T *value, int term, T min, T max)
+void Math::AdditionThisLimitation(T *value, int term, T min, T max)
 {
     if (term > 0)
     {
