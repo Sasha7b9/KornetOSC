@@ -171,7 +171,7 @@ void ColorType::SetBrightness(float bright)
 {
     if (Math::IsEquals(bright, -1.0f))
     {
-        brightness = Math::MaxFloat(red / 31.0f, green / 63.0f, blue / 31.0f);
+        brightness = Math::Max(red / 31.0f, green / 63.0f, blue / 31.0f);
 
         CalcSteps();
     }

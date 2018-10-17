@@ -11,12 +11,15 @@
 template void Math::Limitation<float>(float *, float, float);
 template void Math::Swap<int>(int *, int *);
 template int Math::Sign<int>(int);
+template float Math::Max<float>(float, float, float);
+template bool Math::IsEquals<float>(float, float);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-float Math::MaxFloat(float val1, float val2, float val3)
+template<class T>
+T Math::Max(T val1, T val2, T val3)
 {
-    float retValue = val1;
+    T retValue = val1;
     if (val2 > retValue)
     {
         retValue = val2;
@@ -29,9 +32,10 @@ float Math::MaxFloat(float val1, float val2, float val3)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Math::IsEquals(float x, float y)
+template<class T>
+bool Math::IsEquals(T x, T y)
 {
-    return fabsf(x - y) < std::numeric_limits<float>::epsilon();
+    return fabsf(x - y) < std::numeric_limits<T>::epsilon();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
