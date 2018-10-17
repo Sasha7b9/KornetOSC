@@ -6,6 +6,7 @@
 #include "Hardware/Sound.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
+#include "Utils/Values.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -362,7 +363,7 @@ bool FileManager::GetNameForNewFile(char name[255])
                 if (*ch == 0x07)
                 {
                     number++;
-                    strcpy(wr, SU::Int2String(number, false, *(ch + 1), buffer));
+                    strcpy(wr, Integer(number).ToString(false, *(ch + 1), buffer));
                     wr += strlen(buffer);
                     ch++;
                 }
@@ -370,7 +371,7 @@ bool FileManager::GetNameForNewFile(char name[255])
                 {
                     if (*ch >= 0x01 && *ch <= 0x06)
                     {
-                        strcpy(wr, SU::Int2String((int)values[*ch], false, 2, buffer));
+                        strcpy(wr, Integer((int)values[*ch]).ToString(false, 2, buffer));
                         wr += strlen(buffer);
                     }
                 }

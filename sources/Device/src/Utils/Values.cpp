@@ -75,6 +75,25 @@ char Hex::DigitInPosition(int pos) const
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+char* Integer::ToString(bool alwaysSign, int numMinFields, char buffer[20]) const
+{
+    const int SIZE = 20;
+    char format[SIZE] = "%";
+    snprintf(&(format[1]), SIZE, "0%d", numMinFields);
+    strcat(format, "d");
+    if (alwaysSign && value >= 0)
+    {
+        buffer[0] = '+';
+        snprintf(buffer + 1, SIZE - 1, format, value);
+    }
+    else
+    {
+        snprintf(buffer, SIZE, format, value);
+    }
+    return buffer;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Frequency::ToString(char bufferOut[20]) const
 {
     float freq = value;

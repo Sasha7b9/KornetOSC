@@ -10,6 +10,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
+#include "Utils/Values.h"
 #include <string.h>
 
 
@@ -103,7 +104,7 @@ void GovernorColor::DrawValue(int x, int y, int delta)
         Color colorDraw = (field == i) ? Color::BLACK : Color::WHITE;
         Painter::FillRegion(x - 1, y + 1, 29, 10, colorBack);
         Painter::DrawText(x, y + 2, texts[i], colorDraw);
-        Painter::DrawText(x + 14, y + 2, SU::Int2String(vals[i], false, 1, buffer));
+        Painter::DrawText(x + 14, y + 2, Integer(vals[i]).ToString(false, 1, buffer));
         x -= 30;
     }
 
@@ -156,8 +157,8 @@ void Governor::DrawValue(int x, int y)
     }
     Painter::SetFont(Font::Type::_5);
     bool sign = minValue < 0;
-    Painter::DrawText(x + 55, y - 5, SU::Int2String(maxValue, sign, 1, buffer), Color::WHITE);
-    Painter::DrawText(x + 55, y + 2, SU::Int2String(minValue, sign, 1, buffer));
+    Painter::DrawText(x + 55, y - 5, Integer(maxValue).ToString(sign, 1, buffer), Color::WHITE);
+    Painter::DrawText(x + 55, y + 2, Integer(minValue).ToString(sign, 1, buffer));
     Painter::SetFont(Font::Type::_8);
 
     DrawValueWithSelectedPosition(startX, y, value, NumDigits(), gCurDigit, true, true);
@@ -187,7 +188,7 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
         int delta = (int)Step();
         if (delta == 0)
         {
-            x = Painter::DrawText(x + 1, y + 21, SU::Int2String(*cell, false, 1, buffer));
+            x = Painter::DrawText(x + 1, y + 21, Integer(*cell).ToString(false, 1, buffer));
         }
         else
         {
@@ -199,19 +200,19 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
             Painter::SetColor(Color::BLACK);
             if (delta > 0)
             {
-                x = Painter::DrawTextWithLimitation(drawX, y + 21 - delta, SU::Int2String(*cell, false, 1, buffer), limX, limY, limWidth, limHeight);
-                Painter::DrawTextWithLimitation(drawX, y + 21 + 10 - delta, SU::Int2String(NextValue(), false, 1, buffer), limX, limY, limWidth, limHeight);
+                x = Painter::DrawTextWithLimitation(drawX, y + 21 - delta, Integer(*cell).ToString(false, 1, buffer), limX, limY, limWidth, limHeight);
+                Painter::DrawTextWithLimitation(drawX, y + 21 + 10 - delta, Integer(NextValue()).ToString(false, 1, buffer), limX, limY, limWidth, limHeight);
             }
             if (delta < 0)
             {
-                x = Painter::DrawTextWithLimitation(drawX, y + 21 - delta, SU::Int2String(*cell, false, 1, buffer), limX, limY, limWidth, limHeight);
-                Painter::DrawTextWithLimitation(drawX, y + 21 - 10 - delta, SU::Int2String(PrevValue(), false, 1, buffer), limX, limY, limWidth, limHeight);
+                x = Painter::DrawTextWithLimitation(drawX, y + 21 - delta, Integer(*cell).ToString(false, 1, buffer), limX, limY, limWidth, limHeight);
+                Painter::DrawTextWithLimitation(drawX, y + 21 - 10 - delta, Integer(PrevValue()).ToString(false, 1, buffer), limX, limY, limWidth, limHeight);
             }
         }
     }
     else
     {
-        x = Painter::DrawText(x + 1, y + 21, SU::Int2String(*cell, false, 1, buffer), Color::WHITE);
+        x = Painter::DrawText(x + 1, y + 21, Integer(*cell).ToString(false, 1, buffer), Color::WHITE);
     }
     Painter::DrawText(x + 1, y + 21, "\x81", colorTextDown);
 }
@@ -676,18 +677,18 @@ void TimeControl::DrawClosed(int x, int y)
     int startX = 3;
     y += 21;
     PackedTime time = CPU::RTC_::GetPackedTime();
-    Painter::DrawText(x + startX, y, SU::Int2String((int)time.hours, false, 2, buffer), shade ? Color::MenuItem(true) : Color::BLACK);
+    Painter::DrawText(x + startX, y, Integer((int)time.hours).ToString(false, 2, buffer), shade ? Color::MenuItem(true) : Color::BLACK);
     Painter::DrawText(x + startX + deltaField, y, ":");
-    Painter::DrawText(x + startX + deltaField + deltaSeparator, y, SU::Int2String((int)time.minutes, false, 2, buffer));
+    Painter::DrawText(x + startX + deltaField + deltaSeparator, y, Integer((int)time.minutes).ToString(false, 2, buffer));
     Painter::DrawText(x + startX + 2 * deltaField + deltaSeparator, y, ":");
-    Painter::DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, SU::Int2String((int)time.seconds, false, 2, buffer));
+    Painter::DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, Integer((int)time.seconds).ToString(false, 2, buffer));
 
     startX = 44;
-    Painter::DrawText(x + startX, y, SU::Int2String((int)time.day, false, 2, buffer));
+    Painter::DrawText(x + startX, y, Integer((int)time.day).ToString(false, 2, buffer));
     Painter::DrawText(x + startX + deltaField, y, ":");
-    Painter::DrawText(x + startX + deltaField + deltaSeparator, y, SU::Int2String((int)time.month, false, 2, buffer));
+    Painter::DrawText(x + startX + deltaField + deltaSeparator, y, Integer((int)time.month).ToString(false, 2, buffer));
     Painter::DrawText(x + startX + 2 * deltaField + deltaSeparator, y, ":");
-    Painter::DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, SU::Int2String((int)time.year, false, 2, buffer));
+    Painter::DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, Integer((int)time.year).ToString(false, 2, buffer));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -734,12 +735,12 @@ void TimeControl::DrawOpened(int x, int y)
 
     char strI[8][20];
     strcpy(strI[iEXIT],  "Не сохранять");
-    strcpy(strI[iDAY],   SU::Int2String(*day, false, 2, buffer));
-    strcpy(strI[iMONTH], SU::Int2String(*month, false, 2, buffer));
-    strcpy(strI[iYEAR],  SU::Int2String(*year, false, 2, buffer));
-    strcpy(strI[iHOURS], SU::Int2String(*hours, false, 2, buffer));
-    strcpy(strI[iMIN],   SU::Int2String(*minutes, false, 2, buffer));
-    strcpy(strI[iSEC],   SU::Int2String(*seconds, false, 2, buffer));
+    strcpy(strI[iDAY],   Integer(*day).ToString(false, 2, buffer));
+    strcpy(strI[iMONTH], Integer(*month).ToString(false, 2, buffer));
+    strcpy(strI[iYEAR],  Integer(*year).ToString(false, 2, buffer));
+    strcpy(strI[iHOURS], Integer(*hours).ToString(false, 2, buffer));
+    strcpy(strI[iMIN],   Integer(*minutes).ToString(false, 2, buffer));
+    strcpy(strI[iSEC],   Integer(*seconds).ToString(false, 2, buffer));
     strcpy(strI[iSET],   "Сохранить");
 
     Painter::DrawText(x + 3, y + y0, "д м г - ", Color::WHITE);

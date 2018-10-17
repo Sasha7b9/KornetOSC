@@ -21,13 +21,6 @@ public:
     static bool WordEqualZeroString(Word *word, char* string);
 
     static char *Db2String(float value, int numDigits, char bufferOut[20]);
-    /// \brief ѕреобразует value в текстовую строку
-    /// \attention —трока будет хранитьс€ до следующего вызова функции. ≈сли результат нужен большее количество времени, то его нужно скопировать себе
-    static char* Int2String(int value,         ///< значение
-                            bool alwaysSign,   ///< если установлен в true, знак будет выводитьс€ всегда
-                            int numMinFields,  ///< минимальное число занимаемых знакомест. ≈сли дл€ вывода числа столько не требуетс€, лишние заполн€ютс€ нул€ми
-                            char bufferOut[20] ///< сюда записываетс€ возвращаемое значение
-    );
     /// —равнивает две строки. „исло символов берЄтс€ из str1
     static bool EqualsStrings(char *str1, char *str2);
 
