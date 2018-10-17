@@ -2,6 +2,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
+#include "Utils/Values.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,5 +106,5 @@ char *TShift::ToString(TBase tBase, char buffer[20]) const
 
     int val = value;    /// \todo ¬ этом месте страшенный глюк - без этого промежуточного присваивани€ вылетает
     
-    return SU::Time2String(timeInPoint[tBase] * val, true, buffer);
+    return Time(timeInPoint[tBase] * val).ToString(true, buffer);
 }

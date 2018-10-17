@@ -4,6 +4,7 @@
 #include "StringUtils.h"
 #include "Settings/Settings.h"
 #include <string.h>
+#include <math.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -116,4 +117,49 @@ char *Frequency::ToStringAccuracy(char bufferOut[20], int numDigits) const
     strcat(bufferOut, SU::Float2String(freq, false, numDigits, buffer));
     strcat(bufferOut, suffix);
     return bufferOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *Time::ToString(bool alwaysSign, char buffer[20])
+{
+    float time = value;
+
+    if (Math::IsEquals(time, ERROR_VALUE_FLOAT))
+    {
+        strcpy(buffer, ERROR_STRING_VALUE);
+        return buffer;
+    }
+
+    pString suffix[2][4] =
+    {
+        {"нс", "мкс", "мс", "с"},
+        {"ns", "us",  "ms", "s"}
+    };
+
+    static const float factor[4] = {1e9f, 1e6f, 1e3f, 1.0f};
+
+    float absTime = fabsf(time);
+
+    int num = 0;
+
+    if (absTime + 0.5e-10f < 1e-6f)
+    {
+    }
+    else if (absTime + 0.5e-7f < 1e-3f)
+    {
+        num = 1;
+    }
+    else if (absTime + 0.5e-3f < 1.0f)
+    {
+        num = 2;
+    }
+    else
+    {
+        num = 3;
+    }
+
+    char bufferOut[20];
+    strcpy(buffer, SU::Float2String(time * factor[num], alwaysSign, 4, bufferOut));
+    strcat(buffer, suffix[LANG][num]);
+    return buffer;
 }

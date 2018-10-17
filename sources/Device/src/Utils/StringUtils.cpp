@@ -108,38 +108,6 @@ char *SU::Float2String(float value, bool alwaysSign, int numDigits, char bufferO
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *SU::Time2String(float time, bool alwaysSign, char buffer[20])
-{
-    if (Math::IsEquals(time, ERROR_VALUE_FLOAT))
-    {
-        strcpy(buffer, ERROR_STRING_VALUE);
-        return buffer;
-    }
-    
-    pString suffix[2][4] =
-    {
-        {"нс", "мкс", "мс", "с"},
-        {"ns", "us",  "ms", "s"}
-    };
-
-    static const float factor[4] = {1e9f, 1e6f, 1e3f, 1.0f};
-
-    float absTime = fabsf(time);
-
-    int num = 0;
-
-    if      (absTime + 0.5e-10f < 1e-6f) {          }
-    else if (absTime + 0.5e-7f < 1e-3f)  { num = 1; }
-    else if (absTime + 0.5e-3f < 1.0f)   { num = 2; }
-    else                                 { num = 3; }
-
-    char bufferOut[20];
-    strcpy(buffer, Float2String(time * factor[num], alwaysSign, 4, bufferOut));
-    strcat(buffer, suffix[LANG][num]);
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *SU::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
 {
     return Float2String(value, alwaysSign, 4, bufferOut);

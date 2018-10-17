@@ -48,11 +48,6 @@ public:
     /// \attention —трока будет хранитьс€ до следующего вызова функции. ≈сли результат нужен большее количество времени, то его нужно скопироавать себе.
     /// \retval указатель на строку с числом.
     static char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20]);
-    /// \brief ѕреобразует time секунд в текстовую строку
-    static char* Time2String(float time,    ///< врем€ в секундах. ћожет быть отрицательным
-                      bool alwaysSign,      ///< если true, знак показываетс€ даже если time > 0
-                      char buffer[20]       ///< сюда записываетс€ возвращаемое значение
-    );
 
     static char* FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);
     /// ѕреобразует градусы в строку.
