@@ -232,27 +232,6 @@ char *Bin2String16(uint16 value, char valBuffer[19])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Hex8toString(uint8 value, char buffer[3])
-{
-    sprintf(buffer, "%02X", value);
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Hex16toString(uint16 value, char buffer[5])
-{
-    sprintf(buffer, "%04X", value);
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Hex32toString(uint value, char buffer[9], bool upper)
-{
-    sprintf(buffer, upper ? "%08X" : "%08x", value);
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *SU::Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
 {
     const int SIZE = 20;
@@ -576,7 +555,7 @@ bool SU::WordEqualZeroString(Word *word, char* string)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool EqualsZeroStrings(char *str1, char *str2)
+bool SU::EqualsZeroStrings(char *str1, char *str2)
 {
     while ((*str1) == (*str2))
     {
@@ -591,7 +570,7 @@ bool EqualsZeroStrings(char *str1, char *str2)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool EqualsStrings(char *str1, char *str2, int size)
+bool SU::EqualsStrings(char *str1, char *str2, int size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -604,7 +583,7 @@ bool EqualsStrings(char *str1, char *str2, int size)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool EqualsStrings(char *str1, char *str2)
+bool SU::EqualsStrings(char *str1, char *str2)
 {
     uint size = strlen(str1);
 
@@ -632,4 +611,18 @@ int SU::FindSymbol(const char *string, char symbol)
         ++string;
     }
     return -1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* Hex::ToString(int depth, char buffer[9]) const
+{
+    switch (depth)
+    {
+        case 8:     sprintf(buffer, "%02X", value); break;
+        case 16:    sprintf(buffer, "%04X", value); break;
+        case 32:    sprintf(buffer, "%08X", value); break;
+        default:                                    break;
+    }
+
+    return buffer;
 }

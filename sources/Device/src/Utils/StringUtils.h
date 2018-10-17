@@ -63,15 +63,6 @@ public:
     static char* Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits);
 
     static char *Db2String(float value, int numDigits, char bufferOut[20]);
-    /*
-    /// @brief Преобразует value в текстовую строку в шестнадцатиричном виде
-    /// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
-    char* Hex8toString(uint8 value, char bufferOut[3]);
-
-    char* Hex16toString(uint16 value, char bufferOut[5]);
-
-    char* Hex32toString(uint value, char bufferOut[9], bool upper);
-    */
     /// \brief Преобразует value в текстовую строку
     /// \attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
     static char* Int2String(int value,         ///< значение
@@ -79,18 +70,28 @@ public:
                             int numMinFields,  ///< минимальное число занимаемых знакомест. Если для вывода числа столько не требуется, лишние заполняются нулями
                             char bufferOut[20] ///< сюда записывается возвращаемое значение
     );
-    /*
     /// Сравнивает две строки. Число символов берётся из str1
-    bool EqualsStrings(char *str1, char *str2);
+    static bool EqualsStrings(char *str1, char *str2);
 
-    bool EqualsStrings(char *str1, char *str2, int size);
+    static bool EqualsStrings(char *str1, char *str2, int size);
 
-    bool EqualsZeroStrings(char *str1, char *str2);
-    */
+    static bool EqualsZeroStrings(char *str1, char *str2);
 
 private:
     /// Возвращает false, если выбор невозможен - строка кончилась.
     static bool ChooseSymbols(const char **string);
     /// Возвращает false, если выбор невозможен - строка кончилась.
     static bool ChooseSpaces(const char **string);
+};
+
+
+class Hex
+{
+public:
+    Hex(uint v) : value(v) {};
+    /// Преобразует значение в текстовую строку в шестнадцатиричном виде. depth задаёт разрядность числа - 8, 16 или 32
+    char* ToString(int depth, char bufferOut[9]) const;
+
+private:
+    uint value;
 };
