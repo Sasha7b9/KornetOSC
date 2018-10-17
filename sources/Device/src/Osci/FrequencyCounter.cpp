@@ -4,6 +4,7 @@
 #include "Settings/Settings.h"
 #include "Display/Painter.h"
 #include "Utils/StringUtils.h"
+#include "Utils/Values.h"
 #include "Hardware/FSMC.h"
 #include <string.h>
 

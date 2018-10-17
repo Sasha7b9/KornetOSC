@@ -151,6 +151,7 @@
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Utils\Values.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\Command.h" />
@@ -341,6 +342,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Utils\TablesWindow.h" />
+    <ClInclude Include="..\..\Device\src\Utils\Values.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\common\_VS\algorithm" />
