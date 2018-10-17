@@ -1,5 +1,5 @@
 #include "defines.h"
-#include "Measures.h"
+#include "Measure.h"
 #include "Settings/Settings.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
@@ -19,7 +19,7 @@ typedef struct
 
 #define DEF_STRUCT_MEASURE(name, ugo) {name, ugo, 0, 0, 0}
 
-static const StructMeasure sMeas[Measures::Type::Number] =
+static const StructMeasure sMeas[Measure::Type::Number] =
 {
     DEF_STRUCT_MEASURE("",            '\x00'),
     DEF_STRUCT_MEASURE("U макс",      '\x20'),
@@ -46,12 +46,12 @@ static const StructMeasure sMeas[Measures::Type::Number] =
     DEF_STRUCT_MEASURE("Фаза\xa6",    '\xe5')
 };
 
-int8 Measures::posActive = 0;
-bool Measures::pageChoiceIsActive = false;
-int8 Measures::posOnPageChoice = 0;
+int8 Measure::posActive = 0;
+bool Measure::pageChoiceIsActive = false;
+int8 Measure::posOnPageChoice = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool Measures::IsActive(int row, int col)
+bool Measure::IsActive(int row, int col)
 {
     if(posActive >= NumCols() * NumRows())
     {
@@ -62,7 +62,7 @@ bool Measures::IsActive(int row, int col)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Measures::GetActive(int *row, int *col)
+void Measure::GetActive(int *row, int *col)
 {
     *row = posActive / NumCols();
     *col = posActive - (*row) * NumCols();
@@ -70,19 +70,19 @@ void Measures::GetActive(int *row, int *col)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Measures::SetActive(int row, int col)
+void Measure::SetActive(int row, int col)
 {
     posActive = (int8)(row * NumCols() + col);
 }
 
-char Measures::GetChar(Measures::Type measure)
+char Measure::GetChar(Measure::Type measure)
 {
     return sMeas[measure].UGO;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetDY()
+int Measure::GetDY()
 {
     if(SOURCE_MEASURE_IS_A_B && SET_ENABLED_A && SET_ENABLED_B)
     {
@@ -93,28 +93,28 @@ int Measures::GetDY()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetDX()
+int Measure::GetDX()
 {
     return Grid::Width() / 5; 
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *Measures::Name(int row, int col)
+const char *Measure::Name(int row, int col)
 {
     return sMeas[MEASURE(row * NumCols() + col)].name;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Measures::Type Measures::GetType(int row, int col)
+Measure::Type Measure::GetType(int row, int col)
 {
     return MEASURE(row * NumCols() + col);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetTopTable()
+int Measure::GetTopTable()
 {
     if(NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2)
     {
@@ -125,7 +125,7 @@ int Measures::GetTopTable()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::NumCols()
+int Measure::NumCols()
 {
     const int cols[] = {1, 2, 5, 5, 5, 1, 2};
     return cols[NUM_MEASURES];
@@ -133,7 +133,7 @@ int Measures::NumCols()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::NumRows()
+int Measure::NumRows()
 {
     int rows[] = {1, 1, 1, 2, 3, 6, 6};
     return rows[NUM_MEASURES];
@@ -141,7 +141,7 @@ int Measures::NumRows()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetDeltaGridLeft()
+int Measure::GetDeltaGridLeft()
 {
     if(SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
@@ -159,7 +159,7 @@ int Measures::GetDeltaGridLeft()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetDeltaGridBottom()
+int Measure::GetDeltaGridBottom()
 {
     if(SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
@@ -181,11 +181,11 @@ int Measures::GetDeltaGridBottom()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Measures::ShortPressOnSmallButonMarker()
+void Measure::ShortPressOnSmallButonMarker()
 {
     if(MEASURE(posActive) == MEAS_MARKED)
     {
-        MEAS_MARKED = Measures::Type::None;
+        MEAS_MARKED = Measure::Type::None;
     }
     else
     {
@@ -195,7 +195,7 @@ void Measures::ShortPressOnSmallButonMarker()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Measures::DrawPageChoice()
+void Measure::DrawPageChoice()
 {
     if(!pageChoiceIsActive)
     {
@@ -207,13 +207,13 @@ void Measures::DrawPageChoice()
     int dY = 22;
     int maxRow = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 8 : 5;
     int maxCol = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 3 : 5;
-    Measures::Type meas = Measures::Type::None;
+    Measure::Type meas = Measure::Type::None;
     Painter::SetFont(Font::Type::_UGO);
     for(int row = 0; row < maxRow; row++)
     {
         for(int col = 0; col < maxCol; col++)
         {
-            if(meas >= Measures::Type::Number)
+            if(meas >= Measure::Type::Number)
             {
                 break;
             }
@@ -224,20 +224,20 @@ void Measures::DrawPageChoice()
             Painter::FillRegion(x0 + 1, y0 + 1, dX - 2, dY - 2, (active ? Color::FLASH_10 : Color::BACK));
             Painter::SetColor(active ? Color::FLASH_01 : Color::FILL);
             Painter::Draw10SymbolsInRect(x0 + 2, y0 + 1, GetChar(meas));
-            if(meas < Measures::Type::Number)
+            if(meas < Measure::Type::Number)
             {
                 Painter::SetFont(Font::Type::_5);
                 Painter::DrawTextRelativelyRight(x0 + dX, y0 + 12, sMeas[meas].name, active ? Color::FLASH_01 : Color::FILL);
                 Painter::SetFont(Font::Type::_UGO);
             }
-            meas = (Measures::Type)((int)meas + 1);    // meas++;
+            meas = (Measure::Type)((int)meas + 1);    // meas++;
         }
     }
     Painter::SetFont(Font::Type::_8);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Measures::Draw()
+void Measure::Draw()
 {
     /*
     TOP_MEASURES = GRID_BOTTOM;
@@ -260,13 +260,13 @@ void Measures::Draw()
         Painter::DrawRectangle(x0, y0, x1 - x0, y1 - y0, Color::FILL);
     }
 
-    int x0 = Grid::Left() - Measures::GetDeltaGridLeft();
-    int dX = Measures::GetDX();
-    int dY = Measures::GetDY();
-    int y0 = Measures::GetTopTable();
+    int x0 = Grid::Left() - Measure::GetDeltaGridLeft();
+    int dX = Measure::GetDX();
+    int dY = Measure::GetDY();
+    int y0 = Measure::GetTopTable();
 
-    int numRows = Measures::NumRows();
-    int numCols = Measures::NumCols();
+    int numRows = Measure::NumRows();
+    int numCols = Measure::NumCols();
 
     for (int str = 0; str < numRows; str++)
     {
@@ -274,9 +274,9 @@ void Measures::Draw()
         {
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
-            bool active = Measures::IsActive(str, elem) && Menu::GetNameOpenedPage() == PageSB_Measures_Tune;
+            bool active = Measure::IsActive(str, elem) && Menu::GetNameOpenedPage() == PageSB_Measures_Tune;
             Color color = active ? Color::BACK : Color::FILL;
-            Meas measure = Measures::Type(str, elem);
+            Meas measure = Measure::Type(str, elem);
             if (measure != Meas_None)
             {
                 Painter::FillRegion(x, y, dX, dY, Color::BACK);
@@ -292,11 +292,11 @@ void Measures::Draw()
 #define SIZE_BUFFER 20
                 char buffer[SIZE_BUFFER];
 
-                Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), color);
+                Painter::DrawText(x + 4, y + 2, Measure::Name(str, elem), color);
                 if (measure == MEAS_MARKED)
                 {
                     Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::BACK : Color::FILL);
-                    Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), active ? Color::FILL : Color::BACK);
+                    Painter::DrawText(x + 4, y + 2, Measure::Name(str, elem), active ? Color::FILL : Color::BACK);
                 }
                 if (SOURCE_MEASURE_IS_A && SET_ENABLED_A)
                 {
@@ -318,13 +318,13 @@ void Measures::Draw()
 
     if (Menu::GetNameOpenedPage() == PageSB_Measures_Tune)
     {
-        Measures::DrawPageChoice();
+        Measure::DrawPageChoice();
     }
     */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::Top()
+int Measure::Top()
 {
     return 10;
 }

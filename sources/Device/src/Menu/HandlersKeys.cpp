@@ -27,7 +27,7 @@ void Handlers::Process(KeyEvent e)
     {                   // Press        Repead       Release        Long
         /* None        */ {E,           E,           E,             E},
         /* Function    */ {E,           E,           Function,      E},
-        /* Measures    */ {Measures,    Measures,    Measures,      Measures},
+        /* Measure    */ {Measure,    Measure,    Measure,      Measure},
         /* Memory      */ {Memory,      Memory,      Memory,        Memory},
         /* Service     */ {Service,     Service,     Service,       Service},
         /* ChannelA    */ {ChannelA,    E,           E,             E},
@@ -267,7 +267,7 @@ void Handlers::Function()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Handlers::Measures()
+void Handlers::Measure()
 {
     OpenPage(PageMeasures::pointer);
 }

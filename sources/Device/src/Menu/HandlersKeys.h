@@ -37,7 +37,7 @@ private:
     static void ChannelA();
     static void ChannelB();
     static void Function();
-    static void Measures();
+    static void Measure();
     static void Memory();
     static void Service();
     static void Time();

@@ -133,7 +133,7 @@ void Menu::ProcessButtonForHint(Key button)
             "1. When setting \"ѕјћя“№-EXT\x99STORAGE\x99Mode btn MEMORY\x99Menu\" opens a menu of memory\n"
             "2. When setting \"ѕјћя“№-EXT\x99STORAGE\x99Mode btn MEMORY\x99Save\" saves the signal to the flash drive";
     }
-    else if (button == Key::Measures)
+    else if (button == Key::Measure)
     {
         Menu::stringForHint = LANG_RU ?
             " нопка »«ћ≈– открывает меню автоматических измерений."

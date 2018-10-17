@@ -6,7 +6,7 @@
 #include "Menu/Pages/Definition.h"
 #include "PageMeasures.h"
 #include "Utils/Math.h"
-#include "Utils/Measures.h"
+#include "Utils/Measure.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,7 +148,7 @@ DEF_SMALL_BUTTON_EXIT(  bTune_Exit,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Tune_Markers()
 {
-    Measures::ShortPressOnSmallButonMarker();
+    Measure::ShortPressOnSmallButonMarker();
 }
 
 static void Draw_Tune_Markers(int x, int y)
@@ -168,10 +168,10 @@ DEF_SMALL_BUTTON(   bTune_Markers,                                              
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Tune_Settings()
 {
-    Measures::pageChoiceIsActive = !Measures::pageChoiceIsActive;
-    if (Measures::pageChoiceIsActive)
+    Measure::pageChoiceIsActive = !Measure::pageChoiceIsActive;
+    if (Measure::pageChoiceIsActive)
     {
-        Measures::posOnPageChoice = (int8)MEASURE(Measures::posActive);
+        Measure::posOnPageChoice = (int8)MEASURE(Measure::posActive);
     }
 }
 
@@ -204,46 +204,46 @@ static void OnRegSet_Tune(int angle)
     {
         return;
     }
-    if (Measures::pageChoiceIsActive)
+    if (Measure::pageChoiceIsActive)
     {
-        Measures::posOnPageChoice += (int8)Sign(currentAngle);
+        Measure::posOnPageChoice += (int8)Sign(currentAngle);
         Sound::RegulatorSwitchRotate();
-        if (Measures::posOnPageChoice < 0)
+        if (Measure::posOnPageChoice < 0)
         {
-            Measures::posOnPageChoice = Measures::Type::Number - 1;
+            Measure::posOnPageChoice = Measure::Type::Number - 1;
         }
-        else if (Measures::posOnPageChoice == Measures::Type::Number)
+        else if (Measure::posOnPageChoice == Measure::Type::Number)
         {
-            Measures::posOnPageChoice = 0;
+            Measure::posOnPageChoice = 0;
         }
-        MEASURE(Measures::posActive) = (Measures::Type)Measures::posOnPageChoice;
+        MEASURE(Measure::posActive) = (Measure::Type)Measure::posOnPageChoice;
         Painter::ResetFlash();
     }
     else
     {
         int row = 0;
         int col = 0;
-        Measures::GetActive(&row, &col);
+        Measure::GetActive(&row, &col);
         col += Sign(currentAngle);
         if (col < 0)
         {
-            col = Measures::NumCols() - 1;
+            col = Measure::NumCols() - 1;
             row--;
             if (row < 0)
             {
-                row = Measures::NumRows() - 1;
+                row = Measure::NumRows() - 1;
             }
         }
-        else if (col == Measures::NumCols())
+        else if (col == Measure::NumCols())
         {
             col = 0;
             row++;
-            if (row >= Measures::NumRows())
+            if (row >= Measure::NumRows())
             {
                 row = 0;
             }
         }
-        Measures::SetActive(row, col);
+        Measure::SetActive(row, col);
         Sound::RegulatorSwitchRotate();
     }
     currentAngle = 0;
@@ -287,7 +287,7 @@ DEF_PAGE_6(         pMeasures,                                                  
     cChannels,     // »«Ã≈–≈Õ»ﬂ -  ‡Ì‡Î˚
     ppTune,        // »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹
     cMode,         // »«Ã≈–≈Õ»ﬂ - ¬Ë‰
-    Page::Name::Measures, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Measure, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
 //static const PageBase * pointerPageMeasures = &pMeasures;

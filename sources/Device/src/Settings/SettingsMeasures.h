@@ -5,7 +5,7 @@
 
 /** @addtogroup Settings
  *  @{
- *  @defgroup SettingsMeasures Settings Measures
+ *  @defgroup SettingsMeasures Settings Measure
  *  @{
  */
 

@@ -13,7 +13,7 @@ extern const PageBase pMultimeterResistance;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool FuncActive_RangesVoltageDC()
 {
-    return MULTI_MEASURE == Multimeter::Measures::VoltageDC;
+    return MULTI_MEASURE == Multimeter::Measure::VoltageDC;
 }
 
 static void OnChange_VoltageDC(bool active)
@@ -36,7 +36,7 @@ DEF_CHOICE_3(   cRangesVoltageDC,                                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool FuncActive_RnagesVoltageAC()
 {
-    return MULTI_MEASURE == Multimeter::Measures::VoltageAC;
+    return MULTI_MEASURE == Multimeter::Measure::VoltageAC;
 }
 
 static void OnChange_VoltageAC(bool active)
@@ -60,7 +60,7 @@ DEF_CHOICE_3(   cRangesVoltageAC,                                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool FuncActive_RangesReistance()
 {
-    return MULTI_MEASURE == Multimeter::Measures::Resistance;
+    return MULTI_MEASURE == Multimeter::Measure::Resistance;
 }
 
 static void OnChange_Resistance(bool active)
@@ -133,15 +133,15 @@ const PageBase *PageMultimeter::pointer = &pMultimeterDC;
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PageMultimeter::OnChanged_Mode(bool)
 {
-    if(MULTI_MEASURE == Multimeter::Measures::VoltageDC)
+    if(MULTI_MEASURE == Multimeter::Measure::VoltageDC)
     {
         pointer = &pMultimeterDC ;
     }
-    else if(MULTI_MEASURE == Multimeter::Measures::VoltageAC)
+    else if(MULTI_MEASURE == Multimeter::Measure::VoltageAC)
     {
         pointer = &pMultimeterAC;
     }
-    else if(MULTI_MEASURE == Multimeter::Measures::Resistance)
+    else if(MULTI_MEASURE == Multimeter::Measure::Resistance)
     {
         pointer = &pMultimeterResistance;
     }

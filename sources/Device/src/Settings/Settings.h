@@ -1,5 +1,5 @@
 #pragma once
-#include "Utils/Measures.h"
+#include "Utils/Measure.h"
 #include "SettingsMath.h"
 #include "SettingsMemory.h"
 #include "SettingsDebug.h"
@@ -159,8 +159,8 @@ public:
     MeasuresNumber      meas_number;                    ///< Сколько измерений выводить.
     MeasSource          meas_source;                    ///< Для каких каналов выводить измерения.
     ModeViewSignals     meas_modeViewSignals;           ///< Сжимать ли сигналы при выводе измерений.
-    Measures::Type      meas_measures[15];              ///< Выбранные для индикации измерения.
-    Measures::Type      meas_marked;                    ///< Измерение, на которое нужно выводить маркеры.
+    Measure::Type      meas_measures[15];              ///< Выбранные для индикации измерения.
+    Measure::Type      meas_marked;                    ///< Измерение, на которое нужно выводить маркеры.
 
     // Меню СЕРВИС
 
@@ -251,7 +251,7 @@ public:
 
     // Настройки мультиметра
     Multimeter::AVP             multi_avp;
-    Multimeter::Measures        multi_meas;
+    Multimeter::Measure        multi_meas;
     Multimeter::RangeDC         multi_rangeDC;
     Multimeter::RangeAC         multi_rangeAC;
     Multimeter::RangeResistance multi_rangeResist;

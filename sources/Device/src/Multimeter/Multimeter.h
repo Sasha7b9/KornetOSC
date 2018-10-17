@@ -42,7 +42,7 @@ public:
     static UART_HandleTypeDef handlerUART;
 
     /// Режим измерений мультиметра
-    struct Measures
+    struct Measure
     {
         enum E
         {
@@ -55,25 +55,25 @@ public:
             Bell,
             Number
         } value;
-        Measures(E v) : value(v) { };
+        Measure(E v) : value(v) { };
         operator uint8() const { return (uint8)value; };
         char Symbol() const
         {
             static const char symbols[Number] = {'U', 'V', 'I', 'J', 'R', 'Y', 'W' };
             return symbols[value];
         }
-        static Measures ForSymbol(char symbol)
+        static Measure ForSymbol(char symbol)
         {
             switch(symbol)
             {
-                case 'V':   return Measures::VoltageAC;
-                case 'I':   return Measures::CurrentDC;  
-                case 'J':   return Measures::CurrentAC;  
-                case 'R':   return Measures::Resistance; 
-                case 'Y':   return Measures::TestDiode;  
-                case 'W':   return Measures::Bell;       
+                case 'V':   return Measure::VoltageAC;
+                case 'I':   return Measure::CurrentDC;  
+                case 'J':   return Measure::CurrentAC;  
+                case 'R':   return Measure::Resistance; 
+                case 'Y':   return Measure::TestDiode;  
+                case 'W':   return Measure::Bell;       
             }
-            return Measures::Number;
+            return Measure::Number;
         }
     };
 

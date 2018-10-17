@@ -110,7 +110,7 @@ static const Settings defaultSettings =
     /* meas_source;          */         MeasSource::A_B,
     /* meas_modeViewSignals; */         ModeViewSignals::AsIs,
     /* meas_measures[15];    */         {},
-    /* meas_marked;          */         Measures::Type::Freq,
+    /* meas_marked;          */         Measure::Type::Freq,
     
                                             // Меню СЕРВИС
     
@@ -197,7 +197,7 @@ static const Settings defaultSettings =
 
                                 // Настройки мультиметра
     /* multi_avp */         Multimeter::AVP::Off,
-    /* multi_meas */        Multimeter::Measures::VoltageDC,
+    /* multi_meas */        Multimeter::Measure::VoltageDC,
     /* multi_rangeCV */     Multimeter::RangeDC::_2V,
     /* multi_rangeVV */     Multimeter::RangeAC::_2V,
     /* multi_rangeResist */ Multimeter::RangeResistance::_10M

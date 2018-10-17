@@ -18,8 +18,8 @@ void BottomPart::Draw()
     int y1 = Display::HEIGHT - 10;
     int x = -1;
 
-    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2, Color::SEPARATOR);
-    Painter::DrawHLine(Grid::FullBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2);
+    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measure::GetDeltaGridLeft() - 2, Color::SEPARATOR);
+    Painter::DrawHLine(Grid::FullBottom(), 1, Grid::Left() - Measure::GetDeltaGridLeft() - 2);
     WriteTextVoltage(Chan::A, x + 2, y0);
     WriteTextVoltage(Chan::B, x + 2, y1);
     Painter::DrawVLine(x + 95, Grid::Bottom() + 2, Display::HEIGHT - 2, Color::SEPARATOR);

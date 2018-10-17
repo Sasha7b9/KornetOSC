@@ -1,5 +1,5 @@
 #pragma once
-#include "Utils/Measures.h"
+#include "Utils/Measure.h"
 #include "Data/Storage.h"
 #include "FPGA/FPGATypes.h"
 #include "Settings/SettingsTime.h"
@@ -29,7 +29,7 @@ public:
     /// Аппроксимировать единичное измерение режима рандомизатора функцией sinX/X
     static void InterpolationSinX_X(uint8 *data, int numPoints, TBase tBase);
     /// Возвращает строку автоматического измерения
-    static char* GetStringMeasure(Measures::Type measure, Chan ch, char *buffer, int lenBuf);
+    static char* GetStringMeasure(Measure::Type measure, Chan ch, char *buffer, int lenBuf);
     /// Расчитать все автоматические измерения
     static void CalculateMeasures();
 

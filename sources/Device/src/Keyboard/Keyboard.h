@@ -8,7 +8,7 @@ struct Key
     {
         None = 0,
         Function = 1,
-        Measures = 2,
+        Measure = 2,
         Memory = 3,
         Service = 4,
         ChannelA = 5,

@@ -2516,16 +2516,6 @@
               <FilePath>.\src\Utils\Dictionary.h</FilePath>
             </File>
             <File>
-              <FileName>Measures.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Measures.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Measures.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Measures.h</FilePath>
-            </File>
-            <File>
               <FileName>ProcessingSignal.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Utils\ProcessingSignal.cpp</FilePath>
@@ -2544,6 +2534,16 @@
               <FileName>TablesWindow.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\TablesWindow.h</FilePath>
+            </File>
+            <File>
+              <FileName>Measure.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Measure.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Measure.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Measure.h</FilePath>
             </File>
           </Files>
         </Group>
