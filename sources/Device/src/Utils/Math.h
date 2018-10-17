@@ -85,7 +85,7 @@ public:
 
     template<class T> static T    Max(T x1, T x2);
     /// Возвращает максимальное значение из трёх
-    template<class T> static T    MaxFloat(T val1, T val2, T val3);
+    template<class T> static T    Max(T val1, T val2, T val3);
 
     template<class T> static void CircleIncrease(T *value, T min, T max);
 

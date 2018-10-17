@@ -30,7 +30,7 @@ template void  Math::Limitation<int>(int *, int, int);
 template float Math::LimitationRet<float>(float, float, float);
 template uint8 Math::LimitationRet<uint8>(uint8, uint8, uint8);
 template void  Math::AdditionThisLimitation<uint16>(uint16 *, int, uint16, uint16);
-template float Math::MaxFloat<float>(float, float, float);
+template float Math::Max<float>(float, float, float);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 template<class T>
-T Math::MaxFloat(T val1, T val2, T val3)
+T Math::Max(T val1, T val2, T val3)
 {
     T retValue = val1;
     if (val2 > retValue)
