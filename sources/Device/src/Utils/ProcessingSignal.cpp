@@ -75,32 +75,33 @@ static char* Freq2String(float, bool, char buffer[20]);
 static char* Time2String(float, bool, char buffer[20]);
 static char* Voltage2String(float, bool, char buffer[20]);
 static char* Phase2String(float, bool, char buffer[20]);
+static char* Float2String(float, bool, char buffer[20]);
 
 static const MeasureCalculate sMeas[Measure::Type::Number] =
 {
     {"", 0, 0, false, {}},
-    {"CalculateVoltageMax",         CalculateVoltageMax,         Voltage2String,        true,  {}},
-    {"CalculateVoltageMin",         CalculateVoltageMin,         Voltage2String,        true,  {}},
-    {"CalculateVoltagePic",         CalculateVoltagePic,         Voltage2String,        false, {}},
-    {"CalculateVoltageMaxSteady",   CalculateVoltageMaxSteady,   Voltage2String,        true,  {}},
-    {"CalculateVoltageMinSteady",   CalculateVoltageMinSteady,   Voltage2String,        true,  {}},
-    {"CalculateVoltageAmpl",        CalculateVoltageAmpl,        Voltage2String,        false, {}},
-    {"CalculateVoltageAverage",     CalculateVoltageAverage,     Voltage2String,        true,  {}},
-    {"CalculateVoltageRMS",         CalculateVoltageRMS,         Voltage2String,        false, {}},
-    {"CalculateVoltageVybrosPlus",  CalculateVoltageVybrosPlus,  Voltage2String,        false, {}},
-    {"CalculateVoltageVybrosMinus", CalculateVoltageVybrosMinus, Voltage2String,        false, {}},
-    {"CalculatePeriod",             CalculatePeriod,             Time2String,           false, {}},
-    {"CalculateFreq",               CalculateFreq,               Freq2String,           false, {}},
-    {"CalculateTimeNarastaniya",    CalculateTimeNarastaniya,    Time2String,           false, {}},
-    {"CalculateTimeSpada",          CalculateTimeSpada,          Time2String,           false, {}},
-    {"CalculateDurationPlus",       CalculateDurationPlus,       Time2String,           false, {}},
-    {"CalculateDurationPlus",       CalculateDurationMinus,      Time2String,           false, {}},
-    {"CalculateSkvaznostPlus",      CalculateSkvaznostPlus,      SU::FloatFract2String, false, {}},
-    {"CalculateSkvaznostMinus",     CalculateSkvaznostMinus,     SU::FloatFract2String, false, {}},
-    {"CalculateDelayPlus",          CalculateDelayPlus,          Time2String,           false, {}},
-    {"CalculateDelayMinus",         CalculateDelayMinus,         Time2String,           false, {}},
-    {"CalculatePhazaPlus",          CalculatePhazaPlus,          Phase2String,          false, {}},
-    {"CalculatePhazaMinus",         CalculatePhazaMinus,         Phase2String,          false, {}}
+    {"CalculateVoltageMax",         CalculateVoltageMax,         Voltage2String, true,  {}},
+    {"CalculateVoltageMin",         CalculateVoltageMin,         Voltage2String, true,  {}},
+    {"CalculateVoltagePic",         CalculateVoltagePic,         Voltage2String, false, {}},
+    {"CalculateVoltageMaxSteady",   CalculateVoltageMaxSteady,   Voltage2String, true,  {}},
+    {"CalculateVoltageMinSteady",   CalculateVoltageMinSteady,   Voltage2String, true,  {}},
+    {"CalculateVoltageAmpl",        CalculateVoltageAmpl,        Voltage2String, false, {}},
+    {"CalculateVoltageAverage",     CalculateVoltageAverage,     Voltage2String, true,  {}},
+    {"CalculateVoltageRMS",         CalculateVoltageRMS,         Voltage2String, false, {}},
+    {"CalculateVoltageVybrosPlus",  CalculateVoltageVybrosPlus,  Voltage2String, false, {}},
+    {"CalculateVoltageVybrosMinus", CalculateVoltageVybrosMinus, Voltage2String, false, {}},
+    {"CalculatePeriod",             CalculatePeriod,             Time2String,    false, {}},
+    {"CalculateFreq",               CalculateFreq,               Freq2String,    false, {}},
+    {"CalculateTimeNarastaniya",    CalculateTimeNarastaniya,    Time2String,    false, {}},
+    {"CalculateTimeSpada",          CalculateTimeSpada,          Time2String,    false, {}},
+    {"CalculateDurationPlus",       CalculateDurationPlus,       Time2String,    false, {}},
+    {"CalculateDurationPlus",       CalculateDurationMinus,      Time2String,    false, {}},
+    {"CalculateSkvaznostPlus",      CalculateSkvaznostPlus,      Float2String,   false, {}},
+    {"CalculateSkvaznostMinus",     CalculateSkvaznostMinus,     Float2String,   false, {}},
+    {"CalculateDelayPlus",          CalculateDelayPlus,          Time2String,    false, {}},
+    {"CalculateDelayMinus",         CalculateDelayMinus,         Time2String,    false, {}},
+    {"CalculatePhazaPlus",          CalculatePhazaPlus,          Phase2String,   false, {}},
+    {"CalculatePhazaMinus",         CalculatePhazaMinus,         Phase2String,   false, {}}
 };
 
 
@@ -1594,4 +1595,10 @@ char* Voltage2String(float voltage, bool always, char buffer[20])
 char* Phase2String(float phase, bool, char buffer[20])
 {
     return Phase(phase).ToString(buffer);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* Float2String(float value, bool always, char buffer[20])
+{
+    return Float(value).ToString(always, 4, buffer);
 }

@@ -16,12 +16,6 @@
 #endif
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *SU::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
-{
-    return Float(value).ToString(alwaysSign, 4, bufferOut);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *SU::Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
 {
     const int SIZE = 20;
