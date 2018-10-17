@@ -16,8 +16,13 @@ template void CircleIncrease<int8>(int8 *, int8, int8);
 template void CircleIncrease<uint8>(uint8 *, uint8, uint8);
 template void CircleIncrease<int16>(int16 *, int16, int16);
 template void CircleIncrease<int>(int *, int, int);
+template void CircleDecrease<int8>(int8 *, int8, int8);
+template void CircleDecrease<uint8>(uint8 *, uint8, uint8);
+template void CircleDecrease<int>(int *, int, int);
+template void CircleDecrease<int16>(int16 *, int16, int16);
 template int16 Abs<int16>(int16);
 template int Abs<int>(int);
+template void LimitationIncrease<uint8>(uint8 *, uint8);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -502,3 +507,28 @@ void CircleIncrease(T *value, T min, T max)
         *value = (T)min;
     }
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+template<class T>
+void CircleDecrease(T *value, T min, T max)
+{
+    if (*value > min)
+    {
+        --(*value);
+    }
+    else
+    {
+        *value = (T)max;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+template<class T>
+void LimitationIncrease(T *value, T max)
+{
+    if ((*value) < max)
+    {
+        ++(*value);
+    }
+}
+
