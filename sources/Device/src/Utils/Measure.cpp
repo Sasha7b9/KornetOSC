@@ -270,12 +270,11 @@ void Measure::Graphics::Draw()
                 Painter::DrawRectangle(x, y, dX, dY, Color::FILL);
                 top = Math::Min(top, y);
             }
-            /*
             if (active)
             {
                 Painter::FillRegion(x + 2, y + 2, dX - 4, dY - 4, Color::FILL);
             }
-            if (measure != Meas_None)
+            if (measure != Measure::Type::None)
             {
 #define SIZE_BUFFER 20
                 char buffer[SIZE_BUFFER];
@@ -288,20 +287,19 @@ void Measure::Graphics::Draw()
                 }
                 if (SOURCE_MEASURE_IS_A && SET_ENABLED_A)
                 {
-                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, A, buffer, SIZE_BUFFER), Color::CHAN[A]);
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, Chan::A, buffer, SIZE_BUFFER), Color::Channel(Chan::A));
                 }
                 else if (SOURCE_MEASURE_IS_B && SET_ENABLED_B)
                 {
-                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, B, buffer, SIZE_BUFFER), Color::CHAN[B]);
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, Chan::B, buffer, SIZE_BUFFER), Color::Channel(Chan::B));
                 }
                 else
                 {
-                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, A, buffer, SIZE_BUFFER), Color::CHAN[A]);
-                    Painter::DrawText(x + 2, y + (SET_ENABLED_A ? 20 : 11), Processing::GetStringMeasure(measure, B, buffer, SIZE_BUFFER),
-                                      Color::CHAN[B]);
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, Chan::A, buffer, SIZE_BUFFER), Color::Channel(Chan::A));
+                    Painter::DrawText(x + 2, y + (SET_ENABLED_A ? 20 : 11), Processing::GetStringMeasure(measure, Chan::B, buffer, SIZE_BUFFER),
+                                      Color::Channel(Chan::B));
                 }
             }
-            */
         }
     }
 
