@@ -641,9 +641,6 @@
     <ClInclude Include="..\..\Device\src\Utils\Dictionary.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Utils\ProcessingSignal.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Data\DataSettings.h">
       <Filter>Data</Filter>
     </ClInclude>

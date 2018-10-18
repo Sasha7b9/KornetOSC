@@ -1,14 +1,12 @@
 #include "defines.h"
-#include "Utils/Measure.h"
+#include "Settings/Settings.h"
 #include "Data/Storage.h"
 #define _INCLUDE_DATA_
 #include "Reader.h"
 #undef _INCLUDE_DATA_
 #include "FPGA/FPGA.h"
-#include "Utils/ProcessingSignal.h"
 #include "Hardware/EEPROM.h"
 #include "Utils/Math.h"
-#include "Settings/Settings.h"
 #include <string.h>
 
 

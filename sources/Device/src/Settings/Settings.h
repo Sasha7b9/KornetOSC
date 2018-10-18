@@ -1,5 +1,4 @@
 #pragma once
-#include "Utils/Measure.h"
 #include "SettingsMath.h"
 #include "SettingsMemory.h"
 #include "SettingsDebug.h"
@@ -13,6 +12,7 @@
 #include "Osci/Grid.h"
 #include "Display/Colors.h"
 #include "Multimeter/Multimeter.h"
+#include "Utils/Measure.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

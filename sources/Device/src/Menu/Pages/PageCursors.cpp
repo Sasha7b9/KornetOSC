@@ -4,7 +4,6 @@
 #include "Menu/Pages/Definition.h"
 #include "Settings/Settings.h"
 #include "Keyboard/Keyboard.h"
-#include "Utils/ProcessingSignal.h"
 #include "Hardware/Sound.h"
 #include "Menu/Menu.h"
 #include "Utils/Math.h"

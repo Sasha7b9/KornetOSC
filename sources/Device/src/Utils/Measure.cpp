@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"
-#include "ProcessingSignal.h"
 #include "Utils/Math.h"
 
 
