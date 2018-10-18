@@ -156,7 +156,7 @@ void FileManager::Draw()
     if (FM_NEED_REDRAW == FM_REDRAW_FULL)
     {
         Painter::BeginScene(Color::BACK);
-        Menu::Draw();
+        Menu::Graphics::Draw();
         Painter::DrawRectangle(0, 0, width, 239, Color::FILL);
         Painter::FillRegion(left, top, Grid::Width() - 2, Grid::Height() - 2, Color::BACK);
         FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);

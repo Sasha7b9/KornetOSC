@@ -515,7 +515,7 @@ void Page::Draw(int x, int y, bool opened)
                 }
             }
             x = ItemOpenedPosX(item);
-            y = Menu::CalculateY() - item->HeightOpened() + Menu::Item::HEIGHT + 1;
+            y = Menu::Graphics::Y() - item->HeightOpened() + Menu::Item::HEIGHT + 1;
 
             if (IS_CHOICE(item) || IS_CHOICE_REG(item))
             {

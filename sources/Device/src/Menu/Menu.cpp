@@ -721,17 +721,13 @@ static void DrawHintItem(int x, int y, int width)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Menu::CalculateY()
+int Menu::Graphics::Y()
 {
-    if(Device::CurrentMode() == Device::Mode::Osci)
-    {
-        return Grid::Bottom() - Item::HEIGHT - 1;
-    }
     return Display::HEIGHT - Item::HEIGHT - 2;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::Draw()
+void Menu::Graphics::Draw()
 {
     if (Menu::IsShown() || NOT_PAGE(OpenedItem()))
     {
@@ -741,11 +737,11 @@ void Menu::Draw()
         {
             if (IS_PAGE(item))
             {
-                item->Draw(0, CalculateY(), true);
+                item->Draw(0, Y(), true);
             }
             else
             {
-                ((Page *)KEEPER(item))->Draw(0, CalculateY(), true);
+                ((Page *)KEEPER(item))->Draw(0, Y(), true);
             }
         }
         else

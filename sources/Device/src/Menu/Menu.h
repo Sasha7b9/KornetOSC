@@ -55,8 +55,6 @@ public:
     static void TemporaryEnableStrNavi();
     /// Ввыполнить эту функцию после Menu_UpdateInput().
     static void RunAfterUpdate(pFuncVV func);
-    /// Нарисовать меню
-    static void Draw();
     /// Возвращает адрес открытого элемента меню
     static Control *OpenedItem();
     /// Если true - меню находится в дополнительном режиме.
@@ -71,8 +69,6 @@ public:
     static void CloseOpenedItem();
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
     static void ChangeItem(Control *item, int delta);
-    /// С какоей позиции Y рисовать меню. Позиция берётся без учёта заголовка
-    static int CalculateY();
     /// Вернуть указатель на малую кнопку, соответствующую данной кнопки панели.
     static const SButton* GetSmallButton(Key button);
 
@@ -90,6 +86,15 @@ public:
     static const char *stringForHint;
     /// Item, подсказку для которого нужно выводить в случае включённого режима подсказок.
     static Control *itemHint;
+
+    class Graphics
+    {
+    public:
+        /// Нарисовать меню
+        static void Draw();
+        /// С какоей позиции Y рисовать меню. Позиция берётся без учёта заголовка
+        static int Y();
+    };
 
 private:
 
