@@ -144,7 +144,7 @@ static const Settings defaultSettings =
 
                                             // Настройки частотомера
 
-    /* freq_enable;        */           FrequencyCounter::Enabled::Off,
+    /* freq_enabled;       */           FrequencyCounter::Enabled::Off,
     /* freq_timeCounting;  */           FrequencyCounter::TimeCounting::_1s,
     /* freq_freqClc;       */           FrequencyCounter::FreqClc::_1MHz,
     /* freq_numberPeriods; */           FrequencyCounter::NumberPeriods::_10,

@@ -31,7 +31,7 @@ void FrequencyCounter::Init()
 
     uint8 data = 0;
 
-    if (FREQ_METER_ENABLED)
+    if (FREQ_METER_IS_ENABLED)
     {
         const uint16 maskTime[3] = {0, 1, 2};
         const uint16 maskFreqClc[4] = {0, (1 << 2), (1 << 3), ((1 << 3) + (1 << 2))};
@@ -128,7 +128,7 @@ void FrequencyCounter::ReadPeriod()
 float FrequencyCounter::FreqSetToFreq(const BitSet32 *fr)
 {
     const float k[3] = {10.0f, 1.0f, 0.1f};
-    return FREQ_METER_ENABLED ? (fr->word * k[FREQ_METER_TIMECOUNTING]) : (fr->word * 10.0f);
+    return FREQ_METER_IS_ENABLED ? (fr->word * k[FREQ_METER_TIMECOUNTING]) : (fr->word * 10.0f);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ float FrequencyCounter::PeriodSetToFreq(const BitSet32 *period_)
     const float k[4] = {10e4f, 10e5f, 10e6f, 10e7f};
     const float kP[3] = {1.0f, 10.0f, 100.0f};
 
-    return FREQ_METER_ENABLED ? (k[FREQ_METER_FREQ_CLC] * kP[FREQ_METER_NUM_PERIODS] / (float)period_->word) : (10e5f / (float)period_->word);
+    return FREQ_METER_IS_ENABLED ? (k[FREQ_METER_FREQ_CLC] * kP[FREQ_METER_NUM_PERIODS] / (float)period_->word) : (10e5f / (float)period_->word);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -158,7 +158,7 @@ void FrequencyCounter::Draw()
 #define SIZE 4
 
 
-    if (!FREQ_METER_ENABLED)
+    if (!FREQ_METER_IS_ENABLED)
     {
         return;
     }

@@ -2,7 +2,7 @@
 
 
 #define FREQ_METER_ENABLED              (set.freq_enabled)
-#define FREQ_METER_IS_ENABLED           (FREQ_METER_ENABLED == FPGA::FreqMeter::Enabled::On)
+#define FREQ_METER_IS_ENABLED           (FREQ_METER_ENABLED.value == FrequencyCounter::Enabled::On)
 #define FREQ_METER_TIMECOUNTING         (set.freq_timeCounting)
 #define FREQ_METER_FREQ_CLC             (set.freq_freqClc)
 #define FREQ_METER_NUM_PERIODS          (set.freq_numberPeriods)
@@ -30,10 +30,7 @@ public:
             _1s,
             _10s
         } value;
-        operator uint8() const
-        {
-            return (uint8)value;
-        }
+        operator uint8() const { return (uint8)value; }
     };
 
     /// Частота заполняющих импульсов для счёта частоты.
@@ -46,10 +43,7 @@ public:
             _10MHz,
             _100MHz
         } value;
-        operator uint8() const
-        {
-            return (uint8)value;
-        }
+        operator uint8() const { return (uint8)value; }
     };
 
     /// Количество периодов.
@@ -61,10 +55,7 @@ public:
             _10,
             _100
         } value;
-        operator uint8() const
-        {
-            return (uint8)value;
-        }
+        operator uint8() const { return (uint8)value; }
     };
 
     struct Enabled
@@ -74,10 +65,7 @@ public:
             On,
             Off
         } value;
-        operator uint8() const
-        {
-            return (uint8)value;
-        }
+        uint8 ToUINT8() const { return (uint8)value; };
     };
 
 private:
