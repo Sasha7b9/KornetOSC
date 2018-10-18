@@ -49,7 +49,15 @@ public:
         Type(int8 v = 0) : value((E)v) {};
         operator uint8() const { return (uint8)value; };
     };
-    
+
+    /// \brief ”становить сигнал дл€ обработки. ƒанные берутс€ из DS, inA, inB.
+    /// ¬ыходные данные, соответствующие текущим настройками set, рассчитываютс€ сразу и записываютс€ в outA, outB.
+    static void SetData(bool needSmoothing);
+    /// –ассчитать позицию курсора напр€жени€, соответствующю заданной позиции курсора posCurT
+    static float CalculateCursorU(Chan ch, float posCurT);
+    /// –ассчитать позицию курсора времени, соответствующую заданной позиции курсора напр€жени€ posCurU
+    static float CalculateCursorT(Chan ch, float posCurU, int numCur);
+   
     static char GetChar(Type measure);
 
     static bool IsActive(int row, int col);
@@ -86,6 +94,10 @@ public:
     /// ѕозици€ курсора на странице выбора измерени€
     static int8 posOnPageChoice;
 
+    static void SetMarkerVoltage(Chan ch, int num, float value);
+
+    static void SetMarkerTime(Chan ch, int num, int value);
+
     class Graphics
     {
     public:
@@ -102,16 +114,13 @@ public:
 #define MARKER_VOLTAGE(ch, num)             (Processing::markerVoltage[ch][num] - MIN_VALUE)
 #define MARKER_TIME(ch, num)                (Processing::markerTime[ch][num])
 
+private:
+
     class Processing
     {
+        friend class Measure;
+
     public:
-        /// \brief ”становить сигнал дл€ обработки. ƒанные берутс€ из DS, inA, inB.
-        /// ¬ыходные данные, соответствующие текущим настройками set, рассчитываютс€ сразу и записываютс€ в outA, outB.
-        static void SetData(bool needSmoothing);
-        /// –ассчитать позицию курсора напр€жени€, соответствующю заданной позиции курсора posCurT
-        static float CalculateCursorU(Chan ch, float posCurT);
-        /// –ассчитать позицию курсора времени, соответствующую заданной позиции курсора напр€жени€ posCurU
-        static float CalculateCursorT(Chan ch, float posCurU, int numCur);
         /// јппроксимировать единичное измерение режима рандомизатора функцией sinX/X
         static void InterpolationSinX_X(uint8 *data, int numPoints, TBase tBase);
         /// ¬озвращает строку автоматического измерени€

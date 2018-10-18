@@ -130,9 +130,6 @@ static bool picIsCalculating[2] = {false, false};
 //#define EXIT_IF_ERRORS_UINT8(x, y)  if((x) == ERROR_VALUE_UINT8 || (y) == ERROR_VALUE_UINT8)                          return ERROR_VALUE_FLOAT;
 #define EXIT_IF_ERROR_INT(x)        if((x) == ERROR_VALUE_INT)                                                          return ERROR_VALUE_FLOAT;
 
-#define SET_MARKER_VOLTAGE(ch, num, value)   Measure::Processing::markerVoltage[ch][num] = (int)(value);
-#define SET_MARKER_TIME(ch, num, value)      Measure::Processing::markerTime[ch][num] = (int)(value);
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Measure::Processing::CalculateMeasures()
 {
@@ -184,7 +181,7 @@ float CalculateVoltageMax(Chan ch)
     EXIT_IF_ERROR_FLOAT(max);
     if(MEAS_MARKED == Measure::Type::VoltageMax)
     {
-        SET_MARKER_VOLTAGE(ch, 0, max);             // Здесь не округляем, потому что max может быть только целым
+        Measure::SetMarkerVoltage(ch, 0, max);      // Здесь не округляем, потому что max может быть только целым
     }
 
     return MathFPGA::Point2Voltage((uint8)ROUND(max), RANGE_DS(ch), RSHIFT_DS(ch));
@@ -198,7 +195,7 @@ float CalculateVoltageMin(Chan ch)
     EXIT_IF_ERROR_FLOAT(min);
     if(MEAS_MARKED == Measure::Type::VoltageMin)
     {
-        SET_MARKER_VOLTAGE(ch, 0, min);             // Здесь не округляем, потому что min может быть только целым
+        Measure::SetMarkerVoltage(ch, 0, min);             // Здесь не округляем, потому что min может быть только целым
     }
     
     return MathFPGA::Point2Voltage((uint8)ROUND(min), RANGE_DS(ch),RSHIFT_DS(ch));
@@ -215,8 +212,8 @@ float CalculateVoltagePic(Chan ch)
 
     if(MEAS_MARKED == Measure::Type::VoltagePic)
     {
-        SET_MARKER_VOLTAGE(ch, 0, CalculateMaxRel(ch));
-        SET_MARKER_VOLTAGE(ch, 1, CalculateMinRel(ch));
+        Measure::SetMarkerVoltage(ch, 0, CalculateMaxRel(ch));
+        Measure::SetMarkerVoltage(ch, 1, CalculateMinRel(ch));
     }
     return max - min;
 }
@@ -229,7 +226,7 @@ float CalculateVoltageMinSteady(Chan ch)
     EXIT_IF_ERROR_FLOAT(min);
     if(MEAS_MARKED == Measure::Type::VoltageMinSteady)
     {
-        SET_MARKER_VOLTAGE(ch, 0, ROUND(min));
+        Measure::SetMarkerVoltage(ch, 0, ROUND(min));
     }
 
     return MathFPGA::Point2Voltage((uint8)ROUND(min), RANGE_DS(ch), RSHIFT_DS(ch));
@@ -245,7 +242,7 @@ float CalculateVoltageMaxSteady(Chan ch)
 
     if(MEAS_MARKED == Measure::Type::VoltageMaxSteady)
     {
-        SET_MARKER_VOLTAGE(ch, 0, max);
+        Measure::SetMarkerVoltage(ch, 0, max);
     }
 
     return MathFPGA::Point2Voltage((uint8)ROUND(max), RANGE_DS(ch), RSHIFT_DS(ch));
@@ -262,8 +259,8 @@ float CalculateVoltageVybrosPlus(Chan ch)
 
     if (MEAS_MARKED == Measure::Type::VoltageVybrosPlus)
     {
-        SET_MARKER_VOLTAGE(ch, 0, max);
-        SET_MARKER_VOLTAGE(ch, 1, maxSteady);
+        Measure::SetMarkerVoltage(ch, 0, max);
+        Measure::SetMarkerVoltage(ch, 1, maxSteady);
     }
 
     uint16 rShift = RSHIFT_DS(ch);
@@ -280,8 +277,8 @@ float CalculateVoltageVybrosMinus(Chan ch)
 
     if (MEAS_MARKED == Measure::Type::VoltageVybrosMinus)
     {
-        SET_MARKER_VOLTAGE(ch, 0, min);
-        SET_MARKER_VOLTAGE(ch, 1, minSteady);
+        Measure::SetMarkerVoltage(ch, 0, min);
+        Measure::SetMarkerVoltage(ch, 1, minSteady);
     }
 
     uint16 rShift = RSHIFT_DS(ch);
@@ -299,8 +296,8 @@ float CalculateVoltageAmpl(Chan ch)
 
     if(MEAS_MARKED == Measure::Type::VoltageAmpl)
     {
-        SET_MARKER_VOLTAGE(ch, 0, CalculateMaxSteadyRel(ch));
-        SET_MARKER_VOLTAGE(ch, 1, CalculateMinSteadyRel(ch));
+        Measure::SetMarkerVoltage(ch, 0, CalculateMaxSteadyRel(ch));
+        Measure::SetMarkerVoltage(ch, 1, CalculateMinSteadyRel(ch));
     }
     return max - min;
 }
@@ -331,7 +328,7 @@ float CalculateVoltageAverage(Chan ch)
 
     if(MEAS_MARKED == Measure::Type::VoltageAverage)
     {
-        SET_MARKER_VOLTAGE(ch, 0, aveRel);
+        Measure::SetMarkerVoltage(ch, 0, aveRel);
     }
 
     return MathFPGA::Point2Voltage(aveRel, RANGE_DS(ch), RSHIFT_DS(ch));
@@ -362,7 +359,7 @@ float CalculateVoltageRMS(Chan ch)
 
     if(MEAS_MARKED == Measure::Type::VoltageRMS)
     {
-        SET_MARKER_VOLTAGE(ch, 0, MathFPGA::Voltage2Point(rms, range, rShift));
+        Measure::SetMarkerVoltage(ch, 0, MathFPGA::Voltage2Point(rms, range, rShift));
     }
 
     return rms;
@@ -412,8 +409,8 @@ float CalculatePeriod(Chan ch)
 
     if ((MEAS_MARKED == Measure::Type::Period || MEAS_MARKED == Measure::Type::Freq) && periodIsCaclulating[ch])
     {
-        SET_MARKER_TIME(ch, 0, (int16)firstIntersection - firstByte);
-        SET_MARKER_TIME(ch, 1, (int16)secondIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - firstByte);
     }
 
     return period[ch];
@@ -587,8 +584,8 @@ float CalculateDurationPlus(Chan ch)
 
     if (MEAS_MARKED == Measure::Type::DurationPlus)
     {
-        SET_MARKER_TIME(ch, 0, (int16)firstIntersection - firstByte);
-        SET_MARKER_TIME(ch, 1, (int16)secondIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - firstByte);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection);
@@ -615,8 +612,8 @@ float CalculateDurationMinus(Chan ch)
 
     if (MEAS_MARKED == Measure::Type::DurationMinus)
     {
-        SET_MARKER_TIME(ch, 0, (int16)firstIntersection - firstByte);
-        SET_MARKER_TIME(ch, 1, (int16)secondIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - firstByte);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection);
@@ -654,10 +651,10 @@ float CalculateTimeNarastaniya(Chan ch)   /** \todo Здесь, возможно, нужно увели
 
     if (MEAS_MARKED == Measure::Type::TimeNarastaniya)
     {
-        SET_MARKER_VOLTAGE(ch, 0, max09);
-        SET_MARKER_VOLTAGE(ch, 1, min01);
-        SET_MARKER_TIME(ch, 0, (int16)firstIntersection - firstByte);
-        SET_MARKER_TIME(ch, 1, (int16)secondIntersection - firstByte);
+        Measure::SetMarkerVoltage(ch, 0, max09);
+        Measure::SetMarkerVoltage(ch, 1, min01);
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - firstByte);
     }
 
     return retValue;
@@ -692,10 +689,10 @@ float CalculateTimeSpada(Chan ch)        /// \todo Аналогично времени нарастания
 
     if (MEAS_MARKED == Measure::Type::TimeSpada)
     {
-        SET_MARKER_VOLTAGE(ch, 0, max09);
-        SET_MARKER_VOLTAGE(ch, 1, min01);
-        SET_MARKER_TIME(ch, 0, (int16)firstIntersection - SHIFT_IN_MEMORY);
-        SET_MARKER_TIME(ch, 1, (int16)secondIntersection - SHIFT_IN_MEMORY);
+        Measure::SetMarkerVoltage(ch, 0, max09);
+        Measure::SetMarkerVoltage(ch, 1, min01);
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - SHIFT_IN_MEMORY);
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - SHIFT_IN_MEMORY);
     }
 
     return retValue;
@@ -1061,7 +1058,7 @@ float CalculatePhazaMinus(Chan ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Measure::Processing::SetData(bool needSmoothing)
+void Measure::SetData(bool needSmoothing)
 {
     isSet = true;
 
@@ -1102,12 +1099,12 @@ void Measure::Processing::SetData(bool needSmoothing)
         memcpy(IN_B, OUT_B, (uint)length);
     };
   
-    CountedToCurrentSettings();
+    Processing::CountedToCurrentSettings();
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float Measure::Processing::CalculateCursorU(Chan ch, float posCurT)
+float Measure::CalculateCursorU(Chan ch, float posCurT)
 {
     if(!CHOICE_BUFFER)
     {
@@ -1127,7 +1124,7 @@ float Measure::Processing::CalculateCursorU(Chan ch, float posCurT)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float Measure::Processing::CalculateCursorT(Chan ch, float posCurU, int numCur)
+float Measure::CalculateCursorT(Chan ch, float posCurU, int numCur)
 {
     uint8 *dataIn = CHOICE_BUFFER;
 
