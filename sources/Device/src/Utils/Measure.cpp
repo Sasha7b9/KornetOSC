@@ -294,7 +294,8 @@ void Measure::Graphics::Draw()
                 }
                 else
                 {
-                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, Chan::A, buffer, SIZE_BUFFER), Color::Channel(Chan::A));
+                    Painter::DrawText(x + 2, y + 11,                        Processing::GetStringMeasure(measure, Chan::A, buffer, SIZE_BUFFER), 
+                                      Color::Channel(Chan::A));
                     Painter::DrawText(x + 2, y + (SET_ENABLED_A ? 20 : 11), Processing::GetStringMeasure(measure, Chan::B, buffer, SIZE_BUFFER),
                                       Color::Channel(Chan::B));
                 }

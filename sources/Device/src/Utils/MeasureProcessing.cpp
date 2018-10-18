@@ -1099,7 +1099,7 @@ void Measure::SetData(bool needSmoothing)
         memcpy(IN_B, OUT_B, (uint)length);
     };
   
-    Processing::CountedToCurrentSettings();
+    //Processing::CountedToCurrentSettings();
 }
 
 
