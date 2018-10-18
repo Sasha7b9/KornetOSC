@@ -101,14 +101,14 @@ int Measure::GetDX()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *Measure::Name(int row, int col)
 {
-    return sMeas[MEASURE(row * NumCols() + col)].name;
+    return sMeas[GetType(row, col)].name;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Measure::Type Measure::GetType(int row, int col)
 {
-    return MEASURE(row * NumCols() + col);
+    return set.meas_measures[row * NumCols() + col];
 }
 
 
@@ -182,13 +182,13 @@ int Measure::GetDeltaGridBottom()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Measure::ShortPressOnSmallButonMarker()
 {
-    if(MEASURE(posActive) == MEAS_MARKED)
+    if(set.meas_measures[posActive] == MEAS_MARKED)
     {
         MEAS_MARKED = Measure::Type::None;
     }
     else
     {
-        MEAS_MARKED = MEASURE(posActive);
+        MEAS_MARKED = set.meas_measures[posActive];
     }
 }
 

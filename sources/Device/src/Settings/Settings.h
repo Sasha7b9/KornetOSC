@@ -159,8 +159,8 @@ public:
     MeasuresNumber      meas_number;                    ///< Сколько измерений выводить.
     MeasSource          meas_source;                    ///< Для каких каналов выводить измерения.
     ModeViewSignals     meas_modeViewSignals;           ///< Сжимать ли сигналы при выводе измерений.
-    Measure::Type      meas_measures[15];              ///< Выбранные для индикации измерения.
-    Measure::Type      meas_marked;                    ///< Измерение, на которое нужно выводить маркеры.
+    Measure::Type       meas_measures[15];              ///< Выбранные для индикации измерения.
+    Measure::Type       meas_marked;                    ///< Измерение, на которое нужно выводить маркеры.
 
     // Меню СЕРВИС
 

@@ -109,7 +109,12 @@ static const Settings defaultSettings =
     /* meas_number;          */         MeasuresNumber::_1_5,
     /* meas_source;          */         MeasSource::A_B,
     /* meas_modeViewSignals; */         ModeViewSignals::AsIs,
-    /* meas_measures[15];    */         {},
+    /* meas_measures[15];    */         
+    {
+        Measure::Type::VoltageMax,     Measure::Type::VoltageMin,  Measure::Type::VoltagePic,      Measure::Type::VoltageMaxSteady,  Measure::Type::VoltageMinSteady,
+        Measure::Type::VoltageAverage, Measure::Type::VoltageAmpl, Measure::Type::VoltageRMS,      Measure::Type::VoltageVybrosPlus, Measure::Type::VoltageVybrosMinus,
+        Measure::Type::Period,         Measure::Type::Freq,        Measure::Type::TimeNarastaniya, Measure::Type::TimeSpada,         Measure::Type::DurationPlus
+    },
     /* meas_marked;          */         Measure::Type::Freq,
     
                                             // Ìåíş ÑÅĞÂÈÑ
