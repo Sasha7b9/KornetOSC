@@ -30,6 +30,7 @@ template float Math::LimitationRet<float>(float, float, float);
 template uint8 Math::LimitationRet<uint8>(uint8, uint8, uint8);
 template void  Math::AdditionThisLimitation<uint16>(uint16 *, int, uint16, uint16);
 template float Math::Max<float>(float, float, float);
+template int   Math::Min<int>(int, int);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,6 +101,13 @@ T Math::Max(T val1, T val2, T val3)
         retValue = val3;
     }
     return retValue;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+template<class T>
+T Math::Min(T x1, T x2)
+{
+    return (x1 < x2) ? x1 : x2;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

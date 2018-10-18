@@ -245,7 +245,6 @@
     <ClInclude Include="..\..\Device\src\Menu\MenuItems.h" />
     <ClInclude Include="..\..\Device\src\Menu\MenuItemsAdd.h" />
     <ClInclude Include="..\..\Device\src\Menu\MenuItemsDefs.h" />
-    <ClInclude Include="..\..\Device\src\Menu\MenuPagesNames.h" />
     <ClInclude Include="..\..\Device\src\Menu\MenuTriggers.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\Definition.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\HelpContent.h" />

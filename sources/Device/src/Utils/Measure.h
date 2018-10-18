@@ -46,11 +46,7 @@ public:
         Type(int8 v = 0) : value((E)v) {};
         operator uint8() const { return (uint8)value; };
     };
-    /// Возвращает координату x верхнего левого угла таблицы выводимых измерений
-    static int Top();
-
-    static void Draw();
-
+    
     static char GetChar(Type measure);
 
     static bool IsActive(int row, int col);
@@ -86,6 +82,19 @@ public:
     static bool pageChoiceIsActive;
     /// Позиция курсора на странице выбора измерения
     static int8 posOnPageChoice;
+
+    class Graphics
+    {
+    public:
+        /// Отрисовать результаты автоматических измерений
+        static void Draw();
+        /// Возвращает координату x верхнего левого угла таблицы выводимых измерений
+        static int GetTop();
+
+    private:
+        /// Верхняя координата y выводимой таблицы автоматических измерений
+        static int top;
+    };
 };
 
 

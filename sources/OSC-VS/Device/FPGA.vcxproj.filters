@@ -587,9 +587,6 @@
     <ClInclude Include="..\..\Device\src\Menu\MenuItemsDefs.h">
       <Filter>Menu</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\MenuPagesNames.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Pages\Definition.h">
       <Filter>Menu\Pages</Filter>
     </ClInclude>
