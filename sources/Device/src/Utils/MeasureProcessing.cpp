@@ -104,9 +104,9 @@ static const MeasureCalculate sMeas[Measure::Type::Number] =
 };
 
 
-int Processing::markerTime[Chan::Number][2] = {{ERROR_VALUE_INT}, {ERROR_VALUE_INT}};
+int Measure::Processing::markerTime[Chan::Number][2] = {{ERROR_VALUE_INT}, {ERROR_VALUE_INT}};
 
-int Processing::markerVoltage[Chan::Number][2] = {{ERROR_VALUE_INT}, {ERROR_VALUE_INT}};
+int Measure::Processing::markerVoltage[Chan::Number][2] = {{ERROR_VALUE_INT}, {ERROR_VALUE_INT}};
 
 typedef struct
 {
@@ -130,11 +130,11 @@ static bool picIsCalculating[2] = {false, false};
 //#define EXIT_IF_ERRORS_UINT8(x, y)  if((x) == ERROR_VALUE_UINT8 || (y) == ERROR_VALUE_UINT8)                          return ERROR_VALUE_FLOAT;
 #define EXIT_IF_ERROR_INT(x)        if((x) == ERROR_VALUE_INT)                                                          return ERROR_VALUE_FLOAT;
 
-#define SET_MARKER_VOLTAGE(ch, num, value)   Processing::markerVoltage[ch][num] = (int)(value);
-#define SET_MARKER_TIME(ch, num, value)      Processing::markerTime[ch][num] = (int)(value);
+#define SET_MARKER_VOLTAGE(ch, num, value)   Measure::Processing::markerVoltage[ch][num] = (int)(value);
+#define SET_MARKER_TIME(ch, num, value)      Measure::Processing::markerTime[ch][num] = (int)(value);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Processing::CalculateMeasures()
+void Measure::Processing::CalculateMeasures()
 {
     if(!SHOW_MEASURES || !isSet)
     {
@@ -1061,7 +1061,7 @@ float CalculatePhazaMinus(Chan ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Processing::SetData(bool needSmoothing)
+void Measure::Processing::SetData(bool needSmoothing)
 {
     isSet = true;
 
@@ -1107,7 +1107,7 @@ void Processing::SetData(bool needSmoothing)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float Processing::CalculateCursorU(Chan ch, float posCurT)
+float Measure::Processing::CalculateCursorU(Chan ch, float posCurT)
 {
     if(!CHOICE_BUFFER)
     {
@@ -1127,7 +1127,7 @@ float Processing::CalculateCursorU(Chan ch, float posCurT)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float Processing::CalculateCursorT(Chan ch, float posCurU, int numCur)
+float Measure::Processing::CalculateCursorT(Chan ch, float posCurU, int numCur)
 {
     uint8 *dataIn = CHOICE_BUFFER;
 
@@ -1196,7 +1196,7 @@ float Processing::CalculateCursorT(Chan ch, float posCurU, int numCur)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Processing::InterpolationSinX_X(uint8 *data, int numPoints, TBase tBase)
+void Measure::Processing::InterpolationSinX_X(uint8 *data, int numPoints, TBase tBase)
 {
 /*
      ѕоследовательности x в sin(x)   // Ёто, наверное, неправильно
@@ -1297,7 +1297,7 @@ void Processing::InterpolationSinX_X(uint8 *data, int numPoints, TBase tBase)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* Processing::GetStringMeasure(Measure::Type measure, Chan ch, char* buffer, int lenBuf)
+char* Measure::Processing::GetStringMeasure(Measure::Type measure, Chan ch, char* buffer, int lenBuf)
 {
     if (!SET_ENABLED(ch))
     {
@@ -1341,7 +1341,7 @@ char* Processing::GetStringMeasure(Measure::Type measure, Chan ch, char* buffer,
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Processing::CountedToCurrentSettings()
+void Measure::Processing::CountedToCurrentSettings()
 {
     if ((ENumPointsFPGA::E)ENUM_POINTS_DS != FPGA_ENUM_POINTS)
     {
@@ -1361,7 +1361,7 @@ void Processing::CountedToCurrentSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Processing::CountedTShift()
+void Measure::Processing::CountedTShift()
 {
     const int numBytes = NUM_BYTES_DS;
 
@@ -1424,7 +1424,7 @@ static float CalcAve(uint16 *data, Range range, uint16 rShift)
 */
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Processing::CountedRange(Chan ch)
+void Measure::Processing::CountedRange(Chan ch)
 {
     if (SET_RANGE(ch) != RANGE_DS(ch) || SET_RSHIFT(ch) != RSHIFT_DS(ch))
     {
@@ -1459,7 +1459,7 @@ void Processing::CountedRange(Chan ch)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Processing::CountedTBase()
+void Measure::Processing::CountedTBase()
 {
     if (SET_TBASE != TBASE_DS)
     {
@@ -1542,7 +1542,7 @@ static bool IndexNextPoint(uint8 *data, int numPoints, int prevIndex, int *nextI
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Processing::CountedEnumPoints()
+void Measure::Processing::CountedEnumPoints()
 {
     int numBytes = NUM_BYTES_SET;
 

@@ -491,19 +491,19 @@ void UpdateCursorsForLook()
 
     if(CURS_ACTIVE_T && (CURS_LOOK_U(Chan::A) || CURS_LOOK_BOTH(Chan::A)))
     {
-        SetCursorU(source, 0, Processing::CalculateCursorU(source, CURsT_POS(source, 0)));
+        SetCursorU(source, 0, Measure::Processing::CalculateCursorU(source, CURsT_POS(source, 0)));
     }
     if(CURS_ACTIVE_T && (CURS_LOOK_U(Chan::B) || CURS_LOOK_BOTH(Chan::B)))
     {
-        SetCursorU(source, 1, Processing::CalculateCursorU(source, CURsT_POS(source, 1)));
+        SetCursorU(source, 1, Measure::Processing::CalculateCursorU(source, CURsT_POS(source, 1)));
     }
     if(CURS_ACTIVE_U && (CURS_LOOK_T(Chan::A) || CURS_LOOK_BOTH(Chan::A)))
     {
-        SetCursorT(source, 0, Processing::CalculateCursorT(source, CURsU_POS(source, 0), 0));
+        SetCursorT(source, 0, Measure::Processing::CalculateCursorT(source, CURsU_POS(source, 0), 0));
     }
     if(CURS_ACTIVE_U && (CURS_LOOK_T(Chan::B) || CURS_LOOK_BOTH(Chan::B)))
     {
-        SetCursorT(source, 1, Processing::CalculateCursorT(source, CURsU_POS(source, 1), 1));
+        SetCursorT(source, 1, Measure::Processing::CalculateCursorT(source, CURsU_POS(source, 1), 1));
     }
 }
 
