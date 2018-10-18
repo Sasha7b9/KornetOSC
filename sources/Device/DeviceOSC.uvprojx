@@ -2771,11 +2771,6 @@
               <FilePath>.\src\Utils\Dictionary.h</FilePath>
             </File>
             <File>
-              <FileName>ProcessingSignal.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\ProcessingSignal.cpp</FilePath>
-            </File>
-            <File>
               <FileName>tableslog.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\tableslog.h</FilePath>
@@ -2804,6 +2799,11 @@
               <FileName>Values.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Values.h</FilePath>
+            </File>
+            <File>
+              <FileName>MeasureProcessing.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\MeasureProcessing.cpp</FilePath>
             </File>
           </Files>
         </Group>

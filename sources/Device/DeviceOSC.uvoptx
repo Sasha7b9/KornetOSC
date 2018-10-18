@@ -3407,18 +3407,6 @@
     <File>
       <GroupNumber>20</GroupNumber>
       <FileNumber>250</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\ProcessingSignal.cpp</PathWithFileName>
-      <FilenameWithoutPath>ProcessingSignal.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>20</GroupNumber>
-      <FileNumber>251</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3430,7 +3418,7 @@
     </File>
     <File>
       <GroupNumber>20</GroupNumber>
-      <FileNumber>252</FileNumber>
+      <FileNumber>251</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3442,7 +3430,7 @@
     </File>
     <File>
       <GroupNumber>20</GroupNumber>
-      <FileNumber>253</FileNumber>
+      <FileNumber>252</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3454,7 +3442,7 @@
     </File>
     <File>
       <GroupNumber>20</GroupNumber>
-      <FileNumber>254</FileNumber>
+      <FileNumber>253</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3466,7 +3454,7 @@
     </File>
     <File>
       <GroupNumber>20</GroupNumber>
-      <FileNumber>255</FileNumber>
+      <FileNumber>254</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3478,13 +3466,25 @@
     </File>
     <File>
       <GroupNumber>20</GroupNumber>
-      <FileNumber>256</FileNumber>
+      <FileNumber>255</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\Utils\Values.h</PathWithFileName>
       <FilenameWithoutPath>Values.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>20</GroupNumber>
+      <FileNumber>256</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Utils\MeasureProcessing.cpp</PathWithFileName>
+      <FilenameWithoutPath>MeasureProcessing.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

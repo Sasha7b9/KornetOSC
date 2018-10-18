@@ -228,9 +228,6 @@
     <ClCompile Include="..\..\Device\src\Utils\Dictionary.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Utils\ProcessingSignal.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Data\DataSettings.cpp">
       <Filter>Data</Filter>
     </ClCompile>
@@ -376,6 +373,9 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Utils\Values.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Utils\MeasureProcessing.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>

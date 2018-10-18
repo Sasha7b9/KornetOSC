@@ -131,7 +131,7 @@
     <ClCompile Include="..\..\Device\src\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Math.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Measure.cpp" />
-    <ClCompile Include="..\..\Device\src\Utils\ProcessingSignal.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\MeasureProcessing.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
