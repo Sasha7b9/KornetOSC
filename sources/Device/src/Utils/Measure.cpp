@@ -80,7 +80,7 @@ char Measure::GetChar(Measure::Type measure)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measure::GetDY()
+int Measure::DY()
 {
     if(SOURCE_MEASURE_IS_A_B && SET_ENABLED_A && SET_ENABLED_B)
     {
@@ -91,7 +91,7 @@ int Measure::GetDY()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measure::GetDX()
+int Measure::DX()
 {
     return Grid::Width() / 5; 
 }
@@ -116,9 +116,9 @@ int Measure::GetTopTable()
 {
     if(NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2)
     {
-        return Grid::Bottom() - GetDY() * 6;
+        return Grid::Bottom() - DY() * 6;
     }
-    return Grid::Bottom() - NumRows() * GetDY();
+    return Grid::Bottom() - NumRows() * DY();
 }
 
 
@@ -145,11 +145,11 @@ int Measure::GetDeltaGridLeft()
     {
         if(NUM_MEASURES_IS_6_1)
         {
-            return GetDX();
+            return DX();
         }
         else if(NUM_MEASURES_IS_6_2)
         {
-            return GetDX() * 2;
+            return DX() * 2;
         }
     }
     return 0;
@@ -163,15 +163,15 @@ int Measure::GetDeltaGridBottom()
     {
         if(NUM_MEASURES_IS_1_5)
         {
-            return GetDY();
+            return DY();
         }
         else if(NUM_MEASURES_IS_2_5)
         {
-            return GetDY() * 2;
+            return DY() * 2;
         }
         else if(NUM_MEASURES_IS_3_5)
         {
-            return GetDY() * 3;
+            return DY() * 3;
         }
     }
     return 0;
@@ -247,8 +247,8 @@ void Measure::Graphics::Draw()
     Processing::CalculateMeasures();
 
     int x0 = Grid::Left() - Measure::GetDeltaGridLeft();
-    int dX = Measure::GetDX();
-    int dY = Measure::GetDY();
+    int dX = Measure::DX();
+    int dY = Measure::DY();
     int y0 = Measure::GetTopTable();
 
     int numRows = Measure::NumRows();

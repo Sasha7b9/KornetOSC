@@ -57,6 +57,10 @@ public:
     static float CalculateCursorU(Chan ch, float posCurT);
     /// Рассчитать позицию курсора времени, соответствующую заданной позиции курсора напряжения posCurU
     static float CalculateCursorT(Chan ch, float posCurU, int numCur);
+
+    static void SetMarkerVoltage(Chan ch, int num, float value);
+
+    static void SetMarkerTime(Chan ch, int num, int value);
    
     static char GetChar(Type measure);
 
@@ -65,10 +69,6 @@ public:
     static void GetActive(int *row, int *col);
 
     static void SetActive(int row, int col);
-    /// Возвращает высоту поля для вывода автоматического измерения
-    static int GetDY();
-    /// Возвращает ширину поля для вывода автоматического измерения
-    static int GetDX();
 
     static const char *Name(int row, int col);
 
@@ -94,10 +94,6 @@ public:
     /// Позиция курсора на странице выбора измерения
     static int8 posOnPageChoice;
 
-    static void SetMarkerVoltage(Chan ch, int num, float value);
-
-    static void SetMarkerTime(Chan ch, int num, int value);
-
     class Graphics
     {
     public:
@@ -115,6 +111,11 @@ public:
 #define MARKER_TIME(ch, num)                (Processing::markerTime[ch][num])
 
 private:
+
+    /// Возвращает высоту поля для вывода автоматического измерения
+    static int DY();
+    /// Возвращает ширину поля для вывода автоматического измерения
+    static int DX();
 
     class Processing
     {
