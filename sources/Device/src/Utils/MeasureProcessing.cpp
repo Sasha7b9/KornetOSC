@@ -151,11 +151,13 @@ void Measure::Processing::CalculateMeasures()
     {
         for(int elem = 0; elem < Measure::NumCols(); elem++)
         {
-            Measure::Type measure = Measure::GetType(str, elem);
-            pFuncFCh func = sMeas[measure].FuncCalculate;
+            Measure measure = Measure::Get(str, elem);
+            Measure::Type type = measure.GetType();
+
+            pFuncFCh func = sMeas[type].FuncCalculate;
             if(func)
             {
-                if(measure == MEAS_MARKED || MEAS_MARKED == Measure::Type::None)
+                if(type == MEAS_MARKED || MEAS_MARKED == Measure::Type::None)
                 {
                     markerTime[Chan::A][0] = markerTime[Chan::A][1] = markerTime[Chan::B][0] = markerTime[Chan::B][1] = ERROR_VALUE_INT;
                     markerVoltage[Chan::A][0] = markerVoltage[Chan::A][1] = markerVoltage[Chan::B][0] = markerVoltage[Chan::B][1] = ERROR_VALUE_INT;
@@ -164,11 +166,11 @@ void Measure::Processing::CalculateMeasures()
                 bool enabledA = SET_ENABLED_A;
                 if(isA && enabledA)
                 {
-                    values[measure].value[Chan::A] = func(Chan::A);
+                    values[type].value[Chan::A] = func(Chan::A);
                 }
                 if((SOURCE_MEASURE_IS_B) && SET_ENABLED_B)
                 {
-                    values[measure].value[Chan::B] = func(Chan::B);
+                    values[type].value[Chan::B] = func(Chan::B);
                 }
             }
         }

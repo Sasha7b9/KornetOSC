@@ -98,14 +98,14 @@ int Measure::DX()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *Measure::Name(int row, int col)
+pString Measure::Name()
 {
-    return sMeas[GetType(row, col)].name;
+    return sMeas[GetType()].name;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Measure::Type Measure::GetType(int row, int col)
+Measure::Type Measure::GetType()
 {
     return set.meas_measures[row * NumCols() + col];
 }
@@ -261,9 +261,11 @@ void Measure::Graphics::Draw()
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
             Measure measure = Measure::Get(str, elem);
+
             bool active = measure.IsActive() && Menu::GetNameOpenedPage() == Page::Name::SB_Measures_Tune;
             Color color = active ? Color::BACK : Color::FILL;
-            Measure::Type type = Measure::GetType(str, elem);
+
+            Measure::Type type = measure.GetType();
             if (type != Measure::Type::None)
             {
                 Painter::FillRegion(x, y, dX, dY, Color::BACK);
@@ -279,11 +281,11 @@ void Measure::Graphics::Draw()
 #define SIZE_BUFFER 20
                 char buffer[SIZE_BUFFER];
 
-                Painter::DrawText(x + 4, y + 2, Measure::Name(str, elem), color);
+                Painter::DrawText(x + 4, y + 2, measure.Name(), color);
                 if (type == MEAS_MARKED)
                 {
                     Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::BACK : Color::FILL);
-                    Painter::DrawText(x + 4, y + 2, Measure::Name(str, elem), active ? Color::FILL : Color::BACK);
+                    Painter::DrawText(x + 4, y + 2, measure.Name(), active ? Color::FILL : Color::BACK);
                 }
                 if (SOURCE_MEASURE_IS_A && SET_ENABLED_A)
                 {

@@ -55,6 +55,10 @@ public:
     static Measure Get(int row, int col) { return Measure(row, col); };
     /// ¬озвращает true, если измерение активное - выбрано ручкой
     bool IsActive();
+
+    Type GetType();
+
+    pString Name();
     /// \brief ”становить сигнал дл€ обработки. ƒанные берутс€ из DS, inA, inB.
     /// ¬ыходные данные, соответствующие текущим настройками set, рассчитываютс€ сразу и записываютс€ в outA, outB.
     static void SetData(bool needSmoothing);
@@ -72,10 +76,6 @@ public:
     static void GetActive(int *row, int *col);
 
     static void SetActive(int row, int col);
-
-    static const char *Name(int row, int col);
-
-    static Type GetType(int row, int col);
 
     static int NumRows();
 
