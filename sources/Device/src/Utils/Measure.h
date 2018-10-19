@@ -107,6 +107,21 @@ public:
         operator uint8() const { return (uint8)value; };
     };
 
+    struct OnDisplay
+    {
+        enum E
+        {
+            _1,                       ///< 1 измерение слева внизу.
+            _2,                       ///< 2 измерения слева внизу.
+            _1_5,                     ///< 1 строка с 5 измерениями.
+            _2_5,                     ///< 2 строки по 5 измерений.
+            _3_5,                     ///< 3 строки по 5 измерений.
+            _6_1,                     ///< 6 строк по 1 измерению.
+            _6_2                      ///< 6 строк по 2 измерения.
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
+
     class Graphics
     {
     public:

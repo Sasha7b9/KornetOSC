@@ -106,7 +106,7 @@ static const Settings defaultSettings =
                                             // Ìåíş ÈÇÌÅĞÅÍÈß
     
     /* meas_show;            */         false,
-    /* meas_number;          */         MeasuresNumber::_1_5,
+    /* meas_number;          */         Measure::OnDisplay::_1_5,
     /* meas_source;          */         Measure::Source::A_B,
     /* meas_modeViewSignals; */         ModeViewSignals::AsIs,
     /* meas_measures[15];    */         

@@ -20,21 +20,6 @@ struct ModeViewSignals
     operator uint8() const { return (uint8)value; };
 };
 
-struct MeasuresNumber
-{
-    enum E
-    {
-        _1,                       ///< 1 измерение слева внизу.
-        _2,                       ///< 2 измерения слева внизу.
-        _1_5,                     ///< 1 строка с 5 измерениями.
-        _2_5,                     ///< 2 строки по 5 измерений.
-        _3_5,                     ///< 3 строки по 5 измерений.
-        _6_1,                     ///< 6 строк по 1 измерению.
-        _6_2                      ///< 6 строк по 2 измерения.
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 #define MODE_VIEW_SIGNALS               (set.meas_modeViewSignals) 
 #define MODE_VIEW_SIGNALS_IS_COMPRESS   (MODE_VIEW_SIGNALS == ModeViewSignals::Compress)  // Сжимать ли сетку при выводе измерений
 //#define MEASURE(n)                      (set.meas_measures[n])
@@ -47,11 +32,11 @@ struct MeasuresNumber
 #define MEAS_ZONE_HAND                  (MEAS_ZONE == MeasuresZone_Hand)
 
 #define NUM_MEASURES                    (set.meas_number)
-#define NUM_MEASURES_IS_1_5             (NUM_MEASURES == MeasuresNumber::_1_5)
-#define NUM_MEASURES_IS_2_5             (NUM_MEASURES == MeasuresNumber::_2_5)
-#define NUM_MEASURES_IS_3_5             (NUM_MEASURES == MeasuresNumber::_3_5)
-#define NUM_MEASURES_IS_6_1             (NUM_MEASURES == MeasuresNumber::_6_1)
-#define NUM_MEASURES_IS_6_2             (NUM_MEASURES == MeasuresNumber::_6_2)
+#define NUM_MEASURES_IS_1_5             (NUM_MEASURES == Measure::OnDisplay::_1_5)
+#define NUM_MEASURES_IS_2_5             (NUM_MEASURES == Measure::OnDisplay::_2_5)
+#define NUM_MEASURES_IS_3_5             (NUM_MEASURES == Measure::OnDisplay::_3_5)
+#define NUM_MEASURES_IS_6_1             (NUM_MEASURES == Measure::OnDisplay::_6_1)
+#define NUM_MEASURES_IS_6_2             (NUM_MEASURES == Measure::OnDisplay::_6_2)
 
 #define POS_MEAS_CUR_U(n)               (set.meas_PosCurU[n])
 #define POS_MEAS_CUR_U_0                (POS_MEAS_CUR_U(0))

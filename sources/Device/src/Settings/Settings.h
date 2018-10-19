@@ -156,7 +156,7 @@ public:
     // Меню ИЗМЕРЕНИЯ
 
     bool                meas_show;                      ///< Показывать ли измерения.
-    MeasuresNumber      meas_number;                    ///< Сколько измерений выводить.
+    Measure::OnDisplay  meas_number;                    ///< Сколько измерений выводить.
     Measure::Source     meas_source;                    ///< Для каких каналов выводить измерения.
     ModeViewSignals     meas_modeViewSignals;           ///< Сжимать ли сигналы при выводе измерений.
     Measure::Type       meas_measures[15];              ///< Выбранные для индикации измерения.
