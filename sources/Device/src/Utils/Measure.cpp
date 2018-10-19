@@ -49,7 +49,7 @@ int8 Measure::posOnPageChoice = 0;
 int  Measure::Graphics::top = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool Measure::IsActive(int row, int col)
+bool Measure::IsActive()
 {
     if(posActive >= NumCols() * NumRows())
     {
@@ -260,10 +260,11 @@ void Measure::Graphics::Draw()
         {
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
-            bool active = Measure::IsActive(str, elem) && Menu::GetNameOpenedPage() == Page::Name::SB_Measures_Tune;
+            Measure measure = Measure::Get(str, elem);
+            bool active = measure.IsActive() && Menu::GetNameOpenedPage() == Page::Name::SB_Measures_Tune;
             Color color = active ? Color::BACK : Color::FILL;
-            Measure::Type measure = Measure::GetType(str, elem);
-            if (measure != Measure::Type::None)
+            Measure::Type type = Measure::GetType(str, elem);
+            if (type != Measure::Type::None)
             {
                 Painter::FillRegion(x, y, dX, dY, Color::BACK);
                 Painter::DrawRectangle(x, y, dX, dY, Color::FILL);
@@ -273,30 +274,30 @@ void Measure::Graphics::Draw()
             {
                 Painter::FillRegion(x + 2, y + 2, dX - 4, dY - 4, Color::FILL);
             }
-            if (measure != Measure::Type::None)
+            if (type != Measure::Type::None)
             {
 #define SIZE_BUFFER 20
                 char buffer[SIZE_BUFFER];
 
                 Painter::DrawText(x + 4, y + 2, Measure::Name(str, elem), color);
-                if (measure == MEAS_MARKED)
+                if (type == MEAS_MARKED)
                 {
                     Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::BACK : Color::FILL);
                     Painter::DrawText(x + 4, y + 2, Measure::Name(str, elem), active ? Color::FILL : Color::BACK);
                 }
                 if (SOURCE_MEASURE_IS_A && SET_ENABLED_A)
                 {
-                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, Chan::A, buffer, SIZE_BUFFER), Color::Channel(Chan::A));
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(type, Chan::A, buffer, SIZE_BUFFER), Color::Channel(Chan::A));
                 }
                 else if (SOURCE_MEASURE_IS_B && SET_ENABLED_B)
                 {
-                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(measure, Chan::B, buffer, SIZE_BUFFER), Color::Channel(Chan::B));
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(type, Chan::B, buffer, SIZE_BUFFER), Color::Channel(Chan::B));
                 }
                 else
                 {
-                    Painter::DrawText(x + 2, y + 11,                        Processing::GetStringMeasure(measure, Chan::A, buffer, SIZE_BUFFER), 
+                    Painter::DrawText(x + 2, y + 11,                        Processing::GetStringMeasure(type, Chan::A, buffer, SIZE_BUFFER), 
                                       Color::Channel(Chan::A));
-                    Painter::DrawText(x + 2, y + (SET_ENABLED_A ? 20 : 11), Processing::GetStringMeasure(measure, Chan::B, buffer, SIZE_BUFFER),
+                    Painter::DrawText(x + 2, y + (SET_ENABLED_A ? 20 : 11), Processing::GetStringMeasure(type, Chan::B, buffer, SIZE_BUFFER),
                                       Color::Channel(Chan::B));
                 }
             }

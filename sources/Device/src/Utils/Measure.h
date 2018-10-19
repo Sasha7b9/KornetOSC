@@ -50,6 +50,11 @@ public:
         operator uint8() const { return (uint8)value; };
     };
 
+    Measure(int r, int c) : row(r), col(c) {};
+    /// ¬озвращает сообщение из €чейки (row, col)
+    static Measure Get(int row, int col) { return Measure(row, col); };
+    /// ¬озвращает true, если измерение активное - выбрано ручкой
+    bool IsActive();
     /// \brief ”становить сигнал дл€ обработки. ƒанные берутс€ из DS, inA, inB.
     /// ¬ыходные данные, соответствующие текущим настройками set, рассчитываютс€ сразу и записываютс€ в outA, outB.
     static void SetData(bool needSmoothing);
@@ -63,8 +68,6 @@ public:
     static void SetMarkerTime(Chan ch, int num, int value);
    
     static char GetChar(Type measure);
-
-    static bool IsActive(int row, int col);
 
     static void GetActive(int *row, int *col);
 
@@ -93,6 +96,10 @@ public:
     static bool pageChoiceIsActive;
     /// ѕозици€ курсора на странице выбора измерени€
     static int8 posOnPageChoice;
+    /// —трока в таблице, в которой находитс€ данное измерение
+    int row;
+    ///  олонка в таблице, в которой находитс€ данное измерение
+    int col;
 
     class Graphics
     {
