@@ -108,7 +108,7 @@ static const Settings defaultSettings =
     /* meas_show;            */         false,
     /* meas_number;          */         Measure::OnDisplay::_1_5,
     /* meas_source;          */         Measure::Source::A_B,
-    /* meas_modeViewSignals; */         ModeViewSignals::AsIs,
+    /* meas_modeViewSignals; */         Measure::ModeViewSignals::AsIs,
     /* meas_measures[15];    */         
     {
         Measure::Type::VoltageMax,     Measure::Type::VoltageMin,  Measure::Type::VoltagePic,      Measure::Type::VoltageMaxSteady,  Measure::Type::VoltageMinSteady,

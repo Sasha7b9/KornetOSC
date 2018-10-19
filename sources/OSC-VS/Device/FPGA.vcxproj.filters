@@ -647,9 +647,6 @@
     <ClInclude Include="..\..\Device\src\Data\Reader.h">
       <Filter>Data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Settings\SettingsMeasures.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Settings\SettingsService.h">
       <Filter>Settings</Filter>
     </ClInclude>

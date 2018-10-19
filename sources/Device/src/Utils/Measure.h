@@ -13,6 +13,10 @@
  */
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define SHOW_MEASURES                   (set.meas_show)
+
+#define MEAS_MARKED                     (set.meas_marked)
  /// По какому каналу производить автоматические измерения
 #define SOURCE_MEASURE                  (set.meas_source)
 /// Автоматические измерения производятся по каналу 1
@@ -21,6 +25,25 @@
 #define SOURCE_MEASURE_IS_B             (SOURCE_MEASURE == Measure::Source::B)
 /// Автоматические измерения производятся по обоим каналам
 #define SOURCE_MEASURE_IS_BOTH          (SOURCE_MEASURE == Measure::Source::A_B)
+
+/// Сжимать ли сетку при выводе измерений
+#define MODE_VIEW_SIGNALS               (set.meas_modeViewSignals) 
+#define MODE_VIEW_SIGNALS_IS_COMPRESS   (MODE_VIEW_SIGNALS == Measure::ModeViewSignals::Compress)
+
+#define NUM_MEASURES                    (set.meas_number)
+#define NUM_MEASURES_IS_1_5             (NUM_MEASURES == Measure::OnDisplay::_1_5)
+#define NUM_MEASURES_IS_2_5             (NUM_MEASURES == Measure::OnDisplay::_2_5)
+#define NUM_MEASURES_IS_3_5             (NUM_MEASURES == Measure::OnDisplay::_3_5)
+#define NUM_MEASURES_IS_6_1             (NUM_MEASURES == Measure::OnDisplay::_6_1)
+#define NUM_MEASURES_IS_6_2             (NUM_MEASURES == Measure::OnDisplay::_6_2)
+
+#define POS_MEAS_CUR_U(n)               (set.meas_PosCurU[n])
+#define POS_MEAS_CUR_U_0                (POS_MEAS_CUR_U(0))
+#define POS_MEAS_CUR_U_1                (POS_MEAS_CUR_U(1))
+
+#define POS_MEAS_CUR_T(n)               (set.meas_PosCurT[n])
+#define POS_MEAS_CUR_T_0                (POS_MEAS_CUR_T(0))
+#define POS_MEAS_CUR_T_1                (POS_MEAS_CUR_T(1))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Measure
@@ -96,6 +119,22 @@ public:
     /// Позиция курсора на странице выбора измерения
     static int8 posOnPageChoice;
 
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    /// Сжимать ли сигналы при выводе измерений.
+    struct ModeViewSignals
+    {
+        enum E
+        {
+            AsIs,       ///< Показывать сигналы как есть.
+            Compress    ///< Сжимать сетку с сигналами.
+        } value;
+        operator uint8() const
+        {
+            return (uint8)value;
+        };
+    };
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
     struct Source
     {
         enum E
@@ -107,21 +146,23 @@ public:
         operator uint8() const { return (uint8)value; };
     };
 
+    //------------------------------------------------------------------------------------------------------------------------------------------------
     struct OnDisplay
     {
         enum E
         {
-            _1,                       ///< 1 измерение слева внизу.
-            _2,                       ///< 2 измерения слева внизу.
-            _1_5,                     ///< 1 строка с 5 измерениями.
-            _2_5,                     ///< 2 строки по 5 измерений.
-            _3_5,                     ///< 3 строки по 5 измерений.
-            _6_1,                     ///< 6 строк по 1 измерению.
-            _6_2                      ///< 6 строк по 2 измерения.
+            _1,      ///< 1 измерение слева внизу.
+            _2,      ///< 2 измерения слева внизу.
+            _1_5,    ///< 1 строка с 5 измерениями.
+            _2_5,    ///< 2 строки по 5 измерений.
+            _3_5,    ///< 3 строки по 5 измерений.
+            _6_1,    ///< 6 строк по 1 измерению.
+            _6_2     ///< 6 строк по 2 измерения.
         } value;
         operator uint8() const { return (uint8)value; };
     };
 
+    //------------------------------------------------------------------------------------------------------------------------------------------------
     class Graphics
     {
     public:
@@ -164,6 +205,7 @@ private:
     /// Колонка в таблице, в которой находится данное измерение
     int col;
 
+    //------------------------------------------------------------------------------------------------------------------------------------------------
     class Processing
     {
         friend class Measure;
