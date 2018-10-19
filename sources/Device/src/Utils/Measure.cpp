@@ -117,7 +117,7 @@ void Measure::ChangeActive(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Measure::DY()
 {
-    if(SOURCE_MEASURE_IS_A_B && SET_ENABLED_A && SET_ENABLED_B)
+    if(SOURCE_MEASURE_IS_BOTH && SET_ENABLED_A && SET_ENABLED_B)
     {
         return 30;
     }

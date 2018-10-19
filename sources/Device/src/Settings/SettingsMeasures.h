@@ -9,17 +9,6 @@
  *  @{
  */
 
-struct MeasSource
-{
-    enum E
-    {
-        A,
-        B,
-        A_B
-    } value;
-    operator uint8() const { return (uint8)value; };
-};
-
 /// —жимать ли сигналы при выводе измерений.
 struct ModeViewSignals
 {
@@ -63,16 +52,6 @@ struct MeasuresNumber
 #define NUM_MEASURES_IS_3_5             (NUM_MEASURES == MeasuresNumber::_3_5)
 #define NUM_MEASURES_IS_6_1             (NUM_MEASURES == MeasuresNumber::_6_1)
 #define NUM_MEASURES_IS_6_2             (NUM_MEASURES == MeasuresNumber::_6_2)
-
-/// ѕо какому каналу производить автоматические измерени€
-#define SOURCE_MEASURE                  (set.meas_source)
-
-/// јвтоматические измерени€ производ€тс€ по каналу 1
-#define SOURCE_MEASURE_IS_A             (SOURCE_MEASURE == MeasSource::A)
-/// јвтоматические измерени€ производ€тс€ по каналу 2
-#define SOURCE_MEASURE_IS_B             (SOURCE_MEASURE == MeasSource::B)
-/// јвтоматические измерени€ производ€тс€ по обоим каналам
-#define SOURCE_MEASURE_IS_A_B           (SOURCE_MEASURE == MeasSource::A_B)
 
 #define POS_MEAS_CUR_U(n)               (set.meas_PosCurU[n])
 #define POS_MEAS_CUR_U_0                (POS_MEAS_CUR_U(0))

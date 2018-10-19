@@ -145,7 +145,7 @@ struct Resistance
 #define SET_DIVIDER_10(ch)      (SET_DIVIDER(ch) == Divider::_10)
 #define SET_DIVIDER_1(ch)       (SET_DIVIDER(ch) == Divider::_1)
 
-#define SET_ENABLED(ch)         (set.chan_enable[ch])
+#define SET_ENABLED(ch)         (set.chan_enabled[ch])
 #define SET_ENABLED_A           (SET_ENABLED(Chan::A))
 #define SET_ENABLED_B           (SET_ENABLED(Chan::B))
 #define SET_ENABLED_BOTH        (SET_ENABLED_A && SET_ENABLED_B)

@@ -162,13 +162,16 @@ void Measure::Processing::CalculateMeasures()
                     markerTime[Chan::A][0] = markerTime[Chan::A][1] = markerTime[Chan::B][0] = markerTime[Chan::B][1] = ERROR_VALUE_INT;
                     markerVoltage[Chan::A][0] = markerVoltage[Chan::A][1] = markerVoltage[Chan::B][0] = markerVoltage[Chan::B][1] = ERROR_VALUE_INT;
                 }
+                
                 bool isA = SOURCE_MEASURE_IS_A;
-                bool enabledA = SET_ENABLED_A;
-                if(isA && enabledA)
+                bool isB = SOURCE_MEASURE_IS_B;
+                
+                if(isA && SET_ENABLED_A)
                 {
                     values[type].value[Chan::A] = func(Chan::A);
                 }
-                if((SOURCE_MEASURE_IS_B) && SET_ENABLED_B)
+                
+                if(isB && SET_ENABLED_B)
                 {
                     values[type].value[Chan::B] = func(Chan::B);
                 }

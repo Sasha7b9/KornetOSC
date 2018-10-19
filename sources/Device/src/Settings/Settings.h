@@ -87,7 +87,7 @@ public:
     uint16              chan_shift[Chan::Number];           ///< Сдвиг канала по вертикали
     Range               chan_range[Chan::Number];           ///< Масштаб канала по вертикали
     ModeCouple          chan_couple[Chan::Number];          ///< Связь по входу
-    bool                chan_enable[Chan::Number];          ///< Включен/выключен канал
+    bool                chan_enabled[Chan::Number];         ///< Включен/выключен канал
     int8                chan_balanceShiftADC[2];            ///< Добавочное смещение для балансировки АЦП.
     Bandwidth           chan_bandwidth[2];                  ///< Ограничение полосы.
     Resistance          chan_resistance[2];                 ///< Сопротивление входа.
@@ -157,7 +157,7 @@ public:
 
     bool                meas_show;                      ///< Показывать ли измерения.
     MeasuresNumber      meas_number;                    ///< Сколько измерений выводить.
-    MeasSource          meas_source;                    ///< Для каких каналов выводить измерения.
+    Measure::Source     meas_source;                    ///< Для каких каналов выводить измерения.
     ModeViewSignals     meas_modeViewSignals;           ///< Сжимать ли сигналы при выводе измерений.
     Measure::Type       meas_measures[15];              ///< Выбранные для индикации измерения.
     Measure::Type       meas_marked;                    ///< Измерение, на которое нужно выводить маркеры.

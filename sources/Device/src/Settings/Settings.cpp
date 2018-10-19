@@ -47,7 +47,7 @@ static const Settings defaultSettings =
     /* chan_shift[Chan::Number];    */     {RShift::ZERO, RShift::ZERO},
     /* chan_range[Chan::Number];    */     {Range::_500mV, Range::_500mV},
     /* chan_couple[Chan::Number];   */     {ModeCouple::DC, ModeCouple::DC},
-    /* chan_enable[Chan::Number];   */     {true, true},
+    /* chan_enabled[Chan::Number];   */    {true, true},
     /* chan_balanceShiftADC[2];  */     {0, 0},
     /* chan_bandwidth[2];        */     {Bandwidth::Full, Bandwidth::Full},
     /* chan_resistance[2];       */     {Resistance::_1Mom, Resistance::_1Mom},
@@ -107,7 +107,7 @@ static const Settings defaultSettings =
     
     /* meas_show;            */         false,
     /* meas_number;          */         MeasuresNumber::_1_5,
-    /* meas_source;          */         MeasSource::A_B,
+    /* meas_source;          */         Measure::Source::A_B,
     /* meas_modeViewSignals; */         ModeViewSignals::AsIs,
     /* meas_measures[15];    */         
     {

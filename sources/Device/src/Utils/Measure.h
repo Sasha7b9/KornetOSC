@@ -12,6 +12,16 @@
  *  @{
  */
 
+
+ /// ѕо какому каналу производить автоматические измерени€
+#define SOURCE_MEASURE                  (set.meas_source)
+/// јвтоматические измерени€ производ€тс€ по каналу 1
+#define SOURCE_MEASURE_IS_A             (SOURCE_MEASURE == Measure::Source::A)
+/// јвтоматические измерени€ производ€тс€ по каналу 2
+#define SOURCE_MEASURE_IS_B             (SOURCE_MEASURE == Measure::Source::B)
+/// јвтоматические измерени€ производ€тс€ по обоим каналам
+#define SOURCE_MEASURE_IS_BOTH          (SOURCE_MEASURE == Measure::Source::A_B)
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Measure
 {
@@ -85,6 +95,17 @@ public:
     static bool pageChoiceIsActive;
     /// ѕозици€ курсора на странице выбора измерени€
     static int8 posOnPageChoice;
+
+    struct Source
+    {
+        enum E
+        {
+            A,
+            B,
+            A_B
+        } value;
+        operator uint8() const { return (uint8)value; };
+    };
 
     class Graphics
     {
