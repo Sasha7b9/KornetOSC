@@ -157,7 +157,6 @@ void FrequencyCounter::Draw()
 #define EMPTY_STRING "---.---"
 #define SIZE 4
 
-
     if (!FREQ_METER_IS_ENABLED)
     {
         return;

@@ -62,8 +62,8 @@ public:
     {
         enum E
         {
-            On,
-            Off
+            Off,
+            On
         } value;
         uint8 ToUINT8() const { return (uint8)value; };
     };
