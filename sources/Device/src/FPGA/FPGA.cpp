@@ -7,6 +7,7 @@
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include "Data/Storage.h"
+#include "TrigLev.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -790,7 +791,10 @@ void FPGA::LoadRShift(Chan ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTrigLev()
 {
-    WriteRegisters(Pin::SPI3_CS1, (uint16)(0xa000 | (SET_TRIGLEV_SOURCE << 2)));
+    /// \todo Здесь много лишних движений. Нужно что-то сделать с вводом SET_TRIGLEV_SOURCE
+    uint16 value = (uint16)((Trig::MAX + Trig::MIN) - SET_TRIGLEV_SOURCE);
+
+    WriteRegisters(Pin::SPI3_CS1, (uint16)(0xa000 | (value << 2)));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
