@@ -221,29 +221,8 @@ static void OnRegSet_Tune(int angle)
     }
     else
     {
-        int row = 0;
-        int col = 0;
-        Measure::GetActive(&row, &col);
-        col += Math::Sign(currentAngle);
-        if (col < 0)
-        {
-            col = Measure::NumCols() - 1;
-            row--;
-            if (row < 0)
-            {
-                row = Measure::NumRows() - 1;
-            }
-        }
-        else if (col == Measure::NumCols())
-        {
-            col = 0;
-            row++;
-            if (row >= Measure::NumRows())
-            {
-                row = 0;
-            }
-        }
-        Measure::SetActive(row, col);
+        Measure::ChangeActive(currentAngle);
+
         Sound::RegulatorSwitchRotate();
     }
     currentAngle = 0;

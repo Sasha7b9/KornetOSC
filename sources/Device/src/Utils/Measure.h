@@ -53,12 +53,18 @@ public:
     Measure(int r, int c) : row(r), col(c) {};
     /// Возвращает сообщение из ячейки (row, col)
     static Measure Get(int row, int col) { return Measure(row, col); };
+    /// Возвращает активное измерение
+    static Measure GetActive();
     /// Возвращает true, если измерение активное - выбрано ручкой
     bool IsActive();
+    /// Сделать активным
+    static void SetActive(int row, int col);
 
     Type GetType();
 
     pString Name();
+    /// Устанавливает активным следующее или предыдущее измерение
+    static void ChangeActive(int delta);
     /// \brief Установить сигнал для обработки. Данные берутся из DS, inA, inB.
     /// Выходные данные, соответствующие текущим настройками set, рассчитываются сразу и записываются в outA, outB.
     static void SetData(bool needSmoothing);
@@ -72,10 +78,6 @@ public:
     static void SetMarkerTime(Chan ch, int num, int value);
    
     static char GetChar(Type measure);
-
-    static void GetActive(int *row, int *col);
-
-    static void SetActive(int row, int col);
 
     static int NumRows();
 

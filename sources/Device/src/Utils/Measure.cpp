@@ -60,10 +60,12 @@ bool Measure::IsActive()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Measure::GetActive(int *row, int *col)
+Measure Measure::GetActive()
 {
-    *row = posActive / NumCols();
-    *col = posActive - (*row) * NumCols();
+    int row = posActive / NumCols();
+    int col = posActive - row * NumCols();
+
+    return Measure(row, col);
 }
 
 
@@ -73,9 +75,42 @@ void Measure::SetActive(int row, int col)
     posActive = (int8)(row * NumCols() + col);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 char Measure::GetChar(Measure::Type measure)
 {
     return sMeas[measure].UGO;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Measure::ChangeActive(int delta)
+{
+    Measure measure = GetActive();
+
+    int row = measure.row;
+    int col = measure.col;
+
+    col += Math::Sign(delta);
+
+    if (col < 0)
+    {
+        col = NumCols() - 1;
+        row--;
+        if (row < 0)
+        {
+            row = NumRows() - 1;
+        }
+    }
+    else if (col == NumCols())
+    {
+        col = 0;
+        row++;
+        if (row >= NumRows())
+        {
+            row = 0;
+        }
+    }
+
+    SetActive(row, col);
 }
 
 
