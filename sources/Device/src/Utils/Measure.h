@@ -53,16 +53,9 @@ public:
     Measure(int r, int c) : row(r), col(c) {};
     /// Возвращает сообщение из ячейки (row, col)
     static Measure Get(int row, int col) { return Measure(row, col); };
-    /// Возвращает активное измерение
-    static Measure GetActive();
-    /// Возвращает true, если измерение активное - выбрано ручкой
-    bool IsActive();
-    /// Сделать активным
-    static void SetActive(int row, int col);
 
     Type GetType();
 
-    pString Name();
     /// Устанавливает активным следующее или предыдущее измерение
     static void ChangeActive(int delta);
     /// \brief Установить сигнал для обработки. Данные берутся из DS, inA, inB.
@@ -82,26 +75,16 @@ public:
     static int NumRows();
 
     static int NumCols();
-
-    static int GetTopTable();
     /// На сколько сжимать сетку по горизонтали
     static int GetDeltaGridLeft();
-    /// На сколько сжимать сетку по вертикали
-    static int GetDeltaGridBottom();
 
     static void ShortPressOnSmallButonMarker();
-    /// Нарисовать страницу выбора измерений
-    static void DrawPageChoice();
     /// Позиция активного измерения (на котором курсор)
     static int8 posActive;
     /// Если true - раскрыта страница выбора измерения
     static bool pageChoiceIsActive;
     /// Позиция курсора на странице выбора измерения
     static int8 posOnPageChoice;
-    /// Строка в таблице, в которой находится данное измерение
-    int row;
-    /// Колонка в таблице, в которой находится данное измерение
-    int col;
 
     class Graphics
     {
@@ -125,6 +108,25 @@ private:
     static int DY();
     /// Возвращает ширину поля для вывода автоматического измерения
     static int DX();
+    /// Возвращает активное измерение
+    static Measure GetActive();
+    /// Возвращает true, если измерение активное - выбрано ручкой
+    bool IsActive();
+    /// Сделать активным
+    static void SetActive(int row, int col);
+
+    static int GetTopTable();
+
+    /// На сколько сжимать сетку по вертикали
+    static int GetDeltaGridBottom();
+
+    pString Name();
+    /// Нарисовать страницу выбора измерений
+    static void DrawPageChoice();
+    /// Строка в таблице, в которой находится данное измерение
+    int row;
+    /// Колонка в таблице, в которой находится данное измерение
+    int col;
 
     class Processing
     {
