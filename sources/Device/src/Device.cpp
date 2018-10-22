@@ -33,6 +33,8 @@ void Device::Init()
 
     Settings::Load();
 
+    FrequencyCounter::Init();
+
     FPGA::LoadSettings();
 
     Menu::Init();

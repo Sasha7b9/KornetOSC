@@ -221,49 +221,127 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
         value.Set(value / 10);
     }
 
+    /// \todo Ћокализировать об€зательно в будущем
+
     //                         0    1    2    3    4    5    6 
     static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0};
 
-    for(int i = 1; i < 7; i++)
+    for(int i = 0; i < 7; i++)
     {
         buffer[i] = value.DigitInPosition(6 - i);
     }
 
     uint freq = fr->word;
 
+#define E_2 (               100)
+#define E_3 (              1000)
+#define E_4 (         10 * 1000)
+#define E_5 (        100 * 1000)
+#define E_6 (       1000 * 1000)
+#define E_7 (  10 * 1000 * 1000)
+#define E_8 ( 100 * 1000 * 1000)
+#define E_9 (1000 * 1000 * 1000)
+
     switch (FREQ_METER_TIMECOUNTING)
     {
         case FrequencyCounter::TimeCounting::_100ms:
-            if(freq < 100 * 1000)                       // ћеньше 1 ћ√ц
+            if(freq < E_5)   {  SET_SUFFIX("к√ц");   }   else   {  SET_SUFFIX("M√ц");  }
+
+            if(freq < E_5)                          // ћеньше 1 ћ√ц
             {
-                if(freq >= 100)                         // Ѕольше или равно 1 к√ц
+                if(freq >= E_2)                     // Ѕольше или равно 1 к√ц
                 {
                     memcpy(buffer, buffer + 1, 5);
                 }
                 buffer[4] = '.';
-                SET_SUFFIX("к√ц");
             }
             else
             {
-                memcpy(buffer, buffer + 1, 3);
-                SET_SUFFIX("M√ц");
-                if(freq < 1000 * 1000)                  // ћеньше 10 ћ√ц
+                if(freq < E_6)                      // ћеньше 10 ћ√ц
                 {
+                    memcpy(buffer, buffer + 1, 2);
                     buffer[1] = '.';
                 }
-                else if(freq < 10 * 1000 * 1000)        // ћеньше 100 ћ√ц
+                else if(freq < E_7)                 // ћеньше 100 ћ√ц
                 {
+                    memcpy(buffer, buffer + 1, 3);
                     buffer[2] = '.';
                 }
                 else
                 {
+                    memcpy(buffer, buffer + 1, 3);
+                    buffer[3] = '.';
+                }
+            }            
+            break;
+
+        case FrequencyCounter::TimeCounting::_1s:
+            if (freq < E_6) { SET_SUFFIX("к√ц"); } else { SET_SUFFIX("M√ц"); }
+
+            if (freq < E_6)                       // ћеньше 1 ћ√ц
+            {
+                if (freq >= E_2)                         // Ѕольше или равно 1 к√ц
+                {
+                    memcpy(buffer, buffer + 1, 4);
+                }
+                buffer[3] = '.';
+            }
+            else
+            {
+                if (freq < E_7)                  // ћеньше 10 ћ√ц
+                {
+                    memcpy(buffer, buffer + 1, 2);
+                    buffer[1] = '.';
+                }
+                else if (freq < E_8)        // ћеньше 100 ћ√ц
+                {
+                    memcpy(buffer, buffer + 1, 3);
+                    buffer[2] = '.';
+                }
+                else
+                {
+                    memcpy(buffer, buffer + 1, 3);
                     buffer[3] = '.';
                 }
             }
             break;
-        case FrequencyCounter::TimeCounting::_1s:
-            break;
+
         case FrequencyCounter::TimeCounting::_10s:
+            if (freq < E_7)    {   SET_SUFFIX("к√ц");     }      else     {   SET_SUFFIX("M√ц");  }
+
+            if (freq < E_7)                       // ћеньше 1 ћ√ц
+            {
+                if (freq >= E_4)                  // Ѕольше или равно 1 к√ц
+                {
+                    memcpy(buffer, buffer + 1, 3);
+                }
+                if(freq >= E_6)
+                {
+                    buffer[3] = '.';
+                }
+                else
+                {
+                    buffer[2] = '.';
+                }
+            }
+            else
+            {
+                if (freq < E_8)                  // ћеньше 10 ћ√ц
+                {
+                    memcpy(buffer, buffer + 1, 2);
+                    buffer[1] = '.';
+                }
+                else if (freq < E_9)            // ћеньше 100 ћ√ц
+                {
+                    memcpy(buffer, buffer + 1, 2);
+                    buffer[2] = '.';
+                }
+                else
+                {
+                    memcpy(buffer, buffer + 1, 3);
+                    buffer[3] = '.';
+                }
+            }
             break;
         default:
             break;
