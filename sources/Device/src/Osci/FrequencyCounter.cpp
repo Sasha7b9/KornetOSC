@@ -258,12 +258,12 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
             }
             else
             {
-                if(freq < E_6)                      // Ìåíüøå 10 ÌÃö
+                if(giverFreq < E_8)                      // Ìåíüøå 10 ÌÃö
                 {
                     memcpy(buffer, buffer + 1, 2);
                     buffer[1] = '.';
                 }
-                else if(freq < E_7)                 // Ìåíüøå 100 ÌÃö
+                else if(giverFreq < E_9)                 // Ìåíüøå 100 ÌÃö
                 {
                     memcpy(buffer, buffer + 1, 3);
                     buffer[2] = '.';
@@ -290,12 +290,12 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
             }
             else
             {
-                if (freq < E_7)                  // Ìåíüøå 10 ÌÃö
+                if (giverFreq < E_8)                  // Ìåíüøå 10 ÌÃö
                 {
                     memcpy(buffer, buffer + 1, 2);
                     buffer[1] = '.';
                 }
-                else if (freq < E_8)        // Ìåíüøå 100 ÌÃö
+                else if (giverFreq < E_9)        // Ìåíüøå 100 ÌÃö
                 {
                     memcpy(buffer, buffer + 1, 3);
                     buffer[2] = '.';
