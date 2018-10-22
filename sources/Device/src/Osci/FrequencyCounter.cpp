@@ -197,6 +197,16 @@ void FrequencyCounter::Draw()
 
     Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : Time(1.0f / freq).ToStringAccuracy(false, buffer, 6),
                          Choice::ColorMenuField(PageFrequencyCounter::GetChoiceNumPeriods()));
+
+
+    width = 50;
+    height = 27;
+    x = 50;
+    y = 120;
+    Painter::FillRegion(x, y, width, height, Color::BACK);
+    Painter::DrawRectangle(x - 1, y - 1, width + 2, height + 2, Color::FILL);
+    Painter::DrawFormatText(x + 4, y + 4, "%d", freqActual.word);
+    Painter::DrawFormatText(x + 4, y + 15, "%d", periodActual.word);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -163,12 +163,12 @@ void Measure::Processing::CalculateMeasures()
                     markerVoltage[Chan::A][0] = markerVoltage[Chan::A][1] = markerVoltage[Chan::B][0] = markerVoltage[Chan::B][1] = ERROR_VALUE_INT;
                 }
                 
-                if(VIEW_MEASURE_A && SET_ENABLED_A)
+                if(VIEW_MEASURES_A)
                 {
                     values[type].value[Chan::A] = func(Chan::A);
                 }
                 
-                if(VIEW_MEASURE_B && SET_ENABLED_B)
+                if(VIEW_MEASURES_B)
                 {
                     values[type].value[Chan::B] = func(Chan::B);
                 }
@@ -1309,9 +1309,6 @@ char* Measure::Processing::GetStringMeasure(Measure::Type measure, Chan ch, char
     if(!isSet || values[measure].value[ch] == ERROR_VALUE_FLOAT)
     {
         strcat(buffer, "-.-");
-    }
-    else if((ch.IsA() && !ENABLED_DS_A) || (ch.IsB() && !ENABLED_DS_B))
-    {
     }
     else if(sMeas[measure].FuncCalculate)
     {

@@ -122,7 +122,7 @@ DEF_CHOICE_3(       cChannels,                                                  
     "1",     "1",
     "2",     "2",
     "1 è 2", "1 and 2",
-    SOURCE_MEASURE, pMeasures, IsActive_Channels, FuncChangedChoice, FuncDraw
+    SOURCE_MEASURES, pMeasures, IsActive_Channels, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

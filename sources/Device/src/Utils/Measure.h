@@ -14,17 +14,25 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define SHOW_MEASURES       (set.meas_show)
+#define SHOW_MEASURES           (set.meas_show)
 
-#define MEAS_MARKED         (set.meas_marked)
+#define MEAS_MARKED             (set.meas_marked)
+
 /// По какому каналу производить автоматические измерения
-#define SOURCE_MEASURE      (set.meas_source)
-/// Автоматические измерения производятся по обоим каналам
-#define VIEW_MEASURE_BOTH   (SOURCE_MEASURE == Measure::Source::A_B)
-/// Производить вывод автоматических измерений по канала 1
-#define VIEW_MEASURE_A      (SOURCE_MEASURE == Measure::Source::A || VIEW_MEASURE_BOTH)
-/// Производить вывод автоматических измерений по каналу 2
-#define VIEW_MEASURE_B      (SOURCE_MEASURE == Measure::Source::B || VIEW_MEASURE_BOTH)
+#define SOURCE_MEASURES         (set.meas_source)
+/// Автоматические измерения производятся только по каналу A
+#define SOURCE_MEASURES_IS_A    (SOURCE_MEASURES == Measure::Source::A)
+/// Автоматические измерения производятся только по каналу B
+#define SOURCE_MEASURES_IS_B    (SOURCE_MEASURES == Measure::Source::B)
+/// Автоматические измерения производятся по каналам A и B
+#define SOURCE_MEASURES_IS_BOTH (SOURCE_MEASURES == Measure::Source::A_B)
+/// Выводить автоматические измерения по каналу A
+#define VIEW_MEASURES_A         (SET_ENABLED_A && (SOURCE_MEASURES_IS_A || SOURCE_MEASURES_IS_BOTH))
+/// Выводить автоматические измерения по каналу B
+#define VIEW_MEASURES_B         (SET_ENABLED_B && (SOURCE_MEASURES_IS_B || SOURCE_MEASURES_IS_BOTH))
+/// Выводить автоматические измерения по обоим каналам
+#define VIEW_MEASURES_BOTH      (SET_ENABLED_BOTH && SOURCE_MEASURES_IS_BOTH)
+
 
 /// Сжимать ли сетку при выводе измерений
 #define MODE_VIEW_SIGNALS               (set.meas_modeViewSignals) 

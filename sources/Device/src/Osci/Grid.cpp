@@ -295,19 +295,17 @@ int Grid::DeltaVforLineGrid()
 {
     if (SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
-        bool condition = VIEW_MEASURE_BOTH && SET_ENABLED_BOTH;
-
         if (NUM_MEASURES_IS_1_5)
         {
-            return condition ? 55 : 59;
+            return VIEW_MEASURES_BOTH ? 55 : 59;
         }
         if (NUM_MEASURES_IS_2_5)
         {
-            return condition ? 69 : 51;
+            return VIEW_MEASURES_BOTH ? 69 : 51;
         }
         if (NUM_MEASURES_IS_3_5)
         {
-            return condition ? 54 : 68;
+            return VIEW_MEASURES_BOTH ? 54 : 68;
         }
     }
 
