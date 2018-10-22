@@ -6,6 +6,7 @@
 #include "Utils/StringUtils.h"
 #include "Utils/Values.h"
 #include "Hardware/FSMC.h"
+#include "Menu/Pages/PageMeasures.h"
 #include <string.h>
 
 
@@ -174,11 +175,11 @@ void FrequencyCounter::Draw()
     x += 2;
     y += 2;
 
-    Painter::DrawBigText(x + 2,  y + 1,         SIZE, "F");
-    Painter::DrawBigText(x + 2,  y + 10 * SIZE, SIZE, "T");
+    Painter::DrawBigText(x + 2,  y + 1,         SIZE, "F", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceTimeF()));
+    Painter::DrawBigText(x + 2,  y + 10 * SIZE, SIZE, "T", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceNumPeriods()));
     int dX = 7 * SIZE;
-    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=");
-    Painter::DrawBigText(x + dX, y + 1,         SIZE, "=");
+    Painter::DrawBigText(x + dX, y + 1,         SIZE, "=", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceTimeF()));
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceNumPeriods()));
     
     char buffer[30];
     float freq = FreqSetToFreq(&freqActual);
@@ -187,14 +188,15 @@ void FrequencyCounter::Draw()
 
     dX = SIZE * 12;
 
-    Painter::DrawBigText(x + dX, y + 1, SIZE, condFreq ? EMPTY_STRING : FreqSetToString(&freqActual));
+    Painter::DrawBigText(x + dX, y + 1, SIZE, condFreq ? EMPTY_STRING : FreqSetToString(&freqActual),
+                         Choice::ColorMenuField(PageFrequencyCounter::GetChoiceTimeF()));
 
     freq = PeriodSetToFreq(&periodActual);
 
     bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
 
-    Painter::SetColor(Color::Trig());
-    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : Time(1.0f / freq).ToStringAccuracy(false, buffer, 6));
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : Time(1.0f / freq).ToStringAccuracy(false, buffer, 6),
+                         Choice::ColorMenuField(PageFrequencyCounter::GetChoiceNumPeriods()));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

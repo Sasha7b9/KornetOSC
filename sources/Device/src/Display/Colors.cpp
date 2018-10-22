@@ -33,7 +33,8 @@ extern uint GlobalColors[256] =
     /* 23 */    MAKE_COLOR(0xc0, 0xc0, 0xc0),       // GRAY_75
     /* 24 */    MAKE_COLOR(0x00, 0x6f, 0x80),       // DATA_HALF_A
     /* 25 */    MAKE_COLOR(0x00, 0x80, 0x00),       // DATA_HALF_B
-    /* 26 */    MAKE_COLOR(0xc0, 0xc0, 0xc0)        // SEPARATOR
+    /* 26 */    MAKE_COLOR(0xc0, 0xc0, 0xc0),       // SEPARATOR
+    /* 27 */    MAKE_COLOR(0xff, 0xff, 0x00)        // YELLOW
 };
 
 
@@ -60,6 +61,7 @@ Color Color::GRAY_75(COLOR_GRAY_75);
 Color Color::DATA_HALF_A(COLOR_DATA_HALF_A);
 Color Color::DATA_HALF_B(COLOR_DATA_HALF_B);
 Color Color::SEPARATOR(COLOR_SEPARATOR);
+Color Color::YELLOW(COLOR_YELLOW);
 
 Color Color::NUMBER(COLOR_NUMBER);
 Color Color::FLASH_10(COLOR_FLASH_10);

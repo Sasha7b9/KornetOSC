@@ -418,9 +418,9 @@ void Choice::DrawOpened(int x, int y)
         bool pressed = i == index;
         if (pressed)
         {
-            Painter::FillRegion(x + 1, yItem + 2, Menu::Item::WIDTH_OPENED - 2, MOSI_HEIGHT - 1, Color::MENU_FIELD);
+            Painter::FillRegion(x + 1, yItem + 2, Menu::Item::WIDTH_OPENED - 2, MOSI_HEIGHT - 1, ColorMenuField(this));
         }
-        Painter::DrawText(x + 4, yItem + 2, NameSubItem(i), pressed ? Color::BLACK : Color::MENU_FIELD);
+        Painter::DrawText(x + 4, yItem + 2, NameSubItem(i), pressed ? Color::BLACK : ColorMenuField(this));
     }
 }
 
@@ -430,7 +430,7 @@ void Choice::DrawClosed(int x, int y)
     bool pressed = IsPressed();
     bool shade = IsShade() || !funcOfActive();
 
-    Painter::FillRegion(x + 1, y + Menu::Item::Value::HEIGHT, Menu::Item::Value::WIDTH + 1, Menu::Item::Value::HEIGHT - 3, Color::MENU_FIELD);
+    Painter::FillRegion(x + 1, y + Menu::Item::Value::HEIGHT, Menu::Item::Value::WIDTH + 1, Menu::Item::Value::HEIGHT - 3, ColorMenuField(this));
 
     int deltaY = (int)Step();
     Color colorText = shade ? Color::MenuItem(true) : Color::BLACK;

@@ -258,9 +258,21 @@ DEF_PAGE_4(ppFreqMeter,                                                         
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageMeasures::pointer = &pMeasures;
 
-const PageBase *PageMeasures::GetPageFrequencyCounter()
+const PageBase *PageFrequencyCounter::pointer = &ppFreqMeter;
+
+const Choice *PageFrequencyCounter::GetChoiceTimeF()
 {
-    return &ppFreqMeter;
+    return (const Choice *)&cFreqMeter_TimeF;
+}
+
+const Choice *PageFrequencyCounter::GetChoiceFreqClc()
+{
+    return (const Choice *)&cFreqMeter_FreqClc;
+}
+
+const Choice *PageFrequencyCounter::GetChoiceNumPeriods()
+{
+    return (const Choice *)&cFreqMeter_NumPeriods;
 }
 
 DEF_PAGE_6(         pMeasures,                                                                                                        // »«Ã≈–≈Õ»ﬂ ///

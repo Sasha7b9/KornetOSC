@@ -6,6 +6,7 @@
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
+#include "Menu/Pages/PageMeasures.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +71,21 @@ int Page::PosItemOnLeft()
 const char *Choice::NameSubItem(int i)
 {
     return NAME_FROM_INDEX(i);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+Color Choice::ColorMenuField(const Choice *choice)
+{
+    if(choice == PageFrequencyCounter::GetChoiceTimeF())                                                                  // Измерения по частоте
+    {
+        return Color(Color::WHITE);
+    }
+    else if(choice == PageFrequencyCounter::GetChoiceFreqClc() || choice == PageFrequencyCounter::GetChoiceNumPeriods())    // Измерения по периоду
+    {
+        return Color(Color::YELLOW);
+    }
+
+    return Color::MENU_FIELD;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 #pragma once
 #include "Display/Display.h"
+#include "Display/Colors.h"
 #include "MenuItemsDefs.h"
 
 
@@ -353,6 +354,8 @@ public:
     const char *NamePrevSubItem();
     /// Возвращает имя варианта выбора элемента choice в позиции i как оно записано в исходном коде программы
     const char *NameSubItem(int i);
+    /// Возвращает цвет, которым нужно заполнять участок выбора
+    static Color ColorMenuField(const Choice *choice);
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IPaddress ///
