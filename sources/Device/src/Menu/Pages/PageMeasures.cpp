@@ -253,8 +253,15 @@ DEF_PAGE_4(ppFreqMeter,                                                         
     Page::Name::Service_FreqMeter, &pMeasures, FuncActive, EmptyPressPage
 )
 
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageMeasures::pointer = &pMeasures;
+
+const PageBase *PageMeasures::GetPageFrequencyCounter()
+{
+    return &ppFreqMeter;
+}
 
 DEF_PAGE_6(         pMeasures,                                                                                                        // »«Ã≈–≈Õ»ﬂ ///
     "»«Ã≈–≈Õ»ﬂ", "MEASURES",
@@ -268,5 +275,3 @@ DEF_PAGE_6(         pMeasures,                                                  
     cMode,         // »«Ã≈–≈Õ»ﬂ - ¬Ë‰
     Page::Name::Measure, Menu::pageMain, FuncActive, EmptyPressPage
 )
-
-//static const PageBase * pointerPageMeasures = &pMeasures;

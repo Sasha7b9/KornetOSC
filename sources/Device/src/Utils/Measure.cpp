@@ -117,7 +117,7 @@ void Measure::ChangeActive(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Measure::DY()
 {
-    if(SOURCE_MEASURE_IS_BOTH && SET_ENABLED_A && SET_ENABLED_B)
+    if(VIEW_MEASURE_BOTH && SET_ENABLED_A && SET_ENABLED_B)
     {
         return 30;
     }
@@ -322,11 +322,11 @@ void Measure::Graphics::Draw()
                     Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::BACK : Color::FILL);
                     Painter::DrawText(x + 4, y + 2, measure.Name(), active ? Color::FILL : Color::BACK);
                 }
-                if (SOURCE_MEASURE_IS_A && SET_ENABLED_A)
+                if (VIEW_MEASURE_A && SET_ENABLED_A)
                 {
                     Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(type, Chan::A, buffer, SIZE_BUFFER), Color::Channel(Chan::A));
                 }
-                else if (SOURCE_MEASURE_IS_B && SET_ENABLED_B)
+                else if (VIEW_MEASURE_B && SET_ENABLED_B)
                 {
                     Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(type, Chan::B, buffer, SIZE_BUFFER), Color::Channel(Chan::B));
                 }

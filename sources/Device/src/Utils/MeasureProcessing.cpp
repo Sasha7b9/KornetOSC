@@ -163,15 +163,12 @@ void Measure::Processing::CalculateMeasures()
                     markerVoltage[Chan::A][0] = markerVoltage[Chan::A][1] = markerVoltage[Chan::B][0] = markerVoltage[Chan::B][1] = ERROR_VALUE_INT;
                 }
                 
-                bool isA = SOURCE_MEASURE_IS_A;
-                bool isB = SOURCE_MEASURE_IS_B;
-                
-                if(isA && SET_ENABLED_A)
+                if(VIEW_MEASURE_A && SET_ENABLED_A)
                 {
                     values[type].value[Chan::A] = func(Chan::A);
                 }
                 
-                if(isB && SET_ENABLED_B)
+                if(VIEW_MEASURE_B && SET_ENABLED_B)
                 {
                     values[type].value[Chan::B] = func(Chan::B);
                 }

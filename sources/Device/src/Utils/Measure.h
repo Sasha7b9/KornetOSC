@@ -14,17 +14,17 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define SHOW_MEASURES                   (set.meas_show)
+#define SHOW_MEASURES       (set.meas_show)
 
-#define MEAS_MARKED                     (set.meas_marked)
- /// По какому каналу производить автоматические измерения
-#define SOURCE_MEASURE                  (set.meas_source)
-/// Автоматические измерения производятся по каналу 1
-#define SOURCE_MEASURE_IS_A             (SOURCE_MEASURE == Measure::Source::A)
-/// Автоматические измерения производятся по каналу 2
-#define SOURCE_MEASURE_IS_B             (SOURCE_MEASURE == Measure::Source::B)
+#define MEAS_MARKED         (set.meas_marked)
+/// По какому каналу производить автоматические измерения
+#define SOURCE_MEASURE      (set.meas_source)
 /// Автоматические измерения производятся по обоим каналам
-#define SOURCE_MEASURE_IS_BOTH          (SOURCE_MEASURE == Measure::Source::A_B)
+#define VIEW_MEASURE_BOTH   (SOURCE_MEASURE == Measure::Source::A_B)
+/// Производить вывод автоматических измерений по канала 1
+#define VIEW_MEASURE_A      (SOURCE_MEASURE == Measure::Source::A || VIEW_MEASURE_BOTH)
+/// Производить вывод автоматических измерений по каналу 2
+#define VIEW_MEASURE_B      (SOURCE_MEASURE == Measure::Source::B || VIEW_MEASURE_BOTH)
 
 /// Сжимать ли сетку при выводе измерений
 #define MODE_VIEW_SIGNALS               (set.meas_modeViewSignals) 

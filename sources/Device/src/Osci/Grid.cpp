@@ -295,7 +295,7 @@ int Grid::DeltaVforLineGrid()
 {
     if (SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
-        bool condition = SOURCE_MEASURE_IS_BOTH && SET_ENABLED_BOTH;
+        bool condition = VIEW_MEASURE_BOTH && SET_ENABLED_BOTH;
 
         if (NUM_MEASURES_IS_1_5)
         {
