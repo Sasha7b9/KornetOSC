@@ -212,8 +212,6 @@ void FrequencyCounter::Draw()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 {
-    #define SET_SUFFIX(suffix) strcpy(buffer + 7, suffix);
-    
     Hex value(fr->word);
 
     while(value.NumDigits() > 6)
@@ -233,6 +231,8 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
     uint freq = fr->word;
 
+    uint giverFreq = freq;
+
 #define E_2 (               100)
 #define E_3 (              1000)
 #define E_4 (         10 * 1000)
@@ -245,9 +245,10 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
     switch (FREQ_METER_TIMECOUNTING)
     {
         case FrequencyCounter::TimeCounting::_100ms:
-            if(freq < E_5)   {  SET_SUFFIX("к√ц");   }   else   {  SET_SUFFIX("M√ц");  }
 
-            if(freq < E_5)                          // ћеньше 1 ћ√ц
+            giverFreq *= 100;
+
+            if(giverFreq < E_7)                          // ћеньше 1 ћ√ц
             {
                 if(freq >= E_2)                     // Ѕольше или равно 1 к√ц
                 {
@@ -276,9 +277,10 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
             break;
 
         case FrequencyCounter::TimeCounting::_1s:
-            if (freq < E_6) { SET_SUFFIX("к√ц"); } else { SET_SUFFIX("M√ц"); }
 
-            if (freq < E_6)                       // ћеньше 1 ћ√ц
+            giverFreq *= 10;
+
+            if (giverFreq < E_7)                       // ћеньше 1 ћ√ц
             {
                 if (freq >= E_2)                         // Ѕольше или равно 1 к√ц
                 {
@@ -307,7 +309,6 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
             break;
 
         case FrequencyCounter::TimeCounting::_10s:
-            if (freq < E_7)    {   SET_SUFFIX("к√ц");     }      else     {   SET_SUFFIX("M√ц");  }
 
             if (freq < E_7)                       // ћеньше 1 ћ√ц
             {
@@ -347,6 +348,14 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
             break;
     }
 
+    if(giverFreq < E_7)
+    {
+        strcpy(buffer + 7, "к√ц");
+    }
+    else
+    {
+        strcpy(buffer + 7, "ћ√ц");
+    }
 
     return buffer;
 }
