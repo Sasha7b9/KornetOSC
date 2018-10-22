@@ -212,57 +212,63 @@ void FrequencyCounter::Draw()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 {
+    #define SET_SUFFIX(suffix) strcpy(buffer + 7, suffix);
+    
     Hex value(fr->word);
+
+    while(value.NumDigits() > 6)
+    {
+        value.Set(value / 10);
+    }
+
+    //                         0    1    2    3    4    5    6 
+    static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0};
+
+    for(int i = 1; i < 7; i++)
+    {
+        buffer[i] = value.DigitInPosition(6 - i);
+    }
+
+    uint freq = fr->word;
 
     switch (FREQ_METER_TIMECOUNTING)
     {
-        case FrequencyCounter::TimeCounting::_100ms: value.Set(value * 100); break;
-        case FrequencyCounter::TimeCounting::_1s:    value.Set(value * 10);  break;
-        case FrequencyCounter::TimeCounting::_10s:                           break;
-        default:                                                             break;
+        case FrequencyCounter::TimeCounting::_100ms:
+            if(freq < 100 * 1000)                       // ћеньше 1 ћ√ц
+            {
+                if(freq >= 100)                         // Ѕольше или равно 1 к√ц
+                {
+                    memcpy(buffer, buffer + 1, 5);
+                }
+                buffer[4] = '.';
+                SET_SUFFIX("к√ц");
+            }
+            else
+            {
+                memcpy(buffer, buffer + 1, 3);
+                SET_SUFFIX("M√ц");
+                if(freq < 1000 * 1000)                  // ћеньше 10 ћ√ц
+                {
+                    buffer[1] = '.';
+                }
+                else if(freq < 10 * 1000 * 1000)        // ћеньше 100 ћ√ц
+                {
+                    buffer[2] = '.';
+                }
+                else
+                {
+                    buffer[3] = '.';
+                }
+            }
+            break;
+        case FrequencyCounter::TimeCounting::_1s:
+            break;
+        case FrequencyCounter::TimeCounting::_10s:
+            break;
+        default:
+            break;
     }
 
-    // ¬ этой точке в value хранитс€ завышенное в 10 раз значение частоты
-    /// \todo сделать локализацию
-
-    //                         0    1    2    3    4    5    6 
-    static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0'};
-
-    for (int i = 0; i < 11; i++)
-    {
-        buffer[i] = '0';
-    }
-    buffer[10] = '\0';
-
-    if (value < 10)                                                              // «начение меньше 1 √ц
-    {
-        buffer[5] = '.';
-        buffer[6] = value.DigitInPosition(0);
-        strcpy(buffer + 7, "√ц");
-    }
-    else if (value < 10000)                                                      // «начение меньше 1к√ц
-    {
-        buffer[6] = '.';
-        buffer[5] = value.DigitInPosition(1);
-        buffer[4] = value.DigitInPosition(2);
-        buffer[3] = value.DigitInPosition(3);
-        strcpy(buffer + 7, "√ц");
-    }
-    else if (value < 1000 * 10000)                                               // «начение меньше 1ћ√ц
-    {
-        buffer[6] = value.DigitInPosition(1);
-        buffer[5] = value.DigitInPosition(2);
-        buffer[4] = value.DigitInPosition(3);
-        buffer[3] = '.';
-        buffer[2] = value.DigitInPosition(4);
-        buffer[1] = value.DigitInPosition(5);
-        buffer[0] = value.DigitInPosition(6);
-        strcpy(buffer + 7, "к√ц");
-    }
-    else
-    {
-        Frequency((float)(value / 10)).ToStringAccuracy(buffer, 6);
-    }
 
     return buffer;
 }
