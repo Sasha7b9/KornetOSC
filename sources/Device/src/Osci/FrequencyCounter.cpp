@@ -243,13 +243,18 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 #define E_8 ( 100 * 1000 * 1000)
 #define E_9 (1000 * 1000 * 1000)
 
+
+#define WRITE_SUFFIX(suffix_E4)    \
+    if(giverFreq < E_4) { strcpy(buffer + 7, suffix_E4); } else if (giverFreq < E_7) { strcpy(buffer + 7, "êÃö"); } else { strcpy(buffer + 7, "ÌÃö"); }
+
+
     switch (FREQ_METER_TIMECOUNTING)
     {
         case FrequencyCounter::TimeCounting::_100ms:
 
             giverFreq *= 100;
 
-            if (giverFreq < E_7)  { strcpy(buffer + 7, "êÃö"); } else { strcpy(buffer + 7, "ÌÃö");  }
+            WRITE_SUFFIX("êÃö");
 
             if(giverFreq < E_7)                         // Ìåíüøå 1 ÌÃö
             {
@@ -283,18 +288,7 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
             giverFreq *= 10;
 
-            if(giverFreq < E_4)
-            {
-                strcpy(buffer + 7, "Ãö");
-            }
-            else if (giverFreq < E_7)
-            {
-                strcpy(buffer + 7, "êÃö");
-            }
-            else
-            {
-                strcpy(buffer + 7, "ÌÃö");
-            }
+            WRITE_SUFFIX("Ãö");
 
             if (giverFreq < E_7)                        // Ìåíüøå 1 ÌÃö
             {
@@ -331,18 +325,7 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
         case FrequencyCounter::TimeCounting::_10s:
 
-            if(giverFreq < E_4)
-            {
-                strcpy(buffer + 7, "Ãö");
-            }
-            else if (giverFreq < E_7)
-            {
-                strcpy(buffer + 7, "êÃö");
-            }
-            else
-            {
-                strcpy(buffer + 7, "ÌÃö");
-            }
+            WRITE_SUFFIX("Ãö");
 
             if (freq < E_7)                       // Ìåíüøå 1 ÌÃö
             {
