@@ -233,6 +233,7 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
     uint giverFreq = freq;
 
+/// Ёто герцы * 10
 #define E_2 (               100)
 #define E_3 (              1000)
 #define E_4 (         10 * 1000)
@@ -248,9 +249,11 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
             giverFreq *= 100;
 
-            if(giverFreq < E_7)                          // ћеньше 1 ћ√ц
+            if (giverFreq < E_7)  { strcpy(buffer + 7, "к√ц"); } else { strcpy(buffer + 7, "ћ√ц");  }
+
+            if(giverFreq < E_7)                         // ћеньше 1 ћ√ц
             {
-                if(freq >= E_2)                     // Ѕольше или равно 1 к√ц
+                if(freq >= E_2)                         // Ѕольше или равно 10 √ц
                 {
                     memcpy(buffer, buffer + 1, 5);
                 }
@@ -280,22 +283,40 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
             giverFreq *= 10;
 
-            if (giverFreq < E_7)                       // ћеньше 1 ћ√ц
+            if(giverFreq < E_4)
             {
-                if (freq >= E_2)                         // Ѕольше или равно 1 к√ц
-                {
-                    memcpy(buffer, buffer + 1, 4);
-                }
-                buffer[3] = '.';
+                strcpy(buffer + 7, "√ц");
+            }
+            else if (giverFreq < E_7)
+            {
+                strcpy(buffer + 7, "к√ц");
             }
             else
             {
-                if (giverFreq < E_8)                  // ћеньше 10 ћ√ц
+                strcpy(buffer + 7, "ћ√ц");
+            }
+
+            if (giverFreq < E_7)                        // ћеньше 1 ћ√ц
+            {
+                if(giverFreq < E_4)                     // ћеньше 1 к√ц
+                {
+                    memcpy(buffer, buffer + 1, 6);
+                    buffer[6] = '.';
+                }
+                else
+                {
+                    memcpy(buffer, buffer + 1, 4);
+                    buffer[3] = '.';
+                }
+            }
+            else
+            {
+                if (giverFreq < E_8)                    // ћеньше 10 ћ√ц
                 {
                     memcpy(buffer, buffer + 1, 2);
                     buffer[1] = '.';
                 }
-                else if (giverFreq < E_9)        // ћеньше 100 ћ√ц
+                else if (giverFreq < E_9)               // ћеньше 100 ћ√ц
                 {
                     memcpy(buffer, buffer + 1, 3);
                     buffer[2] = '.';
@@ -310,18 +331,29 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
         case FrequencyCounter::TimeCounting::_10s:
 
+            if(giverFreq < E_4)
+            {
+                strcpy(buffer + 7, "√ц");
+            }
+            else if (giverFreq < E_7)
+            {
+                strcpy(buffer + 7, "к√ц");
+            }
+            else
+            {
+                strcpy(buffer + 7, "ћ√ц");
+            }
+
             if (freq < E_7)                       // ћеньше 1 ћ√ц
             {
-                if (freq >= E_4)                  // Ѕольше или равно 1 к√ц
+                if (giverFreq < E_4)             // ћеньше 1 к√ц
                 {
-                    memcpy(buffer, buffer + 1, 3);
-                }
-                if(freq >= E_6)
-                {
-                    buffer[3] = '.';
+                    memcpy(buffer, buffer + 1, 5);
+                    buffer[5] = '.';
                 }
                 else
                 {
+                    memcpy(buffer, buffer + 1, 3);
                     buffer[2] = '.';
                 }
             }
@@ -346,15 +378,6 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
             break;
         default:
             break;
-    }
-
-    if(giverFreq < E_7)
-    {
-        strcpy(buffer + 7, "к√ц");
-    }
-    else
-    {
-        strcpy(buffer + 7, "ћ√ц");
     }
 
     return buffer;
