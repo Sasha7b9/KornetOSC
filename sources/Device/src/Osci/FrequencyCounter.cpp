@@ -247,6 +247,23 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 #define WRITE_SUFFIX(suffix_E4)    \
     if(giverFreq < E_4) { strcpy(buffer + 7, suffix_E4); } else if (giverFreq < E_7) { strcpy(buffer + 7, "êÃö"); } else { strcpy(buffer + 7, "ÌÃö"); }
 
+#define HIGH_FREQ                       \
+    if(giverFreq < E_8)                 \
+    {                                   \
+        memcpy(buffer, buffer + 1, 2);  \
+        buffer[1] = '.';                \
+    }                                   \
+    else if (giverFreq < E_9)           \
+    {                                   \
+        memcpy(buffer, buffer + 1, 3);  \
+        buffer[2] = '.';                \
+    }                                   \
+    else                                \
+    {                                   \
+        memcpy(buffer, buffer + 1, 3);  \
+        buffer[3] = '.';                \
+    }
+
 
     switch (FREQ_METER_TIMECOUNTING)
     {
@@ -266,21 +283,7 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
             }
             else
             {
-                if(giverFreq < E_8)                      // Ìåíüøå 10 ÌÃö
-                {
-                    memcpy(buffer, buffer + 1, 2);
-                    buffer[1] = '.';
-                }
-                else if(giverFreq < E_9)                 // Ìåíüøå 100 ÌÃö
-                {
-                    memcpy(buffer, buffer + 1, 3);
-                    buffer[2] = '.';
-                }
-                else
-                {
-                    memcpy(buffer, buffer + 1, 3);
-                    buffer[3] = '.';
-                }
+                HIGH_FREQ;
             }            
             break;
 
@@ -305,21 +308,7 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
             }
             else
             {
-                if (giverFreq < E_8)                    // Ìåíüøå 10 ÌÃö
-                {
-                    memcpy(buffer, buffer + 1, 2);
-                    buffer[1] = '.';
-                }
-                else if (giverFreq < E_9)               // Ìåíüøå 100 ÌÃö
-                {
-                    memcpy(buffer, buffer + 1, 3);
-                    buffer[2] = '.';
-                }
-                else
-                {
-                    memcpy(buffer, buffer + 1, 3);
-                    buffer[3] = '.';
-                }
+                HIGH_FREQ;
             }
             break;
 
@@ -342,21 +331,7 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
             }
             else
             {
-                if (freq < E_8)                  // Ìåíüøå 10 ÌÃö
-                {
-                    memcpy(buffer, buffer + 1, 2);
-                    buffer[1] = '.';
-                }
-                else if (freq < E_9)            // Ìåíüøå 100 ÌÃö
-                {
-                    memcpy(buffer, buffer + 1, 2);
-                    buffer[2] = '.';
-                }
-                else
-                {
-                    memcpy(buffer, buffer + 1, 3);
-                    buffer[3] = '.';
-                }
+                HIGH_FREQ;
             }
             break;
         default:
