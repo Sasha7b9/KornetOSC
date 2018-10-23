@@ -364,38 +364,12 @@ void FPGA::ReadDataChanenl(Chan ch, uint8 data[FPGA_MAX_NUM_POINTS])
 
         if(SET_PEAKDET_EN)
         {
-            int counter = 0;
-
-            if(ch.IsA())
-            {
-                LOG_WRITE("");
-            }
-
             for(int i = 0; i < FPGA_NUM_POINTS / 2; i++)
             {
+                *p++ = *addr0;
+                *p++ = *addr1;
 
-                uint8 data0 = *addr0;
-
-                *p++ = data0;
-
-                uint8 data1 = *addr1;
-
-                *p++ = data1;
-
-                if(counter < 10 && ch.IsA())
-                {
-                    LOG_WRITE("%d %d", data0, data1);
-                }
-
-                counter++;
             }
-
-            /*
-            if(ch.IsA())
-            {
-                LOG_WRITE("%d %d - %d %d - %d %d - %d %d", data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
-            }
-            */
         }
         else
         {
