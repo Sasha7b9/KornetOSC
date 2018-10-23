@@ -7,6 +7,8 @@
 #include "Utils/Values.h"
 #include "Hardware/FSMC.h"
 #include "Menu/Pages/PageMeasures.h"
+#include "Utils/Stack.h"
+#include "Utils/Math.h"
 #include <string.h>
 
 
@@ -21,6 +23,9 @@ bool     FrequencyCounter::readPeriod;
 float    FrequencyCounter::prevFreq;
 float    FrequencyCounter::frequency;
 uint16   FrequencyCounter::flag;
+
+//                         0    1    2    3    4    5    6 
+static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0};
 
 
 
@@ -181,7 +186,6 @@ void FrequencyCounter::Draw()
     Painter::DrawBigText(x + dX, y + 1,         SIZE, "=", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceTimeF()));
     Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceNumPeriods()));
     
-    char buffer[30];
     float freq = FreqSetToFreq(&freqActual);
 
     bool condFreq = _SET_BIT(flag, FL_OVERFLOW_FREQ) == 1 || drawFreq == false || freq == 0.0f;
@@ -191,11 +195,9 @@ void FrequencyCounter::Draw()
     Painter::DrawBigText(x + dX, y + 1, SIZE, condFreq ? EMPTY_STRING : FreqSetToString(&freqActual),
                          Choice::ColorMenuField(PageFrequencyCounter::GetChoiceTimeF()));
 
-    freq = PeriodSetToFreq(&periodActual);
-
     bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
 
-    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : Time(1.0f / freq).ToStringAccuracy(false, buffer, 6),
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : PeriodSetToString(&periodActual),
                          Choice::ColorMenuField(PageFrequencyCounter::GetChoiceNumPeriods()));
 
 
@@ -210,6 +212,150 @@ void FrequencyCounter::Draw()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
+{
+    Hex value(pr->word);
+
+    while(value.NumDigits() > 6)
+    {
+        value.Set(value / 10);
+    }
+
+    /*
+    +----------+-----------+------------+------------+------------+
+    | 1к√ц 1мс | 100 к√ц   | 1 ћ√ц      | 10 ћ√ц     | 100 ћ√ц    |
+    +----------+-----------+------------+------------+------------+
+    | 1        |    1e2    |     1e3    |     1e4    |     1e5    | - считанное значение
+    |          |   1.00 мс |   1.000 мс |  1.0000 мс | 1.00000 мс | - представление на дисплее
+    |          |    1e7    |     1e6    |     1e5    |     1e4    | - на какое число умножить, чтобы получить количество пикосекунд в считанном
+    +----------+-----------+------------|------------+------------+   значении
+    | 10       |    1e3    |     1e4    |     1e5    |     1e6    |
+    |          |  1.000 мс |  1.0000 мс | 1.00000 мс | 1.00000 мс |
+    |          |    1e6    |     1e5    |     1e4    |     1e3    |
+    +----------+-----------+------------+------------+------------+
+    | 100      |    1e4    |     1e5    |     1e6    |     1e7    |
+    |          | 1.0000 мс | 1.00000 мс | 1.00000 мс | 1.00000 мс |
+    |          |    1e5    |     1e4    |     1e3    |     1e2    |
+    +----------+-----------+------------+------------+------------+
+    */
+
+    /*
+    static const uint64 k[FrequencyCounter::NumberPeriods::Number][FrequencyCounter::FreqClc::Number] =
+    {
+        {10 * 1000 * 1000, 1000 * 1000, 100 * 1000, 10 * 1000},
+        {     1000 * 1000,  100 * 1000,  10 * 1000,      1000},
+        {      100 * 1000,   10 * 1000,       1000,       100}
+    };
+    */
+
+    // ѕолучаем количество пикосекунд
+    //    uint64 numPS = ticks * k[FREQ_METER_NUM_PERIODS][FREQ_METER_FREQ_CLC];
+
+    /*
+    »змер€емое значение | ѕринимаемое значение | ¬ывод на экран | последний значащий разр€д
+
+    +----------+-------------------------------------+-------------------------------------+-------------------------------------+-------------------------------------+
+    |          | 100 к√ц                    0        | 1 ћ√ц                      1        | 10 ћ√ц                     2        | 100 ћ√ц                    3        |
+    +----------+-------------------------------------+-------------------------------------+-------------------------------------+-------------------------------------+
+    | 1        | 10   мкс        1    0.01 мс  1e-5  | 1 мкс          1      1. мкс  1e-6  | 100 нс         1     0.1 мкс  1e-7  | 10  нс         1    0.01 мкс  1e-8  | 
+    |          | 100  мкс       10    0.10 мс  1e-5  | 10 мкс        10     10. мкс  1e-6  | 1   мкс       10     1.0 мкс  1e-7  | 100 нс        10    0.10 мкс  1e-8  |
+    |          | 1    мс       100    1.00 мс  1e-5  | 100 мкс      100    100. мкс  1e-6  | 10  мкс      100    10.0 мкс  1e-7  | 1   мкс      100    1.00 мкс  1e-8  |
+    |          | 10   мс      1000   10.00 мс  1e-5  | 1   мс      1000   1.000 мс   1e-6  | 100 мкс     1000   100.0 мкс  1e-7  | 10  мкс     1000   10.00 мкс  1e-8  |
+    |          | 100  мс     10000  100.00 мс  1e-5  | 10  мс     10000  10.000 мс   1e-6  | 1   мс     10000  1.0000 мс   1e-7  | 100 мкс    10000  100.00 мкс  1e-8  |
+    |          | 1    с     100000 1.00000 с   1e-5  | 100 мс    100000 100.000 мс   1e-6  | 10  мс    100000 10.0000 мс   1e-7  | 1   мс    100000 1.00000 мс   1e-8  |
+    |          | 10   с    100000- 10.0000 с   1e-4  | 1   с    100000- 1.00000 с    1e-5  | 100 мс   100000- 100.000 мс   1e-6  | 10  мc   100000- 10.0000 мс   1e-7  |
+    |          | 100  с   100000-- 100.000 с   1e-3  | 10  с   100000-- 10.0000 с    1e-4  | 1   с   100000-- 1.00000 с    1e-5  | 100 мс  100000-- 100.000 мс   1e-6  |
+    |        0 | 1000 с   переполнение               | 100 с   переполнение                | 10  с   переполнение                | 1   c   переполнение                |
+    +----------+-------------------------------------+-------------------------------------|-------------------------------------+-------------------------------------+
+    | 10       |                                     |                                     |                                     | 1   нс         1      1. нс   1e-9  |
+    |          |                                     |                                     |                         /           | 10  нс        10     10. нс   1e-9  |
+    |          |                                     |                                     |                     /               | 100 нс       100    100. нс   1e-9  |
+    |          |                                     |                                     |                  /                  | 1   мкс     1000   1.000 мкс  1e-9  |
+    |          |                                     |                                     |             /                       | 10  мкс    10000  10.000 мкс  1e-9  | 
+    |          |                                     |                                     |         /                           | 100 мкс   100000 100.000 мкс  1e-9  | 
+    |          |                                     |                                     |   |  /                              | 1   мс   100000- 1.00000 мс   1e-8  | 
+    |          |                                     |                                     |   |---                              | 10  мс  100000-- 10.0000 мс   1e-7  |
+    |        1 |                                     |                                     |                                     | 100 мс  переполнение                |
+    +----------+-------------------------------------+-------------------------------------+-------------------------------------+-------------------------------------+
+    | 100      |                                     |                                     |                                     | 0.1 нс         1     0.1 нс   1e-10 |
+    |          |                                     |                                     |                           /         | 1   нс        10     1.0 нс   1e-10 |
+    |          |                                     |                                     |                       /             | 10  нс       100    10.0 нс   1e-10 |
+    |          |                                     |                                     |                    /                | 100 нс      1000   100.0 нс   1e-10 |
+    |          |                                     |                                     |               /                     | 1   мкс    10000  1.0000 мкс  1e-10 |
+    |          |                                     |                                     |           /                         | 10  мкс   100000 10.0000 мкс  1e-10 |
+    |          |                                     |                                     |     |  /                            | 100 мкс  100000- 100.000 мкс  1e-9  |
+    |          |                                     |                                     |     |---                            | 1   мс  100000-- 1.00000 мс   1e-8  |
+    |        2 |                                     |                                     |                                     | 10  мс  переполнение                |
+    +----------+-------------------------------------+-------------------------------------+-------------------------------------+-------------------------------------+
+    */
+
+    // —только насчитало импульсов за врем€ измерени€
+    uint ticks = pr->word;
+
+    for(int i = 0; i < 7; i++)
+    {
+        buffer[i] = value.DigitInPosition(6 - i);
+    }
+
+#define e3 (            1000)
+#define e4 (       10 * 1000)
+#define e5 (      100 * 1000)
+#define e6 (     1000 * 1000)
+#define e7 (10 * 1000 * 1000)
+
+#define WRITE_SUFFIX(suffix)                        strcpy(buffer + 7, suffix);
+
+#define WRITE_SUFFIX_2(value, suffix1, suffix2)     \
+    if(ticks < value) WRITE_SUFFIX(suffix1)         \
+    else              WRITE_SUFFIX(suffix2)
+
+#define WRITE_SUFFIX_3(value1, value2, suffix1, suffix2, suffix3)   \
+    if(ticks < value1)      WRITE_SUFFIX(suffix1)                   \
+    else if(ticks < value2) WRITE_SUFFIX(suffix2)                   \
+    else                    WRITE_SUFFIX(suffix3)
+
+#define SET_POINT(pos)                              memcpy(buffer, buffer + 1, pos); buffer[pos] = '.';
+
+#define CHOICE_4(v1, pos1, v2, pos2, v3, pos3, pos4) \
+    if(ticks < v1)      { SET_POINT(pos1) }          \
+    else if(ticks < v2) { SET_POINT(pos2) }          \
+    else if(ticks < v3) { SET_POINT(pos3) }          \
+    else                { SET_POINT(pos4) }
+
+    switch(FREQ_METER_NUM_PERIODS + FREQ_METER_FREQ_CLC)
+    {
+        case 0:
+            WRITE_SUFFIX_2(e5, "мс", "с");
+            CHOICE_4(e5, 4, e6, 1, e7, 2, 3);
+            break;
+        case 1:
+            WRITE_SUFFIX_3(e3, e6, "мкс", "мс", "c");
+            CHOICE_4(e3, 6, e6, 3, e7, 1, 2);
+            break;
+        case 2:
+            WRITE_SUFFIX_3(e4, e7, "мкс", "мс", "с");
+            CHOICE_4(e4, 5, e6, 2, e7, 3, 1);
+            break;
+        case 3:
+            WRITE_SUFFIX_2(e5, "мкс", "мс");
+            CHOICE_4(e5, 4, e6, 1, e7, 2, 3);
+            break;
+        case 4:
+            WRITE_SUFFIX_3(e3, e6, "нс", "мкс", "мс");
+            CHOICE_4(e3, 6, e6, 3, e7, 1, 2);
+            break;
+        case 5:
+            WRITE_SUFFIX_3(e4, e7, "нс", "мкс", "мс");
+            CHOICE_4(e4, 5, e6, 2, e7, 3, 1);
+            break;
+    }
+
+    return buffer;
+}
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 {
     Hex value(fr->word);
@@ -218,11 +364,6 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
     {
         value.Set(value / 10);
     }
-
-    /// \todo Ћокализировать об€зательно в будущем
-
-    //                         0    1    2    3    4    5    6 
-    static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0};
 
     for(int i = 0; i < 7; i++)
     {
@@ -244,6 +385,7 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 #define E_9 (1000 * 1000 * 1000)
 
 
+#undef WRITE_SUFFIX
 #define WRITE_SUFFIX(suffix_E4)    \
     if(giverFreq < E_4) { strcpy(buffer + 7, suffix_E4); } else if (giverFreq < E_7) { strcpy(buffer + 7, "к√ц"); } else { strcpy(buffer + 7, "ћ√ц"); }
 

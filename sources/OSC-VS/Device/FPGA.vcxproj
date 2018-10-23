@@ -132,6 +132,7 @@
     <ClCompile Include="..\..\Device\src\Utils\Math.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\Measure.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\MeasureProcessing.cpp" />
+    <ClCompile Include="..\..\Device\src\Utils\Stack.cpp" />
     <ClCompile Include="..\..\Device\src\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dac.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -286,6 +287,7 @@
     <ClInclude Include="..\..\Device\src\Utils\Dictionary.h" />
     <ClInclude Include="..\..\Device\src\Utils\Math.h" />
     <ClInclude Include="..\..\Device\src\Utils\Measure.h" />
+    <ClInclude Include="..\..\Device\src\Utils\Stack.h" />
     <ClInclude Include="..\..\Device\src\Utils\StringUtils.h" />
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

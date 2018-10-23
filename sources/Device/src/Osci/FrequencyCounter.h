@@ -41,7 +41,8 @@ public:
             _100kHz,
             _1MHz,
             _10MHz,
-            _100MHz
+            _100MHz,
+            Number
         } value;
         operator uint8() const { return (uint8)value; }
     };
@@ -53,7 +54,8 @@ public:
         {
             _1,
             _10,
-            _100
+            _100,
+            Number
         } value;
         operator uint8() const { return (uint8)value; }
     };
@@ -79,6 +81,8 @@ private:
     static pString FreqSetToString(const BitSet32 *fr);
 
     static float PeriodSetToFreq(const BitSet32 *period);
+
+    static pString PeriodSetToString(const BitSet32 *pr);
     /// «десь хранитс€ последнее действительное значение частоты. ƒл€ вывода в режиме частотомера
     static BitSet32 freqActual;
     /// «десь хранитс€ последнее действительное значение периода. ƒл€ вывода в режиме частотомера

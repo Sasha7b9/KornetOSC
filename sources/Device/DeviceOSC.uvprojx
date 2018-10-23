@@ -2800,6 +2800,16 @@
               <FileType>8</FileType>
               <FilePath>.\src\Utils\MeasureProcessing.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Stack.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Stack.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Stack.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
