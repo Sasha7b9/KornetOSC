@@ -5,6 +5,7 @@
 #include "Hardware/Sound.h"
 #include "Definition.h"
 #include "Display/Painter.h"
+#include "PageMultimeter.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -236,11 +237,12 @@ const Choice *PageFrequencyCounter::GetChoiceNumPeriods()
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2( pageFunction,                                                                                                            //--- ‘”Õ ÷»ﬂ ---
+DEF_PAGE_3( pageFunction,                                                                                                            //--- ‘”Õ ÷»ﬂ ---
     "‘”Õ ÷»ﬂ", "FUNCTION",
     "¬˚·Ó ÙÛÌÍˆËË",
     "Function selection",
     ppFreqMeter,                // ‘”Õ ÷»ﬂ - ◊¿—“Œ“ŒÃ≈–
     ppFFT,                      // ‘”Õ ÷»ﬂ - —œ≈ “–
+    *PageMultimeter::pointer,   // ‘”Õ ÷»ﬂ - Ã”À‹“»Ã≈“–
     Page::Name::Function, Menu::pageMain, FuncActive, FuncPress
 )

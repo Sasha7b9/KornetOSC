@@ -1,7 +1,8 @@
 #include "defines.h"
 #include "PageMultimeter.h"
 #include "Settings/Settings.h"
-#include "Menu/Pages/Definition.h"
+#include "Definition.h"
+#include "PageFunction.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -166,7 +167,7 @@ DEF_PAGE_3( pMultimeterDC,
     cMode,
     cRangesVoltageDC,
     cAVP,
-    Page::Name::Multimeter, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
 DEF_PAGE_3(pMultimeterAC,
@@ -176,7 +177,7 @@ DEF_PAGE_3(pMultimeterAC,
     cMode,
     cRangesVoltageAC,
     cAVP,
-    Page::Name::Multimeter, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
 DEF_PAGE_3(pMultimeterResistance,
@@ -186,5 +187,5 @@ DEF_PAGE_3(pMultimeterResistance,
     cMode,
     cRangesResistance,
     cAVP,
-    Page::Name::Multimeter, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
 )
