@@ -1093,7 +1093,9 @@ DEF_BUTTON(         bEraseData,                                                 
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_12(        pDebug,                                                                                                             // Œ“À¿ƒ ¿ ///
+const PageBase *PageDebug::pointer = &pDebug;
+
+DEF_PAGE_12(        pDebug,                                                                                                          //--- Œ“À¿ƒ ¿ ---
     Page::Name::Debug, Menu::pageMain, FuncActive, EmptyPressPage,
     "Œ“À¿ƒ ¿", "DEBUG",
     "",

@@ -6,25 +6,22 @@
 #include "Settings/Settings.h"
 #include "Utils/CommonFunctions.h"
 #include "Device.h"
-#include "PageMultimeter.h"
 #include "PageChannels.h"
-#include "PageTrig.h"
-#include "PageTime.h"
 #include "PageCursors.h"
-#include "PageTester.h"
+#include "PageDebug.h"
+#include "PageDisplay.h"
 #include "PageFunction.h"
 #include "PageMeasures.h"
 #include "PageMemory.h"
+#include "PageMultimeter.h"
+#include "PageService.h"
+#include "PageTrig.h"
+#include "PageTime.h"
+#include "PageTester.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const PageBase pDisplay;
-extern const PageBase pMeasures;
-extern const PageBase pService;
-extern const PageBase pHelp;
-extern const PageBase pDebug;
 extern const PageBase pageOsci;
-extern const PageBase pageFunction;
 
 
 PageBase *Menu::pageMain = (PageBase *)&pageOsci;
@@ -34,7 +31,7 @@ PageBase *Menu::pageMain = (PageBase *)&pageOsci;
 DEF_PAGE_11_GLOBAL(pageOsci,                                                                                                           // Ã≈Õﬁ ///
     "Ã≈Õﬁ", "MENU",
     "", "",
-    pDisplay,                   // ƒ»—œÀ≈…
+    *PageDisplay::pointer,      // ƒ»—œÀ≈…
     *PageChannelA::pointer,     //  ¿Õ¿À 1
     *PageChannelB::pointer,     //  ¿Õ¿À 2
     *PageTrig::pointer,         // —»Õ’–
@@ -42,10 +39,10 @@ DEF_PAGE_11_GLOBAL(pageOsci,                                                    
     *PageFunction::pointer,     // ‘”Õ ÷»ﬂ
     *PageCursors::pointer,      //  ”–—Œ–€
     *PageMemory::pointer,       // œ¿Ãﬂ“‹
-    pMeasures,                  // »«Ã≈–≈Õ»ﬂ
-    pService,                   // —≈–¬»—
+    *PageMeasures::pointer,     // »«Ã≈–≈Õ»ﬂ
+    *PageService::pointer,      // —≈–¬»—
     //pHelp,                      // œŒÃŒŸ‹
-    pDebug,                     // Œ“À¿ƒ ¿
+    *PageDebug::pointer,        // Œ“À¿ƒ ¿
     Page::Name::Main, 0, FuncActive, EmptyPressPage
 )
 
@@ -56,15 +53,15 @@ const void *Menu::PageForButton(Key button)
     {  
         0,                              // None
         (void *)PageFunction::pointer,  // Function  1
-        (void *)&pMeasures,             // Measures  2
+        (void *)PageMeasures::pointer,  // Measures  2
         (void *)PageMemory::pointer,    // Memory    3
-        (void *)&pService,              // Service   4
+        (void *)PageService::pointer,   // Service   4
         (void *)PageChannelA::pointer,  // ChannelA  5
         (void *)PageChannelB::pointer,  // ChannelB  6
         (void *)PageTime::pointer,      // Time      7
         0,                              // Start     
         (void *)PageTrig::pointer,      // Trig      9
-        (void *)&pDisplay               // Display  10
+        (void *)PageDisplay::pointer    // Display  10
     };
 
     return pages[button];
