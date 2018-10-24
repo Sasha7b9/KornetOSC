@@ -73,7 +73,7 @@ const PageBase name = {Control::Type::Page, 4, false, namePage, keeper, funcActi
 #define DEF_PAGE_5(name, titleRU, titleEN, hintRU, hintEN,                                                                                      \
     item1, item2, item3, item4, item5, namePage, keeper, funcActive, funcPress)                                                                 \
 static const Control * const  items##name[] = {(Control *)&item1, (Control *)&item2, (Control *)&item3, (Control *)&item4, (Control *)&item5};  \
-static const PageBase name = {Control::Type::Page, 5, false, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                  \
+const PageBase name = {Control::Type::Page, 5, false, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                         \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
 #define DEF_PAGE_6(name, titleRU, titleEN, hintRU, hintEN,                                                                                      \

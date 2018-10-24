@@ -6,7 +6,7 @@
 #include "Utils/StringUtils.h"
 #include "Utils/Values.h"
 #include "Hardware/FSMC.h"
-#include "Menu/Pages/PageMeasures.h"
+#include "Menu/Pages/PageFunction.h"
 #include "Utils/Stack.h"
 #include "Utils/Math.h"
 #include <string.h>
