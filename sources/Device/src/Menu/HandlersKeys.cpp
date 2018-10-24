@@ -11,6 +11,7 @@
 #include "Menu/Pages/PageTime.h"
 #include "Menu/Pages/PageChannels.h"
 #include "Menu/Pages/PageTrig.h"
+#include "Menu/Pages/PageFunction.h"
 #include "Device.h"
 
 
@@ -27,7 +28,7 @@ void Handlers::Process(KeyEvent e)
     {                   // Press        Repead       Release        Long
         /* None        */ {E,           E,           E,             E},
         /* Function    */ {E,           E,           Function,      E},
-        /* Measure    */ {Measure,    Measure,    Measure,      Measure},
+        /* Measure    */  {Measure,    Measure,    Measure,      Measure},
         /* Memory      */ {Memory,      Memory,      Memory,        Memory},
         /* Service     */ {Service,     Service,     Service,       Service},
         /* ChannelA    */ {ChannelA,    E,           E,             E},
@@ -263,7 +264,7 @@ void Handlers::ChannelB()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::Function()
 {
-    Device::ChangeMode();
+    OpenPage(PageFunction::pointer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

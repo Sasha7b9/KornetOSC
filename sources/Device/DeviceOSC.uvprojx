@@ -2510,6 +2510,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\PageTester.h</FilePath>
             </File>
+            <File>
+              <FileName>PageFunction.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunction.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageFunction.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunction.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

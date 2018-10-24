@@ -177,6 +177,7 @@ public:
             Display_Settings_Colors,   ///< ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ
             ChannelA,                  ///< ÊÀÍÀË 1
             ChannelB,                  ///< ÊÀÍÀË 2
+            Function,                   ///< ÔÓÍÊÖÈß
             Trig,                      ///< ÑÈÍÕÐ
             Trig_Search,               ///< ÑÈÍÕÐ - ÏÎÈÑÊ
             Time,                      ///< ÐÀÇÂÅÐÒÊÀ

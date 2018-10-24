@@ -12,6 +12,7 @@
 #include "PageTime.h"
 #include "PageCursors.h"
 #include "PageTester.h"
+#include "PageFunction.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,13 +23,14 @@ extern const PageBase pService;
 extern const PageBase pHelp;
 extern const PageBase pDebug;
 extern const PageBase pageOsci;
+extern const PageBase pageFunction;
 
 
 PageBase *Menu::pageMain = (PageBase *)&pageOsci;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_11_GLOBAL(pageOsci,                                                                                                           // Ã≈Õﬁ ///
+DEF_PAGE_12_GLOBAL(pageOsci,                                                                                                           // Ã≈Õﬁ ///
     "Ã≈Õﬁ", "MENU",
     "", "",
     pDisplay,                   // ƒ»—œÀ≈…
@@ -36,6 +38,7 @@ DEF_PAGE_11_GLOBAL(pageOsci,                                                    
     *PageChannelB::pointer,     //  ¿Õ¿À 2
     *PageTrig::pointer,         // —»Õ’–
     *PageTime::pointer,         // –¿«¬≈–“ ¿
+    *PageFunction::pointer,     // ‘”Õ ÷»ﬂ
     *PageCursors::pointer,      //  ”–—Œ–€
     pMemory,                    // œ¿Ãﬂ“‹
     pMeasures,                  // »«Ã≈–≈Õ»ﬂ
