@@ -381,6 +381,9 @@
     <ClCompile Include="..\..\Device\src\Utils\Stack.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunction.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -799,6 +802,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Utils\Stack.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Menu\Pages\PageFunction.h">
+      <Filter>Menu\Pages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

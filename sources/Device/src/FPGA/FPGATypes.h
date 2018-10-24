@@ -43,13 +43,14 @@
 #define RD_PERIOD_BYTE_3        (ADDR_ALTERA + 21)
 #define RD_FLAG_LO              (ADDR_ALTERA + 24)          ///< Младший байт флага
 #define RD_FLAG_HI              (ADDR_ALTERA + 25)          ///< Старший байт флага
-#define FL_DATA_READY           0                           ///< Данные готовы для считывания
+#define FL_DATA_READY           0                           ///< Данные готовы для считывания (окончание счётчика послезапуска)
 #define FL_TRIG_READY           1                           ///< Флаг синхроимпульса
-#define FL_PRED                 2                           ///< Если 1, то предзапуск отсчитал, можно давать принудительный запуск
+#define FL_PRED                 2                           ///< Если 1, то предзапуск отсчитал, можно давать принудительный запуск (окончание
+#define FL_P2P                  3                           ///< 
 #define FL_FREQ_READY           4                           ///< Флаг готовности измерения частоты
-#define FL_PERIOD_READY         5                           ///< Флаг готовности измерения частоты
-#define FL_OVERFLOW_FREQ        6                           ///< Признак переполнения счётчика частоты
-#define FL_OVERFLOW_PERIOD      7                           ///< Признак переполнения счётчика периода
+#define FL_PERIOD_READY         5                           ///< Флаг готовности измерения периода
+#define FL_OVERFLOW_FREQ        8                           ///< Признак переполнения счётчика частоты
+#define FL_OVERFLOW_PERIOD      9                           ///< Признак переполнения счётчика периода
 
 
 #define FPGA_MAX_NUM_POINTS     (16 * 1024)
