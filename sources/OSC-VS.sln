@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{5872F067-A3F
 		doc\Page03 Задействованные аппаратные ресурсы.h = doc\Page03 Задействованные аппаратные ресурсы.h
 		doc\Page04 Задействованные таймеры.h = doc\Page04 Задействованные таймеры.h
 		doc\Page05 Новый алгоритм хранения настроек.h = doc\Page05 Новый алгоритм хранения настроек.h
+		doc\Page06 Структура меню.h = doc\Page06 Структура меню.h
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Device", "OSC-VS\Device\FPGA.vcxproj", "{C23F96B0-1550-4A0F-8E49-0DC211BCED2C}"
