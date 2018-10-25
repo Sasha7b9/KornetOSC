@@ -2,6 +2,7 @@
 #include "PageTester.h"
 #include "Tester/Tester.h"
 #include "Settings/Settings.h"
+#include "PageFunction.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -108,23 +109,23 @@ void PageTester::Init()
 
 
 DEF_PAGE_5( pTesterU,
-    "реяреп-йнлонмемр", "KOMPONENT-TESTER",
+    "реяреп", "TESTER",
     "", "",
     cControl,
     cStepU,
     cPolarity,
     cViewMode,
     cSmoothing,
-    Page::Name::Tester, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Tester, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
 DEF_PAGE_5(pTesterI,
-    "реяреп-йнлонмемр", "KOMPONENT-TESTER",
+    "реяреп", "TESTER",
     "", "",
     cControl,
     cStepI,
     cPolarity,
     cViewMode,
     cSmoothing,
-    Page::Name::Tester, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Tester, PageFunction::pointer, FuncActive, EmptyPressPage
 )

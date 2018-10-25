@@ -41,7 +41,7 @@ DEF_PAGE_11_GLOBAL(pageOsci,                                                    
     *PageMemory::pointer,       // оюлърэ
     *PageMeasures::pointer,     // хглепемхъ
     *PageService::pointer,      // яепбхя
-    //pHelp,                      // онлныэ
+    //pHelp,                    // онлныэ
     *PageDebug::pointer,        // нркюдйю
     Page::Name::Main, 0, FuncActive, EmptyPressPage
 )

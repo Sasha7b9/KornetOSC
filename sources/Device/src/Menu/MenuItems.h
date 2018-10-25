@@ -168,55 +168,55 @@ public:
     {
         enum E
         {
-            Main,                      ///< Ãëàâíàÿ ñòğàíèöà ìåíş
-            Display,                   ///< ÄÈÑÏÅÉ
-            Display_Accum,             ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
-            Display_Average,           ///< ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ
-            Display_Grid,              ///< ÄÈÑÏËÅÉ - ÑÅÒÊÀ
-            Display_Settings,          ///< ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ
-            Display_Settings_Colors,   ///< ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - ÖÂÅÒÀ
-            ChannelA,                  ///< ÊÀÍÀË 1
-            ChannelB,                  ///< ÊÀÍÀË 2
+            Main,                       ///< Ãëàâíàÿ ñòğàíèöà ìåíş
+            Display,                    ///< ÄÈÑÏÅÉ
+            Display_Accum,              ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
+            Display_Average,            ///< ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ
+            Display_Grid,               ///< ÄÈÑÏËÅÉ - ÑÅÒÊÀ
+            Display_Settings,           ///< ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ
+            Display_Settings_Colors,    ///< ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - ÖÂÅÒÀ
+            ChannelA,                   ///< ÊÀÍÀË 1
+            ChannelB,                   ///< ÊÀÍÀË 2
             Function,                   ///< ÔÓÍÊÖÈß
-            Trig,                      ///< ÑÈÍÕĞ
-            Trig_Search,               ///< ÑÈÍÕĞ - ÏÎÈÑÊ
-            Time,                      ///< ĞÀÇÂÅĞÒÊÀ
-            Cursors,                   ///< ÊÓĞÑÎĞÛ
-            SB_Cursors_Set,            ///< ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ
-            Memory,                    ///< ÏÀÌßÒÜ
-            SB_Memory_Last,            ///< ÏÀÌßÒÜ - ÏÎÑËÅÄÍÈÅ
-            SB_Memory_Internal,        ///< ÏÀÌßÒÜ - ÂÍÓÒĞ ÇÓ
-            Memory_Drive,              ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ
-            SB_Memory_Drive_Manager,   ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÊÀÒÀËÎÃ
-            SB_Memory_Drive_Mask,      ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÌÀÑÊÀ
-            SB_Memory_SetName,         ///< \brief Ïîÿâëÿåòñÿ ïåğåä ñîõğàíåíèåì ôàéëà íà ôëåøêó äëÿ çàäàíèÿ èìåíè ôàéëà ïğè ñîîòâåòñòâóşùåé îïöèè 
-                                       ///< ÂÍÅØÍ ÇÓ - Èìÿ ôàéëà
-            Measure,                  ///< ÈÇÌÅĞÅÍÈß
-            SB_Measures_Tune,          ///< ÈÇÌÅĞÅÍÈß - ÍÀÑÒĞÎÈÒÜ
-            Service,                   ///< ÑÅĞÂÈÑ
-            Service_Calibrator,        ///< ÑÅĞÂÈÑ - ÊÀËÈÁĞÀÒÎĞ
-            Service_Ethernet,          ///< ÑÅĞÂÈÑ - ETHERNET
-            Service_FreqMeter,         ///< ÑÅĞÂÈÑ - ×ÀÑÒÎÒÎÌÅĞ
-            Service_Sound,             ///< ÑÅĞÂÈÑ - ÇÂÓÊ
-            Service_RTC,               ///< ÑÅĞÂÈÑ - ÂĞÅÌß
-            Service_FFT,               ///< ÑÅĞÂÈÑ - ÑÏÅÊÒĞ
-            SB_Service_FFT_Cursors,    ///< ÑÅĞÂÈÑ - ÑÏÅÊÒĞ - ÊÓĞÑÎĞÛ
-            SB_Service_Function,       ///< ÑÅĞÂÈÑ - ÔÓÍÊÖÈß
-            SB_Service_Information,    ///< ÑÅĞÂÈÑ - ÈÍÔÎĞÌÀÖÈß
-            SB_Service_Recorder,       ///< ÑÅĞÂÈÑ - ĞÅÃÈÑÒĞÀÒÎĞ
-            SB_Help,                   ///< ÏÎÌÎÙÜ
-            Debug,                     ///< ÎÒËÀÄÊÀ
-            Debug_Console,             ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
-            Debug_Console_Registers,   ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ĞÅÃÈÑÒĞÛ
-            Debug_ADC,                 ///< ÎÒËÀÄÊÀ - ÀÖÏ
-            Debug_ADC_Balance,         ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
-            Debug_ADC_Stretch,         ///< ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ
-            Debug_ADC_Shift,           ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
-            Debug_ADC_AltShift,        ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ ÏÀÌ
-            Debug_Rand,                ///< ÎÒËÀÄÊÀ - ĞÀÍÄ-ÒÎĞ
-            Debug_Channels,            ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
-            SB_Debug_Settings,         ///< ÎÒËÀÄÊÀ - ÍÀÑÒĞÎÉÊÈ
-            SB_Debug_SerialNumber,     ///< ÎÒËÀÄÊÀ - Ñ/Í
+            Trig,                       ///< ÑÈÍÕĞ
+            Trig_Search,                ///< ÑÈÍÕĞ - ÏÎÈÑÊ
+            Time,                       ///< ĞÀÇÂÅĞÒÊÀ
+            Cursors,                    ///< ÊÓĞÑÎĞÛ
+            SB_Cursors_Set,             ///< ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ
+            Memory,                     ///< ÏÀÌßÒÜ
+            SB_Memory_Last,             ///< ÏÀÌßÒÜ - ÏÎÑËÅÄÍÈÅ
+            SB_Memory_Internal,         ///< ÏÀÌßÒÜ - ÂÍÓÒĞ ÇÓ
+            Memory_Drive,               ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ
+            SB_Memory_Drive_Manager,    ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÊÀÒÀËÎÃ
+            SB_Memory_Drive_Mask,       ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÌÀÑÊÀ
+            SB_Memory_SetName,          ///< \brief Ïîÿâëÿåòñÿ ïåğåä ñîõğàíåíèåì ôàéëà íà ôëåøêó äëÿ çàäàíèÿ èìåíè ôàéëà ïğè ñîîòâåòñòâóşùåé îïöèè 
+                                        ///< ÂÍÅØÍ ÇÓ - Èìÿ ôàéëà
+            Measure,                    ///< ÈÇÌÅĞÅÍÈß
+            SB_Measures_Tune,           ///< ÈÇÌÅĞÅÍÈß - ÍÀÑÒĞÎÈÒÜ
+            Service,                    ///< ÑÅĞÂÈÑ
+            Service_Calibrator,         ///< ÑÅĞÂÈÑ - ÊÀËÈÁĞÀÒÎĞ
+            Service_Ethernet,           ///< ÑÅĞÂÈÑ - ETHERNET
+            Service_FreqMeter,          ///< ÑÅĞÂÈÑ - ×ÀÑÒÎÒÎÌÅĞ
+            Service_Sound,              ///< ÑÅĞÂÈÑ - ÇÂÓÊ
+            Service_RTC,                ///< ÑÅĞÂÈÑ - ÂĞÅÌß
+            Service_FFT,                ///< ÑÅĞÂÈÑ - ÑÏÅÊÒĞ
+            SB_Service_FFT_Cursors,     ///< ÑÅĞÂÈÑ - ÑÏÅÊÒĞ - ÊÓĞÑÎĞÛ
+            SB_Service_Function,        ///< ÑÅĞÂÈÑ - ÔÓÍÊÖÈß
+            SB_Service_Information,     ///< ÑÅĞÂÈÑ - ÈÍÔÎĞÌÀÖÈß
+            SB_Service_Recorder,        ///< ÑÅĞÂÈÑ - ĞÅÃÈÑÒĞÀÒÎĞ
+            SB_Help,                    ///< ÏÎÌÎÙÜ
+            Debug,                      ///< ÎÒËÀÄÊÀ
+            Debug_Console,              ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
+            Debug_Console_Registers,    ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ĞÅÃÈÑÒĞÛ
+            Debug_ADC,                  ///< ÎÒËÀÄÊÀ - ÀÖÏ
+            Debug_ADC_Balance,          ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
+            Debug_ADC_Stretch,          ///< ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ
+            Debug_ADC_Shift,            ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
+            Debug_ADC_AltShift,         ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ ÏÀÌ
+            Debug_Rand,                 ///< ÎÒËÀÄÊÀ - ĞÀÍÄ-ÒÎĞ
+            Debug_Channels,             ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
+            SB_Debug_Settings,          ///< ÎÒËÀÄÊÀ - ÍÀÑÒĞÎÉÊÈ
+            SB_Debug_SerialNumber,      ///< ÎÒËÀÄÊÀ - Ñ/Í
             Multimeter,
             Tester,
             Number,
