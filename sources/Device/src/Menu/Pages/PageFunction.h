@@ -63,6 +63,7 @@ public:
         class PageSource
         {
         public:
+            
             static const PageBase *pointer;
         };
     };
