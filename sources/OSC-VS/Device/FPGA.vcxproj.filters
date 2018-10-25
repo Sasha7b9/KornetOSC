@@ -70,6 +70,9 @@
     <Filter Include="Menu\Pages\Include">
       <UniqueIdentifier>{713a84ca-0b65-4e97-8e18-8b8c416f2fa3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Recorder">
+      <UniqueIdentifier>{d1ee5969-9a7b-4553-91ac-73a98c63fa84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
@@ -395,6 +398,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionRecorder.cpp">
       <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Recorder\Recorder.cpp">
+      <Filter>Recorder</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -811,6 +817,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageTime.h">
       <Filter>Menu\Pages\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Recorder\Recorder.h">
+      <Filter>Recorder</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

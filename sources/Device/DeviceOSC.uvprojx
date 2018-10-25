@@ -2530,6 +2530,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageTrig.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageFunctionRecorder.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunctionRecorder.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

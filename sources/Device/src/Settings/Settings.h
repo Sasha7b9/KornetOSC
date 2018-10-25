@@ -11,6 +11,7 @@
 #include "Osci/Grid.h"
 #include "Display/Colors.h"
 #include "Multimeter/Multimeter.h"
+#include "Recorder/Recorder.h"
 #include "Utils/Measure.h"
 
 
@@ -255,7 +256,8 @@ public:
     Multimeter::RangeAC         multi_rangeAC;
     Multimeter::RangeResistance multi_rangeResist;
 
-
+    // Настройки регистратора
+    Recorder::ViewAlways        rec_viewAlways;         ///< Показывать ли всегда данные регистратора
 };
 
 #pragma pack(pop)

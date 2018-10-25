@@ -121,6 +121,7 @@
     <ClCompile Include="..\..\Device\src\Osci\Osci.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\OsciGraphics.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\PainterData.cpp" />
+    <ClCompile Include="..\..\Device\src\Recorder\Recorder.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\Settings.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsChannel.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsDebug.cpp" />
@@ -274,6 +275,7 @@
     <ClInclude Include="..\..\Device\src\Osci\MemoryWindow.h" />
     <ClInclude Include="..\..\Device\src\Osci\Osci.h" />
     <ClInclude Include="..\..\Device\src\Osci\PainterData.h" />
+    <ClInclude Include="..\..\Device\src\Recorder\Recorder.h" />
     <ClInclude Include="..\..\Device\src\Settings\Settings.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsChannel.h" />
     <ClInclude Include="..\..\Device\src\Settings\SettingsDebug.h" />
