@@ -9,8 +9,7 @@ extern const PageBase pageRecorder;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-DEF_CHOICE_2(cViewAlways,
+DEF_CHOICE_2(cViewAlways,                                                                                     //--- ФУНКЦИЯ - РЕГИСТРАТОР - Всегда ---
     "Всегда", "Always",
     "Позволяет выводить данные регистратора при выключенном меню РЕГИСТРАТОР",
     "Allows you to display data from the recorder when the recorder menu is off",
@@ -19,15 +18,14 @@ DEF_CHOICE_2(cViewAlways,
     RECORDER_VIEW_ALLWAYS, pageRecorder, FuncActive, FuncChangedChoice, FuncDraw
 )
 
-const PageBase *PageFunction::PageRecorder::pointer = &pageRecorder;
-
-DEF_PAGE_1( pageRecorder,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_2( pageRecorder,                                                                                              //--- ФУНКЦИЯ - РЕГИСТРАТОР ---
     "РЕГИСТРАТОР", "RECORDER",
     "Запись и воспроизведение сигналов входов и датчиков",
     "Recording and playback of input signals and sensors",
-    cViewAlways,    ///< ФУНКЦИЯ - РЕГИСТРАТОР - Всегда
-//    pSource,        ///< ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧНИК
-//    pRecord,        ///< ФУНКЦИЯ - РЕГИСТРАТОР - ЗАПИСЬ
-//    pPlay           ///< ФУНКЦИЯ - РЕГИСТРАТОР - ПРОСМОТР
+    cViewAlways,                                        ///< ФУНКЦИЯ - РЕГИСТРАТОР - Всегда
+    PageFunction::PageRecorder::PageSource::pointer,    ///< ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧНИК
     Page::Name::Function_Recorder, PageFunction::pointer, FuncActive, FuncPress
 )
+
+const PageBase *PageFunction::PageRecorder::pointer = &pageRecorder;

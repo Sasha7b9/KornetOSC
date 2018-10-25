@@ -169,12 +169,14 @@ public:
         enum E
         {
             Main,                       ///< Ãëàâíàÿ ñòğàíèöà ìåíş
+
             Function,                   ///< ÔÓÍÊÖÈß
             Function_FrequencyCounter,  ///< ÔÓÍÊÖÈß - ×ÀÑÒÎÒÎÌÅĞ
             Function_FFT,               ///< ÔÓÍÊÖÈß - ÑÏÅÊÒĞ
             Function_Multimeter,        ///< ÔÓÍÊÖÈß - ÌÓËÜÒÈÌÅÒĞ
             Function_Tester,            ///< ÔÓÍÊÖÈß - ÒÅÑÒÅĞ
             Function_Recorder,          ///< ÔÓÍÊÖÈß - ĞÅÃÈÑÒĞÀÒÎĞ
+            Function_Recorder_Source,   ///< ÔÓÍÊÖÈß - ĞÅÃÈÑÒĞÀÒÎĞ - ÈÑÒÎ×ÍÈÊ
 
             Display,                    ///< ÄÈÑÏÅÉ
             Display_Accum,              ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ

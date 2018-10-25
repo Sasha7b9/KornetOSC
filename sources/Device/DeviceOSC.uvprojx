@@ -2535,6 +2535,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageFunctionRecorder.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageFunctionRecorderSource.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunctionRecorderSource.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

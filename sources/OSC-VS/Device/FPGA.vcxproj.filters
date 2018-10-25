@@ -73,6 +73,9 @@
     <Filter Include="Recorder">
       <UniqueIdentifier>{d1ee5969-9a7b-4553-91ac-73a98c63fa84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menu\Pages\PageFunction">
+      <UniqueIdentifier>{8e79591d-5655-400a-a00a-4b8a6c1be9df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_nor.c">
@@ -381,26 +384,29 @@
     <ClCompile Include="..\..\Device\src\Utils\Stack.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunction.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionFFT.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionFrequencyCounter.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionMultimeter.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionTester.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionRecorder.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Recorder\Recorder.cpp">
       <Filter>Recorder</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunction.cpp">
+      <Filter>Menu\Pages\PageFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionFFT.cpp">
+      <Filter>Menu\Pages\PageFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionFrequencyCounter.cpp">
+      <Filter>Menu\Pages\PageFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionMultimeter.cpp">
+      <Filter>Menu\Pages\PageFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionRecorder.cpp">
+      <Filter>Menu\Pages\PageFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionTester.cpp">
+      <Filter>Menu\Pages\PageFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionRecorderSource.cpp">
+      <Filter>Menu\Pages\PageFunction</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

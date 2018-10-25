@@ -251,13 +251,16 @@ public:
 
     // Настройки мультиметра
     Multimeter::AVP             multi_avp;
-    Multimeter::Measure        multi_meas;
+    Multimeter::Measure         multi_meas;
     Multimeter::RangeDC         multi_rangeDC;
     Multimeter::RangeAC         multi_rangeAC;
     Multimeter::RangeResistance multi_rangeResist;
 
     // Настройки регистратора
     Recorder::ViewAlways        rec_viewAlways;         ///< Показывать ли всегда данные регистратора
+    bool                        rec_sourceChanA;        ///< Включение записи канала 1
+    bool                        rec_sourceChanB;        ///< Включение записи канала 2
+    bool                        rec_sourceSensor;       ///< Включение записи показаний датчика
 };
 
 #pragma pack(pop)

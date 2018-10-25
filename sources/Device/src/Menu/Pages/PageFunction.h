@@ -59,5 +59,11 @@ public:
     {
     public:
         static const PageBase *pointer;
+
+        class PageSource
+        {
+        public:
+            static const PageBase *pointer;
+        };
     };
 };
