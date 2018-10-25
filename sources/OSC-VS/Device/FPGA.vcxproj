@@ -105,9 +105,9 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageHelp.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMemory.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMultimeter.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionMultimeter.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageService.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTester.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionTester.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageTime.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageTrig.cpp" />
     <ClCompile Include="..\..\Device\src\Multimeter\Multimeter.cpp" />

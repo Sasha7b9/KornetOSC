@@ -2456,6 +2456,21 @@
               <FilePath>.\src\Menu\Pages\PageFunctionFFT.cpp</FilePath>
             </File>
             <File>
+              <FileName>PageFunctionFrequencyCounter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunctionFrequencyCounter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageFunctionMultimeter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunctionMultimeter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageFunctionTester.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunctionTester.cpp</FilePath>
+            </File>
+            <File>
               <FileName>PageHelp.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\PageHelp.h</FilePath>
@@ -2486,11 +2501,6 @@
               <FilePath>.\src\Menu\Pages\PageMemory.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageMultimeter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMultimeter.cpp</FilePath>
-            </File>
-            <File>
               <FileName>PageService.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\PageService.h</FilePath>
@@ -2499,11 +2509,6 @@
               <FileName>PageService.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageService.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageTester.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageTester.cpp</FilePath>
             </File>
             <File>
               <FileName>PageTime.h</FileName>
@@ -2524,11 +2529,6 @@
               <FileName>PageTrig.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageTrig.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageFunctionFrequencyCounter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunctionFrequencyCounter.cpp</FilePath>
             </File>
           </Files>
         </Group>

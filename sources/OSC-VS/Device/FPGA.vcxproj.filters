@@ -306,12 +306,6 @@
     <ClCompile Include="..\..\Device\src\Display\Font\Font.cpp">
       <Filter>Display\Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMultimeter.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageTester.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Tester\TesterGraphics.cpp">
       <Filter>Tester</Filter>
     </ClCompile>
@@ -391,6 +385,12 @@
       <Filter>Menu\Pages</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionFrequencyCounter.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionMultimeter.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionTester.cpp">
       <Filter>Menu\Pages</Filter>
     </ClCompile>
   </ItemGroup>
