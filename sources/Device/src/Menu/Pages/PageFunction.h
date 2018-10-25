@@ -41,4 +41,16 @@ public:
 
         static const PageBase *pointer;
     };
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    class PageTester
+    {
+    public:
+
+        static void Init();
+
+        static void OnChanged_Control(bool);
+
+        static const PageBase *pointer;
+    };
 };

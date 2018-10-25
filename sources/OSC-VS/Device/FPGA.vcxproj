@@ -262,7 +262,6 @@
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageMeasures.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageMemory.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageService.h" />
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTester.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageTime.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageTrig.h" />
     <ClInclude Include="..\..\Device\src\Multimeter\Multimeter.h" />

@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "PageTester.h"
 #include "Tester/Tester.h"
 #include "Settings/Settings.h"
 #include "PageFunction.h"
@@ -27,7 +26,7 @@ DEF_CHOICE_2(   cPolarity,                                                      
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PageTester::OnChanged_Control(bool)
+void PageFunction::PageTester::OnChanged_Control(bool)
 {
     if(TESTER_CONTROL_IS_U)
     {
@@ -49,7 +48,7 @@ DEF_CHOICE_2(   cControl,                                                       
     "Type of test exposure",
     "Напряжение", "Voltage",
     "Ток", "Current",
-    TESTER_CONTROL, pTesterU, FuncActive, PageTester::OnChanged_Control, FuncDraw
+    TESTER_CONTROL, pTesterU, FuncActive, PageFunction::PageTester::OnChanged_Control, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -100,9 +99,9 @@ DEF_CHOICE_5(   cSmoothing,
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const PageBase *PageTester::pointer = &pTesterU;
+const PageBase *PageFunction::PageTester::pointer = &pTesterU;
 
-void PageTester::Init()
+void PageFunction::PageTester::Init()
 {
     OnChanged_Control(true);
 }

@@ -2501,11 +2501,6 @@
               <FilePath>.\src\Menu\Pages\PageService.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageTester.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageTester.h</FilePath>
-            </File>
-            <File>
               <FileName>PageTester.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageTester.cpp</FilePath>

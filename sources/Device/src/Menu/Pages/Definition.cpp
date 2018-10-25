@@ -16,7 +16,6 @@
 #include "PageService.h"
 #include "PageTrig.h"
 #include "PageTime.h"
-#include "PageTester.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,7 +162,7 @@ void Menu::ChangeMode()
             break;
         case Device::Mode::Tester:
             menuIsShown = IsShown();
-            pageMain = (PageBase *)PageTester::pointer;
+            pageMain = (PageBase *)PageFunction::PageTester::pointer;
             Show(true);
             break;
         case Device::Mode::Multimeter:

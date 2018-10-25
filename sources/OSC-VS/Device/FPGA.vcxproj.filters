@@ -803,9 +803,6 @@
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageService.h">
       <Filter>Menu\Pages\Include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\PageTester.h">
-      <Filter>Menu\Pages\Include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Pages\PageTrig.h">
       <Filter>Menu\Pages\Include</Filter>
     </ClInclude>
