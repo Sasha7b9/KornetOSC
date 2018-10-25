@@ -438,6 +438,9 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Cursors_Set.cpp">
       <Filter>Menu\Pages\PageMeasures</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Auto.cpp">
+      <Filter>Menu\Pages\PageMeasures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">

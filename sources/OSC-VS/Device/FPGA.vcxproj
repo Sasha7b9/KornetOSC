@@ -108,6 +108,7 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunction\PageFunction_Tester.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageHelp\HelpContent.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageHelp\PageHelp.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Auto.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Cursors.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Cursors_Set.cpp" />

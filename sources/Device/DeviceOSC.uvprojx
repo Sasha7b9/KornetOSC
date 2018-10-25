@@ -2561,6 +2561,11 @@
               <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures.cpp</FilePath>
             </File>
             <File>
+              <FileName>PageMeasures_Auto.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures_Auto.cpp</FilePath>
+            </File>
+            <File>
               <FileName>PageMeasures_Cursors.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures_Cursors.cpp</FilePath>
