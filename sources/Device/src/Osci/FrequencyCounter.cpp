@@ -180,11 +180,11 @@ void FrequencyCounter::Draw()
     x += 2;
     y += 2;
 
-    Painter::DrawBigText(x + 2,  y + 1,         SIZE, "F", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceTimeF()));
-    Painter::DrawBigText(x + 2,  y + 10 * SIZE, SIZE, "T", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceNumPeriods()));
+    Painter::DrawBigText(x + 2,  y + 1,         SIZE, "F", Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceTimeF()));
+    Painter::DrawBigText(x + 2,  y + 10 * SIZE, SIZE, "T", Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceNumPeriods()));
     int dX = 7 * SIZE;
-    Painter::DrawBigText(x + dX, y + 1,         SIZE, "=", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceTimeF()));
-    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=", Choice::ColorMenuField(PageFrequencyCounter::GetChoiceNumPeriods()));
+    Painter::DrawBigText(x + dX, y + 1,         SIZE, "=", Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceTimeF()));
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=", Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceNumPeriods()));
     
     float freq = FreqSetToFreq(&freqActual);
 
@@ -193,12 +193,12 @@ void FrequencyCounter::Draw()
     dX = SIZE * 12;
 
     Painter::DrawBigText(x + dX, y + 1, SIZE, condFreq ? EMPTY_STRING : FreqSetToString(&freqActual),
-                         Choice::ColorMenuField(PageFrequencyCounter::GetChoiceTimeF()));
+                         Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceTimeF()));
 
     bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
 
     Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : PeriodSetToString(&periodActual),
-                         Choice::ColorMenuField(PageFrequencyCounter::GetChoiceNumPeriods()));
+                         Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceNumPeriods()));
 
 
     width = 50;

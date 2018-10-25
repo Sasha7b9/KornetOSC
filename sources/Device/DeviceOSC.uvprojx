@@ -2540,6 +2540,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageTrig.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageFunctionFrequencyCounter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunctionFrequencyCounter.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

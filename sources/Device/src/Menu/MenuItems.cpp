@@ -76,11 +76,13 @@ const char *Choice::NameSubItem(int i)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Choice::ColorMenuField(const Choice *choice)
 {
-    if(choice == PageFrequencyCounter::GetChoiceTimeF())                                                                  // Измерения по частоте
+    // Измерения по частоте
+    if(choice == PageFunction::FrequencyCounter::GetChoiceTimeF())
     {
         return Color(Color::WHITE);
     }
-    else if(choice == PageFrequencyCounter::GetChoiceFreqClc() || choice == PageFrequencyCounter::GetChoiceNumPeriods())    // Измерения по периоду
+    // Измерения по периоду
+    else if(choice == PageFunction::FrequencyCounter::GetChoiceFreqClc() || choice == PageFunction::FrequencyCounter::GetChoiceNumPeriods())
     {
         return Color(Color::YELLOW);
     }
