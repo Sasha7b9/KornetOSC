@@ -5,9 +5,7 @@
 #include "Hardware/Sound.h"
 #include "Definition.h"
 #include "Display/Painter.h"
-#include "PageMultimeter.h"
 #include "PageTester.h"
-#include "PageFunctionFFT.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,9 +18,9 @@ DEF_PAGE_4( pageFunction,                                                       
     "‘”Õ ÷»ﬂ", "FUNCTION",
     "¬˚·Ó ÙÛÌÍˆËË",
     "Function selection",
-    *PageFunction::FrequencyCounter::pointer,   // ‘”Õ ÷»ﬂ - ◊¿—“Œ“ŒÃ≈–
-    *PageFunctionFFT::pointer,                  // ‘”Õ ÷»ﬂ - —œ≈ “–
-    *PageMultimeter::pointer,                   // ‘”Õ ÷»ﬂ - Ã”À‹“»Ã≈“–
-    *PageTester::pointer,                       // ‘”Õ ÷»ﬂ - “≈—“≈–
+    *PageFunction::PageFrequencyCounter::pointer,   // ‘”Õ ÷»ﬂ - ◊¿—“Œ“ŒÃ≈–
+    *PageFunction::PageFFT::pointer,                    // ‘”Õ ÷»ﬂ - —œ≈ “–
+    *PageFunction::PageMultimeter::pointer,         // ‘”Õ ÷»ﬂ - Ã”À‹“»Ã≈“–
+    *PageTester::pointer,                           // ‘”Õ ÷»ﬂ - “≈—“≈–
     Page::Name::Function, Menu::pageMain, FuncActive, FuncPress
 )

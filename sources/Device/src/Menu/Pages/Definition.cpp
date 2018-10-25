@@ -13,7 +13,6 @@
 #include "PageFunction.h"
 #include "PageMeasures.h"
 #include "PageMemory.h"
-#include "PageMultimeter.h"
 #include "PageService.h"
 #include "PageTrig.h"
 #include "PageTime.h"
@@ -168,7 +167,7 @@ void Menu::ChangeMode()
             Show(true);
             break;
         case Device::Mode::Multimeter:
-            pageMain = (PageBase *)PageMultimeter::pointer;
+            pageMain = (PageBase *)PageFunction::PageMultimeter::pointer;
             Show(true);
             break;
     }

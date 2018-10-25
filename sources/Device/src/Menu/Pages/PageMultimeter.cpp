@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "PageMultimeter.h"
 #include "Settings/Settings.h"
 #include "Definition.h"
 #include "PageFunction.h"
@@ -110,7 +109,7 @@ DEF_CHOICE_7(   cMode,
     "R",    "R",
     "VD",   "VD",
     "BELL", "BELL",
-    MULTI_MEASURE, pMultimeterDC, FuncActive, PageMultimeter::OnChanged_Mode, FuncDraw
+    MULTI_MEASURE, pMultimeterDC, FuncActive, PageFunction::PageMultimeter::OnChanged_Mode, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -129,10 +128,10 @@ DEF_CHOICE_2 (cAVP,
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const PageBase *PageMultimeter::pointer = &pMultimeterDC;
+const PageBase *PageFunction::PageMultimeter::pointer = &pMultimeterDC;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PageMultimeter::OnChanged_Mode(bool)
+void PageFunction::PageMultimeter::OnChanged_Mode(bool)
 {
     if(MULTI_MEASURE == Multimeter::Measure::VoltageDC)
     {
@@ -154,7 +153,7 @@ void PageMultimeter::OnChanged_Mode(bool)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PageMultimeter::Init()
+void PageFunction::PageMultimeter::Init()
 {
     OnChanged_Mode(true);
 }

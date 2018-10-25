@@ -60,19 +60,19 @@ DEF_CHOICE_3(cFreqMeter_NumPeriods,                                             
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const PageBase *PageFunction::FrequencyCounter::pointer = &ppFreqMeter;
+const PageBase *PageFunction::PageFrequencyCounter::pointer = &ppFreqMeter;
 
-const Choice *PageFunction::FrequencyCounter::GetChoiceTimeF()
+const Choice *PageFunction::PageFrequencyCounter::GetChoiceTimeF()
 {
     return (const Choice *)&cFreqMeter_TimeF;
 }
 
-const Choice *PageFunction::FrequencyCounter::GetChoiceFreqClc()
+const Choice *PageFunction::PageFrequencyCounter::GetChoiceFreqClc()
 {
     return (const Choice *)&cFreqMeter_FreqClc;
 }
 
-const Choice *PageFunction::FrequencyCounter::GetChoiceNumPeriods()
+const Choice *PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()
 {
     return (const Choice *)&cFreqMeter_NumPeriods;
 }

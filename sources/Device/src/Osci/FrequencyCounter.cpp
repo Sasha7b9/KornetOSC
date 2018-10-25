@@ -180,11 +180,11 @@ void FrequencyCounter::Draw()
     x += 2;
     y += 2;
 
-    Painter::DrawBigText(x + 2,  y + 1,         SIZE, "F", Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceTimeF()));
-    Painter::DrawBigText(x + 2,  y + 10 * SIZE, SIZE, "T", Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceNumPeriods()));
+    Painter::DrawBigText(x + 2,  y + 1,         SIZE, "F", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceTimeF()));
+    Painter::DrawBigText(x + 2,  y + 10 * SIZE, SIZE, "T", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
     int dX = 7 * SIZE;
-    Painter::DrawBigText(x + dX, y + 1,         SIZE, "=", Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceTimeF()));
-    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=", Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceNumPeriods()));
+    Painter::DrawBigText(x + dX, y + 1,         SIZE, "=", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceTimeF()));
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
     
     float freq = FreqSetToFreq(&freqActual);
 
@@ -193,12 +193,12 @@ void FrequencyCounter::Draw()
     dX = SIZE * 12;
 
     Painter::DrawBigText(x + dX, y + 1, SIZE, condFreq ? EMPTY_STRING : FreqSetToString(&freqActual),
-                         Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceTimeF()));
+                         Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceTimeF()));
 
     bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
 
     Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : PeriodSetToString(&periodActual),
-                         Choice::ColorMenuField(PageFunction::FrequencyCounter::GetChoiceNumPeriods()));
+                         Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
 
 
     width = 50;

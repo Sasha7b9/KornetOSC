@@ -2451,11 +2451,6 @@
               <FilePath>.\src\Menu\Pages\PageFunction.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageFunctionFFT.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunctionFFT.h</FilePath>
-            </File>
-            <File>
               <FileName>PageFunctionFFT.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageFunctionFFT.cpp</FilePath>
@@ -2489,11 +2484,6 @@
               <FileName>PageMemory.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMemory.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMultimeter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageMultimeter.h</FilePath>
             </File>
             <File>
               <FileName>PageMultimeter.cpp</FileName>

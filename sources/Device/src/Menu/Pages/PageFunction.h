@@ -8,7 +8,8 @@ class PageFunction
 public:
     static const PageBase *pointer;
 
-    class FrequencyCounter
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    class PageFrequencyCounter
     {
     public:
         static const PageBase *pointer;
@@ -21,5 +22,23 @@ public:
         static const Choice *GetChoiceFreqClc();
         /// Возвращает указатель на ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Кол-во периодов
         static const Choice *GetChoiceNumPeriods();
+    };
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    class PageFFT
+    {
+    public:
+        static const PageBase *pointer;
+    };
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    class PageMultimeter
+    {
+    public:
+        static void Init();
+
+        static void OnChanged_Mode(bool);
+
+        static const PageBase *pointer;
     };
 };

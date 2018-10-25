@@ -16,7 +16,7 @@
 #include "Menu/Pages/PageHelp.h"
 #include "Menu/Pages/PageMemory.h"
 #include "Menu/Pages/PageChannels.h"
-#include "Menu/Pages/PageMultimeter.h"
+#include "Menu/Pages/PageFunction.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "MenuTriggers.h"
@@ -570,7 +570,7 @@ bool Menu::IsShown()
 void Menu::Init()
 {
     PageDisplay::Init();
-    PageMultimeter::Init();
+    PageFunction::PageMultimeter::Init();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

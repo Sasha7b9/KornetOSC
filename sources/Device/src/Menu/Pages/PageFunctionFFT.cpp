@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "PageFunctionFFT.h"
 #include "Settings/Settings.h"
 #include "Definition.h"
 #include "Display/Painter.h"
@@ -132,7 +131,7 @@ static void OnPress_FFT()
     }
 }
 
-const PageBase *PageFunctionFFT::pointer = &ppFFT;
+const PageBase *PageFunction::PageFFT::pointer = &ppFFT;
 
 
 DEF_PAGE_6(ppFFT,                                                                                                                //--- —≈–¬»— - —œ≈ “–
