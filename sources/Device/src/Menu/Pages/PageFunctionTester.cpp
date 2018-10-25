@@ -115,7 +115,7 @@ DEF_PAGE_5( pTesterU,
     cPolarity,
     cViewMode,
     cSmoothing,
-    Page::Name::Tester, PageFunction::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
 DEF_PAGE_5(pTesterI,
@@ -126,5 +126,5 @@ DEF_PAGE_5(pTesterI,
     cPolarity,
     cViewMode,
     cSmoothing,
-    Page::Name::Tester, PageFunction::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, EmptyPressPage
 )

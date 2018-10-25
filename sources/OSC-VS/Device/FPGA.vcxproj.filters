@@ -393,6 +393,9 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionTester.cpp">
       <Filter>Menu\Pages</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionRecorder.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">

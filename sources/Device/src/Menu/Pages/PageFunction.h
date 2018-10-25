@@ -53,4 +53,11 @@ public:
 
         static const PageBase *pointer;
     };
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------------
+    class PageRecorder
+    {
+    public:
+        static const PageBase *pointer;
+    };
 };

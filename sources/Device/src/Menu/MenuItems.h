@@ -169,6 +169,13 @@ public:
         enum E
         {
             Main,                       ///< Ãëàâíàÿ ñòğàíèöà ìåíş
+            Function,                   ///< ÔÓÍÊÖÈß
+            Function_FrequencyCounter,  ///< ÔÓÍÊÖÈß - ×ÀÑÒÎÒÎÌÅĞ
+            Function_FFT,               ///< ÔÓÍÊÖÈß - ÑÏÅÊÒĞ
+            Function_Multimeter,        ///< ÔÓÍÊÖÈß - ÌÓËÜÒÈÌÅÒĞ
+            Function_Tester,            ///< ÔÓÍÊÖÈß - ÒÅÑÒÅĞ
+            Function_Recorder,          ///< ÔÓÍÊÖÈß - ĞÅÃÈÑÒĞÀÒÎĞ
+
             Display,                    ///< ÄÈÑÏÅÉ
             Display_Accum,              ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
             Display_Average,            ///< ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ
@@ -177,7 +184,6 @@ public:
             Display_Settings_Colors,    ///< ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - ÖÂÅÒÀ
             ChannelA,                   ///< ÊÀÍÀË 1
             ChannelB,                   ///< ÊÀÍÀË 2
-            Function,                   ///< ÔÓÍÊÖÈß
             Trig,                       ///< ÑÈÍÕĞ
             Trig_Search,                ///< ÑÈÍÕĞ - ÏÎÈÑÊ
             Time,                       ///< ĞÀÇÂÅĞÒÊÀ
@@ -196,14 +202,11 @@ public:
             Service,                    ///< ÑÅĞÂÈÑ
             Service_Calibrator,         ///< ÑÅĞÂÈÑ - ÊÀËÈÁĞÀÒÎĞ
             Service_Ethernet,           ///< ÑÅĞÂÈÑ - ETHERNET
-            Service_FreqMeter,          ///< ÑÅĞÂÈÑ - ×ÀÑÒÎÒÎÌÅĞ
             Service_Sound,              ///< ÑÅĞÂÈÑ - ÇÂÓÊ
             Service_RTC,                ///< ÑÅĞÂÈÑ - ÂĞÅÌß
-            Service_FFT,                ///< ÑÅĞÂÈÑ - ÑÏÅÊÒĞ
             SB_Service_FFT_Cursors,     ///< ÑÅĞÂÈÑ - ÑÏÅÊÒĞ - ÊÓĞÑÎĞÛ
             SB_Service_Function,        ///< ÑÅĞÂÈÑ - ÔÓÍÊÖÈß
             SB_Service_Information,     ///< ÑÅĞÂÈÑ - ÈÍÔÎĞÌÀÖÈß
-            SB_Service_Recorder,        ///< ÑÅĞÂÈÑ - ĞÅÃÈÑÒĞÀÒÎĞ
             SB_Help,                    ///< ÏÎÌÎÙÜ
             Debug,                      ///< ÎÒËÀÄÊÀ
             Debug_Console,              ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
@@ -217,8 +220,6 @@ public:
             Debug_Channels,             ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
             SB_Debug_Settings,          ///< ÎÒËÀÄÊÀ - ÍÀÑÒĞÎÉÊÈ
             SB_Debug_SerialNumber,      ///< ÎÒËÀÄÊÀ - Ñ/Í
-            Multimeter,
-            Tester,
             Number,
             NoPage
         } value;

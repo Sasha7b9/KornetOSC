@@ -166,7 +166,7 @@ DEF_PAGE_3( pMultimeterDC,
     cMode,
     cRangesVoltageDC,
     cAVP,
-    Page::Name::Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
 DEF_PAGE_3(pMultimeterAC,
@@ -176,7 +176,7 @@ DEF_PAGE_3(pMultimeterAC,
     cMode,
     cRangesVoltageAC,
     cAVP,
-    Page::Name::Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
 DEF_PAGE_3(pMultimeterResistance,
@@ -186,5 +186,5 @@ DEF_PAGE_3(pMultimeterResistance,
     cMode,
     cRangesResistance,
     cAVP,
-    Page::Name::Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
 )

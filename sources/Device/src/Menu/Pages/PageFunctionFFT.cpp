@@ -144,5 +144,5 @@ DEF_PAGE_6(ppFFT,                                                               
     cFFT_Window,       // яепбхя - яоейрп - нЙМН 
     pppFFT_Cursors,    // яепбхя - яоейрп - йспянпш
     cFFT_Range,        // яепбхя - яоейрп - дХЮОЮГНМ
-    Page::Name::Service_FFT, PageFunction::pointer, IsActive_FFT, OnPress_FFT
+    Page::Name::Function_FFT, PageFunction::pointer, IsActive_FFT, OnPress_FFT
 )
