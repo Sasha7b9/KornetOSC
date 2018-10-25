@@ -521,7 +521,7 @@ bool Menu::NeedForFireSetLED()
             name == Page::Name::SB_Measures_Tune        || 
             name == Page::Name::SB_Memory_Last          || 
             name == Page::Name::SB_Memory_Internal      ||
-            REG_SET_ACTIVE_ON_CURSORS           ||
+            PageMeasures::PageCursors::PageSet::IsRegSetActiveOnCursors() ||
             (name == Page::Name::SB_Service_Function && FUNC_MODE_DRAW_IS_ENABLED)
         )
     {

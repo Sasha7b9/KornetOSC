@@ -110,6 +110,7 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageHelp\PageHelp.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Cursors.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Cursors_Set.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Tune.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMemory\PageMemory.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageService\PageService.cpp" />
