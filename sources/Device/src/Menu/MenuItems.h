@@ -181,6 +181,7 @@ public:
             Function_Recorder_Play,     ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - ÏÐÎÑÌÎÒÐ
 
             Measures,                   ///< ÈÇÌÅÐÅÍÈß
+            Measures_Cursors,           ///< ÈÇÌÅÐÅÍÈß - ÊÓÐÑÎÐÛ
 
             Display,                    ///< ÄÈÑÏÅÉ
             Display_Accum,              ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
@@ -193,7 +194,6 @@ public:
             Trig,                       ///< ÑÈÍÕÐ
             Trig_Search,                ///< ÑÈÍÕÐ - ÏÎÈÑÊ
             Time,                       ///< ÐÀÇÂÅÐÒÊÀ
-            Cursors,                    ///< ÊÓÐÑÎÐÛ
             SB_Cursors_Set,             ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ
             Memory,                     ///< ÏÀÌßÒÜ
             SB_Memory_Last,             ///< ÏÀÌßÒÜ - ÏÎÑËÅÄÍÈÅ

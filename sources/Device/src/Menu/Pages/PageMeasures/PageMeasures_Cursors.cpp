@@ -1,7 +1,7 @@
 #include "defines.h"
-#include "Menu/Pages/Include/PageCursors.h"
 #include "Display/Painter.h"
 #include "Menu/Pages/Include/Definition.h"
+#include "Menu/Pages/Include/PageMeasures.h"
 #include "Settings/Settings.h"
 #include "Keyboard/Keyboard.h"
 #include "Hardware/Sound.h"
@@ -418,11 +418,11 @@ DEF_PAGE_SB(        ppSet,                                                      
     &bSet_T,                // ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - Êóğñîğû Ò
     &bSet_100,              // ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - 100%
     &bSet_Movement,         // ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - Ïåğåìåùåíèå
-    Page::Name::SB_Cursors_Set, &pCursors, FuncActive, FuncPress, FuncDrawPage, OnRegSet_Set
+    Page::Name::SB_Cursors_Set, PageMeasures::PageCursors::pointer, FuncActive, FuncPress, FuncDrawPage, OnRegSet_Set
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const PageBase *PageCursors::pointer = &pCursors;
+const PageBase *PageMeasures::PageCursors::pointer = &pCursors;
 
 DEF_PAGE_5(         pCursors,                                                                                                           // ÊÓĞÑÎĞÛ ///
     "ÊÓĞÑÎĞÛ", "CURSORS",
@@ -433,7 +433,7 @@ DEF_PAGE_5(         pCursors,                                                   
     &cLookModeChanB,     // ÊÓĞÑÎĞÛ - Ñëåæåíèå êàíàë 2
     &cShowFreq,          // ÊÓĞÎÑĞÛ - 1/dT
     &ppSet,              // ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ
-    Page::Name::Cursors, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Measures_Cursors, PageMeasures::pointer, FuncActive, EmptyPressPage
 )
 
 //static const PageBase * pointerPageCursors = &pCursors;

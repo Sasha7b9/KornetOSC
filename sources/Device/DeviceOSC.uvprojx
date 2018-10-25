@@ -2421,11 +2421,6 @@
               <FilePath>.\src\Menu\Pages\Include\PageChannels.h</FilePath>
             </File>
             <File>
-              <FileName>PageCursors.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Include\PageCursors.h</FilePath>
-            </File>
-            <File>
               <FileName>PageDebug.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Include\PageDebug.h</FilePath>
@@ -2561,14 +2556,14 @@
           <GroupName>Menu/Pages/PageMeasures</GroupName>
           <Files>
             <File>
-              <FileName>PageCursors.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMeasures\PageCursors.cpp</FilePath>
-            </File>
-            <File>
               <FileName>PageMeasures.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMeasures_Cursors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures_Cursors.cpp</FilePath>
             </File>
             <File>
               <FileName>PageMeasures_Tune.cpp</FileName>

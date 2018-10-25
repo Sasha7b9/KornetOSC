@@ -387,9 +387,6 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures.cpp">
       <Filter>Menu\Pages\PageMeasures</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageCursors.cpp">
-      <Filter>Menu\Pages\PageMeasures</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMemory\PageMemory.cpp">
       <Filter>Menu\Pages\PageMemory</Filter>
     </ClCompile>
@@ -433,6 +430,9 @@
       <Filter>Menu\Pages\PageFunction</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Tune.cpp">
+      <Filter>Menu\Pages\PageMeasures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Cursors.cpp">
       <Filter>Menu\Pages\PageMeasures</Filter>
     </ClCompile>
   </ItemGroup>
@@ -822,9 +822,6 @@
       <Filter>Menu\Pages\Include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageChannels.h">
-      <Filter>Menu\Pages\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageCursors.h">
       <Filter>Menu\Pages\Include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageDebug.h">

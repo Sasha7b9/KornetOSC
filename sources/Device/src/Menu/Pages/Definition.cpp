@@ -7,7 +7,6 @@
 #include "Utils/CommonFunctions.h"
 #include "Device.h"
 #include "Menu/Pages/Include/PageChannels.h"
-#include "Menu/Pages/Include/PageCursors.h"
 #include "Menu/Pages/Include/PageDebug.h"
 #include "Menu/Pages/Include/PageDisplay.h"
 #include "Menu/Pages/Include/PageFunction.h"
@@ -26,7 +25,7 @@ PageBase *Menu::pageMain = (PageBase *)&pageOsci;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_11_GLOBAL(pageOsci,                                                                                                           // Ã≈Õﬁ ///
+DEF_PAGE_10(pageOsci,                                                                                                                   //--- Ã≈Õﬁ ---
     "Ã≈Õﬁ", "MENU",
     "", "",
     PageDisplay::pointer,      // ƒ»—œÀ≈…
@@ -35,7 +34,6 @@ DEF_PAGE_11_GLOBAL(pageOsci,                                                    
     PageTrig::pointer,         // —»Õ’–
     PageTime::pointer,         // –¿«¬≈–“ ¿
     PageFunction::pointer,     // ‘”Õ ÷»ﬂ
-    PageCursors::pointer,      //  ”–—Œ–€
     PageMemory::pointer,       // œ¿Ãﬂ“‹
     PageMeasures::pointer,     // »«Ã≈–≈Õ»ﬂ
     PageService::pointer,      // —≈–¬»—

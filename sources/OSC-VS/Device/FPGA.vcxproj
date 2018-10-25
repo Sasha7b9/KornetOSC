@@ -108,7 +108,7 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunction\PageFunction_Tester.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageHelp\HelpContent.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageHelp\PageHelp.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageCursors.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Cursors.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Tune.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMemory\PageMemory.cpp" />
@@ -260,7 +260,6 @@
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\HelpContent.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\HelpContentPages.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageChannels.h" />
-    <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageCursors.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageDebug.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageDisplay.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageFunction.h" />

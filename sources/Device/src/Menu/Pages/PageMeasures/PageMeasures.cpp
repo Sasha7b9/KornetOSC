@@ -89,15 +89,16 @@ DEF_CHOICE_2(       cMode,                                                      
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_5(         pMeasures,                                                                                                        // ИЗМЕРЕНИЯ ///
+DEF_PAGE_6(         pMeasures,                                                                                                        // ИЗМЕРЕНИЯ ///
     "ИЗМЕРЕНИЯ", "MEASURES",
     "Автоматические измерения",
     "Automatic measurements",
-    &cIsShow,                           // ИЗМЕРЕНИЯ - Показывать
-    &cNumber,                           // ИЗМЕРЕНИЯ - Количество
-    &cChannels,                         // ИЗМЕРЕНИЯ - Каналы
-    PageMeasures::PageTune::pointer,    // ИЗМЕРЕНИЯ - НАСТРОИТЬ
-    &cMode,                             // ИЗМЕРЕНИЯ - Вид
+    PageMeasures::PageCursors::pointer, ///< ИЗМЕРЕНИЯ - КУРСОРНЫЕ
+    &cIsShow,                           ///< ИЗМЕРЕНИЯ - Показывать
+    &cNumber,                           ///< ИЗМЕРЕНИЯ - Количество
+    &cChannels,                         ///< ИЗМЕРЕНИЯ - Каналы
+    PageMeasures::PageTune::pointer,    ///< ИЗМЕРЕНИЯ - НАСТРОИТЬ
+    &cMode,                             ///< ИЗМЕРЕНИЯ - Вид
     Page::Name::Measures, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
