@@ -1,5 +1,6 @@
 #include "defines.h"
 #include "Storage.h"
+#include "Utils/Measure.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Reader.h"

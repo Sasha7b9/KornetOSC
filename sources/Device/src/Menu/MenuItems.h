@@ -180,6 +180,8 @@ public:
             Function_Recorder_Record,   ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - ÇÀÏÈÑÜ
             Function_Recorder_Play,     ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - ÏÐÎÑÌÎÒÐ
 
+            Measures,                   ///< ÈÇÌÅÐÅÍÈß
+
             Display,                    ///< ÄÈÑÏÅÉ
             Display_Accum,              ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
             Display_Average,            ///< ÄÈÑÏËÅÉ - ÓÑÐÅÄÍÅÍÈÅ
@@ -201,7 +203,6 @@ public:
             SB_Memory_Drive_Mask,       ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÌÀÑÊÀ
             SB_Memory_SetName,          ///< \brief Ïîÿâëÿåòñÿ ïåðåä ñîõðàíåíèåì ôàéëà íà ôëåøêó äëÿ çàäàíèÿ èìåíè ôàéëà ïðè ñîîòâåòñòâóþùåé îïöèè 
                                         ///< ÂÍÅØÍ ÇÓ - Èìÿ ôàéëà
-            Measure,                    ///< ÈÇÌÅÐÅÍÈß
             SB_Measures_Tune,           ///< ÈÇÌÅÐÅÍÈß - ÍÀÑÒÐÎÈÒÜ
             Service,                    ///< ÑÅÐÂÈÑ
             Service_Calibrator,         ///< ÑÅÐÂÈÑ - ÊÀËÈÁÐÀÒÎÐ

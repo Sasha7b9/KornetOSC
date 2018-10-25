@@ -1,5 +1,6 @@
 #include "defines.h"
 #include "DataSettings.h"
+#include "Utils/Measure.h"
 #include "Settings/Settings.h"
 
 

@@ -2570,6 +2570,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageMeasures_Tune.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures_Tune.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

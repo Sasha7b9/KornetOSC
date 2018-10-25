@@ -432,6 +432,9 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunction\PageFunction_Recorder_Play.cpp">
       <Filter>Menu\Pages\PageFunction</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures\PageMeasures_Tune.cpp">
+      <Filter>Menu\Pages\PageMeasures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
