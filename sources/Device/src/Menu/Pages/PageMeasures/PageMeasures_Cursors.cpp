@@ -418,7 +418,7 @@ DEF_PAGE_SB(        ppSet,                                                      
     &bSet_T,                // ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - Êóğñîğû Ò
     &bSet_100,              // ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - 100%
     &bSet_Movement,         // ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - Ïåğåìåùåíèå
-    Page::Name::SB_Cursors_Set, PageMeasures::PageCursors::pointer, FuncActive, FuncPress, FuncDrawPage, OnRegSet_Set
+    Page::Name::Measures_Cursors_Set, PageMeasures::PageCursors::pointer, FuncActive, FuncPress, FuncDrawPage, OnRegSet_Set
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -520,6 +520,6 @@ void SetCursorT(Chan ch, int numCur, float pos)
 
 bool IsRegSetActiveOnCursors()
 {
-    return ((Menu::GetNameOpenedPage() == Page::Name::SB_Cursors_Set) &&
+    return ((Menu::GetNameOpenedPage() == Page::Name::Measures_Cursors_Set) &&
         ((CURS_ACTIVE_U && CURsU_ENABLED) || (CURS_ACTIVE_T && CURsT_ENABLED)));
 }

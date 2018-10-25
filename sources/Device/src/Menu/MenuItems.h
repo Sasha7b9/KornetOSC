@@ -182,6 +182,7 @@ public:
 
             Measures,                   ///< ÈÇÌÅĞÅÍÈß
             Measures_Cursors,           ///< ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ
+            Measures_Cursors_Set,       ///< ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ
 
             Display,                    ///< ÄÈÑÏÅÉ
             Display_Accum,              ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
@@ -194,7 +195,6 @@ public:
             Trig,                       ///< ÑÈÍÕĞ
             Trig_Search,                ///< ÑÈÍÕĞ - ÏÎÈÑÊ
             Time,                       ///< ĞÀÇÂÅĞÒÊÀ
-            SB_Cursors_Set,             ///< ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ
             Memory,                     ///< ÏÀÌßÒÜ
             SB_Memory_Last,             ///< ÏÀÌßÒÜ - ÏÎÑËÅÄÍÈÅ
             SB_Memory_Internal,         ///< ÏÀÌßÒÜ - ÂÍÓÒĞ ÇÓ
