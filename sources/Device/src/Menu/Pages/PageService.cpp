@@ -115,8 +115,8 @@ DEF_PAGE_2(         ppCalibrator,                                               
     "КАЛИБРАТОР", "CALIBRATOR",
     "Управлением калибратором и калибровка осциллографа",
     "Control of the calibrator and calibration of an oscillograph",
-    cCalibrator_Calibrator,     // СЕРВИС - КАЛИБРАТОР - Калибратор
-    bCalibrator_Calibrate,      // СЕРВИС - КАЛИБРАТОР - Калибровать
+    &cCalibrator_Calibrator,     // СЕРВИС - КАЛИБРАТОР - Калибратор
+    &bCalibrator_Calibrate,      // СЕРВИС - КАЛИБРАТОР - Калибровать
     Page::Name::Service_Calibrator, &pService, FuncActive, EmptyPressPage
 )
 
@@ -558,8 +558,8 @@ DEF_PAGE_2(         ppSound,                                                    
     "ЗВУК", "SOUND",
     "В этом меню можно настроить громкость звука",
     "In this menu, you can adjust the volume",
-    cSound_Enable,  // СЕРВИС - ЗВУК - Звук
-    gSound_Volume,  // СЕРВИС - ЗВУК - Громкость
+    &cSound_Enable,  // СЕРВИС - ЗВУК - Звук
+    &gSound_Volume,  // СЕРВИС - ЗВУК - Громкость
     Page::Name::Service_Sound, &pService, FuncActive, EmptyPressPage
 )
 
@@ -604,8 +604,8 @@ DEF_PAGE_2(         ppRTC,                                                      
     "ВРЕМЯ", "TIME",
     "Установка и настройка времени",
     "Set and setup time",
-    tRTC_Time,          // СЕРВИС - ВРЕМЯ - Время
-    tRTC_Correction,    // CЕРВИС - ВРЕМЯ - Коррекция
+    &tRTC_Time,          // СЕРВИС - ВРЕМЯ - Время
+    &tRTC_Correction,    // CЕРВИС - ВРЕМЯ - Коррекция
     Page::Name::Service_RTC, &pService, FuncActive, EmptyPressPage
 )
 
@@ -690,15 +690,15 @@ DEF_PAGE_9_GLOBAL(pService,                                                     
     "СЕРВИС", "SERVICE",
     "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
     "Additional settings, calibration, signal search, mathematical functions",
-    bResetSettings,    // СЕРВИС - Сброс настроек
-    bAutoSearch,       // СЕРВИС - Поиск сигнала
-    ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
-    cRecorder,         // СЕРВИС - Регистратор
-    ppFunction,        // СЕРВИС - ФУНКЦИЯ
-    ppSound,           // СЕРВИС - ЗВУК
-    ppRTC,             // СЕРВИС - ВРЕМЯ
-    cLanguage,         // СЕРВИС - Язык
-    ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
+    &bResetSettings,    // СЕРВИС - Сброс настроек
+    &bAutoSearch,       // СЕРВИС - Поиск сигнала
+    &ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
+    &cRecorder,         // СЕРВИС - Регистратор
+    &ppFunction,        // СЕРВИС - ФУНКЦИЯ
+    &ppSound,           // СЕРВИС - ЗВУК
+    &ppRTC,             // СЕРВИС - ВРЕМЯ
+    &cLanguage,         // СЕРВИС - Язык
+    &ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
     Page::Name::Service, Menu::pageMain, FuncActive, FuncPress
 )
 

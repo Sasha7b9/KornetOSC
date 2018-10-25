@@ -112,10 +112,10 @@ DEF_PAGE_5(         pTime,                                                      
     "РАЗВ.", "SCAN",
     "Содержит настройки развёртки.",
     "Contains scan settings.",
-    cSample,        // РАЗВЕРТКА - Выборка
-    cPeakDet,       // РАЗВЕРТКА - Пик дет
-    cTPos,          // РАЗВЕРТКА - То
-    cDivRole,       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ
-    cShiftXtype,    // РАЗВЕРТКА - Смещение
+    &cSample,        // РАЗВЕРТКА - Выборка
+    &cPeakDet,       // РАЗВЕРТКА - Пик дет
+    &cTPos,          // РАЗВЕРТКА - То
+    &cDivRole,       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ
+    &cShiftXtype,    // РАЗВЕРТКА - Смещение
     Page::Name::Time, Menu::pageMain, FuncActive, EmptyPressPage
 )

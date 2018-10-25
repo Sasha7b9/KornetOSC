@@ -428,11 +428,11 @@ DEF_PAGE_5(         pCursors,                                                   
     "КУРСОРЫ", "CURSORS",
     "Курсорные измерения.",
     "Cursor measurements.",
-    cShow,              // КУРСОРЫ - Показывать
-    cLookModeChanA,     // КУРСОРЫ - Слежение канал 1
-    cLookModeChanB,     // КУРСОРЫ - Слежение канал 2
-    cShowFreq,          // КУРОСРЫ - 1/dT
-    ppSet,              // КУРСОРЫ - УСТАНОВИТЬ
+    &cShow,              // КУРСОРЫ - Показывать
+    &cLookModeChanA,     // КУРСОРЫ - Слежение канал 1
+    &cLookModeChanB,     // КУРСОРЫ - Слежение канал 2
+    &cShowFreq,          // КУРОСРЫ - 1/dT
+    &ppSet,              // КУРСОРЫ - УСТАНОВИТЬ
     Page::Name::Cursors, Menu::pageMain, FuncActive, EmptyPressPage
 )
 

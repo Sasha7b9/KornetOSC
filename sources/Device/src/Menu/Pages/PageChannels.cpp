@@ -88,9 +88,9 @@ DEF_PAGE_3(         pChanA,                                                     
     "КАНАЛ 1", "CHANNEL 1",
     "Содержит настройки канала 1.",
     "Contains settings of the channel 1.",
-    cChanA_Input,      // КАНАЛ 1 - Вход
-    cChanA_Couple,     // КАНАЛ 1 - Связь
-    cChanA_Bandwidth,  // КАНАЛ 1 - Полоса
+    &cChanA_Input,      // КАНАЛ 1 - Вход
+    &cChanA_Couple,     // КАНАЛ 1 - Связь
+    &cChanA_Bandwidth,  // КАНАЛ 1 - Полоса
     /*
     cChanA_Resistance, // КАНАЛ 1 - Вх сопр
     cChanA_Inverse,    // КАНАЛ 1 - Инверсия
@@ -157,8 +157,8 @@ DEF_PAGE_3(         pChanB,                                                     
     "КАНАЛ 2", "CHANNEL 2",
     "Содержит настройки канала 2.",
     "Contains settings of the channel 2.",
-    cChanB_Input,       // КАНАЛ 2 - Вход
-    cChanB_Couple,      // КАНАЛ 2 - Связь
-    cChanB_Bandwidth,   // КАНАЛ 2 - Полоса
+    &cChanB_Input,       // КАНАЛ 2 - Вход
+    &cChanB_Couple,      // КАНАЛ 2 - Связь
+    &cChanB_Bandwidth,   // КАНАЛ 2 - Полоса
     Page::Name::ChannelB, Menu::pageMain, FuncActive, EmptyPressPage
 )

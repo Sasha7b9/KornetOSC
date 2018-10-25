@@ -199,10 +199,10 @@ DEF_PAGE_5(         pMeasures,                                                  
     "ИЗМЕРЕНИЯ", "MEASURES",
     "Автоматические измерения",
     "Automatic measurements",
-    cIsShow,       // ИЗМЕРЕНИЯ - Показывать
-    cNumber,       // ИЗМЕРЕНИЯ - Количество
-    cChannels,     // ИЗМЕРЕНИЯ - Каналы
-    ppTune,        // ИЗМЕРЕНИЯ - НАСТРОИТЬ
-    cMode,         // ИЗМЕРЕНИЯ - Вид
+    &cIsShow,       // ИЗМЕРЕНИЯ - Показывать
+    &cNumber,       // ИЗМЕРЕНИЯ - Количество
+    &cChannels,     // ИЗМЕРЕНИЯ - Каналы
+    &ppTune,        // ИЗМЕРЕНИЯ - НАСТРОИТЬ
+    &cMode,         // ИЗМЕРЕНИЯ - Вид
     Page::Name::Measure, Menu::pageMain, FuncActive, EmptyPressPage
 )

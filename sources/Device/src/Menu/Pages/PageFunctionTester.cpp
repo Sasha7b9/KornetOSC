@@ -110,21 +110,21 @@ void PageFunction::PageTester::Init()
 DEF_PAGE_5( pTesterU,
     "реяреп", "TESTER",
     "", "",
-    cControl,
-    cStepU,
-    cPolarity,
-    cViewMode,
-    cSmoothing,
+    &cControl,
+    &cStepU,
+    &cPolarity,
+    &cViewMode,
+    &cSmoothing,
     Page::Name::Function_Tester, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
 DEF_PAGE_5(pTesterI,
     "реяреп", "TESTER",
     "", "",
-    cControl,
-    cStepI,
-    cPolarity,
-    cViewMode,
-    cSmoothing,
+    &cControl,
+    &cStepI,
+    &cPolarity,
+    &cViewMode,
+    &cSmoothing,
     Page::Name::Function_Tester, PageFunction::pointer, FuncActive, EmptyPressPage
 )

@@ -138,11 +138,11 @@ DEF_PAGE_6(ppFFT,                                                               
     "СПЕКТР", "SPECTRUM",
     "Отображение спектра входного сигнала",
     "Mapping the input signal spectrum",
-    cFFT_View,         // СЕРВИС - СПЕКТР - Отображение
-    cFFT_Scale,        // СЕРВИС - СПЕКТР - Шкала
-    cFFT_Source,       // СЕРВИС - СПЕКТР - Источник
-    cFFT_Window,       // СЕРВИС - СПЕКТР - Окно 
-    pppFFT_Cursors,    // СЕРВИС - СПЕКТР - КУРСОРЫ
-    cFFT_Range,        // СЕРВИС - СПЕКТР - Диапазон
+    &cFFT_View,         // СЕРВИС - СПЕКТР - Отображение
+    &cFFT_Scale,        // СЕРВИС - СПЕКТР - Шкала
+    &cFFT_Source,       // СЕРВИС - СПЕКТР - Источник
+    &cFFT_Window,       // СЕРВИС - СПЕКТР - Окно 
+    &pppFFT_Cursors,    // СЕРВИС - СПЕКТР - КУРСОРЫ
+    &cFFT_Range,        // СЕРВИС - СПЕКТР - Диапазон
     Page::Name::Function_FFT, PageFunction::pointer, IsActive_FFT, OnPress_FFT
 )

@@ -43,9 +43,9 @@ DEF_PAGE_3( pageSource,                                                         
     "ИСТОЧНИК", "SOURCE",
     "Выбор записываемых сигналов",
     "Selection of recorded signals",
-    cSourceA,       ///< ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧНИК - Канал 1
-    cSourceB,       ///< ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧИНК - Канал 2
-    cSourceSensor,  ///< ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧНИК - Датчик
+    &cSourceA,       ///< ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧНИК - Канал 1
+    &cSourceB,       ///< ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧИНК - Канал 2
+    &cSourceSensor,  ///< ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧНИК - Датчик
     Page::Name::Function_Recorder_Source, PageFunction::PageRecorder::pointer, FuncActive, EmptyPressPage
 )
 

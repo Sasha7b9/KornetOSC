@@ -636,12 +636,12 @@ DEF_PAGE_6(         ppDrive,                                                    
     "ВНЕШН ЗУ", "EXT STORAGE",
     "Работа с внешним запоминающим устройством.",
     "Work with external storage device.",
-    pppDrive_Manager,       // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ
-    cDrive_Name,            // ПАМЯТЬ - ВНЕШН ЗУ - Имя файла
-    pppDrive_Mask,          // Память - ВНЕШН ЗУ - МАСКА
-    cDrive_SaveAs,          // ПАМЯТЬ - ВНЕШН ЗУ - Сохранять как
-    cDrive_ModeBtnMemory,   // ПАМЯТЬ - ВНЕШН ЗУ - Реж кн ПАМЯТЬ
-    cDrive_Autoconnect,     // ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение
+    &pppDrive_Manager,       // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ
+    &cDrive_Name,            // ПАМЯТЬ - ВНЕШН ЗУ - Имя файла
+    &pppDrive_Mask,          // Память - ВНЕШН ЗУ - МАСКА
+    &cDrive_SaveAs,          // ПАМЯТЬ - ВНЕШН ЗУ - Сохранять как
+    &cDrive_ModeBtnMemory,   // ПАМЯТЬ - ВНЕШН ЗУ - Реж кн ПАМЯТЬ
+    &cDrive_Autoconnect,     // ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение
     Page::Name::Memory_Drive, &pMemory, FuncActive, EmptyPressPage
 )
 
@@ -650,10 +650,10 @@ DEF_PAGE_4(         pMemory,                                                    
     "ПАМЯТЬ", "MEMORY",
     "Работа с внешней и внутренней памятью.",
     "Working with external and internal memory.",
-    cPoints,        // ПАМЯТЬ - Точки
-    ppLast,         // ПАМЯТЬ - Последние
-    ppInternal,     // ПАМЯТЬ - ВНУТР ЗУ
-    ppDrive,        // ПАМЯТЬ - ВНЕШН ЗУ
+    &cPoints,        // ПАМЯТЬ - Точки
+    &ppLast,         // ПАМЯТЬ - Последние
+    &ppInternal,     // ПАМЯТЬ - ВНУТР ЗУ
+    &ppDrive,        // ПАМЯТЬ - ВНЕШН ЗУ
     Page::Name::Memory, Menu::pageMain, FuncActive, EmptyPressPage
 )
 

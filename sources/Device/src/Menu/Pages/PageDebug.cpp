@@ -198,18 +198,18 @@ DEF_PAGE_12(        pppConsole_Registers,                                       
     "РЕГИСТРЫ", "REGISTERS",
     "",
     "",
-    cConsole_Registers_ShowAll,     // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Показывать все
-    cConsole_Registers_RD_FL,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - RD_FL
-    cConsole_Registers_RShiftA,     // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 1к
-    cConsole_Registers_RShiftB,     // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 2к
-    cConsole_Registers_TrigLev,     // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U синхр
-    cConsole_Registers_RangeA,      // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 1
-    cConsole_Registers_RangeB,      // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 2
-    cConsole_Registers_TrigParam,   // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. синхр.
-    cConsole_Registers_ChanParamA,  // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 1
-    cConsole_Registers_ChanParamB,  // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 2
-    cConsole_Registers_TBase,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВРЕМЯ/ДЕЛ
-    cConsole_Registers_TShift       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см.
+    &cConsole_Registers_ShowAll,     // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Показывать все
+    &cConsole_Registers_RD_FL,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - RD_FL
+    &cConsole_Registers_RShiftA,     // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 1к
+    &cConsole_Registers_RShiftB,     // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 2к
+    &cConsole_Registers_TrigLev,     // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U синхр
+    &cConsole_Registers_RangeA,      // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 1
+    &cConsole_Registers_RangeB,      // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 2
+    &cConsole_Registers_TrigParam,   // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. синхр.
+    &cConsole_Registers_ChanParamA,  // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 1
+    &cConsole_Registers_ChanParamB,  // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 2
+    &cConsole_Registers_TBase,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВРЕМЯ/ДЕЛ
+    &cConsole_Registers_TShift       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см.
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -232,11 +232,11 @@ DEF_PAGE_5(         ppConsole,                                                  
     "КОНСОЛЬ", "CONSOLE",
     "",
     "",
-    gConsole_NumStrings,        // ОТЛАДКА - КОНСОЛЬ - Число строк
-    cConsole_SizeFont,          // ОТЛАДКА - КОНСОЛЬ - Размер шрифта
-    cConsole_ModeStop,          // ОТЛАДКА - КОНСОЛЬ - Реж. останова
-    pppConsole_Registers,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ
-    bConsole_SizeSettings,      // ОТЛАДКА - КОНСОЛЬ - Размер настроек
+    &gConsole_NumStrings,        // ОТЛАДКА - КОНСОЛЬ - Число строк
+    &cConsole_SizeFont,          // ОТЛАДКА - КОНСОЛЬ - Размер шрифта
+    &cConsole_ModeStop,          // ОТЛАДКА - КОНСОЛЬ - Реж. останова
+    &pppConsole_Registers,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ
+    &bConsole_SizeSettings,      // ОТЛАДКА - КОНСОЛЬ - Размер настроек
     Page::Name::Debug_Console, &pDebug, FuncActive, EmptyPressPage
 )
 
@@ -307,9 +307,9 @@ DEF_PAGE_3(         pppADC_Balance,                                             
     "БАЛАНС", "BALANCE",
     "",
     "",
-    cADC_Balance_Mode,      // ОТЛАДКА - АЦП - БАЛАНС - Режим
-    gADC_Balance_ShiftA,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 1
-    gADC_Balance_ShiftB,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
+    &cADC_Balance_Mode,      // ОТЛАДКА - АЦП - БАЛАНС - Режим
+    &gADC_Balance_ShiftA,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 1
+    &gADC_Balance_ShiftB,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
     Page::Name::Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage
 )
 
@@ -445,9 +445,9 @@ DEF_PAGE_3(        pppADC_Stretch,                                              
     "РАСТЯЖКА", "STRETCH",
     "Устанавливает режим и величину растяжки (для ручного режима)",
     "Sets mode and the value of stretching (manual mode)",
-    cADC_Stretch_Mode,      // ОТЛАДКА - АЦП - РАСТЯЖКА - Режим
-    gADC_Stretch_A,         // ОТЛАДКА - АЦП - РАСТЯЖКА - Растяжка 1к
-    gADC_Stretch_B,
+    &cADC_Stretch_Mode,      // ОТЛАДКА - АЦП - РАСТЯЖКА - Режим
+    &gADC_Stretch_A,         // ОТЛАДКА - АЦП - РАСТЯЖКА - Растяжка 1к
+    &gADC_Stretch_B,
     Page::Name::Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage
            /*,         // ОТЛАДКА - АЦП - РАСТЯЖКА - Растяжка 2к
     emptyChoice,
@@ -549,13 +549,13 @@ DEF_PAGE_7(         pppADC_Shift,                                               
     "ДОП СМЕЩ", "ADD RSHFIT",
     "",
     "",
-    bADC_Shift_Reset,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - Сброс
-    gADC_Shift_A2mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 2мВ пост
-    gADC_Shift_B2mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 2мВ пост
-    gADC_Shift_A5mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 5мВ пост
-    gADC_Shift_B5mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 5мВ пост
-    gADC_Shift_A10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 10мВ пост
-    gADC_Shift_B10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 10мВ пост
+    &bADC_Shift_Reset,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - Сброс
+    &gADC_Shift_A2mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 2мВ пост
+    &gADC_Shift_B2mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 2мВ пост
+    &gADC_Shift_A5mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 5мВ пост
+    &gADC_Shift_B5mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 5мВ пост
+    &gADC_Shift_A10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 10мВ пост
+    &gADC_Shift_B10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 10мВ пост
     Page::Name::Debug_ADC_Shift, &ppADC, FuncActive, EmptyPressPage
 )
 
@@ -564,9 +564,9 @@ DEF_PAGE_3(         ppADC,                                                      
     "АЦП", "ADC",
     "",
     "",
-    pppADC_Balance, // ОТЛАДКА - АЦП - БАЛАНС
-    pppADC_Stretch, // ОТЛАДКА - АЦП - РАСТЯЖКА
-    pppADC_Shift,   // ОТЛАДКА - АЦП - ДОП СМЕЩ
+    &pppADC_Balance, // ОТЛАДКА - АЦП - БАЛАНС
+    &pppADC_Stretch, // ОТЛАДКА - АЦП - РАСТЯЖКА
+    &pppADC_Shift,   // ОТЛАДКА - АЦП - ДОП СМЕЩ
     Page::Name::Debug_ADC, &pDebug, FuncActive, EmptyPressPage
 )
 
@@ -664,14 +664,14 @@ DEF_PAGE_8(         ppRand,                                                     
     "РАНД-ТОР", "RANDOMIZER",
     "",
     "",
-    gRand_NumAverage,       // ОТЛАДКА - РАНД-ТОР - Усредн.
-    gRand_NumSmooth,        // ОТЛАДКА - РАНД-ТОР - Сглаживание
-    gRand_NumMeasures,      // ОТЛАДКА - РАНД-ТОР - Выб-к/ворота
-    cRand_ShowInfo,         // ОТЛАДКА - РАНД-ТОР - Информация
-    gRand_ShowStat,         // ОТЛАДКА - РАНД-ТОР - Статистика
-    gRand_TimeCompensation, // ОТЛАДКА - РАНД-ТОР - Компенсация задержки
-    gRand_AddTimeShift,     // ОТЛАДКА - РАНД-ТОР - Смещение
-    gRand_Pretriggered,     // ОТЛАДКА - РAНД-ТОР - Предзапуск
+    &gRand_NumAverage,       // ОТЛАДКА - РАНД-ТОР - Усредн.
+    &gRand_NumSmooth,        // ОТЛАДКА - РАНД-ТОР - Сглаживание
+    &gRand_NumMeasures,      // ОТЛАДКА - РАНД-ТОР - Выб-к/ворота
+    &cRand_ShowInfo,         // ОТЛАДКА - РАНД-ТОР - Информация
+    &gRand_ShowStat,         // ОТЛАДКА - РАНД-ТОР - Статистика
+    &gRand_TimeCompensation, // ОТЛАДКА - РАНД-ТОР - Компенсация задержки
+    &gRand_AddTimeShift,     // ОТЛАДКА - РАНД-ТОР - Смещение
+    &gRand_Pretriggered,     // ОТЛАДКА - РAНД-ТОР - Предзапуск
     Page::Name::Debug_Rand, &pDebug, FuncActive, EmptyPressPage
 )
 
@@ -720,8 +720,8 @@ DEF_PAGE_2(         ppChannels,                                                 
     "КАНАЛЫ", "CHANNELS",
     "",
     "",
-    cChannels_BandwidthA,   // ОТЛАДКА - КАНАЛЫ - Полоса 1
-    cChannels_BandwidthB,   // ОТЛАДКА - КАНАЛЫ - Полоса 2
+    &cChannels_BandwidthA,   // ОТЛАДКА - КАНАЛЫ - Полоса 1
+    &cChannels_BandwidthB,   // ОТЛАДКА - КАНАЛЫ - Полоса 2
     Page::Name::Debug_Channels, &pDebug, FuncActive, EmptyPressPage
 )
 
@@ -1100,17 +1100,16 @@ DEF_PAGE_12(        pDebug,                                                     
     "ОТЛАДКА", "DEBUG",
     "",
     "",
-    ppConsole,              // ОТЛАДКА - КОНСОЛЬ
-    ppADC,                  // ОТЛАДКА - АЦП
-    ppRand,			        // ОТЛАДКА - РАНД-ТОР
-    ppChannels,		        // ОТЛАДКА - КАНАЛЫ
-    cStats,			        // ОТЛАДКА - Статистика
-    cDisplayOrientation,    // ОТЛАДКА - Ориентация
-    //cEMS,                   // ОТЛАДКА - Режим ЭМС
-    mgPred,			        // ОТЛАДКА - Предзапуск
-    mgPost,			        // ОТЛАДКА - Послезапуск
-    ppSettings,		        // ОТЛАДКА - НАСТРОЙКИ
-    bSaveFirmware,          // ОТЛАДКА - Сохр. прошивку
-    ppSerialNumber,         // ОТЛАДКА - С/Н
-    bEraseData              // ОТЛАДКА - Стереть данные
+    &ppConsole,              // ОТЛАДКА - КОНСОЛЬ
+    &ppADC,                  // ОТЛАДКА - АЦП
+    &ppRand,			        // ОТЛАДКА - РАНД-ТОР
+    &ppChannels,		        // ОТЛАДКА - КАНАЛЫ
+    &cStats,			        // ОТЛАДКА - Статистика
+    &cDisplayOrientation,    // ОТЛАДКА - Ориентация
+    &mgPred,			        // ОТЛАДКА - Предзапуск
+    &mgPost,			        // ОТЛАДКА - Послезапуск
+    &ppSettings,		        // ОТЛАДКА - НАСТРОЙКИ
+    &bSaveFirmware,          // ОТЛАДКА - Сохр. прошивку
+    &ppSerialNumber,         // ОТЛАДКА - С/Н
+    &bEraseData              // ОТЛАДКА - Стереть данные
 )

@@ -106,12 +106,12 @@ DEF_PAGE_6(         pppSettings_Colors,                                         
     "ЦВЕТА", "COLORS",
     "Выбор цветов дисплея",
     "The choice of colors display",
-    bResetColors,                   // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сбросить
-    cSettings_Colors_Scheme,        // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема
-    gcSettings_Colors_ChannelA,     // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1
-    gcSettings_Colors_ChannelB,     // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2
-    gcSettings_Colors_Grid,         // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка
-    cSettings_Colors_Background,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Фон
+    &bResetColors,                  // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сбросить
+    &cSettings_Colors_Scheme,       // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема
+    &gcSettings_Colors_ChannelA,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1
+    &gcSettings_Colors_ChannelB,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2
+    &gcSettings_Colors_Grid,        // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка
+    &cSettings_Colors_Background,   // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Фон
                                     //&mgcColorChannelAalt,
                                     //&mgcColorChannelBalt,
                                     //&mgcColorMenu1,
@@ -209,9 +209,9 @@ DEF_PAGE_3(         ppAccum,                                                    
     "НАКОПЛ.", "ACCUM.",
     "Настройки режима отображения последних сигналов на экране.",
     "Mode setting signals to display the last screen.",
-    cAccum_Num,     // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Количество
-    cAccum_Mode,    // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Режим
-    bAccum_Clear,   // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить
+    &cAccum_Num,     // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Количество
+    &cAccum_Mode,    // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Режим
+    &bAccum_Clear,   // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить
     Page::Name::Display_Accum, &pDisplay, IsActive_Accum, EmptyPressPage
 )
 
@@ -260,8 +260,8 @@ DEF_PAGE_2(         ppAverage,                                                  
     "УСРЕДН.", "AVERAGE",
     "Настройки режима усреднения по последним измерениям.",
     "Settings of the mode of averaging on the last measurements.",
-    cAverage_Num,   // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Количество
-    cAverage_Mode,  // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Режим
+    &cAverage_Num,   // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Количество
+    &cAverage_Mode,  // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Режим
     Page::Name::Display_Average, &pDisplay, IsActive_Average, EmptyPressPage
 )
 
@@ -374,8 +374,8 @@ DEF_PAGE_2(         ppGrid,                                                     
     "СЕТКА", "GRID",
     "Содержит настройки отображения координатной сетки.",
     "Contains settings of display of a coordinate Grid::",
-    cGrid_Type,         // ДИСПЛЕЙ - СЕТКА - Тип
-    gGrid_Brightness,   // ДИСПЛЕЙ - СЕТКА - Яркость
+    &cGrid_Type,         // ДИСПЛЕЙ - СЕТКА - Тип
+    &gGrid_Brightness,   // ДИСПЛЕЙ - СЕТКА - Яркость
     Page::Name::Display_Grid, &pDisplay, FuncActive, EmptyPressPage
 )
 
@@ -396,16 +396,16 @@ DEF_PAGE_10(         pDisplay,                                                  
     "ДИСПЛЕЙ", "DISPLAY",
     "Содержит настройки отображения дисплея.",
     "Contains settings of display of the display.",
-    cViewMode,          // ДИСПЛЕЙ - Отображение
-    ppAccum,            // ДИСПЛЕЙ - НАКОПЛЕНИЕ
-    ppAverage,          // ДИСПЛЕЙ - УСРЕДНЕНИЕ
-    cMinMax,            // ДИСПЛЕЙ - Мин Макс
-    cSmoothing,         // ДИСПЛЕЙ - Сглаживание
-    cRefreshFPS,        // ДИСПЛЕЙ - Частота обновл
-    ppGrid,             // ДИСПЛЕЙ - СЕТКА
-    cScaleYtype,        // ДИСПЛЕЙ - Смещение
-    ppDisplaySettings,  // ДИСПЛЕЙ - НАСТРОЙКИ
-    cThickness,         // ДИСПЛЕЙ - Толщина
+    &cViewMode,          // ДИСПЛЕЙ - Отображение
+    &ppAccum,            // ДИСПЛЕЙ - НАКОПЛЕНИЕ
+    &ppAverage,          // ДИСПЛЕЙ - УСРЕДНЕНИЕ
+    &cMinMax,            // ДИСПЛЕЙ - Мин Макс
+    &cSmoothing,         // ДИСПЛЕЙ - Сглаживание
+    &cRefreshFPS,        // ДИСПЛЕЙ - Частота обновл
+    &ppGrid,             // ДИСПЛЕЙ - СЕТКА
+    &cScaleYtype,        // ДИСПЛЕЙ - Смещение
+    &ppDisplaySettings,  // ДИСПЛЕЙ - НАСТРОЙКИ
+    &cThickness,         // ДИСПЛЕЙ - Толщина
     Page::Name::Display, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
@@ -498,12 +498,12 @@ DEF_PAGE_7(         ppDisplaySettings,                                          
     "НАСТРОЙКИ", "SETTINGS",
     "Дополнительные настройки дисплея",
     "Additional display settings",
-    pppSettings_Colors,         // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА
-    gSettings_Brightness,       // ДИСПЛЕЙ - НАСТРОЙКИ - Яркость
-    gSettings_Levels,           // ДИСПЛЕЙ - НАСТРОЙКИ - Уровни
-    gSettings_Time,             // ДИСПЛЕЙ - НАСТРОЙКИ - Время
-    cSettings_StringNavigation, // ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню
-    cSettings_AltMarkers,       // ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры
-    cSettings_AutoHide,         // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать
+    &pppSettings_Colors,         // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА
+    &gSettings_Brightness,       // ДИСПЛЕЙ - НАСТРОЙКИ - Яркость
+    &gSettings_Levels,           // ДИСПЛЕЙ - НАСТРОЙКИ - Уровни
+    &gSettings_Time,             // ДИСПЛЕЙ - НАСТРОЙКИ - Время
+    &cSettings_StringNavigation, // ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню
+    &cSettings_AltMarkers,       // ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры
+    &cSettings_AutoHide,         // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать
     Page::Name::Display_Settings, &pDisplay, FuncActive, EmptyPressPage
 )

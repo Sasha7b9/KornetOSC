@@ -160,8 +160,8 @@ DEF_PAGE_2(ppSearch,                                                            
     "ПОИСК", "SEARCH",
     "Управление автоматическим поиском уровня синхронизации.",
     "Office of the automatic search the trigger level.",
-    cSearch_Mode,       // СИНХР - ПОИСК - Режим
-    bSearch_Search,     // СИНХР - ПОИСК - Найти
+    &cSearch_Mode,       // СИНХР - ПОИСК - Режим
+    &bSearch_Search,     // СИНХР - ПОИСК - Найти
     Page::Name::Trig_Search, &pTrig, FuncActive, EmptyPressPage
 )
 
@@ -172,10 +172,10 @@ DEF_PAGE_5(         pTrig,                                                      
     "СИНХР", "TRIG",
     "Содержит настройки синхронизации.",
     "Contains synchronization settings.",
-    cMode,          // СИНХР - Режим
-    cSource,        // СИНХР - Источник
-    cPolarity,      // СИНХР - Полярность
-    cInput,         // СИНХР - Вход
-    ppSearch,       // СИНХР - ПОИСК
+    &cMode,          // СИНХР - Режим
+    &cSource,        // СИНХР - Источник
+    &cPolarity,      // СИНХР - Полярность
+    &cInput,         // СИНХР - Вход
+    &ppSearch,       // СИНХР - ПОИСК
     Page::Name::Trig, Menu::pageMain, FuncActive, EmptyPressPage
 )

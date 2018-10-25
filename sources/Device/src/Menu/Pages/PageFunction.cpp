@@ -17,10 +17,10 @@ DEF_PAGE_5( pageFunction,                                                       
     "‘”Õ ÷»ﬂ", "FUNCTION",
     "¬˚·Ó ÙÛÌÍˆËË",
     "Function selection",
-    *PageFunction::PageFrequencyCounter::pointer,   // ‘”Õ ÷»ﬂ - ◊¿—“Œ“ŒÃ≈–
-    *PageFunction::PageFFT::pointer,                // ‘”Õ ÷»ﬂ - —œ≈ “–
-    *PageFunction::PageMultimeter::pointer,         // ‘”Õ ÷»ﬂ - Ã”À‹“»Ã≈“–
-    *PageFunction::PageTester::pointer,             // ‘”Õ ÷»ﬂ - “≈—“≈–
-    *PageFunction::PageRecorder::pointer,           // ‘”Õ ÷»ﬂ - –≈√»—“–¿“Œ–
+    PageFunction::PageFrequencyCounter::pointer,   // ‘”Õ ÷»ﬂ - ◊¿—“Œ“ŒÃ≈–
+    PageFunction::PageFFT::pointer,                // ‘”Õ ÷»ﬂ - —œ≈ “–
+    PageFunction::PageMultimeter::pointer,         // ‘”Õ ÷»ﬂ - Ã”À‹“»Ã≈“–
+    PageFunction::PageTester::pointer,             // ‘”Õ ÷»ﬂ - “≈—“≈–
+    PageFunction::PageRecorder::pointer,           // ‘”Õ ÷»ﬂ - –≈√»—“–¿“Œ–
     Page::Name::Function, Menu::pageMain, FuncActive, FuncPress
 )

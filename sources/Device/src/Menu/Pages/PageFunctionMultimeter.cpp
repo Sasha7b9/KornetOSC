@@ -163,9 +163,9 @@ DEF_PAGE_3( pMultimeterDC,
     "МУЛЬТИМЕТР", "MULTIMETER",
     "Управление прибором в режиме мультиметра",
     "Instrument control in multimeter mode",
-    cMode,
-    cRangesVoltageDC,
-    cAVP,
+    &cMode,
+    &cRangesVoltageDC,
+    &cAVP,
     Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
@@ -173,9 +173,9 @@ DEF_PAGE_3(pMultimeterAC,
     "МУЛЬТИМЕТР", "MULTIMETER",
     "Управление прибором в режиме мультиметра",
     "Instrument control in multimeter mode",
-    cMode,
-    cRangesVoltageAC,
-    cAVP,
+    &cMode,
+    &cRangesVoltageAC,
+    &cAVP,
     Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
@@ -183,8 +183,8 @@ DEF_PAGE_3(pMultimeterResistance,
     "МУЛЬТИМЕТР", "MULTIMETER",
     "Управление прибором в режиме мультиметра",
     "Instrument control in multimeter mode",
-    cMode,
-    cRangesResistance,
-    cAVP,
+    &cMode,
+    &cRangesResistance,
+    &cAVP,
     Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, EmptyPressPage
 )
