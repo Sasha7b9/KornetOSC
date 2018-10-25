@@ -2521,6 +2521,11 @@
               <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_Recorder.cpp</FilePath>
             </File>
             <File>
+              <FileName>PageFunction_Recorder_Play.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_Recorder_Play.cpp</FilePath>
+            </File>
+            <File>
               <FileName>PageFunction_Recorder_Record.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_Recorder_Record.cpp</FilePath>

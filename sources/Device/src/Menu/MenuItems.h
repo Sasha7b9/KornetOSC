@@ -177,7 +177,8 @@ public:
             Function_Tester,            ///< ÔÓÍÊÖÈß - ÒÅÑÒÅÐ
             Function_Recorder,          ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ
             Function_Recorder_Source,   ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - ÈÑÒÎ×ÍÈÊ
-            Function_Recorder_Record,   ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - Ñîõðàíÿòü â
+            Function_Recorder_Record,   ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - ÇÀÏÈÑÜ
+            Function_Recorder_Play,     ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - ÏÐÎÑÌÎÒÐ
 
             Display,                    ///< ÄÈÑÏÅÉ
             Display_Accum,              ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
