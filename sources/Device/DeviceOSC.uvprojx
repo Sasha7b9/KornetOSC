@@ -2301,9 +2301,24 @@
           <GroupName>Menu</GroupName>
           <Files>
             <File>
-              <FileName>Menu.cpp</FileName>
+              <FileName>BufferButtons.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\BufferButtons.h</FilePath>
+            </File>
+            <File>
+              <FileName>BufferButtons.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Menu.cpp</FilePath>
+              <FilePath>.\src\Menu\BufferButtons.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HandlersKeys.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\HandlersKeys.h</FilePath>
+            </File>
+            <File>
+              <FileName>HandlersKeys.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\HandlersKeys.cpp</FilePath>
             </File>
             <File>
               <FileName>Menu.h</FileName>
@@ -2311,14 +2326,19 @@
               <FilePath>.\src\Menu\Menu.h</FilePath>
             </File>
             <File>
-              <FileName>MenuItems.cpp</FileName>
+              <FileName>Menu.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
+              <FilePath>.\src\Menu\Menu.cpp</FilePath>
             </File>
             <File>
               <FileName>MenuItems.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\MenuItems.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItems.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
             </File>
             <File>
               <FileName>MenuItemsAdd.h</FileName>
@@ -2341,34 +2361,14 @@
               <FilePath>.\src\Menu\MenuItemsLogic.cpp</FilePath>
             </File>
             <File>
-              <FileName>MenuTriggers.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\MenuTriggers.cpp</FilePath>
-            </File>
-            <File>
               <FileName>MenuTriggers.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\MenuTriggers.h</FilePath>
             </File>
             <File>
-              <FileName>BufferButtons.cpp</FileName>
+              <FileName>MenuTriggers.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\BufferButtons.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>BufferButtons.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\BufferButtons.h</FilePath>
-            </File>
-            <File>
-              <FileName>HandlersKeys.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\HandlersKeys.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HandlersKeys.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\HandlersKeys.h</FilePath>
+              <FilePath>.\src\Menu\MenuTriggers.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2376,19 +2376,14 @@
           <GroupName>Menu/Pages</GroupName>
           <Files>
             <File>
-              <FileName>Definition.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Definition.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Definition.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Definition.h</FilePath>
             </File>
             <File>
-              <FileName>HelpContent.cpp</FileName>
+              <FileName>Definition.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\HelpContent.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\Definition.cpp</FilePath>
             </File>
             <File>
               <FileName>HelpContent.h</FileName>
@@ -2396,14 +2391,14 @@
               <FilePath>.\src\Menu\Pages\HelpContent.h</FilePath>
             </File>
             <File>
+              <FileName>HelpContent.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\HelpContent.cpp</FilePath>
+            </File>
+            <File>
               <FileName>HelpContentPages.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\HelpContentPages.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageChannels.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageChannels.cpp</FilePath>
             </File>
             <File>
               <FileName>PageChannels.h</FileName>
@@ -2411,9 +2406,9 @@
               <FilePath>.\src\Menu\Pages\PageChannels.h</FilePath>
             </File>
             <File>
-              <FileName>PageCursors.cpp</FileName>
+              <FileName>PageChannels.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCursors.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageChannels.cpp</FilePath>
             </File>
             <File>
               <FileName>PageCursors.h</FileName>
@@ -2421,9 +2416,9 @@
               <FilePath>.\src\Menu\Pages\PageCursors.h</FilePath>
             </File>
             <File>
-              <FileName>PageDebug.cpp</FileName>
+              <FileName>PageCursors.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageDebug.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageCursors.cpp</FilePath>
             </File>
             <File>
               <FileName>PageDebug.h</FileName>
@@ -2431,9 +2426,9 @@
               <FilePath>.\src\Menu\Pages\PageDebug.h</FilePath>
             </File>
             <File>
-              <FileName>PageDisplay.cpp</FileName>
+              <FileName>PageDebug.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageDisplay.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageDebug.cpp</FilePath>
             </File>
             <File>
               <FileName>PageDisplay.h</FileName>
@@ -2441,74 +2436,14 @@
               <FilePath>.\src\Menu\Pages\PageDisplay.h</FilePath>
             </File>
             <File>
-              <FileName>PageHelp.cpp</FileName>
+              <FileName>PageDisplay.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageHelp.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageDisplay.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageHelp.h</FileName>
+              <FileName>PageFunction.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageHelp.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageMeasures.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMeasures.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMemory.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMemory.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMemory.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageMemory.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageService.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageService.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageTime.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageTime.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageTime.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageTime.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageTrig.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageTrig.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageTrig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageTrig.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageMultimeter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMultimeter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMultimeter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageMultimeter.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageTester.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageTester.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageTester.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageTester.h</FilePath>
+              <FilePath>.\src\Menu\Pages\PageFunction.h</FilePath>
             </File>
             <File>
               <FileName>PageFunction.cpp</FileName>
@@ -2516,9 +2451,94 @@
               <FilePath>.\src\Menu\Pages\PageFunction.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageFunction.h</FileName>
+              <FileName>PageFunctionFFT.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction.h</FilePath>
+              <FilePath>.\src\Menu\Pages\PageFunctionFFT.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageFunctionFFT.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunctionFFT.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageHelp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageHelp.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageHelp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageHelp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMeasures.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageMeasures.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageMeasures.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMeasures.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMemory.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageMemory.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageMemory.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMemory.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMultimeter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageMultimeter.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageMultimeter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMultimeter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageService.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageService.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageService.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageService.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageTester.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageTester.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageTester.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageTester.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageTime.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageTime.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageTime.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageTime.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageTrig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageTrig.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageTrig.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageTrig.cpp</FilePath>
             </File>
           </Files>
         </Group>
