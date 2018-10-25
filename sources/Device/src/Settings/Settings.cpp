@@ -205,7 +205,15 @@ static const Settings defaultSettings =
     /* multi_meas */        Multimeter::Measure::VoltageDC,
     /* multi_rangeCV */     Multimeter::RangeDC::_2V,
     /* multi_rangeVV */     Multimeter::RangeAC::_2V,
-    /* multi_rangeResist */ Multimeter::RangeResistance::_10M
+    /* multi_rangeResist */ Multimeter::RangeResistance::_10M,
+
+                                // Настройки регистратора
+    /* rec_viewAlways */    Recorder::ViewAlways::Off,
+    /* rec_sourceChanA */   false,
+    /* rec_sourceChanB */   false,
+    /* rec_sourceSensor */  false,
+    /* rec_storageRecord */ Recorder::DataStorage::Flash,
+    /* rec_storagePlay */   Recorder::DataStorage::Flash
 };
 
 Settings set = defaultSettings;

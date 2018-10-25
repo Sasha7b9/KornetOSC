@@ -2540,6 +2540,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageFunctionRecorderSource.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageFunctionRecorderRecord.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageFunctionRecorderRecord.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2644,6 +2649,21 @@
               <FileName>FrequencyCounter.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Osci\FrequencyCounter.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Recorder</GroupName>
+          <Files>
+            <File>
+              <FileName>Recorder.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Recorder\Recorder.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Recorder.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Recorder\Recorder.h</FilePath>
             </File>
           </Files>
         </Group>

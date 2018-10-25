@@ -103,6 +103,7 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionFFT.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionFrequencyCounter.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionRecorder.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionRecorderRecord.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunctionRecorderSource.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageHelp.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageMeasures.cpp" />

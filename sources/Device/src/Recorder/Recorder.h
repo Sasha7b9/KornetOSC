@@ -6,6 +6,8 @@
 #define RECORDER_SOURCE_A       (set.rec_sourceChanA)
 #define RECORDER_SOURCE_B       (set.rec_sourceChanB)
 #define RECORDER_SOURCE_SENSOR  (set.rec_sourceSensor)
+#define RECORDER_STORAGE_RECORD (set.rec_storageRecord)
+#define RECORDER_STORAGE_PLAY   (set.rec_storagePlay)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,6 +22,16 @@ public:
         {
             Off,
             On
+        } value;
+    };
+
+    /// C каким источником работаем
+    struct DataStorage
+    {
+        enum E
+        {
+            PC,
+            Flash
         } value;
     };
 };

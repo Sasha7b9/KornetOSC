@@ -261,6 +261,8 @@ public:
     bool                        rec_sourceChanA;        ///< ¬ключение записи канала 1
     bool                        rec_sourceChanB;        ///< ¬ключение записи канала 2
     bool                        rec_sourceSensor;       ///< ¬ключение записи показаний датчика
+    Recorder::DataStorage       rec_storageRecord;      ///<  уда сохран€ть данные
+    Recorder::DataStorage       rec_storagePlay;        ///< ќткуда брать сохранЄнные данные
 };
 
 #pragma pack(pop)

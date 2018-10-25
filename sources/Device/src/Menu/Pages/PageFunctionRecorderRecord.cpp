@@ -1,0 +1,31 @@
+#include "defines.h"
+#include "PageFunction.h"
+#include "Recorder/Recorder.h"
+#include "Settings/Settings.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+extern const PageBase pageRecord;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_CHOICE_2(cDestinationSource,                                                                //--- ФУНКЦИЯ - РЕГИСТРАТОР - ЗАПИСЬ - Сохранять в ---
+    "Сохранять в", "Save to",
+    "Куда сохранять данные",
+    "Where to save data",
+    "USB-PC",    "USB-PC",
+    "USB-Flash", "USB-Flash",
+    RECORDER_STORAGE_RECORD, pageRecord, FuncActive, FuncChangedChoice, FuncDraw
+)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_1(pageRecord,                                                                                        //--- ФУНКЦИЯ - РЕГИСТРАТОР - ЗАПИСЬ ---
+    "ЗАПИСЬ", "RECORD",
+    "Доступ к записи данных",
+    "Access to data record",
+    &cDestinationSource,        ///< ФУНКЦИЯ - РЕГИСТРАТОР - ЗАПИСЬ - Сохранять в
+    Page::Name::Function_Recorder_Record, PageFunction::PageRecorder::pointer, FuncActive, EmptyPressPage
+)
+
+const PageBase *PageFunction::PageRecorder::PageRecord::pointer = &pageRecord;

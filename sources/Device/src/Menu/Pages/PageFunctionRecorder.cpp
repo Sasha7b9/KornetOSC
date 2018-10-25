@@ -19,12 +19,13 @@ DEF_CHOICE_2(cViewAlways,                                                       
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2( pageRecorder,                                                                                              //--- ФУНКЦИЯ - РЕГИСТРАТОР ---
+DEF_PAGE_3( pageRecorder,                                                                                              //--- ФУНКЦИЯ - РЕГИСТРАТОР ---
     "РЕГИСТРАТОР", "RECORDER",
     "Запись и воспроизведение сигналов входов и датчиков",
     "Recording and playback of input signals and sensors",
-    &cViewAlways,                                        ///< ФУНКЦИЯ - РЕГИСТРАТОР - Всегда
+    &cViewAlways,                                       ///< ФУНКЦИЯ - РЕГИСТРАТОР - Всегда
     PageFunction::PageRecorder::PageSource::pointer,    ///< ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧНИК
+    PageFunction::PageRecorder::PageRecord::pointer,    ///< ФУНКЦИЯ - РЕГИСТРАТОР - ЗАПИСЬ
     Page::Name::Function_Recorder, PageFunction::pointer, FuncActive, FuncPress
 )
 
