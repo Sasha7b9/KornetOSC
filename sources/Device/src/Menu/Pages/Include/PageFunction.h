@@ -74,5 +74,12 @@ public:
         public:
             static const PageBase *pointer;
         };
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------
+        class PagePlay
+        {
+        public:
+            static const PageBase *pointer;
+        };
     };
 };

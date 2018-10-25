@@ -2501,39 +2501,39 @@
               <FilePath>.\src\Menu\Pages\PageFunction\PageFunction.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageFunctionFFT.cpp</FileName>
+              <FileName>PageFunction_FFT.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction\PageFunctionFFT.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_FFT.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageFunctionFrequencyCounter.cpp</FileName>
+              <FileName>PageFunction_FrequencyCounter.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction\PageFunctionFrequencyCounter.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_FrequencyCounter.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageFunctionMultimeter.cpp</FileName>
+              <FileName>PageFunction_Multimeter.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction\PageFunctionMultimeter.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_Multimeter.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageFunctionRecorder.cpp</FileName>
+              <FileName>PageFunction_Recorder.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction\PageFunctionRecorder.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_Recorder.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageFunctionRecorderRecord.cpp</FileName>
+              <FileName>PageFunction_Recorder_Record.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction\PageFunctionRecorderRecord.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_Recorder_Record.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageFunctionRecorderSource.cpp</FileName>
+              <FileName>PageFunction_Recorder_Source.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction\PageFunctionRecorderSource.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_Recorder_Source.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageFunctionTester.cpp</FileName>
+              <FileName>PageFunction_Tester.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction\PageFunctionTester.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageFunction\PageFunction_Tester.cpp</FilePath>
             </File>
           </Files>
         </Group>
