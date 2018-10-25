@@ -3,8 +3,8 @@
 #include "Osci/FrequencyCounter.h"
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"
-#include "Menu/Pages/Definition.h"
-#include "PageMeasures.h"
+#include "Menu/Pages/Include/Definition.h"
+#include "Menu/Pages/Include/PageMeasures.h"
 #include "Utils/Math.h"
 #include "Utils/Measure.h"
 

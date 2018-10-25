@@ -6,7 +6,7 @@
 #include "Hardware/CPU.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
-#include "Menu/Pages/Definition.h"
+#include "Menu/Pages/Include/Definition.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"

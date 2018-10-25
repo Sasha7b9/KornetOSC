@@ -3,8 +3,8 @@
 #include "Osci/Grid.h"
 #include "Display/Font/Font.h"
 #include "Display/Painter.h"
-#include "HelpContentPages.h"
-#include "HelpContent.h"
+#include "Menu/Pages/Include/HelpContentPages.h"
+#include "Menu/Pages/Include/HelpContent.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
 

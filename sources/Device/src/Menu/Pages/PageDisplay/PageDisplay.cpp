@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "Display/Painter.h"
-#include "PageDisplay.h"
+#include "Menu/Pages/Include/PageDisplay.h"
 #include "FPGA/FPGA.h"
 #include "Menu/Menu.h"
 #include "Utils/CommonFunctions.h"

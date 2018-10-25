@@ -1,6 +1,6 @@
 #include "defines.h"
-#include "PageMemory.h"
-#include "PageTime.h"
+#include "Menu/Pages/Include/PageMemory.h"
+#include "Menu/Pages/Include/PageTime.h"
 #include "FPGA/FPGA.h"
 #include "Menu/MenuItems.h"
 #include "Utils/CommonFunctions.h"

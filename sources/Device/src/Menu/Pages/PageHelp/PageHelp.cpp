@@ -1,9 +1,9 @@
 #include "defines.h"
-#include "PageHelp.h"
+#include "Menu/Pages/Include/PageHelp.h"
 #include "Display/Painter.h"
 #include "Menu/MenuItems.h"
-#include "Menu/Pages/Definition.h"
-#include "HelpContent.h"
+#include "Menu/Pages/Include/Definition.h"
+#include "Menu/Pages/Include/HelpContent.h"
 #include "Utils/CommonFunctions.h"
 #include "Menu/Menu.h"
 

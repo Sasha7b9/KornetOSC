@@ -1,11 +1,11 @@
 #include "defines.h"
-#include "PageTrig.h"
+#include "Menu/Pages/Include/PageTrig.h"
 #include "Menu/MenuItems.h"
 #include "Settings/Settings.h"
 #include "FPGA/FPGATypes.h"
 #include "FPGA/FPGA.h"
 #include "Settings/Settings.h"
-#include "Menu/Pages/Definition.h"
+#include "Menu/Pages/Include/Definition.h"
 #include "Utils/CommonFunctions.h"
 
 

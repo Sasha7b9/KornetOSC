@@ -1,9 +1,9 @@
 #include "defines.h"
-#include "PageFunction.h"
+#include "Menu/Pages/Include/PageFunction.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
 #include "Hardware/Sound.h"
-#include "Definition.h"
+#include "Menu/Pages/Include/Definition.h"
 #include "Display/Painter.h"
 
 
