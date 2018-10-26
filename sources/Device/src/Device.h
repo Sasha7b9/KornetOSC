@@ -30,8 +30,8 @@ public:
     static void Update();
 
     static Mode CurrentMode();
-    /// Функция вызывается при нажатии на кнопку "Функция". Переключает устройство в следующий режим
-    static void ChangeMode();
+    /// Устанавливает режим работы
+    static void SetMode(Mode mode);
 
 private:
     static Mode currentMode;

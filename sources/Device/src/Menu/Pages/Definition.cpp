@@ -146,26 +146,3 @@ void DrawMenuCursTime(int x, int y, bool left, bool right)
         Painter::DrawVLine(x1 - i, y0, y1);
     }
 }
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::ChangeMode()
-{
-    static bool menuIsShown = false;
-
-    switch(Device::CurrentMode())
-    {
-        case Device::Mode::Osci:
-            pageMain = (PageBase *)&pageOsci;
-            Show(menuIsShown);
-            break;
-        case Device::Mode::Tester:
-            menuIsShown = IsShown();
-            pageMain = (PageBase *)PageFunction::PageTester::pointer;
-            Show(true);
-            break;
-        case Device::Mode::Multimeter:
-            pageMain = (PageBase *)PageFunction::PageMultimeter::pointer;
-            Show(true);
-            break;
-    }
-}

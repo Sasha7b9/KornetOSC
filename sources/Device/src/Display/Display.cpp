@@ -122,6 +122,8 @@ void Display::Update()
 
     func();
 
+    Menu::Graphics::Draw();
+
     Console::Draw();
 
     Painter::EndScene();
