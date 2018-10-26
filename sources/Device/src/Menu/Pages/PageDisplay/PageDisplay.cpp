@@ -9,124 +9,27 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const PageBase pppSettings_Colors;
 extern const PageBase ppDisplaySettings;
 extern const PageBase pageDisplay;
 
 const PageBase *PageDisplay::pointer = &pageDisplay;
+const PageBase *PageDisplay::PageSettings::pointer = &ppDisplaySettings;
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void OnPress_ResetColors()
-{
-    Settings::ResetColors();
-}
-
-DEF_BUTTON(         bResetColors,                                                                     //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сбросить ---
-    "Сбросить", "Reset",
-    "Сброс всех цветов на значения по умолчанию",
-    "Reset all colors to default values",
-    pppSettings_Colors, EmptyFuncBV, OnPress_ResetColors, EmptyFuncVII
-)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2 (      cThickness,                                                                                            //--- ДИСПЛЕЙ - Толщина ---
-    "Толщина", "Thickness",
-    "Позволяет изменять толщину выводимых на экран изображений",
-    "Allows you to change the thickness of the signals displayed on the screen",
-    "x1", "x1",
-    "x3", "x3",
-    THICKNESS_SIGNAL, pageDisplay, FuncActive, FuncChangedChoice, FuncDraw
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       cSettings_Colors_Scheme,                                                    //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема ---
-    "Цветовая схема", "Color scheme",
-    "Изменение цветовой схемы",
-    "Changing the color scheme",
-    "Схема 1", "Scheme 1",
-    "Схема 2", "Scheme 2",
-    set.serv_colorScheme, pppSettings_Colors, FuncActive, FuncChangedChoice, FuncDraw
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-ColorType PageDisplay::colorTypeA = COLOR_TYPE(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::Channel(Chan::A))
-
-DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelA,                                                        //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1 ---
-    "Канал 1", "Chan 1",
-    "Выбор цвета канала 1",
-    "Choice of channel 1 color",
-    PageDisplay::colorTypeA, pppSettings_Colors
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-ColorType PageDisplay::colorTypeB = COLOR_TYPE(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::Channel(Chan::B))
-DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelB,                                                        //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2 ---
-    "Канал 2", "Chan 2",
-    "Выбор цвета канала 1",
-    "Choice of channel 2 color",
-    PageDisplay::colorTypeB, pppSettings_Colors
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-ColorType PageDisplay::colorTypeGrid = COLOR_TYPE(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::GRID)
-DEF_GOVERNOR_COLOR( gcSettings_Colors_Grid,                                                              //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка ---
-    "Сетка", "Grid",
-    "Устанавливает цвет сетки",
-    "Sets the grid color",
-    PageDisplay::colorTypeGrid, pppSettings_Colors
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void PageDisplay::OnChanged_Settings_Colors_Background(bool)
-{
-    Color::InitGlobalColors();
-
-    gcSettings_Colors_ChannelA.ct->color = Color::Channel(Chan::A);
-    gcSettings_Colors_ChannelB.ct->color = Color::Channel(Chan::B);
-    gcSettings_Colors_Grid.ct->color = Color::GRID;
-
-    gcSettings_Colors_ChannelA.ct->Init(true);
-    gcSettings_Colors_ChannelB.ct->Init(true);
-    gcSettings_Colors_Grid.ct->Init(true);
-}
-
-DEF_CHOICE_2(       cSettings_Colors_Background,                                                           //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Фон ---
-    "Фон", "Background",
-    "Выбор цвета фона",
-    "Choice of color of a background",
-    "Чёрный", "Black",
-    "Белый",  "White",
-    BACKGROUND, pppSettings_Colors, FuncActive, PageDisplay::OnChanged_Settings_Colors_Background, FuncDraw
-)
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// \todo Добавить дополнительные цвета 1-го и 2-го каналов
-DEF_PAGE_6(         pppSettings_Colors,                                                                             // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ///
-    "ЦВЕТА", "COLORS",
-    "Выбор цветов дисплея",
-    "The choice of colors display",
-    &bResetColors,                  // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сбросить
-    &cSettings_Colors_Scheme,       // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема
-    &gcSettings_Colors_ChannelA,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1
-    &gcSettings_Colors_ChannelB,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2
-    &gcSettings_Colors_Grid,        // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка
-    &cSettings_Colors_Background,   // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Фон
-                                    //&mgcColorChannelAalt,
-                                    //&mgcColorChannelBalt,
-                                    //&mgcColorMenu1,
-                                    //&mgcColorMenu2,
-                                    //&mgcColorMenu3
-                                    //&mgcColorMathem,
-                                    //&mgcColorFFT,
-                                    //&mcServDisplInverse
-    Page::Name::Display_Settings_Colors, &ppDisplaySettings, FuncActive, EmptyPressPage
+DEF_CHOICE_2(cThickness,                                                                                            //--- ДИСПЛЕЙ - Толщина ---
+             "Толщина", "Thickness",
+             "Позволяет изменять толщину выводимых на экран изображений",
+             "Allows you to change the thickness of the signals displayed on the screen",
+             "x1", "x1",
+             "x3", "x3",
+             THICKNESS_SIGNAL, pageDisplay, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PageDisplay::Init()
 {
-    OnChanged_Settings_Colors_Background(true);   // Заносим значения в гувернёры цветов
+    PageSettings::PageColors::OnChanged_Settings_Colors_Background(true);   // Заносим значения в гувернёры цветов
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -329,12 +232,12 @@ DEF_PAGE_7(         ppDisplaySettings,                                          
     "НАСТРОЙКИ", "SETTINGS",
     "Дополнительные настройки дисплея",
     "Additional display settings",
-    &pppSettings_Colors,         // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА
-    &gSettings_Brightness,       // ДИСПЛЕЙ - НАСТРОЙКИ - Яркость
-    &gSettings_Levels,           // ДИСПЛЕЙ - НАСТРОЙКИ - Уровни
-    &gSettings_Time,             // ДИСПЛЕЙ - НАСТРОЙКИ - Время
-    &cSettings_StringNavigation, // ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню
-    &cSettings_AltMarkers,       // ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры
-    &cSettings_AutoHide,         // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать
+    PageDisplay::PageSettings::PageColors::pointer,     ///< ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА
+    &gSettings_Brightness,                              ///< ДИСПЛЕЙ - НАСТРОЙКИ - Яркость
+    &gSettings_Levels,                                  ///< ДИСПЛЕЙ - НАСТРОЙКИ - Уровни
+    &gSettings_Time,                                    ///< ДИСПЛЕЙ - НАСТРОЙКИ - Время
+    &cSettings_StringNavigation,                        ///< ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню
+    &cSettings_AltMarkers,                              ///< ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры
+    &cSettings_AutoHide,                                ///< ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать
     Page::Name::Display_Settings, &pageDisplay, FuncActive, EmptyPressPage
 )

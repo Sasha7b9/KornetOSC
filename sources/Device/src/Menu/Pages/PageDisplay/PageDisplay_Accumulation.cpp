@@ -58,7 +58,7 @@ static bool IsActive_Accum_Clear()
     return ENUM_ACCUM != Display::ENumAccum::_1 && !MODE_ACCUM_NO_RESET;
 }
 
-void PageDisplay::OnPress_Accumulation_Clear()
+void PageDisplay::PageAccumulation::OnPress_Accumulation_Clear()
 {
     NEED_FINISH_DRAW = 1;
 }
@@ -67,7 +67,7 @@ DEF_BUTTON( bAccum_Clear,                                                       
     "Очистить", "Clear",
     "Очищает экран от накопленных сигналов.",
     "Clears the screen of the saved-up signals.",
-    pageAccum, IsActive_Accum_Clear, PageDisplay::OnPress_Accumulation_Clear, FuncDraw
+    pageAccum, IsActive_Accum_Clear, PageDisplay::PageAccumulation::OnPress_Accumulation_Clear, FuncDraw
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -10,17 +10,7 @@ public:
 
     static void Init();
 
-    static void OnPress_Accumulation_Clear();
-
     static void OnChanged_RefreshFPS(bool);
-
-    static void OnChanged_Settings_Colors_Background(bool);
-
-    static ColorType colorTypeGrid;
-
-    static ColorType colorTypeA;
-
-    static ColorType colorTypeB;
 
     static const PageBase *pointer;
 
@@ -29,6 +19,8 @@ public:
     {
     public:
         static const PageBase *pointer;
+
+        static void OnPress_Accumulation_Clear();
     };
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
@@ -38,10 +30,32 @@ public:
         static const PageBase *pointer;
     };
 
-    //----------------------------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------------------------
     class PageGrid
     {
     public:
         static const PageBase *pointer;
+    };
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    class PageSettings
+    {
+    public:
+        static const PageBase *pointer;
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------
+        class PageColors
+        {
+        public:
+            static const PageBase *pointer;
+
+            static void OnChanged_Settings_Colors_Background(bool);
+
+            static ColorType colorTypeGrid;
+
+            static ColorType colorTypeA;
+
+            static ColorType colorTypeB;
+        };
     };
 };

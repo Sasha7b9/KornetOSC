@@ -25,13 +25,13 @@ DEF_CHOICE_4( cType,                                                            
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Grid_Brightness()
 {
-    PageDisplay::colorTypeGrid.SetBrightness(BRIGHTNESS_GRID / 100.0f);
+    PageDisplay::PageSettings::PageColors::colorTypeGrid.SetBrightness(BRIGHTNESS_GRID / 100.0f);
 }
 
 static void BeforeDraw_Grid_Brightness()
 {
-    PageDisplay::colorTypeGrid.Init(false);
-    BRIGHTNESS_GRID = (int16)(PageDisplay::colorTypeGrid.brightness * 100.0f);
+    PageDisplay::PageSettings::PageColors::colorTypeGrid.Init(false);
+    BRIGHTNESS_GRID = (int16)(PageDisplay::PageSettings::PageColors::colorTypeGrid.brightness * 100.0f);
 }
 
 DEF_GOVERNOR( gBrightness,                                                                                         //--- ÄÈÑÏËÅÉ - ÑÅÒÊÀ - ßðêîñòü ---
