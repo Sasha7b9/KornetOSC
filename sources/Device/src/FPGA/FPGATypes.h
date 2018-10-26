@@ -49,8 +49,8 @@
 #define FL_P2P                  3                           ///< 
 #define FL_FREQ_READY           4                           ///< Флаг готовности измерения частоты
 #define FL_PERIOD_READY         5                           ///< Флаг готовности измерения периода
-#define FL_OVERFLOW_FREQ        8                           ///< Признак переполнения счётчика частоты
-#define FL_OVERFLOW_PERIOD      9                           ///< Признак переполнения счётчика периода
+#define FL_FREQ_OVERFLOW        8                           ///< Признак переполнения счётчика частоты
+#define FL_PERIOD_OVERFLOW      9                           ///< Признак переполнения счётчика периода
 
 
 #define FPGA_MAX_NUM_POINTS     (16 * 1024)

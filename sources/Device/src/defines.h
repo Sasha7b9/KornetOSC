@@ -121,6 +121,14 @@ union BitSet32
         uint8 byte2;
         uint8 byte3;
     };
+
+    BitSet32(uint w = 0) : word(w) {}
+
+    BitSet32(uint8 _byte3, uint8 _byte2, uint8 _byte1, uint8 _byte0)
+    {
+        Set(_byte3, _byte2, _byte1, _byte0);
+    }
+
     void Set(uint8 _byte3, uint8 _byte2, uint8 _byte1, uint8 _byte0)
     {
         byte[0] = _byte0;

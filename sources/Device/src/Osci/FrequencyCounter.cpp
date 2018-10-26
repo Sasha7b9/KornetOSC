@@ -14,15 +14,10 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 BitSet32 FrequencyCounter::freqActual;
-BitSet32 FrequencyCounter::freqSet;
 BitSet32 FrequencyCounter::periodActual;
-BitSet32 FrequencyCounter::periodSet;
-bool     FrequencyCounter::drawFreq;
-bool     FrequencyCounter::drawPeriod;
 bool     FrequencyCounter::readPeriod;
 float    FrequencyCounter::prevFreq;
 float    FrequencyCounter::frequency;
-uint16   FrequencyCounter::flag;
 
 //                         0    1    2    3    4    5    6 
 static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0};
@@ -32,9 +27,6 @@ static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void FrequencyCounter::Init()
 {
-    drawFreq = false;
-    drawPeriod = false;
-
     uint8 data = 0;
 
     if (FREQ_METER_IS_ENABLED)
@@ -56,10 +48,8 @@ void FrequencyCounter::Init()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FrequencyCounter::Update(uint16 flag_)
+void FrequencyCounter::Update(uint16 flag)
 {
-    flag = flag_;
-
     bool freqReady = _GET_BIT(flag, FL_FREQ_READY) == 1;
     bool periodReady = _GET_BIT(flag, FL_PERIOD_READY) == 1;
 
@@ -67,8 +57,6 @@ void FrequencyCounter::Update(uint16 flag_)
     {
         freqActual.Set(*RD_FREQ_BYTE_3, *RD_FREQ_BYTE_2, *RD_FREQ_BYTE_1, *RD_FREQ_BYTE_0);
         
-        drawFreq = true;
-
         if (!readPeriod)
         {
             ReadFreq();
@@ -79,19 +67,26 @@ void FrequencyCounter::Update(uint16 flag_)
     {
         periodActual.Set(*RD_PERIOD_BYTE_3, *RD_PERIOD_BYTE_2, *RD_PERIOD_BYTE_1, *RD_PERIOD_BYTE_0);
 
-        drawPeriod = true;
-
         if (readPeriod)
         {
             ReadPeriod();
         }
+    }
+
+    if(_GET_BIT(flag, FL_FREQ_OVERFLOW) == 1)
+    {
+        freqActual.word = 0;
+    }
+    if(_GET_BIT(flag, FL_PERIOD_OVERFLOW) == 1)
+    {
+        periodActual.word = 0;
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::ReadFreq()
 {
-    freqSet.Set(*RD_FREQ_BYTE_3, *RD_FREQ_BYTE_2, *RD_FREQ_BYTE_1, *RD_FREQ_BYTE_0);
+    BitSet32 freqSet(*RD_FREQ_BYTE_3, *RD_FREQ_BYTE_2, *RD_FREQ_BYTE_1, *RD_FREQ_BYTE_0);
 
     if (freqSet.word < 1000)
     {
@@ -115,7 +110,7 @@ void FrequencyCounter::ReadFreq()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::ReadPeriod()
 {
-    periodSet.Set(*RD_PERIOD_BYTE_3, *RD_PERIOD_BYTE_2, *RD_PERIOD_BYTE_1, *RD_PERIOD_BYTE_0);
+    BitSet32 periodSet(*RD_PERIOD_BYTE_3, *RD_PERIOD_BYTE_2, *RD_PERIOD_BYTE_1, *RD_PERIOD_BYTE_0);
 
     float fr = PeriodSetToFreq(&periodSet);
     if (fr < prevFreq * 0.9f || fr > prevFreq * 1.1f)
@@ -186,18 +181,12 @@ void FrequencyCounter::Draw()
     Painter::DrawBigText(x + dX, y + 1,         SIZE, "=", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceTimeF()));
     Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
     
-    float freq = FreqSetToFreq(&freqActual);
-
-    bool condFreq = _SET_BIT(flag, FL_OVERFLOW_FREQ) == 1 || drawFreq == false || freq == 0.0f;
-
     dX = SIZE * 12;
 
-    Painter::DrawBigText(x + dX, y + 1, SIZE, condFreq ? EMPTY_STRING : FreqSetToString(&freqActual),
+    Painter::DrawBigText(x + dX, y + 1, SIZE, (freqActual.word == 0) ? EMPTY_STRING : FreqSetToString(&freqActual),
                          Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceTimeF()));
 
-    bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
-
-    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, condPeriod ? EMPTY_STRING : PeriodSetToString(&periodActual),
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, (freqActual.word == 0) ? EMPTY_STRING : PeriodSetToString(&periodActual),
                          Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
 
 
