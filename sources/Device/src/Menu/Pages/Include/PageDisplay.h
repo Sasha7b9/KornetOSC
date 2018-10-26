@@ -23,4 +23,11 @@ public:
     static ColorType colorTypeB;
 
     static const PageBase *pointer;
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    class PageAccumulation
+    {
+    public:
+        static const PageBase *pointer;
+    };
 };

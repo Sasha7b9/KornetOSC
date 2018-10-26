@@ -97,6 +97,7 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannels.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageDebug\PageDebug.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageDisplay\PageDisplay.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\Pages\PageDisplay\PageDisplay_Accumulation.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunction\PageFunction.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunction\PageFunction_FFT.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageFunction\PageFunction_FrequencyCounter.cpp" />

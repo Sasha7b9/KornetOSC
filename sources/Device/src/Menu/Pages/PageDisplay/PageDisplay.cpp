@@ -11,10 +11,12 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const PageBase pppSettings_Colors;
 extern const PageBase ppDisplaySettings;
-extern const PageBase pDisplay;
-extern const PageBase ppAccum;
+extern const PageBase pageDisplay;
 extern const PageBase ppAverage;
 extern const PageBase ppGrid;
+
+const PageBase *PageDisplay::pointer = &pageDisplay;
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnPress_ResetColors()
@@ -36,7 +38,7 @@ DEF_CHOICE_2 (      cThickness,                                                 
     "Allows you to change the thickness of the signals displayed on the screen",
     "x1", "x1",
     "x3", "x3",
-    THICKNESS_SIGNAL, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
+    THICKNESS_SIGNAL, pageDisplay, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -136,83 +138,7 @@ DEF_CHOICE_2(       cViewMode,                                                  
     "Sets the display mode signal.",
     "Вектор", "Vector",
     "Точки",  "Points",
-    MODE_DRAW_SIGNAL, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_REG_9(   cAccum_Num,                                                                            //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ - Количество ---
-    "Количество", "Number"
-    ,
-    "Задаёт максимальное количество последних сигналов на экране. Если в настройке \"Режим\" выбрано \"Бесконечность\", экран очищается только "
-    "нажатием кнопки \"Очистить\"."
-    "\"Бесконечность\" - каждое измерение остаётся на дисплее до тех пор, пока не будет нажата кнопка \"Очистить\"."
-    ,
-    "Sets the maximum quantity of the last signals on the screen. If in control \"Mode\" it is chosen \"Infinity\", the screen is cleared only "
-    "by pressing of the button \"Clear\"."
-    "\"Infinity\" - each measurement remains on the display until the button \"Clear\" is pressed.",
-    DISABLE_RU, DISABLE_EN,
-    "2",             "2",
-    "4",             "4",
-    "8",             "8",
-    "16",            "16",
-    "32",            "32",
-    "64",            "64",
-    "128",           "128",
-    "Бесконечность", "Infinity",
-    ENUM_ACCUM, ppAccum, FuncActive, FuncChangedChoice, FuncDraw
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       cAccum_Mode,                                                                                //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ - Режим ---
-    "Режим", "Mode"
-    ,
-    "1. \"Сбрасывать\" - после накопления заданного количества измерения происходит очистка дисплея. Этот режим удобен, когда памяти не хватает "
-    "для сохранения нужного количества измерений.\n"
-    "2. \"Не сбрасывать\" - на дисплей всегда выводится заданное или меньшее (в случае нехватки памяти) количество измерений. Недостатком является "
-    "меньшее быстродействие и невозможность накопления заданного количества измерений при недостатке памяти."
-    ,
-    "1. \"Dump\" - after accumulation of the set number of measurement there is a cleaning of the display. This mode is convenient when memory "
-    "isn't enough for preservation of the necessary number of measurements.\n"
-    "2. \"Not to dump\" - the number of measurements is always output to the display set or smaller (in case of shortage of memory). Shortcoming "
-    "is smaller speed and impossibility of accumulation of the set number of measurements at a lack of memory."
-    ,
-    "Не сбрасывать", "Not to dump",
-    "Сбрасывать", "Dump",
-    MODE_ACCUM, ppAccum, FuncActive, FuncChangedChoice, FuncDraw
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Accum_Clear()
-{
-    return ENUM_ACCUM != Display::ENumAccum::_1 && !MODE_ACCUM_NO_RESET;
-}
-
-void PageDisplay::OnPress_Accumulation_Clear()
-{
-    NEED_FINISH_DRAW = 1;
-}
-
-DEF_BUTTON(         bAccum_Clear,                                                                            //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить ---
-    "Очистить", "Clear",
-    "Очищает экран от накопленных сигналов.",
-    "Clears the screen of the saved-up signals.",
-    ppAccum, IsActive_Accum_Clear, PageDisplay::OnPress_Accumulation_Clear, FuncDraw
-)
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Accum()
-{
-    return SET_TBASE > TBase::_20ns;
-}
-
-DEF_PAGE_3(         ppAccum,                                                                                               // ДИСПЛЕЙ - НАКОПЛЕНИЕ ///
-    "НАКОПЛ.", "ACCUM.",
-    "Настройки режима отображения последних сигналов на экране.",
-    "Mode setting signals to display the last screen.",
-    &cAccum_Num,     // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Количество
-    &cAccum_Mode,    // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Режим
-    &bAccum_Clear,   // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить
-    Page::Name::Display_Accum, &pDisplay, IsActive_Accum, EmptyPressPage
+    MODE_DRAW_SIGNAL, pageDisplay, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -262,7 +188,7 @@ DEF_PAGE_2(         ppAverage,                                                  
     "Settings of the mode of averaging on the last measurements.",
     &cAverage_Num,   // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Количество
     &cAverage_Mode,  // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Режим
-    Page::Name::Display_Average, &pDisplay, IsActive_Average, EmptyPressPage
+    Page::Name::Display_Average, &pageDisplay, IsActive_Average, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -288,8 +214,8 @@ DEF_CHOICE_8(       cMinMax,                                                    
     "Мин Макс", "Min Max",
     "Задаёт количество последних измерений, по которым строятся ограничительные линии, огибающие минимумы и максимумы измерений.",
     "Sets number of the last measurements on which the limiting lines which are bending around minima and maxima of measurements are under "
-    "construction.",
-
+    "construction."
+    ,
     DISABLE_RU,DISABLE_EN,
     "2",   "2",
     "4",   "4",
@@ -298,7 +224,7 @@ DEF_CHOICE_8(       cMinMax,                                                    
     "32",  "32",
     "64",  "64",
     "128", "128",
-    ENUM_MIN_MAX, pDisplay, IsActive_MinMax, OnChanged_MinMax, FuncDraw
+    ENUM_MIN_MAX, pageDisplay, IsActive_MinMax, OnChanged_MinMax, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -317,7 +243,7 @@ DEF_CHOICE_REG_10(  cSmoothing,                                                 
     "8 точек",  "8 points",
     "9 точек",  "9 points",
     "10 точек", "10 points",
-    ENUM_SMOOTHING, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
+    ENUM_SMOOTHING, pageDisplay, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -335,7 +261,7 @@ DEF_CHOICE_5(       cRefreshFPS,                                                
     "5",  "5",
     "2",  "2",
     "1",  "1",
-    ENUM_SIGNALS_IN_SEC, pDisplay, FuncActive, PageDisplay::OnChanged_RefreshFPS, FuncDraw
+    ENUM_SIGNALS_IN_SEC, pageDisplay, FuncActive, PageDisplay::OnChanged_RefreshFPS, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -376,7 +302,7 @@ DEF_PAGE_2(         ppGrid,                                                     
     "Contains settings of display of a coordinate Grid::",
     &cGrid_Type,         // ДИСПЛЕЙ - СЕТКА - Тип
     &gGrid_Brightness,   // ДИСПЛЕЙ - СЕТКА - Яркость
-    Page::Name::Display_Grid, &pDisplay, FuncActive, EmptyPressPage
+    Page::Name::Display_Grid, &pageDisplay, FuncActive, EmptyPressPage
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -388,24 +314,24 @@ DEF_CHOICE_2(       cScaleYtype,                                                
     "the offset on the screen.",
     "Напряжение", "Voltage",
     "Деления", "Divisions",
-    LINKING_RSHIFT, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
+    LINKING_RSHIFT, pageDisplay, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_10(         pDisplay,                                                                                                           // ДИСПЛЕЙ ///
+DEF_PAGE_10( pageDisplay,                                                                                                            //--- ДИСПЛЕЙ ---
     "ДИСПЛЕЙ", "DISPLAY",
     "Содержит настройки отображения дисплея.",
     "Contains settings of display of the display.",
-    &cViewMode,          // ДИСПЛЕЙ - Отображение
-    &ppAccum,            // ДИСПЛЕЙ - НАКОПЛЕНИЕ
-    &ppAverage,          // ДИСПЛЕЙ - УСРЕДНЕНИЕ
-    &cMinMax,            // ДИСПЛЕЙ - Мин Макс
-    &cSmoothing,         // ДИСПЛЕЙ - Сглаживание
-    &cRefreshFPS,        // ДИСПЛЕЙ - Частота обновл
-    &ppGrid,             // ДИСПЛЕЙ - СЕТКА
-    &cScaleYtype,        // ДИСПЛЕЙ - Смещение
-    &ppDisplaySettings,  // ДИСПЛЕЙ - НАСТРОЙКИ
-    &cThickness,         // ДИСПЛЕЙ - Толщина
+    &cViewMode,                             ///< ДИСПЛЕЙ - Отображение
+    PageDisplay::PageAccumulation::pointer, ///< ДИСПЛЕЙ - НАКОПЛЕНИЕ
+    &ppAverage,                             ///< ДИСПЛЕЙ - УСРЕДНЕНИЕ
+    &cMinMax,                               ///< ДИСПЛЕЙ - Мин Макс
+    &cSmoothing,                            ///< ДИСПЛЕЙ - Сглаживание
+    &cRefreshFPS,                           ///< ДИСПЛЕЙ - Частота обновл
+    &ppGrid,                                ///< ДИСПЛЕЙ - СЕТКА
+    &cScaleYtype,                           ///< ДИСПЛЕЙ - Смещение
+    &ppDisplaySettings,                     ///< ДИСПЛЕЙ - НАСТРОЙКИ
+    &cThickness,                            ///< ДИСПЛЕЙ - Толщина
     Page::Name::Display, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
@@ -492,8 +418,6 @@ DEF_CHOICE_6(cSettings_AutoHide,                                                
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const PageBase *PageDisplay::pointer = &pDisplay;
-
 DEF_PAGE_7(         ppDisplaySettings,                                                                                      // ДИСПЛЕЙ - НАСТРОЙКИ ///
     "НАСТРОЙКИ", "SETTINGS",
     "Дополнительные настройки дисплея",
@@ -505,5 +429,5 @@ DEF_PAGE_7(         ppDisplaySettings,                                          
     &cSettings_StringNavigation, // ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню
     &cSettings_AltMarkers,       // ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры
     &cSettings_AutoHide,         // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать
-    Page::Name::Display_Settings, &pDisplay, FuncActive, EmptyPressPage
+    Page::Name::Display_Settings, &pageDisplay, FuncActive, EmptyPressPage
 )

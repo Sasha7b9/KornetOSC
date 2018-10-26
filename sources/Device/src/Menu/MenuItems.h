@@ -187,11 +187,12 @@ public:
             Measures_Cursors_Set,       ///< ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ
 
             Display,                    ///< ÄÈÑÏÅÉ
-            Display_Accum,              ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
+            Display_Accumulation,       ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
             Display_Average,            ///< ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ
             Display_Grid,               ///< ÄÈÑÏËÅÉ - ÑÅÒÊÀ
             Display_Settings,           ///< ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ
             Display_Settings_Colors,    ///< ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - ÖÂÅÒÀ
+
             ChannelA,                   ///< ÊÀÍÀË 1
             ChannelB,                   ///< ÊÀÍÀË 2
             Trig,                       ///< ÑÈÍÕĞ
