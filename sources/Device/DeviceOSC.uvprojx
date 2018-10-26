@@ -2501,6 +2501,11 @@
               <FilePath>.\src\Menu\Pages\PageDisplay\PageDisplay_Grid.cpp</FilePath>
             </File>
             <File>
+              <FileName>PageDisplay_Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageDisplay\PageDisplay_Settings.cpp</FilePath>
+            </File>
+            <File>
               <FileName>PageDisplay_Settings_Colors.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageDisplay\PageDisplay_Settings_Colors.cpp</FilePath>
