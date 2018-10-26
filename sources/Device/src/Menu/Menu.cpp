@@ -518,7 +518,7 @@ bool Menu::NeedForFireSetLED()
     if (
             name == Page::Name::SB_Debug_SerialNumber   ||
             name == Page::Name::SB_Service_FFT_Cursors  || 
-            name == Page::Name::SB_Measures_Tune        || 
+            name == Page::Name::Measures_Auto_Tune      || 
             name == Page::Name::SB_Memory_Last          || 
             name == Page::Name::SB_Memory_Internal      ||
             PageMeasures::PageCursors::PageSet::IsRegSetActiveOnCursors() ||

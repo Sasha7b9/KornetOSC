@@ -2900,8 +2900,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Pages\PageMeasures\PageMeasures_Cursors.cpp</PathWithFileName>
-      <FilenameWithoutPath>PageMeasures_Cursors.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Menu\Pages\PageMeasures\PageMeasures_Auto_Tune.cpp</PathWithFileName>
+      <FilenameWithoutPath>PageMeasures_Auto_Tune.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2912,8 +2912,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Pages\PageMeasures\PageMeasures_Cursors_Set.cpp</PathWithFileName>
-      <FilenameWithoutPath>PageMeasures_Cursors_Set.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Menu\Pages\PageMeasures\PageMeasures_Cursors.cpp</PathWithFileName>
+      <FilenameWithoutPath>PageMeasures_Cursors.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2924,8 +2924,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Pages\PageMeasures\PageMeasures_Tune.cpp</PathWithFileName>
-      <FilenameWithoutPath>PageMeasures_Tune.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Menu\Pages\PageMeasures\PageMeasures_Cursors_Set.cpp</PathWithFileName>
+      <FilenameWithoutPath>PageMeasures_Cursors_Set.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

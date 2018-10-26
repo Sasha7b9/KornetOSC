@@ -13,6 +13,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const PageBase pageTune;
 
+const PageBase *PageMeasures::PageAuto::PageTune::pointer = &pageTune;
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_SMALL_BUTTON_EXIT(bTune_Exit,                                                                            //--- »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹ - ¬˚ıÓ‰ ---
@@ -107,7 +109,5 @@ DEF_PAGE_SB(pageTune,                                                           
     0,
     &bTune_Markers,
     &bTune_Settings,
-    Page::Name::SB_Measures_Tune, PageMeasures::pointer, IsActive_Tune, EmptyPressPage, FuncDrawPage, OnRegSet_Tune
+    Page::Name::Measures_Auto_Tune, PageMeasures::PageAuto::pointer, IsActive_Tune, EmptyPressPage, FuncDrawPage, OnRegSet_Tune
 )
-
-const PageBase *PageMeasures::PageTune::pointer = &pageTune;

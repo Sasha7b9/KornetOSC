@@ -13,7 +13,7 @@
 #include <string.h>
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const PageBase pCursors;
+extern const PageBase pageCursors;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +23,7 @@ DEF_CHOICE_2(       cShow,                                                      
     "Enable/disable cursors.",
     "Нет", "No",
     "Да",  "Yes",
-    CURS_SHOW, pCursors, FuncActive, FuncChangedChoice, FuncDraw
+    CURS_SHOW, pageCursors, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ DEF_CHOICE_4(       cLookModeChanA,                                             
     "Напряжение",     "Voltage",
     "Время",          "Time",
     "Напряж и время", "Volt and time",
-    CURS_LOOK_MODE(Chan::A), pCursors, FuncActive, FuncChangedChoice, FuncDraw
+    CURS_LOOK_MODE(Chan::A), pageCursors, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ DEF_CHOICE_4(       cLookModeChanB,                                             
     "Напряжение",      "Voltage",
     "Время",           "Time",
     "Напряж. и время", "Volt. and time",
-    CURS_LOOK_MODE(Chan::B), pCursors, FuncActive, FuncChangedChoice, FuncDraw
+    CURS_LOOK_MODE(Chan::B), pageCursors, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -82,13 +82,13 @@ DEF_CHOICE_2(       cShowFreq,                                                  
     "equal to the distance between the time cursors.",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    CURSORS_SHOW_FREQ, pCursors, FuncActive, FuncChangedChoice, FuncDraw
+    CURSORS_SHOW_FREQ, pageCursors, FuncActive, FuncChangedChoice, FuncDraw
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const PageBase *PageMeasures::PageCursors::pointer = &pCursors;
+const PageBase *PageMeasures::PageCursors::pointer = &pageCursors;
 
-DEF_PAGE_5(         pCursors,                                                                                                      //--- ИЗМЕРЕНИЯ ---
+DEF_PAGE_5(         pageCursors,                                                                                                      //--- ИЗМЕРЕНИЯ ---
     "КУРСОРЫ", "CURSORS",
     "Курсорные измерения.",
     "Cursor measurements.",

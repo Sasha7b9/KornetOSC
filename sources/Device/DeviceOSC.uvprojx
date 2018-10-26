@@ -2566,6 +2566,11 @@
               <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures_Auto.cpp</FilePath>
             </File>
             <File>
+              <FileName>PageMeasures_Auto_Tune.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures_Auto_Tune.cpp</FilePath>
+            </File>
+            <File>
               <FileName>PageMeasures_Cursors.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures_Cursors.cpp</FilePath>
@@ -2574,11 +2579,6 @@
               <FileName>PageMeasures_Cursors_Set.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures_Cursors_Set.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMeasures_Tune.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMeasures\PageMeasures_Tune.cpp</FilePath>
             </File>
           </Files>
         </Group>

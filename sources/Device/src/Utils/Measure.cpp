@@ -297,7 +297,7 @@ void Measure::Graphics::Draw()
             int y = y0 + str * dY;
             Measure measure = Measure::Get(str, elem);
 
-            bool active = measure.IsActive() && Menu::GetNameOpenedPage() == Page::Name::SB_Measures_Tune;
+            bool active = measure.IsActive() && Menu::GetNameOpenedPage() == Page::Name::Measures_Auto_Tune;
             Color color = active ? Color::BACK : Color::FILL;
 
             Measure::Type type = measure.GetType();
@@ -341,7 +341,7 @@ void Measure::Graphics::Draw()
         }
     }
 
-    if (Menu::GetNameOpenedPage() == Page::Name::SB_Measures_Tune)
+    if (Menu::GetNameOpenedPage() == Page::Name::Measures_Auto_Tune)
     {
         Measure::DrawPageChoice();
     }

@@ -17,10 +17,10 @@ DEF_PAGE_5( pageFunction,                                                       
     "тсмйжхъ", "FUNCTION",
     "бШАНП ТСМЙЖХХ",
     "Function selection",
-    PageFunction::PageFrequencyCounter::pointer,   // тсмйжхъ - вюярнрнлеп
-    PageFunction::PageFFT::pointer,                // тсмйжхъ - яоейрп
-    PageFunction::PageMultimeter::pointer,         // тсмйжхъ - лскэрхлерп
-    PageFunction::PageTester::pointer,             // тсмйжхъ - реяреп
-    PageFunction::PageRecorder::pointer,           // тсмйжхъ - пецхярпюрнп
+    PageFunction::PageFrequencyCounter::pointer,   ///< тсмйжхъ - вюярнрнлеп
+    PageFunction::PageFFT::pointer,                ///< тсмйжхъ - яоейрп
+    PageFunction::PageMultimeter::pointer,         ///< тсмйжхъ - лскэрхлерп
+    PageFunction::PageTester::pointer,             ///< тсмйжхъ - реяреп
+    PageFunction::PageRecorder::pointer,           ///< тсмйжхъ - пецхярпюрнп
     Page::Name::Function, Menu::pageMain, FuncActive, FuncPress
 )
