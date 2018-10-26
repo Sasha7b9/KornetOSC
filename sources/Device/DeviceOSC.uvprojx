@@ -2495,6 +2495,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageDisplay\PageDisplay_Average.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageDisplay_Grid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageDisplay\PageDisplay_Grid.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

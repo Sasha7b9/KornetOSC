@@ -37,4 +37,11 @@ public:
     public:
         static const PageBase *pointer;
     };
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------------
+    class PageGrid
+    {
+    public:
+        static const PageBase *pointer;
+    };
 };

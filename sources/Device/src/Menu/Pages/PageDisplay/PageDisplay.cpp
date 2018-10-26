@@ -12,7 +12,6 @@
 extern const PageBase pppSettings_Colors;
 extern const PageBase ppDisplaySettings;
 extern const PageBase pageDisplay;
-extern const PageBase ppGrid;
 
 const PageBase *PageDisplay::pointer = &pageDisplay;
 
@@ -214,47 +213,6 @@ DEF_CHOICE_5(       cRefreshFPS,                                                
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_4(       cGrid_Type,                                                                                        //--- ДИСПЛЕЙ - СЕТКА - Тип ---
-    "Тип", "Type",
-    "Выбор типа сетки.",
-    "Choice like Grid::",
-    "Тип 1", "Type 1",
-    "Тип 2", "Type 2",
-    "Тип 3", "Type 3",
-    "Тип 4", "Type 4",
-    TYPE_GRID, ppGrid, FuncActive, FuncChangedChoice, FuncDraw
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Grid_Brightness()
-{
-    PageDisplay::colorTypeGrid.SetBrightness(BRIGHTNESS_GRID / 100.0f);
-}
-
-static void BeforeDraw_Grid_Brightness()
-{
-    PageDisplay::colorTypeGrid.Init(false);
-    BRIGHTNESS_GRID = (int16)(PageDisplay::colorTypeGrid.brightness * 100.0f);
-}
-
-DEF_GOVERNOR(       gGrid_Brightness,                                                                              //--- ДИСПЛЕЙ - СЕТКА - Яркость ---
-    "Яркость", "Brightness",
-    "Устанавливает яркость сетки.",
-    "Adjust the brightness of the Grid::",
-    BRIGHTNESS_GRID, 0, 100, ppGrid, FuncActive, OnChanged_Grid_Brightness, BeforeDraw_Grid_Brightness
-)
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2(         ppGrid,                                                                                                     // ДИСПЛЕЙ - СЕТКА ///
-    "СЕТКА", "GRID",
-    "Содержит настройки отображения координатной сетки.",
-    "Contains settings of display of a coordinate Grid::",
-    &cGrid_Type,         // ДИСПЛЕЙ - СЕТКА - Тип
-    &gGrid_Brightness,   // ДИСПЛЕЙ - СЕТКА - Яркость
-    Page::Name::Display_Grid, &pageDisplay, FuncActive, EmptyPressPage
-)
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cScaleYtype,                                                                                          //--- ДИСПЛЕЙ - Смещение ---
     "Смещение", "Оffset",
     "Задаёт режим удержания смещения по вертикали\n1. \"Напряжение\" - сохраняется наряжение смещения.\n2. \"Деления\" - сохраняется положение "
@@ -277,7 +235,7 @@ DEF_PAGE_10( pageDisplay,                                                       
     &cMinMax,                               ///< ДИСПЛЕЙ - Мин Макс
     &cSmoothing,                            ///< ДИСПЛЕЙ - Сглаживание
     &cRefreshFPS,                           ///< ДИСПЛЕЙ - Частота обновл
-    &ppGrid,                                ///< ДИСПЛЕЙ - СЕТКА
+    PageDisplay::PageGrid::pointer,         ///< ДИСПЛЕЙ - СЕТКА
     &cScaleYtype,                           ///< ДИСПЛЕЙ - Смещение
     &ppDisplaySettings,                     ///< ДИСПЛЕЙ - НАСТРОЙКИ
     &cThickness,                            ///< ДИСПЛЕЙ - Толщина
