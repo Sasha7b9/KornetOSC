@@ -30,4 +30,11 @@ public:
     public:
         static const PageBase *pointer;
     };
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    class PageAverage
+    {
+    public:
+        static const PageBase *pointer;
+    };
 };
