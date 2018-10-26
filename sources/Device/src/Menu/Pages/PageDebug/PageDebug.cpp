@@ -30,6 +30,8 @@ extern const PageBase ppChannels;
 extern const PageBase ppSettings;
 extern const PageBase ppSerialNumber;
 
+const PageBase *PageDebug::pointer = &pDebug;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// В этой структуре будут храниться данные серийного номера при открытой странице ppSerialNumer
 typedef struct
@@ -1093,8 +1095,6 @@ DEF_BUTTON(         bEraseData,                                                 
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const PageBase *PageDebug::pointer = &pDebug;
-
 DEF_PAGE_12(        pDebug,                                                                                                          //--- ОТЛАДКА ---
     Page::Name::Debug, Menu::pageMain, FuncActive, EmptyPressPage,
     "ОТЛАДКА", "DEBUG",
