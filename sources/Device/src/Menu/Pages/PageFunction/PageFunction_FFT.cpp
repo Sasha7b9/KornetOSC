@@ -109,8 +109,8 @@ DEF_PAGE_SB(pppFFT_Cursors,                                                     
     "КУРСОРЫ", "CURSORS",
     "Включает курсоры для измерения параметров спектра",
     "Includes cursors to measure the parameters of the spectrum",
-    &bFFT_Cursors_Exit,     // СЕРВИС - СПЕКТР - КУРСОРЫ - Выход
-    &bFFT_Cursors_Source,   // СЕРВИС - СПЕКТР - КУРСОРЫ - Источник
+    &bFFT_Cursors_Exit,     ///< СЕРВИС - СПЕКТР - КУРСОРЫ - Выход
+    &bFFT_Cursors_Source,   ///< СЕРВИС - СПЕКТР - КУРСОРЫ - Источник
     0,
     0,
     0,
@@ -134,15 +134,15 @@ static void OnPress_FFT()
 const PageBase *PageFunction::PageFFT::pointer = &ppFFT;
 
 
-DEF_PAGE_6(ppFFT,                                                                                                                //--- СЕРВИС - СПЕКТР
+DEF_PAGE_6(ppFFT,                                                                                                            //--- СЕРВИС - СПЕКТР ---
     "СПЕКТР", "SPECTRUM",
     "Отображение спектра входного сигнала",
     "Mapping the input signal spectrum",
-    &cFFT_View,         // СЕРВИС - СПЕКТР - Отображение
-    &cFFT_Scale,        // СЕРВИС - СПЕКТР - Шкала
-    &cFFT_Source,       // СЕРВИС - СПЕКТР - Источник
-    &cFFT_Window,       // СЕРВИС - СПЕКТР - Окно 
-    &pppFFT_Cursors,    // СЕРВИС - СПЕКТР - КУРСОРЫ
-    &cFFT_Range,        // СЕРВИС - СПЕКТР - Диапазон
+    &cFFT_View,         ///< СЕРВИС - СПЕКТР - Отображение
+    &cFFT_Scale,        ///< СЕРВИС - СПЕКТР - Шкала
+    &cFFT_Source,       ///< СЕРВИС - СПЕКТР - Источник
+    &cFFT_Window,       ///< СЕРВИС - СПЕКТР - Окно 
+    &pppFFT_Cursors,    ///< СЕРВИС - СПЕКТР - КУРСОРЫ
+    &cFFT_Range,        ///< СЕРВИС - СПЕКТР - Диапазон
     Page::Name::Function_FFT, PageFunction::pointer, IsActive_FFT, OnPress_FFT
 )

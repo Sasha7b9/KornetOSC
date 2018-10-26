@@ -596,19 +596,22 @@ void Page::DrawItems(int x, int y)
     {
         x = LEFT_SB;
     }
-    int posFirstItem = PosItemOnLeft();
-    int posLastItem = posFirstItem + MENU_ITEMS_ON_DISPLAY - 1;
-    LIMITATION(posLastItem, 0, NumItems() - 1);
-    for (int posItem = posFirstItem; posItem <= posLastItem; posItem++)
+
+    for (int i = 0; i < 5; i++)
     {
-        Control *item = Item(posItem);
+        /// \todo Ќадо бы не делать это дл€ пунктов меню, которые существуют и всЄ равно отрисовыватьс€ будут - зачем зр€ грузить процессор
+
+        Painter::DrawRectangle(x, y + 1, Menu::Item::WIDTH - 1, Menu::Item::HEIGHT, Color::FILL);
+        Painter::FillRegion(x + 1, y + 2, Menu::Item::WIDTH - 3, Menu::Item::HEIGHT - 2, Color::BACK);
+
+        Control *item = Item(PosItemOnLeft() + i);
         if (item)
         {
-            Painter::DrawRectangle(x, y + 1, Menu::Item::WIDTH - 1, Menu::Item::HEIGHT, Color::FILL);
             item->Draw(x, y, false);
             Menu::itemUnderButton[GetFuncButtonFromX(x)] = item;
-            x += Menu::Item::WIDTH;
         }
+
+        x += Menu::Item::WIDTH;
     }
 }
 

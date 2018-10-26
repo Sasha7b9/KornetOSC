@@ -58,6 +58,11 @@ const char *Choice::NamePrevSubItem()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Control *Page::Item(int numElement) const
 {
+    if(numElement >= num)
+    {
+        return 0;
+    }
+
     return (Control *)items[numElement + (isPageSB ? 1 : 0)];
 }
 
