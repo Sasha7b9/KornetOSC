@@ -2,6 +2,7 @@
 #include "Tester/Tester.h"
 #include "Settings/Settings.h"
 #include "Menu/Pages/Include/PageFunction.h"
+#include "Device.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +38,6 @@ void PageFunction::PageTester::OnChanged_Control(bool)
         pointer = &pTesterI;
     }
 
-    Menu::ChangeMode();
     Tester::LoadStep();
 }
 
@@ -106,6 +106,11 @@ void PageFunction::PageTester::Init()
     OnChanged_Control(true);
 }
 
+static void OnEnterExit_Tester(bool enter)
+{
+    Device::SetMode(enter ? Device::Mode::Tester : Device::Mode::Osci);
+}
+
 
 DEF_PAGE_5( pTesterU,
     "реяреп", "TESTER",
@@ -115,7 +120,7 @@ DEF_PAGE_5( pTesterU,
     &cPolarity,
     &cViewMode,
     &cSmoothing,
-    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, OnEnterExit_Tester
 )
 
 DEF_PAGE_5(pTesterI,
@@ -126,5 +131,5 @@ DEF_PAGE_5(pTesterI,
     &cPolarity,
     &cViewMode,
     &cSmoothing,
-    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, OnEnterExit_Tester
 )

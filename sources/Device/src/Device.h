@@ -17,6 +17,7 @@ public:
             Osci,
             Tester,
             Multimeter,
+            Recorder,
             Number
         } value;
 

@@ -27,8 +27,6 @@ public:
 
     /// Инициализация
     static void Init();
-    /// Нужно вызывать после изменения режима работы
-    static void ChangeMode();
     /// Возвращает true, если item - адрес главной страницы меню.
     static bool IsMainPage(const void *item);
 

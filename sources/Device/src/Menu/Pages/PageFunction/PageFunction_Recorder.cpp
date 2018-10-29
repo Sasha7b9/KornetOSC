@@ -2,6 +2,7 @@
 #include "Menu/Pages/Include/PageFunction.h"
 #include "Settings/Settings.h"
 #include "Recorder/Recorder.h"
+#include "Device.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -19,6 +20,12 @@ DEF_CHOICE_2(cViewAlways,                                                       
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static void OnEnterExit_Recorder(bool enter)
+{
+    Device::SetMode(enter ? Device::Mode::Recorder : Device::Mode::Osci);
+}
+
+
 DEF_PAGE_4( pageRecorder,                                                                                              //--- ‘”Õ ÷»ﬂ - –≈√»—“–¿“Œ– ---
     "–≈√»—“–¿“Œ–", "RECORDER",
     "«‡ÔËÒ¸ Ë ‚ÓÒÔÓËÁ‚Â‰ÂÌËÂ ÒË„Ì‡ÎÓ‚ ‚ıÓ‰Ó‚ Ë ‰‡Ú˜ËÍÓ‚",
@@ -27,7 +34,7 @@ DEF_PAGE_4( pageRecorder,                                                       
     PageFunction::PageRecorder::PageSource::pointer,    ///< ‘”Õ ÷»ﬂ - –≈√»—“–¿“Œ– - »—“Œ◊Õ» 
     PageFunction::PageRecorder::PageRecord::pointer,    ///< ‘”Õ ÷»ﬂ - –≈√»—“–¿“Œ– - «¿œ»—‹
     PageFunction::PageRecorder::PagePlay::pointer,      ///< ‘”Õ ÷»ﬂ - –≈√»—“–¿“Œ– - œ–Œ—ÃŒ“–
-    Page::Name::Function_Recorder, PageFunction::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Recorder, PageFunction::pointer, FuncActive, OnEnterExit_Recorder
 )
 
 const PageBase *PageFunction::PageRecorder::pointer = &pageRecorder;

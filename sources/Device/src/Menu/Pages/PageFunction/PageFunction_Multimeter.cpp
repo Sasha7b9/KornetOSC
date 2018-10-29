@@ -146,8 +146,6 @@ void PageFunction::PageMultimeter::OnChanged_Mode(bool)
         pointer = &pageResistance;
     }
 
-    Menu::ChangeMode();
-
     Multimeter::ChangeMode();
 }
 

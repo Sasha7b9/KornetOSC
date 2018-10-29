@@ -82,6 +82,4 @@ void Device::SetMode(Mode mode)
     {
         Tester::Disable();
     }
-
-    Menu::ChangeMode();
 }

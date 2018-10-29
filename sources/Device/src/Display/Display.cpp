@@ -6,6 +6,7 @@
 #include "Utils/Math.h"
 #include "Console.h"
 #include "Tables.h"
+#include "Recorder/Recorder.h"
 #include <string.h>
 
 
@@ -111,14 +112,20 @@ void Display::Update()
 {
     typedef void (*pFuncDisplayVV)();
 
-    static const pFuncDisplayVV funcs[Device::Mode::Number] =
+    static const struct StructDraw
+    {
+        pFuncDisplayVV func;
+        StructDraw(pFuncDisplayVV f) : func(f) {};
+    }
+    funcs[Device::Mode::Number] =
     {
         Osci::Graphics::Update,
         Tester::Graphics::Update,
-        Multimeter::Graphics::Update
+        Multimeter::Graphics::Update,
+        Recorder::Graphics::Update
     };
 
-    pFuncDisplayVV func = funcs[Device::CurrentMode()];
+    pFuncDisplayVV func = funcs[Device::CurrentMode()].func;
 
     func();
 
