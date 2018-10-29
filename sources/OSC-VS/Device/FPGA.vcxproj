@@ -277,6 +277,7 @@
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageTime.h" />
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageTrig.h" />
     <ClInclude Include="..\..\Device\src\Multimeter\Multimeter.h" />
+    <ClInclude Include="..\..\Device\src\Object.h" />
     <ClInclude Include="..\..\Device\src\Osci\BottomPart.h" />
     <ClInclude Include="..\..\Device\src\Osci\Cursors.h" />
     <ClInclude Include="..\..\Device\src\Osci\FrequencyCounter.h" />

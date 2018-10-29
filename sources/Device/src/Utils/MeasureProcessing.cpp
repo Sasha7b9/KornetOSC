@@ -398,12 +398,7 @@ float CalculatePeriod(Chan ch)
 
             EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection);
 
-            float per = TSHIFT_2_ABS((secondIntersection - firstIntersection) / 2.0f, SET_TBASE);
-            
-            if(SET_PEAKDET_EN)
-            {
-                per *= 0.5f;
-            }
+            float per = TSHIFT_2_ABS((secondIntersection - firstIntersection), SET_TBASE);
 
             period[ch] = per;
 
@@ -523,7 +518,8 @@ int CalculatePeriodAccurately(Chan ch)
 float CalculateFreq(Chan ch)
 {
     float period = CalculatePeriod(ch);
-    return period == ERROR_VALUE_FLOAT ? ERROR_VALUE_FLOAT : 1.0f / period;
+
+    return (period == ERROR_VALUE_FLOAT) ? ERROR_VALUE_FLOAT : 1.0f / period;
 }
 
 
