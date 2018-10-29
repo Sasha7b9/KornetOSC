@@ -145,9 +145,15 @@
     <ClCompile Include="..\..\Device\src\Settings\SettingsDebug.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Settings\SettingsMemory.cpp" />
-    <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp" />
-    <ClCompile Include="..\..\Device\src\Settings\SettingsTransformation.cpp" />
+    <ClCompile Include="..\..\Device\src\Settings\SettingsMemory.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Settings\SettingsTransformation.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\Device\src\Tables.cpp" />
     <ClCompile Include="..\..\Device\src\Tester\Tester.cpp" />
     <ClCompile Include="..\..\Device\src\Tester\TesterGraphics.cpp" />

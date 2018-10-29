@@ -5,3 +5,4 @@
 #include "Hardware/EEPROM.h"
 #include "Settings/Settings.h"
 
+#include <stdlib.h>
