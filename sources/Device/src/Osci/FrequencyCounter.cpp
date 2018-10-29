@@ -35,6 +35,15 @@ uint     FrequencyCounter::lastPeriodOver = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void FrequencyCounter::Init()
 {
+    LoadSettings();
+    FSMC::WriteToFPGA8(WR_RESET_COUNTER_FREQ, 1);
+    FSMC::WriteToFPGA8(WR_RESET_COUNTER_PERIOD, 1);
+    freqActual.word = periodActual.word = 0;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FrequencyCounter::LoadSettings()
+{
     uint8 data = 0;
 
     if (FREQ_METER_IS_ENABLED)
@@ -53,8 +62,21 @@ void FrequencyCounter::Init()
     }
 
     FSMC::WriteToFPGA8(WR_FREQMETER, data);
+}
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FrequencyCounter::LoadFreqSettings()
+{
+    LoadSettings();
+    FSMC::WriteToFPGA8(WR_RESET_COUNTER_FREQ, 1);
     freqActual.word = 0;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FrequencyCounter::LoadPeriodSettings()
+{
+    LoadSettings();
+    FSMC::WriteToFPGA8(WR_RESET_COUNTER_PERIOD, 1);
     periodActual.word = 0;
 }
 

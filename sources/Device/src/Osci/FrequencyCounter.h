@@ -12,8 +12,12 @@
 class FrequencyCounter
 {
 public:
-    /// Инициализация. Должна производиться при каждом изменении настроек
+    /// Инициализация.
     static void Init();
+    /// Заслать настройки для счётчика частоты
+    static void LoadFreqSettings();
+    /// Заслать настрйки для счётчика периода
+    static void LoadPeriodSettings();
 
     static void Update(uint16 flag);
     /// Возвращает измеренное значение частоты
@@ -71,10 +75,11 @@ public:
     };
 
 private:
-
     static void ReadFreq();
 
     static void ReadPeriod();
+
+    static void LoadSettings();
 
     static float FreqSetToFreq(const BitSet32 *fr);
 

@@ -14,6 +14,17 @@ static void OnChanged_FreqMeter_Enable(bool)
     FrequencyCounter::Init();
 }
 
+static void OnChanged_FreqMeter_Frequency(bool)
+{
+    FrequencyCounter::LoadFreqSettings();
+}
+
+static void OnChanged_FreqMeter_Period(bool)
+{
+    FrequencyCounter::LoadPeriodSettings();
+}
+
+
 DEF_CHOICE_2(cFreqMeter_Enable,                                                                            //--- װ׃ֽÊײָß - ׳ְׁׂ־ׂ־ֵּ׀ - ׳אסעמעמלונ ---
     "׳אסעמעמלונ", "Freq meter",
     "",
@@ -31,7 +42,7 @@ DEF_CHOICE_3(cFreqMeter_TimeF,                                                  
     "100לס", "100ms",
     "1ס", "1s",
     "10ס", "10ms",
-    FREQ_METER_TIMECOUNTING, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
+    FREQ_METER_TIMECOUNTING, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Frequency, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -43,7 +54,7 @@ DEF_CHOICE_4(cFreqMeter_FreqClc,                                                
     "1ֳּצ", "200MHz",
     "10ֳּצ", "10MHz",
     "100ֳּצ", "100MHz",
-    FREQ_METER_FREQ_CLC, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
+    FREQ_METER_FREQ_CLC, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Period, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -54,7 +65,7 @@ DEF_CHOICE_3(cFreqMeter_NumPeriods,                                             
     "1", "1",
     "10", "10",
     "100", "100",
-    FREQ_METER_NUM_PERIODS, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
+    FREQ_METER_NUM_PERIODS, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Period, FuncDraw
 )
 
 
