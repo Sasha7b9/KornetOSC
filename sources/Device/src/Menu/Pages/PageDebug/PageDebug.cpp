@@ -863,7 +863,7 @@ static void DebugShowSetInfo_Draw()
     Painter::EndScene();
 }
 
-static void OnPress_Settings()
+static void OnPress_Settings(bool)
 {
     Display::SetDrawMode(DrawMode::Auto, DebugShowSetInfo_Draw);
 }
@@ -1040,7 +1040,7 @@ static void Draw_EnterSerialNumber()
     Painter::DrawFormText(x0 + deltaX, y0 + 100, Color::FILL, "Осталось места для %d попыток", allShots);
 }
 
-static void OnPress_SerialNumber()
+static void OnPress_SerialNumber(bool)
 {
     Display::SetAddDrawFunction(Draw_EnterSerialNumber);
     MALLOC_EXTRAMEM(StructForSN, s);

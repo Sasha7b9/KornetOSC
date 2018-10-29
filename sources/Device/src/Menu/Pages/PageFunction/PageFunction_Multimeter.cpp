@@ -158,9 +158,9 @@ void PageFunction::PageMultimeter::Init()
     OnChanged_Mode(true);
 }
 
-static void OnPress_Page()
+static void OnPress_Page(bool enter)
 {
-    Device::SetMode(Device::Mode::Multimeter);
+    Device::SetMode(enter ? Device::Mode::Multimeter : Device::Mode::Osci);
 }
 
 DEF_PAGE_3( pageDC,

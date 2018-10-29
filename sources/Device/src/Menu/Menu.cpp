@@ -641,6 +641,10 @@ void Menu::CloseOpenedItem()
             //((Page *)item)->SmallButonFromPage(0)->funcOnPress();
             SMALL_BUTTON_FROM_PAGE(item, 0)->funcOnPress();
         }
+        else
+        {
+            ((Page *)item)->funcOnEnterExit(false);
+        }
         Page::Name name = KEEPER(item)->name;
         ((Page *)KEEPER(item))->SetPosActItem(MENU_POS_ACT_ITEM(name) & 0x7f);
         if (item == (Control *)pageMain)

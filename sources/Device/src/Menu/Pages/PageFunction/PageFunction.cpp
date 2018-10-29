@@ -22,5 +22,5 @@ DEF_PAGE_5( pageFunction,                                                       
     PageFunction::PageMultimeter::pointer,         ///< ÔÓÍÊÖÈß - ÌÓËÜÒÈÌÅÒÐ
     PageFunction::PageTester::pointer,             ///< ÔÓÍÊÖÈß - ÒÅÑÒÅÐ
     PageFunction::PageRecorder::pointer,           ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ
-    Page::Name::Function, Menu::pageMain, FuncActive, FuncPress
+    Page::Name::Function, Menu::pageMain, FuncActive, EmptyPressPage
 )

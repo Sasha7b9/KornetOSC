@@ -332,7 +332,7 @@ DEF_PAGE_SB(pageSet,                                                            
     &bSet_T,                ///< ÈÇÌÅÐÅÍÈß - ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Êóðñîðû Ò
     &bSet_100,              ///< ÈÇÌÅÐÅÍÈß - ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - 100%
     &bSet_Movement,         ///< ÈÇÌÅÐÅÍÈß - ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Ïåðåìåùåíèå
-    Page::Name::Measures_Cursors_Set, PageMeasures::PageCursors::pointer, FuncActive, FuncPress, FuncDrawPage, 
+    Page::Name::Measures_Cursors_Set, PageMeasures::PageCursors::pointer, FuncActive, EmptyPressPage, FuncDrawPage, 
             PageMeasures::PageCursors::PageSet::OnRegSet
 )
 

@@ -28,7 +28,7 @@ void Handlers::Process(KeyEvent e)
     {                   // Press        Repead       Release        Long
         /* None        */ {E,           E,           E,             E},
         /* Function    */ {E,           E,           Function,      E},
-        /* Measure    */  {Measure,    Measure,    Measure,      Measure},
+        /* Measure    */  {Measure,     Measure,     Measure,       Measure},
         /* Memory      */ {Memory,      Memory,      Memory,        Memory},
         /* Service     */ {Service,     Service,     Service,       Service},
         /* ChannelA    */ {ChannelA,    E,           E,             E},
@@ -159,7 +159,7 @@ void Handlers::FuncRelease()
 {
     if(event.key == Key::F3)
     {
-        event.key = event.key;
+        Key key = event.key;
     }
 
     Menu::ReleaseFunctionalButton(event.key);

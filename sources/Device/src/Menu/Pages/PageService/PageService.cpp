@@ -444,7 +444,7 @@ static bool IsActive_Function()
     return !FFT_ENABLED;
 }
 
-static void OnPress_Function()
+static void OnPress_Function(bool)
 {
     if (FFT_ENABLED)
     {
@@ -655,7 +655,7 @@ static void Information_Draw()
     Painter::EndScene();
 }
 
-static void OnPress_Information()
+static void OnPress_Information(bool)
 {
     Display::SetDrawMode(DrawMode::Auto, Information_Draw);
 }
@@ -699,7 +699,7 @@ DEF_PAGE_9_GLOBAL(pService,                                                     
     &ppRTC,             // —≈–¬»— - ¬–≈Ãﬂ
     &cLanguage,         // —≈–¬»— - ﬂÁ˚Í
     &ppInformation,     // —≈–¬»— - »Õ‘Œ–Ã¿÷»ﬂ
-    Page::Name::Service, Menu::pageMain, FuncActive, FuncPress
+    Page::Name::Service, Menu::pageMain, FuncActive, EmptyPressPage
 )
 
 

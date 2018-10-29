@@ -123,7 +123,7 @@ static bool IsActive_FFT()
     return !FUNC_MODE_DRAW_IS_ENABLED;
 }
 
-static void OnPress_FFT()
+static void OnPress_FFT(bool)
 {
     if (!IsActive_FFT())
     {

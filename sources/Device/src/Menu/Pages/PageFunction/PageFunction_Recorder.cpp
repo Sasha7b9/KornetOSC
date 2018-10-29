@@ -27,7 +27,7 @@ DEF_PAGE_4( pageRecorder,                                                       
     PageFunction::PageRecorder::PageSource::pointer,    ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - ÈÑÒÎ×ÍÈÊ
     PageFunction::PageRecorder::PageRecord::pointer,    ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - ÇÀÏÈÑÜ
     PageFunction::PageRecorder::PagePlay::pointer,      ///< ÔÓÍÊÖÈß - ÐÅÃÈÑÒÐÀÒÎÐ - ÏÐÎÑÌÎÒÐ
-    Page::Name::Function_Recorder, PageFunction::pointer, FuncActive, FuncPress
+    Page::Name::Function_Recorder, PageFunction::pointer, FuncActive, EmptyPressPage
 )
 
 const PageBase *PageFunction::PageRecorder::pointer = &pageRecorder;

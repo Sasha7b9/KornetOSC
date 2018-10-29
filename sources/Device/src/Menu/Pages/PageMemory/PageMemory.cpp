@@ -205,7 +205,7 @@ DEF_SMALL_BUTTON(   bLast_SaveToDrive,                                          
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void OnPress_Last()
+static void OnPress_Last(bool)
 {
     NUM_RAM_SIGNAL = 0;
     RUN_FPGA_BEFORE_SB = FPGA::IsRunning() ? 1u : 0u;
@@ -317,7 +317,7 @@ static bool IsActive_Drive_Manager()
     return FDrive::IsConnected();
 }
 
-void PageMemory::OnPress_Drive_Manager()
+void PageMemory::OnPress_Drive_Manager(bool)
 {
     if (FDrive::IsConnected())
     {
@@ -499,7 +499,7 @@ static bool IsActive_Drive_Mask()
     return FILE_NAMING_MODE_MASK;
 }
 
-static void OnPress_Drive_Mask()
+static void OnPress_Drive_Mask(bool)
 {
     Display::SetAddDrawFunction(DrawSetMask);
 }
@@ -931,7 +931,7 @@ DEF_SMALL_BUTTON(   bInternal_SaveToDrive,                                      
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void OnPress_Internal()
+static void OnPress_Internal(bool)
 {
     MODE_WORK = ModeWork::ROM;
 }

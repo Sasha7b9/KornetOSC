@@ -259,7 +259,7 @@ void Control::ShortPress()
     else if(type == Control::Type::Page)
     {
         Page *page = (Page *)this;
-        page->funcOnPress();
+        page->funcOnEnterExit(true);
         page->SetCurrentPage();
     }
     else if(type == Control::Type::Governor)

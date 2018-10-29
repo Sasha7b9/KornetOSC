@@ -104,5 +104,5 @@ DEF_PAGE_SB(        pHelp,                                                      
     0,
     &sbHelpParagraphPrev,
     &sbHelpParagraphNext,
-    Page::Name::SB_Help, Menu::pageMain, FuncActive, FuncPress, HelpContent_Draw, OnHelpRegSet
+    Page::Name::SB_Help, Menu::pageMain, FuncActive, EmptyPressPage, HelpContent_Draw, OnHelpRegSet
 )
