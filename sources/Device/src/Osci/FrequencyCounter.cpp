@@ -19,6 +19,8 @@ BitSet32 FrequencyCounter::periodActual;
 bool     FrequencyCounter::readPeriod;
 float    FrequencyCounter::prevFreq;
 float    FrequencyCounter::frequency;
+bool     FrequencyCounter::lampFreq = false;
+bool     FrequencyCounter::lampPeriod = false;
 
 //                         0    1    2    3    4    5    6 
 static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0};
@@ -83,6 +85,8 @@ void FrequencyCounter::LoadPeriodSettings()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::Update(uint16 flag)
 {
+    SetStateLamps(flag);
+
     bool freqReady = _GET_BIT(flag, FL_FREQ_READY) == 1;
 
     if(freqReady)
@@ -226,13 +230,27 @@ void FrequencyCounter::Draw()
 
     
     Painter::FillRegion(x + 1,   y + 1, width - 2, height - 2, Color::BACK);
-    Painter::DrawRectangle(x,    y,     width,     height,     Color::Trig());
+    Painter::DrawRectangle(x,    y,     width,     height,     Color::FILL);
 
     x += 2;
     y += 2;
 
     Painter::DrawBigText(x + 2,  y + 1,         SIZE, "F", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceTimeF()));
+
+    Painter::DrawRectangle(x - 20, y, 10, 10);
+    if(lampFreq)
+    {
+        Painter::FillRegion(x - 20, y, 10, 10);
+    }
+
     Painter::DrawBigText(x + 2,  y + 10 * SIZE, SIZE, "T", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
+
+    Painter::DrawRectangle(x - 20, y + 10 * SIZE, 10, 10);
+    if(lampPeriod)
+    {
+        Painter::FillRegion(x - 20, y + 10 * SIZE, 10, 10);
+    }
+
     int dX = 7 * SIZE;
     Painter::DrawBigText(x + dX, y + 1,         SIZE, "=", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceTimeF()));
     Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, "=", Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
@@ -574,4 +592,56 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
     }
 
     return buffer;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FrequencyCounter::SetStateLamps(uint16 flag)
+{
+    SetStateLampFreq(flag);
+    SetStateLampPeriod(flag);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FrequencyCounter::SetStateLampFreq(uint16 flag)
+{
+    if(!lampFreq)
+    {
+        if(_GET_BIT(flag, FL_TRIG_READY) == 0)      // Если пришёл первый импульс счёта
+        {
+            if(_GET_BIT(flag, FL_FREQ_READY) == 0)  // И не готов счётчик частоты
+            {
+                lampFreq = true;
+            }
+        }
+    }
+    else
+    {
+        if(_GET_BIT(flag, FL_FREQ_READY) == 1)
+        {
+            lampFreq = false;
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FrequencyCounter::SetStateLampPeriod(uint16 flag)
+{
+    if (!lampPeriod)
+    {
+        if (_GET_BIT(flag, FL_TRIG_READY) == 0)      // Если пришёл первый импульс счёта
+        {
+            if (_GET_BIT(flag, FL_PERIOD_READY) == 0)  // И не готов счётчик частоты
+            {
+                lampPeriod = true;
+            }
+        }
+    }
+    else
+    {
+        if (_GET_BIT(flag, FL_PERIOD_READY) == 1)
+        {
+            lampPeriod = false;
+        }
+    }
 }

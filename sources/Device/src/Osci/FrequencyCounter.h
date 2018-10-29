@@ -75,6 +75,13 @@ public:
     };
 
 private:
+    /// Установить состояние лампочек счётчиков в состояние, соответствующее текущему моменту
+    static void SetStateLamps(uint16 flag);
+
+    static void SetStateLampFreq(uint16 flag);
+
+    static void SetStateLampPeriod(uint16 flag);
+
     static void ReadFreq();
 
     static void ReadPeriod();
@@ -100,6 +107,10 @@ private:
     static float frequency;
 
     static float period;
+    /// Если true - горит лампочка счёта частоты
+    static bool lampFreq;
+    /// Если false - горит лампочка счёта периода
+    static bool lampPeriod;
 
     /// для отладки
     /// \todo удалить
