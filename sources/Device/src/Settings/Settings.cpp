@@ -1,15 +1,5 @@
 #include "stdafx.h"
-#include "defines.h"
-#include "Settings/Settings.h"
-#include "FPGA/FPGA.h"
-#include "FPGA/RShift.h"
-#include "Hardware/EEPROM.h"
-#include "Hardware/AT25160N.h"
-#include "Hardware/Hardware.h"
-#include "Display/Colors.h"
-#include "Menu/Menu.h"
-#include <stdlib.h>
-#include <string.h>
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,12 +1,4 @@
-#include "defines.h"
-#include "Settings.h"
-#include "SettingsChannel.h"
-#include "FPGA/FPGA.h"
-#include "FPGA/FPGAMath.h"
-#include "FPGA/RShift.h"
-#include "Keyboard/Keyboard.h"
-#include "Utils/Math.h"
-#include "Utils/StringUtils.h"
+#include "stdafx.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

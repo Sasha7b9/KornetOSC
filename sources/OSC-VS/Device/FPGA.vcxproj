@@ -132,11 +132,19 @@
     <ClCompile Include="..\..\Device\src\Osci\Osci.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\OsciGraphics.cpp" />
     <ClCompile Include="..\..\Device\src\Osci\PainterData.cpp" />
-    <ClCompile Include="..\..\Device\src\stdafx.cpp" />
+    <ClCompile Include="..\..\Device\src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\Device\src\Recorder\Recorder.cpp" />
-    <ClCompile Include="..\..\Device\src\Settings\Settings.cpp" />
-    <ClCompile Include="..\..\Device\src\Settings\SettingsChannel.cpp" />
-    <ClCompile Include="..\..\Device\src\Settings\SettingsDebug.cpp" />
+    <ClCompile Include="..\..\Device\src\Settings\Settings.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Settings\SettingsChannel.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Settings\SettingsDebug.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\Device\src\Settings\SettingsMemory.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\Device\src\Settings\SettingsTransformation.cpp" />
