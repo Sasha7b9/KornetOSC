@@ -1072,7 +1072,7 @@ void Measure::SetData(bool needSmoothing)
 
     nBytes = lastByte - firstByte;
     
-    if(TBASE_DS >= MIN_TBASE_P2P)           // ≈сли находимс€ в поточечном режме, то нужно брать последние считанные точки дл€ проведени€ измерений
+    if(TBASE_DS >= TBase::MIN_P2P)           // ≈сли находимс€ в поточечном режме, то нужно брать последние считанные точки дл€ проведени€ измерений
     {
         for (int i = NUM_BYTES_DS - 1; i >= 0; --i)
         {

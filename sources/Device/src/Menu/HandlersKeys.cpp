@@ -157,6 +157,11 @@ void Handlers::TBaseMore()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Handlers::FuncRelease()
 {
+    if(event.key == Key::F3)
+    {
+        event.key = event.key;
+    }
+
     Menu::ReleaseFunctionalButton(event.key);
 }
 

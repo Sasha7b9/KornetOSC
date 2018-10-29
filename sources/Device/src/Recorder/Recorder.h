@@ -34,4 +34,6 @@ public:
             Flash
         } value;
     };
+
+    static void Init();
 };
