@@ -34,6 +34,7 @@ static Settings oldSet = Settings::GetDefault();
 
 int   Tester::step = 0;
 float Tester::stepU = 0.0f;
+bool  Tester::enabled = false;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Tester::Init()
@@ -123,6 +124,13 @@ void Tester::Update()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tester::Enable()
 {
+    if(enabled)
+    {
+        return;
+    }
+    
+    enabled = true;
+
     oldSet = set;
 
     SET_COUPLE_A = SET_COUPLE_B = ModeCouple::GND;
@@ -147,6 +155,13 @@ void Tester::Enable()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Tester::Disable()
 {
+    if(!enabled)
+    {
+        return;
+    }
+
+    enabled = false;
+
     HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);      // Выключаем прерывания от тактовых импульсов
 
     HAL_GPIO_WritePin(Port_TEST_ON, Pin_TEST_ON, GPIO_PIN_SET);

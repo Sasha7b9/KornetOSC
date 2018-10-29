@@ -60,6 +60,8 @@ private:
     static int step;
     /// Шаг изменения напряжения
     static float stepU;
+    /// Установленное в true значение означает, что вклюён режим тестера
+    static bool enabled;
 
     static uint8 data[Chan::Number][NUM_STEPS][TESTER_NUM_POINTS];
 
