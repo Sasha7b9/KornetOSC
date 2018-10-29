@@ -136,6 +136,11 @@ union BitSet32
         byte[2] = _byte2;
         byte[3] = _byte3;
     }
+
+    void Set(uint _word)
+    {
+        word = _word;
+    }
 };
 
 union BitSet64

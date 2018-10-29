@@ -121,6 +121,8 @@ private:
     static void ShortPress_MAC(void *item);
     
     static void ResetItemsUnderButton();
+    /// Возвращает true, если данная кнопка обрабатыватся в данном режиме
+    static bool IsProcessed(KeyEvent *event);
     /// Возвращает страницу меню, которая должна открываться по нажатию кнопки button.
     static const void *PageForButton(Key button);
     /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
@@ -137,6 +139,8 @@ private:
     static uint timeLastPressedButton;
     /// Элементы управления, назначенные в данный момент соответствующим кнопкам
     static Control *itemUnderButton[Key::Number];
+    /// Эта функция будет вызываться каждый кадр
+    static pFuncVV funcUpdate;
 
 public:
 

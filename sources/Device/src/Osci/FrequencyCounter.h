@@ -95,4 +95,17 @@ private:
     static float frequency;
 
     static float period;
+
+    /// для отладки
+    /// \todo удалить
+    static BitSet32 lastFreq;
+    static BitSet32 lastPeriod;
+    /// Последнее время разрешшения чтения частоты
+    static uint lastFreqRead;
+    /// Последнее время разрешения чтения периода
+    static uint lastPeriodRead;
+    /// Последнее время переполнения частоты
+    static uint lastFreqOver;
+    /// Последнее время переполения периода
+    static uint lastPeriodOver;
 };

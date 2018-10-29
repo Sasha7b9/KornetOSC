@@ -9,6 +9,7 @@
 #include "Menu/Pages/Include/PageFunction.h"
 #include "Utils/Stack.h"
 #include "Utils/Math.h"
+#include "Hardware/Timer.h"
 #include <string.h>
 
 
@@ -21,6 +22,13 @@ float    FrequencyCounter::frequency;
 
 //                         0    1    2    3    4    5    6 
 static char buffer[11] = {'0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0};
+
+BitSet32 FrequencyCounter::lastFreq;
+BitSet32 FrequencyCounter::lastPeriod;
+uint     FrequencyCounter::lastFreqRead = 0;
+uint     FrequencyCounter::lastPeriodRead = 0;
+uint     FrequencyCounter::lastFreqOver = 0;
+uint     FrequencyCounter::lastPeriodOver = 0;
 
 
 
@@ -45,17 +53,33 @@ void FrequencyCounter::Init()
     }
 
     FSMC::WriteToFPGA8(WR_FREQMETER, data);
+
+    freqActual.word = 0;
+    periodActual.word = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::Update(uint16 flag)
 {
     bool freqReady = _GET_BIT(flag, FL_FREQ_READY) == 1;
+
+    if(freqReady)
+    {
+        lastFreqRead = TIME_MS;
+    }
+
     bool periodReady = _GET_BIT(flag, FL_PERIOD_READY) == 1;
+
+    if(periodReady)
+    {
+        lastPeriodRead = TIME_MS;
+    }
 
     if (freqReady)
     {
         freqActual.Set(*RD_FREQ_BYTE_3, *RD_FREQ_BYTE_2, *RD_FREQ_BYTE_1, *RD_FREQ_BYTE_0);
+
+        lastFreq.Set(freqActual.word);
         
         if (!readPeriod)
         {
@@ -67,6 +91,8 @@ void FrequencyCounter::Update(uint16 flag)
     {
         periodActual.Set(*RD_PERIOD_BYTE_3, *RD_PERIOD_BYTE_2, *RD_PERIOD_BYTE_1, *RD_PERIOD_BYTE_0);
 
+        lastPeriod.Set(periodActual.word);
+
         if (readPeriod)
         {
             ReadPeriod();
@@ -76,10 +102,12 @@ void FrequencyCounter::Update(uint16 flag)
     if(_GET_BIT(flag, FL_FREQ_OVERFLOW) == 1)
     {
         freqActual.word = 0;
+        lastFreqOver = TIME_MS;
     }
     if(_GET_BIT(flag, FL_PERIOD_OVERFLOW) == 1)
     {
         periodActual.word = 0;
+        lastPeriodOver = TIME_MS;
     }
 }
 
@@ -87,6 +115,8 @@ void FrequencyCounter::Update(uint16 flag)
 void FrequencyCounter::ReadFreq()
 {
     BitSet32 freqSet(*RD_FREQ_BYTE_3, *RD_FREQ_BYTE_2, *RD_FREQ_BYTE_1, *RD_FREQ_BYTE_0);
+
+    lastFreq.Set(freqSet.word);
 
     if (freqSet.word < 1000)
     {
@@ -111,6 +141,8 @@ void FrequencyCounter::ReadFreq()
 void FrequencyCounter::ReadPeriod()
 {
     BitSet32 periodSet(*RD_PERIOD_BYTE_3, *RD_PERIOD_BYTE_2, *RD_PERIOD_BYTE_1, *RD_PERIOD_BYTE_0);
+
+    lastPeriod.Set(periodSet.word);
 
     float fr = PeriodSetToFreq(&periodSet);
     if (fr < prevFreq * 0.9f || fr > prevFreq * 1.1f)
@@ -155,7 +187,9 @@ float FrequencyCounter::GetFreq()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::Draw()
 {
-#define EMPTY_STRING "---.---"
+    /// \todo ¬ этой строке точку ставить не где придЄтс€, а в той позиции, где она сто€ла последний раз
+
+#define EMPTY_STRING "\xa9\xa9\xa9.\xa9\xa9\xa9"
 #define SIZE 4
 
     if (!FREQ_METER_IS_ENABLED)
@@ -186,10 +220,11 @@ void FrequencyCounter::Draw()
     Painter::DrawBigText(x + dX, y + 1, SIZE, (freqActual.word == 0) ? EMPTY_STRING : FreqSetToString(&freqActual),
                          Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceTimeF()));
 
-    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, (freqActual.word == 0) ? EMPTY_STRING : PeriodSetToString(&periodActual),
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, (periodActual.word == 0) ? EMPTY_STRING : PeriodSetToString(&periodActual),
                          Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
 
 
+    /*
     width = 50;
     height = 27;
     x = 50;
@@ -198,6 +233,53 @@ void FrequencyCounter::Draw()
     Painter::DrawRectangle(x - 1, y - 1, width + 2, height + 2, Color::FILL);
     Painter::DrawFormatText(x + 4, y + 4, "%d", freqActual.word);
     Painter::DrawFormatText(x + 4, y + 15, "%d", periodActual.word);
+
+    x += 100;
+    width = 100;
+
+
+    Painter::FillRegion(x, y, width, height, Color::BACK);
+    Painter::DrawRectangle(x - 1, y - 1, width + 2, height + 2, Color::FILL);
+
+    Painter::DrawFormatText(x + 4, y + 4, "%d", lastFreq.word);
+    Painter::DrawFormatText(x + 4, y + 15, "%d", lastPeriod.word);
+
+    int size = 8;
+
+    x += 60;
+
+#define TIME 250
+
+    Painter::DrawRectangle(x, y + 4, size, size, Color::FILL);
+
+    if(TIME_MS - lastFreqRead < TIME)
+    {
+        Painter::FillRegion(x + 1, y + 5, size - 2, size - 2, Color::BLUE);
+    }
+
+    Painter::DrawRectangle(x, y + 15, size, size, Color::FILL);
+
+    if(TIME_MS - lastPeriodRead < TIME)
+    {
+        Painter::FillRegion(x + 1, y + 16, size - 2, size - 2, Color::BLUE);
+    }
+
+    x += 20;
+
+    Painter::DrawRectangle(x, y + 4, size, size, Color::FILL);
+
+    if(TIME_MS - lastFreqOver < TIME)
+    {
+        Painter::FillRegion(x + 1, y + 5, size - 2, size - 2, Color::RED);
+    }
+
+    Painter::DrawRectangle(x, y + 15, size, size, Color::FILL);
+
+    if(TIME_MS - lastPeriodOver < TIME)
+    {
+        Painter::FillRegion(x + 1, y + 16, size - 2, size - 2, Color::RED);
+    }
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

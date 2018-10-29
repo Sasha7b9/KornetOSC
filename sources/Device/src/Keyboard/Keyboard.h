@@ -66,6 +66,7 @@ struct TypePress
     TypePress(E v = None) : value(v)  { };
     operator uint8() const { return (uint8)value; };
     pString ToString();
+    bool IsLong() const { return value == Long; };
 };
 
 

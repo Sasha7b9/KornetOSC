@@ -58,7 +58,10 @@ void Menu::Update()
                 continue;
             }
         }
-        Handlers::Process(event);
+        if(IsProcessed(&event))
+        {
+            Handlers::Process(event);
+        }
     }
 
     if (funcAterUpdate)
@@ -66,6 +69,31 @@ void Menu::Update()
         funcAterUpdate();
         funcAterUpdate = 0;
     }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Menu::IsProcessed(KeyEvent *event)
+{
+    Key key = event->key;
+    TypePress type = event->type;
+
+    switch(Device::CurrentMode())
+    {
+        case Device::Mode::Tester:
+            if(key.IsFunctional() || (key == Key::Enter && !type.IsLong()))
+            {
+                return true;
+            }
+            return false;
+        case Device::Mode::Multimeter:
+            if(key.IsFunctional() || (key == Key::Enter && !type.IsLong()))
+            {
+                return true;
+            }
+            return false;
+    }
+
+    return true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -733,10 +761,6 @@ int Menu::Graphics::Y()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::Graphics::Draw()
 {
-    __IO bool isShown = Menu::IsShown();
-
-    __IO bool notPage = NOT_PAGE(OpenedItem());
-
     if (Menu::IsShown() || NOT_PAGE(OpenedItem()))
     {
         ResetItemsUnderButton();
