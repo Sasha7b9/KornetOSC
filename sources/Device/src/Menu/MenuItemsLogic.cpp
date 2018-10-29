@@ -1,18 +1,4 @@
-#include "defines.h"
-#include "Menu/Menu.h"
-#include "Display/Display.h"
-#include "Display/Painter.h"
-#include "Display/Symbols.h"
-#include "Hardware/Timer.h"
-#include "Settings/Settings.h"
-#include "Hardware/CPU.h"
-#include "Hardware/Sound.h"
-#include "Utils/Math.h"
-#include "Utils/StringUtils.h"
-#include "Utils/Values.h"
-#include "Menu/Pages/Include/PageDisplay.h"
-#include "Data/DataSettings.h"
-
+#include "stdafx.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

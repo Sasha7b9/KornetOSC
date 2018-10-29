@@ -86,13 +86,27 @@
     <ClCompile Include="..\..\Device\src\libs\USBH\usbh_diskio.cpp" />
     <ClCompile Include="..\..\Device\src\Log.cpp" />
     <ClCompile Include="..\..\Device\src\main.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\BufferButtons.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\HandlersKeys.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\Menu.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\MenuItems.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\MenuItemsGraphics.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\MenuItemsLogic.cpp" />
-    <ClCompile Include="..\..\Device\src\Menu\MenuTriggers.cpp" />
+    <ClCompile Include="..\..\Device\src\Menu\BufferButtons.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\HandlersKeys.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\Menu.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuItems.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsGraphics.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuItemsLogic.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Menu\MenuTriggers.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\Device\src\Menu\Pages\Definition.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageChannels.cpp" />
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageDebug\PageDebug.cpp" />

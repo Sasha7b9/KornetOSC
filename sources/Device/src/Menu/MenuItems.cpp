@@ -1,12 +1,4 @@
-#include "defines.h"
-#include "MenuItems.h"
-#include "Display/Colors.h"
-#include "Display/DisplayTypes.h"
-#include <Menu/Menu.h>
-#include "Hardware/Sound.h"
-#include "Settings/Settings.h"
-#include "Utils/Math.h"
-#include "Menu/Pages/Include/PageFunction.h"
+#include "stdafx.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,17 +1,4 @@
-#include "defines.h"
-#include "Osci/Grid.h"
-#include "Display/Colors.h"
-#include "Display/Painter.h"
-#include "Display/DisplayTypes.h"
-#include "Hardware/CPU.h"
-#include "Menu/Menu.h"
-#include "Menu/MenuItems.h"
-#include "Menu/Pages/Include/Definition.h"
-#include "Settings/Settings.h"
-#include "Utils/Math.h"
-#include "Utils/StringUtils.h"
-#include "Utils/Values.h"
-#include <string.h>
+#include "stdafx.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
