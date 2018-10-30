@@ -129,12 +129,12 @@ void FrequencyCounter::Update()
 
     if(FPGA::GetFlag::FREQ_OVERFLOW())
     {
-        freqActual.word = 0;
+        freqActual.word = MAX_UINT;
         lastFreqOver = TIME_MS;
     }
     if(FPGA::GetFlag::PERIOD_OVERFLOW())
     {
-        periodActual.word = 0;
+        periodActual.word = MAX_UINT;
         lastPeriodOver = TIME_MS;
     }
 }
@@ -217,7 +217,6 @@ void FrequencyCounter::Draw()
 {
     /// \todo ¬ этой строке точку ставить не где придЄтс€, а в той позиции, где она сто€ла последний раз
 
-#define EMPTY_STRING "\xa9\xa9\xa9.\xa9\xa9\xa9"
 #define SIZE 4
 
     if (!FREQ_METER_IS_ENABLED)
@@ -259,10 +258,10 @@ void FrequencyCounter::Draw()
     
     dX = SIZE * 12;
 
-    Painter::DrawBigText(x + dX, y + 1, SIZE, (freqActual.word == 0) ? EMPTY_STRING : FreqSetToString(&freqActual),
+    Painter::DrawBigText(x + dX, y + 1, SIZE, FreqSetToString(&freqActual),
                          Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceTimeF()));
 
-    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, (periodActual.word == 0) ? EMPTY_STRING : PeriodSetToString(&periodActual),
+    Painter::DrawBigText(x + dX, y + 10 * SIZE, SIZE, PeriodSetToString(&periodActual),
                          Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
 
 
@@ -334,9 +333,23 @@ void FrequencyCounter::Draw()
     }
 }
 
+
+#define EMPTY_STRING    "\xa9\xa9\xa9.\xa9\xa9\xa9"
+#define OVERFLOW_STRING ">>>"
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
 {
+
+    if(pr->word == 0)
+    {
+        return EMPTY_STRING;
+    }
+    else if(pr->word == MAX_UINT)
+    {
+        return OVERFLOW_STRING;
+    }
+
     Hex value(pr->word);
 
     while(value.NumDigits() > 6)
@@ -420,11 +433,13 @@ pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
         buffer[i] = value.DigitInPosition(6 - i);
     }
 
-#define e3 (            1000)
-#define e4 (       10 * 1000)
-#define e5 (      100 * 1000)
-#define e6 (     1000 * 1000)
-#define e7 (10 * 1000 * 1000)
+#define e3 (              1000)
+#define e4 (         10 * 1000)
+#define e5 (        100 * 1000)
+#define e6 (       1000 * 1000)
+#define e7 ( 10  * 1000 * 1000)
+#define e8 ( 100 * 1000 * 1000)
+#define e9 (1000 * 1000 * 1000)
 
 #define WRITE_SUFFIX(suffix)                        strcpy(buffer + 7, suffix);
 
@@ -444,6 +459,13 @@ pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
     else if(ticks < v2) { SET_POINT(pos2) }          \
     else if(ticks < v3) { SET_POINT(pos3) }          \
     else                { SET_POINT(pos4) }
+
+#define CHOICE_5(v1, pos1, v2, pos2, v3, pos3, v4, pos4, pos5) \
+    if(ticks < v1)      { SET_POINT(pos1) }          \
+    else if(ticks < v2) { SET_POINT(pos2) }          \
+    else if(ticks < v3) { SET_POINT(pos3) }          \
+    else if(ticks < v4  { SET_POINT(pos4) }          \
+    else                { SET_POINT(pos5) }
 
     switch(FREQ_METER_NUM_PERIODS + FREQ_METER_FREQ_CLC)
     {
@@ -469,7 +491,36 @@ pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
             break;
         case 5:
             WRITE_SUFFIX_3(e4, e7, "нс", "мкс", "мс");
-            CHOICE_4(e4, 5, e6, 2, e7, 3, 1);
+            //CHOICE_4(e4, 5, e6, 2, e7, 2, 1);
+            if(ticks < e4)
+            {
+                SET_POINT(5);
+            }
+            else if(ticks < e6)
+            {
+                SET_POINT(2);
+                LOG_WRITE("6");
+            }
+            else if(ticks < e7)
+            {
+                SET_POINT(3);
+                LOG_WRITE("7");
+            }
+            else if(ticks < e8)
+            {
+                SET_POINT(1);
+                LOG_WRITE("8");
+            }
+            else if(ticks < e9)
+            {
+                SET_POINT(2);
+                LOG_WRITE("9");
+            }
+            else
+            {
+                SET_POINT(3);
+                LOG_WRITE("else");
+            }
             break;
     }
 
@@ -481,6 +532,15 @@ pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 {
+    if(fr->word == 0)
+    {
+        return EMPTY_STRING;
+    }
+    else if(fr->word == MAX_UINT)
+    {
+        return OVERFLOW_STRING;
+    }
+
     Hex value(fr->word);
 
     while(value.NumDigits() > 6)
@@ -498,27 +558,27 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
     uint giverFreq = freq;
 
 /// Ёто герцы * 10
-#define E_2 (               100)
-#define E_3 (              1000)
-#define E_4 (         10 * 1000)
-#define E_5 (        100 * 1000)
-#define E_6 (       1000 * 1000)
-#define E_7 (  10 * 1000 * 1000)
-#define E_8 ( 100 * 1000 * 1000)
-#define E_9 (1000 * 1000 * 1000)
+#define _10Hz   (               100) /* E_2 */
+#define _100Hz  (              1000) /* E_3 */
+#define _1kHz   (         10 * 1000) /* E_4 */
+#define _10kHz  (        100 * 1000) /* E_5 */
+#define _100kHz (       1000 * 1000) /* E_6 */
+#define _1MHz   (  10 * 1000 * 1000) /* E_7 */
+#define _10MHz  ( 100 * 1000 * 1000) /* E_8 */
+#define _100MHz (1000 * 1000 * 1000) /* E_9 */
 
 
 #undef WRITE_SUFFIX
 #define WRITE_SUFFIX(suffix_E4)    \
-    if(giverFreq < E_4) { strcpy(buffer + 7, suffix_E4); } else if (giverFreq < E_7) { strcpy(buffer + 7, "к√ц"); } else { strcpy(buffer + 7, "ћ√ц"); }
+    if(giverFreq < _1kHz) { strcpy(buffer + 7, suffix_E4); } else if (giverFreq < _1MHz) { strcpy(buffer + 7, "к√ц"); } else { strcpy(buffer + 7, "ћ√ц"); }
 
 #define HIGH_FREQ                       \
-    if(giverFreq < E_8)                 \
+    if(giverFreq < _10MHz)              \
     {                                   \
         memcpy(buffer, buffer + 1, 2);  \
         buffer[1] = '.';                \
     }                                   \
-    else if (giverFreq < E_9)           \
+    else if (giverFreq < _100MHz)       \
     {                                   \
         memcpy(buffer, buffer + 1, 3);  \
         buffer[2] = '.';                \
@@ -538,9 +598,9 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
             WRITE_SUFFIX("к√ц");
 
-            if(giverFreq < E_7)                         // ћеньше 1 ћ√ц
+            if(giverFreq < _1MHz)                       // ћеньше 1 ћ√ц
             {
-                if(freq >= E_2)                         // Ѕольше или равно 10 √ц
+                if(freq >= _10Hz)                       // Ѕольше или равно 10 √ц
                 {
                     memcpy(buffer, buffer + 1, 5);
                 }
@@ -558,9 +618,9 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
             WRITE_SUFFIX("√ц");
 
-            if (giverFreq < E_7)                        // ћеньше 1 ћ√ц
+            if (giverFreq < _1MHz)                      // ћеньше 1 ћ√ц
             {
-                if(giverFreq < E_4)                     // ћеньше 1 к√ц
+                if(giverFreq < _1kHz)                   // ћеньше 1 к√ц
                 {
                     memcpy(buffer, buffer + 1, 6);
                     buffer[6] = '.';
@@ -581,17 +641,22 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
             WRITE_SUFFIX("√ц");
 
-            if (freq < E_7)                       // ћеньше 1 ћ√ц
+            if (freq < _1MHz)                       // ћеньше 1 ћ√ц
             {
-                if (giverFreq < E_4)             // ћеньше 1 к√ц
+                if (giverFreq < _1kHz)              // ћеньше 1 к√ц
                 {
                     memcpy(buffer, buffer + 1, 5);
                     buffer[5] = '.';
                 }
-                else
+                else if(giverFreq < _100kHz)
                 {
                     memcpy(buffer, buffer + 1, 3);
                     buffer[2] = '.';
+                }
+                else
+                {
+                    memcpy(buffer, buffer + 1, 3);
+                    buffer[3] = '.';
                 }
             }
             else
