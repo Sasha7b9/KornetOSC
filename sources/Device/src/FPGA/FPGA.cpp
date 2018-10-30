@@ -17,7 +17,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static ADC_HandleTypeDef hADC;
+ADC_HandleTypeDef FPGA::handleADC;
 
 static uint16 adcValueFPGA = 0;
 
@@ -111,21 +111,21 @@ void FPGA::Init()
     HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(ADC_IRQn);
 
-    hADC.Instance = ADC3;
-    hADC.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
-    hADC.Init.Resolution = ADC_RESOLUTION12b;
-    hADC.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-    hADC.Init.ScanConvMode = DISABLE;
-    hADC.Init.EOCSelection = ENABLE;
-    hADC.Init.ContinuousConvMode = DISABLE;
-    hADC.Init.DMAContinuousRequests = DISABLE;
-    hADC.Init.NbrOfConversion = 1;
-    hADC.Init.DiscontinuousConvMode = DISABLE;
-    hADC.Init.NbrOfDiscConversion = 0;
-    hADC.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
-    hADC.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_Ext_IT11;
+    handleADC.Instance = ADC3;
+    handleADC.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+    handleADC.Init.Resolution = ADC_RESOLUTION12b;
+    handleADC.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+    handleADC.Init.ScanConvMode = DISABLE;
+    handleADC.Init.EOCSelection = ENABLE;
+    handleADC.Init.ContinuousConvMode = DISABLE;
+    handleADC.Init.DMAContinuousRequests = DISABLE;
+    handleADC.Init.NbrOfConversion = 1;
+    handleADC.Init.DiscontinuousConvMode = DISABLE;
+    handleADC.Init.NbrOfDiscConversion = 0;
+    handleADC.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
+    handleADC.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_Ext_IT11;
 
-    if (HAL_ADC_Init(&hADC) != HAL_OK)
+    if (HAL_ADC_Init(&handleADC) != HAL_OK)
     {
         ERROR_HANDLER();
     }
@@ -136,12 +136,12 @@ void FPGA::Init()
     sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
     sConfig.Offset = 0;
 
-    if (HAL_ADC_ConfigChannel(&hADC, &sConfig) != HAL_OK)
+    if (HAL_ADC_ConfigChannel(&handleADC, &sConfig) != HAL_OK)
     {
         ERROR_HANDLER();
     }
 
-    if (HAL_ADC_Start_IT(&hADC) != HAL_OK)
+    if (HAL_ADC_Start_IT(&handleADC) != HAL_OK)
     {
         ERROR_HANDLER();
     }
@@ -1068,7 +1068,7 @@ void ADC_IRQHandler();
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ADC_IRQHandler(void)
 {
-    HAL_ADC_IRQHandler(&hADC);
+    HAL_ADC_IRQHandler(FPGA::HandleADC());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

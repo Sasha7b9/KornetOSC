@@ -157,6 +157,8 @@ public:
 
     static void SetBandwidth(Chan ch);
 
+    static ADC_HandleTypeDef *HandleADC();
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 private:
@@ -221,6 +223,8 @@ private:
     };
 
     static uint16 flag;
+
+    static ADC_HandleTypeDef handleADC;
     
 public:
     static StateWorkFPGA fpgaStateWork;
