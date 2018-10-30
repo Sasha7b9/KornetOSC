@@ -472,20 +472,40 @@ pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
     {
         case 0:
             WRITE_SUFFIX_2(e5, "мс", "с");
-            CHOICE_4(e5, 4, e6, 1, e7, 2, 3);
+            if (ticks < e5)      { SET_POINT(4) }
+            else if (ticks < e6) { SET_POINT(1) }
+            else if (ticks < e7) { SET_POINT(2) }
+            else                 { SET_POINT(3) }
             break;
         case 1:
             WRITE_SUFFIX_3(e3, e6, "мкс", "мс", "c");
             CHOICE_4(e3, 6, e6, 3, e7, 1, 2);
+            if (ticks < v1)
+            {
+                SET_POINT(pos1)
+            }          \
+            else if (ticks < v2)
+            {
+                SET_POINT(pos2)
+            }          \
+            else if (ticks < v3)
+            {
+                SET_POINT(pos3)
+            }          \
+            else
+            {
+                SET_POINT(pos4)
+            }
+
             break;
         case 2:
             WRITE_SUFFIX_3(e4, e7, "мкс", "мс", "с");
-            if (ticks < e5)      { SET_POINT(5); }
-            else if (ticks < e6) { SET_POINT(1); }
-            else if (ticks < e7) { SET_POINT(2); }
-            else if (ticks < e8) { SET_POINT(3); }
-            else if (ticks < e9) { SET_POINT(1); }
-            else                 { SET_POINT(2); }
+            if (ticks < e4)      { SET_POINT(5); }
+            else if (ticks < e6) { SET_POINT(2); }
+            else if (ticks < e7) { SET_POINT(3); }
+            else if (ticks < e8) { SET_POINT(1); }
+            else if (ticks < e9) { SET_POINT(2); }
+            else                 { SET_POINT(3); }
             break;
         case 3:
             WRITE_SUFFIX_3(e5, e8, "мкс", "мс", "c");
