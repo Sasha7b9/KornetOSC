@@ -247,33 +247,12 @@ void FPGA::StartForTester(int)
 
     LoadTBase();
     
-    /*
-        post = (uint16)(SET_TSHIFT - TShift::Min());
-        int Pred = (int)FPGA_NUM_POINTS - (int)post;
-    
-        if(Pred < 0)
-        {
-            Pred = 0;
-        }
-        pred = (uint16)Pred;
-    
-        //LOG_WRITE("tShift = %d, tShiftMin = %d, post = %D", SET_TSHIFT, TShift::Min(), post);
-        //LOG_WRITE("NUM_POINTS = %d, pred = %d", FPGA_NUM_POINTS, pred);
-    
-        post = (uint16)(~(post + 1));
-        pred = (uint16)(~(pred + 3));
-    */
-
-    //uint16 post = 400;
-    //int pred = 0;
-    
     FSMC::WriteToFPGA16(WR_POST_LO, (uint16)(~(400 + 1)));
     FSMC::WriteToFPGA16(WR_PRED_LO, (uint16)(~(0+ 3)));
-    //FSMC::WriteToFPGA16(WR_PRED_LO, pred);
-    //FSMC::WriteToFPGA16(WR_POST_LO, post);
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     uint start = TIME_US;
+    flag = 0;
     while (!GetFlag::PRED())
     {
         ReadFlag();
@@ -289,14 +268,8 @@ void FPGA::StartForTester(int)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 {
-    /*
-    if(_GET_BIT(ReadFlag(), FL_DATA_READY) == 0)
-    {
-        return false;
-    }
-    */
-
     uint start = TIME_MS;
+    flag = 0;
     while (!GetFlag::DATA_READY())    // ∆дЄм флага готовности данных
     {
         ReadFlag();
