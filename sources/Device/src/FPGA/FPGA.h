@@ -157,7 +157,9 @@ public:
 
     static void SetBandwidth(Chan ch);
 
-    static ADC_HandleTypeDef *HandleADC();
+    static ADC_HandleTypeDef *HandleADC() { return &handleADC; };
+
+    static void SetValueADC(uint16 value) { valueADC = value; };
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -223,8 +225,10 @@ private:
     };
 
     static uint16 flag;
-
+    /// Используется в режиме рандомизатора
     static ADC_HandleTypeDef handleADC;
+    /// Значение, считанное из handleADC
+    static uint16 valueADC;
     
 public:
     static StateWorkFPGA fpgaStateWork;

@@ -18,8 +18,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ADC_HandleTypeDef FPGA::handleADC;
-
-static uint16 adcValueFPGA = 0;
+uint16 FPGA::valueADC = 0;
 
 uint16 FPGA::post = (uint16)~(512);
 uint16 FPGA::pred = (uint16)~(512);
@@ -428,14 +427,14 @@ int FPGA::CalculateShift(Chan ch)
     uint16 min = 0;
     uint16 max = 0;
 
-    if (!CalculateGate(adcValueFPGA, &min, &max))
+    if (!CalculateGate(valueADC, &min, &max))
     {
         return NULL_TSHIFT;
     }
 
     if (IN_RANDOMIZE_MODE)
     {
-        float tin = (float)(adcValueFPGA - min) / (max - min);
+        float tin = (float)(valueADC - min) / (max - min);
         int retValue = (int)(tin * Kr[SET_TBASE]);
 
         if(ch == Chan::A)
@@ -1056,32 +1055,3 @@ bool FPGA::GetFlag::PERIOD_IN_PROCESS()
 {
     return _GET_BIT(flag, Flag::PERIOD_IN_PROCESS) == 1;
 }
-
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void ADC_IRQHandler();
-    
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ADC_IRQHandler(void)
-{
-    HAL_ADC_IRQHandler(FPGA::HandleADC());
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{
-    /// \todo временная затычка. Не в рандомизаторе эта функция вообще не должна вызываться
-    if (IN_RANDOM_MODE)
-    {
-        adcValueFPGA = (uint16)HAL_ADC_GetValue(hadc);
-        //LOG_WRITE("читаю %d", adcValueFPGA);
-    }
-}
-
-#ifdef __cplusplus
-}
-#endif
