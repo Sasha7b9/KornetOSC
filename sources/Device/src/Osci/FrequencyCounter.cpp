@@ -83,9 +83,9 @@ void FrequencyCounter::LoadPeriodSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FrequencyCounter::Update(uint16 flag)
+void FrequencyCounter::Update()
 {
-    SetStateLamps(flag);
+    SetStateLamps();
 
     bool freqReady = FPGA::GetFlag::FREQ_READY();
 
@@ -264,7 +264,6 @@ void FrequencyCounter::Draw()
                          Choice::ColorMenuField(PageFunction::PageFrequencyCounter::GetChoiceNumPeriods()));
 
 
-    /*
     width = 50;
     height = 27;
     x = 50;
@@ -275,7 +274,7 @@ void FrequencyCounter::Draw()
     Painter::DrawFormatText(x + 4, y + 15, "%d", periodActual.word);
 
     x += 100;
-    width = 100;
+    width = 120;
 
 
     Painter::FillRegion(x, y, width, height, Color::BACK);
@@ -319,7 +318,18 @@ void FrequencyCounter::Draw()
     {
         Painter::FillRegion(x + 1, y + 16, size - 2, size - 2, Color::RED);
     }
-    */
+
+    x += 20;
+
+    if(FPGA::GetFlag::FREQ_IN_PROCESS())
+    {
+        Painter::FillRegion(x + 1, y + 5, size - 2, size - 2, Color::FILL);
+    }
+
+    if(FPGA::GetFlag::PERIOD_IN_PROCESS())
+    {
+        Painter::FillRegion(x + 1, y + 16, size - 2, size - 2, Color::FILL);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -596,14 +606,14 @@ pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FrequencyCounter::SetStateLamps(uint16 flag)
+void FrequencyCounter::SetStateLamps()
 {
-    SetStateLampFreq(flag);
-    SetStateLampPeriod(flag);
+    SetStateLampFreq();
+    SetStateLampPeriod();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FrequencyCounter::SetStateLampFreq(uint16 flag)
+void FrequencyCounter::SetStateLampFreq()
 {
     if(!lampFreq)
     {
@@ -622,7 +632,7 @@ void FrequencyCounter::SetStateLampFreq(uint16 flag)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FrequencyCounter::SetStateLampPeriod(uint16 flag)
+void FrequencyCounter::SetStateLampPeriod()
 {
     if(!lampPeriod)
     {

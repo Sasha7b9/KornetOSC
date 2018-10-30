@@ -19,7 +19,7 @@ public:
     /// Заслать настрйки для счётчика периода
     static void LoadPeriodSettings();
 
-    static void Update(uint16 flag);
+    static void Update();
     /// Возвращает измеренное значение частоты
     static float GetFreq();
     /// Отрисовка значения
@@ -76,11 +76,11 @@ public:
 
 private:
     /// Установить состояние лампочек счётчиков в состояние, соответствующее текущему моменту
-    static void SetStateLamps(uint16 flag);
+    static void SetStateLamps();
 
-    static void SetStateLampFreq(uint16 flag);
+    static void SetStateLampFreq();
 
-    static void SetStateLampPeriod(uint16 flag);
+    static void SetStateLampPeriod();
 
     static void ReadFreq();
 

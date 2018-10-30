@@ -172,7 +172,7 @@ void FPGA::Update()
 
     ReadFlag();
 
-    if (_GET_BIT(flag, FPGA::Flag::PRED) == 1 && !givingStart)
+    if (GetFlag::PRED() && !givingStart)
     {
         if (START_MODE_IS_AUTO)
         {
@@ -181,7 +181,7 @@ void FPGA::Update()
         }
     }
 
-    if (FPGA::GetFlag::DATA_READY())
+    if (GetFlag::DATA_READY())
     {
         ReadData();
         if (START_MODE_IS_SINGLE)
@@ -200,9 +200,9 @@ void FPGA::ReadFlag()
 {
     flag = (uint16)(FSMC::ReadFromFPGA(RD_FLAG_LO) | (FSMC::ReadFromFPGA(RD_FLAG_HI) << 8));
 
-    Trig::pulse = _GET_BIT(flag, FPGA::Flag::TRIG_READY) == 1 && timeStart > Trig::timeSwitchingTrig;
+    Trig::pulse = GetFlag::TRIG_READY() && timeStart > Trig::timeSwitchingTrig;
 
-    FrequencyCounter::Update(flag);
+    FrequencyCounter::Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -274,7 +274,7 @@ void FPGA::StartForTester(int)
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
     uint start = TIME_US;
-    while (_GET_BIT(flag, FPGA::Flag::PRED) == 0)
+    while (!GetFlag::PRED())
     {
         ReadFlag();
         if(TIME_US - start > 1000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
@@ -297,7 +297,7 @@ bool FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
     */
 
     uint start = TIME_MS;
-    while (!FPGA::GetFlag::DATA_READY())    // Ждём флага готовности данных
+    while (!GetFlag::DATA_READY())    // Ждём флага готовности данных
     {
         ReadFlag();
 
@@ -1005,53 +1005,53 @@ StateWorkFPGA FPGA::GetStateWork()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::GetFlag::DATA_READY()
 {
-    return _GET_BIT(flag, Flag::DATA_READY) == 1;
+    return _GET_BIT(flag, Flag::_DATA_READY) == 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::GetFlag::TRIG_READY()
 {
-    return _GET_BIT(flag, Flag::TRIG_READY) == 1;
+    return _GET_BIT(flag, Flag::_TRIG_READY) == 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::GetFlag::PRED()
 {
-    return _GET_BIT(flag, Flag::PRED) == 1;
+    return _GET_BIT(flag, Flag::_PRED) == 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::GetFlag::FREQ_READY()
 {
-    return _GET_BIT(flag, Flag::FREQ_READY) == 1;
+    return _GET_BIT(flag, Flag::_FREQ_READY) == 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::GetFlag::PERIOD_READY()
 {
-    return _GET_BIT(flag, Flag::PERIOD_READY) == 1;
+    return _GET_BIT(flag, Flag::_PERIOD_READY) == 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::GetFlag::FREQ_OVERFLOW()
 {
-    return _GET_BIT(flag, Flag::FREQ_OVERFLOW) == 1;
+    return _GET_BIT(flag, Flag::_FREQ_OVERFLOW) == 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::GetFlag::PERIOD_OVERFLOW()
 {
-    return _GET_BIT(flag, Flag::PERIOD_OVERFLOW) == 1;
+    return _GET_BIT(flag, Flag::_PERIOD_OVERFLOW) == 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::GetFlag::FREQ_IN_PROCESS()
 {
-    return _GET_BIT(flag, Flag::FREQ_IN_PROCESS) == 1;
+    return _GET_BIT(flag, Flag::_FREQ_IN_PROCESS) == 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::GetFlag::PERIOD_IN_PROCESS()
 {
-    return _GET_BIT(flag, Flag::PERIOD_IN_PROCESS) == 1;
+    return _GET_BIT(flag, Flag::_PERIOD_IN_PROCESS) == 1;
 }
