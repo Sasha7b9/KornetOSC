@@ -77,6 +77,8 @@ public:
     static uint LogPointUS(char *name);
 
     static uint LogPointMS(char *name);
+    /// Служебная функция. Вызывается строго из прерывания
+    static void ElapsedCallback();
 };
 
 

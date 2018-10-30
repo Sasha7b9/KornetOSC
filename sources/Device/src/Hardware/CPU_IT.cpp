@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "Sound.h"
 #include "FPGA/FPGA.h"
+#include "Hardware/Timer.h"
 
 
 #ifdef __cplusplus
@@ -33,6 +34,19 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
     if (IN_RANDOM_MODE)
     {
         FPGA::SetValueADC((uint16)HAL_ADC_GetValue(hadc));
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void TIM3_IRQHandler()
+{
+    if ((TIM3->SR & TIM_SR_UIF) == TIM_SR_UIF)
+    {
+        if ((TIM3->DIER & TIM_DIER_UIE) == TIM_DIER_UIE)
+        {
+            TIM3->SR = ~TIM_DIER_UIE;
+            Timer::ElapsedCallback();
+        }
     }
 }
 
