@@ -87,14 +87,14 @@ void FrequencyCounter::Update(uint16 flag)
 {
     SetStateLamps(flag);
 
-    bool freqReady = _GET_BIT(flag, FPGA::Flag::FREQ_READY) == 1;
+    bool freqReady = FPGA::GetFlag::FREQ_READY();
 
     if(freqReady)
     {
         lastFreqRead = TIME_MS;
     }
 
-    bool periodReady = _GET_BIT(flag, FPGA::Flag::PERIOD_READY) == 1;
+    bool periodReady = FPGA::GetFlag::PERIOD_READY();
 
     if(periodReady)
     {
@@ -125,12 +125,12 @@ void FrequencyCounter::Update(uint16 flag)
         }
     }
 
-    if(_GET_BIT(flag, FPGA::Flag::FREQ_OVERFLOW) == 1)
+    if(FPGA::GetFlag::FREQ_OVERFLOW())
     {
         freqActual.word = 0;
         lastFreqOver = TIME_MS;
     }
-    if(_GET_BIT(flag, FPGA::Flag::PERIOD_OVERFLOW) == 1)
+    if(FPGA::GetFlag::PERIOD_OVERFLOW())
     {
         periodActual.word = 0;
         lastPeriodOver = TIME_MS;
@@ -607,14 +607,14 @@ void FrequencyCounter::SetStateLampFreq(uint16 flag)
 {
     if(!lampFreq)
     {
-        if(_GET_BIT(flag, FPGA::Flag::FREQ_IN_PROCESS))
+        if(FPGA::GetFlag::FREQ_IN_PROCESS())
         {
             lampFreq = true;
         }
     }
     else
     {
-        if(_GET_BIT(flag, FPGA::Flag::FREQ_READY))
+        if(FPGA::GetFlag::FREQ_READY())
         {
             lampFreq = false;
         }
@@ -626,14 +626,14 @@ void FrequencyCounter::SetStateLampPeriod(uint16 flag)
 {
     if(!lampPeriod)
     {
-        if(_GET_BIT(flag, FPGA::Flag::PERIOD_IN_PROCESS))
+        if(FPGA::GetFlag::PERIOD_IN_PROCESS())
         {
             lampPeriod = true;
         }
     }
     else
     {
-        if(_GET_BIT(flag, FPGA::Flag::PERIOD_READY))
+        if(FPGA::GetFlag::PERIOD_READY())
         {
             lampPeriod = false;
         }

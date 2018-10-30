@@ -124,21 +124,18 @@ public:
         static float GetFreq();
     };
 
-    struct Flag
+    struct GetFlag
     {
-        enum E
-        {
-            DATA_READY        = 0,  ///< Данные готовы для считывания (окончание счётчика послезапуска)
-            TRIG_READY        = 1,  ///< Флаг синхроимпульса
-            PRED              = 2,  ///< Если 1, то предзапуск отсчитал, можно давать принудительный запуск (окончание
-            P2P               = 3,  ///< 
-            FREQ_READY        = 4,  ///< Флаг готовности измерения частоты
-            PERIOD_READY      = 5,  ///< Флаг готовности измерения периода
-            FREQ_OVERFLOW     = 8,  ///< Признак переполнения счётчика частоты
-            PERIOD_OVERFLOW   = 9,  ///< Признак переполнения счётчика периода
-            FREQ_IN_PROCESS   = 10, ///< Установленное в единицу значение означает, что идёт процесс измерения - счётчик запущен и считает
-            PERIOD_IN_PROCESS = 11  ///< Установленное в единицу значение означает, что идёт процесс измерения - счётчик запущен и считает
-        } value;
+        static bool DATA_READY();
+        static bool TRIG_READY();
+        static bool PRED();
+        static bool P2P();
+        static bool FREQ_READY();
+        static bool PERIOD_READY();
+        static bool FREQ_OVERFLOW();
+        static bool PERIOD_OVERFLOW();
+        static bool FREQ_IN_PROCESS();
+        static bool PERIOD_IN_PROCESS();
     };
 
     /// Установить относительный уровень синхронизации
@@ -186,7 +183,7 @@ private:
 
     static void ReadData();
 
-    static uint16 ReadFlag();
+    static void ReadFlag();
 
     static uint16 ReadLastRecord();
 
@@ -205,6 +202,25 @@ private:
     static bool givingStart;
     /// Время подачи старта
     static uint timeStart;
+
+    struct Flag
+    {
+        enum E
+        {
+            DATA_READY        = 0,  ///< Данные готовы для считывания (окончание счётчика послезапуска)
+            TRIG_READY        = 1,  ///< Флаг синхроимпульса
+            PRED              = 2,  ///< Если 1, то предзапуск отсчитал, можно давать принудительный запуск (окончание
+            P2P               = 3,  ///< 
+            FREQ_READY        = 4,  ///< Флаг готовности измерения частоты
+            PERIOD_READY      = 5,  ///< Флаг готовности измерения периода
+            FREQ_OVERFLOW     = 8,  ///< Признак переполнения счётчика частоты
+            PERIOD_OVERFLOW   = 9,  ///< Признак переполнения счётчика периода
+            FREQ_IN_PROCESS   = 10, ///< Установленное в единицу значение означает, что идёт процесс измерения - счётчик запущен и считает
+            PERIOD_IN_PROCESS = 11  ///< Установленное в единицу значение означает, что идёт процесс измерения - счётчик запущен и считает
+        } value;
+    };
+
+    static uint16 flag;
     
 public:
     static StateWorkFPGA fpgaStateWork;

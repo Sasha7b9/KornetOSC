@@ -23,6 +23,7 @@ static uint16 adcValueFPGA = 0;
 
 uint16 FPGA::post = (uint16)~(512);
 uint16 FPGA::pred = (uint16)~(512);
+uint16 FPGA::flag = 0;
 
 struct PinStruct
 {
@@ -170,7 +171,7 @@ void FPGA::Update()
         return;
     };
 
-    uint16 flag = ReadFlag();
+    ReadFlag();
 
     if (_GET_BIT(flag, FPGA::Flag::PRED) == 1 && !givingStart)
     {
@@ -181,7 +182,7 @@ void FPGA::Update()
         }
     }
 
-    if (_GET_BIT(flag, FPGA::Flag::DATA_READY) == 1)
+    if (FPGA::GetFlag::DATA_READY())
     {
         ReadData();
         if (START_MODE_IS_SINGLE)
@@ -196,15 +197,13 @@ void FPGA::Update()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint16 FPGA::ReadFlag()
+void FPGA::ReadFlag()
 {
-    uint16 flag = (uint16)(FSMC::ReadFromFPGA(RD_FLAG_LO) | (FSMC::ReadFromFPGA(RD_FLAG_HI) << 8));
+    flag = (uint16)(FSMC::ReadFromFPGA(RD_FLAG_LO) | (FSMC::ReadFromFPGA(RD_FLAG_HI) << 8));
 
     Trig::pulse = _GET_BIT(flag, FPGA::Flag::TRIG_READY) == 1 && timeStart > Trig::timeSwitchingTrig;
 
     FrequencyCounter::Update(flag);
-
-    return flag;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -275,11 +274,10 @@ void FPGA::StartForTester(int)
     //FSMC::WriteToFPGA16(WR_POST_LO, post);
     FSMC::WriteToFPGA8(WR_START, 0xff);
 
-    uint16 flag = 0;
     uint start = TIME_US;
     while (_GET_BIT(flag, FPGA::Flag::PRED) == 0)
     {
-        flag = ReadFlag();
+        ReadFlag();
         if(TIME_US - start > 1000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
         {                               /// нажатия кнопок
             return;
@@ -299,11 +297,10 @@ bool FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
     }
     */
 
-    uint16 flag = 0;
     uint start = TIME_MS;
-    while (_GET_BIT(flag, FPGA::Flag::DATA_READY) == 0)    // Ждём флага готовности данных
+    while (!FPGA::GetFlag::DATA_READY())    // Ждём флага готовности данных
     {
-        flag = ReadFlag();
+        ReadFlag();
 
         if(TIME_MS - start > 20)        /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
         {                               /// нажатия кнопок
@@ -1004,6 +1001,60 @@ void FPGA::FindAndSetTrigLevel()
 StateWorkFPGA FPGA::GetStateWork()
 {
     return fpgaStateWork;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::GetFlag::DATA_READY()
+{
+    return _GET_BIT(flag, Flag::DATA_READY) == 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::GetFlag::TRIG_READY()
+{
+    return _GET_BIT(flag, Flag::TRIG_READY) == 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::GetFlag::PRED()
+{
+    return _GET_BIT(flag, Flag::PRED) == 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::GetFlag::FREQ_READY()
+{
+    return _GET_BIT(flag, Flag::FREQ_READY) == 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::GetFlag::PERIOD_READY()
+{
+    return _GET_BIT(flag, Flag::PERIOD_READY) == 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::GetFlag::FREQ_OVERFLOW()
+{
+    return _GET_BIT(flag, Flag::FREQ_OVERFLOW) == 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::GetFlag::PERIOD_OVERFLOW()
+{
+    return _GET_BIT(flag, Flag::PERIOD_OVERFLOW) == 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::GetFlag::FREQ_IN_PROCESS()
+{
+    return _GET_BIT(flag, Flag::FREQ_IN_PROCESS) == 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool FPGA::GetFlag::PERIOD_IN_PROCESS()
+{
+    return _GET_BIT(flag, Flag::PERIOD_IN_PROCESS) == 1;
 }
 
 
