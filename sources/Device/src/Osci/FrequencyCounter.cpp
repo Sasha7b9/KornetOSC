@@ -433,13 +433,15 @@ pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
         buffer[i] = value.DigitInPosition(6 - i);
     }
 
-#define e3 (              1000)
-#define e4 (         10 * 1000)
-#define e5 (        100 * 1000)
-#define e6 (       1000 * 1000)
-#define e7 ( 10  * 1000 * 1000)
-#define e8 ( 100 * 1000 * 1000)
-#define e9 (1000 * 1000 * 1000)
+#define e2   (                    100)
+#define e3   (                   1000)
+#define e4   (              10 * 1000)
+#define e5   (             100 * 1000)
+#define e6   (            1000 * 1000)
+#define e7   (       10 * 1000 * 1000)
+#define e8   (      100 * 1000 * 1000)
+#define e9   (     1000 * 1000 * 1000)
+#define e10  (10 * 1000 * 1000 * 1000)
 
 #define WRITE_SUFFIX(suffix)                        strcpy(buffer + 7, suffix);
 
@@ -452,6 +454,12 @@ pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
     else if(ticks < value2) WRITE_SUFFIX(suffix2)                   \
     else                    WRITE_SUFFIX(suffix3)
 
+#define WRITE_SUFFIX_4(value1, value2, value3, suffix1, suffix2, suffix3, suffix4)   \
+    if(ticks < value1)      WRITE_SUFFIX(suffix1)   \
+    else if(ticks < value2) WRITE_SUFFIX(suffix2)   \
+    else if(ticks < value3) WRITE_SUFFIX(suffix3)   \
+    else                    WRITE_SUFFIX(suffix4)
+
 #define SET_POINT(pos)                              memcpy(buffer, buffer + 1, pos); buffer[pos] = '.';
 
 #define CHOICE_4(v1, pos1, v2, pos2, v3, pos3, pos4) \
@@ -459,13 +467,6 @@ pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
     else if(ticks < v2) { SET_POINT(pos2) }          \
     else if(ticks < v3) { SET_POINT(pos3) }          \
     else                { SET_POINT(pos4) }
-
-#define CHOICE_5(v1, pos1, v2, pos2, v3, pos3, v4, pos4, pos5) \
-    if(ticks < v1)      { SET_POINT(pos1) }          \
-    else if(ticks < v2) { SET_POINT(pos2) }          \
-    else if(ticks < v3) { SET_POINT(pos3) }          \
-    else if(ticks < v4  { SET_POINT(pos4) }          \
-    else                { SET_POINT(pos5) }
 
     switch(FREQ_METER_NUM_PERIODS + FREQ_METER_FREQ_CLC)
     {
@@ -479,48 +480,40 @@ pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
             break;
         case 2:
             WRITE_SUFFIX_3(e4, e7, "мкс", "мс", "с");
-            CHOICE_4(e4, 5, e6, 2, e7, 3, 1);
+            if (ticks < e5)      { SET_POINT(5); }
+            else if (ticks < e6) { SET_POINT(1); }
+            else if (ticks < e7) { SET_POINT(2); }
+            else if (ticks < e8) { SET_POINT(3); }
+            else if (ticks < e9) { SET_POINT(1); }
+            else                 { SET_POINT(2); }
             break;
         case 3:
-            WRITE_SUFFIX_2(e5, "мкс", "мс");
-            CHOICE_4(e5, 4, e6, 1, e7, 2, 3);
+            WRITE_SUFFIX_3(e5, e8, "мкс", "мс", "c");
+            if (ticks < e5)      { SET_POINT(5); }
+            else if (ticks < e6) { SET_POINT(1); }
+            else if (ticks < e7) { SET_POINT(2); }
+            else if (ticks < e8) { SET_POINT(3); }
+            else if (ticks < e9) { SET_POINT(1); }
+            else                 { SET_POINT(2); }
             break;
         case 4:
-            WRITE_SUFFIX_3(e3, e6, "нс", "мкс", "мс");
-            CHOICE_4(e3, 6, e6, 3, e7, 1, 2);
+            WRITE_SUFFIX_4(e3, e6, e9, "нс", "мкс", "мс", "с");
+            if(ticks < e3)      { SET_POINT(6)  }
+            else if(ticks < e6) { SET_POINT(3); }
+            else if(ticks < e7) { SET_POINT(1); }
+            else if(ticks < e8) { SET_POINT(2); }
+            else if(ticks < e9) { SET_POINT(3); }
+            else                { SET_POINT(1); }
+
             break;
         case 5:
             WRITE_SUFFIX_3(e4, e7, "нс", "мкс", "мс");
-            //CHOICE_4(e4, 5, e6, 2, e7, 2, 1);
-            if(ticks < e4)
-            {
-                SET_POINT(5);
-            }
-            else if(ticks < e6)
-            {
-                SET_POINT(2);
-                LOG_WRITE("6");
-            }
-            else if(ticks < e7)
-            {
-                SET_POINT(3);
-                LOG_WRITE("7");
-            }
-            else if(ticks < e8)
-            {
-                SET_POINT(1);
-                LOG_WRITE("8");
-            }
-            else if(ticks < e9)
-            {
-                SET_POINT(2);
-                LOG_WRITE("9");
-            }
-            else
-            {
-                SET_POINT(3);
-                LOG_WRITE("else");
-            }
+            if(ticks < e4)      { SET_POINT(5); }
+            else if(ticks < e6) { SET_POINT(2); }
+            else if(ticks < e7) { SET_POINT(3); }
+            else if(ticks < e8) { SET_POINT(1); }
+            else if(ticks < e9) { SET_POINT(2); }
+            else                { SET_POINT(3); }
             break;
     }
 
