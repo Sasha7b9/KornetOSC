@@ -605,9 +605,37 @@ void FrequencyCounter::SetStateLamps(uint16 flag)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::SetStateLampFreq(uint16 flag)
 {
+    if(!lampFreq)
+    {
+        if(_GET_BIT(flag, FPGA::Flag::FREQ_IN_PROCESS))
+        {
+            lampFreq = true;
+        }
+    }
+    else
+    {
+        if(_GET_BIT(flag, FPGA::Flag::FREQ_READY))
+        {
+            lampFreq = false;
+        }
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::SetStateLampPeriod(uint16 flag)
 {
+    if(!lampPeriod)
+    {
+        if(_GET_BIT(flag, FPGA::Flag::PERIOD_IN_PROCESS))
+        {
+            lampPeriod = true;
+        }
+    }
+    else
+    {
+        if(_GET_BIT(flag, FPGA::Flag::PERIOD_READY))
+        {
+            lampPeriod = false;
+        }
+    }
 }
