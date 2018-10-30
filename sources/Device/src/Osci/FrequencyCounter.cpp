@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "FrequencyCounter.h"
-#include "FPGA/FPGATypes.h"
+#include "FPGA/FPGA.h"
 #include "Settings/Settings.h"
 #include "Display/Painter.h"
 #include "Utils/StringUtils.h"
@@ -87,14 +87,14 @@ void FrequencyCounter::Update(uint16 flag)
 {
     SetStateLamps(flag);
 
-    bool freqReady = _GET_BIT(flag, FL_FREQ_READY) == 1;
+    bool freqReady = _GET_BIT(flag, FPGA::Flag::FREQ_READY) == 1;
 
     if(freqReady)
     {
         lastFreqRead = TIME_MS;
     }
 
-    bool periodReady = _GET_BIT(flag, FL_PERIOD_READY) == 1;
+    bool periodReady = _GET_BIT(flag, FPGA::Flag::PERIOD_READY) == 1;
 
     if(periodReady)
     {
@@ -125,12 +125,12 @@ void FrequencyCounter::Update(uint16 flag)
         }
     }
 
-    if(_GET_BIT(flag, FL_FREQ_OVERFLOW) == 1)
+    if(_GET_BIT(flag, FPGA::Flag::FREQ_OVERFLOW) == 1)
     {
         freqActual.word = 0;
         lastFreqOver = TIME_MS;
     }
-    if(_GET_BIT(flag, FL_PERIOD_OVERFLOW) == 1)
+    if(_GET_BIT(flag, FPGA::Flag::PERIOD_OVERFLOW) == 1)
     {
         periodActual.word = 0;
         lastPeriodOver = TIME_MS;
@@ -605,43 +605,9 @@ void FrequencyCounter::SetStateLamps(uint16 flag)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::SetStateLampFreq(uint16 flag)
 {
-    if(!lampFreq)
-    {
-        if(_GET_BIT(flag, FL_TRIG_READY) == 0)      // Если пришёл первый импульс счёта
-        {
-            if(_GET_BIT(flag, FL_FREQ_READY) == 0)  // И не готов счётчик частоты
-            {
-                lampFreq = true;
-            }
-        }
-    }
-    else
-    {
-        if(_GET_BIT(flag, FL_FREQ_READY) == 1)
-        {
-            lampFreq = false;
-        }
-    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FrequencyCounter::SetStateLampPeriod(uint16 flag)
 {
-    if (!lampPeriod)
-    {
-        if (_GET_BIT(flag, FL_TRIG_READY) == 0)      // Если пришёл первый импульс счёта
-        {
-            if (_GET_BIT(flag, FL_PERIOD_READY) == 0)  // И не готов счётчик частоты
-            {
-                lampPeriod = true;
-            }
-        }
-    }
-    else
-    {
-        if (_GET_BIT(flag, FL_PERIOD_READY) == 1)
-        {
-            lampPeriod = false;
-        }
-    }
 }

@@ -172,7 +172,7 @@ void FPGA::Update()
 
     uint16 flag = ReadFlag();
 
-    if (_GET_BIT(flag, FL_PRED) == 1 && !givingStart)
+    if (_GET_BIT(flag, FPGA::Flag::PRED) == 1 && !givingStart)
     {
         if (START_MODE_IS_AUTO)
         {
@@ -181,7 +181,7 @@ void FPGA::Update()
         }
     }
 
-    if (_GET_BIT(flag, FL_DATA_READY) == 1)
+    if (_GET_BIT(flag, FPGA::Flag::DATA_READY) == 1)
     {
         ReadData();
         if (START_MODE_IS_SINGLE)
@@ -200,7 +200,7 @@ uint16 FPGA::ReadFlag()
 {
     uint16 flag = (uint16)(FSMC::ReadFromFPGA(RD_FLAG_LO) | (FSMC::ReadFromFPGA(RD_FLAG_HI) << 8));
 
-    Trig::pulse = _GET_BIT(flag, FL_TRIG_READY) == 1 && timeStart > Trig::timeSwitchingTrig;
+    Trig::pulse = _GET_BIT(flag, FPGA::Flag::TRIG_READY) == 1 && timeStart > Trig::timeSwitchingTrig;
 
     FrequencyCounter::Update(flag);
 
@@ -277,7 +277,7 @@ void FPGA::StartForTester(int)
 
     uint16 flag = 0;
     uint start = TIME_US;
-    while (_GET_BIT(flag, FL_PRED) == 0)
+    while (_GET_BIT(flag, FPGA::Flag::PRED) == 0)
     {
         flag = ReadFlag();
         if(TIME_US - start > 1000) /// \todo Временная затычка. Надо сделать так, чтобы такие ситуации были исключены. Сбои происходят, во время
@@ -301,7 +301,7 @@ bool FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
 
     uint16 flag = 0;
     uint start = TIME_MS;
-    while (_GET_BIT(flag, FL_DATA_READY) == 0)    // Ждём флага готовности данных
+    while (_GET_BIT(flag, FPGA::Flag::DATA_READY) == 0)    // Ждём флага готовности данных
     {
         flag = ReadFlag();
 
