@@ -174,7 +174,10 @@ float MathFPGA::Point2Voltage(uint8 value, Range range, uint16 rShift, bool log)
 {
     float result = (((value)-MIN_VALUE) * voltsInPoint[(range)].val - MAX_VOLTAGE_ON_SCREEN((range)) - RSHIFT_2_ABS((rShift), (range)));
 
-
+    if(log)
+    {
+        LOG_WRITE("%d %f", value, result);
+    }
 
     return result;
 }
