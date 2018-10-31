@@ -1,4 +1,12 @@
-#include "stdafx.h"
+#include "defines.h"
+#include "MenuItems.h"
+#include "Hardware/Sound.h"
+#include "Hardware/Timer.h"
+#include "Utils/Math.h"
+#include "Utils/Values.h"
+#include "Display/Symbols.h"
+#include "Hardware/CPU.h"
+#include "Display/Painter.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

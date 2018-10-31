@@ -1,4 +1,14 @@
-#include "stdafx.h"
+#include "defines.h"
+#include "MenuItems.h"
+#include "Osci/Grid.h"
+#include "Display/Painter.h"
+#include "Menu/Menu.h"
+#include "Utils/Values.h"
+#include "Data/DataSettings.h"
+#include "Hardware/CPU.h"
+#include "Settings/Settings.h"
+
+#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

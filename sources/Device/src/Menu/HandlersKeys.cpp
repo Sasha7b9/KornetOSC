@@ -1,4 +1,15 @@
-#include "stdafx.h"
+#include "defines.h"
+#include "HandlersKeys.h"
+#include "FPGA/FPGA.h"
+#include "Menu/Menu.h"
+#include "Menu/Pages/Include/PageChannels.h"
+#include "Menu/Pages/Include/PageFunction.h"
+#include "Menu/Pages/Include/PageMeasures.h"
+#include "Menu/Pages/Include/PageMemory.h"
+#include "Menu/Pages/Include/PageService.h"
+#include "Menu/Pages/Include/PageTime.h"
+#include "Menu/Pages/Include/PageTrig.h"
+#include "Menu/Pages/Include/PageDisplay.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

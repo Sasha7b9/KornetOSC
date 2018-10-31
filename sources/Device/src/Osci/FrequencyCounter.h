@@ -1,4 +1,5 @@
 #pragma once
+#include "Utils/Stack.h"
 
 
 #define FREQ_METER_ENABLED              (set.freq_enabled)
@@ -95,6 +96,12 @@ private:
     static float PeriodSetToFreq(const BitSet32 *period);
 
     static pString PeriodSetToString(const BitSet32 *pr);
+
+    static pString PeriodSetToStringNew(const BitSet32 *pr);
+    /// ѕреобразует 6 разр€дов числа, хран€щиес€ в стеке, в текстовую строку периода. ћладший значащий разр€д хранитс€ на вершине стека. order - его пор€док
+    static pString StackToString(Stack<uint> *stack, int order);
+    /// ¬озвращает пор€док младшего разр€да считанного значени€ счЄтчика периода при данных настройках
+    static int LowOrder(FreqClc freqCLC, NumberPeriods numPeriods);
     /// «десь хранитс€ последнее действительное значение частоты. ƒл€ вывода в режиме частотомера. 0 означает, что значение выводить не надо
     static BitSet32 freqActual;
     /// «десь хранитс€ последнее действительное значение периода. ƒл€ вывода в режиме частотомера. 0 означает, что значение выводить не надо

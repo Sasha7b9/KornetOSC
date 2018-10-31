@@ -1,4 +1,8 @@
-#include "stdafx.h"
+#include "defines.h"
+#include "MenuTriggers.h"
+#include "Display/Display.h"
+
+#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,4 +36,3 @@ bool TriggerDebugConsole::Update(Key button)
 
     return false;
 }
-
