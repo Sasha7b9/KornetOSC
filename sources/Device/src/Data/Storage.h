@@ -12,15 +12,12 @@
 
 class Storage
 {
+    friend class Reader;
 public:
     /// Удаление всех сохранённых измерений.
     static void Clear();
     /// Добавить считанные данные. При этом настройками считаются текущие настройки прибора.
     static void AddData(uint8 *dataA, uint8 *dataB, DataSettings dss);
-
-    static void AddData(uint8 *dataA, uint8 *dataB);
-
-    static void GetData(uint8 **dataA, uint8 **dataB);
     /// Возвращает число непрерывных измерений, начиная с последнего, с такими же настройками, как у последнего.
     static int NumElementsWithSameSettings();
     /// Возвращает число непрерывных измерений, начиная с последнего, с текущими настройками прибора.
@@ -54,6 +51,9 @@ public:
     static int GetFrameP2P_RAM(DataSettings **ds, uint8 **dataA, uint8 **dataB);
 
 private:
+    /// Получить данные из хранилища. Метод приватный. Вызываться может только дружественными классами
+    static bool GetData(DataSettings *ds);
+
     static void CalculateAroundAverage(uint8 *dataA, uint8 *dataB, DataSettings *dss);
 
     static DataSettings* GetSettingsDataFromEnd(int fromEnd);
@@ -63,6 +63,8 @@ private:
     static void CalculateSums();
     /// Возвращает true, если настройки измерений с индексами elemFromEnd0 и elemFromEnd1 совпадают, и false в ином случае.
     static bool SettingsIsIdentical(int elemFromEnd0, int elemFromEnd1);
+
+    static bool empty;
 };
 
 ////////////////////////////// Функции для самописца //////////////////////////////////////////////////

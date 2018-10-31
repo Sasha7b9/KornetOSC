@@ -20,39 +20,38 @@ StructDataDrawing *PainterData::dataStruct = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PainterData::DrawData()
 {
-    Measure::SetData(false);
-
-    if(MODE_WORK_IS_DIR)
+    if(Reader::ReadData())
     {
-        DrawData_ModeDir();
+        Measure::SetData(false);
+
+        if(MODE_WORK_IS_DIR)
+        {
+            DrawData_ModeDir();
+        }
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterData::DrawData_ModeDir()
 {
-    uint8 *dataA = 0;
-    uint8 *dataB = 0;
-
-    Storage::GetData(&dataA, &dataB);
-
     if(LAST_AFFECTED_CH_IS_A)
     {
-        DrawChannel(Chan::B, dataB);
-        DrawChannel(Chan::A, dataA);
+        DrawChannel(Chan::B);
+        DrawChannel(Chan::A);
     }
     else
     {
-        DrawChannel(Chan::A, dataA);
-        DrawChannel(Chan::B, dataB);
+        DrawChannel(Chan::A);
+        DrawChannel(Chan::B);
     }
 
     MemoryWindow::Draw();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::DrawChannel(Chan ch, uint8 *data)
+void PainterData::DrawChannel(Chan ch)
 {
+    uint8 *data = OUT(ch);
 
     if(SET_PEAKDET_DIS)
     {

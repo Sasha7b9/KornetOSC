@@ -10,7 +10,7 @@ public:
     
     static void DrawData();
 
-    static void DrawChannel(Chan ch, uint8 *data);
+    static void DrawChannel(Chan ch);
 
 private:
     

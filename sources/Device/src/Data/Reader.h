@@ -103,6 +103,8 @@ typedef struct
 class Reader
 {
 public:
+    /// Читает данные из хранилища. Возвращает false, если данных там нет
+    static bool ReadData();
     /// \brief Читает данные из ОЗУ, fromEnd c конца (fromEnd == 0 - последний считанный сигнал) и заполняет данными inA(B), outA(B), DS.
     /// forMemoryWindow нужен для того, чтобы в ждущем режиме выводить разные сигналы для экрана и окна памяти
     static void ReadFromRAM(int fromEnd, StructDataDrawing *dataStruct, bool forMemoryWindow);

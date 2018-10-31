@@ -43,22 +43,15 @@ static bool inFrameP2Pmode = false;     // Если true - сейчас поточечный режим
 static DataSettings datas[NUM_DATAS];
 static uint8 gDataAve[Chan::Number][FPGA_MAX_NUM_POINTS];
 
+static DataSettings dataSet;
+
+bool Storage::empty = true;
+
 #define ADDRESS_DATA(ds)        ((ds)->addr)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void ClearLimitsAndSums()
 {
-    /*
-    int numBytesA = RequestBytesForChannel(A, 0);
-    int numBytesB = RequestBytesForChannel(B, 0);
-
-    CPU::RAM::MemClear(limitUpA_RAM, numBytesA);
-    CPU::RAM::MemClear(limitUpB_RAM, numBytesB);
-    CPU::RAM::MemClear(limitDownA_RAM, numBytesA);
-    CPU::RAM::MemClear(limitDownB_RAM, numBytesB);
-    CPU::RAM::MemClear(sumA_RAM, numBytesA * 4);
-    CPU::RAM::MemClear(sumB_RAM, numBytesB * 4);
-    */
 }
 
 
@@ -173,157 +166,6 @@ static int SizeData(DataSettings *ds)
         }
     }
     return size;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-static void DeleteFirst()
-{
-    ADDRESS_DATA(&datas[iFirst]) = 0;
-    iFirst++;
-    if(iFirst == NUM_DATAS)
-    {
-        iFirst = 0;
-    }
-    numElementsInStorage--;
-}
-*/
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-// Находит место для записи данных во внешнее ОЗУ.
-// По выходу из функции элемент datas[iLast] содержит ds, a ds содержит адрес для записи во внешнее ОЗУ
-// При этом функция сама модернизируе iFirst, iLast, addrData элементов datas (0 указывает на то, что элемент свободен)
-static void PrepareLastElemForWrite(DataSettings *)
-{
-    /*
-    // Если хранилище пустое
-    if(ADDRESS_DATA(&datas[iFirst]) == 0)
-    {
-        iFirst = iLast = 0;
-        ADDRESS_DATA(ds) = RAM8(DS_POOL_BEGIN);
-        datas[iFirst] = *ds;
-        return;
-    }
-
-    // Если в хранилище один элемент
-    if(iFirst == iLast)
-    {
-        iLast = iFirst + 1;
-        ADDRESS_DATA(ds) = ADDRESS_DATA(&datas[iFirst]) + SizeData(&datas[iFirst]);
-        datas[iLast] = *ds;
-        return;
-    }
-
-    // Если в хранилище максимально возможное число эелементов
-    if(numElementsInStorage >= NUM_DATAS)
-    {
-        DeleteFirst();
-    }
-
-    uint8 *addrWrite = 0;
-
-    int size = SizeData(ds);
-
-    // Сначала найдём свободное место в ОЗУ
-
-    volatile bool run = true;
-    while(run)
-    {
-        uint8 *addrFirst = ADDRESS_DATA(&datas[iFirst]);
-        uint8 *addrLast = ADDRESS_DATA(&datas[iLast]);
-
-        if(addrLast > addrFirst)                                                   // Данные в памяти сохранены в порядке возрастания
-        {
-            int memFree = RAM8(DS_POOL_END) - addrLast - SizeData(&datas[iLast]);     // Столько памяти осталось за последним элементом
-
-            if(memFree >= size)                                                    // Памяти за последним элементом достаточно
-            {
-                addrWrite = addrLast + SizeData(&datas[iLast]);
-                break;
-            }
-            else                                                                    // Памяти за последним элементом не хватает.
-            {
-                if(addrFirst - RAM8(DS_POOL_BEGIN) < size)                       // Если в начале меньше памяти, чем необходимо
-                {
-                    DeleteFirst();                                              // Удаляем один элемент с начала
-                }
-                else
-                {
-                    addrWrite = RAM8(DS_POOL_BEGIN);
-                    break;
-                }
-            }
-        }
-        else
-        {
-            int memFree = addrFirst - addrLast - SizeData(&datas[iFirst]);
-
-            if(memFree >= size)
-            {
-                addrWrite = addrLast + SizeData(&datas[iLast]);
-                break;
-            }
-            else
-            {
-                if(addrFirst - addrLast - SizeData(&datas[iLast]) < size)
-                {
-                    DeleteFirst();
-                }
-                else
-                {
-                    addrWrite = ADDRESS_DATA(&datas[iLast]) + SizeData(&datas[iLast]);
-                    break;
-                }
-            }
-        }
-    }
-
-    // Теперь найдём последний элемент
-    iLast++;
-    if(iLast == NUM_DATAS)
-    {
-        iLast = 0;
-    }
-    ADDRESS_DATA(ds) = addrWrite;
-    datas[iLast] = *ds;
-    */
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void PushData(DataSettings *ds, uint8 *dataA, uint8 *dataB)
-{
-    PrepareLastElemForWrite(ds);
-
-    // int numBytes = NUM_BYTES(ds);
-
-    if(dataA)
-    {
-        if (ENABLED_A(ds))
-        {
-//            CPU::RAM::MemCpy16(dataA, AddressChannel(ds, A), numBytes);
-        }
-    }
-    else
-    {
-        //CPU::RAM::MemSet_Sinch(AddressChannel(ds, A), NONE_VALUE, numBytes);  // Для режима поточечного вывода - заполняем одним значением
-    }
-
-    if(dataB)
-    {
-        if (ENABLED_B(ds))
-        {
-          //  CPU::RAM::MemCpy16(dataB, AddressChannel(ds, B), numBytes);
-        }
-    }
-    else
-    {
-        //CPU::RAM::MemSet_Sinch(AddressChannel(ds, B), NONE_VALUE, numBytes);  // Для режима поточечного вывода - заполянем одним значением
-    }
-
-    numElementsInStorage++;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -511,22 +353,10 @@ void Storage::CalculateSums()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Storage::AddData(uint8 *dataA, uint8 *dataB, DataSettings dss)
 {
-    if (!ENABLED_A(&dss) && !ENABLED_B(&dss))
-    {
-        return;
-    }
-
-    inFrameP2Pmode = false;
-
-    TIME_TIME(&dss) = CPU::RTC_::GetPackedTime();
-
-    CalculateLimits(dataA, dataB, &dss);
-
-    PushData(&dss, dataA, dataB);
-
-    CalculateSums();
-
-    //CalculateAroundAverage(dataA, dataB, &dss);
+    memcpy(IN_A, dataA, 16 * 1024);
+    memcpy(IN_B, dataB, 16 * 1024);
+    memcpy(&dataSet, &dss, sizeof(DataSettings));
+    empty = false;
 }
 
 
@@ -844,19 +674,15 @@ int Storage::GetFrameP2P_RAM(DataSettings **ds, uint8 **dataA, uint8 **dataB)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Storage::AddData(uint8 *dataA, uint8 *dataB)
+bool Storage::GetData(DataSettings *ds)
 {
-    memcpy(IN_A, dataA, 16 * 1024);
-    memcpy(IN_B, dataB, 16 * 1024);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Storage::GetData(uint8 **dataA, uint8 **dataB)
-{
-    memcpy(OUT_A, IN_A, 16 * 1024);
-    memcpy(OUT_B, IN_B, 16 * 1024);
-    *dataA = OUT_A;
-    *dataB = OUT_B;
+    if(!empty)
+    {
+        memcpy(OUT_A, IN_A, 16 * 1024);
+        memcpy(OUT_B, IN_B, 16 * 1024);
+        memcpy(ds, &dataSet, sizeof(DataSettings));
+    }
+    return !empty;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -10,11 +10,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void MemoryWindow::Draw()
 {
-    uint8 *data[2];
-
     DrawScreenArea();
-
-    Storage::GetData(&data[0], &data[1]);
 
     Chan chans[2] = {LAST_AFFECTED_CH_IS_A ? Chan(Chan::B) : Chan(Chan::A), LAST_AFFECTED_CH_IS_A ? Chan(Chan::A) : Chan(Chan::B)};
 
