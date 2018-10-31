@@ -497,7 +497,7 @@ static void OnRegSet_Function(int delta)
         static int sum = 0;
         sum -= delta;
 
-        float rShiftAbs = RSHIFT_2_ABS(SET_RSHIFT_MATH, SET_RANGE_MATH);
+        float rShiftAbs = MathFPGA::RShift2Abs(SET_RSHIFT_MATH, SET_RANGE_MATH);
 
         if (sum > 2)
         {

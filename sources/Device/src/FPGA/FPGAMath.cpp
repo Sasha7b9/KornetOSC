@@ -123,7 +123,7 @@ static const int voltsInPixelInt[] =   // Коэффициент 20000
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 float MathFPGA::VoltageCursor(float shiftCurU, Range range, uint16 rShift)
 {
-    return MaxVoltageOnScreen(range) - shiftCurU * voltsInPixel[range] - RSHIFT_2_ABS(rShift, range);
+    return MaxVoltageOnScreen(range) - shiftCurU * voltsInPixel[range] - RShift2Abs(rShift, range);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -152,7 +152,7 @@ void MathFPGA::PointsRel2Voltage(const uint8 *points, int numPoints, Range range
 {
     int voltInPixel = voltsInPixelInt[range];
     float maxVoltsOnScreen = MaxVoltageOnScreen(range);
-    float rShiftAbs = RSHIFT_2_ABS(rShift, range);
+    float rShiftAbs = RShift2Abs(rShift, range);
     int diff = (int)((MIN_VALUE * voltInPixel) + (maxVoltsOnScreen + rShiftAbs) * 20e3f);
     float koeff = 1.0f / 20e3f;
     for (int i = 0; i < numPoints; i++)
@@ -164,7 +164,7 @@ void MathFPGA::PointsRel2Voltage(const uint8 *points, int numPoints, Range range
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 MathFPGA::Voltage2Point(float voltage, Range range, uint16 rShift)
 {
-    int relValue = (int)((voltage + MaxVoltageOnScreen(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPoint[range].val + MIN_VALUE);
+    int relValue = (int)((voltage + MaxVoltageOnScreen(range) + RShift2Abs(rShift, range)) / voltsInPoint[range].val + MIN_VALUE);
     Math::Limitation<int>(&relValue, 0, 255);
     return (uint8)relValue;
 }
@@ -172,7 +172,7 @@ uint8 MathFPGA::Voltage2Point(float voltage, Range range, uint16 rShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float MathFPGA::Point2Voltage(uint8 value, Range range, uint16 rShift, bool log)
 {
-    float result = (((value)-MIN_VALUE) * voltsInPoint[(range)].val - MaxVoltageOnScreen((range)) - RSHIFT_2_ABS((rShift), (range)));
+    float result = (((value)-MIN_VALUE) * voltsInPoint[(range)].val - MaxVoltageOnScreen((range)) - RShift2Abs((rShift), (range)));
 
     if(log)
     {
@@ -186,7 +186,7 @@ float MathFPGA::Point2Voltage(uint8 value, Range range, uint16 rShift, bool log)
 void MathFPGA::PointsVoltage2Rel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points)
 {
     float maxVoltOnScreen = MaxVoltageOnScreen(range);
-    float rShiftAbs = RSHIFT_2_ABS(rShift, range);
+    float rShiftAbs = RShift2Abs(rShift, range);
     float voltInPixel = 1.0f / (voltsInPoint[range].val / ((MAX_VALUE - MIN_VALUE) / 200.0f));
 
     float add = maxVoltOnScreen + rShiftAbs;
@@ -468,4 +468,10 @@ int MathFPGA::RShift2Pixels(uint16 rShift, int heightGrid)
 float MathFPGA::MaxVoltageOnScreen(Range range)
 {
     return tableScalesRange[range] * 5.0f;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+float MathFPGA::RShift2Abs(int rShift, Range range)
+{
+    return -(RShift::ZERO - (int)rShift) * absStepRShift[range];
 }

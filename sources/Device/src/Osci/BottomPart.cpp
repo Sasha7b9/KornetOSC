@@ -182,7 +182,7 @@ int BottomPart::WriteChannel(Chan ch, int x, int y)
 
     CHAR_BUF(buf, 20);
 
-    Voltage(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch))).ToString(true, buf);
+    Voltage(MathFPGA::RShift2Abs(SET_RSHIFT(ch), SET_RANGE(ch))).ToString(true, buf);
 
     Painter::DrawText(x, y, buf);
 

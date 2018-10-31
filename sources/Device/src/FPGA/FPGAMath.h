@@ -2,7 +2,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define RSHIFT_2_ABS(rShift, range) (-(RShift::ZERO - ((int)(rShift))) * absStepRShift[(uint)(range)])
+
 
 #define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
 
@@ -15,6 +15,8 @@ extern const float absStepTShift[];
 class MathFPGA
 {
 public:
+
+    static float RShift2Abs(int rShift, Range range);
     /// Смещение относительно нулевого в пикселях экрана
     static int RShift2Pixels(uint16 rShift, int heightGrid);
 
