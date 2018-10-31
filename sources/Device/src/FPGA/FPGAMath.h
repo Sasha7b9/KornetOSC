@@ -2,8 +2,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define MAX_VOLTAGE_ON_SCREEN(range) (tableScalesRange[(range)] * 5.0f)
-
 #define RSHIFT_2_ABS(rShift, range) (-(RShift::ZERO - ((int)(rShift))) * absStepRShift[(uint)(range)])
 
 #define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
@@ -42,4 +40,6 @@ private:
     static void MultiplyToWindow(float *data, int numPoints);
 
     static void Normalize(float *data, int numPoints);
+    /// Возвращает напряжение, соответствующее верхней границе сетки
+    static float MaxVoltageOnScreen(Range range);
 };
