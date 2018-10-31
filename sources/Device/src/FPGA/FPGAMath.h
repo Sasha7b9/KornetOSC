@@ -2,11 +2,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//extern const float tableScalesRange[];
-//extern const float absStepRShift[];
-//extern const float absStepTShift[];
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class MathFPGA
 {
 public:
@@ -17,7 +12,7 @@ public:
 
     static float VoltageCursor(float shiftCurU, Range range, uint16 rShift);
 
-    static int RShift2Rel(float rShiftAbs, Range range);
+    static int RShift2Rel(float rShixftAbs, Range range);
 
     static float TimeCursor(float shiftCurT, TBase tBase);
 
@@ -25,7 +20,7 @@ public:
 
     static uint8 Voltage2Point(float voltage, Range range, uint16 rShift);
 
-    static float Point2Voltage(uint8 value, Range range, uint16 rShift, bool log = false);
+    static float Point2Voltage(uint8 value, Range range, uint16 rShift);
 
     static void PointsVoltage2Rel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points);
 

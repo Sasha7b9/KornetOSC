@@ -188,9 +188,7 @@ float CalculateVoltageMax(Chan ch)
         Measure::SetMarkerVoltage(ch, 0, max);      // Здесь не округляем, потому что max может быть только целым
     }
 
-    float result = MathFPGA::Point2Voltage(ROUND(uint8, max), RANGE_DS(ch), RSHIFT_DS(ch), ch.IsA());
-
-    return result;
+    return MathFPGA::Point2Voltage(ROUND(uint8, max), RANGE_DS(ch), RSHIFT_DS(ch));
 }
 
 

@@ -7,8 +7,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const float tableScalesRange[] = { 2e-3f, 5e-3f, 10e-3f, 20e-3f, 50e-3f, 100e-3f, 200e-3f, 500e-3f, 1.0f, 2.0f, 5.0f, 10.0f, 20.0f };
-
 const float absStepRShift[] =
 {
     2e-3f   / 20 / STEP_RSHIFT,
@@ -170,16 +168,9 @@ uint8 MathFPGA::Voltage2Point(float voltage, Range range, uint16 rShift)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float MathFPGA::Point2Voltage(uint8 value, Range range, uint16 rShift, bool log)
+float MathFPGA::Point2Voltage(uint8 value, Range range, uint16 rShift)
 {
-    float result = (((value)-MIN_VALUE) * voltsInPoint[(range)].val - MaxVoltageOnScreen((range)) - RShift2Abs((rShift), (range)));
-
-    if(log)
-    {
-        LOG_WRITE("%d %f", value, result);
-    }
-
-    return result;
+    return (value - MIN_VALUE) * voltsInPoint[range].val - MaxVoltageOnScreen(range) - RShift2Abs(rShift, range);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -467,7 +458,17 @@ int MathFPGA::RShift2Pixels(uint16 rShift, int heightGrid)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float MathFPGA::MaxVoltageOnScreen(Range range)
 {
-    return tableScalesRange[range] * 5.0f;
+    static const struct StructRange
+    {
+        float val;
+        StructRange(float v) : val(v) {}
+    }
+    table[Range::Number] =
+    {
+        2e-3f, 5e-3f, 10e-3f, 20e-3f, 50e-3f, 100e-3f, 200e-3f, 500e-3f, 1.0f, 2.0f, 5.0f, 10.0f, 20.0f
+    };
+
+    return table[range].val * 5.0f;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
