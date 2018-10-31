@@ -501,7 +501,7 @@ static void OnRegSet_Function(int delta)
 
         if (sum > 2)
         {
-            if (SET_RANGE_MATH < Range::Size - 1)
+            if (SET_RANGE_MATH < Range::Number - 1)
             {
                 SET_RANGE_MATH = (Range::E)((uint8)(SET_RANGE_MATH + 1));  // SET_RANGE_MATH++;
                 SET_RSHIFT_MATH = (uint16)RSHIFT_2_REL(rShiftAbs, SET_RANGE_MATH);

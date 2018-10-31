@@ -51,7 +51,7 @@ const char *Tables_RangeNameFromValue(Range range)
     {
         pString name;
         StructName(pString n) : name(n) {};
-    } names[Range::Size] =
+    } names[Range::Number] =
     {
         StructName("Range_2mV"),
         StructName("Range_5mV"),

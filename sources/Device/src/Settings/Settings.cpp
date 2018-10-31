@@ -286,7 +286,8 @@ pString Range::Name() const
             names[Language::RU] = nRU;
             names[Language::EN] = nEN;
         }
-    } names[Range::Size] =
+    }
+    names[Range::Number] =
     {
         StructRange("2ìÂ",  "2mV"),
         StructRange("5ìÂ",  "5mV"),

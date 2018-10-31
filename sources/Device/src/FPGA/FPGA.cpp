@@ -542,7 +542,7 @@ void FPGA::LoadSettings()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::IncreaseRange(Chan ch)
 {
-    Math::LimitationIncrease<uint8>((uint8 *)(&SET_RANGE(ch)), (uint8)(Range::Size - 1));
+    Math::LimitationIncrease<uint8>((uint8 *)(&SET_RANGE(ch)), (uint8)(Range::Number - 1));
     LoadRanges();
 }
 
@@ -630,7 +630,12 @@ static uint8 ValueForRange(Chan ch)
         return datas[ModeCouple::GND];
     }
 
-    static const uint16 values[Range::Size][Chan::Number] =
+    static const struct StructRange
+    {
+        uint16 val;
+        StructRange(uint16 v) : val(v) {}
+    }
+    values[Range::Number][2] =
     {   //             A                    B
         { BIN_U8(00100101), BIN_U8(00100101) },   // 2mV
         { BIN_U8(00100101), BIN_U8(00100101) },   // 5mV
@@ -647,7 +652,7 @@ static uint8 ValueForRange(Chan ch)
         { BIN_U8(00011001), BIN_U8(00011001) }    // 20V
     };
 
-    return (uint8)(values[SET_RANGE(ch)][ch] | datas[SET_COUPLE(ch)]);
+    return (uint8)(values[SET_RANGE(ch)][ch].val | datas[SET_COUPLE(ch)]);
 }
 
 #ifdef _WIN32
@@ -669,7 +674,7 @@ void FPGA::LoadRanges()
     {
         uint8 value;
         StructRange(uint8 v) : value(v) {};
-    } vals[Range::Size] =
+    } vals[Range::Number] =
     {
         StructRange(BIN_U8(00000000)),  // 2mV
         StructRange(BIN_U8(00000001)),  // 5mV

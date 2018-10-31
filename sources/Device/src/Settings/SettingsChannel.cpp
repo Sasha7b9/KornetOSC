@@ -10,7 +10,7 @@ static const struct RangeStruct
     pString nameEN;
     RangeStruct(pString nRU, pString nEN) : nameRU(nRU), nameEN(nEN) {};
 }
-ranges[Range::Size][2] =
+ranges[Range::Number][2] =
 {
     {RangeStruct("2\x10ìÂ",  "20\x10ìÂ"), RangeStruct("2\x10ìV",  "20\x10ìV")},
     {RangeStruct("5\x10ìÂ",  "50\x10ìÂ"), RangeStruct("5\x10mV",  "50\x10mV")},

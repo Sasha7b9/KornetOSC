@@ -40,7 +40,7 @@ struct Range
         _5V,
         _10V,
         _20V,
-        Size
+        Number
     } value;
     Range(E v = _2mV) : value(v) {};
     operator uint8() const { return (uint8)value; };

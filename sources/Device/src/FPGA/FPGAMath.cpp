@@ -62,19 +62,27 @@ const float absStepTShift[TBase::Number] =
 
 
 /// Столько вольт содержится в одной точке сигнала по вертикали
-const float voltsInPoint[Range::Size] =
+
+static const struct StructInPoints
 {
-    2e-3f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 2mV
-    5e-3f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 5mV
-    10e-3f  / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 10mV
-    20e-3f  / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 20mV
-    50e-3f  / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 50mV
-    100e-3f / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 100mV
-    200e-3f / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 200mV
-    500e-3f / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 500mV
-    1.0f    / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 1V
-    2.0f    / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),   // 2V
-    5.0f    / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE)    // 5V
+    float val;
+    StructInPoints(float v) : val(v) {};
+}
+voltsInPoint[Range::Number] =
+{
+    2e-3f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 2mV
+    5e-3f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 5mV
+    10e-3f  / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 10mV
+    20e-3f  / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 20mV
+    50e-3f  / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 50mV
+    100e-3f / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 100mV
+    200e-3f / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 200mV
+    500e-3f / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 500mV
+    1.0f    / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 1V
+    2.0f    / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 2V
+    5.0f    / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 5V
+    10.0f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE),    // 10V
+    20.0f   / 20 * Grid::Height() / (MAX_VALUE - MIN_VALUE)     // 20V
 };
 
 /// Столько вольт в одной точке экрана
@@ -156,15 +164,19 @@ void MathFPGA::PointsRel2Voltage(const uint8 *points, int numPoints, Range range
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 MathFPGA::Voltage2Point(float voltage, Range range, uint16 rShift)
 {
-    int relValue = (int)((voltage + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPoint[range] + MIN_VALUE);
+    int relValue = (int)((voltage + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPoint[range].val + MIN_VALUE);
     Math::Limitation<int>(&relValue, 0, 255);
     return (uint8)relValue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float MathFPGA::Point2Voltage(uint8 value, Range range, uint16 rShift)
+float MathFPGA::Point2Voltage(uint8 value, Range range, uint16 rShift, bool log)
 {
-    return (((value)-MIN_VALUE) * voltsInPoint[(range)] - MAX_VOLTAGE_ON_SCREEN((range)) - RSHIFT_2_ABS((rShift), (range)));
+    float result = (((value)-MIN_VALUE) * voltsInPoint[(range)].val - MAX_VOLTAGE_ON_SCREEN((range)) - RSHIFT_2_ABS((rShift), (range)));
+
+
+
+    return result;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -172,7 +184,7 @@ void MathFPGA::PointsVoltage2Rel(const float *voltage, int numPoints, Range rang
 {
     float maxVoltOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
     float rShiftAbs = RSHIFT_2_ABS(rShift, range);
-    float voltInPixel = 1.0f / (voltsInPoint[range] / ((MAX_VALUE - MIN_VALUE) / 200.0f));
+    float voltInPixel = 1.0f / (voltsInPoint[range].val / ((MAX_VALUE - MIN_VALUE) / 200.0f));
 
     float add = maxVoltOnScreen + rShiftAbs;
 
