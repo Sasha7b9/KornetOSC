@@ -211,7 +211,7 @@ void MathFPGA::PointsVoltage2Rel(const float *voltage, int numPoints, Range rang
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float MathFPGA::TShift2Abs(uint16 tShift, TBase tBase)
+float MathFPGA::TShift2Abs(int tShift, TBase tBase)
 {
     return absStepTShift[tBase] * tShift;
 }

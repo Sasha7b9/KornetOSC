@@ -73,5 +73,5 @@ char *TShift::ToString(TBase tBase, char buffer[20]) const
 {
     int val = value;    /// \todo ¬ этом месте страшенный глюк - без этого промежуточного присваивани€ вылетает
     
-    return Time(absStepTShift[tBase] * val).ToString(true, buffer);
+    return Time(MathFPGA::TShift2Abs(val, tBase)).ToString(true, buffer);
 }

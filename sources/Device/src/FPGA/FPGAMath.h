@@ -2,14 +2,9 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-#define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const float tableScalesRange[];
-extern const float absStepRShift[];
-extern const float absStepTShift[];
+//extern const float tableScalesRange[];
+//extern const float absStepRShift[];
+//extern const float absStepTShift[];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class MathFPGA
@@ -36,8 +31,7 @@ public:
 
     static void CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1);
 
-    static float TShift2Abs(uint16 tShift, TBase tBase);
-
+    static float TShift2Abs(int tShift, TBase tBase);
 private:
     static void MultiplyToWindow(float *data, int numPoints);
 
