@@ -556,7 +556,7 @@ void FPGA::DecreaseRange(Chan ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::IncreaseTBase()
 {
-    Math::LimitationIncrease<uint8>((uint8 *)(&SET_TBASE), (uint8)(TBase::Size - 1));
+    Math::LimitationIncrease<uint8>((uint8 *)(&SET_TBASE), (uint8)(TBase::Number - 1));
     LoadTBase();
     Start();
 }
@@ -808,7 +808,7 @@ void FPGA::SetRShift(Chan ch, uint16 rShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTBase()
 {
-    static const uint8 values[TBase::Size] =
+    static const uint8 values[TBase::Number] =
     {
         BIN_U8(00000000),    // 2ns     1       200MHz
         BIN_U8(00000000),    // 5ns     1       200MHz

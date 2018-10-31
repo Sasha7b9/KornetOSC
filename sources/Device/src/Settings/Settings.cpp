@@ -309,7 +309,7 @@ pString Range::Name() const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString TBase::Name() const
 {
-    static pString names[TBase::Size][Language::Number] =
+    static pString names[TBase::Number][Language::Number] =
     {
         {"2нс",     "2ns"},
         {"5нс",     "5ns"},

@@ -70,7 +70,7 @@ void TShift::Set(int tShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 char *TShift::ToString(TBase tBase, char buffer[20]) const
 {
-    static const float timeInPoint[TBase::Size] =
+    static const float timeInPoint[TBase::Number] =
     {
         /* 2 нс    */   2e-9f / 20,
         /* 5 нс    */   5e-9f / 20,

@@ -31,7 +31,7 @@ pString TBase::ToString() const
             name[Language::EN] = nEN;
         };
     }
-    tBases[TBase::Size] =
+    tBases[TBase::Number] =
     {
         StructTBase("2\x10нс",     "2\x10ns"),
         StructTBase("5\x10нс",     "5\x10ns"),

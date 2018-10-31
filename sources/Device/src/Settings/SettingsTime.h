@@ -56,7 +56,7 @@ struct TBase
         _2s,
         _5,
         _10s,
-        Size
+        Number
     } value;
     TBase(E v = _2ns) : value(v) {};
     operator uint8() const { return (uint8)value; };
