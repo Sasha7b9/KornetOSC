@@ -154,7 +154,7 @@ void PainterData::DrawChannel(Chan ch, uint8 *data)
             for (int i = 0; i < 280; i++)
             {
                 float value = center - (data[i] - AVE_VALUE) * scale;
-                Painter::SetPoint(left + i, (uint8)ROUND(value));
+                Painter::SetPoint(left + i, ROUND(uint8, value));
             }
         }
     }

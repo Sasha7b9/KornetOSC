@@ -8,9 +8,6 @@
 
 #define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
 
-#define TSHIFT_2_ABS(tShift, tBase)  (absStepTShift[(tBase)] * (tShift))
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const float tableScalesRange[];
 extern const float absStepRShift[];
@@ -38,6 +35,8 @@ public:
     static void PointsVoltage2Rel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points);
 
     static void CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1);
+
+    static float TShift2Abs(uint16 tShift, TBase tBase);
 
 private:
     static void MultiplyToWindow(float *data, int numPoints);

@@ -13,8 +13,8 @@
 #define SET_MAX_IF_LARGER(x, max)           if((x) > (max)) { (max) = (x); }
 
 #define LIMITATION_BOUND(var, min, max)     if((var) < (min)) { (min) = (var); }; if((var) > (max)) { (max) = (var); };
-
-#define ROUND(x) ((x) += 0.5f, (x))
+/// \todo Это выражение неправильно работает с отрицательными числами
+#define ROUND(type, x) ((type)(x + 0.5f))
 
 #define SET_IF_LARGER(x, max, newValue)     if((x) > (max)) { (x) = (newValue); }
 
