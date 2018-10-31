@@ -337,7 +337,7 @@ void FrequencyCounter::Draw()
 #define OVERFLOW_STRING ">>>"
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-pString FrequencyCounter::PeriodSetToStringNew(const BitSet32 *pr)
+pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
 {
     if (pr->word == 0)
     {
@@ -435,57 +435,127 @@ int FrequencyCounter::LowOrder(FreqClc freqCLC, NumberPeriods numPeriods)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-pString FrequencyCounter::PeriodSetToString(const BitSet32 *pr)
+pString FrequencyCounter::StackToString(Stack<uint> *stack, int order)
 {
-
-
-
-    Hex value(pr->word);
-
-    while(value.NumDigits() > 6)
+    if(order == -10)
     {
-        value.Set(value / 10);
+        if(stack->NumFirstZeros()< 2)
+        {
+            WriteStackToBuffer(stack, 2, "мкс");
+        }
+        else
+        {
+            WriteStackToBuffer(stack, 5, "нс");
+        }
     }
-
-    /*
-    +----------+-----------+------------+------------+------------+
-    | 1к√ц 1мс | 100 к√ц   | 1 ћ√ц      | 10 ћ√ц     | 100 ћ√ц    |
-    +----------+-----------+------------+------------+------------+
-    | 1        |    1e2    |     1e3    |     1e4    |     1e5    | - считанное значение
-    |          |   1.00 мс |   1.000 мс |  1.0000 мс | 1.00000 мс | - представление на дисплее
-    |          |    1e7    |     1e6    |     1e5    |     1e4    | - на какое число умножить, чтобы получить количество пикосекунд в считанном
-    +----------+-----------+------------|------------+------------+   значении
-    | 10       |    1e3    |     1e4    |     1e5    |     1e6    |
-    |          |  1.000 мс |  1.0000 мс | 1.00000 мс | 1.00000 мс |
-    |          |    1e6    |     1e5    |     1e4    |     1e3    |
-    +----------+-----------+------------+------------+------------+
-    | 100      |    1e4    |     1e5    |     1e6    |     1e7    |
-    |          | 1.0000 мс | 1.00000 мс | 1.00000 мс | 1.00000 мс |
-    |          |    1e5    |     1e4    |     1e3    |     1e2    |
-    +----------+-----------+------------+------------+------------+
-    */
-
-    /*
-    static const uint64 k[FrequencyCounter::NumberPeriods::Number][FrequencyCounter::FreqClc::Number] =
+    else if(order == -9)
     {
-        {10 * 1000 * 1000, 1000 * 1000, 100 * 1000, 10 * 1000},
-        {     1000 * 1000,  100 * 1000,  10 * 1000,      1000},
-        {      100 * 1000,   10 * 1000,       1000,       100}
-    };
-    */
-
-    // ѕолучаем количество пикосекунд
-    //    uint64 numPS = ticks * k[FREQ_METER_NUM_PERIODS][FREQ_METER_FREQ_CLC];
-
-    for(int i = 0; i < 7; i++)
+        if(stack->NumFirstZeros() < 3)
+        {
+            WriteStackToBuffer(stack, 3, "мкс");
+        }
+        else
+        {
+            WriteStackToBuffer(stack, 6, "нс");
+        }
+    }
+    else if(order == -8)
     {
-        buffer[i] = value.DigitInPosition(6 - i);
+        if(stack->NumFirstZeros() < 1)
+        {
+            WriteStackToBuffer(stack, 1, "мс");
+        }
+        else
+        {
+            WriteStackToBuffer(stack, 4, "мкс");
+        }
+    }
+    else if (order == -7)
+    {
+        if(stack->NumFirstZeros() < 2)
+        {
+            WriteStackToBuffer(stack, 2, "мс");
+        }
+        else
+        {
+            WriteStackToBuffer(stack, 5, "мкс");
+        }
+    }
+    else if (order == -6)
+    {
+        if(stack->NumFirstZeros() < 3)
+        {
+            WriteStackToBuffer(stack, 3, "мс");
+        }
+        else
+        {
+            WriteStackToBuffer(stack, 6, "мкс");
+        }
+    }
+    else if (order == -5)
+    {
+        if(stack->NumFirstZeros() < 1)
+        {
+            WriteStackToBuffer(stack, 1, "с");
+        }
+        else
+        {
+            WriteStackToBuffer(stack, 4, "мс");
+        }
+    }
+    else if (order == -4)
+    {
+        if(stack->NumFirstZeros() < 2)
+        {
+            WriteStackToBuffer(stack, 2, "с");
+        }
+        else
+        {
+            WriteStackToBuffer(stack, 5, "мс");
+        }
+    }
+    else if (order == -3)
+    {
+        if(stack->NumFirstZeros() < 3)
+        {
+            WriteStackToBuffer(stack, 3, "с");
+        }
+        else
+        {
+            WriteStackToBuffer(stack, 6, "мс");
+        }
+    }
+    else if (order == -2)
+    {
+        WriteStackToBuffer(stack, 4, "с");
+    }
+    else if (order == -1)
+    {
+        WriteStackToBuffer(stack, 5, "c");
+    }
+    else
+    {
+        WriteStackToBuffer(stack, 6, "c");
     }
 
     return buffer;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void FrequencyCounter::WriteStackToBuffer(Stack<uint> *stack, int point, char *suffix)
+{
+    for(int i = 6; i >= 0; i--)
+    {
+        if(point == i)
+        {
+            buffer[i] = '.';
+            continue;
+        }
+        buffer[i] = ((char)stack->Pop() | 0x30);
+    }
 
+    strcpy(&buffer[7], suffix);
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 pString FrequencyCounter::FreqSetToString(const BitSet32 *fr)
