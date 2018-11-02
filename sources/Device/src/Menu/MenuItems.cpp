@@ -60,7 +60,7 @@ Control *Page::Item(int numElement) const
         return 0;
     }
 
-    return (Control *)items[numElement + (isPageSB ? 1 : 0)];
+    return (Control *)items[numElement];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -319,12 +319,6 @@ void Control::ShortPress()
             choice->funcOnChanged(false);
         }
     }
-    else if(type == Control::Type::SmallButton)
-    {
-        SButton *button = (SButton *)this;
-        button->funcOnPress();
-        Menu::itemUnderKey = this;
-    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -350,12 +344,6 @@ void Control::LongPress()
     }
     else if(type == Control::Type::Formula)
     {
-    }
-    else if(type == Control::Type::SmallButton)
-    {
-        SButton *button = (SButton *)this;
-        button->funcOnPress();
-        Menu::itemUnderKey = this;
     }
     else
     {

@@ -333,15 +333,6 @@ void TimeControl::SelectNextPosition()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MACaddress::ChangeValue(int delta)
-{
-    uint8 *value = mac0 + gCurDigit;
-    *value += delta > 0 ? 1 : -1;
-    Sound::GovernorChangedValue();
-    DISPLAY_SHOW_WARNING(Warning::NeedRebootDevice);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void TimeControl::DecCurrentPosition()
 {
     Sound::GovernorChangedValue();
@@ -388,65 +379,4 @@ void GovernorColor::ChangeValue(int delta)
     }
 
     Color::InitGlobalColors();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void IPaddress::NextPosition()
-{
-    Math::CircleIncrease<int8>(&gCurDigit, 0, port == 0 ? 11 : 16);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void IPaddress::ChangeValue(int delta)
-{
-    int numByte = 0;
-    int numPos = 0;
-
-    GetNumPosIPvalue(&numByte, &numPos);
-
-    int oldValue = 0;
-
-    if (numByte < 4)
-    {
-        uint8 *bytes = ip0;
-        oldValue = bytes[numByte];
-    }
-    else
-    {
-        oldValue = *port;
-    }
-
-    int newValue = oldValue + Math::Sign(delta) * Math::Pow10(numPos);
-    LIMITATION(newValue, 0, numByte == 4 ? 65535 : 255);
-
-    if (oldValue != newValue)
-    {
-        if (numByte == 4)
-        {
-            *port = (uint16)newValue;
-        }
-        else
-        {
-            ip0[numByte] = (uint8)newValue;
-        }
-        Sound::GovernorChangedValue();
-        DISPLAY_SHOW_WARNING(Warning::NeedRebootDevice);
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void IPaddress::GetNumPosIPvalue(int *numIP, int *selPos)
-{
-    if (gCurDigit < 12)
-    {
-        *numIP = gCurDigit / 3;
-        *selPos = 2 - (gCurDigit - (*numIP * 3));
-    }
-    else
-    {
-        *numIP = 4;
-        *selPos = 4 - (gCurDigit - 12);
-    }
-
-
 }

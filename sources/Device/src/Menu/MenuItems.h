@@ -22,8 +22,7 @@ extern int8 gCurDigit;
 #define COMMON_PART_MENU_ITEM                                                                           \
     uint8           type;           /* Тип итема */                                                     \
     int8            num;            /* Число вариантов для Choice или число контролов для Page*/        \
-    bool            isPageSB;       /* Если true, то это страница малых кнопок */                       \
-    uint8           name;           /* Имя из перечисления Page::Name */                                  \
+    uint8           name;           /* Имя из перечисления Page::Name */                                \
     const PageBase  *keeper;        /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
     pFuncBV         funcOfActive;   /* Активен ли данный элемент */                                     \
     const char      *titleHint[4]   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
@@ -87,7 +86,6 @@ public:
             GovernorColor, ///< Позволяет выбрать цвет.
             Formula,       ///< Позволяет выбрать знак и коэффициенты для математической формулы (умножение и сложение)
             ChoiceReg,     ///< Элемент выбора, в котором выбор осуществляется не кнопкой, а ручкой
-            SmallButton,   ///< Кнопка для режима малых кнопок
             ChoiceParameter,
             Number
         } value;
@@ -111,9 +109,6 @@ public:
     pFuncVI  funcRegSetSB;                  ///< В странице малых кнопок вызывается при повороте ручки установка
     bool CurrentItemIsOpened() const;
 };
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-#define SMALL_BUTTON_FROM_PAGE(page, numButton)     ((SButton *)((Page *)page)->items[numButton])
 
 class Page : public Control
 {
@@ -255,37 +250,6 @@ public:
     void Draw(int x, int y);
 };
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SButton ///
-struct StructHelpSmallButton
-{
-    pFuncVII    funcDrawUGO;    ///< Указатель на функцию отрисовки изображения варианта кнопки
-    pString     helpUGO[2];     ///< Подпись к данному изображению.
-};
-
-
-/// Описывает кнопку для дополнительного режима меню.
-class SButtonBase
-{
-public:
-    COMMON_PART_MENU_ITEM;
-    pFuncVV                         funcOnPress;    ///< Эта функция вызвается для обработки нажатия кнопки.
-    pFuncVII                        funcForDraw;    ///< Эта функция вызывается для отрисовки кнопки в месте с координатами x, y.
-    const StructHelpSmallButton    *hintUGO;
-    int                             numHints;
-};
-
-
-class SButton : public Control
-{
-public:
-    pFuncVV                         funcOnPress;    ///< Эта функция вызвается для обработки нажатия кнопки.
-    pFuncVII                        funcForDraw;    ///< Эта функция вызывается для отрисовки кнопки в месте с координатами x, y.
-    const StructHelpSmallButton    *hintUGO; 
-    int                             numHints;
-    void Draw(int x, int y);
-    void DrawHints(int x, int y, int width);
-};
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Governor ///
 /// Описывает регулятор.
 class GovernorBase
@@ -366,71 +330,6 @@ public:
     /// Возвращает цвет, которым нужно заполнять участок выбора
     static Color ColorMenuField(const Choice *choice);
 };
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IPaddress ///
-class IPaddressBase
-{
-public:
-    COMMON_PART_MENU_ITEM;
-    uint8 *ip0;
-    uint8 *ip1;
-    uint8 *ip2;
-    uint8 *ip3;
-    pFuncVB funcOfChanged;
-    uint16 *port;
-};
-
-class IPaddress : public Control
-{
-public:
-    uint8 *ip0;
-    uint8 *ip1;
-    uint8 *ip2;
-    uint8 *ip3;
-    pFuncVB funcOfChanged;
-    uint16 *port;
-    void NextPosition();                            ///< При открытом элементе переставляет курсор на следующую позицию.
-    void ChangeValue(int delta);                    ///< Изменяет значение в текущей позиции при открытом элементе.
-    void GetNumPosIPvalue(int *numIP, int *selPos); ///< Возвращает номер текущего байта (4 - номер порта) и номер текущей позиции в байте.
-    void Draw(int x, int y, bool opened);
-    void DrawOpened(int x, int y);
-    void DrawClosed(int x, int y);
-    void DrawValue(int x, int y);
-    void DrawLowPart(int x, int y, bool pressed, bool shade);
-};
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MACaddress ///
-class MACaddressBase
-{
-public:
-    COMMON_PART_MENU_ITEM;
-    uint8 *mac0;
-    uint8 *mac1;
-    uint8 *mac2;
-    uint8 *mac3;
-    uint8 *mac4;
-    uint8 *mac5;
-    pFuncVB funcOfChanged;
-};
-
-class MACaddress : public Control
-{
-public:
-    uint8 *mac0;
-    uint8 *mac1;
-    uint8 *mac2;
-    uint8 *mac3;
-    uint8 *mac4;
-    uint8 *mac5;
-    pFuncVB funcOfChanged;
-    void ChangeValue(int delta);
-    void Draw(int x, int y, bool opened);
-    void DrawOpened(int x, int y);
-    void DrawClosed(int x, int y);
-    void DrawValue(int x, int y);
-    void DrawLowPart(int x, int y, bool pressed, bool shade);
-};
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// GovernorColor ///
 class ColorType;

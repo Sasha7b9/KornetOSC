@@ -947,7 +947,7 @@ static void Draw_SerialNumber_Change(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_SMALL_BUTTON(   bSerialNumber_Change,                                                                           //--- ОТЛАДКА - С/Н - Вставить ---
+DEF_GPAPH_BUTTON(   bSerialNumber_Change,                                                                           //--- ОТЛАДКА - С/Н - Вставить ---
     "Вставить", "Insert",
     "Вставляет выбраный символ",
     "Inserts the chosen symbol",
@@ -976,7 +976,7 @@ static void Draw_SerialNumber_Save(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_SMALL_BUTTON(   bSerialNumber_Save,                                                                            //--- ОТЛАДКА - С/Н - Сохранить ---
+DEF_GPAPH_BUTTON(   bSerialNumber_Save,                                                                            //--- ОТЛАДКА - С/Н - Сохранить ---
     "Сохранить", "Save",
     "Записывает серийный номер в OTP",
     "Records the serial number in OTP",

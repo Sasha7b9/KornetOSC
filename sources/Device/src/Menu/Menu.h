@@ -56,8 +56,6 @@ public:
     static void RunAfterUpdate(pFuncVV func);
     /// Возвращает адрес открытого элемента меню
     static Control *OpenedItem();
-    /// Если true - меню находится в дополнительном режиме.
-    static bool IsMinimize();
 
     static Page::Name GetNameOpenedPage();
 
@@ -68,8 +66,6 @@ public:
     static void CloseOpenedItem();
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
     static void ChangeItem(Control *item, int delta);
-    /// Вернуть указатель на малую кнопку, соответствующую данной кнопки панели.
-    static const SButton* GetSmallButton(Key button);
 
     static void SetItemForHint(void *item);
 
@@ -116,10 +112,6 @@ private:
     static void ProcessButtonForHint(Key button);
     
     static void ShortPress_ChoiceReg(void *choice);
-    
-    static void ShortPress_IP(void *item);
-    
-    static void ShortPress_MAC(void *item);
     
     static void ResetItemsUnderButton();
     /// Возвращает true, если данная кнопка обрабатыватся в данном режиме
