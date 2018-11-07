@@ -412,7 +412,7 @@ static void Draw_Function_RangeA(int x, int y)
     Painter::DrawChar(x + 8, y + 5, '1');
 }
 
-DEF_GPAPH_BUTTON(   bFunction_RangeA,                                                                 //--- СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала ---
+DEF_SMALL_BUTTON(   bFunction_RangeA,                                                                 //--- СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала ---
     "Масштаб 1-го канала", "Scale of the 1st channel",
     "Использует масштаб первого канала для отображения результата",
     "Takes scale for a mathematical signal from the first channel",
@@ -431,7 +431,7 @@ static void Draw_Function_RangeB(int x, int y)
     Painter::DrawChar(x + 8, y + 5, '2');
 }
 
-DEF_GPAPH_BUTTON(   bFunction_RangeB,                                                                 //--- СЕРВИС - ФУНКЦИЯ - Масштаб 2-го канала ---
+DEF_SMALL_BUTTON(   bFunction_RangeB,                                                                 //--- СЕРВИС - ФУНКЦИЯ - Масштаб 2-го канала ---
     "Масштаб 2-го канала", "Scale of the 2nd channel",
     "Использует масштаб второго канала для отображения результата",
     "Takes scale for a mathematical signal from the second channel",

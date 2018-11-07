@@ -126,7 +126,7 @@ static void Draw_Last_Next(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bLast_Next,                                                                               //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Следующий ---
+DEF_SMALL_BUTTON(   bLast_Next,                                                                               //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Следующий ---
     "Следующий", "Next",
     "Перейти к следующему сигналу",
     "Go to the next signal",
@@ -146,7 +146,7 @@ static void Draw_Last_Prev(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bLast_Prev,                                                                              //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Предыдущий ---
+DEF_SMALL_BUTTON(   bLast_Prev,                                                                              //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Предыдущий ---
     "Предыдущий", "Previous",
     "Перейти к предыдущему сигналу",
     "Go to the previous signal",
@@ -172,7 +172,7 @@ static void Draw_Last_SaveToROM(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bLast_SaveToROM,                                                                           //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Внутр ЗУ ---
+DEF_SMALL_BUTTON(   bLast_SaveToROM,                                                                           //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Внутр ЗУ ---
     "Внутр ЗУ", "Internal storage",
     "Нажмите эту кнопку, чтобы сохранить сигнал во внутреннем запоминающем устройстве",
     "Press this button to keep a signal in an internal memory",
@@ -196,7 +196,7 @@ static void Draw_Last_SaveToDrive(int x, int y)
     }
 }
 
-DEF_GPAPH_BUTTON(   bLast_SaveToDrive,                                                                        //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить ---
+DEF_SMALL_BUTTON(   bLast_SaveToDrive,                                                                        //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить ---
     "Сохранить", "Save",
     "Кнопка становится доступна при присоединённом внешнем ЗУ. Позволяет сохранить сигнал на внешем ЗУ",
     "Click this button to save the signal on the external FLASH",
@@ -274,7 +274,7 @@ static void Draw_Drive_Manager_Tab(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bDrive_Manager_Tab,                                                                    //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Tab ---
+DEF_SMALL_BUTTON(   bDrive_Manager_Tab,                                                                    //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Tab ---
     "Tab", "Tab",
     "Переход между каталогами и файлами",
     "The transition between the directories and files",
@@ -289,7 +289,7 @@ static void Draw_Drive_Manager_LevelUp(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bDrive_Manager_LevelUp,                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выйти из каталога ---
+DEF_SMALL_BUTTON(   bDrive_Manager_LevelUp,                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выйти из каталога ---
     "Выйти из каталого", "Leave from directory",
     "Переход в родительский каталог",
     "Transition to the parental catalog",
@@ -304,7 +304,7 @@ static void Draw_Drive_Manager_LevelDown(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bDrive_Manager_LevelDown,                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог ---
+DEF_SMALL_BUTTON(   bDrive_Manager_LevelDown,                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог ---
     "Войти в каталог", "Enter in directory",
     "Переход в выбранный каталог",
     "Transition to the chosen catalog",
@@ -379,7 +379,7 @@ static void Draw_Drive_Mask_Delete(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bDrive_Mask_Delete,                                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Удалить ---
+DEF_SMALL_BUTTON(   bDrive_Mask_Delete,                                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Удалить ---
     "Удалить", "Delete",
     "Удаляет все введённые символы",
     "Deletes all entered symbols",
@@ -410,7 +410,7 @@ static void Draw_Drive_Mask_Backspace(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bDrive_Mask_Backspace,                                                             //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Backspace ---
+DEF_SMALL_BUTTON(   bDrive_Mask_Backspace,                                                             //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Backspace ---
     "Backspace", "Backspace",
     "Удаляет последний введённый символ",
     "Deletes the last entered symbol",
@@ -461,7 +461,7 @@ static void Draw_Drive_Mask_Insert(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bDrive_Mask_Insert,                                                                 //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить ---
+DEF_SMALL_BUTTON(   bDrive_Mask_Insert,                                                                 //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить ---
     "Вставить", "Insert",
     "Вставляет выбранный символ",
     "Inserts the chosen symbol",
@@ -864,7 +864,7 @@ static void Draw_Internal_Delete(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bInternal_Delete,                                                                            //--- ПАМЯТЬ - ВНУТР ЗУ - Удалить ---
+DEF_SMALL_BUTTON(   bInternal_Delete,                                                                            //--- ПАМЯТЬ - ВНУТР ЗУ - Удалить ---
     "Удалить", "Delete",
     "Удаляет выбранный сигнал из внутреннего запоминающего устройства",
     "Removes the selected signal from the internal storage device",
@@ -899,7 +899,7 @@ static void Draw_Internal_SaveToMemory(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bInternal_SaveToMemory,                                                           //--- ПАМЯТЬ - ВНУТР ЗУ - Сохранить в памяти ---
+DEF_SMALL_BUTTON(   bInternal_SaveToMemory,                                                           //--- ПАМЯТЬ - ВНУТР ЗУ - Сохранить в памяти ---
     "Сохранить в памяти", "Save to memory",
     "Сохранить сигнал во внутреннем запоминующем устройстве",
     "To keep a signal in an internal memory",
@@ -923,7 +923,7 @@ static void Draw_Internal_SaveToDrive(int x, int y)
     }
 }
 
-DEF_GPAPH_BUTTON(   bInternal_SaveToDrive,                                                           //--- ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку ---
+DEF_SMALL_BUTTON(   bInternal_SaveToDrive,                                                           //--- ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку ---
     "Сохранить на флешку", "Save to disk",
     "Сохраняет сигнал на флешку",
     "Save signal to flash drive",
@@ -1018,7 +1018,7 @@ static void OnPress_SetName_Exit()
 }
 
 // Кнопк для выхода из режима задания имени сохраняемому сигналу. Одновременно кнопка отказа от сохранения
-DEF_GPAPH_BUTTON(   bSetName_Exit,                                                                                            // ИМЯ ФАЙЛА - Выход ///
+DEF_SMALL_BUTTON(   bSetName_Exit,                                                                                            // ИМЯ ФАЙЛА - Выход ///
     "Выход", "Exit",
     "Отказ от сохранения",
     "Failure to save",
@@ -1038,7 +1038,7 @@ static void Draw_SetName_Delete(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bSetName_Delete,                                                                                     //--- ИМЯ ФАЙЛА - Удалить ---
+DEF_SMALL_BUTTON(   bSetName_Delete,                                                                                     //--- ИМЯ ФАЙЛА - Удалить ---
     "Удалить", "Delete",
     "Удаляет все введённые символы",
     "Deletes all entered characters",
@@ -1062,7 +1062,7 @@ static void Draw_SetName_Backspace(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bSetName_Backspace,                                                                                //--- ИМЯ ФАЙЛА - Backspace ---
+DEF_SMALL_BUTTON(   bSetName_Backspace,                                                                                //--- ИМЯ ФАЙЛА - Backspace ---
     "Backspace", "Backspace",
     "Удаляет последний символ",
     "Delete the last character",
@@ -1087,7 +1087,7 @@ static void Draw_SetName_Insert(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(   bSetName_Insert,                                                                                    //--- ИМЯ ФАЙЛА - Вставить ---
+DEF_SMALL_BUTTON(   bSetName_Insert,                                                                                    //--- ИМЯ ФАЙЛА - Вставить ---
     "Вставить", "Insert",
     "Вводит очередной символ",
     "Print the next character",
@@ -1114,7 +1114,7 @@ static void Draw_SetName_Save(int x, int y)
     }
 }
 
-DEF_GPAPH_BUTTON(bSetName_Save,                                                                                     //--- ИМЯ ФАЙЛА - Сохранить ---
+DEF_SMALL_BUTTON(bSetName_Save,                                                                                     //--- ИМЯ ФАЙЛА - Сохранить ---
     "Сохранить", "Save",
     "Сохранение на флеш под заданным именем",
     "Saving to flashdrive with the specified name",

@@ -233,7 +233,7 @@ static void Draw_Set_100(int x, int y)
 }
 
 // Установка 100 процентов в текущие места курсоров.
-DEF_GPAPH_BUTTON(bSet_100,                                                                           //--- ИЗМЕРЕНИЯ - КУРСОРЫ - УСТАНОВИТЬ - 100% ---
+DEF_SMALL_BUTTON(bSet_100,                                                                           //--- ИЗМЕРЕНИЯ - КУРСОРЫ - УСТАНОВИТЬ - 100% ---
     "100%", "100%",
     "Используется для процентных измерений. Нажатие помечает расстояние между активными курсорами как 100%",
     "It is used for percentage measurements. Pressing marks distance between active cursors as 100%",

@@ -71,6 +71,11 @@ DEF_CHOICE_3(cFFT_Range,                                                        
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(bFFT_Cursors_Exit,                                                                  //--- ФУНКЦИЯ - СПЕКТР - КУРСОРЫ - Выход ---
+    pppFFT_Cursors, FuncActive, OnPressSB_Exit, DrawSB_Exit
+)
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_FFT_Cursors_Source()
 {
     MATH_CURRENT_CUR = (uint8)((MATH_CURRENT_CUR + 1) % 2);
@@ -81,7 +86,7 @@ static void Draw_FFT_Cursors_Source(int x, int y)
     Painter::DrawText(x + 7, y + 5, MATH_CURRENT_CUR_IS_0 ? "1" : "2");
 }
 
-DEF_GPAPH_BUTTON(bFFT_Cursors_Source,                                                                  //--- ФУНКЦИЯ - СПЕКТР - КУРСОРЫ - Источник ---
+DEF_SMALL_BUTTON(bFFT_Cursors_Source,                                                                  //--- ФУНКЦИЯ - СПЕКТР - КУРСОРЫ - Источник ---
     "Источник", "Source",
     "Выбор источника для расчёта спектра",
     "Source choice for calculation of a range",

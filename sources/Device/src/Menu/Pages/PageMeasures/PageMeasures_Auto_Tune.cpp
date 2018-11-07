@@ -29,7 +29,7 @@ static void Draw_Tune_Markers(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(bTune_Markers,                                                                            //--- ИЗМЕРЕНИЯ - НАСТРОИТЬ - Маркер ---
+DEF_SMALL_BUTTON(bTune_Markers,                                                                            //--- ИЗМЕРЕНИЯ - НАСТРОИТЬ - Маркер ---
     "Маркер", "Marker",
     "Позволяет установить маркеры для визуального контроля измерений",
     "Allows to establish markers for visual control of measurements",
@@ -53,7 +53,7 @@ static void Draw_Tune_Settings(int x, int y)
     Painter::SetFont(Font::Type::_8);
 }
 
-DEF_GPAPH_BUTTON(bTune_Settings,                                                                        //--- ИЗМЕРЕНИЯ - НАСТРОИТЬ - Настройка ---
+DEF_SMALL_BUTTON(bTune_Settings,                                                                        //--- ИЗМЕРЕНИЯ - НАСТРОИТЬ - Настройка ---
     "Настройка", "Setup",
     "Позволяет выбрать необходимые измерения",
     "Allows to choose necessary measurements",

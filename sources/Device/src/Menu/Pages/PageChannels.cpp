@@ -29,6 +29,12 @@ static const char chanCoupleEn[] =  "Sets a type of communication with a signal 
                                     "2. \"DC\" - closed input.\n"
                                     "3. \"Ground\" - input is connected to the ground.";
 
+//static const char chanInverseRu[] = "При \"Вкл\" сигнал на экране будет симметрично отражён относительно U = 0В.";
+//static const char chanInverseEn[] = "When \"Enable\" signal on the screen will be reflected symmetrically with respect to U = 0V.";
+
+//static const char chanDividerRu[] = "Ослабление сигнала:\n\"Выкл\" - сигнал не ослабляется.\n\"x10\" - сигнал ослабляется в 10 раз";
+//static const char chanDividerEn[] = "Attenuation: \n\"Off\" - the signal is not attenuated.\n\"x10\" - the signal is attenuated by 10 times";
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PageChannelA::OnChanged_Input(bool)
 {

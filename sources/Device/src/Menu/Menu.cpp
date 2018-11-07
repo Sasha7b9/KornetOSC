@@ -391,10 +391,17 @@ void Menu::ProcessingLongPressureButton()
         }
         else if(button == (Key::Enter))
         {
-            Show(!Menu::IsShown());
-            if (NOT_PAGE(item))
+            if (IS_PAGE_SB(OpenedItem()))
             {
-                TemporaryEnableStrNavi();
+                CloseOpenedItem();
+            }
+            else
+            {
+                Show(!Menu::IsShown());
+                if (NOT_PAGE(item))
+                {
+                    TemporaryEnableStrNavi();
+                }
             }
         }
         else if(Menu::IsShown() && button.IsFunctional())
@@ -468,6 +475,24 @@ void Menu::ShortPress_ChoiceReg(void *choice_)
     else if(OpenedItem() != choice) 
     {
         choice->SetCurrent(CurrentItem() != choice);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::ShortPress_IP(void *item)
+{
+    if (OpenedItem() == item)
+    {
+        ((IPaddress*)item)->NextPosition();
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::ShortPress_MAC(void *item)
+{
+    if (OpenedItem() == item)
+    {
+        Math::CircleIncrease<int8>(&gCurDigit, 0, 5);
     }
 }
 
@@ -631,7 +656,15 @@ void Menu::CloseOpenedItem()
     Control *item = OpenedItem();
     if (IS_PAGE(item))
     {
-        ((Page *)item)->funcOnEnterExit(false);
+        if (IS_PAGE_SB(item))
+        {
+            //((Page *)item)->SmallButonFromPage(0)->funcOnPress();
+            SMALL_BUTTON_FROM_PAGE(item, 0)->funcOnPress();
+        }
+        else
+        {
+            ((Page *)item)->funcOnEnterExit(false);
+        }
         Page::Name name = KEEPER(item)->name;
         ((Page *)KEEPER(item))->SetPosActItem(MENU_POS_ACT_ITEM(name) & 0x7f);
         if (item == (Control *)pageMain)
@@ -764,7 +797,11 @@ void Menu::Graphics::Draw()
     {
         int x = 1;
         int y = 0;
-        int width = Menu::IsShown() ? 220 : 318;
+        int width = 318;
+        if (Menu::IsShown())
+        {
+            width = Menu::IsMinimize() ? 289 : 220;
+        }
         Painter::DrawTextInBoundedRectWithTransfers(x, y, width,
                LANG_RU ? "Включён режим подсказок. В этом режиме при нажатии на кнопку на экран выводится информация о её назначении. "
                "Чтобы выключить этот режим, нажмите кнопку ПОМОЩЬ и удерживайте её в течение 0.5с." :
@@ -793,9 +830,15 @@ void Menu::ResetItemsUnderButton()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Menu::IsMinimize()
+{
+    return IS_PAGE_SB(Menu::OpenedItem());
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 const SButton *Menu::GetSmallButton(Key button)
 {
-    if (button >= Key::Enter && button <= Key::F5)
+    if (Menu::IsMinimize() && button >= Key::Enter && button <= Key::F5)
     {
         Page *page = (Page *)OpenedItem();
         SButton *sb = (SButton *)page->items[button - Key::Enter];

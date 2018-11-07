@@ -51,7 +51,7 @@ static void OnHelpRegSet(int)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_GPAPH_BUTTON(   sbHelpParagraphEnter,                                                                                   //--- ПОМОЩЬ - Открыть ---
+DEF_SMALL_BUTTON(   sbHelpParagraphEnter,                                                                                   //--- ПОМОЩЬ - Открыть ---
     "Открыть",  "Open",
     "Открывает раздел справки",
     "Opens the section of the reference",
@@ -59,7 +59,7 @@ DEF_GPAPH_BUTTON(   sbHelpParagraphEnter,                                       
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_GPAPH_BUTTON(   sbHelpParagraphLeave,                                                                                   //--- ПОМОЩЬ - Закрыть ---
+DEF_SMALL_BUTTON(   sbHelpParagraphLeave,                                                                                   //--- ПОМОЩЬ - Закрыть ---
      "Закрыть", "Close",
      "Закрывает раздел справки",
      "Closes the section of the reference",
@@ -67,7 +67,7 @@ DEF_GPAPH_BUTTON(   sbHelpParagraphLeave,                                       
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_GPAPH_BUTTON(   sbHelpParagraphPrev,                                                                          //--- ПОМОЩЬ - Предыдущий раздел ---
+DEF_SMALL_BUTTON(   sbHelpParagraphPrev,                                                                          //--- ПОМОЩЬ - Предыдущий раздел ---
     "Предыдущий раздел", "Previous section",
     "Выбрать предыдущий раздел справки",
     "To choose the previous section of the reference",
@@ -75,7 +75,7 @@ DEF_GPAPH_BUTTON(   sbHelpParagraphPrev,                                        
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_GPAPH_BUTTON(   sbHelpParagraphNext,                                                                           //--- ПОМОЩЬ - Следующий раздел ---
+DEF_SMALL_BUTTON(   sbHelpParagraphNext,                                                                           //--- ПОМОЩЬ - Следующий раздел ---
     "Следующий раздел", "Next section",
     "Выбрать следующий раздел справки",
     "To choose the next section of the reference",
