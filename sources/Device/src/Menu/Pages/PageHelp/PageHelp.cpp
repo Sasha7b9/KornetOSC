@@ -1,11 +1,14 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
-#include "Menu/Pages/Include/PageHelp.h"
 #include "Display/Painter.h"
 #include "Menu/MenuItems.h"
-#include "Menu/Pages/Include/Definition.h"
-#include "Menu/Pages/Include/HelpContent.h"
 #include "Utils/CommonFunctions.h"
 #include "Menu/Menu.h"
+#endif
+#include "Menu/Pages/Include/PageHelp.h"
+#include "Menu/Pages/Include/Definition.h"
+#include "Menu/Pages/Include/HelpContent.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

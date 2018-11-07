@@ -1,7 +1,10 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Sound.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/Timer.h"
+#endif
 
 
 #ifdef __cplusplus

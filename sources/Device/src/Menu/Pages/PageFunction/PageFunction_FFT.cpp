@@ -1,9 +1,12 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Settings/Settings.h"
 #include "Menu/Pages/Include/Definition.h"
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"
 #include "Menu/Pages/Include/PageFunction.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

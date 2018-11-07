@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "PainterData.h"
 #include "Display/Colors.h"
@@ -11,6 +13,7 @@
 #include "Data/Reader.h"
 #include "Display/Symbols.h"
 #include "MemoryWindow.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

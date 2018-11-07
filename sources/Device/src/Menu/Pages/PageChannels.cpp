@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Menu/Pages/Include/PageChannels.h"
 #include "Display/Display.h"
@@ -8,6 +10,7 @@
 #include "Menu/Pages/Include/Definition.h"
 #include "Utils/CommonFunctions.h"
 #include "Utils/Dictionary.h"
+#endif
 
 
 extern const PageBase pChanA;

@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "MemoryWindow.h"
 #include "Grid.h"
@@ -5,6 +7,7 @@
 #include "Data/Storage.h"
 #include "Data/Reader.h"
 #include "Settings/Settings.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

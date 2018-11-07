@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Display/Painter.h"
 #include "Menu/Pages/Include/Definition.h"
@@ -11,6 +13,7 @@
 #include "Utils/Dictionary.h"
 #include <math.h>
 #include <string.h>
+#endif
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const PageBase pageCursors;

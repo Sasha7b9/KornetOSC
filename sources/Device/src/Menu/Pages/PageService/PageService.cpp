@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "main.h"
 #include "Display/Symbols.h"
@@ -15,6 +17,7 @@
 #include "Utils/CommonFunctions.h"
 #include "Utils/Dictionary.h"
 #include "Utils/Math.h"
+#endif
 
 
 extern const PageBase pService;

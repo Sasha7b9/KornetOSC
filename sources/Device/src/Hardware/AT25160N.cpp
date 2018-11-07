@@ -1,5 +1,8 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "AT25160N.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -274,15 +277,15 @@ uint8 AT25160N::ReadByte()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AT25160N::SetPin(GPIO_TypeDef *gpio, uint16 pin)
+void AT25160N::SetPin(GPIO_TypeDef *_gpio, uint16 pin)
 {
-    HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(_gpio, pin, GPIO_PIN_SET);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AT25160N::ResetPin(GPIO_TypeDef *gpio, uint16 pin)
+void AT25160N::ResetPin(GPIO_TypeDef *_gpio, uint16 pin)
 {
-    HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(_gpio, pin, GPIO_PIN_RESET);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

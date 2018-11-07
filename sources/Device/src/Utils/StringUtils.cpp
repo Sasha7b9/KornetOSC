@@ -1,8 +1,11 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Utils/StringUtils.h"
 #include "Values.h"
 #include <string.h>
 #include <ctype.h>
+#endif
 
 #ifndef LANG
 #define LANG 0

@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "BottomPart.h"
 #include "Settings/SettingsTime.h"
@@ -10,6 +12,7 @@
 #include "Utils/Values.h"
 #include "Hardware/CPU.h"
 #include "Data/Reader.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

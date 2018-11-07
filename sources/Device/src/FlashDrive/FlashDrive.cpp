@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "FlashDrive.h"
 #include "Hardware/CPU.h"
@@ -6,6 +8,7 @@
 #include "Utils/Dictionary.h"
 #include "usbh_diskio.h"
 #include "Settings/Settings.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

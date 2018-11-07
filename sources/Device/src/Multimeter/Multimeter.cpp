@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Multimeter.h"
 #include "Display/Painter.h"
@@ -6,6 +8,7 @@
 #include "Hardware/Timer.h"
 #include "Device.h"
 #include <string.h>
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

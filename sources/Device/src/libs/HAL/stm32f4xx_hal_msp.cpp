@@ -1,5 +1,8 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Hardware/Hardware.h"
+#endif
 
 extern void _Error_Handler(char *, int);
 /* USER CODE BEGIN 0 */

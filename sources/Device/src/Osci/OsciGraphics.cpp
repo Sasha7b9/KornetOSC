@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Osci.h"
 #include "Display/Painter.h"
@@ -11,6 +13,7 @@
 #include "FPGA/FPGATypes.h"
 #include "FPGA/RShift.h"
 #include "FrequencyCounter.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

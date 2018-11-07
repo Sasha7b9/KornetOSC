@@ -34,9 +34,6 @@
     <Filter Include="Multimeter">
       <UniqueIdentifier>{e6cbf531-ff47-440b-a332-e976b7ad0fe6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="_VS">
-      <UniqueIdentifier>{491635cb-5130-4d2c-b8e1-cbc67d24c29d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="libs\HAL">
       <UniqueIdentifier>{9fef03a3-6337-4573-bb8a-cfa63db5a95c}</UniqueIdentifier>
     </Filter>
@@ -135,12 +132,6 @@
     <ClCompile Include="..\..\Device\src\Settings\Settings.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Device.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Log.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -224,9 +215,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Data\Reader.cpp">
       <Filter>Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\Tables.cpp">
-      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Data\Storage.cpp">
       <Filter>Data</Filter>
@@ -453,6 +441,9 @@
     <ClCompile Include="..\..\Device\src\Menu\Pages\PageDisplay\PageDisplay_Settings.cpp">
       <Filter>Menu\Pages\PageDisplay</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\stdafx.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -539,12 +530,6 @@
     <ClInclude Include="..\..\Device\src\defines.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Device.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Log.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Device\src\main.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -583,60 +568,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Utils\Math.h">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\cmsis_armcc.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\cmsis_armcc_V6.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\core_cm4.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\core_cmFunc.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\core_cmInstr.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\core_cmSimd.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\ctype.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\integer.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\inttypes.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\limits.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\math.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\stdarg.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\stdint.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\stdio.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\stdlib.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\string.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\tchar.h">
-      <Filter>_VS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\_VS\windows.h">
-      <Filter>_VS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Display\Colors.h">
       <Filter>Display</Filter>
@@ -688,9 +619,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Settings\SettingsService.h">
       <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Tables.h">
-      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Data\Storage.h">
       <Filter>Data</Filter>
@@ -866,25 +794,13 @@
     <ClInclude Include="..\..\Device\src\Menu\Pages\Include\PageTrig.h">
       <Filter>Menu\Pages\Include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Object.h">
+    <ClInclude Include="..\..\Device\src\stdafx.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Device\src\libs\CMSIS\startup_stm32f437xx.s">
       <Filter>libs\CMSIS</Filter>
-    </None>
-    <None Include="..\..\common\_VS\algorithm">
-      <Filter>_VS</Filter>
-    </None>
-    <None Include="..\..\common\_VS\cstdlib">
-      <Filter>_VS</Filter>
-    </None>
-    <None Include="..\..\common\_VS\cstring">
-      <Filter>_VS</Filter>
-    </None>
-    <None Include="..\..\common\_VS\limits">
-      <Filter>_VS</Filter>
     </None>
     <None Include="..\..\Device\src\Display\Font\fontUGO2.inc">
       <Filter>Display\Font</Filter>

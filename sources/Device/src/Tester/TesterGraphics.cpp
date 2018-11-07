@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Tester.h"
 #include "Display/Painter.h"
@@ -7,6 +9,7 @@
 #include "Settings/Settings.h"
 #include "Hardware/Timer.h"
 #include "Data/Reader.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

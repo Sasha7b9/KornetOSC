@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Menu/Pages/Include/PageDebug.h"
 #include "Data/Reader.h"
@@ -14,6 +16,7 @@
 #include "Utils/Dictionary.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

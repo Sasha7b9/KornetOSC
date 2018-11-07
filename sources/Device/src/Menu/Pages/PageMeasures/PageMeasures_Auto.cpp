@@ -1,9 +1,12 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Menu/MenuItems.h"
 #include "Settings/SettingsTime.h"
 #include "Utils/Measure.h"
 #include "Settings/Settings.h"
 #include "Menu/Pages/Include/PageMeasures.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

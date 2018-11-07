@@ -1,6 +1,9 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "AD9286.h"
 #include "Hardware/Timer.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -162,15 +165,15 @@ uint8 AD9286::ReadByte(uint8)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AD9286::SetPin(GPIO_TypeDef *gpio, uint16 pin)
+void AD9286::SetPin(GPIO_TypeDef *_gpio, uint16 pin)
 {
-    HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(_gpio, pin, GPIO_PIN_SET);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AD9286::ResetPin(GPIO_TypeDef *gpio, uint16 pin)
+void AD9286::ResetPin(GPIO_TypeDef *_gpio, uint16 pin)
 {
-    HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(_gpio, pin, GPIO_PIN_RESET);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

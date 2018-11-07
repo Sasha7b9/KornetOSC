@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Device.h"
 #include "Tester.h"
@@ -7,6 +9,7 @@
 #include "Hardware/Hardware.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,13 +92,13 @@ void Tester::Init()
     }
 
     // Инициализируем ЦАП
-    GPIO_InitTypeDef gpio =
+    GPIO_InitTypeDef _gpio =
     {
         GPIO_PIN_5,
         GPIO_MODE_ANALOG,
         GPIO_NOPULL
     };
-    HAL_GPIO_Init(GPIOA, &gpio);
+    HAL_GPIO_Init(GPIOA, &_gpio);
 
     if (HAL_DAC_Init(&hDAC) != HAL_OK)
     {

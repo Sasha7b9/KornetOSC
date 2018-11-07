@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "FrequencyCounter.h"
 #include "FPGA/FPGA.h"
@@ -10,6 +12,7 @@
 #include "Utils/Math.h"
 #include "Hardware/Timer.h"
 #include <string.h>
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

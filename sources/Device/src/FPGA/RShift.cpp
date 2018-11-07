@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Settings/Settings.h"
 #include "Display/Painter.h"
@@ -5,6 +7,7 @@
 #include "FPGA/FPGAMath.h"
 #include "Utils/StringUtils.h"
 #include "Utils/Values.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

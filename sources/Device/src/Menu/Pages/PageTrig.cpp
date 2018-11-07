@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Menu/Pages/Include/PageTrig.h"
 #include "Menu/MenuItems.h"
@@ -7,6 +9,7 @@
 #include "Settings/Settings.h"
 #include "Menu/Pages/Include/Definition.h"
 #include "Utils/CommonFunctions.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

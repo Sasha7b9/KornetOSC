@@ -1,12 +1,15 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Settings/Settings.h"
 #include "Osci/Grid.h"
 #include "Display/Font/Font.h"
 #include "Display/Painter.h"
-#include "Menu/Pages/Include/HelpContentPages.h"
-#include "Menu/Pages/Include/HelpContent.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
+#endif
+#include "Menu/Pages/Include/HelpContentPages.h"
+#include "Menu/Pages/Include/HelpContent.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

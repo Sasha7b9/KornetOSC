@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Settings/Settings.h"
 #include "Data/Storage.h"
@@ -8,6 +10,7 @@
 #include "Hardware/EEPROM.h"
 #include "Utils/Math.h"
 #include <string.h>
+#endif
 
 
 /** @addtogroup FPGA

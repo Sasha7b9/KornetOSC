@@ -1,7 +1,11 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "ff_gen_drv.h"
 #include "usbh_diskio.h"
 #include "FlashDrive/FlashDrive.h"
+#endif
+
 
 DSTATUS USBH_initialize (BYTE);
 DSTATUS USBH_status (BYTE);

@@ -1,5 +1,7 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
-
+#endif
 #include "font8.inc"
 #include "font5.inc"
 #include "fontUGO.inc"

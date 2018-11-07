@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "Cursors.h"
 #include "Settings/Settings.h"
@@ -7,6 +9,7 @@
 #include "Utils/StringUtils.h"
 #include "Utils/Values.h"
 #include <string.h>
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

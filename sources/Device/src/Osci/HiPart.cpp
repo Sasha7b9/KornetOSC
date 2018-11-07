@@ -1,3 +1,5 @@
+#include "stdafx.h"
+#ifndef WIN32
 #include "defines.h"
 #include "HiPart.h"
 #include "Settings/Settings.h"
@@ -5,6 +7,7 @@
 #include "Grid.h"
 #include "Utils/Dictionary.h"
 #include "FPGA/FPGA.h"
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
