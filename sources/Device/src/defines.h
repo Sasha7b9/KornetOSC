@@ -21,7 +21,22 @@ typedef unsigned char       uint8;
 typedef signed short int    int16;
 typedef unsigned short int  uint16;
 typedef unsigned int        uint;
-typedef uint64_t            uint64;
+typedef unsigned long long  uint64;
+
+
+#ifdef WIN32
+typedef unsigned char  BYTE;
+typedef unsigned short WORD;
+typedef unsigned short WCHAR;
+typedef unsigned long  DWORD;
+typedef unsigned long  FSIZE_t;
+typedef unsigned int   UINT;
+typedef unsigned short TCHAR;
+typedef unsigned char  uint8_t;
+typedef unsigned short uint16_t;
+typedef unsigned int   uint32_t;
+#define __IO
+#endif
 
 
 typedef void (*pFuncVV)();
