@@ -417,6 +417,9 @@
     <ClCompile Include="..\..\Device\src\device.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal.cpp">
+      <Filter>libs\HAL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Device\src\Display\Display.h">
