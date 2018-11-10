@@ -1,13 +1,11 @@
-#include <stdafx.h>
+#include <SDL.h>
+#undef main
 
-//#undef main
-//
-//#include <iostream>
+#include <iostream>
 
 
 int main(int argc, char *argv[])
 {
-    /*
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
         std::cout << "SDL_Init Error:" << SDL_GetError() << std::endl;
@@ -28,24 +26,12 @@ int main(int argc, char *argv[])
 
     SDL_RenderClear(ren);
 
-    SDL_Event event;
+    
 
     while (true)
     {
-        while (SDL_PollEvent(&event))
-        {
-            SDL_PumpEvents();
-            if (event.type == SDL_QUIT)
-            {
-                return 0;
-            }
-            SDL_Surface *surface = SDL_GetWindowSurface(win);
-            SDL_FillRect(surface, &rect, 0xffff0000);
-            SDL_UpdateWindowSurface(win);
-        }
-    }
 
-    */
+    }
 
     return 0;
 }

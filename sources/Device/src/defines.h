@@ -23,15 +23,6 @@ typedef unsigned short int  uint16;
 typedef unsigned int        uint;
 typedef uint64_t            uint64;
 
-#ifdef WIN32
-typedef unsigned char       BYTE;
-typedef unsigned short int  WORD;
-typedef unsigned short int  WCHAR;
-typedef unsigned int        DWORD;
-typedef unsigned int        FSIZE_t;
-typedef unsigned int        UINT;
-typedef unsigned short int  TCHAR;
-#endif
 
 typedef void (*pFuncVV)();
 typedef void (*pFuncVB)(bool);

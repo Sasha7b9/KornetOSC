@@ -2,7 +2,11 @@
 
 #define __CC_ARM
 
-#include "stdint.h"
+#ifndef __IO
+#define __IO
+#endif
+
+#include <stdint.h>
 
 #undef __ASM
 #define __ASM()

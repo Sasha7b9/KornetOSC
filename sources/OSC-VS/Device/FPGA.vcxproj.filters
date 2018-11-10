@@ -444,6 +444,9 @@
     <ClCompile Include="src\vs_main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\minimal.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -805,6 +808,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\libs\FatFS\ffconf.h">
       <Filter>libs\FatFS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\CMSIS\core_cm4.h">
+      <Filter>libs\CMSIS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
