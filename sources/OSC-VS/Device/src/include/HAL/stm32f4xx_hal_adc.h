@@ -10,6 +10,7 @@
 #define ADC_EOC_SINGLE_CONV             0x00000001U
 #define ADC_CHANNEL_8                   0
 #define ADC_SAMPLETIME_3CYCLES          0x00000000U
+#define ADC_SAMPLETIME_28CYCLES         0
 
 
 typedef struct
@@ -111,3 +112,4 @@ typedef struct
 
 HAL_StatusTypeDef HAL_ADC_Init(ADC_HandleTypeDef* hadc);
 HAL_StatusTypeDef HAL_ADC_ConfigChannel(ADC_HandleTypeDef* hadc, ADC_ChannelConfTypeDef* sConfig);
+HAL_StatusTypeDef HAL_ADC_Start_IT(ADC_HandleTypeDef* hadc);
