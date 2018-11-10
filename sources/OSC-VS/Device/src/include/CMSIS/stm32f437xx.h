@@ -230,7 +230,10 @@ typedef struct
 
 #define RCC_APB1ENR_DACEN_Pos              (29U)                               
 #define RCC_APB1ENR_DACEN_Msk              (0x1U << RCC_APB1ENR_DACEN_Pos)     /*!< 0x20000000 */
-#define RCC_APB1ENR_DACEN                  RCC_APB1ENR_DACEN_Msk   
+#define RCC_APB1ENR_DACEN                  RCC_APB1ENR_DACEN_Msk
+#define TIM_CR1_CEN_Pos                    (0U)                                         
+#define TIM_CR1_CEN_Msk                    (0x1U << TIM_CR1_CEN_Pos)                    /*!< 0x00000001 */
+#define TIM_CR1_CEN                        TIM_CR1_CEN_Msk                              /*!<Counter enable        */
 
 #define PERIPH_BASE                         0x40000000U /*!< Peripheral base address in the alias region                                */
 
@@ -261,8 +264,10 @@ typedef struct
 #define SPI4_BASE       (APB2PERIPH_BASE + 0x3400U)
 #define USART3_BASE     (APB1PERIPH_BASE + 0x4800U)
 #define TIM2_BASE       (APB1PERIPH_BASE + 0x0000U)
+#define TIM3_BASE       (APB1PERIPH_BASE + 0x0400U)
 
 #define TIM2            ((TIM_TypeDef *) TIM2_BASE)
+#define TIM3            ((TIM_TypeDef *) TIM3_BASE)
 #define RCC             ((RCC_TypeDef *) RCC_BASE)
 #define CRC             ((CRC_TypeDef *) CRC_BASE)
 #define ADC3            ((ADC_TypeDef *) ADC3_BASE)

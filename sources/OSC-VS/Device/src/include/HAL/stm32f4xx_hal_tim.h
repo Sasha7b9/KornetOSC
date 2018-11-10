@@ -1,6 +1,9 @@
 #pragma once
-
 #include "stm32f4xx_hal_def.h"
+
+
+#define TIM_COUNTERMODE_UP      0x00000000U
+#define TIM_CLOCKDIVISION_DIV1  0x00000000U
 
 
 typedef struct
