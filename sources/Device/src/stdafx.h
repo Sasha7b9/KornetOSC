@@ -2,9 +2,8 @@
 
 #ifdef WIN32
 
-#include <SDL.h>
-
 #include "defines.h"
+
 #include "device.h"
 #include "tables.h"
 

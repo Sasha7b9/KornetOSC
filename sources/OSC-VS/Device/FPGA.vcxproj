@@ -55,6 +55,10 @@
     <ClCompile Include="..\..\Device\src\defines.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\device.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Colors.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -330,7 +334,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Tester\Tester.cpp">
@@ -421,6 +425,7 @@
     <ClInclude Include="..\..\Device\src\defines.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="..\..\Device\src\device.h" />
     <ClInclude Include="..\..\Device\src\Display\Colors.h" />
     <ClInclude Include="..\..\Device\src\Display\Console.h" />
     <ClInclude Include="..\..\Device\src\Display\Display.h" />
@@ -695,7 +700,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\My\Work\stm32\OSC\sources\OSC-VS\Device\src\include\CMSIS;..\..\Device\src\libs\FatFS;..\..\Device\src;..\..\Device\src\libs\HAL;..\..\Device\src\libs\USBH;..\..\common;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;C:\My\Work\stm32\OSC\sources\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;C:\My\TestSDL2\SDL2-2.0.9\include;C:\My\Work\stm32\OSC\sources\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;C:\My\libs\wxWidgets\include;C:\My\libs\wxWidgets\include\msvc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\My\Work\stm32\OSC\sources\OSC-VS\Device\src\include\CMSIS;..\..\Device\src\libs\FatFS;..\..\Device\src;..\..\Device\src\libs\HAL;..\..\Device\src\libs\USBH;..\..\common;..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;C:\My\Work\stm32\OSC\sources\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;C:\My\TestSDL2\SDL2-2.0.9\include;C:\My\Work\stm32\OSC\sources\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;C:\My\libs\wxWidgets\include;C:\My\libs\wxWidgets\include\msvc;C:\My\Work\stm32\OSC\sources\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;C:\My\Work\stm32\OSC\sources\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;$(IncludePath)</IncludePath>
     <OutDir>.\Debug\</OutDir>
     <LibraryPath>C:\My\TestSDL2\SDL2-2.0.9\VisualC\Win32\Debug;C:\My\libs\wxWidgets\lib\vc_lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -718,10 +723,12 @@
       <MinimalRebuild>false</MinimalRebuild>
       <DisableSpecificWarnings>4068;4100;4201;4211;4333;4514;4529;4623;4626;4774;4820;5027;5039;5045</DisableSpecificWarnings>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
