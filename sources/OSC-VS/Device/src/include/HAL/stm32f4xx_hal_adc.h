@@ -2,6 +2,16 @@
 #include "stm32f4xx_hal_def.h"
 
 
+#define ADC_CLOCK_SYNC_PCLK_DIV2        0x00000000U
+#define ADC_RESOLUTION_12B              0x00000000U
+#define ADC_EXTERNALTRIGCONVEDGE_RISING 0
+#define ADC_EXTERNALTRIGCONV_Ext_IT11   0
+#define ADC_DATAALIGN_RIGHT             0x00000000U
+#define ADC_EOC_SINGLE_CONV             0x00000001U
+#define ADC_CHANNEL_8                   0
+#define ADC_SAMPLETIME_3CYCLES          0x00000000U
+
+
 typedef struct
 {
     uint32_t ClockPrescaler;        /*!< Select ADC clock prescaler. The clock is common for 
@@ -71,3 +81,33 @@ typedef struct
     __IO uint32_t                 ErrorCode;                   /*!< ADC Error code */
 }ADC_HandleTypeDef;
 
+
+typedef struct 
+{
+    uint32_t Channel;                /*!< Specifies the channel to configure into ADC regular group.
+                                     This parameter can be a value of @ref ADC_channels */
+    uint32_t Rank;                   /*!< Specifies the rank in the regular group sequencer.
+                                     This parameter must be a number between Min_Data = 1 and Max_Data = 16 */
+    uint32_t SamplingTime;           /*!< Sampling time value to be set for the selected channel.
+                                     Unit: ADC clock cycles
+                                     Conversion time is the addition of sampling time and processing time (12 ADC clock cycles at ADC resolution 12 bits, 11 cycles at 10 bits, 9 cycles at 8 bits, 7 cycles at 6 bits).
+                                     This parameter can be a value of @ref ADC_sampling_times
+                                     Caution: This parameter updates the parameter property of the channel, that can be used into regular and/or injected groups.
+                                     If this same channel has been previously configured in the other group (regular/injected), it will be updated to last setting.
+                                     Note: In case of usage of internal measurement channels (VrefInt/Vbat/TempSensor),
+                                     sampling time constraints must be respected (sampling time can be adjusted in function of ADC clock frequency and sampling time setting)
+                                     Refer to device datasheet for timings values, parameters TS_vrefint, TS_temp (values rough order: 4us min). */
+    uint32_t Offset;                 /*!< Reserved for future use, can be set to 0 */
+}ADC_ChannelConfTypeDef;
+
+typedef struct
+{
+    uint32_t DAC_Trigger;       /*!< Specifies the external trigger for the selected DAC channel.
+                                This parameter can be a value of @ref DAC_trigger_selection */
+
+    uint32_t DAC_OutputBuffer;  /*!< Specifies whether the DAC channel output buffer is enabled or disabled.
+                                This parameter can be a value of @ref DAC_output_buffer */
+}DAC_ChannelConfTypeDef;
+
+HAL_StatusTypeDef HAL_ADC_Init(ADC_HandleTypeDef* hadc);
+HAL_StatusTypeDef HAL_ADC_ConfigChannel(ADC_HandleTypeDef* hadc, ADC_ChannelConfTypeDef* sConfig);

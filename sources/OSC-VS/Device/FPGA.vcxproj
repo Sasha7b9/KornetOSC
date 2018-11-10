@@ -32,8 +32,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\device.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Colors.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -99,7 +99,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\Hardware.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Hardware\Sound.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -533,14 +533,32 @@
     <ClInclude Include="src\include\FatFS\diskio.h" />
     <ClInclude Include="src\include\FatFS\ff.h" />
     <ClInclude Include="src\include\FatFS\ff_gen_drv.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal.h" />
     <ClInclude Include="src\include\HAL\stm32f4xx_hal_adc.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_cortex.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_crc.h" />
     <ClInclude Include="src\include\HAL\stm32f4xx_hal_dac.h" />
     <ClInclude Include="src\include\HAL\stm32f4xx_hal_def.h" />
     <ClInclude Include="src\include\HAL\stm32f4xx_hal_dma.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_flash.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_flash_ex.h" />
     <ClInclude Include="src\include\HAL\stm32f4xx_hal_gpio.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_gpio_ex.h" />
     <ClInclude Include="src\include\HAL\stm32f4xx_hal_hcd.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_nor.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_pcd.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_pwr.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_pwr_ex.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_rcc.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_rcc_ex.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_rtc.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_spi.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_sram.h" />
     <ClInclude Include="src\include\HAL\stm32f4xx_hal_tim.h" />
     <ClInclude Include="src\include\HAL\stm32f4xx_hal_uart.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_ll_fmc.h" />
+    <ClInclude Include="src\include\HAL\stm32f4xx_ll_usb.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Device\src\Display\Font\font5.inc" />
