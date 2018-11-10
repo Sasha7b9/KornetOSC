@@ -444,7 +444,7 @@
     <ClCompile Include="src\vs_main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\minimal.cpp">
+    <ClCompile Include="src\Application.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -811,6 +811,9 @@
     </ClInclude>
     <ClInclude Include="src\include\CMSIS\core_cm4.h">
       <Filter>libs\CMSIS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
