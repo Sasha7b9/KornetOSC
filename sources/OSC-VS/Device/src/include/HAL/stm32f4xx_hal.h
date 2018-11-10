@@ -3,3 +3,4 @@
 
 
 HAL_StatusTypeDef HAL_Init(void);
+uint32_t HAL_GetTick(void);

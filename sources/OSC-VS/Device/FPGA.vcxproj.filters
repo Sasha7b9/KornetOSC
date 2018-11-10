@@ -94,6 +94,9 @@
     <Filter Include="libs\FatFS">
       <UniqueIdentifier>{dc9614e8-1d98-40f1-9224-d169c1f6b736}</UniqueIdentifier>
     </Filter>
+    <Filter Include="libs\HAL\Legacy">
+      <UniqueIdentifier>{8caf6262-264e-4f57-8cef-66e4c033c986}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Device\src\Display\Display.cpp">
@@ -790,6 +793,9 @@
     </ClInclude>
     <ClInclude Include="src\include\HAL\stm32f4xx_ll_usb.h">
       <Filter>libs\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\HAL\Legacy\stm32_hal_legacy.h">
+      <Filter>libs\HAL\Legacy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

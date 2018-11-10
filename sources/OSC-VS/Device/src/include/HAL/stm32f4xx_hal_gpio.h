@@ -42,6 +42,8 @@
 
 #define GPIO_AF6_SPI3               ((uint8_t)0x06)  /* SPI3/I2S3 Alternate Function mapping  */
 
+#define GPIO_MODE_ANALOG            0x00000003U   /*!< Analog Mode  */
+
 
 typedef enum
 {
