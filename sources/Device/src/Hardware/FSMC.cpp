@@ -121,8 +121,8 @@ void FSMC::Init()
 
     static SRAM_HandleTypeDef gSramHandle =
     {
-        FMC_NORSRAM_DEVICE, //-V204
-        FMC_NORSRAM_EXTENDED_DEVICE, //-V204
+        FMC_NORSRAM_DEVICE,
+        FMC_NORSRAM_EXTENDED_DEVICE,
         {
             FMC_NORSRAM_BANK1,                 // Init.NSBank
             FMC_DATA_ADDRESS_MUX_DISABLE,      // Init.DataAddressMux

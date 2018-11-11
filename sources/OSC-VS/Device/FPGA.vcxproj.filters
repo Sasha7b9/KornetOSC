@@ -420,6 +420,12 @@
     <ClCompile Include="src\include\HAL\stm32f4xx_hal.cpp">
       <Filter>libs\HAL</Filter>
     </ClCompile>
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_dac.cpp">
+      <Filter>libs\HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_cortex.cpp">
+      <Filter>libs\HAL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Device\src\Display\Display.h">

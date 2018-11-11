@@ -19,6 +19,11 @@ typedef struct
    int BTCR[8];    /*!< NOR/PSRAM chip-select control register(BCR) and chip-select timing register(BTR), Address offset: 0x00-1C */
 } FMC_Bank1_TypeDef;
 
+typedef struct
+{
+    __IO uint32_t BWTR[7];    /*!< NOR/PSRAM write timing registers, Address offset: 0x104-0x11C */
+} FMC_Bank1E_TypeDef;
+
 
 
 typedef struct
@@ -228,14 +233,17 @@ typedef struct
 #define RCC_AHB1ENR_GPIOJEN_Msk            (0x1U << RCC_AHB1ENR_GPIOJEN_Pos)   /*!< 0x00000200 */
 #define RCC_AHB1ENR_GPIOJEN                RCC_AHB1ENR_GPIOJEN_Msk
 
-#define RCC_APB1ENR_DACEN_Pos              (29U)                               
-#define RCC_APB1ENR_DACEN_Msk              (0x1U << RCC_APB1ENR_DACEN_Pos)     /*!< 0x20000000 */
-#define RCC_APB1ENR_DACEN                  RCC_APB1ENR_DACEN_Msk
-#define TIM_CR1_CEN_Pos                    (0U)                                         
-#define TIM_CR1_CEN_Msk                    (0x1U << TIM_CR1_CEN_Pos)                    /*!< 0x00000001 */
-#define TIM_CR1_CEN                        TIM_CR1_CEN_Msk                              /*!<Counter enable        */
+#define RCC_APB1ENR_DACEN_Pos               (29U)                               
+#define RCC_APB1ENR_DACEN_Msk               (0x1U << RCC_APB1ENR_DACEN_Pos)     /*!< 0x20000000             */
+#define RCC_APB1ENR_DACEN                   RCC_APB1ENR_DACEN_Msk
+#define TIM_CR1_CEN_Pos                     (0U)                                         
+#define TIM_CR1_CEN_Msk                     (0x1U << TIM_CR1_CEN_Pos)           /*!< 0x00000001             */
+#define TIM_CR1_CEN                         TIM_CR1_CEN_Msk                     /*!<Counter enable          */
+#define FMC_BCR1_MBKEN_Pos                  (0U)                                       
+#define FMC_BCR1_MBKEN_Msk                  (0x1U << FMC_BCR1_MBKEN_Pos)        /*!< 0x00000001             */
+#define FMC_BCR1_MBKEN                      FMC_BCR1_MBKEN_Msk                  /*!<Memory bank enable bit  */
 
-#define PERIPH_BASE                         0x40000000U /*!< Peripheral base address in the alias region                                */
+#define PERIPH_BASE                         0x40000000U /*!< Peripheral base address in the alias region    */
 
 
 #define USB_OTG_FS_PERIPH_BASE              0x50000000U
@@ -244,6 +252,8 @@ typedef struct
 #define APB1PERIPH_BASE  PERIPH_BASE
 #define APB2PERIPH_BASE (PERIPH_BASE + 0x00010000U)
 #define AHB1PERIPH_BASE (PERIPH_BASE + 0x00020000U)
+
+#define FMC_R_BASE            0xA0000000U
 
 #define GPIOA_BASE      (AHB1PERIPH_BASE + 0x0000U)
 #define GPIOB_BASE      (AHB1PERIPH_BASE + 0x0400U)
@@ -257,14 +267,16 @@ typedef struct
 #define GPIOJ_BASE      (AHB1PERIPH_BASE + 0x2400U)
 #define GPIOK_BASE      (AHB1PERIPH_BASE + 0x2800U)
 
-#define CRC_BASE        (AHB1PERIPH_BASE + 0x3000U)
-#define RCC_BASE        (AHB1PERIPH_BASE + 0x3800U)
-#define ADC3_BASE       (APB2PERIPH_BASE + 0x2200U)
-#define DAC_BASE        (APB1PERIPH_BASE + 0x7400U)
-#define SPI4_BASE       (APB2PERIPH_BASE + 0x3400U)
-#define USART3_BASE     (APB1PERIPH_BASE + 0x4800U)
-#define TIM2_BASE       (APB1PERIPH_BASE + 0x0000U)
-#define TIM3_BASE       (APB1PERIPH_BASE + 0x0400U)
+#define CRC_BASE            (AHB1PERIPH_BASE + 0x3000U)
+#define RCC_BASE            (AHB1PERIPH_BASE + 0x3800U)
+#define ADC3_BASE           (APB2PERIPH_BASE + 0x2200U)
+#define DAC_BASE            (APB1PERIPH_BASE + 0x7400U)
+#define SPI4_BASE           (APB2PERIPH_BASE + 0x3400U)
+#define USART3_BASE         (APB1PERIPH_BASE + 0x4800U)
+#define TIM2_BASE           (APB1PERIPH_BASE + 0x0000U)
+#define TIM3_BASE           (APB1PERIPH_BASE + 0x0400U)
+#define FMC_Bank1_R_BASE    (FMC_R_BASE + 0x0000U)
+#define FMC_Bank1E_R_BASE   (FMC_R_BASE + 0x0104U)
 
 #define TIM2            ((TIM_TypeDef *) TIM2_BASE)
 #define TIM3            ((TIM_TypeDef *) TIM3_BASE)
@@ -274,6 +286,8 @@ typedef struct
 #define DAC             ((DAC_TypeDef *) DAC_BASE) /* Kept for legacy purpose */
 #define SPI4            ((SPI_TypeDef *) SPI4_BASE)
 #define USART3          ((USART_TypeDef *) USART3_BASE)
+#define FMC_Bank1       ((FMC_Bank1_TypeDef *) FMC_Bank1_R_BASE)
+#define FMC_Bank1E      ((FMC_Bank1E_TypeDef *) FMC_Bank1E_R_BASE)
 
 #define GPIOA           ((GPIO_TypeDef *) GPIOA_BASE)
 #define GPIOB           ((GPIO_TypeDef *) GPIOB_BASE)
@@ -289,3 +303,7 @@ typedef struct
 
 #define USB_OTG_FS      ((USB_OTG_GlobalTypeDef *) USB_OTG_FS_PERIPH_BASE)
 #define USB_OTG_HS      ((USB_OTG_GlobalTypeDef *) USB_OTG_HS_PERIPH_BASE)
+
+#define FLASH_END             0x081FFFFFU /*!< FLASH end address                                                          */
+#define FLASH_OTP_BASE        0x1FFF7800U /*!< Base address of : (up to 528 Bytes) embedded FLASH OTP Area                */
+#define FLASH_OTP_END         0x1FFF7A0FU /*!< End address of : (up to 528 Bytes) embedded FLASH OTP Area                 */

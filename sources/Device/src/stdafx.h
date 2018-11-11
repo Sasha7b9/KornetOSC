@@ -67,5 +67,6 @@
 #include <math.h>
 #include <string.h>
 #include <stdarg.h>
+#include <cctype>
 
 #endif
