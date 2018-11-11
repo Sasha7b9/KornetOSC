@@ -486,6 +486,9 @@
     <ClCompile Include="..\..\Device\src\log.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Display\PainterSDL.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Device\src\Display\Display.h">
