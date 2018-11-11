@@ -17,7 +17,8 @@ typedef enum
     HOST_CLASS,
     HOST_SUSPENDED,
     HOST_ABORT_STATE,
-}HOST_StateTypeDef;
+
+} HOST_StateTypeDef;
 
 
 typedef enum
@@ -30,6 +31,7 @@ typedef enum
     ENUM_GET_MFC_STRING_DESC,
     ENUM_GET_PRODUCT_STRING_DESC,
     ENUM_GET_SERIALNUM_STRING_DESC,
+
 } ENUM_StateTypeDef;
 
 
@@ -38,7 +40,19 @@ typedef enum
     CMD_IDLE = 0,
     CMD_SEND,
     CMD_WAIT
+
 } CMD_StateTypeDef;
+
+typedef enum
+{
+    USBH_OK = 0,
+    USBH_BUSY,
+    USBH_FAIL,
+    USBH_NOT_SUPPORTED,
+    USBH_UNRECOVERED_ERROR,
+    USBH_ERROR_SPEED_UNKNOWN,
+
+} USBH_StatusTypeDef;
 
 
 typedef struct

@@ -244,7 +244,7 @@ bool FDrive::GetNameDir(const char *fullPath, int numDir, char *nameDirOut, Stru
             }
             if (numDir == numDirs && (pFNO->fattrib & AM_DIR))
             {
-                strcpy(nameDirOut, pFNO->fname);
+                strcpy(nameDirOut, (const char *)pFNO->fname);
                 return true;
             }
             if ((pFNO->fattrib & AM_DIR) && (pFNO->fname[0] != '.'))
@@ -285,7 +285,7 @@ bool FDrive::GetNextNameDir(char *nameDirOut, StructForReadDir *s)
         {
             if (pFNO->fattrib & AM_DIR)
             {
-                strcpy(nameDirOut, pFNO->fname);
+                strcpy(nameDirOut, (const char *)pFNO->fname);
                 return true;
             }
         }
@@ -332,7 +332,7 @@ bool FDrive::GetNameFile(const char *fullPath, int numFile, char *nameFileOut, S
             }
             if (numFile == numFiles && (pFNO->fattrib & AM_DIR) == 0)
             {
-                strcpy(nameFileOut, pFNO->fname);
+                strcpy(nameFileOut, (const char *)pFNO->fname);
                 return true;
             }
             if ((pFNO->fattrib & AM_DIR) == 0 && (pFNO->fname[0] != '.'))
@@ -372,7 +372,7 @@ bool FDrive::GetNextNameFile(char *nameFileOut, StructForReadDir *s)
         {
             if ((pFNO->fattrib & AM_DIR) == 0 && pFNO->fname[0] != '.')
             {
-                strcpy(nameFileOut, pFNO->fname);
+                strcpy(nameFileOut, (const char *)pFNO->fname);
                 return true;
             }
         }

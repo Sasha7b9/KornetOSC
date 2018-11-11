@@ -19,3 +19,5 @@ typedef struct
 // #endif /* _USE_IOCTL == 1 */
 
 }Diskio_drvTypeDef;
+
+uint8_t FATFS_LinkDriver(const Diskio_drvTypeDef *drv, char *path);

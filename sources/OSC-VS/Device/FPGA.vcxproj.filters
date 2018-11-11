@@ -429,6 +429,9 @@
     <ClCompile Include="src\include\HAL\stm32f4xx_hal_uart.cpp">
       <Filter>libs\HAL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\tables.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Device\src\Display\Display.h">
@@ -811,6 +814,18 @@
     </ClInclude>
     <ClInclude Include="src\include\HAL\stm32f4xx_hal_tim_ex.h">
       <Filter>libs\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\tables.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\USBH\usbh_core.h">
+      <Filter>libs\USBH</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\USBH\usbh_def.h">
+      <Filter>libs\USBH</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\USBH\usbh_msc.h">
+      <Filter>libs\USBH</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

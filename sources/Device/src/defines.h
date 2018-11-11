@@ -31,7 +31,7 @@ typedef unsigned short WCHAR;
 typedef unsigned long  DWORD;
 typedef unsigned long  FSIZE_t;
 typedef unsigned int   UINT;
-typedef unsigned short TCHAR;
+typedef unsigned char  TCHAR;
 typedef unsigned char  uint8_t;
 typedef unsigned short uint16_t;
 typedef unsigned int   uint32_t;
