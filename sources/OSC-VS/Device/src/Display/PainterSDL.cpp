@@ -22,6 +22,8 @@ static SDL_Renderer *renderer = nullptr;
 static SDL_Window *window = nullptr;
 static SDL_Texture *texture = nullptr;
 
+static wxButton *btnDisplay = nullptr;
+
 /// Цвета
 static uint colors[256];
 
@@ -33,6 +35,8 @@ static HANDLE CreateFrame();
 static void SetPosition(Frame *frame);
 /// Получить разрешение максимального имеющегося в системе монитора
 static wxRect GetMaxDisplay();
+/// Создаёт кнопки
+static void CreateButtons(Frame *frame);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -302,7 +306,7 @@ void Painter::FillRegion(int x, int y, int width, int height, Color color)
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void SetPosition(Frame *frame)
 {
-    wxSize size = { 640, 307 };
+    wxSize size = { 600, 307 };
 
     frame->SetSize(size);
     frame->SetMinSize(size);
@@ -322,18 +326,11 @@ static wxRect GetMaxDisplay()
     {
         wxDisplay display(i);
 
-        if (display.IsOk())
+        wxRect rect = display.GetClientArea();
+        if (rect.width > result.width)
         {
-            wxRect rect = display.GetClientArea();
-            if (rect.width > result.width)
-            {
-                result.width = rect.width;
-                result.height = rect.height;
-            }
-        }
-        else
-        {
-            break;
+            result.width = rect.width;
+            result.height = rect.height;
         }
     }
 
@@ -347,7 +344,24 @@ static HANDLE CreateFrame()
 
     SetPosition(frame);
 
+    wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
+
+    wxButton *btnDisplay = new wxButton(frame, wxID_ANY, "", {10, 10}, {320, 240});
+    btnDisplay->SetMaxSize({320, 240});
+
+    sizer->Add(btnDisplay);
+
+    frame->SetSizer(sizer);
+
+    CreateButtons(frame);
+
     frame->Show(true);
 
-    return frame->GetHandle();
+    return btnDisplay->GetHandle();
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+static void CreateButtons(Frame *frame)
+{
+
 }
