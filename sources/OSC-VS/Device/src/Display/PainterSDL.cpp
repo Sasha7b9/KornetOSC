@@ -31,7 +31,7 @@ void Painter::Init()
 
     frame->Show(true);
 
-    frame->SetSize(640, 480);
+    frame->SetSize(640, 307);
 
     HANDLE handle = frame->GetHandle();
 
@@ -56,7 +56,7 @@ void Painter::BeginScene(Color color)
     texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_RENDERER_ACCELERATED, 320, 240);
 
     SDL_SetRenderTarget(renderer, texture);
-    SetColor(Color::BLUE);
+    SetColor(color);
     SDL_RenderClear(renderer);
 }
 
@@ -69,6 +69,14 @@ void Painter::EndScene()
 
     SDL_RenderCopy(renderer, texture, NULL, &rect);
     SDL_RenderPresent(renderer);
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void Painter::SetPoint(int x, int y, Color color /* = Color::NUMBER */)
+{
+    SetColor(color);
+    SDL_Rect rect = { x, y, 1, 1 };
+    SDL_RenderFillRect(renderer, &rect);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -91,12 +99,6 @@ void Painter::Draw10SymbolsInRect(int x, int y, char eChar)
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawTesterData(uint8 mode, Color color, uint8 x[240], uint8 y[240])
-{
-
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetPoint(int x, int y, Color color /* = Color::NUMBER */)
 {
 
 }
@@ -168,7 +170,7 @@ void Painter::Draw4SymbolsInRect(int x, int y, char eChar, Color color /* = Colo
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawLine(int x0, int y0, int x1, int y1, Color color /* = Color::NUMBER */)
+void Painter::DrawLine(int x0, int y0, int x1, int y1, Color color)
 {
 
 }
@@ -204,21 +206,29 @@ int Painter::DrawTextWithLimitation(int x, int y, const char *text, int limitX, 
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawVLine(int x, float y0, float y1, Color color /* = Color::NUMBER */)
+void Painter::DrawVLine(int x, float y0, float y1, Color color)
 {
-
+    DrawVLine((int)x, (int)y0, (int)y1);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawVLine(int x, int y0, int y1, Color color /* = Color::NUMBER */)
+void Painter::DrawVLine(int x, int y0, int y1, Color color)
 {
+    SetColor(color);
 
+    SDL_Rect rect = {x, y0, 1, y1 - y0};
+
+    SDL_RenderFillRect(renderer, &rect);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawHLine(int y, int x0, int x1, Color color /* = Color::NUMBER */)
+void Painter::DrawHLine(int y, int x0, int x1, Color color)
 {
+    SetColor(color);
 
+    SDL_Rect rect = {x0, y, x1 - x0, 1};
+
+    SDL_RenderFillRect(renderer, &rect);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -253,9 +263,13 @@ int Painter::DrawStringInCenterRect(int x, int y, int width, int height, const c
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::DrawRectangle(int x, int y, int width, int height, Color color /* = Color::NUMBER */)
+void Painter::DrawRectangle(int x, int y, int width, int height, Color color)
 {
-
+    SetColor(color);
+    DrawVLine(x, y, y + height);
+    DrawVLine(x + width, y, y + height);
+    DrawHLine(y, x, x + width);
+    DrawHLine(y + height, x, x + width);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -271,7 +285,11 @@ int Painter::DrawText(int x, int y, const char *text, Color color /* = Color::NU
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::FillRegion(int x, int y, int width, int height, Color color /* = Color::NUMBER */)
+void Painter::FillRegion(int x, int y, int width, int height, Color color)
 {
+    SetColor(color);
 
+    SDL_Rect rect = {x, y, width, height};
+
+    SDL_RenderFillRect(renderer, &rect);
 }
