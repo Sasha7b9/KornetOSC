@@ -23,6 +23,24 @@ static SDL_Window *window = nullptr;
 static SDL_Texture *texture = nullptr;
 
 static wxButton *btnDisplay = nullptr;
+static wxButton *btnMeasures = nullptr;
+static wxButton *btnService = nullptr;
+static wxButton *btnMemory = nullptr;
+static wxButton *btnFunction = nullptr;
+
+static wxButton *btnEnter = nullptr;
+static wxButton *btnLeft = nullptr;
+static wxButton *btnRight = nullptr;
+static wxButton *btnUp = nullptr;
+static wxButton *btnDown = nullptr;
+
+static wxButton *btnF1 = nullptr;
+static wxButton *btnF2 = nullptr;
+static wxButton *btnF3 = nullptr;
+static wxButton *btnF4 = nullptr;
+static wxButton *btnF5 = nullptr;
+
+static wxButton *btnStart = nullptr;
 
 /// Цвета
 static uint colors[256];
@@ -35,8 +53,10 @@ static HANDLE CreateFrame();
 static void SetPosition(Frame *frame);
 /// Получить разрешение максимального имеющегося в системе монитора
 static wxRect GetMaxDisplay();
-/// Создаёт кнопки
+/// Создаёт все кнопки
 static void CreateButtons(Frame *frame);
+/// Создаёт одну кнопку
+static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -306,7 +326,7 @@ void Painter::FillRegion(int x, int y, int width, int height, Color color)
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void SetPosition(Frame *frame)
 {
-    wxSize size = { 600, 307 };
+    wxSize size = { 329, 700 };
 
     frame->SetSize(size);
     frame->SetMinSize(size);
@@ -363,5 +383,58 @@ static HANDLE CreateFrame()
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void CreateButtons(Frame *frame)
 {
+    // Рисуем кнопки меню и функциональные
 
+    wxButton *buttons[2][5] =
+    {
+        { btnF1,       btnF2,      btnF3,     btnF4,       btnF5 },
+        { btnFunction, btnDisplay, btnMemory, btnMeasures, btnService }
+    };
+
+        
+    char *titles[2][5] = 
+    {
+        { "F1",      "F2",      "F3",     "F4",        "F5" },
+        { "Функция", "Дисплей", "Память", "Измерения", "Сервис" }
+    };
+
+    int x0 = 5;
+    int y0 = 250;
+
+    int dX = 5;
+    int dY = 5;
+
+    int width = 58;
+    int height = 25;
+
+    wxSize size = {width, height};
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            buttons[j][i] = CreateButton(frame, {x0 + (width + dX) * i, y0 + (height + dY) * j}, size, titles[j][i]);
+        }
+    }
+
+    // Рисуем кнопки управления
+
+    width = height = 25;
+    x0 = 320 / 2 - width / 2;
+    y0 = 240 + 100;
+
+    size.SetWidth(width);
+    size.SetHeight(height);
+
+    btnEnter = CreateButton(frame, {x0, y0}, size, "E");
+    btnLeft = CreateButton(frame, {x0 - dX - width, y0}, size, "L");
+    btnRight = CreateButton(frame, {x0 + dX + width, y0}, size, "R");
+    btnUp = CreateButton(frame, {x0, y0 - height - dY}, size, "U");
+    btnDown = CreateButton(frame, {x0, y0 + height + dY}, size, "D");
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title)
+{
+    return new wxButton(frame, wxID_ANY, title, pos, size);
 }
