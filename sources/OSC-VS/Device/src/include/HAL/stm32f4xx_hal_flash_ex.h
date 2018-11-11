@@ -2,7 +2,22 @@
 #include "stm32f4xx_hal_def.h"
 
 
-#define FLASH_LATENCY_3 0   /*!< FLASH Three Latency cycles    */
+#define FLASH_LATENCY_0    0   /*!< FLASH Zero Latency cycle      */
+#define FLASH_LATENCY_1    0   /*!< FLASH One Latency cycle       */
+#define FLASH_LATENCY_2    0   /*!< FLASH Two Latency cycles      */
+#define FLASH_LATENCY_3    0   /*!< FLASH Three Latency cycles    */
+#define FLASH_LATENCY_4    0   /*!< FLASH Four Latency cycles     */
+#define FLASH_LATENCY_5    0   /*!< FLASH Five Latency cycles     */
+#define FLASH_LATENCY_6    0   /*!< FLASH Six Latency cycles      */
+#define FLASH_LATENCY_7    0   /*!< FLASH Seven Latency cycles    */
+#define FLASH_LATENCY_8    0   /*!< FLASH Eight Latency cycles    */
+#define FLASH_LATENCY_9    0   /*!< FLASH Nine Latency cycles     */
+#define FLASH_LATENCY_10   0   /*!< FLASH Ten Latency cycles      */
+#define FLASH_LATENCY_11   0   /*!< FLASH Eleven Latency cycles   */
+#define FLASH_LATENCY_12   0   /*!< FLASH Twelve Latency cycles   */
+#define FLASH_LATENCY_13   0   /*!< FLASH Thirteen Latency cycles */
+#define FLASH_LATENCY_14   0   /*!< FLASH Fourteen Latency cycles */
+#define FLASH_LATENCY_15   0   /*!< FLASH Fifteen Latency cycles  */
 
 #define FLASH_SECTOR_0     0U  /*!< Sector Number 0   */
 #define FLASH_SECTOR_1     1U  /*!< Sector Number 1   */

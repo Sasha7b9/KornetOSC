@@ -11,3 +11,11 @@
 #define TYPEPROGRAM_HALFWORD            0
 #define TYPEPROGRAM_WORD                0
 #define TYPEPROGRAM_DOUBLEWORD          0
+
+
+#define FORMAT_BIN                      0
+#define FORMAT_BCD                      0
+
+#define __DMA1_CLK_ENABLE               0
+#define __TIM7_CLK_ENABLE               0
+#define __DAC_CLK_ENABLE                0

@@ -426,6 +426,9 @@
     <ClCompile Include="src\include\HAL\stm32f4xx_hal_cortex.cpp">
       <Filter>libs\HAL</Filter>
     </ClCompile>
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_uart.cpp">
+      <Filter>libs\HAL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Device\src\Display\Display.h">
@@ -805,6 +808,9 @@
     </ClInclude>
     <ClInclude Include="src\include\HAL\Legacy\stm32_hal_legacy.h">
       <Filter>libs\HAL\Legacy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\HAL\stm32f4xx_hal_tim_ex.h">
+      <Filter>libs\HAL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

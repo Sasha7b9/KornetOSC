@@ -4,6 +4,10 @@
 
 #define __HAL_RCC_FMC_CLK_ENABLE()
 #define __HAL_RCC_GPIOF_CLK_ENABLE()
+#define __HAL_RCC_TIM2_CLK_ENABLE()
+#define __HAL_RCC_TIM3_CLK_ENABLE()
+#define __HAL_RCC_TIM2_CLK_DISABLE()
+#define __HAL_RCC_TIM3_CLK_DISABLE()
 
 
 typedef struct

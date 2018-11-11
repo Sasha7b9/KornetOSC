@@ -8,8 +8,10 @@ enum IRQn_Type
 {
     NonMaskableInt_IRQn = -14,
     SysTick_IRQn        = -1,
+    DMA1_Stream5_IRQn   = 16,
     ADC_IRQn            = 18, 
     EXTI9_5_IRQn        = 23,
+    TIM3_IRQn           = 29,
     USART3_IRQn         = 39
 };
 
@@ -201,6 +203,192 @@ typedef struct
     __IO uint32_t GTPR;       /*!< USART Guard time and prescaler register, Address offset: 0x18 */
 } USART_TypeDef;
 
+typedef struct
+{
+    __IO uint32_t TR;      /*!< RTC time register,                                        Address offset: 0x00 */
+    __IO uint32_t DR;      /*!< RTC date register,                                        Address offset: 0x04 */
+    __IO uint32_t CR;      /*!< RTC control register,                                     Address offset: 0x08 */
+    __IO uint32_t ISR;     /*!< RTC initialization and status register,                   Address offset: 0x0C */
+    __IO uint32_t PRER;    /*!< RTC prescaler register,                                   Address offset: 0x10 */
+    __IO uint32_t WUTR;    /*!< RTC wakeup timer register,                                Address offset: 0x14 */
+    __IO uint32_t CALIBR;  /*!< RTC calibration register,                                 Address offset: 0x18 */
+    __IO uint32_t ALRMAR;  /*!< RTC alarm A register,                                     Address offset: 0x1C */
+    __IO uint32_t ALRMBR;  /*!< RTC alarm B register,                                     Address offset: 0x20 */
+    __IO uint32_t WPR;     /*!< RTC write protection register,                            Address offset: 0x24 */
+    __IO uint32_t SSR;     /*!< RTC sub second register,                                  Address offset: 0x28 */
+    __IO uint32_t SHIFTR;  /*!< RTC shift control register,                               Address offset: 0x2C */
+    __IO uint32_t TSTR;    /*!< RTC time stamp time register,                             Address offset: 0x30 */
+    __IO uint32_t TSDR;    /*!< RTC time stamp date register,                             Address offset: 0x34 */
+    __IO uint32_t TSSSR;   /*!< RTC time-stamp sub second register,                       Address offset: 0x38 */
+    __IO uint32_t CALR;    /*!< RTC calibration register,                                 Address offset: 0x3C */
+    __IO uint32_t TAFCR;   /*!< RTC tamper and alternate function configuration register, Address offset: 0x40 */
+    __IO uint32_t ALRMASSR;/*!< RTC alarm A sub second register,                          Address offset: 0x44 */
+    __IO uint32_t ALRMBSSR;/*!< RTC alarm B sub second register,                          Address offset: 0x48 */
+    uint32_t RESERVED7;    /*!< Reserved, 0x4C                                                                 */
+    __IO uint32_t BKP0R;   /*!< RTC backup register 1,                                    Address offset: 0x50 */
+    __IO uint32_t BKP1R;   /*!< RTC backup register 1,                                    Address offset: 0x54 */
+    __IO uint32_t BKP2R;   /*!< RTC backup register 2,                                    Address offset: 0x58 */
+    __IO uint32_t BKP3R;   /*!< RTC backup register 3,                                    Address offset: 0x5C */
+    __IO uint32_t BKP4R;   /*!< RTC backup register 4,                                    Address offset: 0x60 */
+    __IO uint32_t BKP5R;   /*!< RTC backup register 5,                                    Address offset: 0x64 */
+    __IO uint32_t BKP6R;   /*!< RTC backup register 6,                                    Address offset: 0x68 */
+    __IO uint32_t BKP7R;   /*!< RTC backup register 7,                                    Address offset: 0x6C */
+    __IO uint32_t BKP8R;   /*!< RTC backup register 8,                                    Address offset: 0x70 */
+    __IO uint32_t BKP9R;   /*!< RTC backup register 9,                                    Address offset: 0x74 */
+    __IO uint32_t BKP10R;  /*!< RTC backup register 10,                                   Address offset: 0x78 */
+    __IO uint32_t BKP11R;  /*!< RTC backup register 11,                                   Address offset: 0x7C */
+    __IO uint32_t BKP12R;  /*!< RTC backup register 12,                                   Address offset: 0x80 */
+    __IO uint32_t BKP13R;  /*!< RTC backup register 13,                                   Address offset: 0x84 */
+    __IO uint32_t BKP14R;  /*!< RTC backup register 14,                                   Address offset: 0x88 */
+    __IO uint32_t BKP15R;  /*!< RTC backup register 15,                                   Address offset: 0x8C */
+    __IO uint32_t BKP16R;  /*!< RTC backup register 16,                                   Address offset: 0x90 */
+    __IO uint32_t BKP17R;  /*!< RTC backup register 17,                                   Address offset: 0x94 */
+    __IO uint32_t BKP18R;  /*!< RTC backup register 18,                                   Address offset: 0x98 */
+    __IO uint32_t BKP19R;  /*!< RTC backup register 19,                                   Address offset: 0x9C */
+} RTC_TypeDef;
+
+typedef struct
+{
+    __IO uint32_t CR;     /*!< DMA stream x configuration register      */
+    __IO uint32_t NDTR;   /*!< DMA stream x number of data register     */
+    __IO uint32_t PAR;    /*!< DMA stream x peripheral address register */
+    __IO uint32_t M0AR;   /*!< DMA stream x memory 0 address register   */
+    __IO uint32_t M1AR;   /*!< DMA stream x memory 1 address register   */
+    __IO uint32_t FCR;    /*!< DMA stream x FIFO control register       */
+} DMA_Stream_TypeDef;
+
+
+#define GPIO_PUPDR_PUPDR0                   0
+#define GPIO_PUPDR_PUPDR0_0                 0
+#define GPIO_PUPDR_PUPDR0_1                 0
+#define GPIO_PUPDR_PUPDR1                   0
+#define GPIO_PUPDR_PUPDR1_0                 0
+#define GPIO_PUPDR_PUPDR1_1                 0
+#define GPIO_PUPDR_PUPDR2                   0
+#define GPIO_PUPDR_PUPDR2_0                 0
+#define GPIO_PUPDR_PUPDR2_1                 0
+#define GPIO_PUPDR_PUPDR3                   0
+#define GPIO_PUPDR_PUPDR3_0                 0
+#define GPIO_PUPDR_PUPDR3_1                 0
+#define GPIO_PUPDR_PUPDR4                   0
+#define GPIO_PUPDR_PUPDR4_0                 0
+#define GPIO_PUPDR_PUPDR4_1                 0
+#define GPIO_PUPDR_PUPDR5                   0
+#define GPIO_PUPDR_PUPDR5_0                 0
+#define GPIO_PUPDR_PUPDR5_1                 0
+#define GPIO_PUPDR_PUPDR6                   0
+#define GPIO_PUPDR_PUPDR6_0                 0
+#define GPIO_PUPDR_PUPDR6_1                 0
+#define GPIO_PUPDR_PUPDR7                   0
+#define GPIO_PUPDR_PUPDR7_0                 0
+#define GPIO_PUPDR_PUPDR7_1                 0
+#define GPIO_PUPDR_PUPDR8                   0
+#define GPIO_PUPDR_PUPDR8_0                 0
+#define GPIO_PUPDR_PUPDR8_1                 0
+#define GPIO_PUPDR_PUPDR9                   0
+#define GPIO_PUPDR_PUPDR9_0                 0
+#define GPIO_PUPDR_PUPDR9_1                 0
+#define GPIO_PUPDR_PUPDR10                  0
+#define GPIO_PUPDR_PUPDR10_0                0
+#define GPIO_PUPDR_PUPDR10_1                0
+#define GPIO_PUPDR_PUPDR11                  0
+#define GPIO_PUPDR_PUPDR11_0                0
+#define GPIO_PUPDR_PUPDR11_1                0
+#define GPIO_PUPDR_PUPDR12                  0
+#define GPIO_PUPDR_PUPDR12_0                0
+#define GPIO_PUPDR_PUPDR12_1                0
+#define GPIO_PUPDR_PUPDR13                  0
+#define GPIO_PUPDR_PUPDR13_0                0
+#define GPIO_PUPDR_PUPDR13_1                0
+#define GPIO_PUPDR_PUPDR14                  0
+#define GPIO_PUPDR_PUPDR14_0                0
+#define GPIO_PUPDR_PUPDR14_1                0
+#define GPIO_PUPDR_PUPDR15                  0
+#define GPIO_PUPDR_PUPDR15_0                0
+#define GPIO_PUPDR_PUPDR15_1                0
+
+
+#define GPIO_MODER_MODER0_Pos            (0U)                                  
+#define GPIO_MODER_MODER0_Msk            (0x3U << GPIO_MODER_MODER0_Pos)       /*!< 0x00000003 */
+#define GPIO_MODER_MODER0                GPIO_MODER_MODER0_Msk                 
+#define GPIO_MODER_MODER0_0              (0x1U << GPIO_MODER_MODER0_Pos)       /*!< 0x00000001 */
+#define GPIO_MODER_MODER0_1              (0x2U << GPIO_MODER_MODER0_Pos)       /*!< 0x00000002 */
+#define GPIO_MODER_MODER1_Pos            (2U)                                  
+#define GPIO_MODER_MODER1_Msk            (0x3U << GPIO_MODER_MODER1_Pos)       /*!< 0x0000000C */
+#define GPIO_MODER_MODER1                GPIO_MODER_MODER1_Msk                 
+#define GPIO_MODER_MODER1_0              (0x1U << GPIO_MODER_MODER1_Pos)       /*!< 0x00000004 */
+#define GPIO_MODER_MODER1_1              (0x2U << GPIO_MODER_MODER1_Pos)       /*!< 0x00000008 */
+#define GPIO_MODER_MODER2_Pos            (4U)                                  
+#define GPIO_MODER_MODER2_Msk            (0x3U << GPIO_MODER_MODER2_Pos)       /*!< 0x00000030 */
+#define GPIO_MODER_MODER2                GPIO_MODER_MODER2_Msk                 
+#define GPIO_MODER_MODER2_0              (0x1U << GPIO_MODER_MODER2_Pos)       /*!< 0x00000010 */
+#define GPIO_MODER_MODER2_1              (0x2U << GPIO_MODER_MODER2_Pos)       /*!< 0x00000020 */
+#define GPIO_MODER_MODER3_Pos            (6U)                                  
+#define GPIO_MODER_MODER3_Msk            (0x3U << GPIO_MODER_MODER3_Pos)       /*!< 0x000000C0 */
+#define GPIO_MODER_MODER3                GPIO_MODER_MODER3_Msk                 
+#define GPIO_MODER_MODER3_0              (0x1U << GPIO_MODER_MODER3_Pos)       /*!< 0x00000040 */
+#define GPIO_MODER_MODER3_1              (0x2U << GPIO_MODER_MODER3_Pos)       /*!< 0x00000080 */
+#define GPIO_MODER_MODER4_Pos            (8U)                                  
+#define GPIO_MODER_MODER4_Msk            (0x3U << GPIO_MODER_MODER4_Pos)       /*!< 0x00000300 */
+#define GPIO_MODER_MODER4                GPIO_MODER_MODER4_Msk                 
+#define GPIO_MODER_MODER4_0              (0x1U << GPIO_MODER_MODER4_Pos)       /*!< 0x00000100 */
+#define GPIO_MODER_MODER4_1              (0x2U << GPIO_MODER_MODER4_Pos)       /*!< 0x00000200 */
+#define GPIO_MODER_MODER5_Pos            (10U)                                 
+#define GPIO_MODER_MODER5_Msk            (0x3U << GPIO_MODER_MODER5_Pos)       /*!< 0x00000C00 */
+#define GPIO_MODER_MODER5                GPIO_MODER_MODER5_Msk                 
+#define GPIO_MODER_MODER5_0              (0x1U << GPIO_MODER_MODER5_Pos)       /*!< 0x00000400 */
+#define GPIO_MODER_MODER5_1              (0x2U << GPIO_MODER_MODER5_Pos)       /*!< 0x00000800 */
+#define GPIO_MODER_MODER6_Pos            (12U)                                 
+#define GPIO_MODER_MODER6_Msk            (0x3U << GPIO_MODER_MODER6_Pos)       /*!< 0x00003000 */
+#define GPIO_MODER_MODER6                GPIO_MODER_MODER6_Msk                 
+#define GPIO_MODER_MODER6_0              (0x1U << GPIO_MODER_MODER6_Pos)       /*!< 0x00001000 */
+#define GPIO_MODER_MODER6_1              (0x2U << GPIO_MODER_MODER6_Pos)       /*!< 0x00002000 */
+#define GPIO_MODER_MODER7_Pos            (14U)                                 
+#define GPIO_MODER_MODER7_Msk            (0x3U << GPIO_MODER_MODER7_Pos)       /*!< 0x0000C000 */
+#define GPIO_MODER_MODER7                GPIO_MODER_MODER7_Msk                 
+#define GPIO_MODER_MODER7_0              (0x1U << GPIO_MODER_MODER7_Pos)       /*!< 0x00004000 */
+#define GPIO_MODER_MODER7_1              (0x2U << GPIO_MODER_MODER7_Pos)       /*!< 0x00008000 */
+#define GPIO_MODER_MODER8_Pos            (16U)                                 
+#define GPIO_MODER_MODER8_Msk            (0x3U << GPIO_MODER_MODER8_Pos)       /*!< 0x00030000 */
+#define GPIO_MODER_MODER8                GPIO_MODER_MODER8_Msk                 
+#define GPIO_MODER_MODER8_0              (0x1U << GPIO_MODER_MODER8_Pos)       /*!< 0x00010000 */
+#define GPIO_MODER_MODER8_1              (0x2U << GPIO_MODER_MODER8_Pos)       /*!< 0x00020000 */
+#define GPIO_MODER_MODER9_Pos            (18U)                                 
+#define GPIO_MODER_MODER9_Msk            (0x3U << GPIO_MODER_MODER9_Pos)       /*!< 0x000C0000 */
+#define GPIO_MODER_MODER9                GPIO_MODER_MODER9_Msk                 
+#define GPIO_MODER_MODER9_0              (0x1U << GPIO_MODER_MODER9_Pos)       /*!< 0x00040000 */
+#define GPIO_MODER_MODER9_1              (0x2U << GPIO_MODER_MODER9_Pos)       /*!< 0x00080000 */
+#define GPIO_MODER_MODER10_Pos           (20U)                                 
+#define GPIO_MODER_MODER10_Msk           (0x3U << GPIO_MODER_MODER10_Pos)      /*!< 0x00300000 */
+#define GPIO_MODER_MODER10               GPIO_MODER_MODER10_Msk                
+#define GPIO_MODER_MODER10_0             (0x1U << GPIO_MODER_MODER10_Pos)      /*!< 0x00100000 */
+#define GPIO_MODER_MODER10_1             (0x2U << GPIO_MODER_MODER10_Pos)      /*!< 0x00200000 */
+#define GPIO_MODER_MODER11_Pos           (22U)                                 
+#define GPIO_MODER_MODER11_Msk           (0x3U << GPIO_MODER_MODER11_Pos)      /*!< 0x00C00000 */
+#define GPIO_MODER_MODER11               GPIO_MODER_MODER11_Msk                
+#define GPIO_MODER_MODER11_0             (0x1U << GPIO_MODER_MODER11_Pos)      /*!< 0x00400000 */
+#define GPIO_MODER_MODER11_1             (0x2U << GPIO_MODER_MODER11_Pos)      /*!< 0x00800000 */
+#define GPIO_MODER_MODER12_Pos           (24U)                                 
+#define GPIO_MODER_MODER12_Msk           (0x3U << GPIO_MODER_MODER12_Pos)      /*!< 0x03000000 */
+#define GPIO_MODER_MODER12               GPIO_MODER_MODER12_Msk                
+#define GPIO_MODER_MODER12_0             (0x1U << GPIO_MODER_MODER12_Pos)      /*!< 0x01000000 */
+#define GPIO_MODER_MODER12_1             (0x2U << GPIO_MODER_MODER12_Pos)      /*!< 0x02000000 */
+#define GPIO_MODER_MODER13_Pos           (26U)                                 
+#define GPIO_MODER_MODER13_Msk           (0x3U << GPIO_MODER_MODER13_Pos)      /*!< 0x0C000000 */
+#define GPIO_MODER_MODER13               GPIO_MODER_MODER13_Msk                
+#define GPIO_MODER_MODER13_0             (0x1U << GPIO_MODER_MODER13_Pos)      /*!< 0x04000000 */
+#define GPIO_MODER_MODER13_1             (0x2U << GPIO_MODER_MODER13_Pos)      /*!< 0x08000000 */
+#define GPIO_MODER_MODER14_Pos           (28U)                                 
+#define GPIO_MODER_MODER14_Msk           (0x3U << GPIO_MODER_MODER14_Pos)      /*!< 0x30000000 */
+#define GPIO_MODER_MODER14               GPIO_MODER_MODER14_Msk                
+#define GPIO_MODER_MODER14_0             (0x1U << GPIO_MODER_MODER14_Pos)      /*!< 0x10000000 */
+#define GPIO_MODER_MODER14_1             (0x2U << GPIO_MODER_MODER14_Pos)      /*!< 0x20000000 */
+#define GPIO_MODER_MODER15_Pos           (30U)                                 
+#define GPIO_MODER_MODER15_Msk           (0x3U << GPIO_MODER_MODER15_Pos)      /*!< 0xC0000000 */
+#define GPIO_MODER_MODER15               GPIO_MODER_MODER15_Msk                
+#define GPIO_MODER_MODER15_0             (0x1U << GPIO_MODER_MODER15_Pos)      /*!< 0x40000000 */
+#define GPIO_MODER_MODER15_1             (0x2U << GPIO_MODER_MODER15_Pos)      /*!< 0x80000000 */
+
 
 #define RCC_AHB1ENR_GPIOAEN_Pos            (0U)                                
 #define RCC_AHB1ENR_GPIOAEN_Msk            (0x1U << RCC_AHB1ENR_GPIOAEN_Pos)   /*!< 0x00000001 */
@@ -243,6 +431,13 @@ typedef struct
 #define FMC_BCR1_MBKEN_Msk                  (0x1U << FMC_BCR1_MBKEN_Pos)        /*!< 0x00000001             */
 #define FMC_BCR1_MBKEN                      FMC_BCR1_MBKEN_Msk                  /*!<Memory bank enable bit  */
 
+#define TIM_SR_UIF_Pos                      (0U)                                         
+#define TIM_SR_UIF_Msk                      (0x1U << TIM_SR_UIF_Pos)                     /*!< 0x00000001 */
+#define TIM_SR_UIF                          TIM_SR_UIF_Msk                               /*!<Update interrupt Flag              */
+#define TIM_DIER_UIE_Pos                    (0U)                                         
+#define TIM_DIER_UIE_Msk                    (0x1U << TIM_DIER_UIE_Pos)                   /*!< 0x00000001 */
+#define TIM_DIER_UIE                        TIM_DIER_UIE_Msk                             /*!<Update interrupt enable */
+
 #define PERIPH_BASE                         0x40000000U /*!< Peripheral base address in the alias region    */
 
 
@@ -269,8 +464,10 @@ typedef struct
 
 #define CRC_BASE            (AHB1PERIPH_BASE + 0x3000U)
 #define RCC_BASE            (AHB1PERIPH_BASE + 0x3800U)
+#define RTC_BASE            (APB1PERIPH_BASE + 0x2800U)
 #define ADC3_BASE           (APB2PERIPH_BASE + 0x2200U)
 #define DAC_BASE            (APB1PERIPH_BASE + 0x7400U)
+#define SPI2_BASE           (APB1PERIPH_BASE + 0x3800U)
 #define SPI4_BASE           (APB2PERIPH_BASE + 0x3400U)
 #define USART3_BASE         (APB1PERIPH_BASE + 0x4800U)
 #define TIM2_BASE           (APB1PERIPH_BASE + 0x0000U)
@@ -280,10 +477,13 @@ typedef struct
 
 #define TIM2            ((TIM_TypeDef *) TIM2_BASE)
 #define TIM3            ((TIM_TypeDef *) TIM3_BASE)
+#define TIM7            ((TIM_TypeDef *) 0)
 #define RCC             ((RCC_TypeDef *) RCC_BASE)
+#define RTC             ((RTC_TypeDef *) RTC_BASE)
 #define CRC             ((CRC_TypeDef *) CRC_BASE)
 #define ADC3            ((ADC_TypeDef *) ADC3_BASE)
-#define DAC             ((DAC_TypeDef *) DAC_BASE) /* Kept for legacy purpose */
+#define DAC             ((DAC_TypeDef *) DAC_BASE)
+#define SPI2            ((SPI_TypeDef *) SPI2_BASE)
 #define SPI4            ((SPI_TypeDef *) SPI4_BASE)
 #define USART3          ((USART_TypeDef *) USART3_BASE)
 #define FMC_Bank1       ((FMC_Bank1_TypeDef *) FMC_Bank1_R_BASE)
@@ -303,6 +503,7 @@ typedef struct
 
 #define USB_OTG_FS      ((USB_OTG_GlobalTypeDef *) USB_OTG_FS_PERIPH_BASE)
 #define USB_OTG_HS      ((USB_OTG_GlobalTypeDef *) USB_OTG_HS_PERIPH_BASE)
+#define DMA1_Stream5    ((DMA_Stream_TypeDef *) 0)
 
 #define FLASH_END             0x081FFFFFU /*!< FLASH end address                                                          */
 #define FLASH_OTP_BASE        0x1FFF7800U /*!< Base address of : (up to 528 Bytes) embedded FLASH OTP Area                */

@@ -3,6 +3,8 @@
 
 
 #define __HAL_RCC_PWR_CLK_ENABLE()
+#define __HAL_RCC_GPIOB_CLK_ENABLE()
+#define __HAL_RCC_GPIOC_CLK_ENABLE()
 
 #define RCC_OSCILLATORTYPE_HSE      0x00000001U
 #define RCC_HSE_ON                  0

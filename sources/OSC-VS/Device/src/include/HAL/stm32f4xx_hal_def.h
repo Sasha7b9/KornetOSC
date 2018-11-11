@@ -17,3 +17,6 @@ typedef enum
     HAL_UNLOCKED = 0x00U,
     HAL_LOCKED = 0x01U
 } HAL_LockTypeDef;
+
+
+#define __HAL_LINKDMA(__HANDLE__, __PPP_DMA_FIELD__, __DMA_HANDLE__)

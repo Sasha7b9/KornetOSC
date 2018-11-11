@@ -43,20 +43,20 @@ void Sound::Init()
     static DMA_HandleTypeDef hdmaDAC1 =
     {
         DMA1_Stream5,
-    {
-        DMA_CHANNEL_7,
-        DMA_MEMORY_TO_PERIPH,
-        DMA_PINC_DISABLE,
-        DMA_MINC_ENABLE,
-        DMA_PDATAALIGN_BYTE,
-        DMA_MDATAALIGN_BYTE,
-        DMA_CIRCULAR,
-        DMA_PRIORITY_HIGH,
-        DMA_FIFOMODE_DISABLE,
-        DMA_FIFO_THRESHOLD_HALFFULL,
-        DMA_MBURST_SINGLE,
-        DMA_PBURST_SINGLE
-    },
+        {
+            DMA_CHANNEL_7,
+            DMA_MEMORY_TO_PERIPH,
+            DMA_PINC_DISABLE,
+            DMA_MINC_ENABLE,
+            DMA_PDATAALIGN_BYTE,
+            DMA_MDATAALIGN_BYTE,
+            DMA_CIRCULAR,
+            DMA_PRIORITY_HIGH,
+            DMA_FIFOMODE_DISABLE,
+            DMA_FIFO_THRESHOLD_HALFFULL,
+            DMA_MBURST_SINGLE,
+            DMA_PBURST_SINGLE
+        },
         HAL_UNLOCKED, HAL_DMA_STATE_RESET, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
 

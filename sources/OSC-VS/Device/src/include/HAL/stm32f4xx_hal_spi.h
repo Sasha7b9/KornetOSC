@@ -14,6 +14,27 @@
 #define SPI_CRCCALCULATION_DISABLE  0x00000000U
 
 
+#define SPI_POLARITY_LOW            0x00000000U
+#define SPI_POLARITY_HIGH           0
+
+
+#define SPI_NSS_SOFT                0
+#define SPI_NSS_HARD_INPUT          0x00000000U
+#define SPI_NSS_HARD_OUTPUT         0x00040000U
+
+
+typedef enum
+{
+    HAL_SPI_STATE_RESET = 0x00U,    /*!< Peripheral not Initialized                         */
+    HAL_SPI_STATE_READY = 0x01U,    /*!< Peripheral Initialized and ready for use           */
+    HAL_SPI_STATE_BUSY = 0x02U,    /*!< an internal process is ongoing                     */
+    HAL_SPI_STATE_BUSY_TX = 0x03U,    /*!< Data Transmission process is ongoing               */
+    HAL_SPI_STATE_BUSY_RX = 0x04U,    /*!< Data Reception process is ongoing                  */
+    HAL_SPI_STATE_BUSY_TX_RX = 0x05U,    /*!< Data Transmission and Reception process is ongoing */
+    HAL_SPI_STATE_ERROR = 0x06U     /*!< SPI error state                                    */
+} HAL_SPI_StateTypeDef;
+
+
 typedef struct
 {
     uint32_t Mode;               /*!< Specifies the SPI operating mode.
@@ -60,33 +81,32 @@ typedef struct __SPI_HandleTypeDef
     SPI_TypeDef                *Instance;    /* SPI registers base address */
 
     SPI_InitTypeDef            Init;         /* SPI communication parameters */
-//
-//    uint8_t                    *pTxBuffPtr;  /* Pointer to SPI Tx transfer Buffer */
-//
-//    uint16_t                   TxXferSize;   /* SPI Tx Transfer size */
-//
-//    __IO uint16_t              TxXferCount;  /* SPI Tx Transfer Counter */
-//
-//    uint8_t                    *pRxBuffPtr;  /* Pointer to SPI Rx transfer Buffer */
-//
-//    uint16_t                   RxXferSize;   /* SPI Rx Transfer size */
-//
-//    __IO uint16_t              RxXferCount;  /* SPI Rx Transfer Counter */
-//
-//    void(*RxISR)(struct __SPI_HandleTypeDef * hspi); /* function pointer on Rx ISR */
-//
-//    void(*TxISR)(struct __SPI_HandleTypeDef * hspi); /* function pointer on Tx ISR */
-//
-//    DMA_HandleTypeDef          *hdmatx;      /* SPI Tx DMA Handle parameters   */
-//
-//    DMA_HandleTypeDef          *hdmarx;      /* SPI Rx DMA Handle parameters   */
-//
-//    HAL_LockTypeDef            Lock;         /* Locking object                 */
-//
-//    __IO HAL_SPI_StateTypeDef  State;        /* SPI communication state */
-//
-//    __IO uint32_t              ErrorCode;    /* SPI Error code */
 
+    uint8_t                    *pTxBuffPtr;  /* Pointer to SPI Tx transfer Buffer */
+
+    uint16_t                   TxXferSize;   /* SPI Tx Transfer size */
+
+    __IO uint16_t              TxXferCount;  /* SPI Tx Transfer Counter */
+
+    uint8_t                    *pRxBuffPtr;  /* Pointer to SPI Rx transfer Buffer */
+
+    uint16_t                   RxXferSize;   /* SPI Rx Transfer size */
+
+    __IO uint16_t              RxXferCount;  /* SPI Rx Transfer Counter */
+
+    void(*RxISR)(struct __SPI_HandleTypeDef * hspi); /* function pointer on Rx ISR */
+
+    void(*TxISR)(struct __SPI_HandleTypeDef * hspi); /* function pointer on Tx ISR */
+
+    DMA_HandleTypeDef          *hdmatx;      /* SPI Tx DMA Handle parameters   */
+
+    DMA_HandleTypeDef          *hdmarx;      /* SPI Rx DMA Handle parameters   */
+
+    HAL_LockTypeDef            Lock;         /* Locking object                 */
+
+    __IO HAL_SPI_StateTypeDef  State;        /* SPI communication state */
+
+    __IO uint32_t              ErrorCode;    /* SPI Error code */
 }SPI_HandleTypeDef;
 
 
