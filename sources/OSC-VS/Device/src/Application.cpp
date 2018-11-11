@@ -9,9 +9,6 @@ extern void init();
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static SDL_Renderer *renderer = nullptr;
-static SDL_Window *window = nullptr;
-
 enum
 {
     Minimal_Quit = wxID_EXIT,
@@ -52,27 +49,6 @@ bool Application::OnInit()
         return false;
     }
 
-    Frame *frame = new Frame("Minimal wxWidgets App");
-
-    frame->Show(true);
-
-    frame->SetSize(1024, 768);
-
-    HANDLE handle = frame->GetHandle();
-
-    window = SDL_CreateWindowFrom(handle);
-
-    if (window == nullptr)
-    {
-        std::cout << "SDL_CreateWindowFrom() Error: " << SDL_GetError() << std::endl;
-    }
-    else
-    {
-        std::cout << "Create SDL window is ok";
-    }
-
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
     init();
 
     return true;
@@ -110,8 +86,6 @@ void Frame::OnTimer(wxTimerEvent&)
 {
     update();
 
-    DrawFrame();
-
     HandlerEvents();
 
     DrawFPS();
@@ -135,28 +109,6 @@ void Frame::HandlerEvents()
             break;
         }
     }
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Frame::DrawFrame()
-{
-    static SDL_Rect rect = { 0, 0, 333, 227 };
-
-    float speed = 0.1f;
-
-    rect.x = (int)((SDL_GetTicks() * speed)) % 500;
-
-    SDL_Surface *surface = SDL_GetWindowSurface(window);
-    SDL_Texture *texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_RENDERER_ACCELERATED, surface->w, surface->h);
-
-    SDL_SetRenderTarget(renderer, texture);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0xff, 0x00);
-    SDL_RenderFillRect(renderer, &rect);
-    SDL_SetRenderTarget(renderer, NULL);
-    SDL_RenderCopy(renderer, texture, NULL, NULL);
-    SDL_RenderPresent(renderer);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

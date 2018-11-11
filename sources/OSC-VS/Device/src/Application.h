@@ -25,6 +25,5 @@ private:
     wxDECLARE_EVENT_TABLE();
 
     void DrawFPS();
-    void DrawFrame();
     void HandlerEvents();
 };

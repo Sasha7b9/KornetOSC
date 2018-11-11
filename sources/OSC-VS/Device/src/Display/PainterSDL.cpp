@@ -1,28 +1,80 @@
-#include "stdafx.h"
+#include "../Application.h"
+
+
+#define uint    unsigned int
+#define int8    signed char
+#define uint8   unsigned char
+#define int16   signed short
+#define uint16  unsigned short
+#define uint    unsigned int
+#define uchar   unsigned char
+#define pString const char * const
+
+#include "../../Display/Painter.h"
+
+#include <SDL.h>
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static SDL_Renderer *renderer = nullptr;
+static SDL_Window *window = nullptr;
+static SDL_Texture *texture = nullptr;
+
+
+static uint colors[256];
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Painter::Init()
 {
+    Frame *frame = new Frame("Minimal wxWidgets App");
 
+    frame->Show(true);
+
+    frame->SetSize(640, 480);
+
+    HANDLE handle = frame->GetHandle();
+
+    window = SDL_CreateWindowFrom(handle);
+
+    if (window == nullptr)
+    {
+        std::cout << "SDL_CreateWindowFrom() Error: " << SDL_GetError() << std::endl;
+    }
+    else
+    {
+        std::cout << "Create SDL window is ok";
+    }
+
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::BeginScene(Color color)
 {
+    SDL_Surface *surface = SDL_GetWindowSurface(window);
+    texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_RENDERER_ACCELERATED, 320, 240);
 
+    SDL_SetRenderTarget(renderer, texture);
+    SetColor(Color::BLUE);
+    SDL_RenderClear(renderer);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::EndScene()
 {
+    SDL_SetRenderTarget(renderer, NULL);
 
+    SDL_Rect rect = {0, 0, 320, 240};
+
+    SDL_RenderCopy(renderer, texture, NULL, &rect);
+    SDL_RenderPresent(renderer);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::SetColorValue(Color color, uint value)
 {
-
+    colors[color.value] = value;
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -170,9 +222,16 @@ void Painter::DrawHLine(int y, int x0, int x1, Color color /* = Color::NUMBER */
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::SetColor(Color color /* = Color::NUMBER */)
+void Painter::SetColor(Color color)
 {
-
+    if (color != Color::NUMBER)
+    {
+        uint value = colors[color.value];
+        uint8 blue = (uint8)value;
+        uint8 green = (uint8)(value >> 8);
+        uint8 red = (uint8)(value >> 16);
+        SDL_SetRenderDrawColor(renderer, red, green, blue, 0x00);
+    }
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
