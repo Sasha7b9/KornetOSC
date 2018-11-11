@@ -11,6 +11,11 @@
 #include <string.h>
 
 
+#ifdef WIN32
+DataSettings *pDS; 
+#endif
+
+
 /** @addtogroup FPGA
  *  @{
  *  @addtogroup Data

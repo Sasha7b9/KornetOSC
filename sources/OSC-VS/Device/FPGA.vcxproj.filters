@@ -483,6 +483,9 @@
     <ClCompile Include="src\include\USBH\usbh_core.cpp">
       <Filter>libs\USBH</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Device\src\Display\Display.h">
@@ -877,6 +880,9 @@
     </ClInclude>
     <ClInclude Include="src\include\USBH\usbh_diskio.h">
       <Filter>libs\USBH</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\log.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
