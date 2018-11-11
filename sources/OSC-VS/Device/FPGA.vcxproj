@@ -48,7 +48,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Font\Font.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -129,9 +129,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\libs\USBH\usbh_conf.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\Device\src\libs\USBH\usbh_diskio.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\main.cpp">
@@ -350,10 +347,28 @@
     <ClCompile Include="src\Application.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\include\FatFS\ff.cpp" />
+    <ClCompile Include="src\include\FatFS\ff_gen_drv.cpp" />
     <ClCompile Include="src\include\HAL\stm32f4xx_hal.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_adc.cpp" />
     <ClCompile Include="src\include\HAL\stm32f4xx_hal_cortex.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_crc.cpp" />
     <ClCompile Include="src\include\HAL\stm32f4xx_hal_dac.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_dma.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_flash.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_flash_ex.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_gpio.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_pcd.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_rcc.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_rtc.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_spi.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_tim.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_hal_tim_ex.cpp" />
     <ClCompile Include="src\include\HAL\stm32f4xx_hal_uart.cpp" />
+    <ClCompile Include="src\include\HAL\stm32f4xx_ll_fmc.cpp" />
+    <ClCompile Include="src\include\USBH\usbh_core.cpp" />
+    <ClCompile Include="src\include\USBH\usbh_diskio.cpp" />
+    <ClCompile Include="src\include\USBH\usbh_msc.cpp" />
     <ClCompile Include="src\vs_main.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
     </ClCompile>
@@ -470,7 +485,6 @@
     <ClInclude Include="..\..\Device\src\libs\FatFS\ffconf.h" />
     <ClInclude Include="..\..\Device\src\libs\HAL\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\Device\src\libs\USBH\usbh_conf.h" />
-    <ClInclude Include="..\..\Device\src\libs\USBH\usbh_diskio.h" />
     <ClInclude Include="..\..\Device\src\main.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -631,6 +645,7 @@
     <ClInclude Include="src\include\HAL\stm32f4xx_ll_usb.h" />
     <ClInclude Include="src\include\USBH\usbh_core.h" />
     <ClInclude Include="src\include\USBH\usbh_def.h" />
+    <ClInclude Include="src\include\USBH\usbh_diskio.h" />
     <ClInclude Include="src\include\USBH\usbh_msc.h" />
   </ItemGroup>
   <ItemGroup>

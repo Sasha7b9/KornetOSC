@@ -36,4 +36,3 @@ typedef struct
 
 
 HAL_StatusTypeDef HAL_PCD_Init(PCD_HandleTypeDef *hpcd);
-

@@ -1,45 +1,39 @@
 #include "stdafx.h"
-#include "stm32f4xx_hal_dac.h"
+#include "stm32f4xx_hal_tim.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-HAL_StatusTypeDef HAL_DAC_SetValue(DAC_HandleTypeDef *, uint32_t, uint32_t, uint32_t)
+HAL_StatusTypeDef HAL_TIM_Base_Stop_IT(TIM_HandleTypeDef *)
 {
     return HAL_ERROR;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_Start(DAC_HandleTypeDef *, uint32_t)
+HAL_StatusTypeDef HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim)
 {
     return HAL_ERROR;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_Start_DMA(DAC_HandleTypeDef* hdac, uint32_t Channel, uint32_t* pData, uint32_t Length, uint32_t Alignment)
+HAL_StatusTypeDef HAL_TIM_Base_DeInit(TIM_HandleTypeDef *htim)
 {
     return HAL_ERROR;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_Stop_DMA(DAC_HandleTypeDef* hdac, uint32_t Channel)
+HAL_StatusTypeDef HAL_TIM_Base_Stop(TIM_HandleTypeDef *htim)
 {
     return HAL_ERROR;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_DeInit(DAC_HandleTypeDef* hdac)
+HAL_StatusTypeDef HAL_TIM_Base_Start(TIM_HandleTypeDef *htim)
 {
     return HAL_ERROR;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_ConfigChannel(DAC_HandleTypeDef* hdac, DAC_ChannelConfTypeDef* sConfig, uint32_t Channel)
-{
-    return HAL_ERROR;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_Init(DAC_HandleTypeDef* hdac)
+HAL_StatusTypeDef HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
 {
     return HAL_ERROR;
 }

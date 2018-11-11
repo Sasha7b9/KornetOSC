@@ -1,27 +1,26 @@
 #include "stdafx.h"
-#include "stm32f4xx_hal_uart.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *, uint8_t *, uint16_t)
+USBH_StatusTypeDef  USBH_Process(USBH_HandleTypeDef *phost)
 {
-    return HAL_ERROR;
+    return USBH_OK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *, uint8_t *, uint16_t, uint32_t)
+USBH_StatusTypeDef  USBH_Init(USBH_HandleTypeDef *phost, void(*pUsrFunc)(USBH_HandleTypeDef *phost, uint8_t), uint8_t id)
 {
-    return HAL_ERROR;
+    return USBH_OK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *)
+USBH_StatusTypeDef  USBH_RegisterClass(USBH_HandleTypeDef *phost, USBH_ClassTypeDef *pclass)
 {
-    return HAL_ERROR;
+    return USBH_OK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
+USBH_StatusTypeDef  USBH_Start(USBH_HandleTypeDef *phost)
 {
-
+    return USBH_OK;
 }

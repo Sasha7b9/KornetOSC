@@ -1,27 +1,20 @@
 #include "stdafx.h"
-#include "stm32f4xx_hal_uart.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *, uint8_t *, uint16_t)
+HAL_StatusTypeDef HAL_FLASH_Unlock(void)
 {
     return HAL_ERROR;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *, uint8_t *, uint16_t, uint32_t)
+HAL_StatusTypeDef HAL_FLASH_Lock(void)
 {
     return HAL_ERROR;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *)
+HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data)
 {
     return HAL_ERROR;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
-{
-
 }

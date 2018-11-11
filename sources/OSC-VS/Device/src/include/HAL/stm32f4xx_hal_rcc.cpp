@@ -1,27 +1,20 @@
 #include "stdafx.h"
-#include "stm32f4xx_hal_uart.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *, uint8_t *, uint16_t)
+uint32_t HAL_RCC_GetHCLKFreq(void)
+{
+    return 0;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef *RCC_ClkInitStruct, uint32_t FLatency)
 {
     return HAL_ERROR;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *, uint8_t *, uint16_t, uint32_t)
+HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef *RCC_OscInitStruct)
 {
     return HAL_ERROR;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *)
-{
-    return HAL_ERROR;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
-{
-
 }

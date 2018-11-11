@@ -1,45 +1,50 @@
 #include "stdafx.h"
-#include "stm32f4xx_hal_dac.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-HAL_StatusTypeDef HAL_DAC_SetValue(DAC_HandleTypeDef *, uint32_t, uint32_t, uint32_t)
+FRESULT f_mount(FATFS* fs, unsigned char const * path, unsigned char opt)
 {
-    return HAL_ERROR;
+    return FR_OK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_Start(DAC_HandleTypeDef *, uint32_t)
+FRESULT f_opendir(DIR* dp, const void* path)
 {
-    return HAL_ERROR;
+    return FR_OK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_Start_DMA(DAC_HandleTypeDef* hdac, uint32_t Channel, uint32_t* pData, uint32_t Length, uint32_t Alignment)
+FRESULT f_readdir(DIR* dp, FILINFO* fno)
 {
-    return HAL_ERROR;
+    return FR_OK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_Stop_DMA(DAC_HandleTypeDef* hdac, uint32_t Channel)
+FRESULT f_closedir(DIR* dp)
 {
-    return HAL_ERROR;
+    return FR_OK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_DeInit(DAC_HandleTypeDef* hdac)
+FRESULT f_open(FIL* fp, const void* path, unsigned char mode)
 {
-    return HAL_ERROR;
+    return FR_OK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_ConfigChannel(DAC_HandleTypeDef* hdac, DAC_ChannelConfTypeDef* sConfig, uint32_t Channel)
+FRESULT f_write(FIL* fp, const void* buff, UINT btw, UINT* bw)
 {
-    return HAL_ERROR;
+    return FR_OK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_DAC_Init(DAC_HandleTypeDef* hdac)
+FRESULT f_close(FIL* fp)
 {
-    return HAL_ERROR;
+    return FR_OK;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+FRESULT f_utime(const void* path, const FILINFO* fno)
+{
+    return FR_OK;
 }

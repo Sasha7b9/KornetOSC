@@ -1,27 +1,26 @@
 #include "stdafx.h"
-#include "stm32f4xx_hal_uart.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *, uint8_t *, uint16_t)
+void HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
 {
-    return HAL_ERROR;
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *, uint8_t *, uint16_t, uint32_t)
+void  HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
 {
-    return HAL_ERROR;
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-HAL_StatusTypeDef HAL_UART_Init(UART_HandleTypeDef *)
+GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 {
-    return HAL_ERROR;
+    return GPIO_PIN_RESET;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
+void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin)
 {
 
 }

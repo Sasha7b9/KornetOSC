@@ -157,8 +157,6 @@ typedef struct {
 } FIL;
 
 
-
-
 FRESULT f_mount (FATFS* fs, const TCHAR* path, BYTE opt);
 FRESULT f_opendir (DIR* dp, const void* path);
 FRESULT f_readdir (DIR* dp, FILINFO* fno);
