@@ -14,26 +14,31 @@
 
 #include <SDL.h>
 
+#include <wx/display.h>
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static SDL_Renderer *renderer = nullptr;
 static SDL_Window *window = nullptr;
 static SDL_Texture *texture = nullptr;
 
-
+/// Цвета
 static uint colors[256];
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Создаёт окно приложения. Возвращает хэндл виджета для отрисовки
+static HANDLE CreateFrame();
+/// Установить оптимальную позицию для окна приложения
+static void SetPosition(Frame *frame);
+/// Получить разрешение максимального имеющегося в системе монитора
+static wxRect GetMaxDisplay();
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Painter::Init()
 {
-    Frame *frame = new Frame("Minimal wxWidgets App");
-
-    frame->Show(true);
-
-    frame->SetSize(640, 307);
-
-    HANDLE handle = frame->GetHandle();
+    HANDLE handle = CreateFrame();
 
     window = SDL_CreateWindowFrom(handle);
 
@@ -292,4 +297,57 @@ void Painter::FillRegion(int x, int y, int width, int height, Color color)
     SDL_Rect rect = {x, y, width, height};
 
     SDL_RenderFillRect(renderer, &rect);
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+static void SetPosition(Frame *frame)
+{
+    wxSize size = { 640, 307 };
+
+    frame->SetSize(size);
+    frame->SetMinSize(size);
+    frame->SetMaxSize(size);
+
+    wxRect rect = GetMaxDisplay();
+
+    frame->SetPosition({ rect.width / 2 - size.GetWidth() / 2, rect.height / 2 - size.GetHeight() / 2 });
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+static wxRect GetMaxDisplay()
+{
+    wxRect result = {0, 0, 0, 0};
+
+    for (int i = 0; i < wxDisplay::GetCount(); i++)
+    {
+        wxDisplay display(i);
+
+        if (display.IsOk())
+        {
+            wxRect rect = display.GetClientArea();
+            if (rect.width > result.width)
+            {
+                result.width = rect.width;
+                result.height = rect.height;
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    return result;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+static HANDLE CreateFrame()
+{
+    Frame *frame = new Frame("");
+
+    SetPosition(frame);
+
+    frame->Show(true);
+
+    return frame->GetHandle();
 }
