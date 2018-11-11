@@ -24,6 +24,7 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(Minimal_Quit, Frame::OnQuit)
     EVT_MENU(Minimal_About, Frame::OnAbout)
     EVT_TIMER(TIMER_ID, Frame::OnTimer)
+    EVT_BUTTON(ID_ENTER, Frame::OnPressEnter)
 wxEND_EVENT_TABLE()
 
 wxIMPLEMENT_APP_NO_MAIN(Application);

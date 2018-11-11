@@ -3,6 +3,11 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+enum
+{
+    ID_ENTER = 100
+};
+
 class Application : public wxApp
 {
 public:
@@ -26,4 +31,10 @@ private:
 
     void DrawFPS();
     void HandlerEvents();
+
+    void OnPressEnter(wxCommandEvent &event);
+
+public:
+    void OnDown(wxCommandEvent &event);
+    void OnUp(wxCommandEvent &event);
 };

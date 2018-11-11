@@ -46,6 +46,18 @@ static wxButton *btnTimeBaseMore = nullptr;
 static wxButton *btnTimeShiftLess = nullptr;
 static wxButton *btnTimeShiftMore = nullptr;
 
+static wxButton *btnChannelA = nullptr;
+static wxButton *btnRangeLessA = nullptr;
+static wxButton *btnRangeMoreA = nullptr;
+static wxButton *btnRShiftLessA = nullptr;
+static wxButton *btnRShiftMoreA = nullptr;
+
+static wxButton *btnChannelB = nullptr;
+static wxButton *btnRangeLessB = nullptr;
+static wxButton *btnRangeMoreB = nullptr;
+static wxButton *btnRShiftLessB = nullptr;
+static wxButton *btnRShiftMoreB = nullptr;
+
 static wxButton *btnStart = nullptr;
 
 /// Цвета
@@ -62,7 +74,9 @@ static wxRect GetMaxDisplay();
 /// Создаёт все кнопки
 static void CreateButtons(Frame *frame);
 /// Создаёт одну кнопку
-static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title);
+static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title, uint id = wxID_ANY);
+/// Создаёт кнопки для меню канала
+static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, wxButton **btnChan, wxButton **btnRangeLess, wxButton **btnRangeMore, wxButton **btnRShiftLess, wxButton **btnRShiftMore);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,7 +92,7 @@ void Painter::Init()
     }
     else
     {
-        std::cout << "Create SDL window is ok";
+        std::cout << "Create SDL window is ok" << std::endl;
     }
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
@@ -332,7 +346,7 @@ void Painter::FillRegion(int x, int y, int width, int height, Color color)
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void SetPosition(Frame *frame)
 {
-    wxSize size = { 329, 700 };
+    wxSize size = { 329, 595 };
 
     frame->SetSize(size);
     frame->SetMinSize(size);
@@ -432,7 +446,7 @@ static void CreateButtons(Frame *frame)
     size.SetWidth(width);
     size.SetHeight(height);
 
-    btnEnter = CreateButton(frame, {x0, y0}, size, "E");
+    btnEnter = CreateButton(frame, {x0, y0}, size, "E", ID_ENTER);
     btnLeft = CreateButton(frame, {x0 - dX - width, y0}, size, "L");
     btnRight = CreateButton(frame, {x0 + dX + width, y0}, size, "R");
     btnUp = CreateButton(frame, {x0, y0 - height - dY}, size, "U");
@@ -440,18 +454,87 @@ static void CreateButtons(Frame *frame)
 
     // Кнопки времени
 
-    width = 58;
-    x0 = 320 / 4 - width / 2;
+    width = 51;
+    x0 = 5;
 
     y0 = 240 + 100;
 
     size.SetWidth(width);
 
-    btnTime = CreateButton(frame, {x0, y0}, size, "Развёртка");
+    btnTimeBaseLess = CreateButton(frame, {x0, y0}, size, "с");
+    btnTimeBaseMore = CreateButton(frame, {x0 + width + dY, y0}, size, "мс");
+    y0 += height + dY;
+    btnTimeShiftLess = CreateButton(frame, {x0, y0}, size, "<-");
+    btnTimeShiftMore = CreateButton(frame, {x0 + width + dY, y0}, size, "->");
+
+    int x = 5 + (2 * width + dX) / 2 - width / 2;
+
+    btnTime = CreateButton(frame, {x, y0 - height - dY - height - dY}, size, "Развёртка");
+
+    // Кнопки канала A
+
+    int y = 240 + 200;
+
+    CreateButtonsChannel(frame, "Канал 1", 5, y, &btnChannelA, &btnRangeLessA, &btnRangeMoreA, &btnRShiftLessA, &btnRShiftMoreA);
+
+    // Кнопки канала B
+
+    CreateButtonsChannel(frame, "Канал 1", 255, y, &btnChannelB, &btnRangeLessB, &btnRangeMoreB, &btnRShiftLessB, &btnRShiftMoreB);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title)
+static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title, uint id)
 {
-    return new wxButton(frame, wxID_ANY, title, pos, size);
+    wxButton *button = new wxButton(frame, id, title, pos, size);
+
+    button->Connect(id, wxEVT_LEFT_DOWN, wxCommandEventHandler(Frame::OnDown));
+    button->Connect(id, wxEVT_LEFT_UP, wxCommandEventHandler(Frame::OnUp));
+
+    return button;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, wxButton **btnChan, wxButton **btnRangeLess, wxButton **btnRangeMore, wxButton **btnRShiftLess, wxButton **btnRShiftMore)
+{
+    int width = 25;
+    int height = 40;
+
+    int dX = 5;
+    int dY = 5;
+
+    wxSize size = {width, height};
+
+    *btnRangeLess = CreateButton(frame, {x, y}, size, "мВ");
+    *btnRangeMore = CreateButton(frame, {x, y + height + dY}, size, "В");
+
+    *btnRShiftMore = CreateButton(frame, {x + width + 2 * dX, y}, size, "+");
+    *btnRShiftLess = CreateButton(frame, {x + width + 2 * dX, y + height + dY}, size, "-");
+
+    size.SetHeight(25);
+    size.SetWidth(width + width + dX * 2);
+
+    wxPoint pos = {x, y - dY - size.GetHeight()};
+
+    *btnChan = CreateButton(frame, pos, size, title);
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void Frame::OnPressEnter(wxCommandEvent& WXUNUSED(event))
+{
+    std::cout << "Enter" << std::endl;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void Frame::OnDown(wxCommandEvent &event)
+{
+    std::cout << "down" << std::endl;
+    std::cout << event.GetId() << std::endl;
+    event.Skip();
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void Frame::OnUp(wxCommandEvent &event)
+{
+    std::cout << "up" << std::endl;
+    event.Skip();
 }
