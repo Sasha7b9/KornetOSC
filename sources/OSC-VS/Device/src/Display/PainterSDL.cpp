@@ -521,14 +521,13 @@ static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, wxButt
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Frame::OnPressEnter(wxCommandEvent& WXUNUSED(event))
 {
-    std::cout << "Enter" << std::endl;
+    //std::cout << "Enter" << std::endl;
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Frame::OnDown(wxCommandEvent &event)
 {
-    std::cout << "down" << std::endl;
-    std::cout << event.GetId() << std::endl;
+    std::cout << "down " << event.GetId() << std::endl;
     event.Skip();
 }
 
