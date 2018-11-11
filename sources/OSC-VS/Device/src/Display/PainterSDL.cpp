@@ -40,6 +40,12 @@ static wxButton *btnF3 = nullptr;
 static wxButton *btnF4 = nullptr;
 static wxButton *btnF5 = nullptr;
 
+static wxButton *btnTime = nullptr;
+static wxButton *btnTimeBaseLess = nullptr;
+static wxButton *btnTimeBaseMore = nullptr;
+static wxButton *btnTimeShiftLess = nullptr;
+static wxButton *btnTimeShiftMore = nullptr;
+
 static wxButton *btnStart = nullptr;
 
 /// Цвета
@@ -431,6 +437,17 @@ static void CreateButtons(Frame *frame)
     btnRight = CreateButton(frame, {x0 + dX + width, y0}, size, "R");
     btnUp = CreateButton(frame, {x0, y0 - height - dY}, size, "U");
     btnDown = CreateButton(frame, {x0, y0 + height + dY}, size, "D");
+
+    // Кнопки времени
+
+    width = 58;
+    x0 = 320 / 4 - width / 2;
+
+    y0 = 240 + 100;
+
+    size.SetWidth(width);
+
+    btnTime = CreateButton(frame, {x0, y0}, size, "Развёртка");
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
