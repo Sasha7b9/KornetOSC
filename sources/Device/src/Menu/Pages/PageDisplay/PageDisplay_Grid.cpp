@@ -25,7 +25,7 @@ DEF_CHOICE_4( cType,                                                            
     TYPE_GRID, pageGrid, FuncActive, FuncChangedChoice, FuncDraw
 )
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Grid_Brightness()
 {
     PageDisplay::PageSettings::PageColors::colorTypeGrid.SetBrightness(BRIGHTNESS_GRID / 100.0f);
