@@ -286,7 +286,7 @@ DEF_SMALL_BUTTON_HINTS_2(bSet_Movement,                                         
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void PageMeasures::PageCursors::PageSet::OnRegSet(int angle)
+bool PageMeasures::PageCursors::PageSet::OnRegSet(int angle)
 {
     float value = (float)angle;
 
@@ -325,6 +325,8 @@ void PageMeasures::PageCursors::PageSet::OnRegSet(int angle)
         UpdateCursorsForLook();
     }
     Sound::RegulatorShiftRotate();
+
+    return true;
 }
 
 /*

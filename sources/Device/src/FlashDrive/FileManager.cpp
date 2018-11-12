@@ -301,7 +301,7 @@ static void DecCurrentFile()
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void FileManager::RotateRegSet(int angle)
+bool FileManager::RotateRegSet(int angle)
 {
     Sound::RegulatorSwitchRotate();
     if (FM_CURSOR_IN_DIRS)
@@ -314,6 +314,8 @@ void FileManager::RotateRegSet(int angle)
         angle > 0 ? DecCurrentFile() : IncCurrentFile();
         FM_NEED_REDRAW = FM_REDRAW_FILES;
     }
+
+    return true;
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

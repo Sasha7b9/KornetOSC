@@ -457,11 +457,11 @@ static void OnPress_Function(bool)
     }
 }
 
-static void OnRegSet_Function(int delta)
+static bool OnRegSet_Function(int delta)
 {
     if (!FUNC_MODE_DRAW_IS_ENABLED)
     {
-        return;
+        return false;
     }
 
     if (MATH_MODE_REG_SET_IS_RSHIFT)
@@ -525,24 +525,12 @@ static void OnRegSet_Function(int delta)
             sum = 0;
         }
     }
+
+    return true;
 }
 
-/*
-DEF_PAGE_SB(        ppFunction,                                                                                                // СЕРВИС - ФУНКЦИЯ ///
-    "ФУНКЦИЯ", "FUNCTION",
-    "Установка и выбор математической функции - сложения или умножения",
-    "Installation and selection of mathematical functions - addition or multiplication",
-    &bFunction_Exit,        // СЕРВИС - ФУНКЦИЯ - Выход
-    &bFunction_Screen,      // СЕРВИС - ФУНКЦИЯ - Экран
-    &bFunction_Type,        // СЕРВИС - ФУНКЦИЯ - Вид
-    &bFunction_ModeRegSet,  // СЕРВИС - ФУНКЦИЯ - Режим ручки УСТАНОВКА
-    &bFunction_RangeA,      // СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала
-    &bFunction_RangeB,
-    Page::Name::SB_Service_Function, &pService, IsActive_Function, OnPress_Function, FuncDrawPage, OnRegSet_Function
-)
-*/
 
-DEF_PAGE_5(ppFunction,                                                                                                // СЕРВИС - ФУНКЦИЯ ///
+DEF_PAGE_5(ppFunction,                                                                                                         // СЕРВИС - ФУНКЦИЯ ///
     "ФУНКЦИЯ", "FUNCTION",
     "Установка и выбор математической функции - сложения или умножения",
     "Installation and selection of mathematical functions - addition or multiplication",

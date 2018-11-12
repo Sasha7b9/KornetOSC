@@ -21,7 +21,7 @@ public:
     
     static void PressSB_LevelDown();
     
-    static void RotateRegSet(int angle);
+    static bool RotateRegSet(int angle);
     
     static bool GetNameForNewFile(char name[255]);
 

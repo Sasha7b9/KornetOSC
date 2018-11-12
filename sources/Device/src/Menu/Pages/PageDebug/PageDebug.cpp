@@ -1038,7 +1038,7 @@ static void OnPress_SerialNumber(bool)
     s->curDigt = 0;
 }
 
-static void OnRegSet_SerialNumber(int angle)
+static bool OnRegSet_SerialNumber(int angle)
 {
     pFuncVpIII p = (angle > 0) ? (Math::CircleIncrease<int>) : (Math::CircleDecrease<int>);
 
@@ -1053,6 +1053,8 @@ static void OnRegSet_SerialNumber(int angle)
         p(&s->year, 2016, 2050);
     }
     Sound::GovernorChangedValue();
+
+    return true;
 }
 
 DEF_PAGE_SB(        ppSerialNumber,                                                                                               // Œ“À¿ƒ ¿ - —/Õ ///

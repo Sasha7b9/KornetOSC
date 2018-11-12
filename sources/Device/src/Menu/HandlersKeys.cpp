@@ -182,10 +182,16 @@ void Handlers::Arrow()
         switch (event.key)
         {
             case Key::Left:
-                page->ChangeOpened(-1);
+                if(!page->funcRegSet(-1))
+                {
+                    page->ChangeOpened(-1);
+                }
                 break;
             case Key::Right:
-                page->ChangeOpened(1);
+                if(!page->funcRegSet(1))
+                {
+                    page->ChangeOpened(1);
+                }
                 break;
             case Key::Up:
             case Key::Down:

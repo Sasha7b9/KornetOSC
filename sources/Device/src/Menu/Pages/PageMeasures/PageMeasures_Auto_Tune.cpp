@@ -71,14 +71,15 @@ static bool IsActive_Tune()
     return SHOW_MEASURES;
 }
 
-static void OnRegSet_Tune(int angle)
+static bool OnRegSet_Tune(int angle)
 {
+    LOG_FUNC_ENTER();
     static const int8 step = 3;
     static int8 currentAngle = 0;
     currentAngle += (int8)angle;
     if (currentAngle < step && currentAngle > -step)
     {
-        return;
+        return true;
     }
     if (Measure::pageChoiceIsActive)
     {
@@ -102,6 +103,8 @@ static void OnRegSet_Tune(int angle)
         Sound::RegulatorSwitchRotate();
     }
     currentAngle = 0;
+
+    return true;
 }
 
 DEF_PAGE_2(pageTune,

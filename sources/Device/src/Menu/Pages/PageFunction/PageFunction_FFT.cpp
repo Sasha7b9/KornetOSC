@@ -104,10 +104,12 @@ static bool IsActive_FFT_Cursors()
     return FFT_ENABLED;
 }
 
-static void OnRegSet_FFT_Cursors(int angle)
+static bool OnRegSet_FFT_Cursors(int angle)
 {
     FFT_POS_CURSOR(MATH_CURRENT_CUR) += (uint8)angle;
     Sound::RegulatorShiftRotate();
+
+    return true;
 }
 
 /*

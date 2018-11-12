@@ -53,7 +53,7 @@ public:
             /// »зменить значение позиции курсора времени на delta точек
             static void SetShiftCursPosT(Chan ch, int numCur, float delta);
 
-            static void OnRegSet(int angle);
+            static bool OnRegSet(int angle);
 
             static void UpdateCursorsForLook();
             /// ”становить позицию курсора напр€жени€

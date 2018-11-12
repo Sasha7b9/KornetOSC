@@ -233,7 +233,7 @@ static void OnDraw_Last()
     Painter::DrawText(Grid::Right() - width + 23, Grid::Top() + 1, Integer(Storage::NumElementsInStorage()).ToString(false, 3, buffer));
 }
 
-static void OnRegSet_Last(int angle)
+static bool OnRegSet_Last(int angle)
 {
     if (Storage::NumElementsInStorage() > 1)
     {
@@ -247,6 +247,8 @@ static void OnRegSet_Last(int angle)
     {
         OnPress_Last_Prev();
     }
+
+    return true;
 }
 
 /*
@@ -644,9 +646,11 @@ static void DrawFileMask(int x, int y)
     Painter::FillRegion(x, y, 5, 8, Color::FLASH_10);
 }
 
-static void OnRegSet_Drive_Mask(int angle)
+static bool OnRegSet_Drive_Mask(int angle)
 {
     OnMemExtSetMaskNameRegSet(angle, sizeof(Tables::symbolsAlphaBet) / 4);
+
+    return true;
 }
 
 
@@ -1032,7 +1036,7 @@ static void DrawMemoryWave(int num, bool exist)
     }
 }
 
-static void OnRegSet_Internal(int delta)
+static bool OnRegSet_Internal(int delta)
 {
     Sound::RegulatorSwitchRotate();
     if (delta < 0)
@@ -1044,27 +1048,12 @@ static void OnRegSet_Internal(int delta)
         Math::CircleIncrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
     }
     Painter::ResetFlash();
+
+    return true;
 }
 
-/*
-DEF_PAGE_SB(        ppInternal,                                                                                               // ПАМЯТЬ - ВНУТР ЗУ ///
-    "ВНУТР ЗУ", "INT STORAGE",
-    "Переход в режим работы с внутренней памятью",
-    "Transition to an operating mode with internal memory",
-    &bInternal_Exit,            // ПАМЯТЬ - ВНУТР ЗУ - Выход
-    &bInternal_ShowAlways,      // ПАМЯТЬ - ВНУТР ЗУ - Показывать всегда
-    &bInternal_ModeShow,        // ПАМЯТЬ - ВНУТР ЗУ - Вид сигнала
-    //0,
-    //&bInternal_EraseAll,
-    //&bInternal_Scale,         // ПАМЯТЬ - ВНУТР ЗУ - Масштаб
-    &bInternal_Delete,          // ПАМЯТЬ - ВНУТР ЗУ - Удалить
-    &bInternal_SaveToMemory,    // ПАМЯТЬ - ВНУТР ЗУ - Сохранить
-    &bInternal_SaveToDrive,     // ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку
-    Page::Name::SB_Memory_Internal, &pMemory, FuncActive, OnPress_Internal, OnDraw_Internal, OnRegSet_Internal
-)
-*/
 
-DEF_PAGE_5(ppInternal,                                                                                               // ПАМЯТЬ - ВНУТР ЗУ ///
+DEF_PAGE_5(ppInternal,                                                                                                        // ПАМЯТЬ - ВНУТР ЗУ ///
     "ВНУТР ЗУ", "INT STORAGE",
     "Переход в режим работы с внутренней памятью",
     "Transition to an operating mode with internal memory",
@@ -1205,9 +1194,11 @@ DEF_SMALL_BUTTON(bSetName_Save,                                                 
 const PageBase *PageMemory::pointer = &pMemory;
 
 
-static void OnRegSet_SetName(int angle)
+static bool OnRegSet_SetName(int angle)
 {
     OnMemExtSetMaskNameRegSet(angle, sizeof(Tables::symbolsAlphaBet) / 4 - 7);
+
+    return true;
 }
 
 void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
@@ -1228,21 +1219,6 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     Sound::RegulatorSwitchRotate();
 
 }
-
-/*
-DEF_PAGE_SB(        pSetName,                                                                         // Страница вызывается для ввода имени файла ///
-    "", "",
-    "",
-    "",
-    &bSetName_Exit,         // ВВОД ИМЕНИ ФАЙЛА - Выход
-    &bSetName_Delete,       // ВВОД ИМЕНИ ФАЙЛА - Удалить
-    0,
-    &bSetName_Backspace,    // ВВОД ИМЕНИ ФАЙЛА - Backspace
-    &bSetName_Insert,       // ВВОД ИМЕНИ ФАЙЛА - Вставить
-    &bSetName_Save,         // ВВОД ИМЕНИ ФАЙЛА - Сохранить
-    Page::Name::SB_Memory_SetName, 0, FuncActive, EmptyPressPage, FuncDrawPage, OnRegSet_SetName
-)
-*/
 
 DEF_PAGE_4(pSetName,                                                                         // Страница вызывается для ввода имени файла ///
     "", "",

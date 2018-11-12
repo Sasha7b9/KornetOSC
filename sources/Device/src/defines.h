@@ -46,12 +46,14 @@ typedef void (*pFuncVI)(int);
 typedef void (*pFuncVII)(int, int);
 typedef void (*pFuncVpIII)(int *, int, int);
 typedef void (*pFuncVpI8I8I8)(int8 *, int8, int8);
+typedef bool (*pFuncBI)(int);
 
 inline void EmptyFuncVV(){}
 inline void EmptyFuncVB(bool){}
 inline bool EmptyFuncBV() { return true; }
 inline void EmptyFuncVI(int) {}
 inline void EmptyFuncVII(int, int) {}
+inline bool EmptyFuncBI(int) { return false; }
 
 #define ERROR_VALUE_INT     INT_MAX
 #define ERROR_VALUE_INT16   SHRT_MAX
