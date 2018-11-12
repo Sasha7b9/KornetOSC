@@ -112,6 +112,4 @@ private:
     static int DrawSubString(int x, int y, const char *text);
 
     static int DrawSpaces(int x, int y, const char *text, int *numSymbols);
-
-    static Color currentColor;
 };
