@@ -319,7 +319,7 @@ void Control::ShortPress()
             choice->funcOnChanged(false);
         }
     }
-    else if(type == Control::Type::SmallButton)
+    else if(type == Control::Type::DrawButton)
     {
         SButton *button = (SButton *)this;
         button->funcOnPress();
@@ -348,7 +348,7 @@ void Control::LongPress()
         Open(!IsOpened());
         time->SetOpened();
     }
-    else if(type == Control::Type::SmallButton)
+    else if(type == Control::Type::DrawButton)
     {
         SButton *button = (SButton *)this;
         button->funcOnPress();

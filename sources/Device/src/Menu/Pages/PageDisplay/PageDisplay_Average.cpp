@@ -61,5 +61,5 @@ DEF_PAGE_2( pageAverage,                                                        
     "Settings of the mode of averaging on the last measurements.",
     &cAverage_Num,         ///< ÄÈÑÏËÅÉ - ÓÑÐÅÄÍÅÍÈÅ - Êîëè÷åñòâî
     &cAverage_Mode,        ///< ÄÈÑÏËÅÉ - ÓÑÐÅÄÍÅÍÈÅ - Ðåæèì
-    Page::Name::Display_Average, PageDisplay::pointer, IsActive_Average, EmptyPressPage
+    Page::Name::Display_Average, PageDisplay::pointer, IsActive_Average, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )

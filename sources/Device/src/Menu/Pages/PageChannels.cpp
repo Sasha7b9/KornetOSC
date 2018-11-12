@@ -100,7 +100,7 @@ DEF_PAGE_3(         pChanA,                                                     
     cChanA_Divider,    // КАНАЛ 1 - Делитель
     bChanA_Balance,    // КАНАЛ 1 - Балансировать
     */
-    Page::Name::ChannelA, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::ChannelA, Menu::pageMain, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -163,5 +163,5 @@ DEF_PAGE_3(         pChanB,                                                     
     &cChanB_Input,       // КАНАЛ 2 - Вход
     &cChanB_Couple,      // КАНАЛ 2 - Связь
     &cChanB_Bandwidth,   // КАНАЛ 2 - Полоса
-    Page::Name::ChannelB, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::ChannelB, Menu::pageMain, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )

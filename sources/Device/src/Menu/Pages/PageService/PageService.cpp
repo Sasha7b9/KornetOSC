@@ -120,7 +120,7 @@ DEF_PAGE_2(         ppCalibrator,                                               
     "Control of the calibrator and calibration of an oscillograph",
     &cCalibrator_Calibrator,     // СЕРВИС - КАЛИБРАТОР - Калибратор
     &bCalibrator_Calibrate,      // СЕРВИС - КАЛИБРАТОР - Калибровать
-    Page::Name::Service_Calibrator, &pService, FuncActive, EmptyPressPage
+    Page::Name::Service_Calibrator, &pService, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 #ifdef OLD_RECORDER
@@ -164,7 +164,7 @@ static const Page ppRecorder =
 // СЕРВИС - РЕГИСТРАТОР - Выход ----------------------------------------------------------------------------------------------------------------------
 static const SButton bRecorder_Exit =
 {
-    Control::Type::SmallButton, &ppRecorder, 0,
+    Control::Type::DrawButton, &ppRecorder, 0,
     {
         "Выход", "Exit",
         "Выход из режима регистратора",
@@ -177,7 +177,7 @@ static const SButton bRecorder_Exit =
 // СЕРВИС - РЕГИСТРАТОР - Сохранять в ... ------------------------------------------------------------------------------------------------------------
 static const SButton bRecorder_SaveTo =
 {
-    Control::Type::SmallButton, &ppRecorder, IsActive_Recorder_SaveTo,
+    Control::Type::DrawButton, &ppRecorder, IsActive_Recorder_SaveTo,
     {
         "Сохранять в ...", "Save in ...",
         "Выбор места хранения данных",
@@ -228,7 +228,7 @@ static void Draw_Recorder_SaveTo_EXT(int x, int y)
 // СЕРВИС - РЕГИСТРАТОР - Выбор ----------------------------------------------------------------------------------------------------------------------
 static const SButton bRecorder_Choice =
 {
-    Control::Type::SmallButton, &ppRecorder, 0,
+    Control::Type::DrawButton, &ppRecorder, 0,
     {
         "Выбор", "Choice",
         "Выбор сигнала для просмотра",
@@ -253,7 +253,7 @@ static void Draw_Recorder_Choice(int x, int y)
 // СЕРВИС - РЕГИСТРАТОР - Курсор ---------------------------------------------------------------------------------------------------------------------
 static const SButton bRecorder_Cursor =
 {
-    Control::Type::SmallButton, &ppRecorder, 0,
+    Control::Type::DrawButton, &ppRecorder, 0,
     {
         "Курсор", "Cursors",
         "Выбор курсора",
@@ -280,9 +280,11 @@ static void Draw_Recorder_Cursor(int x, int y)
 #endif
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 DEF_SMALL_BUTTON_EXIT(  bFunction_Exit,                                                                             //--- СЕРВИС - ФУНКЦИЯ - Выход ---
     ppFunction, FuncActive, FuncPress, DrawSB_Exit
 )
+*/
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Function_Screen()
@@ -580,7 +582,7 @@ DEF_PAGE_2(         ppSound,                                                    
     "In this menu, you can adjust the volume",
     &cSound_Enable,  // СЕРВИС - ЗВУК - Звук
     &gSound_Volume,  // СЕРВИС - ЗВУК - Громкость
-    Page::Name::Service_Sound, &pService, FuncActive, EmptyPressPage
+    Page::Name::Service_Sound, &pService, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -626,7 +628,7 @@ DEF_PAGE_2(         ppRTC,                                                      
     "Set and setup time",
     &tRTC_Time,          // СЕРВИС - ВРЕМЯ - Время
     &tRTC_Correction,    // CЕРВИС - ВРЕМЯ - Коррекция
-    Page::Name::Service_RTC, &pService, FuncActive, EmptyPressPage
+    Page::Name::Service_RTC, &pService, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

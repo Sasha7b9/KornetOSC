@@ -718,7 +718,7 @@ static void DrawHintItem(int x, int y, int width)
         {"",            ""},                    // Control::Type::Time
         {"",            ""},                    // Control::Type::GovernorColor
         {"",            ""},                    // Control::Type::ChoiceReg
-        {"Кнопка",      "Button"},              // Control::Type::SmallButton
+        {"Кнопка",      "Button"},              // Control::Type::DrawButton
         {"Выбор параметра", "Choice parameter"} // Control::Type::ChoiceParameter
     };
     Language lang = LANG;
@@ -728,13 +728,13 @@ static void DrawHintItem(int x, int y, int width)
     char title[SIZE];
     snprintf(title, SIZE, "%s \"%s\"", names[Menu::itemHint->type][lang].name, item->titleHint[lang]);
 
-    if (item->type == Control::Type::SmallButton)
+    if (item->type == Control::Type::DrawButton)
     {
         y -= 9;
     }
     Painter::DrawStringInCenterRectAndBoundItC(x, y, width, 15, title, Color::BACK, Color::FILL);
     y = Painter::DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->titleHint[2 + lang], Color::BACK, Color::FILL);
-    if (item->type == Control::Type::SmallButton)
+    if (item->type == Control::Type::DrawButton)
     {
         ((SButton*)item)->DrawHints(x, y, width);
     }
@@ -827,7 +827,7 @@ bool Menu::IsMinimize()
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-const SButton *Menu::GetSmallButton(Key button)
+const SButton *Menu::GetDrawButton(Key button)
 {
     if (Menu::IsMinimize() && button >= Key::Enter && button <= Key::F5)
     {

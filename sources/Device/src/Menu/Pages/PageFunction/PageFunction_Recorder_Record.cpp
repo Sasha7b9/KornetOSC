@@ -28,7 +28,7 @@ DEF_PAGE_1(pageRecord,                                                          
     "Доступ к записи данных",
     "Access to data record",
     &cDestinationSource,        ///< ФУНКЦИЯ - РЕГИСТРАТОР - ЗАПИСЬ - Сохранять в
-    Page::Name::Function_Recorder_Record, PageFunction::PageRecorder::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Recorder_Record, PageFunction::PageRecorder::pointer, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 const PageBase *PageFunction::PageRecorder::PageRecord::pointer = &pageRecord;

@@ -20,6 +20,6 @@ DEF_PAGE_2( pageMeasures,                                                       
     "Access to measurement settings - cursor and automatic",
     PageMeasures::PageCursors::pointer,     ///< ÈÇÌÅÐÅÍÈß - ÊÓÐÑÎÐÛ
     PageMeasures::PageAuto::pointer,        ///< ÈÇÌÅÐÅÍÈß - ÀÂÒÎÌÀÒ
-    Page::Name::Measures, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Measures, Menu::pageMain, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 

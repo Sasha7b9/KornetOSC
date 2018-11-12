@@ -105,5 +105,5 @@ DEF_PAGE_4(         pageAuto,                                                   
     &cChannels,                         ///< ÈÇÌÅÐÅÍÈß - ÀÂÒÎÌÀÒ - Êàíàëû
     PageMeasures::PageAuto::PageTune::pointer,    ///< ÈÇÌÅÐÅÍÈß - ÀÂÒÎÌÀÒ - ÍÀÑÒÐÎÈÒÜ
     //&cMode,                           ///< ÈÇÌÅÐÅÍÈß - ÀÂÒÎÌÀÒ - Âèä
-    Page::Name::Measures_Auto, PageMeasures::pointer, FuncActive, EmptyPressPage
+    Page::Name::Measures_Auto, PageMeasures::pointer, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )

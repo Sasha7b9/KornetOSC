@@ -171,7 +171,7 @@ DEF_PAGE_3( pageDC,
     &cMode,
     &cRangesVoltageDC,
     &cAVP,
-    Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, OnPress_Page
+    Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, OnPress_Page, FuncDrawPage, FuncRegSetPage
 )
 
 DEF_PAGE_3(pageAC,
@@ -181,7 +181,7 @@ DEF_PAGE_3(pageAC,
     &cMode,
     &cRangesVoltageAC,
     &cAVP,
-    Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, OnPress_Page
+    Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, OnPress_Page, FuncDrawPage, FuncRegSetPage
 )
 
 DEF_PAGE_3(pageResistance,
@@ -191,5 +191,5 @@ DEF_PAGE_3(pageResistance,
     &cMode,
     &cRangesResistance,
     &cAVP,
-    Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, OnPress_Page
+    Page::Name::Function_Multimeter, PageFunction::pointer, FuncActive, OnPress_Page, FuncDrawPage, FuncRegSetPage
 )

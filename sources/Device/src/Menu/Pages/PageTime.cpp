@@ -120,5 +120,5 @@ DEF_PAGE_5(         pTime,                                                      
     &cTPos,          // ĞÀÇÂÅĞÒÊÀ - Òî
     &cDivRole,       // ĞÀÇÂÅĞÒÊÀ - Ô-öèÿ ÂĞ/ÄÅË
     &cShiftXtype,    // ĞÀÇÂÅĞÒÊÀ - Ñìåùåíèå
-    Page::Name::Time, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Time, Menu::pageMain, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )

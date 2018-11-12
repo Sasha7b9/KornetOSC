@@ -123,7 +123,7 @@ DEF_PAGE_5( pTesterU,
     &cPolarity,
     &cViewMode,
     &cSmoothing,
-    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, OnEnterExit_Tester
+    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, OnEnterExit_Tester, FuncDrawPage, FuncRegSetPage
 )
 
 DEF_PAGE_5(pTesterI,
@@ -134,5 +134,5 @@ DEF_PAGE_5(pTesterI,
     &cPolarity,
     &cViewMode,
     &cSmoothing,
-    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, OnEnterExit_Tester
+    Page::Name::Function_Tester, PageFunction::pointer, FuncActive, OnEnterExit_Tester, FuncDrawPage, FuncRegSetPage
 )

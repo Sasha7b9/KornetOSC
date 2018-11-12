@@ -71,7 +71,6 @@ static bool IsActive_Tune()
     return SHOW_MEASURES;
 }
 
-/*
 static void OnRegSet_Tune(int angle)
 {
     static const int8 step = 3;
@@ -104,7 +103,6 @@ static void OnRegSet_Tune(int angle)
     }
     currentAngle = 0;
 }
-*/
 
 DEF_PAGE_2(pageTune,
     "Õ¿—“–Œ»“‹", "CONFIGURE",
@@ -112,5 +110,5 @@ DEF_PAGE_2(pageTune,
     "Transition to the fine tuning mode of the number and types of measurements",
     &bTune_Markers,
     &bTune_Settings,
-    Page::Name::Measures_Auto_Tune, PageMeasures::PageAuto::pointer, IsActive_Tune, EmptyPressPage
+    Page::Name::Measures_Auto_Tune, PageMeasures::PageAuto::pointer, IsActive_Tune, EmptyPressPage, FuncDrawPage, OnRegSet_Tune
 )

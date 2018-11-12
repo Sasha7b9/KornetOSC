@@ -165,7 +165,7 @@ DEF_PAGE_2(ppSearch,                                                            
     "Office of the automatic search the trigger level.",
     &cSearch_Mode,       // ÑÈÍÕĞ - ÏÎÈÑÊ - Ğåæèì
     &bSearch_Search,     // ÑÈÍÕĞ - ÏÎÈÑÊ - Íàéòè
-    Page::Name::Trig_Search, &pTrig, FuncActive, EmptyPressPage
+    Page::Name::Trig_Search, &pTrig, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,5 +180,5 @@ DEF_PAGE_5(         pTrig,                                                      
     &cPolarity,      // ÑÈÍÕĞ - Ïîëÿğíîñòü
     &cInput,         // ÑÈÍÕĞ - Âõîä
     &ppSearch,       // ÑÈÍÕĞ - ÏÎÈÑÊ
-    Page::Name::Trig, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Trig, Menu::pageMain, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )

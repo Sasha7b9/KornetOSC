@@ -49,32 +49,32 @@ static const Control * const  items##name[] = {(Control *)item0, (Control *)item
 const PageBase name = {Control::Type::Page, 6, true, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                          \
     items##name, funcPress, funcDraw, funcRegSet};
 
-#define DEF_PAGE_1(name, titleRU, titleEN, hintRU, hintEN, item1, namePage, keeper, funcActive, funcPress)                                      \
+#define DEF_PAGE_1(name, titleRU, titleEN, hintRU, hintEN, item1, namePage, keeper, funcActive, funcPress, funcDraw, funcRegSet)                \
 static const Control * const  items##name[] = {(Control *)item1};                                                                               \
 static const PageBase name = {Control::Type::Page, 1, false, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                  \
-    items##name, funcPress, FuncDrawPage, FuncRegSetPage};
+    items##name, funcPress, funcDraw, funcRegSet};
 
-#define DEF_PAGE_2(name, titleRU, titleEN, hintRU, hintEN, item1, item2, namePage, keeper, funcActive, funcPress)                               \
+#define DEF_PAGE_2(name, titleRU, titleEN, hintRU, hintEN, item1, item2, namePage, keeper, funcActive, funcPress, funcDraw, funcRegSet)         \
 static const Control * const  items##name[] = {(Control *)item1, (Control *)item2};                                                             \
 static const PageBase name = {Control::Type::Page, 2, false, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                  \
-    items##name, funcPress, FuncDrawPage, FuncRegSetPage};
+    items##name, funcPress, funcDraw, funcRegSet};
 
-#define DEF_PAGE_3(name, titleRU, titleEN, hintRU, hintEN, item1, item2, item3, namePage, keeper, funcActive, funcPress)                        \
+#define DEF_PAGE_3(name, titleRU, titleEN, hintRU, hintEN, item1, item2, item3, namePage, keeper, funcActive, funcPress, funcDraw, funcRegSet)  \
 static const Control * const  items##name[] = {(Control *)item1, (Control *)item2, (Control *)item3};                                           \
 static const PageBase name = {Control::Type::Page, 3, false, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                  \
-    items##name, funcPress, FuncDrawPage, FuncRegSetPage};
+    items##name, funcPress, funcDraw, funcRegSet};
 
 #define DEF_PAGE_4(name, titleRU, titleEN, hintRU, hintEN,                                                                                      \
-    item1, item2, item3, item4, namePage, keeper, funcActive, funcPress)                                                                        \
+    item1, item2, item3, item4, namePage, keeper, funcActive, funcPress, funcDraw, funcRegSet)                                                  \
 static const Control * const  items##name[] = {(Control *)item1, (Control *)item2, (Control *)item3, (Control *)item4};                         \
 static const PageBase name = {Control::Type::Page, 4, false, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                  \
-    items##name, funcPress, FuncDrawPage, FuncRegSetPage};
+    items##name, funcPress, funcDraw, funcRegSet};
 
 #define DEF_PAGE_5(name, titleRU, titleEN, hintRU, hintEN,                                                                                      \
-    item1, item2, item3, item4, item5, namePage, keeper, funcActive, funcPress)                                                                 \
+    item1, item2, item3, item4, item5, namePage, keeper, funcActive, funcPress, funcDraw, funcRegSet)                                           \
 static const Control * const  items##name[] = {(Control *)item1, (Control *)item2, (Control *)item3, (Control *)item4, (Control *)item5};       \
 static const PageBase name = {Control::Type::Page, 5, false, namePage, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                  \
-    items##name, funcPress, FuncDrawPage, FuncRegSetPage};
+    items##name, funcPress, funcDraw, funcRegSet};
 
 #define DEF_PAGE_6(name, titleRU, titleEN, hintRU, hintEN,                                                                                      \
     item1, item2, item3, item4, item5, item6, namePage, keeper, funcActive, funcPress)                                                          \
@@ -162,32 +162,32 @@ ChoiceParameterBase name = {Item_ChoiceParameter, 0, false, Page::Name::NoPage, 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DEF_SMALL_BUTTON(name, titleRU, titleEN, hintRU, hintEN, keeper, funcActive, funcPress, funcDraw)                                           \
-static const SButtonBase name = { Control::Type::SmallButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},\
+static const SButtonBase name = { Control::Type::DrawButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},\
     funcPress, funcDraw, 0, 0};
 
 #define DEF_SMALL_BUTTON_EXIT(name, keeper, funcActive, funcPress, funcDraw)                                                                        \
-static const SButtonBase name = { Control::Type::SmallButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {"Выход", "Exit",                  \
+static const SButtonBase name = { Control::Type::DrawButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {"Выход", "Exit",                  \
     "Кнопка для выхода в предыдущее меню", "Button to return to the previous menu"}, funcPress, funcDraw, 0, 0};
 
 #define DEF_SMALL_BUTTON_HINTS_2(name, titleRU, titleEN, hintRU, hintEN, keeper, funcActive, funcPress, funcDraw,                                   \
     FuncDrawHint1, hintRu1, hintEn1, FuncDrawHint2, hintRu2, hintEn2)                                                                               \
-static const StructHelpSmallButton hints##name[] = {{ FuncDrawHint1, hintRu1, hintEn1 }, { FuncDrawHint2, hintRu2, hintEn2 }};                      \
-static const SButtonBase name = { Control::Type::SmallButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},\
+static const StructHelpDrawButton hints##name[] = {{ FuncDrawHint1, hintRu1, hintEn1 }, { FuncDrawHint2, hintRu2, hintEn2 }};                      \
+static const SButtonBase name = { Control::Type::DrawButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},\
     funcPress, funcDraw, hints##name, 2};
 
 #define DEF_SMALL_BUTTON_HINTS_3(name, titleRU, titleEN, hintRU, hintEN, keeper, funcActive, funcPress, funcDraw,                                   \
     FuncDrawHint1, hintRu1, hintEn1, FuncDrawHint2, hintRu2, hintEn2, FuncDrawHint3, hintRu3, hintEn3)                                              \
-static const StructHelpSmallButton hints##name[] = {{ FuncDrawHint1, hintRu1, hintEn1 }, { FuncDrawHint2, hintRu2, hintEn2 },                       \
+static const StructHelpDrawButton hints##name[] = {{ FuncDrawHint1, hintRu1, hintEn1 }, { FuncDrawHint2, hintRu2, hintEn2 },                       \
     { FuncDrawHint3, hintRu3, hintEn3 } };                                                                                                          \
-static const SButtonBase name = { Control::Type::SmallButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},\
+static const SButtonBase name = { Control::Type::DrawButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},\
     funcPress, funcDraw, hints##name, 3};
 
 #define DEF_SMALL_BUTTON_HINTS_5(name, titleRU, titleEN, hintRU, hintEN, keeper, funcActive, funcPress, funcDraw,                                   \
     FuncDrawHint1, hintRu1, hintEn1, FuncDrawHint2, hintRu2, hintEn2, FuncDrawHint3, hintRu3, hintEn3,                                              \
     FuncDrawHint4, hintRu4, hintEn4, FuncDrawHint5, hintRu5, hintEn5)                                                                               \
-static const StructHelpSmallButton hints##name[] = {{ FuncDrawHint1, hintRu1, hintEn1 }, { FuncDrawHint2, hintRu2, hintEn2 },                       \
+static const StructHelpDrawButton hints##name[] = {{ FuncDrawHint1, hintRu1, hintEn1 }, { FuncDrawHint2, hintRu2, hintEn2 },                       \
     { FuncDrawHint3, hintRu3, hintEn3 }, { FuncDrawHint4, hintRu4, hintEn4 }, { FuncDrawHint5, hintRu5, hintEn5 } };                                \
-static const SButtonBase name = { Control::Type::SmallButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},\
+static const SButtonBase name = { Control::Type::DrawButton, 0, false, Page::Name::NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},\
     funcPress, funcDraw, hints##name, 5};
 
 

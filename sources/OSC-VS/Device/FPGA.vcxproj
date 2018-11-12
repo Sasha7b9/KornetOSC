@@ -715,7 +715,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>src\include\HAL;src\include\FatFS;src\include\USBH;src\include\CMSIS;..\..\Device\src\libs\FatFS;..\..\Device\src;..\..\Device\src\libs\HAL;..\..\Device\src\libs\USBH;..\..\common;C:\My\TestSDL2\SDL2-2.0.9\include;C:\My\libs\wxWidgets\include;C:\My\libs\wxWidgets\include\msvc;$(IncludePath)</IncludePath>
+    <IncludePath>src\include\HAL;src\include\FatFS;src\include\USBH;src\include\CMSIS;..\..\Device\src\libs\FatFS;..\..\Device\src;..\..\Device\src\libs\HAL;..\..\Device\src\libs\USBH;..\..\common;C:\My\TestSDL2\SDL2-2.0.9\include;D:\Projects\stm32\OSC\sources\ThirdParty\wxWidgets\include;D:\Projects\stm32\OSC\sources\ThirdParty\wxWidgets\include\msvc;$(IncludePath)</IncludePath>
     <OutDir>.\Debug\</OutDir>
     <LibraryPath>C:\My\TestSDL2\SDL2-2.0.9\VisualC\Win32\Debug;C:\My\libs\wxWidgets\lib\vc_lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>

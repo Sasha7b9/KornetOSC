@@ -98,5 +98,5 @@ DEF_PAGE_4(ppFreqMeter,                                                         
     &cFreqMeter_TimeF,       // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Время счёта F
     &cFreqMeter_FreqClc,     // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Метки времени
     &cFreqMeter_NumPeriods,  // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Кол-во периодов
-    Page::Name::Function_FrequencyCounter, PageFunction::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_FrequencyCounter, PageFunction::pointer, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )

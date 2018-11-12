@@ -242,7 +242,7 @@ DEF_PAGE_5(         ppConsole,                                                  
     &cConsole_ModeStop,          // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ğåæ. îñòàíîâà
     &pppConsole_Registers,       // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ĞÅÃÈÑÒĞÛ
     &bConsole_SizeSettings,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ğàçìåğ íàñòğîåê
-    Page::Name::Debug_Console, &pDebug, FuncActive, EmptyPressPage
+    Page::Name::Debug_Console, &pDebug, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -315,7 +315,7 @@ DEF_PAGE_3(         pppADC_Balance,                                             
     &cADC_Balance_Mode,      // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ğåæèì
     &gADC_Balance_ShiftA,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 1
     &gADC_Balance_ShiftB,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 2
-    Page::Name::Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage
+    Page::Name::Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -453,21 +453,7 @@ DEF_PAGE_3(        pppADC_Stretch,                                              
     &cADC_Stretch_Mode,      // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - Ğåæèì
     &gADC_Stretch_A,         // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - Ğàñòÿæêà 1ê
     &gADC_Stretch_B,
-    Page::Name::Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage
-           /*,         // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - Ğàñòÿæêà 2ê
-    emptyChoice,
-    emptyChoice,
-    gADC_Stretch_Ak20mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - 20ìÂ/1Â 1ê
-    gADC_Stretch_Ak50mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - 50ìÂ 1ê 
-    gADC_Stretch_Ak100mV,   // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - 100ìÂ/5Â 1ê
-    gADC_Stretch_Ak2V,      // ÎÒËÀÄÊÀ - AÖÏ - ĞÀÑÒßÆÊÀ - 2Â 1ê
-    emptyChoice,
-    gADC_Stretch_Bk20mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - 20ìÂ/1Â 2ê
-    gADC_Stretch_Bk50mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - 50ìÂ 2ê 
-    gADC_Stretch_Bk100mV,   // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - 100ìÂ/5Â 2ê
-    gADC_Stretch_Bk2V,      // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - 2Â 2ê
-    emptyChoice
-    */
+    Page::Name::Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -572,7 +558,7 @@ DEF_PAGE_3(         ppADC,                                                      
     &pppADC_Balance, // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
     &pppADC_Stretch, // ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ
     &pppADC_Shift,   // ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
-    Page::Name::Debug_ADC, &pDebug, FuncActive, EmptyPressPage
+    Page::Name::Debug_ADC, &pDebug, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -727,7 +713,7 @@ DEF_PAGE_2(         ppChannels,                                                 
     "",
     &cChannels_BandwidthA,   // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ - Ïîëîñà 1
     &cChannels_BandwidthB,   // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ - Ïîëîñà 2
-    Page::Name::Debug_Channels, &pDebug, FuncActive, EmptyPressPage
+    Page::Name::Debug_Channels, &pDebug, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

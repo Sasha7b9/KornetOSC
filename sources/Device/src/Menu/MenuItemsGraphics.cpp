@@ -305,6 +305,9 @@ void Button::Draw(int x, int y)
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void SButton::Draw(int x, int y)
 {
+    x += 22;
+    y += 3;
+    
     if (funcOfActive())
     {
         if (IsPressed())
@@ -314,13 +317,13 @@ void SButton::Draw(int x, int y)
         }
         else
         {
-            Painter::DrawRectangle(x, y, WIDTH_SB, WIDTH_SB, Color::FILL);
+            Painter::SetColor(Color::FILL);
         }
         funcForDraw(x, y);
     }
     else
     {
-        Painter::DrawRectangle(x, y, WIDTH_SB, WIDTH_SB, Color::FILL);
+        Painter::SetColor(Color::FILL);
     }
 }
 
@@ -428,11 +431,7 @@ void Page::DrawItems(int x, int y)
         Painter::DrawRectangle(x, y + 1, Menu::Item::WIDTH - 1, Menu::Item::HEIGHT, Color::FILL);
         Painter::FillRegion(x + 1, y + 2, Menu::Item::WIDTH - 3, Menu::Item::HEIGHT - 2, Color::BACK);
 
-        int j = 0;
-        
-        int first = PosItemOnLeft();
-        
-        Control *item = Item(first + i);
+        Control *item = Item(PosItemOnLeft() + i);
         if (item)
         {
             item->Draw(x, y, false);
@@ -470,7 +469,7 @@ void Control::Draw(int x, int y, bool opened)
     {
         ((GovernorColor *)this)->Draw(x, y, opened);
     }
-    else if (type == Control::Type::SmallButton)
+    else if (type == Control::Type::DrawButton)
     {
         ((SButton *)this)->Draw(x, y);
     }
@@ -749,7 +748,7 @@ void SButton::DrawHints(int x, int y, int width)
     }
     Painter::FillRegion(x, y, width, 239 - y, Color::BACK);
     Painter::DrawRectangle(x, y, width, 239 - y, Color::FILL);
-    const StructHelpSmallButton *structHelp = &hintUGO[0];
+    const StructHelpDrawButton *structHelp = &hintUGO[0];
     x += 3;
     y += 3;
     for (int i = 0; i < numHints; i++)

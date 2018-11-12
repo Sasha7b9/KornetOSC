@@ -28,7 +28,7 @@ DEF_PAGE_1(pagePlay,                                                            
     "Просмотр записанных данных",
     "View recorded data",
     &cSource,                   ///< ФУНКЦИЯ - РЕГИСТРАТОР - ПРОСМОТР - Источник
-    Page::Name::Function_Recorder_Play, PageFunction::PageRecorder::pointer, FuncActive, EmptyPressPage
+    Page::Name::Function_Recorder_Play, PageFunction::PageRecorder::pointer, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 const PageBase *PageFunction::PageRecorder::PagePlay::pointer = &pagePlay;

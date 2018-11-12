@@ -23,6 +23,6 @@ volatile BitField gBF =
     0,  // needForSaveToFlashDrive
     0,  // exitFromModeSetNameTo
     0,  // temporaryShowStrNavi
-    0,  // runningFPGAbeforeSmallButtons
+    0,  // runningFPGAbeforeDrawButtons
     0   // exitFromROMtoRAM
 };

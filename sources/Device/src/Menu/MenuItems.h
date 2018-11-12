@@ -86,7 +86,7 @@ public:
             Time,          ///< Позволяет ввести время.
             GovernorColor, ///< Позволяет выбрать цвет.
             ChoiceReg,     ///< Элемент выбора, в котором выбор осуществляется не кнопкой, а ручкой
-            SmallButton,   ///< Кнопка для режима малых кнопок
+            DrawButton,    ///< Кнопка для режима малых кнопок
             ChoiceParameter,
             Number
         } value;
@@ -255,7 +255,7 @@ public:
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SButton ///
-struct StructHelpSmallButton
+struct StructHelpDrawButton
 {
     pFuncVII    funcDrawUGO;    ///< Указатель на функцию отрисовки изображения варианта кнопки
     pString     helpUGO[2];     ///< Подпись к данному изображению.
@@ -269,7 +269,7 @@ public:
     COMMON_PART_MENU_ITEM;
     pFuncVV                         funcOnPress;    ///< Эта функция вызвается для обработки нажатия кнопки.
     pFuncVII                        funcForDraw;    ///< Эта функция вызывается для отрисовки кнопки в месте с координатами x, y.
-    const StructHelpSmallButton    *hintUGO;
+    const StructHelpDrawButton     *hintUGO;
     int                             numHints;
 };
 
@@ -279,7 +279,7 @@ class SButton : public Control
 public:
     pFuncVV                         funcOnPress;    ///< Эта функция вызвается для обработки нажатия кнопки.
     pFuncVII                        funcForDraw;    ///< Эта функция вызывается для отрисовки кнопки в месте с координатами x, y.
-    const StructHelpSmallButton    *hintUGO; 
+    const StructHelpDrawButton    *hintUGO; 
     int                             numHints;
     void Draw(int x, int y);
     void DrawHints(int x, int y, int width);

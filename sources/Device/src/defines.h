@@ -217,7 +217,7 @@ extern HCD_HandleTypeDef handleHCD;
 #define EXIT_FROM_SETNAME_TO    (gBF.exitFromModeSetNameTo)
 #define SHOW_STRING_NAVIGATION  (gBF.temporaryShowStrNavi)
 #define NUM_ROM_SIGNAL          (gBF.currentNumROMSignal)
-#define RUN_FPGA_BEFORE_SB      (gBF.runningFPGAbeforeSmallButtons)
+#define RUN_FPGA_BEFORE_SB      (gBF.runningFPGAbeforeDrawButtons)
 #define NUM_RAM_SIGNAL          (gBF.currentNumRAMSignal)
 #define EXIT_FROM_ROM_TO_RAM    (gBF.exitFromROMtoRAM)
 #define FPGA_NEED_AUTO_FIND     (gBF.FPGAneedAutoFind)
@@ -245,7 +245,7 @@ struct BitField
     uint exitFromModeSetNameTo : 2;         ///< \brief Куда возвращаться из окна установки имени при сохранении : 0 - в основное меню, 1 - 
                                             ///< в окно последних, 2 - в окно Внутр ЗУ, 3 - в основно окно в выключенным меню.
     uint temporaryShowStrNavi : 1;          ///< Признак того, что нужно временно показывать строку навигации меню.
-    uint runningFPGAbeforeSmallButtons : 1; ///< Здесь сохраняется информация о том, работала ли ПЛИС перед переходом в режим работы с памятью.
+    uint runningFPGAbeforeDrawButtons : 1; ///< Здесь сохраняется информация о том, работала ли ПЛИС перед переходом в режим работы с памятью.
     uint exitFromROMtoRAM : 1;              ///< Если 1, то выходить из страницы внутренней памяти нужно не стандартно, а в меню последних.
     uint FPGAneedAutoFind : 1;              ///< Если 1, то нужно найти сигнал.
     uint needRedrawFileManager : 2;         ///< @brief Если 1, то файл-менеджер нуждается в полной перерисовке.

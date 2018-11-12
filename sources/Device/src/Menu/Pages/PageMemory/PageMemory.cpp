@@ -101,6 +101,7 @@ DEF_CHOICE_5(       cPoints,                                                    
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 static void OnPress_Last_Exit()
 {
     MODE_WORK = ModeWork::Dir;
@@ -111,10 +112,13 @@ static void OnPress_Last_Exit()
     }
     OnPressSB_Exit();
 }
+*/
 
+/*
 DEF_SMALL_BUTTON_EXIT(  bLast_Exit,                                                                               //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Выход ---
     ppLast, FuncActive, OnPress_Last_Exit, DrawSB_Exit
 )
+*/
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Next()
@@ -274,15 +278,19 @@ DEF_PAGE_4(ppLast,                                                              
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 static void OnPress_Drive_Manager_Exit()
 {
     Display::SetDrawMode(DrawMode::Auto, 0);
     OnPressSB_Exit();
 }
+*/
 
+/*
 DEF_SMALL_BUTTON_EXIT(  bDrive_Manager_Exit,                                                             //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выход ---
     pppDrive_Manager, FuncActive, OnPress_Drive_Manager_Exit, DrawSB_Exit
 )
+*/
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_Tab(int x, int y)
@@ -393,9 +401,11 @@ DEF_CHOICE_2(       cDrive_Name,                                                
 )
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 DEF_SMALL_BUTTON_EXIT(  bDrive_Mask_Exit,                                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Выход ---
     pppDrive_Mask, FuncActive, OnPressSB_Exit, DrawSB_Exit
 )
+*/
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Drive_Mask_Delete()
@@ -700,7 +710,7 @@ DEF_PAGE_4(         pMemory,                                                    
     &ppLast,         // ПАМЯТЬ - Последние
     &ppInternal,     // ПАМЯТЬ - ВНУТР ЗУ
     &ppDrive,        // ПАМЯТЬ - ВНЕШН ЗУ
-    Page::Name::Memory, Menu::pageMain, FuncActive, EmptyPressPage
+    Page::Name::Memory, Menu::pageMain, FuncActive, EmptyPressPage, FuncDrawPage, FuncRegSetPage
 )
 
 void PageMemory::SaveSignalToFlashDrive()
@@ -769,11 +779,14 @@ static void DrawSetName()
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 static void FuncForInternalExit()
 {
     ((Page *)&ppLast)->SetCurrentPage();
 }
+*/
 
+/*
 static void OnPress_Internal_Exit()
 {
     if (EXIT_FROM_ROM_TO_RAM)
@@ -793,10 +806,13 @@ static void OnPress_Internal_Exit()
         OnPressSB_Exit();
     }
 }
+*/
 
+/*
 DEF_SMALL_BUTTON_EXIT(  bInternal_Exit,                                                                            //--- ПАМЯТЬ - ВНУТР ЗУ - Выход ---
     ppInternal, FuncActive, OnPress_Internal_Exit, DrawSB_Exit
 )
+*/
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Internal_ShowAlways()
@@ -1080,12 +1096,14 @@ static void OnPress_SetName_Exit()
 }
 
 // Кнопк для выхода из режима задания имени сохраняемому сигналу. Одновременно кнопка отказа от сохранения
+/*
 DEF_SMALL_BUTTON(   bSetName_Exit,                                                                                            // ИМЯ ФАЙЛА - Выход ///
     "Выход", "Exit",
     "Отказ от сохранения",
     "Failure to save",
     pSetName, FuncActive, OnPress_SetName_Exit, DrawSB_Exit
 )
+*/
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_SetName_Delete()

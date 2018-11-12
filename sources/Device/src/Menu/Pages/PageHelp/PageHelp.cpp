@@ -85,15 +85,19 @@ DEF_SMALL_BUTTON(   sbHelpParagraphNext,                                        
     pHelp, FuncActive, HelpContent_NextParagraph, DrawSB_Help_ParagraphNext
 )
 
+/*
 static void PressSB_Help_Exit()
 {
 
 }
+*/
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 DEF_SMALL_BUTTON_EXIT(  sbExitHelp,                                                                                           //--- œŒÃŒŸ‹ - ¬˚ıÓ‰ ---
     pHelp, FuncActive, PressSB_Help_Exit, DrawSB_Help_ParagraphNext
 )
+*/
 
 const PageBase *PageHelp::pointer = &pHelp;
 

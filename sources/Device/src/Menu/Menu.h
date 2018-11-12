@@ -69,7 +69,7 @@ public:
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
     static void ChangeItem(Control *item, int delta);
     /// Вернуть указатель на малую кнопку, соответствующую данной кнопки панели.
-    static const SButton* GetSmallButton(Key button);
+    static const SButton* GetDrawButton(Key button);
 
     static void SetItemForHint(void *item);
 
