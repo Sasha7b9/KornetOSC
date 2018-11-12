@@ -7,10 +7,16 @@
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
+#include <limits>
 #endif
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Float::Float(float val) : m_val(val)
+{
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 char* Hex::ToBin(int depth, char buffer[36]) const
 {
     int byte = 3;       /// С этого байта начинаем вывод. Т.к. в начале строки - старший байт, в конце - младший
@@ -297,6 +303,11 @@ char* Phase::ToString(char bufferOut[20]) const
 char *Float::ToString(bool alwaysSign, int numDigits, char bufferOut[20]) const
 {
     float _value = m_val;
+    
+    if(_value == std::numeric_limits<float>::infinity())
+    {
+        _value = _value;
+    }
 
     if (Math::IsEquals(_value, ERROR_VALUE_FLOAT))
     {

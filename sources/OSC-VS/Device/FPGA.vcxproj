@@ -730,7 +730,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;MSVC;WIN32;OLD_RECORDER;wxUSE_GUI;wxUSE_EXCEPTIONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>

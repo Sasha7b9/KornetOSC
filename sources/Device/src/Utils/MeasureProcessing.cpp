@@ -11,6 +11,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits>
 #endif
 
 
@@ -1314,10 +1315,19 @@ char* Measure::Processing::GetStringMeasure(Measure::Type measure, Chan ch, char
         char bufferForFunc[20];
         pFuncPCFBPC func = sMeas[measure].FucnConvertate;
         float value = values[measure].value[ch];
+        
+            int i = 0;
+        
+        if(value == std::numeric_limits<float>::infinity())
+        {
+            value = value;
+        }
+        
         if (SET_DIVIDER_10(ch) && func == Voltage2String)
         {
             value *= 10.0f;                         // Домножаем, если включён делитель
         }
+               
         char *text = func(value, sMeas[measure].showSign, bufferForFunc);
         int len = (int)strlen(text) + (int)strlen(buffer) + 1;
         if (len + 1 <= lenBuf)
