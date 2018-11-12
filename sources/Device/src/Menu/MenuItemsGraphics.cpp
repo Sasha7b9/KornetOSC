@@ -552,7 +552,7 @@ void Page::DrawTitle(int x, int yTop)
 
     if (isPageSB)
     {
-        SMALL_BUTTON_FROM_PAGE(this, 0)->Draw(LEFT_SB, yTop + 3);
+        SMALL_BUTTON_FROM_PAGE(this, 0)->Draw(x, yTop + 3);
         return;
     }
 

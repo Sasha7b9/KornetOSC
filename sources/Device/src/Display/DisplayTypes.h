@@ -6,7 +6,6 @@
 #define MOI_HEIGHT_TITLE        19
 #define MOI_WIDTH_D_IP          34      /* ”величение ширины открытого ip-адреса в случае наличи€ порта */
 #define WIDTH_SB                19
-#define LEFT_SB                 299
 #define GRID_DELTA              20  /*  оличество точек в клетке */
 
 
