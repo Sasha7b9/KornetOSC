@@ -51,7 +51,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\PainterMem.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -715,9 +715,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>src\include\HAL;src\include\FatFS;src\include\USBH;src\include\CMSIS;..\..\Device\src\libs\FatFS;..\..\Device\src;..\..\Device\src\libs\HAL;..\..\Device\src\libs\USBH;..\..\common;C:\My\TestSDL2\SDL2-2.0.9\include;D:\Projects\stm32\OSC\sources\ThirdParty\wxWidgets\include;D:\Projects\stm32\OSC\sources\ThirdParty\wxWidgets\include\msvc;$(IncludePath)</IncludePath>
+    <IncludePath>src\include\HAL;src\include\FatFS;src\include\USBH;src\include\CMSIS;..\..\Device\src\libs\FatFS;..\..\Device\src;..\..\Device\src\libs\HAL;..\..\Device\src\libs\USBH;..\..\common;C:\My\TestSDL2\SDL2-2.0.9\include;..\..\ThirdParty\wxWidgets\include;..\..\ThirdParty\wxWidgets\include\msvc;$(IncludePath)</IncludePath>
     <OutDir>.\Debug\</OutDir>
-    <LibraryPath>C:\My\TestSDL2\SDL2-2.0.9\VisualC\Win32\Debug;C:\My\libs\wxWidgets\lib\vc_lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\My\TestSDL2\SDL2-2.0.9\VisualC\Win32\Debug;..\..\ThirdParty\wxWidgets\lib\vc_lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>.\x64\Debug</OutDir>
