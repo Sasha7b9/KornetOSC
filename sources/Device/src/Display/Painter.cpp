@@ -649,6 +649,7 @@ int Painter::DrawStringInCenterRect(int eX, int eY, int width, int eHeight, cons
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::ResetFlash()
 {
+    Timer::SetAndEnable(kFlashDisplay, OnTimerFlashDisplay, 500);
     inverseColor = false;
     WriteFlashColor();
 }
