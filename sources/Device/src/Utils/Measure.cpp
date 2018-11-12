@@ -156,7 +156,15 @@ int Measure::GetTopTable()
     {
         return Grid::Bottom() - DY() * 6;
     }
-    return Grid::Bottom() - NumRows() * DY();
+
+    int y = Grid::Bottom() - NumRows() * DY();
+
+    if(Menu::IsShown())
+    {
+        y -= 3;
+    }
+
+    return y;
 }
 
 

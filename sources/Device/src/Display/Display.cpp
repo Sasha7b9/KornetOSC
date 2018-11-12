@@ -130,11 +130,7 @@ void Display::Update()
         Recorder::Graphics::Update
     };
 
-    pFuncDisplayVV func = funcs[Device::CurrentMode()].func;
-
-    func();
-
-    Menu::Graphics::Draw();
+    funcs[Device::CurrentMode()].func();
 
     Console::Draw();
 
