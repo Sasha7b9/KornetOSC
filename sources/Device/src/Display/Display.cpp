@@ -168,7 +168,7 @@ static void OnTimerShowWarning()
 
     if (pointer == 0)
     {
-        Timer::Disable(kShowMessages);
+        Timer::Disable(Timer::Type::ShowMessages);
     }
 }
 
@@ -177,7 +177,7 @@ static void ShowWarn(const char *message)
 {
     if (warnings[0] == 0)
     {
-        Timer::SetAndEnable(kShowMessages, OnTimerShowWarning, 100);
+        Timer::SetAndEnable(Timer::Type::ShowMessages, OnTimerShowWarning, 100);
     }
     bool alreadyStored = false;
     for (int i = 0; i < NUM_WARNINGS; i++)
@@ -230,7 +230,7 @@ void Display::RotateTrigLev()
     if (TIME_SHOW_LEVELS && TRIG_MODE_FIND_HAND)
     {
         showLevelTrigLev = true;
-        Timer::SetAndStartOnce(kShowLevelTrigLev, DisableShowLevelTrigLev, (uint)(TIME_SHOW_LEVELS * 1000));
+        Timer::SetAndStartOnce(Timer::Type::ShowLevelTrigLev, DisableShowLevelTrigLev, (uint)(TIME_SHOW_LEVELS * 1000));
     }
     NEED_FINISH_DRAW = 1;
 }
@@ -245,7 +245,7 @@ static void OnRShiftMarkersAutoHide()
 void Display::ChangedRShiftMarkers(bool active)
 {
     drawRShiftMarkers = !ALT_MARKERS_HIDE;
-    Timer::SetAndStartOnce(kRShiftMarkersAutoHide, OnRShiftMarkersAutoHide, 5000);
+    Timer::SetAndStartOnce(Timer::Type::RShiftMarkersAutoHide, OnRShiftMarkersAutoHide, 5000);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -254,11 +254,11 @@ void Display::SetDrawMode(DrawMode mode, pFuncVV func)
     funcOnHand = func;
     if (mode == DrawMode::Hand)
     {
-        Timer::SetAndEnable(kTimerDisplay, funcOnHand, 40);
+        Timer::SetAndEnable(Timer::Type::TimerDisplay, funcOnHand, 40);
     }
     else
     {
-        Timer::Disable(kTimerDisplay);
+        Timer::Disable(Timer::Type::TimerDisplay);
     }
 }
 

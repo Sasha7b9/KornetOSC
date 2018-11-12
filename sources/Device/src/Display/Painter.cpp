@@ -27,7 +27,7 @@ static void WriteColor(Color color);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Painter::Init()
 {
-    Timer::SetAndEnable(kFlashDisplay, OnTimerFlashDisplay, 500);
+    Timer::SetAndEnable(Timer::Type::FlashDisplay, OnTimerFlashDisplay, 500);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -649,7 +649,7 @@ int Painter::DrawStringInCenterRect(int eX, int eY, int width, int eHeight, cons
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::ResetFlash()
 {
-    Timer::SetAndEnable(kFlashDisplay, OnTimerFlashDisplay, 500);
+    Timer::SetAndEnable(Timer::Type::FlashDisplay, OnTimerFlashDisplay, 500);
     inverseColor = false;
     WriteFlashColor();
 }

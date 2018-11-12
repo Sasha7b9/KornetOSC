@@ -22,49 +22,52 @@
 #define TIME_US    (TIM2->CNT / 90)
 #define TIME_MS    HAL_GetTick()
 
-enum TypeTimer
-{
-    kPressKey,                  ///< Нужно устанавливать, когда приходит нажатие клавиши.
-    kShowLevelRShiftA,          ///< Нужно устанавливать, когда изменяется положение ручки смещения канала 1.
-    kShowLevelRShiftB,          ///< Нужно устанавливать, когда изменяется положение ручки смещения канала 2.
-    kShowLevelTrigLev,          ///< Нужно устанавливать, когда изменяется положение ручки уровня синхронизации
-    kENumSignalsInSec,          ///< Для установки количества считываний сигнала в секунду.
-    kFlashDisplay,              ///< Таймер для мерцающих участков экрана чёрно-белого дисплея.
-    kShowMessages,              ///< Таймер для засекания время показа информационных и предупреждающих сообщений.
-    kMenuAutoHide,              ///< Таймер для отсчёта времени скрывания меню.
-    kRShiftMarkersAutoHide,     ///< Таймер для отсчёта времени скрывания дополнительных боковых меток.
-    kUSB,                       ///< Вспомогательный, для общих нужд.
-    kStopSound,                 ///< Выключить звук
-    kTemporaryPauseFPGA,        ///< Временная пауза для фиксации сигнала на экране после поворота ручек
-    kStrNaviAutoHide,           ///< Прятать строку навигации меню
-    kTimerStartP2P,             ///< Таймер для запуска следующего цикла поточечного чтения
-    kTimerDisplay,              ///< Таймер на ручную отрисовку экрана
-    kTemp,
-    NumTimers
-};
-
 
 class Timer
 {
 public:
 
+    struct Type
+    {
+        enum E{
+            PressKey,                  ///< Нужно устанавливать, когда приходит нажатие клавиши.
+            ShowLevelRShiftA,          ///< Нужно устанавливать, когда изменяется положение ручки смещения канала 1.
+            ShowLevelRShiftB,          ///< Нужно устанавливать, когда изменяется положение ручки смещения канала 2.
+            ShowLevelTrigLev,          ///< Нужно устанавливать, когда изменяется положение ручки уровня синхронизации
+            ENumSignalsInSec,          ///< Для установки количества считываний сигнала в секунду.
+            FlashDisplay,              ///< Таймер для мерцающих участков экрана чёрно-белого дисплея.
+            ShowMessages,              ///< Таймер для засекания время показа информационных и предупреждающих сообщений.
+            MenuAutoHide,              ///< Таймер для отсчёта времени скрывания меню.
+            RShiftMarkersAutoHide,     ///< Таймер для отсчёта времени скрывания дополнительных боковых меток.
+            USB,                       ///< Вспомогательный, для общих нужд.
+            StopSound,                 ///< Выключить звук
+            TemporaryPauseFPGA,        ///< Временная пауза для фиксации сигнала на экране после поворота ручек
+            StrNaviAutoHide,           ///< Прятать строку навигации меню
+            TimerStartP2P,             ///< Таймер для запуска следующего цикла поточечного чтения
+            TimerDisplay,              ///< Таймер на ручную отрисовку экрана
+            Temp,
+            Number
+        };
+    };
+
+
     static void Init();
 
     static void DeInit();
     /// Назначает таймеру timer функцию и время срабатывания
-    static void Set(TypeTimer type, pFuncVV func, uint dTms);
+    static void Set(Timer::Type::E type, pFuncVV func, uint dTms);
 
-    static void SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms);
+    static void SetAndStartOnce(Timer::Type::E type, pFuncVV func, uint dTms);
 
-    static void SetAndEnable(TypeTimer type, pFuncVV func, uint dTms);
+    static void SetAndEnable(Timer::Type::E type, pFuncVV func, uint dTms);
 
-    static void StartOnce(TypeTimer type);
+    static void StartOnce(Timer::Type::E type);
 
-    static void Enable(TypeTimer type);
+    static void Enable(Timer::Type::E type);
 
-    static void Disable(TypeTimer type);
+    static void Disable(Timer::Type::E type);
 
-    static bool IsRun(TypeTimer type);
+    static bool IsRun(Timer::Type::E type);
 
     static void PauseOnTime(uint timeMS);
 

@@ -240,11 +240,11 @@ void Menu::SetAutoHide(bool)
     }
     if(Display::TimeMenuAutoHide() == 0)
     {
-        Timer::Disable(kMenuAutoHide);
+        Timer::Disable(Timer::Type::MenuAutoHide);
     }
     else
     {
-        Timer::SetAndStartOnce(kMenuAutoHide, OnTimerAutoHide, (uint)Display::TimeMenuAutoHide());
+        Timer::SetAndStartOnce(Timer::Type::MenuAutoHide, OnTimerAutoHide, (uint)Display::TimeMenuAutoHide());
     }
 }
 
@@ -457,7 +457,7 @@ void Menu::TemporaryEnableStrNavi()
     if (SHOW_STRING_NAVI_TEMP)
     {
         SHOW_STRING_NAVIGATION = 1;                                            // Устанавливаем признак того, что надо выводить строку навигации меню
-        Timer::SetAndStartOnce(kStrNaviAutoHide, OnTimerStrNaviAutoHide, 3000); // и запускаем таймер, который его отключит
+        Timer::SetAndStartOnce(Timer::Type::StrNaviAutoHide, OnTimerStrNaviAutoHide, 3000); // и запускаем таймер, который его отключит
     }
 }
 
