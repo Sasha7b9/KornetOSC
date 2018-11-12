@@ -721,25 +721,30 @@ static void DrawHintItem(int x, int y, int width)
         return;
     }
 
-    pString names[Control::Type::Number][2] =
+    static const struct StructName
     {
-        {"",            ""},        // Item_None
-        {"",            ""},        // Control::Type::Choice
-        {"Кнопка",      "Button"},  // Control::Type::Button
-        {"Страница",    "Page"},    // Control::Type::Page
-        {"",            ""},        // Control::Type::Governor
-        {"",            ""},        // Control::Type::Time
-        {"",            ""},        // Control::Type::GovernorColor
-        {"",            ""},        // Control::Type::Formula
-        {"",            ""},        // Control::Type::ChoiceReg
-        {"Кнопка",      "Button"}   // Control::Type::SmallButton
+        pString name;
+        StructName(pString n) : name(n) {};
+    }
+    names[Control::Type::Number][2] =
+    {
+        {"",            ""},                    // Item_None
+        {"",            ""},                    // Control::Type::Choice
+        {"Кнопка",      "Button"},              // Control::Type::Button
+        {"Страница",    "Page"},                // Control::Type::Page
+        {"",            ""},                    // Control::Type::Governor
+        {"",            ""},                    // Control::Type::Time
+        {"",            ""},                    // Control::Type::GovernorColor
+        {"",            ""},                    // Control::Type::ChoiceReg
+        {"Кнопка",      "Button"},              // Control::Type::SmallButton
+        {"Выбор параметра", "Choice parameter"} // Control::Type::ChoiceParameter
     };
     Language lang = LANG;
     Page *item = (Page *)Menu::itemHint;
 
     const int SIZE = 100;
     char title[SIZE];
-    snprintf(title, SIZE, "%s \"%s\"", names[Menu::itemHint->type][lang], item->titleHint[lang]);
+    snprintf(title, SIZE, "%s \"%s\"", names[Menu::itemHint->type][lang].name, item->titleHint[lang]);
 
     if (item->type == Control::Type::SmallButton)
     {

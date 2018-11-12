@@ -348,9 +348,6 @@ void Control::LongPress()
         Open(!IsOpened());
         time->SetOpened();
     }
-    else if(type == Control::Type::Formula)
-    {
-    }
     else if(type == Control::Type::SmallButton)
     {
         SButton *button = (SButton *)this;

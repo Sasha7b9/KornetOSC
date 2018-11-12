@@ -638,9 +638,6 @@ void Control::Draw(int x, int y, bool opened)
     {
         ((GovernorColor *)this)->Draw(x, y, opened);
     }
-    else if (type == Control::Type::Formula)
-    {
-    }
     else if (type == Control::Type::SmallButton)
     {
         ((SButton *)this)->Draw(x, y);
