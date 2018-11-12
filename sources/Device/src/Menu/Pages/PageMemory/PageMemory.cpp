@@ -245,6 +245,7 @@ static void OnRegSet_Last(int angle)
     }
 }
 
+/*
 DEF_PAGE_SB(        ppLast,                                                                                                  // ПАМЯТЬ - ПОСЛЕДНИЕ ///
     "ПОСЛЕДНИЕ", "LATEST",
     "Переход в режим работы с последними полученными сигналами",
@@ -257,6 +258,20 @@ DEF_PAGE_SB(        ppLast,                                                     
     &bLast_SaveToDrive,     // ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить
     Page::Name::SB_Memory_Last, &pMemory, FuncActive, OnPress_Last, OnDraw_Last, OnRegSet_Last
 )
+*/
+
+
+DEF_PAGE_4(ppLast,                                                                                                  // ПАМЯТЬ - ПОСЛЕДНИЕ ///
+    "ПОСЛЕДНИЕ", "LATEST",
+    "Переход в режим работы с последними полученными сигналами",
+    "Transition to an operating mode with the last received signals",
+    &bLast_Next,            // ПАМЯТЬ - ПОСЛЕДНИЕ - Следующий
+    &bLast_Prev,            // ПАМЯТЬ - ПОСЛЕДНИЕ - Предыдущий
+    &bLast_SaveToROM,       // ПАМЯТЬ - ПОСЛЕДНИЕ - Внутр ЗУ
+    &bLast_SaveToDrive,     // ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить
+    Page::Name::SB_Memory_Last, &pMemory, FuncActive, OnPress_Last, OnDraw_Last, OnRegSet_Last
+)
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Drive_Manager_Exit()
@@ -334,6 +349,7 @@ void PageMemory::OnPress_Drive_Manager(bool)
     }
 }
 
+/*
 DEF_PAGE_SB(        pppDrive_Manager,                                                                               // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ ///
     "КАТАЛОГ", "DIRECTORY",
     "Открывает доступ к файловой системе подключенного накопителя",
@@ -346,6 +362,18 @@ DEF_PAGE_SB(        pppDrive_Manager,                                           
     &bDrive_Manager_LevelDown,  // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог
     Page::Name::SB_Memory_Drive_Manager, &ppDrive, IsActive_Drive_Manager, PageMemory::OnPress_Drive_Manager, FuncDrawPage, FileManager::RotateRegSet
 )
+*/
+
+DEF_PAGE_3(pppDrive_Manager,                                                                               // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ ///
+    "КАТАЛОГ", "DIRECTORY",
+    "Открывает доступ к файловой системе подключенного накопителя",
+    "Provides access to the file system of the connected drive",
+    &bDrive_Manager_Tab,        // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Tab
+    &bDrive_Manager_LevelUp,    // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выйти из каталога
+    &bDrive_Manager_LevelDown,  // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог
+    Page::Name::SB_Memory_Drive_Manager, &ppDrive, IsActive_Drive_Manager, PageMemory::OnPress_Drive_Manager, FuncDrawPage, FileManager::RotateRegSet
+)
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cDrive_Name,                                                                               //--- ПАМЯТЬ - ВНЕШН ЗУ - Имя файла ---
@@ -611,6 +639,8 @@ static void OnRegSet_Drive_Mask(int angle)
     OnMemExtSetMaskNameRegSet(angle, sizeof(Tables::symbolsAlphaBet) / 4);
 }
 
+
+/*
 DEF_PAGE_SB(        pppDrive_Mask,                                                                                    // Память - ВНЕШН ЗУ - МАСКА ///
     "МАСКА", "MASK",
     "Режим ввода маски для автоматического именования файлов",
@@ -623,6 +653,19 @@ DEF_PAGE_SB(        pppDrive_Mask,                                              
     &bDrive_Mask_Insert,    // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить
     Page::Name::SB_Memory_Drive_Mask, &ppDrive, IsActive_Drive_Mask, OnPress_Drive_Mask, FuncDrawPage, OnRegSet_Drive_Mask
 )
+*/
+
+
+DEF_PAGE_3(pppDrive_Mask,                                                                                    // Память - ВНЕШН ЗУ - МАСКА ///
+    "МАСКА", "MASK",
+    "Режим ввода маски для автоматического именования файлов",
+    "Input mode mask for automatic file naming",
+    &bDrive_Mask_Delete,    // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Удалить
+    &bDrive_Mask_Backspace, // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Backspace
+    &bDrive_Mask_Insert,    // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить
+    Page::Name::SB_Memory_Drive_Mask, &ppDrive, IsActive_Drive_Mask, OnPress_Drive_Mask, FuncDrawPage, OnRegSet_Drive_Mask
+)
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cDrive_Autoconnect,                                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение ---
@@ -987,6 +1030,7 @@ static void OnRegSet_Internal(int delta)
     Painter::ResetFlash();
 }
 
+/*
 DEF_PAGE_SB(        ppInternal,                                                                                               // ПАМЯТЬ - ВНУТР ЗУ ///
     "ВНУТР ЗУ", "INT STORAGE",
     "Переход в режим работы с внутренней памятью",
@@ -1002,6 +1046,21 @@ DEF_PAGE_SB(        ppInternal,                                                 
     &bInternal_SaveToDrive,     // ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку
     Page::Name::SB_Memory_Internal, &pMemory, FuncActive, OnPress_Internal, OnDraw_Internal, OnRegSet_Internal
 )
+*/
+
+DEF_PAGE_5(ppInternal,                                                                                               // ПАМЯТЬ - ВНУТР ЗУ ///
+    "ВНУТР ЗУ", "INT STORAGE",
+    "Переход в режим работы с внутренней памятью",
+    "Transition to an operating mode with internal memory",
+    &bInternal_ShowAlways,      // ПАМЯТЬ - ВНУТР ЗУ - Показывать всегда
+    &bInternal_ModeShow,        // ПАМЯТЬ - ВНУТР ЗУ - Вид сигнала
+    &bInternal_Delete,          // ПАМЯТЬ - ВНУТР ЗУ - Удалить
+    &bInternal_SaveToMemory,    // ПАМЯТЬ - ВНУТР ЗУ - Сохранить
+    &bInternal_SaveToDrive,     // ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку
+    Page::Name::SB_Memory_Internal, &pMemory, FuncActive, OnPress_Internal, OnDraw_Internal, OnRegSet_Internal
+)
+
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_SetName_Exit()
@@ -1152,6 +1211,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 
 }
 
+/*
 DEF_PAGE_SB(        pSetName,                                                                         // Страница вызывается для ввода имени файла ///
     "", "",
     "",
@@ -1159,6 +1219,18 @@ DEF_PAGE_SB(        pSetName,                                                   
     &bSetName_Exit,         // ВВОД ИМЕНИ ФАЙЛА - Выход
     &bSetName_Delete,       // ВВОД ИМЕНИ ФАЙЛА - Удалить
     0,
+    &bSetName_Backspace,    // ВВОД ИМЕНИ ФАЙЛА - Backspace
+    &bSetName_Insert,       // ВВОД ИМЕНИ ФАЙЛА - Вставить
+    &bSetName_Save,         // ВВОД ИМЕНИ ФАЙЛА - Сохранить
+    Page::Name::SB_Memory_SetName, 0, FuncActive, EmptyPressPage, FuncDrawPage, OnRegSet_SetName
+)
+*/
+
+DEF_PAGE_4(pSetName,                                                                         // Страница вызывается для ввода имени файла ///
+    "", "",
+    "",
+    "",
+    &bSetName_Delete,       // ВВОД ИМЕНИ ФАЙЛА - Удалить
     &bSetName_Backspace,    // ВВОД ИМЕНИ ФАЙЛА - Backspace
     &bSetName_Insert,       // ВВОД ИМЕНИ ФАЙЛА - Вставить
     &bSetName_Save,         // ВВОД ИМЕНИ ФАЙЛА - Сохранить

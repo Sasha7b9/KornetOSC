@@ -525,6 +525,7 @@ static void OnRegSet_Function(int delta)
     }
 }
 
+/*
 DEF_PAGE_SB(        ppFunction,                                                                                                // СЕРВИС - ФУНКЦИЯ ///
     "ФУНКЦИЯ", "FUNCTION",
     "Установка и выбор математической функции - сложения или умножения",
@@ -537,6 +538,22 @@ DEF_PAGE_SB(        ppFunction,                                                 
     &bFunction_RangeB,
     Page::Name::SB_Service_Function, &pService, IsActive_Function, OnPress_Function, FuncDrawPage, OnRegSet_Function
 )
+*/
+
+DEF_PAGE_5(ppFunction,                                                                                                // СЕРВИС - ФУНКЦИЯ ///
+    "ФУНКЦИЯ", "FUNCTION",
+    "Установка и выбор математической функции - сложения или умножения",
+    "Installation and selection of mathematical functions - addition or multiplication",
+    &bFunction_Screen,      // СЕРВИС - ФУНКЦИЯ - Экран
+    &bFunction_Type,        // СЕРВИС - ФУНКЦИЯ - Вид
+    &bFunction_ModeRegSet,  // СЕРВИС - ФУНКЦИЯ - Режим ручки УСТАНОВКА
+    &bFunction_RangeA,      // СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала
+    &bFunction_RangeB,
+    Page::Name::SB_Service_Function, &pService, IsActive_Function, OnPress_Function, FuncDrawPage, OnRegSet_Function
+)
+
+
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cSound_Enable,                                                                                      //--- СЕРВИС - ЗВУК - Звук ---
@@ -685,6 +702,7 @@ DEF_PAGE_SB(ppInformation,                                                      
     0,
     Page::Name::SB_Service_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
 )
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const PageBase *PageService::pointer = &pService;

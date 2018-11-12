@@ -325,6 +325,7 @@ void PageMeasures::PageCursors::PageSet::OnRegSet(int angle)
     Sound::RegulatorShiftRotate();
 }
 
+/*
 DEF_PAGE_SB(pageSet,                                                                                        //--- ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ ---
     "ÓÑÒÀÍÎÂÈÒÜ", "SET",
     "Ïåğåõîä â ğåæèì êóğñîğíûõ èçìåğåíèé",
@@ -338,6 +339,23 @@ DEF_PAGE_SB(pageSet,                                                            
     Page::Name::Measures_Cursors_Set, PageMeasures::PageCursors::pointer, FuncActive, EmptyPressPage, FuncDrawPage, 
             PageMeasures::PageCursors::PageSet::OnRegSet
 )
+*/
+
+
+DEF_PAGE_5(pageSet,                                                                                        //--- ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ ---
+    "ÓÑÒÀÍÎÂÈÒÜ", "SET",
+    "Ïåğåõîä â ğåæèì êóğñîğíûõ èçìåğåíèé",
+    "Switch to cursor measures",
+    &bSet_Channel,          ///< ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - Êàíàë
+    &bSet_U,                ///< ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - Êóğñîğû U
+    &bSet_T,                ///< ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - Êóğñîğû Ò
+    &bSet_100,              ///< ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - 100%
+    &bSet_Movement,         ///< ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ - Ïåğåìåùåíèå
+    Page::Name::Measures_Cursors_Set, PageMeasures::PageCursors::pointer, FuncActive, EmptyPressPage, FuncDrawPage,
+    PageMeasures::PageCursors::PageSet::OnRegSet
+)
+
+
 
 const PageBase *PageMeasures::PageCursors::PageSet::pointer = &pageSet;
 

@@ -106,21 +106,6 @@ static void OnRegSet_Tune(int angle)
 }
 */
 
-/*
-DEF_PAGE_SB(pageTune,                                                                                               // ИЗМЕРЕНИЯ - НАСТРОИТЬ ///
-    "НАСТРОИТЬ", "CONFIGURE",
-    "Переход в режми точной настройки количества и видов измерений",
-    "Transition to rezhm of exact control of quantity and types of measurements",
-    &bTune_Exit,
-    0,
-    0,
-    0,
-    &bTune_Markers,
-    &bTune_Settings,
-    Page::Name::Measures_Auto_Tune, PageMeasures::PageAuto::pointer, IsActive_Tune, EmptyPressPage, FuncDrawPage, OnRegSet_Tune
-)
-*/
-
 DEF_PAGE_2(pageTune,
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режим точной настройки количества и видов измерений",
