@@ -841,7 +841,6 @@ void Painter::Draw4SymbolsInRect(int x, int y, char eChar, Color color)
  
      for (char i = 0; i < 2; i++)
      {
-         /// \todo Сделать правильную отрисовку. А пока - здесь иногда виснет почему-то
           DrawChar(x + 8 * i, y, eChar + i);
           DrawChar(x + 8 * i, y + 8, eChar + i + 16);
      }

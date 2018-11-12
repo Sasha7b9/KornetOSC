@@ -323,7 +323,6 @@ void Control::ShortPress()
     {
         SButton *button = (SButton *)this;
         button->funcOnPress();
-        Menu::itemUnderKey = this;
     }
 }
 
