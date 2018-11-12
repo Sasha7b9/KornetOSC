@@ -21,7 +21,19 @@
 #pragma warning(pop)
 
 
+#undef uint   
+#undef int8   
+#undef uint8  
+#undef int16  
+#undef uint16 
+#undef uint   
+#undef uchar  
+#undef pString
+
+
+#include "defines.h"
 #include "Keyboard/Keyboard.h"
+#include "Menu/Menu.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -486,13 +498,21 @@ static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, Key::E
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Frame::OnDown(wxCommandEvent &event)
 {
-    std::cout << "down " << Key((Key::E)GetId()).Name() << std::endl;
+    Key::E key = (Key::E)event.GetId();
+
+    std::cout << "down " << Key(key).Name() << std::endl;
     event.Skip();
+
+    Menu::ButtonEvent(KeyEvent(key, TypePress::Press));
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Frame::OnUp(wxCommandEvent &event)
 {
-    std::cout << "up   " << Key((Key::E)GetId()).Name() << std::endl;
+    Key::E key = (Key::E)event.GetId();
+
+    std::cout << "up   " << Key(key).Name() << std::endl;
     event.Skip();
+
+    Menu::ButtonEvent(KeyEvent(key, TypePress::Release));
 }

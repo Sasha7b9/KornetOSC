@@ -27,11 +27,13 @@ typedef unsigned long long  uint64;
 #ifdef WIN32
 typedef unsigned char  BYTE;
 typedef unsigned short WORD;
-typedef unsigned short WCHAR;
+//typedef unsigned short WCHAR;
+#define WCHAR unsigned short
 typedef unsigned long  DWORD;
 typedef unsigned long  FSIZE_t;
 typedef unsigned int   UINT;
-typedef unsigned char  TCHAR;
+//typedef unsigned char  TCHAR;
+#define TCHAR unsigned char
 typedef unsigned char  uint8_t;
 typedef unsigned short uint16_t;
 typedef unsigned int   uint32_t;
