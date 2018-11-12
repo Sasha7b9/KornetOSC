@@ -220,9 +220,68 @@ int Painter::DrawStringInCenterRectAndBoundItC(int x, int y, int width, int heig
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-int Painter::DrawChar(int x, int y, char symbol, Color color /* = Color::NUMBER */)
+int Painter::DrawChar(int eX, int eY, char symbol, Color color)
 {
-    return x;
+    SetColor(color);
+
+    int8 width = (int8)font->symbol[symbol].width;
+    int8 height = (int8)font->height;
+
+    int size = 1;
+
+    for (int b = 0; b < height; b++)
+    {
+        if (ByteFontNotEmpty(symbol, b))
+        {
+            int x = eX;
+            int y = eY + b * size + 9 - height;
+            int endBit = 8 - width;
+            for (int bit = 7; bit >= endBit; bit--)
+            {
+                if (BitInFontIsExist(symbol, b, bit))
+                {
+                    for (int i = 0; i < size; i++)
+                    {
+                        for (int j = 0; j < size; j++)
+                        {
+                            SetPoint(x + i, y + j);
+                        }
+                    }
+                }
+                x += size;
+            }
+        }
+    }
+
+    return eX + width * size;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bool Painter::ByteFontNotEmpty(int eChar, int byte)
+{
+    static const uint8 *bytes = 0;
+    static int prevChar = -1;
+    if (eChar != prevChar)
+    {
+        prevChar = eChar;
+        bytes = font->symbol[prevChar].bytes;
+    }
+    return bytes[byte];
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+bool Painter::BitInFontIsExist(int eChar, int numByte, int bit)
+{
+    static uint8 prevByte = 0;      /// \todo здесь точно статики нужны?
+    static int prevChar = -1;
+    static int prevNumByte = -1;
+    if (prevNumByte != numByte || prevChar != eChar)
+    {
+        prevByte = font->symbol[eChar].bytes[numByte];
+        prevChar = eChar;
+        prevNumByte = numByte;
+    }
+    return prevByte & (1 << bit);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -289,9 +348,13 @@ void Painter::ResetFlash()
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-int Painter::DrawStringInCenterRect(int x, int y, int width, int height, const char *text, Color color /* = Color::NUMBER */)
+int Painter::DrawStringInCenterRect(int eX, int eY, int width, int eHeight, const char *text, Color color /* = Color::NUMBER */)
 {
-    return x;
+    int lenght = Font::GetLengthText(text);
+    int height = Font::GetHeightSymbol(text[0]);
+    int x = eX + (width - lenght) / 2;
+    int y = eY + (eHeight - height) / 2 + 1;
+    return DrawText(x, y, text, color);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -311,8 +374,17 @@ void Painter::SetFont(Font::Type::E typeFont)
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-int Painter::DrawText(int x, int y, const char *text, Color color /* = Color::NUMBER */)
+int Painter::DrawText(int x, int y, const char *text, Color color)
 {
+    SetColor(color);
+
+    uint numSymbols = strlen(text);
+    for (uint i = 0; i < numSymbols; ++i)
+    {
+        x = DrawChar(x, y, text[i]);
+        ++x;
+    }
+
     return x;
 }
 
