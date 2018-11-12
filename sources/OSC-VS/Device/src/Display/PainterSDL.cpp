@@ -34,6 +34,7 @@
 #include "defines.h"
 #include "Keyboard/Keyboard.h"
 #include "Menu/Menu.h"
+#include "Utils/Math.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -220,18 +221,20 @@ int Painter::DrawStringInCenterRectAndBoundItC(int x, int y, int width, int heig
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-int Painter::DrawChar(int eX, int eY, char symbol, Color color)
+int Painter::DrawChar(int eX, int eY, char _symbol, Color color)
 {
     SetColor(color);
 
-    int8 width = (int8)font->symbol[symbol].width;
+    uint8 symbol = (uint8)_symbol;
+
+    int8 width = (int8)font->symbol[(uint8)symbol].width;
     int8 height = (int8)font->height;
 
     int size = 1;
 
     for (int b = 0; b < height; b++)
     {
-        if (ByteFontNotEmpty(symbol, b))
+        if (ByteFontNotEmpty((uint)symbol, b))
         {
             int x = eX;
             int y = eY + b * size + 9 - height;
@@ -257,10 +260,10 @@ int Painter::DrawChar(int eX, int eY, char symbol, Color color)
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-bool Painter::ByteFontNotEmpty(int eChar, int byte)
+bool Painter::ByteFontNotEmpty(uint eChar, int byte)
 {
     static const uint8 *bytes = 0;
-    static int prevChar = -1;
+    static uint prevChar = 0xffffffff;
     if (eChar != prevChar)
     {
         prevChar = eChar;

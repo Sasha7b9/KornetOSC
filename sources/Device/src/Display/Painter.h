@@ -101,7 +101,7 @@ private:
 
     static int DrawCharWithLimitation(int eX, int eY, char symbol, int limitX, int limitY, int limitWidth, int limitHeight);
 
-    static bool ByteFontNotEmpty(int eChar, int byte);
+    static bool ByteFontNotEmpty(uint eChar, int byte);
 
     static bool BitInFontIsExist(int eChar, int numByte, int bit);
 

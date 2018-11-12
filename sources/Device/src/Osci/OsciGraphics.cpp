@@ -26,6 +26,10 @@ void Osci::Graphics::Update()
     Painter::BeginScene(Color::BACK);
 
     Grid::Draw();
+
+    Painter::DrawText(Grid::Left(), Grid::Top() + 1, "Тестовая строка", Color::FILL);
+
+    Painter::DrawText(Grid::Left(), Grid::Top() + 20, "Test string", Color::FILL);
     
     PainterData::DrawData();
 
