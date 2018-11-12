@@ -28,8 +28,6 @@
 
 /// Возвращает позицию активного пункта на странице Page::Name.
 #define MENU_POS_ACT_ITEM(name)     (set.menu_posActItem[name])
-/// Текущая подстраница
-#define MENU_CURRENT_SUBPAGE(name)  (set.menu_currentSubPage[name])
 
 #pragma pack(push, 1)
 
