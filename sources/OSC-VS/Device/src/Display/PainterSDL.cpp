@@ -1,3 +1,5 @@
+#pragma warning(push)
+#pragma warning(disable:4018 4189 4365 4459 4571 4625 4668 5026)
 #include "../Application.h"
 
 
@@ -15,6 +17,8 @@
 #include <SDL.h>
 
 #include <wx/display.h>
+
+#pragma warning(pop)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,7 +78,7 @@ static wxRect GetMaxDisplay();
 /// Создаёт все кнопки
 static void CreateButtons(Frame *frame);
 /// Создаёт одну кнопку
-static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title, uint id = wxID_ANY);
+static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title, wxWindowID id = wxID_ANY);
 /// Создаёт кнопки для меню канала
 static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, wxButton **btnChan, wxButton **btnRangeLess, wxButton **btnRangeMore, wxButton **btnRShiftLess, wxButton **btnRShiftMore);
 
@@ -101,7 +105,6 @@ void Painter::Init()
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::BeginScene(Color color)
 {
-    SDL_Surface *surface = SDL_GetWindowSurface(window);
     texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_RENDERER_ACCELERATED, 320, 240);
 
     SDL_SetRenderTarget(renderer, texture);
@@ -346,8 +349,8 @@ void Painter::FillRegion(int x, int y, int width, int height, Color color)
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void SetPosition(Frame *frame)
 {
-    wxSize size = { 329, 595 };
-
+    wxSize size = { 329, 560 };
+    
     frame->SetSize(size);
     frame->SetMinSize(size);
     frame->SetMaxSize(size);
@@ -362,7 +365,7 @@ static wxRect GetMaxDisplay()
 {
     wxRect result = {0, 0, 0, 0};
 
-    for (int i = 0; i < wxDisplay::GetCount(); i++)
+    for (uint i = 0; i < wxDisplay::GetCount(); i++)
     {
         wxDisplay display(i);
 
@@ -386,10 +389,10 @@ static HANDLE CreateFrame()
 
     wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
 
-    wxButton *btnDisplay = new wxButton(frame, wxID_ANY, "", {10, 10}, {320, 240});
-    btnDisplay->SetMaxSize({320, 240});
+    wxButton *button = new wxButton(frame, wxID_ANY, "", {10, 10}, {320, 240});
+    button->SetMaxSize({320, 240});
 
-    sizer->Add(btnDisplay);
+    sizer->Add(button);
 
     frame->SetSizer(sizer);
 
@@ -397,7 +400,7 @@ static HANDLE CreateFrame()
 
     frame->Show(true);
 
-    return btnDisplay->GetHandle();
+    return button->GetHandle();
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -479,11 +482,11 @@ static void CreateButtons(Frame *frame)
 
     // Кнопки канала B
 
-    CreateButtonsChannel(frame, "Канал 1", 255, y, &btnChannelB, &btnRangeLessB, &btnRangeMoreB, &btnRShiftLessB, &btnRShiftMoreB);
+    CreateButtonsChannel(frame, "Канал 1", 120, y, &btnChannelB, &btnRangeLessB, &btnRangeMoreB, &btnRShiftLessB, &btnRShiftMoreB);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title, uint id)
+static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title, wxWindowID id)
 {
     wxButton *button = new wxButton(frame, id, title, pos, size);
 
@@ -496,8 +499,8 @@ static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &si
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, wxButton **btnChan, wxButton **btnRangeLess, wxButton **btnRangeMore, wxButton **btnRShiftLess, wxButton **btnRShiftMore)
 {
-    int width = 25;
-    int height = 40;
+    int width = 45;
+    int height = 20;
 
     int dX = 5;
     int dY = 5;

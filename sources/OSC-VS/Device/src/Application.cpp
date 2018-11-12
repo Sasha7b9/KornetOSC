@@ -1,5 +1,9 @@
+#pragma warning(push)
+#pragma warning(disable:4018 4189 4365 4459 4571 4625 4668 5026)
 #include "Application.h"
 #include <SDL.h>
+#pragma warning(pop)
+
 #undef main
 
 
@@ -116,7 +120,7 @@ void Frame::HandlerEvents()
 void Frame::DrawFPS()
 {
     static int count = 0;
-    static int prevTime = 0;
+    static unsigned int prevTime = 0;
 
     count++;
 
