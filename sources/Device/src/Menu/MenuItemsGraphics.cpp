@@ -77,7 +77,7 @@ void GovernorColor::DrawOpened(int x, int y)
 void GovernorColor::DrawClosed(int x, int y)
 {
     ct->Init(false);
-    DrawGovernorChoiceColorFormulaHiPart(this, x, y, IsPressed(), IsShade() || !IS_ACTIVE(this));
+    DrawGovernorChoiceColorFormulaHiPart(this, x, y, IsPressed(), IsShade() || !IsAcitve());
     Painter::FillRegion(x + 2, y + 20, Menu::Item::Value::WIDTH, Menu::Item::Value::HEIGHT - 1, ct->color);
 }
 
@@ -139,7 +139,7 @@ void Governor::DrawOpened(int x, int y)
 void Governor::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed();
-    bool shade = IsShade() || !IS_ACTIVE(this);
+    bool shade = IsShade() || !IsAcitve();
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade);
 }
@@ -372,7 +372,7 @@ void Page::Draw(int x, int y, bool opened)
     else
     {
         Painter::FillRegion(x + 1, y + 2, Menu::Item::WIDTH - 3, Menu::Item::HEIGHT - 2, Color::MenuItem(false));
-        Painter::DrawStringInCenterRect(x, y + 1, Menu::Item::WIDTH, Menu::Item::HEIGHT, Title(), Color::FILL);
+        Painter::DrawStringInCenterRect(x, y + 1, Menu::Item::WIDTH, Menu::Item::HEIGHT, Title(), IsAcitve() ? Color::FILL : Color::MENU_TITLE_DARK);
     }
 }
 

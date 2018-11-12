@@ -46,7 +46,7 @@ void Choice::StartChange(int delta)
     {
         Menu::SetItemForHint(this);
     }
-    else if (!IS_ACTIVE(this))
+    else if (!IsAcitve())
     {
         CHOICE_RUN_FUNC_CHANGED(this, false);
     }
@@ -91,7 +91,7 @@ float Choice::Step()
         }
         *cell = index;
         tsChoice.address = 0;
-        CHOICE_RUN_FUNC_CHANGED(this, IS_ACTIVE(this));
+        CHOICE_RUN_FUNC_CHANGED(this, IsAcitve());
         NEED_FINISH_DRAW = 1;
         tsChoice.dir = NONE;
         return 0.0f;
@@ -120,7 +120,7 @@ void Choice::ChangeIndex(int delta)
         }
     }
     *cell = (int8)index;
-    CHOICE_RUN_FUNC_CHANGED(this, IS_ACTIVE(this));
+    CHOICE_RUN_FUNC_CHANGED(this, IsAcitve());
     Sound::GovernorChangedValue();
     NEED_FINISH_DRAW = 1;
 }

@@ -42,7 +42,7 @@ class PageBase;
 #define IS_TIME(item)           (item->type == Control::Type::Time)
     
 #define KEEPER(item)            ((PageBase *)item->keeper)
-#define IS_ACTIVE(item)         (item->funcOfActive())
+//#define IS_ACTIVE(item)         (item->funcOfActive())
 
 
 class Control
@@ -70,6 +70,8 @@ public:
     void ShortPress();
     /// Вызывается при "длинном" нажатии
     void LongPress();
+    /// Возвращает true, если контрол находится в активном состоянии (реагирует на органы управления)
+    bool IsAcitve() { return funcOfActive(); };
 
     void Draw(int x, int y, bool opened);
 
