@@ -21,48 +21,16 @@
 #pragma warning(pop)
 
 
+#include "Keyboard/Keyboard.h"
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static SDL_Renderer *renderer = nullptr;
 static SDL_Window *window = nullptr;
 static SDL_Texture *texture = nullptr;
 
-static wxButton *btnDisplay = nullptr;
-static wxButton *btnMeasures = nullptr;
-static wxButton *btnService = nullptr;
-static wxButton *btnMemory = nullptr;
-static wxButton *btnFunction = nullptr;
-
-static wxButton *btnEnter = nullptr;
-static wxButton *btnLeft = nullptr;
-static wxButton *btnRight = nullptr;
-static wxButton *btnUp = nullptr;
-static wxButton *btnDown = nullptr;
-
-static wxButton *btnF1 = nullptr;
-static wxButton *btnF2 = nullptr;
-static wxButton *btnF3 = nullptr;
-static wxButton *btnF4 = nullptr;
-static wxButton *btnF5 = nullptr;
-
-static wxButton *btnTime = nullptr;
-static wxButton *btnTimeBaseLess = nullptr;
-static wxButton *btnTimeBaseMore = nullptr;
-static wxButton *btnTimeShiftLess = nullptr;
-static wxButton *btnTimeShiftMore = nullptr;
-
-static wxButton *btnChannelA = nullptr;
-static wxButton *btnRangeLessA = nullptr;
-static wxButton *btnRangeMoreA = nullptr;
-static wxButton *btnRShiftLessA = nullptr;
-static wxButton *btnRShiftMoreA = nullptr;
-
-static wxButton *btnChannelB = nullptr;
-static wxButton *btnRangeLessB = nullptr;
-static wxButton *btnRangeMoreB = nullptr;
-static wxButton *btnRShiftLessB = nullptr;
-static wxButton *btnRShiftMoreB = nullptr;
-
-static wxButton *btnStart = nullptr;
+/// Здесь хранятся указатели на кнопки
+static wxButton *buttons[Key::Number] = { nullptr };
 
 /// Цвета
 static uint colors[256];
@@ -78,9 +46,9 @@ static wxRect GetMaxDisplay();
 /// Создаёт все кнопки
 static void CreateButtons(Frame *frame);
 /// Создаёт одну кнопку
-static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title, wxWindowID id = wxID_ANY);
+static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size, pString title);
 /// Создаёт кнопки для меню канала
-static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, wxButton **btnChan, wxButton **btnRangeLess, wxButton **btnRangeMore, wxButton **btnRShiftLess, wxButton **btnRShiftMore);
+static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, Key::E keyChannel, Key::E keyRangeLess, Key::E keyRangeMore, Key::E keyRShiftLess, Key::E keyRShiftMore);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -408,17 +376,10 @@ static void CreateButtons(Frame *frame)
 {
     // Рисуем кнопки меню и функциональные
 
-    wxButton *buttons[2][5] =
+    Key::E keys[2][5] = 
     {
-        { btnF1,       btnF2,      btnF3,     btnF4,       btnF5 },
-        { btnFunction, btnDisplay, btnMemory, btnMeasures, btnService }
-    };
-
-        
-    char *titles[2][5] = 
-    {
-        { "F1",      "F2",      "F3",     "F4",        "F5" },
-        { "Функция", "Дисплей", "Память", "Измерения", "Сервис" }
+        { Key::F1,       Key::F2,      Key::F3,     Key::F4,      Key::F5 },
+        { Key::Function, Key::Display, Key::Memory, Key::Measure, Key::Service }
     };
 
     int x0 = 5;
@@ -436,7 +397,8 @@ static void CreateButtons(Frame *frame)
     {
         for (int j = 0; j < 2; j++)
         {
-            buttons[j][i] = CreateButton(frame, {x0 + (width + dX) * i, y0 + (height + dY) * j}, size, titles[j][i]);
+            Key::E key = keys[j][i];
+            CreateButton(key, frame, {x0 + (width + dX) * i, y0 + (height + dY) * j}, size, Key(key).Name());
         }
     }
 
@@ -449,11 +411,11 @@ static void CreateButtons(Frame *frame)
     size.SetWidth(width);
     size.SetHeight(height);
 
-    btnEnter = CreateButton(frame, {x0, y0}, size, "E", ID_ENTER);
-    btnLeft = CreateButton(frame, {x0 - dX - width, y0}, size, "L");
-    btnRight = CreateButton(frame, {x0 + dX + width, y0}, size, "R");
-    btnUp = CreateButton(frame, {x0, y0 - height - dY}, size, "U");
-    btnDown = CreateButton(frame, {x0, y0 + height + dY}, size, "D");
+    CreateButton(Key::Enter, frame, {x0, y0}, size, "E");
+    CreateButton(Key::Left, frame, {x0 - dX - width, y0}, size, "L");
+    CreateButton(Key::Right, frame, {x0 + dX + width, y0}, size, "R");
+    CreateButton(Key::Up, frame, {x0, y0 - height - dY}, size, "U");
+    CreateButton(Key::Down, frame, {x0, y0 + height + dY}, size, "D");
 
     // Кнопки времени
 
@@ -464,40 +426,40 @@ static void CreateButtons(Frame *frame)
 
     size.SetWidth(width);
 
-    btnTimeBaseLess = CreateButton(frame, {x0, y0}, size, "с");
-    btnTimeBaseMore = CreateButton(frame, {x0 + width + dY, y0}, size, "мс");
+    CreateButton(Key::TBaseLess, frame, {x0, y0}, size, "с");
+    CreateButton(Key::TBaseMore, frame, {x0 + width + dY, y0}, size, "мс");
     y0 += height + dY;
-    btnTimeShiftLess = CreateButton(frame, {x0, y0}, size, "<-");
-    btnTimeShiftMore = CreateButton(frame, {x0 + width + dY, y0}, size, "->");
+    CreateButton(Key::TShiftLess, frame, {x0, y0}, size, "<-");
+    CreateButton(Key::TShiftMore, frame, {x0 + width + dY, y0}, size, "->");
 
     int x = 5 + (2 * width + dX) / 2 - width / 2;
 
-    btnTime = CreateButton(frame, {x, y0 - height - dY - height - dY}, size, "Развёртка");
+    CreateButton(Key::Time, frame, {x, y0 - height - dY - height - dY}, size, "Развёртка");
 
     // Кнопки канала A
 
     int y = 240 + 200;
 
-    CreateButtonsChannel(frame, "Канал 1", 5, y, &btnChannelA, &btnRangeLessA, &btnRangeMoreA, &btnRShiftLessA, &btnRShiftMoreA);
+    CreateButtonsChannel(frame, "Канал 1", 5, y, Key::ChannelA, Key::RangeLessA, Key::RangeMoreA, Key::RShiftLessA, Key::RShiftMoreA);
 
     // Кнопки канала B
 
-    CreateButtonsChannel(frame, "Канал 1", 120, y, &btnChannelB, &btnRangeLessB, &btnRangeMoreB, &btnRShiftLessB, &btnRShiftMoreB);
+    CreateButtonsChannel(frame, "Канал 1", 120, y, Key::ChannelB, Key::RangeLessB, Key::RangeMoreB, Key::RShiftLessB, Key::RShiftMoreB);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-static wxButton *CreateButton(Frame *frame, const wxPoint &pos, const wxSize &size, char *title, wxWindowID id)
+static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size, pString title)
 {
-    wxButton *button = new wxButton(frame, id, title, pos, size);
+    wxButton *button = new wxButton(frame, (wxWindowID)key, title, pos, size);
 
-    button->Connect(id, wxEVT_LEFT_DOWN, wxCommandEventHandler(Frame::OnDown));
-    button->Connect(id, wxEVT_LEFT_UP, wxCommandEventHandler(Frame::OnUp));
+    button->Connect((wxWindowID)key, wxEVT_LEFT_DOWN, wxCommandEventHandler(Frame::OnDown));
+    button->Connect((wxWindowID)key, wxEVT_LEFT_UP, wxCommandEventHandler(Frame::OnUp));
 
-    return button;
+    buttons[key] = button;
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, wxButton **btnChan, wxButton **btnRangeLess, wxButton **btnRangeMore, wxButton **btnRShiftLess, wxButton **btnRShiftMore)
+static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, Key::E keyChannel, Key::E keyRangeLess, Key::E keyRangeMore, Key::E keyRShiftLess, Key::E keyRShiftMore)
 {
     int width = 45;
     int height = 20;
@@ -507,36 +469,30 @@ static void CreateButtonsChannel(Frame *frame, char *title, int x, int y, wxButt
 
     wxSize size = {width, height};
 
-    *btnRangeLess = CreateButton(frame, {x, y}, size, "мВ");
-    *btnRangeMore = CreateButton(frame, {x, y + height + dY}, size, "В");
+    CreateButton(keyRangeLess, frame, {x, y}, size, "мВ");
+    CreateButton(keyRangeMore, frame, {x, y + height + dY}, size, "В");
 
-    *btnRShiftMore = CreateButton(frame, {x + width + 2 * dX, y}, size, "+");
-    *btnRShiftLess = CreateButton(frame, {x + width + 2 * dX, y + height + dY}, size, "-");
+    CreateButton(keyRShiftMore, frame, {x + width + 2 * dX, y}, size, "+");
+    CreateButton(keyRShiftLess, frame, {x + width + 2 * dX, y + height + dY}, size, "-");
 
     size.SetHeight(25);
     size.SetWidth(width + width + dX * 2);
 
     wxPoint pos = {x, y - dY - size.GetHeight()};
 
-    *btnChan = CreateButton(frame, pos, size, title);
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-void Frame::OnPressEnter(wxCommandEvent& WXUNUSED(event))
-{
-    //std::cout << "Enter" << std::endl;
+    CreateButton(keyChannel, frame, pos, size, title);
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Frame::OnDown(wxCommandEvent &event)
 {
-    std::cout << "down " << event.GetId() << std::endl;
+    std::cout << "down " << Key((Key::E)GetId()).Name() << std::endl;
     event.Skip();
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Frame::OnUp(wxCommandEvent &event)
 {
-    std::cout << "up" << std::endl;
+    std::cout << "up   " << Key((Key::E)GetId()).Name() << std::endl;
     event.Skip();
 }

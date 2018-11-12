@@ -118,15 +118,6 @@ bool Decoder::ButtonPress(uint8 data)
     }
     else
     {
-        /*
-        if (button.code != 14 && Console::NumberOfLines() < 10)
-        {
-            LOG_WRITE("code = %d  %d  %d %d %d %d %d %d %d %d %d %d", button.code, pointer,
-                      buffer[0], buffer[1], buffer[2], buffer[3], buffer[4],
-                      buffer[5], buffer[6], buffer[7], buffer[8], buffer[9]
-            );
-        }
-        */
         Menu::ButtonEvent(KeyEvent(button.value, (TypePress::E)data));
     }
 

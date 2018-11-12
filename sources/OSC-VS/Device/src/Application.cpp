@@ -28,7 +28,6 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_MENU(Minimal_Quit, Frame::OnQuit)
     EVT_MENU(Minimal_About, Frame::OnAbout)
     EVT_TIMER(TIMER_ID, Frame::OnTimer)
-    EVT_BUTTON(ID_ENTER, Frame::OnPressEnter)
 wxEND_EVENT_TABLE()
 
 wxIMPLEMENT_APP_NO_MAIN(Application);
@@ -37,6 +36,8 @@ wxIMPLEMENT_APP_NO_MAIN(Application);
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
+    setlocale(LC_ALL, "Russian");
+
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
         std::cout << "SDL_Init Error:" << SDL_GetError() << std::endl;
