@@ -20,9 +20,11 @@ const PageBase *PageMeasures::PageAuto::PageTune::pointer = &pageTune;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 DEF_SMALL_BUTTON_EXIT(bTune_Exit,                                                                            //--- ИЗМЕРЕНИЯ - НАСТРОИТЬ - Выход ---
     pageTune, FuncActive, OnPressSB_Exit, DrawSB_Exit
 )
+*/
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Tune_Markers(int x, int y)
@@ -69,6 +71,7 @@ static bool IsActive_Tune()
     return SHOW_MEASURES;
 }
 
+/*
 static void OnRegSet_Tune(int angle)
 {
     static const int8 step = 3;
@@ -101,7 +104,9 @@ static void OnRegSet_Tune(int angle)
     }
     currentAngle = 0;
 }
+*/
 
+/*
 DEF_PAGE_SB(pageTune,                                                                                               // ИЗМЕРЕНИЯ - НАСТРОИТЬ ///
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режми точной настройки количества и видов измерений",
@@ -113,4 +118,14 @@ DEF_PAGE_SB(pageTune,                                                           
     &bTune_Markers,
     &bTune_Settings,
     Page::Name::Measures_Auto_Tune, PageMeasures::PageAuto::pointer, IsActive_Tune, EmptyPressPage, FuncDrawPage, OnRegSet_Tune
+)
+*/
+
+DEF_PAGE_2(pageTune,
+    "НАСТРОИТЬ", "CONFIGURE",
+    "Переход в режим точной настройки количества и видов измерений",
+    "Transition to the fine tuning mode of the number and types of measurements",
+    &bTune_Markers,
+    &bTune_Settings,
+    Page::Name::Measures_Auto_Tune, PageMeasures::PageAuto::pointer, IsActive_Tune, EmptyPressPage
 )

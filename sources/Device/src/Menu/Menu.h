@@ -117,10 +117,6 @@ private:
     
     static void ShortPress_ChoiceReg(void *choice);
     
-    static void ShortPress_IP(void *item);
-    
-    static void ShortPress_MAC(void *item);
-    
     static void ResetItemsUnderButton();
     /// Возвращает true, если данная кнопка обрабатыватся в данном режиме
     static bool IsProcessed(KeyEvent *event);

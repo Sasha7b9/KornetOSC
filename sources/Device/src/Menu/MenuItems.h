@@ -97,7 +97,7 @@ public:
 };
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page ///
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page //////////////////////////////////////////////////
 /// Описывает страницу меню.
 class PageBase
 {
@@ -365,71 +365,6 @@ public:
     /// Возвращает цвет, которым нужно заполнять участок выбора
     static Color ColorMenuField(const Choice *choice);
 };
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IPaddress ///
-class IPaddressBase
-{
-public:
-    COMMON_PART_MENU_ITEM;
-    uint8 *ip0;
-    uint8 *ip1;
-    uint8 *ip2;
-    uint8 *ip3;
-    pFuncVB funcOfChanged;
-    uint16 *port;
-};
-
-class IPaddress : public Control
-{
-public:
-    uint8 *ip0;
-    uint8 *ip1;
-    uint8 *ip2;
-    uint8 *ip3;
-    pFuncVB funcOfChanged;
-    uint16 *port;
-    void NextPosition();                            ///< При открытом элементе переставляет курсор на следующую позицию.
-    void ChangeValue(int delta);                    ///< Изменяет значение в текущей позиции при открытом элементе.
-    void GetNumPosIPvalue(int *numIP, int *selPos); ///< Возвращает номер текущего байта (4 - номер порта) и номер текущей позиции в байте.
-    void Draw(int x, int y, bool opened);
-    void DrawOpened(int x, int y);
-    void DrawClosed(int x, int y);
-    void DrawValue(int x, int y);
-    void DrawLowPart(int x, int y, bool pressed, bool shade);
-};
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MACaddress ///
-class MACaddressBase
-{
-public:
-    COMMON_PART_MENU_ITEM;
-    uint8 *mac0;
-    uint8 *mac1;
-    uint8 *mac2;
-    uint8 *mac3;
-    uint8 *mac4;
-    uint8 *mac5;
-    pFuncVB funcOfChanged;
-};
-
-class MACaddress : public Control
-{
-public:
-    uint8 *mac0;
-    uint8 *mac1;
-    uint8 *mac2;
-    uint8 *mac3;
-    uint8 *mac4;
-    uint8 *mac5;
-    pFuncVB funcOfChanged;
-    void ChangeValue(int delta);
-    void Draw(int x, int y, bool opened);
-    void DrawOpened(int x, int y);
-    void DrawClosed(int x, int y);
-    void DrawValue(int x, int y);
-    void DrawLowPart(int x, int y, bool pressed, bool shade);
-};
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// GovernorColor ///
 class ColorType;
