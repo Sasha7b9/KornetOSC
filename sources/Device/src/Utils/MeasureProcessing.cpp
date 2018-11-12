@@ -54,6 +54,8 @@ static float FindIntersectionWithHorLine(Chan ch, int numIntersection, bool down
 static void LinearInterpolation(uint8 *data, int numPoints);
 /// Возвращает индекс следующей за prevIndex ненулевой точки. Возвращает -1, если точки таковой не найдено
 static bool IndexNextPoint(uint8 *data, int numPoints, int prevIndex, int *nextIndex);
+/// Делить val1 на val2. Возвращает nan, если результат неопределён
+static float Divide(float val1, float val2);
 
 static bool isSet = false;          ///< Если true, то сигнал назначен.
 
@@ -128,11 +130,9 @@ static bool periodIsCaclulating[2] = {false, false};
 static bool periodAccurateIsCalculating[2];
 static bool picIsCalculating[2] = {false, false};
 
-#define EXIT_IF_ERROR_FLOAT(x)      if((x) == ERROR_VALUE_FLOAT || isnan(x))                                            return ERROR_VALUE_FLOAT;
-#define EXIT_IF_ERRORS_FLOAT(x, y)  if((x) == ERROR_VALUE_FLOAT || (y) == ERROR_VALUE_FLOAT || isnan(x) || isnan(y))    return ERROR_VALUE_FLOAT;
-//#define EXIT_IF_ERROR_UINT8(x)      if((x) == ERROR_VALUE_UINT8)                                                      return ERROR_VALUE_FLOAT;
-//#define EXIT_IF_ERRORS_UINT8(x, y)  if((x) == ERROR_VALUE_UINT8 || (y) == ERROR_VALUE_UINT8)                          return ERROR_VALUE_FLOAT;
-#define EXIT_IF_ERROR_INT(x)        if((x) == ERROR_VALUE_INT)                                                          return ERROR_VALUE_FLOAT;
+#define EXIT_IF_ERROR_FLOAT(x)      if(isnan(x))                return ERROR_VALUE_FLOAT;
+#define EXIT_IF_ERRORS_FLOAT(x, y)  if(isnan(x) || isnan(y))    return ERROR_VALUE_FLOAT;
+#define EXIT_IF_ERROR_INT(x)        if((x) == ERROR_VALUE_INT)  return ERROR_VALUE_FLOAT;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Measure::Processing::CalculateMeasures()
@@ -708,10 +708,10 @@ float CalculateSkvaznostPlus(Chan ch)
 {
     float period = CalculatePeriod(ch);
     float duration = CalculateDurationPlus(ch);
-
+    
     EXIT_IF_ERRORS_FLOAT(period, duration);
 
-    return period / duration;
+    return Divide(period, duration);
 }
 
 
@@ -723,7 +723,7 @@ float CalculateSkvaznostMinus(Chan ch)
 
     EXIT_IF_ERRORS_FLOAT(period, duration);
 
-    return period / duration;
+    return Divide(period, duration);
 }
 
 
@@ -1315,14 +1315,7 @@ char* Measure::Processing::GetStringMeasure(Measure::Type measure, Chan ch, char
         char bufferForFunc[20];
         pFuncPCFBPC func = sMeas[measure].FucnConvertate;
         float value = values[measure].value[ch];
-        
-            int i = 0;
-        
-        if(value == std::numeric_limits<float>::infinity())
-        {
-            value = value;
-        }
-        
+       
         if (SET_DIVIDER_10(ch) && func == Voltage2String)
         {
             value *= 10.0f;                         // Домножаем, если включён делитель
@@ -1607,4 +1600,22 @@ char* Phase2String(float phase, bool, char buffer[20])
 char* Float2String(float value, bool always, char buffer[20])
 {
     return Float(value).ToString(always, 4, buffer);
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+static float Divide(float val1, float val2)
+{
+    float result = val1 / val2;
+
+    if(result == std::numeric_limits<float>::infinity())
+    {
+        return ERROR_VALUE_FLOAT;
+    }
+
+    if(isnan(result))
+    {
+        return ERROR_VALUE_FLOAT;
+    }
+
+    return result;
 }

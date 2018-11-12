@@ -90,7 +90,7 @@ inline bool EmptyFuncBI(int) { return false; }
 
 #define HEX_FROM_2(hex1, hex0) ((uint)(0x##hex1) << 16 | (uint)0x##hex0)
 
-#define ERROR_VALUE_FLOAT   1.111e29f
+#define ERROR_VALUE_FLOAT   std::numeric_limits<float>::quiet_NaN()
 #define ERROR_STRING_VALUE  "--.--"
 #define ERROR_VALUE_UINT8   255
 

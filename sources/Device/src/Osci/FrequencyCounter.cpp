@@ -12,6 +12,7 @@
 #include "Utils/Math.h"
 #include "Hardware/Timer.h"
 #include <string.h>
+#include <limits>
 #endif
 
 

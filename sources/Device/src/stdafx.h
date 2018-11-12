@@ -63,7 +63,7 @@
 #include "libs/USBH/usbh_diskio.h"
 
 #pragma warning(push)
-#pragma warning(disable:4365 4996)
+#pragma warning(disable:4365 4710 4996)
 
 #include <algorithm>
 #include <limits.h>

@@ -16,6 +16,6 @@
 #define FORMAT_BIN                      0
 #define FORMAT_BCD                      0
 
-#define __DMA1_CLK_ENABLE               0
-#define __TIM7_CLK_ENABLE               0
-#define __DAC_CLK_ENABLE                0
+#define __DMA1_CLK_ENABLE               __noop
+#define __TIM7_CLK_ENABLE               __noop
+#define __DAC_CLK_ENABLE                __noop
