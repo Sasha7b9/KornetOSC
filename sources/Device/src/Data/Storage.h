@@ -13,8 +13,6 @@ public:
 
     static bool GetData(DataSettings *ds);
 
-    static int GetFrameP2P_RAM(DataSettings **ds, uint8 **dataA, uint8 **dataB);
-
     static int NumElementsInStorage();
 
     static DataSettings *DataSettingsFromEnd(int fromEnd);

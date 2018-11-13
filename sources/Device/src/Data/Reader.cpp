@@ -83,13 +83,6 @@ void Reader::ReadFromRAM(int fromEnd, StructDataDrawing *dataStruct, bool forMem
 
     if (RECORDER_MODE && FPGA::InStateStop())
     {
-        uint8 *dataA = 0;
-        uint8 *dataB = 0;
-        DataSettings *ds = 0;
-        numPointsP2P = Storage::GetFrameP2P_RAM(&ds, &dataA, &dataB);
-        memcpy(&dataSettings, ds, sizeof(DataSettings));
-        DS = &dataSettings;
-        readed = true;
     }
     else if ((IN_AVERAGING_MODE || (IN_RANDOM_MODE && NRST_NUM_AVE_FOR_RAND))       // Если включено усреднение
         && fromEnd == 0)                                                            // И запрашиваем псоледний считанный сигнал
@@ -115,13 +108,6 @@ void Reader::ReadFromRAM(int fromEnd, StructDataDrawing *dataStruct, bool forMem
     }
     else
     {
-        uint8 *dataA = 0;
-        uint8 *dataB = 0;
-        DataSettings *ds = 0;
-        numPointsP2P = Storage::GetFrameP2P_RAM(&ds, &dataA, &dataB);
-        memcpy(&dataSettings, ds, sizeof(DataSettings));
-        DS = &dataSettings;
-        readed = true;
     }
 
     if (readed)
