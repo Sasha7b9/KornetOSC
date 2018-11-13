@@ -489,6 +489,9 @@
     <ClCompile Include="src\Display\PainterSDL.cpp">
       <Filter>Display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Data\Buffer.cpp">
+      <Filter>Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Device\src\Display\Display.h">
@@ -886,6 +889,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\log.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Data\Buffer.h">
+      <Filter>Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

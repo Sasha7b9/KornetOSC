@@ -562,8 +562,10 @@ int Painter::DrawTextWithLimitation(int x, int y, const char *text, int limitX, 
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-int Painter::DrawCharWithLimitation(int eX, int eY, char symbol, int limitX, int limitY, int limitWidth, int limitHeight)
+int Painter::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int limitY, int limitWidth, int limitHeight)
 {
+    uint8 symbol = (uint8)_symbol;
+
     int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
@@ -680,8 +682,10 @@ void Painter::DrawBigText(int eX, int eY, int size, const char *text, Color colo
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-int Painter::DrawBigChar(int eX, int eY, int size, char symbol)
+int Painter::DrawBigChar(int eX, int eY, int size, char _symbol)
 {
+    uint8 symbol = (uint8)_symbol;
+
     int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
