@@ -4,7 +4,7 @@
 #include "Menu/Pages/Include/PageMemory.h"
 #include "Tables.h"
 #include "Data/Reader.h"
-#include "Data/Storage.h"
+#include "Data/StorageOld.h"
 #include "Osci/Grid.h"
 #include "Display/Symbols.h"
 #include "Display/Painter.h"
@@ -685,7 +685,7 @@ DEF_PAGE_3(pppDrive_Mask,                                                       
 DEF_CHOICE_2(       cDrive_Autoconnect,                                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение ---
     "Автоподкл.", "AutoConnect",
     "Eсли \"Вкл\", при подключении внешнего накопителя происходит автоматический переход на страницу ПАМЯТЬ - Внешн ЗУ",
-    "If \"Enable\", when you connect an external drive is automatically transferred to the page MEMORY - Ext.Storage",
+    "If \"Enable\", when you connect an external drive is automatically transferred to the page MEMORY - Ext.StorageOld",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
     FLASH_AUTOCONNECT, ppDrive, FuncActive, FuncChangedChoice, FuncDraw

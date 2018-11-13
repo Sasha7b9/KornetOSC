@@ -26,8 +26,9 @@
     <ClCompile Include="..\..\Device\src\Data\Reader.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Data\Storage.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    <ClCompile Include="..\..\Device\src\Data\Storage.cpp" />
+    <ClCompile Include="..\..\Device\src\Data\StorageOld_.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\defines.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -388,7 +389,8 @@
     <ClInclude Include="..\..\Device\src\Data\Reader.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Device\src\Data\Storage.h">
+    <ClInclude Include="..\..\Device\src\Data\Storage.h" />
+    <ClInclude Include="..\..\Device\src\Data\StorageOld_.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\defines.h">

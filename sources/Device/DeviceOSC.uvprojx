@@ -163,7 +163,7 @@
             <AdsACrf>1</AdsACrf>
             <AdsANop>0</AdsANop>
             <AdsANot>0</AdsANot>
-            <AdsLLst>0</AdsLLst>
+            <AdsLLst>1</AdsLLst>
             <AdsLmap>1</AdsLmap>
             <AdsLcgr>1</AdsLcgr>
             <AdsLsym>1</AdsLsym>
@@ -1896,19 +1896,14 @@
           <GroupName>Data</GroupName>
           <Files>
             <File>
-              <FileName>DataSettings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Data\DataSettings.h</FilePath>
+              <FileName>Buffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Data\Buffer.cpp</FilePath>
             </File>
             <File>
-              <FileName>Reader.h</FileName>
+              <FileName>Buffer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Data\Reader.h</FilePath>
-            </File>
-            <File>
-              <FileName>Storage.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Data\Storage.h</FilePath>
+              <FilePath>.\src\Data\Buffer.h</FilePath>
             </File>
             <File>
               <FileName>DataSettings.cpp</FileName>
@@ -1916,14 +1911,19 @@
               <FilePath>.\src\Data\DataSettings.cpp</FilePath>
             </File>
             <File>
+              <FileName>DataSettings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Data\DataSettings.h</FilePath>
+            </File>
+            <File>
               <FileName>Reader.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Data\Reader.cpp</FilePath>
             </File>
             <File>
-              <FileName>Storage.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Data\Storage.cpp</FilePath>
+              <FileName>Reader.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Data\Reader.h</FilePath>
             </File>
           </Files>
         </Group>

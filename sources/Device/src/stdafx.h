@@ -9,6 +9,7 @@
 
 #include "Command.h"
 
+#include "Data/Buffer.h"
 #include "Data/DataSettings.h"
 #include "Data/Reader.h"
 #include "Data/Storage.h"
@@ -30,6 +31,7 @@
 #include "Keyboard/Decoder.h"
 
 #include "Hardware/AT25160N.h"
+#include "Hardware/CPU.h"
 #include "Hardware/EEPROM.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/GPIO.h"

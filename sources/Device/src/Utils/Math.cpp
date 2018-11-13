@@ -14,7 +14,7 @@
 template void  Math::Swap<int>(int *, int *);
 template int   Math::Sign<int>(int);
 template int   Math::Sign<int8>(int8);
-template int   Math::Sign<char>(char);
+//template int   Math::Sign<char>(char);
 template void  Math::CircleIncrease<int8>(int8 *, int8, int8);
 template void  Math::CircleIncrease<uint8>(uint8 *, uint8, uint8);
 template void  Math::CircleIncrease<int16>(int16 *, int16, int16);
@@ -480,7 +480,7 @@ int Math::Sign(T x)
      {
          return 1; 
      }
-     if (x < (T)(0))
+     if (x < ((T)(0)))
      {
          return -1; 
      }

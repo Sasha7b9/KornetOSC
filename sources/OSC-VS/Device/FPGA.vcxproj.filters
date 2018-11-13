@@ -204,9 +204,6 @@
     <ClCompile Include="..\..\Device\src\Data\Reader.cpp">
       <Filter>Data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Data\Storage.cpp">
-      <Filter>Data</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\DisplayPrimitives.cpp">
       <Filter>Display</Filter>
     </ClCompile>
@@ -492,6 +489,12 @@
     <ClCompile Include="..\..\Device\src\Data\Buffer.cpp">
       <Filter>Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Device\src\Data\Storage.cpp">
+      <Filter>Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Device\src\Data\StorageOld_.cpp">
+      <Filter>Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Device\src\Display\Display.h">
@@ -616,9 +619,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Settings\SettingsService.h">
       <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Device\src\Data\Storage.h">
-      <Filter>Data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Utils\TablesWindow.h">
       <Filter>Utils</Filter>
@@ -891,6 +891,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Device\src\Data\Buffer.h">
+      <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Data\Storage.h">
+      <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Device\src\Data\StorageOld_.h">
       <Filter>Data</Filter>
     </ClInclude>
   </ItemGroup>
