@@ -834,9 +834,14 @@ RECURSIVE              = YES
 # run.
 
 EXCLUDE                = ../../sources/Panel/src/libs \
-                         ../../sources/libs/STM32Cube_F4 \
                          ../../sources/Device/src/libs \
-                         ../../sources/common/libs
+                         ../../sources/common/libs \
+                         ../../sources/ThirdParty \
+                         ../../sources/OSC-VS/Device/src/include \
+                         ../../sources/Device/src/libs \
+                         ../../sources/Panel/src/libs \
+                         ../../sources/common \
+                         ../../sources/OSC-Open/src/libs
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
