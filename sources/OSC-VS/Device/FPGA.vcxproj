@@ -26,7 +26,9 @@
     <ClCompile Include="..\..\Device\src\Data\Reader.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Device\src\Data\Storage.cpp" />
+    <ClCompile Include="..\..\Device\src\Data\Storage.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\Device\src\Data\StorageOld_.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -53,7 +55,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\Painter.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Device\src\Display\PainterMem.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -352,7 +354,7 @@
     </ClCompile>
     <ClCompile Include="src\Display\PainterSDL.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\include\FatFS\ff.cpp" />
     <ClCompile Include="src\include\FatFS\ff_gen_drv.cpp" />
@@ -720,9 +722,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>src\include\HAL;src\include\FatFS;src\include\USBH;src\include\CMSIS;..\..\Device\src\libs\FatFS;..\..\Device\src;..\..\Device\src\libs\HAL;..\..\Device\src\libs\USBH;..\..\common;C:\My\TestSDL2\SDL2-2.0.9\include;..\..\ThirdParty\wxWidgets\include;..\..\ThirdParty\wxWidgets\include\msvc;$(IncludePath)</IncludePath>
+    <IncludePath>src\include\HAL;src\include\FatFS;src\include\USBH;src\include\CMSIS;..\..\Device\src\libs\FatFS;..\..\Device\src;..\..\Device\src\libs\HAL;..\..\Device\src\libs\USBH;..\..\common;..\..\ThirdParty\wxWidgets\include;..\..\ThirdParty\wxWidgets\include\msvc;..\..\ThirdParty\SDL2\include;$(IncludePath)</IncludePath>
     <OutDir>.\Debug\</OutDir>
-    <LibraryPath>C:\My\TestSDL2\SDL2-2.0.9\VisualC\Win32\Debug;..\..\ThirdParty\wxWidgets\lib\vc_lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\..\ThirdParty\SDL2\lib\x86;..\..\ThirdParty\wxWidgets\lib\vc_lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>.\x64\Debug</OutDir>
@@ -741,7 +743,7 @@
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;MSVC;WIN32;OLD_RECORDER;wxUSE_GUI;wxUSE_EXCEPTIONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
-      <DisableSpecificWarnings>4068;4100;4201;4211;4333;4355;4464;4514;4529;4623;4626;4710;4774;4820;4996;5027;5039;5045</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4068;4100;4201;4211;4333;4355;4464;4514;4529;4599;4623;4626;4710;4774;4820;4996;5027;5039;5045</DisableSpecificWarnings>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <PreprocessToFile>false</PreprocessToFile>
