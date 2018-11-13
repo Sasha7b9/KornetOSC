@@ -418,8 +418,8 @@ void Page::DrawTitle(int x, int yTop)
     delta = 0;
 
     Painter::SetColor(Color::GRAY_75);
-    DrawPagesUGO(eX + Menu::Title::WIDTH - 3 + delta, yTop + Menu::Title::HEIGHT - 2 + delta);
-    DrawNestingPage(eX + 5, yTop + Menu::Title::HEIGHT - 8);
+    DrawPagesUGO(eX + Menu::Title::WIDTH - 3 + delta, yTop + Menu::Title::HEIGHT + delta);
+    DrawNestingPage(eX + 5, yTop + Menu::Title::HEIGHT - 6);
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::DrawItems(int x, int y)

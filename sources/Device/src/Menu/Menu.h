@@ -144,7 +144,7 @@ public:
     class Title
     {
     public:
-        static const int HEIGHT = 12;
+        static const int HEIGHT = 9;
         static const int WIDTH = 320 / 5 * 2 - 2;
     };
 

@@ -592,10 +592,10 @@ int Painter::DrawCharWithLimitation(int eX, int eY, char symbol, int limitX, int
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-bool Painter::ByteFontNotEmpty(int eChar, int byte)
+bool Painter::ByteFontNotEmpty(uint eChar, int byte)
 {
     static const uint8 *bytes = 0;
-    static int prevChar = -1;
+    static uint prevChar = 0xffffffff;
     if (eChar != prevChar)
     {
         prevChar = eChar;
