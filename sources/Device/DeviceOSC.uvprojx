@@ -1925,6 +1925,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Data\Reader.h</FilePath>
             </File>
+            <File>
+              <FileName>Storage.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Data\Storage.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Storage.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Data\Storage.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

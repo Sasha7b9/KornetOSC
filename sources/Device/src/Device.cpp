@@ -34,11 +34,11 @@ void Device::Init()
 
     Display::Init();
 
-#ifndef WIN32
-
     PAUSE_ON_MS(500);
 
     FPGA::Init();
+
+#ifndef WIN32
 
     Settings::Load();
 

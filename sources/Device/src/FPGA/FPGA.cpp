@@ -3,12 +3,13 @@
 #include "defines.h"
 #include "FPGA.h"
 #include "AD9286.h"
+#include "Hardware/CPU.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/GPIO.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
-#include "Data/StorageOld.h"
+#include "Data/Storage.h"
 #include "TrigLev.h"
 #include <string.h>
 #include <stdlib.h>
@@ -73,6 +74,7 @@ FPGA::State   FPGA::state = {false, StateWorkFPGA_Stop, StateCalibration_None};
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void FPGA::Init()
 {
+#ifndef WIN32
     givingStart = false;
 
     GPIO_Init();
@@ -147,6 +149,10 @@ void FPGA::Init()
     {
         ERROR_HANDLER();
     }
+
+#endif
+
+    Storage::Init();
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

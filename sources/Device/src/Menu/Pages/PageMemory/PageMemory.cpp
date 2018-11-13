@@ -4,7 +4,7 @@
 #include "Menu/Pages/Include/PageMemory.h"
 #include "Tables.h"
 #include "Data/Reader.h"
-#include "Data/StorageOld.h"
+#include "Data/Storage.h"
 #include "Osci/Grid.h"
 #include "Display/Symbols.h"
 #include "Display/Painter.h"
